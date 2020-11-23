@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 
-export default class Login extends Component {
+export default class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,7 +40,7 @@ export default class Login extends Component {
                     <h1>
                         Login to
                         <Link to="/">
-                            Chatty
+                           FeedBoxx
                         </Link>
                     </h1>
                     <p>

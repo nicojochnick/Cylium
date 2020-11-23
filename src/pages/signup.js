@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Signup } from '../helpers/auth';
+import { Signin, signInWithGoogle } from "../helpers/auth";
 
 export default class signup extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +11,7 @@ export default class signup extends Component {
             email: '',
             password: '',
         };
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -19,6 +20,14 @@ export default class signup extends Component {
         this.setState({
             [event.target.name]: event.target.value
         });
+    }
+
+    async googleSignIn() {
+        try {
+            await signInWithGoogle();
+        } catch (error) {
+            this.setState({ error: error.message });
+        }
     }
 
     async handleSubmit(event) {
@@ -38,7 +47,7 @@ export default class signup extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <h1>
                         Sign Up to
-                        <Link to="/">Chatty</Link>
+                        <Link to="/">FeedBoxx</Link>
                     </h1>
                     <p>Fill in the form below to create an account.</p>
                     <div>
@@ -51,6 +60,10 @@ export default class signup extends Component {
                         {this.state.error ? <p>{this.state.error}</p> : null}
                         <button type="submit">Sign up</button>
                     </div>
+                    <p>Or</p>
+                    <button onClick={this.googleSignIn} type="button">
+                        Sign up with Google
+                    </button>
                     <hr></hr>
                     <p>Already have an account? <Link to="/login">Login</Link></p>
                 </form>

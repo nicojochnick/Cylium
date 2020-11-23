@@ -1,17 +1,20 @@
 import logo from './logo.svg';
-import './App.css';
 import React, { Component } from "react";
 import {
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
 } from "react-router-dom";
 import home from './pages/home';
 import feed from './pages/feed'
 import signup from './pages/signup';
 import login from './pages/login';
 import {auth} from './api/firebase';
+import './styles.css';
+
+console.log(auth);
 
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
@@ -49,15 +52,19 @@ export default class App extends Component {
       };
     }
 
+
+
     componentDidMount() {
       auth().onAuthStateChanged(user => {
+          console.log(this);
         if (user) {
           this.setState({
             authenticated: true,
             loading: false
           });
         } else {
-          this.setState({
+            console.log(this)
+            this.setState({
             authenticated: false,
             loading: false
           });
@@ -75,7 +82,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={home} />
               <PrivateRoute
-                  path="/chat"
+                  path="/feed"
                   authenticated={this.state.authenticated}
                   component={feed}
               />
