@@ -8,7 +8,7 @@ import {
     Redirect,
 } from "react-router-dom";
 import home from './pages/home';
-import feed from './pages/feed'
+import Feed from './pages/feed'
 import signup from './pages/signup';
 import login from './pages/login';
 import {auth} from './api/firebase';
@@ -84,7 +84,7 @@ export default class App extends Component {
               <PrivateRoute
                   path="/feed"
                   authenticated={this.state.authenticated}
-                  component={feed}
+                  component={Feed}
               />
               <PublicRoute
                   path="/signup"
