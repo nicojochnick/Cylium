@@ -1,4 +1,7 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
 
 
 import clsx from 'clsx';
@@ -22,8 +25,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Button from '@material-ui/core/Button';
-
-
+import {db} from "../api/firebase";
 
 
 function Copyright() {
@@ -133,6 +135,21 @@ export default function Feed() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+    function updateURL(){
+        console.log(db.collection)
+        // Add a new document in collection "cities"
+        db.collection("users").doc("nico.jochnick@gmail.com").set({
+            url: Date.now()
+        })
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+    }
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -181,7 +198,7 @@ export default function Feed() {
                         <Paper className={classes.paper}>
 
                             Your Unique ID: https://feedboxx.io/{Date.now()}
-
+                            <Button  onClick={()=>updateURL()} variant="contained" color="primary"> update my url</Button>
 
                         </Paper>
                     </Grid>
