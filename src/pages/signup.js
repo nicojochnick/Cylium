@@ -2,44 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Signup } from '../helpers/auth';
 import { Signin, signInWithGoogle } from "../helpers/auth";
-
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import {Link as L} from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { FaBoxOpen } from "react-icons/fa";
-
-
 import { withStyles } from "@material-ui/core/styles";
-
-const styles = theme => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-});
 
 class signup extends Component {
     constructor(props) {
@@ -53,13 +22,11 @@ class signup extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
     }
-
     async googleSignIn() {
         try {
             await signInWithGoogle();
@@ -67,7 +34,6 @@ class signup extends Component {
             this.setState({ error: error.message });
         }
     }
-
     async handleSubmit(event) {
         event.preventDefault();
         this.setState({ error: '' });
@@ -87,7 +53,6 @@ class signup extends Component {
 
                     <div className={classes.paper}>
                         <FaBoxOpen size = {50} />
-
                         <h1>
                             Sign Up to <Link to="/">FeedBoxx</Link>
                         </h1>
@@ -143,30 +108,8 @@ class signup extends Component {
 
                         </form>
                     </div>
-
-
                 <div>
                 <form onSubmit={this.handleSubmit}>
-
-                    {/*<div>*/}
-                    {/*    <input*/}
-                    {/*        placeholder="Email"*/}
-                    {/*        name="email" type="email"*/}
-                    {/*        onChange={this.handleChange}*/}
-                    {/*        value={this.state.email}></input>*/}
-                    {/*</div>*/}
-                    {/*<div>*/}
-                    {/*    <input*/}
-                    {/*        placeholder="Password"*/}
-                    {/*        name="password"*/}
-                    {/*        onChange={this.handleChange}*/}
-                    {/*        value={this.state.password}*/}
-                    {/*        type="password"></input>*/}
-                    {/*</div>*/}
-                    {/*<div>*/}
-                    {/*    {this.state.error ? <p>{this.state.error}</p> : null}*/}
-                    {/*    <button type="submit">Sign up</button>*/}
-                    {/*</div>*/}
                     <p>Or</p>
                     <button onClick={this.googleSignIn} type="button">
                         Sign up with Google
@@ -180,6 +123,27 @@ class signup extends Component {
         )
     }
 }
+
+const styles = theme => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: '100%',
+        marginTop: theme.spacing(3),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+});
+
 
 export default withStyles(styles, { withTheme: true })(signup);
 

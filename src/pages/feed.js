@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-} from "react-router-dom";
-
-import * as FirestoreService from '../api/firebase';
-
+import {BrowserRouter as Router, Switch, Route, Link, Redirect,} from "react-router-dom";
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,24 +10,17 @@ import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-// import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Button from '@material-ui/core/Button';
 import {db} from "../api/firebase";
-import {auth} from "../api/firebase";
 import home from "./home";
-import signup from "./signup";
-import login from "./login";
 
 
 export default function Feed() {
@@ -57,30 +40,25 @@ export default function Feed() {
             });
     }, []);
 
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     const updateURL = () => {
-        console.log(db.collection)
-        // Add a new document in collection "cities"
-        db.collection("users").doc("nico.jochnick@gmail.com").set({
-            url: Date.now()
-        })
+        db.collection("users").doc("nico.jochnick@gmail.com")
+            .set({url: Date.now()})
             .then(function() {
                 console.log("Document successfully written!");
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
             });
-
     };
-
 
     return (
         <div className={classes.root}>
@@ -96,9 +74,6 @@ export default function Feed() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    {/*<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>*/}
-                    {/*    FeedBack*/}
-                    {/*</Typography>*/}
 
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
                     <Router>
@@ -119,7 +94,6 @@ export default function Feed() {
             >
                 <div className={classes.toolbarIcon}>
                     <h1 className="display-4">FeedBoxx</h1>
-
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>
@@ -136,38 +110,29 @@ export default function Feed() {
                         <Paper className={classes.paper}>
                             Your Unique ID: https://feedboxx.io/{url}
                             <Button  onClick={updateURL} variant="contained" color="primary"> update my url</Button>
-
                         </Paper>
                     </Grid>
                     <Grid container spacing={3}>
-                        {/* Chart */}
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
-
                             </Paper>
                         </Grid>
-                        {/* Recent Deposits */}
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
-
                             </Paper>
                         </Grid>
-                        {/* Recent Orders */}
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
-
                             </Paper>
                         </Grid>
                     </Grid>
                     <Box pt={4}>
-                        <Copyright />
                     </Box>
                 </Container>
             </main>
         </div>
     );
 }
-
 
 const drawerWidth = 240;
 
@@ -252,17 +217,3 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                FeedBoxx
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}

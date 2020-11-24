@@ -1,44 +1,11 @@
-import logo from './logo.svg';
 import React, { Component } from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link, Redirect,} from "react-router-dom";
 import home from './pages/home';
 import Feed from './pages/feed'
 import signup from './pages/signup';
 import login from './pages/login';
 import {auth} from './api/firebase';
 import './styles.css';
-
-function PrivateRoute({ component: Component, authenticated, ...rest }) {
-  return (
-      <Route
-          {...rest}
-          render={(props) => authenticated === true
-              ? <Component {...props} />
-              : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
-      />
-  )
-}
-
-function PublicRoute({ component: Component, authenticated, ...rest }) {
-  return (
-      <Route
-          {...rest}
-          render={props =>
-              authenticated === false ? (
-                  <Component {...props} />
-              ) : (
-                  <Redirect to="/feed" />
-              )
-          }
-      />
-  );
-}
 
 export default class App extends Component {
     constructor() {
@@ -49,8 +16,6 @@ export default class App extends Component {
       };
     }
 
-
-
     componentDidMount() {
       auth().onAuthStateChanged(user => {
           console.log(this);
@@ -60,7 +25,7 @@ export default class App extends Component {
             loading: false
           });
         } else {
-            console.log(this)
+            console.log(this);
             this.setState({
             authenticated: false,
             loading: false
@@ -98,5 +63,31 @@ export default class App extends Component {
       );
     }
   }
+
+function PrivateRoute({ component: Component, authenticated, ...rest }) {
+    return (
+        <Route
+            {...rest}
+            render={(props) => authenticated === true
+                ? <Component {...props} />
+                : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
+        />
+    )
+}
+
+function PublicRoute({ component: Component, authenticated, ...rest }) {
+    return (
+        <Route
+            {...rest}
+            render={props =>
+                authenticated === false ? (
+                    <Component {...props} />
+                ) : (
+                    <Redirect to="/feed" />
+                )
+            }
+        />
+    );
+}
 
 
