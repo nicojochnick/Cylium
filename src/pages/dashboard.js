@@ -21,17 +21,17 @@ import { mainListItems, secondaryListItems } from '../components/listItems';
 import Button from '@material-ui/core/Button';
 import {db} from "../api/firebase";
 import home from "./home";
-
+import Feed from "../views/feed"
 
 export default function Dashboard() {
-    let email = firebase.auth().currentUser.email
+    let email = firebase.auth().currentUser.email;
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const [url, setURL] = React.useState();
     const [userEmail,setUserEmail] = React.useState(email);
 
     useEffect(() => {
-        let email = firebase.auth().currentUser.email
+        let email = firebase.auth().currentUser.email;
         console.log(email);
         db.collection("users").doc(email)
             .onSnapshot(function(doc) {
@@ -50,7 +50,7 @@ export default function Dashboard() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     const updateURL = () => {
-        db.collection("users").doc("nico.jochnick@gmail.com")
+        db.collection("users").doc(email)
             .set({url: Date.now()})
             .then(function() {
                 console.log("Document successfully written!");
@@ -74,14 +74,12 @@ export default function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
-
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
                     <Router>
                         <Switch>
                             <Route exact path="/" component={home} />
                             <Redirect to={{ pathname: '/login'}}/>
                         </Switch>
-
                     </Router>
                 </Toolbar>
             </AppBar>
@@ -105,30 +103,7 @@ export default function Dashboard() {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid spacing = {3} item xs={12}>
-                        <Paper className={classes.paper}>
-                            Your Unique ID: https://feedboxx.io/{url}
-                            <Button  onClick={updateURL} variant="contained" color="primary"> update my url</Button>
-                        </Paper>
-                    </Grid>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                    <Box pt={4}>
-                    </Box>
-                </Container>
+                <Feed/>
             </main>
         </div>
     );
