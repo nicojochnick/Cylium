@@ -21,6 +21,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
+import Button from '@material-ui/core/Button';
+
 
 
 
@@ -40,6 +42,7 @@ function Copyright() {
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+
     root: {
         display: 'flex',
     },
@@ -112,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
+        margin: 10,
     },
     fixedHeight: {
         height: 240,
@@ -132,7 +136,7 @@ export default function Feed() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -141,17 +145,13 @@ export default function Feed() {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-
                         <MenuIcon />
                     </IconButton>
                     {/*<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>*/}
                     {/*    FeedBack*/}
                     {/*</Typography>*/}
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
+
+                    <Button  variant="contained" color="primary"> Go to Live Box</Button>
                 </Toolbar>
             </AppBar>
 
@@ -177,6 +177,14 @@ export default function Feed() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
+                    <Grid spacing = {3} item xs={12}>
+                        <Paper className={classes.paper}>
+
+                            Your Unique ID: https://feedboxx.io/{Date.now()}
+
+
+                        </Paper>
+                    </Grid>
                     <Grid container spacing={3}>
                         {/* Chart */}
                         <Grid item xs={12} md={8} lg={9}>

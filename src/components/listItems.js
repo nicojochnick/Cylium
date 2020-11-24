@@ -10,12 +10,14 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import { IoIosMail } from "react-icons/io";
+
 
 export const mainListItems = (
     <div>
         <ListItem button>
             <ListItemIcon>
-                <DashboardIcon />
+                <IoIosMail size = {25}/>
             </ListItemIcon>
             <ListItemText primary="Feedback" />
         </ListItem>
