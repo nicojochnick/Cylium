@@ -14,9 +14,6 @@ import login from './pages/login';
 import {auth} from './api/firebase';
 import './styles.css';
 
-console.log(auth);
-
-
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
       <Route

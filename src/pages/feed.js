@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+} from "react-router-dom";
 
+import * as FirestoreService from '../api/firebase';
 
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,27 +27,147 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Button from '@material-ui/core/Button';
 import {db} from "../api/firebase";
+import {auth} from "../api/firebase";
+import home from "./home";
+import signup from "./signup";
+import login from "./login";
 
 
-function Copyright() {
+export default function Feed() {
+    let email = firebase.auth().currentUser.email
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(true);
+    const [url, setURL] = React.useState();
+    const [userEmail,setUserEmail] = React.useState(email);
+
+    useEffect(() => {
+        let email = firebase.auth().currentUser.email
+        console.log(email);
+        db.collection("users").doc(email)
+            .onSnapshot(function(doc) {
+                console.log("Current data: ", doc.data());
+                setURL(doc.data().url)
+            });
+    }, []);
+
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    const updateURL = () => {
+        console.log(db.collection)
+        // Add a new document in collection "cities"
+        db.collection("users").doc("nico.jochnick@gmail.com").set({
+            url: Date.now()
+        })
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+    };
+
+
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                FeedBoxx
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
+        <div className={classes.root}>
+            <CssBaseline />
+            <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
+                <Toolbar className={classes.toolbar}>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    {/*<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>*/}
+                    {/*    FeedBack*/}
+                    {/*</Typography>*/}
+
+                    <Button  variant="contained" color="primary"> Go to Live Box</Button>
+                    <Router>
+                        <Switch>
+                            <Route exact path="/" component={home} />
+                            <Redirect to={{ pathname: '/login'}}/>
+                        </Switch>
+
+                    </Router>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                variant="permanent"
+                classes={{
+                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                }}
+                open={open}
+            >
+                <div className={classes.toolbarIcon}>
+                    <h1 className="display-4">FeedBoxx</h1>
+
+                    <IconButton onClick={handleDrawerClose}>
+                        <ChevronLeftIcon />
+                    </IconButton>
+                </div>
+                <Divider />
+                <List>{mainListItems}</List>
+                <Divider />
+                <List>{secondaryListItems}</List>
+            </Drawer>
+            <main className={classes.content}>
+                <div className={classes.appBarSpacer} />
+                <Container maxWidth="lg" className={classes.container}>
+                    <Grid spacing = {3} item xs={12}>
+                        <Paper className={classes.paper}>
+                            Your Unique ID: https://feedboxx.io/{url}
+                            <Button  onClick={updateURL} variant="contained" color="primary"> update my url</Button>
+
+                        </Paper>
+                    </Grid>
+                    <Grid container spacing={3}>
+                        {/* Chart */}
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+
+                            </Paper>
+                        </Grid>
+                        {/* Recent Deposits */}
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+
+                            </Paper>
+                        </Grid>
+                        {/* Recent Orders */}
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                    <Box pt={4}>
+                        <Copyright />
+                    </Box>
+                </Container>
+            </main>
+        </div>
     );
 }
+
 
 const drawerWidth = 240;
 
@@ -124,109 +252,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Feed() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-    function updateURL(){
-        console.log(db.collection)
-        // Add a new document in collection "cities"
-        db.collection("users").doc("nico.jochnick@gmail.com").set({
-            url: Date.now()
-        })
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
 
-    }
-
+function Copyright() {
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    {/*<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>*/}
-                    {/*    FeedBack*/}
-                    {/*</Typography>*/}
-
-                    <Button  variant="contained" color="primary"> Go to Live Box</Button>
-                </Toolbar>
-            </AppBar>
-
-            <Drawer
-                variant="permanent"
-                classes={{
-                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                }}
-                open={open}
-            >
-                <div className={classes.toolbarIcon}>
-                    <h1 className="display-4">FeedBoxx</h1>
-
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>{mainListItems}</List>
-                <Divider />
-                <List>{secondaryListItems}</List>
-            </Drawer>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid spacing = {3} item xs={12}>
-                        <Paper className={classes.paper}>
-
-                            Your Unique ID: https://feedboxx.io/{Date.now()}
-                            <Button  onClick={()=>updateURL()} variant="contained" color="primary"> update my url</Button>
-
-                        </Paper>
-                    </Grid>
-                    <Grid container spacing={3}>
-                        {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-
-                            </Paper>
-                        </Grid>
-                        {/* Recent Deposits */}
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-
-                            </Paper>
-                        </Grid>
-                        {/* Recent Orders */}
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
-                </Container>
-            </main>
-        </div>
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://material-ui.com/">
+                FeedBoxx
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
     );
 }

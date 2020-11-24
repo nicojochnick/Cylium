@@ -2,7 +2,6 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
-
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const config = {
     apiKey: "AIzaSyBSudatASG50WXqSeQxQVO7lKhktgoEZaw",
@@ -14,9 +13,17 @@ const config = {
     appId: "1:291483743497:web:5f3f63264105231f6a0fd8",
     measurementId: "G-LKMXWVRD9S"
 };
-
 let app = firebase.initializeApp(config);
-
-
 export const auth = firebase.auth;
 export const db = firebase.firestore(app);
+
+export const streamURL = (userID, observer) => {
+    console.log(db.collection('users'));
+    return db.collection('users')
+        .doc(userID)
+        .collection('users')
+        .orderBy('created')
+        .onSnapshot(observer);
+};
+
+
