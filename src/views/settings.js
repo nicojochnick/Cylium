@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Url(props) {
+function Settings(props) {
     return (
         <div></div>
     );
 }
 
-export default Url;
+export default Settings;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Url(props) {
+function Feed(props) {
     return (
         <div></div>
     );
 }
 
-export default Url;
+export default Feed;

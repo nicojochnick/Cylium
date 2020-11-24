@@ -23,7 +23,7 @@ import {db} from "../api/firebase";
 import home from "./home";
 
 
-export default function Feed() {
+export default function Dashboard() {
     let email = firebase.auth().currentUser.email
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
