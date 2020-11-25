@@ -7,9 +7,10 @@ import login from './pages/login';
 import {auth} from './api/firebase';
 import './styles.css';
 
+
 export default class App extends Component {
     constructor() {
-      super();
+        super();
       this.state = {
         authenticated: false,
         loading: true

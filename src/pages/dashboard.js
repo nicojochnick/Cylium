@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -19,48 +18,31 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Button from '@material-ui/core/Button';
-import {db} from "../api/firebase";
-import home from "./home";
+import { IoIosMail } from "react-icons/io";
+import {FaEdit} from "react-icons/fa"
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText/ListItemText";
+import LayersIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import Settings from "../views/settings"
+import EditFeedbox from "../views/editFeedbox"
 import Feed from "../views/feed"
 
+
+
 export default function Dashboard() {
-    let email = firebase.auth().currentUser.email;
+    // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
-    const [url, setURL] = React.useState();
-    const [userEmail,setUserEmail] = React.useState(email);
-
-    useEffect(() => {
-        let email = firebase.auth().currentUser.email;
-        console.log(email);
-        db.collection("users").doc(email)
-            .onSnapshot(function(doc) {
-                console.log("Current data: ", doc.data());
-                setURL(doc.data().url)
-            });
-    }, []);
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
-    const updateURL = () => {
-        db.collection("users").doc(email)
-            .set({url: Date.now()})
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-    };
-
     return (
+        <Router>
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -75,12 +57,6 @@ export default function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
-                    <Router>
-                        <Switch>
-                            <Route exact path="/" component={home} />
-                            <Redirect to={{ pathname: '/login'}}/>
-                        </Switch>
-                    </Router>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -97,22 +73,67 @@ export default function Dashboard() {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>{mainListItems}</List>
+                <List>
+                        <Link to="/feed">
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <IoIosMail size = {25}/>
+                                </ListItemIcon>
+                                <ListItemText primary="Feedback" />
+                            </ListItem>
+                        </Link>
+
+                    <Link to="/editfeedboxx">
+                        <ListItem button>
+                            <ListItemIcon>
+                                <FaEdit size = {20}/>
+                            </ListItemIcon>
+                            <ListItemText primary="My Box" />
+                        </ListItem>
+
+                    </Link>
+
+
+                    <Link to="/dashboard">
+                    </Link>
+
+
+
+                    <div>
+
+                    </div>
+
+                </List>
                 <Divider />
                 <List>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Feed/>
+
+                <Switch>
+                    <Route exact path="/feed">
+                        <Feed/>
+                    </Route>
+                    <Route path="/editfeedboxx">
+                        <EditFeedbox/>
+
+                    </Route>
+                    <Route path="/settings">
+                        <Settings/>
+
+
+                    </Route>
+                </Switch>
+
             </main>
         </div>
+        </Router>
     );
-}
+};
+
 
 const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
-
     root: {
         display: 'flex',
     },

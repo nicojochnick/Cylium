@@ -52,7 +52,6 @@ class home extends Component {
     }
 }
 
-
 const styles = theme => ({
     paper: {
         marginTop: theme.spacing(2),
