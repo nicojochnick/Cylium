@@ -73,7 +73,7 @@ export default function Dashboard() {
                     {/*</Route>*/}
                     {/*<Link to={`/feedboxx/ ${url}`} >*/}
 
-                    <Link to="/feedboxx">
+                    <Link to="/feedboxx/nico">
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
                     </Link>
                 </Toolbar>

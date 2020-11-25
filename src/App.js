@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Switch, Route, Link, Redirect,} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
 import home from './pages/home';
 import Dashboard from './pages/dashboard'
 import signup from './pages/signup';
@@ -56,8 +56,8 @@ export default class App extends Component {
               />
 
               <Route
-                    path="/feedboxx"
-                    component={Feedbox}
+                    path="/feedboxx/:id"
+                    render={(props) => <Feedbox {...props} />}
               />
               <PublicRoute
                   path="/login"
