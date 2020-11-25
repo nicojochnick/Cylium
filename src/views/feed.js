@@ -8,14 +8,12 @@ import {makeStyles} from "@material-ui/core/styles";
 import clsx from 'clsx';
 import Url from '../components/URL'
 
-
 function Feed(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div>
             <Container maxWidth="lg" className={classes.container}>
-              <Url/>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={8} lg={9}>
                         <Paper className={fixedHeightPaper}>

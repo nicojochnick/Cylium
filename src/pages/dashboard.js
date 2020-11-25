@@ -27,6 +27,8 @@ import LayersIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Settings from "../views/settings"
 import EditFeedbox from "../views/editFeedbox"
 import Feed from "../views/feed"
+import Feedbox from "../views/feedbox"
+import {db} from "../api/firebase";
 
 
 
@@ -40,6 +42,17 @@ export default function Dashboard() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+    const [url, setURL] = React.useState();
+    useEffect(() => {
+        let email = firebase.auth().currentUser.email;
+        console.log(email);
+        db.collection("users").doc(email)
+            .onSnapshot(function(doc) {
+                console.log("Current data: ", doc.data());
+                setURL(doc.data().url)
+            });
+    }, []);
+
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <Router>
@@ -56,7 +69,12 @@ export default function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
+                    {/*<Route path="feedboxx" component={Feedbox}>*/}
+                    {/*    <Route path="/feedboxx/:userName" component={Feedbox}/> // dynamic route*/}
+                    {/*</Route>*/}
+                    <Link to={`/feedboxx/ ${url}`} >
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -105,7 +123,6 @@ export default function Dashboard() {
 
                 </List>
                 <Divider />
-                <List>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
