@@ -31,7 +31,6 @@ import Feedbox from "../views/feedbox"
 import {db} from "../api/firebase";
 
 
-
 export default function Dashboard() {
     // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
@@ -55,7 +54,7 @@ export default function Dashboard() {
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <Router>
+
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -72,11 +71,14 @@ export default function Dashboard() {
                     {/*<Route path="feedboxx" component={Feedbox}>*/}
                     {/*    <Route path="/feedboxx/:userName" component={Feedbox}/> // dynamic route*/}
                     {/*</Route>*/}
-                    <Link to={`/feedboxx/ ${url}`} >
+                    {/*<Link to={`/feedboxx/ ${url}`} >*/}
+
+                    <Link to="/feedboxx">
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
                     </Link>
                 </Toolbar>
             </AppBar>
+            <Router>
             <Drawer
                 variant="permanent"
                 classes={{
@@ -111,7 +113,6 @@ export default function Dashboard() {
 
                     </Link>
 
-
                     <Link to="/dashboard">
                     </Link>
 
@@ -126,25 +127,22 @@ export default function Dashboard() {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-
                 <Switch>
                     <Route exact path="/feed">
                         <Feed/>
                     </Route>
                     <Route path="/editfeedboxx">
                         <EditFeedbox/>
-
                     </Route>
                     <Route path="/settings">
                         <Settings/>
-
-
                     </Route>
                 </Switch>
 
             </main>
+            </Router>
         </div>
-        </Router>
+
     );
 };
 

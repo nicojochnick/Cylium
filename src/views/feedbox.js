@@ -2,7 +2,10 @@ import React from 'react';
 
 function Feedbox(props) {
     return (
-        <div></div>
+        <div>
+            HOWDY
+
+        </div>
     );
 }
 

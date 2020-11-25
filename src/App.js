@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route, Link, Redirect,} from "react-rou
 import home from './pages/home';
 import Dashboard from './pages/dashboard'
 import signup from './pages/signup';
+import Feedbox from './views/feedbox'
 import login from './pages/login';
 import {auth} from './api/firebase';
 import './styles.css';
@@ -52,6 +53,11 @@ export default class App extends Component {
                   path="/signup"
                   authenticated={this.state.authenticated}
                   component={signup}
+              />
+
+              <Route
+                    path="/feedboxx"
+                    component={Feedbox}
               />
               <PublicRoute
                   path="/login"
