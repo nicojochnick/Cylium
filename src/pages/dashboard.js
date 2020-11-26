@@ -11,19 +11,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems, secondaryListItems } from '../components/listItems';
 import Button from '@material-ui/core/Button';
 import { IoIosMail } from "react-icons/io";
 import {FaEdit} from "react-icons/fa"
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import LayersIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Settings from "../views/settings"
 import EditFeedbox from "../views/editFeedbox"
 import Feed from "../views/feed"
@@ -41,8 +36,9 @@ export default function Dashboard() {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    const [url, setURL] = React.useState();
+    const [url, setURL] = React.useState(null);
     useEffect(() => {
+        console.log('listen');
         let email = firebase.auth().currentUser.email;
         console.log(email);
         db.collection("users").doc(email)
@@ -51,10 +47,8 @@ export default function Dashboard() {
                 setURL(doc.data().url)
             });
     }, []);
-
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-
         <div className={classes.root}>
             <CssBaseline />
             <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -73,7 +67,7 @@ export default function Dashboard() {
                     {/*</Route>*/}
                     {/*<Link to={`/feedboxx/ ${url}`} >*/}
 
-                    <Link to="/feedboxx/nico">
+                    <Link to={`/feedboxx/${url}`}>
                     <Button  variant="contained" color="primary"> Go to Live Box</Button>
                     </Link>
                 </Toolbar>
@@ -102,7 +96,6 @@ export default function Dashboard() {
                                 <ListItemText primary="Feedback" />
                             </ListItem>
                         </Link>
-
                     <Link to="/editfeedboxx">
                         <ListItem button>
                             <ListItemIcon>
@@ -110,42 +103,38 @@ export default function Dashboard() {
                             </ListItemIcon>
                             <ListItemText primary="My Box" />
                         </ListItem>
-
                     </Link>
-
                     <Link to="/dashboard">
                     </Link>
-
-
-
                     <div>
-
                     </div>
-
                 </List>
                 <Divider />
             </Drawer>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Switch>
-                    <Route exact path="/feed">
-                        <Feed/>
-                    </Route>
-                    <Route path="/editfeedboxx">
-                        <EditFeedbox/>
-                    </Route>
-                    <Route path="/settings">
-                        <Settings/>
-                    </Route>
-                </Switch>
 
-            </main>
+                {(url) ?
+                    < main className={classes.content}>
+                        <div className={classes.appBarSpacer} />
+                        <Switch>
+                            <Route exact path="/feed">
+                                <Feed url = {url}/>
+                            </Route>
+                            <Route path="/editfeedboxx">
+                                <EditFeedbox/>
+                            </Route>
+                            <Route path="/settings">
+                                <Settings/>
+                            </Route>
+                        </Switch>
+
+                    </main>
+                    : <p> LOADING</p>
+                }
             </Router>
         </div>
 
     );
 };
-
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({

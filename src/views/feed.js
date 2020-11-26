@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
@@ -7,9 +7,34 @@ import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import clsx from 'clsx';
 import Url from '../components/URL'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import {db} from "../api/firebase";
+import {auth} from "../api/firebase";
 
 function Feed(props) {
     const classes = useStyles();
+    const [feed, setFeed] = React.useState([]);
+    const [url, setURL] = React.useState(null);
+
+
+    useEffect(() => {
+        let email = firebase.auth().currentUser.email;
+        db.collection("feedback").where('url', '==', props.url.toString())
+            .onSnapshot(function (querySnapshot) {
+                let feedback = [];
+                querySnapshot.forEach(function (doc) {
+                    feedback.push(doc.data());
+                });
+                setFeed(feedback);
+                console.log("Feedback for USER: ", feedback);
+            });
+        console.log(url + "booooom");
+    }, []);
+
+
+
+
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div>
@@ -17,6 +42,11 @@ function Feed(props) {
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={8} lg={9}>
                         <Paper className={fixedHeightPaper}>
+                            <div>
+                                {feed.map((item) =>
+                                    <div key={item.id} className="panel-list">{item.feedback}</div>
+                                )}
+                            </div>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} md={4} lg={3}>
