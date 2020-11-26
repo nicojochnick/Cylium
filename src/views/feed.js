@@ -10,14 +10,14 @@ import Url from '../components/URL'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {db} from "../api/firebase";
+import Feedback from "../components/feedback"
 import {auth} from "../api/firebase";
+import moment from 'moment';
 
 function Feed(props) {
     const classes = useStyles();
     const [feed, setFeed] = React.useState([]);
     const [url, setURL] = React.useState(null);
-
-
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         db.collection("feedback").where('url', '==', props.url.toString())
@@ -27,36 +27,28 @@ function Feed(props) {
                     feedback.push(doc.data());
                 });
                 setFeed(feedback);
-                console.log("Feedback for USER: ", feedback);
             });
-        console.log(url + "booooom");
     }, []);
-
-
-
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div>
             <Container maxWidth="lg" className={classes.container}>
+
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={8} lg={9}>
-                        <Paper className={fixedHeightPaper}>
-                            <div>
+                                <h2 style = {{margin: 10}}> Feedback </h2>
                                 {feed.map((item) =>
-                                    <div key={item.id} className="panel-list">{item.feedback}</div>
+                                    <Feedback item = {item}/>
                                 )}
-                            </div>
-                        </Paper>
+
                     </Grid>
                     <Grid item xs={12} md={4} lg={3}>
+                        <h2 style = {{margin: 10}}> Reward </h2>
                         <Paper className={fixedHeightPaper}>
                         </Paper>
                     </Grid>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                        </Paper>
-                    </Grid>
+
                 </Grid>
                 <Box pt={4}>
                 </Box>
@@ -71,67 +63,17 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
-    toolbar: {
-        paddingRight: 24,
-    },
-    toolbarIcon: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-
-    menuButton: {
-        marginRight: 36,
-    },
-
-    menuButtonHidden: {
-        display: 'none',
-    },
-
-    title: {
+    box:{
         flexGrow: 1,
+        padding: theme.spacing(2),
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+        margin: 10,
+        marginBottom: 20,
+        backgroundColor: 'white'
     },
 
-    drawerPaper: {
-        position: 'relative',
-        whiteSpace: 'nowrap',
-        width: drawerWidth,
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-
-    drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9),
-        },
-    },
-
-    appBarSpacer: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
         height: '100vh',
@@ -144,8 +86,9 @@ const useStyles = makeStyles((theme) => ({
     },
 
     paper: {
+        justify: 'center',
         padding: theme.spacing(2),
-        display: 'flex',
+        display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
         margin: 10,

@@ -81,7 +81,7 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <h1 className="display-4">FeedBoxx</h1>
+                    <h2 className="display-4">FeedBoxx</h2>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>

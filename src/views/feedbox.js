@@ -21,6 +21,10 @@ export default function Feedbox(props) {
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
     const [feedback, setFeedback] = React.useState('');
+    const [subject, setSubject] = React.useState('');
+    const [email, setEmail] = React.useState('');
+
+
     const [error, setError] = React.useState('');
     const handleSwitch = (event) => {
         setSwitch(!switchState);
@@ -33,9 +37,14 @@ export default function Feedbox(props) {
             //write to store
             const res = db.collection('feedback').add({
                 url: id,
+                anon: switchState,
+                email: email,
+                subject: subject,
                 feedback: feedback,
                 timeStamp:moment().format(),
             });
+
+            setSuccess(true)
 
             console.log('Added document with ID: ', res.id);
 
@@ -78,44 +87,81 @@ export default function Feedbox(props) {
 
                 </ul>
 
-                <Paper className={classes.paper}>
-                    <form onSubmit={handleSubmit} noValidate >
-                        <Grid container direction ="row">
-                        <p> go anonymous </p>
-                        <Switch
-                            checked={switchState}
-                            onChange={handleSwitch}
-                            color="primary"
-                            name="checkedB"
-                            inputProps={{ 'aria-label': 'primary checkbox' }}
-                        />
-                        </Grid>
-                    <FormGroup className={classes.formGroup} noValidate autoComplete="on">
-                    <TextField
-                        placeholder="start typing..."
-                        multiline
-                        rows={10}
-                        value = {feedback}
-                        onChange = {e => setFeedback(e.target.value)}
-                        style = {{width:500}}
-                        label="leave feedback here"
-                        variant="outlined"
-                        rowsMax={10}
-                    />
+                {(!successSubmit) ?
 
-                        <Button
-                            className={classes.submitButton}
-                            variant="contained"
-                            color="primary"
-                            type = 'submit'
-                        >
+                    <Paper className={classes.paper}>
+                        <form onSubmit={handleSubmit} noValidate>
+                            <Grid container direction="row">
+                                <Switch
+                                    checked={switchState}
+                                    onChange={handleSwitch}
+                                    color="primary"
+                                    name="checkedB"
 
-                            Submit
+                                    inputProps={{'aria-label': 'primary checkbox'}}
+                                />
+                                <p style = {{marginTop: 7}}> go anonymous </p>
+                            </Grid>
+                            <FormGroup className={classes.formGroup} noValidate autoComplete="on">
 
-                        </Button>
-                    </FormGroup>
-                    </form>
-                </Paper>
+                                <TextField
+
+                                    placeholder="start typing.."
+                                    multiline
+                                    rows={11}
+                                    value={subject}
+                                    onChange={e => setSubject(e.target.value)}
+                                    style={{width: 500,marginBottom:10}}
+                                    label="add a subject line"
+                                    variant="outlined"
+                                    rowsMax={1}
+                                />
+
+                                <TextField
+                                    placeholder="start typing..."
+                                    multiline
+                                    rows={10}
+                                    value={feedback}
+                                    onChange={e => setFeedback(e.target.value)}
+                                    style={{width: 500}}
+                                    label="leave feedback here"
+                                    variant="outlined"
+                                    rowsMax={10}
+                                />
+                                <div style = {{textAlign: 'left'}}>
+                                <p style = {{marginTop: 15, marginBottom: 0, textAlign: 'left'}}>If you win the raffle, we will send your prize to the email provided below.
+                                </p>
+                                <p style = {{marginTop:0, textAlign: 'left'}}>Your email will only show to the recipient if you submit non-anonymously.
+                                </p>
+                                </div>
+
+                                <TextField
+                                    placeholder="please enter a valid address"
+                                    multiline
+                                    rows={11}
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    style={{width: 500, marginTop: 10}}
+                                    label="your email address"
+                                    variant="outlined"
+                                    rowsMax={1}
+                                />
+
+                                <Button
+                                    className={classes.submitButton}
+                                    variant="contained"
+                                    color="primary"
+                                    type='submit'
+                                >
+
+                                    Submit
+
+                                </Button>
+                            </FormGroup>
+                        </form>
+                    </Paper>
+                    : <h2> Feedback submitted! </h2>
+                }
             </Grid>
         </Grid>
         </div>
