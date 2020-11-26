@@ -62,13 +62,15 @@ export default function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    {/*<Route path="feedboxx" component={Feedbox}>*/}
-                    {/*    <Route path="/feedboxx/:userName" component={Feedbox}/> // dynamic route*/}
-                    {/*</Route>*/}
-                    {/*<Link to={`/feedboxx/ ${url}`} >*/}
-
-                    <Link to={`/feedboxx/${url}`}>
-                    <Button  variant="contained" color="primary"> Go to Live Box</Button>
+                    <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
+                    <Button  variant="contained" style={{
+                        borderRadius: 5,
+                        backgroundColor: "#3574EE",
+                    }}>
+                        <p style = {{color: 'white', margin: 0,fontWeight: 500}}>
+                        Go to Live Box
+                        </p>
+                        </Button>
                     </Link>
                 </Toolbar>
             </AppBar>
@@ -88,7 +90,7 @@ export default function Dashboard() {
                 </div>
                 <Divider />
                 <List>
-                        <Link to="/feed">
+                        <Link to="/feed"  style={{ textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
                                     <IoIosMail size = {25}/>
@@ -96,7 +98,7 @@ export default function Dashboard() {
                                 <ListItemText primary="Feedback" />
                             </ListItem>
                         </Link>
-                    <Link to="/editfeedboxx">
+                    <Link to="/editfeedboxx"  style={{ textDecoration: 'none' }} >
                         <ListItem button>
                             <ListItemIcon>
                                 <FaEdit size = {20}/>
@@ -104,7 +106,7 @@ export default function Dashboard() {
                             <ListItemText primary="My Box" />
                         </ListItem>
                     </Link>
-                    <Link to="/dashboard">
+                    <Link to="/dashboard"  style={{ textDecoration: 'none' }}>
                     </Link>
                     <div>
                     </div>

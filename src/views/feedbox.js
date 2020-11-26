@@ -11,6 +11,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import {Signup} from "../helpers/auth";
 import {db} from "../api/firebase";
 import moment from 'moment'
+import Box from "@material-ui/core/Box";
 
 
 export default function Feedbox(props) {
@@ -73,26 +74,28 @@ export default function Feedbox(props) {
                 justify="center"
                 item xs={12}>
                 <h1 className="display-4"> Welcome to Nico's FeedBoxx </h1>
-                <p> Feel free to leave any kind of feedback. However, here is what I'm most looking for: </p>
-                <ul>
-                    <li>
-                        <p> communication style </p>
-                    </li>
-                    <li>
-                        <p>clarity and correctness of my writing</p>
-                    </li>
-                    <li>
-                        <p> being a team player </p>
-                    </li>
+                <p style = {{color: '#353C49'}}> Feel free to leave any kind of feedback</p>
+                {/*<ul>*/}
+                {/*    <li>*/}
+                {/*        <p> communication style </p>*/}
+                {/*    </li>*/}
+                {/*    <li>*/}
+                {/*        <p>clarity and correctness of my writing</p>*/}
+                {/*    </li>*/}
+                {/*    <li>*/}
+                {/*        <p> being a team player </p>*/}
+                {/*    </li>*/}
 
-                </ul>
+                {/*</ul>*/}
 
                 {(!successSubmit) ?
 
-                    <Paper className={classes.paper}>
+                    <Box boxShadow = {5}  borderRadius={7}  className={classes.box}>
                         <form onSubmit={handleSubmit} noValidate>
                             <Grid container direction="row">
                                 <Switch
+                                    style = {{colorSecondary:'#3162F0', }}
+
                                     checked={switchState}
                                     onChange={handleSwitch}
                                     color="primary"
@@ -100,7 +103,12 @@ export default function Feedbox(props) {
 
                                     inputProps={{'aria-label': 'primary checkbox'}}
                                 />
-                                <p style = {{marginTop: 7}}> go anonymous </p>
+                                {(!switchState)
+                                    ?
+                                    <p style={{marginTop: 7, color: '#353C49'}}> Go Anonymous </p>
+                                    :
+                                    <p style={{marginTop: 7, color: '#3162F0'}}> Your Anonymous </p>
+                                }
                             </Grid>
                             <FormGroup className={classes.formGroup} noValidate autoComplete="on">
 
@@ -126,23 +134,23 @@ export default function Feedbox(props) {
                                     style={{width: 500}}
                                     label="leave feedback here"
                                     variant="outlined"
-                                    rowsMax={10}
+                                    rowsMax={8}
                                 />
                                 <div style = {{textAlign: 'left'}}>
-                                <p style = {{marginTop: 15, marginBottom: 0, textAlign: 'left'}}>If you win the raffle, we will send your prize to the email provided below.
+                                <p style = {{marginTop: 15, marginBottom: 0, textAlign: 'left', size: 12,color: '#353C49'}}>If you win the raffle, we will send your prize to the email provided below.
                                 </p>
-                                <p style = {{marginTop:0, textAlign: 'left'}}>Your email will only show to the recipient if you submit non-anonymously.
+                                <p style = {{marginTop:0, textAlign: 'left',  size: 12, color: '#353C49'}}>Your email will only show to the recipient if you submit non-anonymously.
                                 </p>
                                 </div>
 
                                 <TextField
-                                    placeholder="please enter a valid address"
-                                    multiline
+                                    placeholder="start typing..."
                                     rows={11}
+                                    type = 'email'
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
                                     style={{width: 500, marginTop: 10}}
-                                    label="your email address"
+                                    label="email address"
                                     variant="outlined"
                                     rowsMax={1}
                                 />
@@ -150,16 +158,21 @@ export default function Feedbox(props) {
                                 <Button
                                     className={classes.submitButton}
                                     variant="contained"
-                                    color="primary"
                                     type='submit'
+                                    style={{
+                                        borderRadius: 5,
+                                        backgroundColor: "#3574EE",
+                                    }}
                                 >
+                                    <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
 
                                     Submit
+                                    </p>
 
                                 </Button>
                             </FormGroup>
                         </form>
-                    </Paper>
+                    </Box>
                     : <h2> Feedback submitted! </h2>
                 }
             </Grid>
@@ -178,13 +191,22 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         margin: 10,
     },
+    box: {
+        padding: 15,
+        // display: 'start',
+        // overflow: 'auto',
+        // flexDirection: 'row',
+        margin: 10,
+        marginBottom: 20,
+        backgroundColor: 'white'
+
+    },
     formGroup: {
         alignItems: 'center'
     },
 
     submitButton: {
-        margin: 20,
-
+        margin: 10,
     }
 
 

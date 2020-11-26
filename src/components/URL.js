@@ -35,8 +35,9 @@ function Url(props) {
     return (
         <Grid spacing = {3} item xs={12}>
             <Paper className={classes.paper}>
+                <p>
                 Your Unique ID: https://feedboxx.io/{url}
-                <Button  onClick={updateURL} variant="contained" color="primary"> update my url</Button>
+                </p>
             </Paper>
         </Grid>
     );
