@@ -13,6 +13,7 @@ import {db} from "../api/firebase";
 import Feedback from "../components/feedback"
 import {auth} from "../api/firebase";
 import moment from 'moment';
+import RewardTracker from "../components/rewardTracker";
 
 function Feed(props) {
     const classes = useStyles();
@@ -43,11 +44,7 @@ function Feed(props) {
                                 )}
 
                     </Grid>
-                    <Grid item xs={12} md={4} lg={3}>
-                        <h2 style = {{margin: 10}}> Reward </h2>
-                        <Paper className={fixedHeightPaper}>
-                        </Paper>
-                    </Grid>
+                    <RewardTracker/>
 
                 </Grid>
                 <Box pt={4}>
@@ -81,8 +78,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(3),
     },
 
     paper: {
@@ -91,11 +88,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        margin: 10,
+        margin: 0,
     },
 
     fixedHeight: {
-        height: 240,
+        height: 350,
     },
 }));
 
