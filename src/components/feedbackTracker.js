@@ -1,23 +1,14 @@
 import React from 'react';
-import Paper from "@material-ui/core/Paper/Paper";
 import Grid from "@material-ui/core/Grid";
-import {makeStyles} from "@material-ui/core/styles";
-import clsx from 'clsx';
 import Box from "@material-ui/core/Box";
-import Card from 'react-bootstrap/Card'
-import teamwork from '../assets/images/teamwork.svg'
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import FeedbackTracker from "./feedbackTracker";
+import {makeStyles} from "@material-ui/core/styles";
 
-
-function RewardTracker(props) {
+function FeedbackTracker(props) {
     const classes = useStyles();
-    let isSubscribed = props.isSubscribed;
-
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <Grid item xs={12} md={4} lg={3}>
+        <Grid xs={12} md={4} lg={3}>
             <Box boxShadow = {4} className={classes.box}>
                 <h2
                     style ={{
@@ -26,7 +17,7 @@ function RewardTracker(props) {
                         fontSize: 15,
                         fontWeight: 600
                     }}>
-                    REWARDS
+                    ANALYTICS
                 </h2>
                 <Divider style ={{marginTop:20, marginBottom: -20}}/>
                 <div style = {{padding: 20,paddingTop:0,margin:0 }}>
@@ -56,8 +47,6 @@ function RewardTracker(props) {
                 </div>
 
             </Box>
-
-
         </Grid>
     );
 }
@@ -110,4 +99,4 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default RewardTracker;
+export default FeedbackTracker;

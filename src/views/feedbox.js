@@ -13,6 +13,7 @@ import {db} from "../api/firebase";
 import moment from 'moment'
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
+import Topics from "../components/topics";
 
 export default function Feedbox(props) {
     let {id} = useParams();
@@ -57,7 +58,7 @@ export default function Feedbox(props) {
 
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <Box width={1} className={classes.root}>
         <Grid
             container
             spacing={3}
@@ -96,50 +97,65 @@ export default function Feedbox(props) {
                                     <p style={{marginTop: 7, color: '#3162F0'}}> Your Anonymous </p>
                                 }
                             </Grid>
+                            <Divider style = {{marginTop: 10, marginBottom: 20}}/>
                             <FormGroup className={classes.formGroup} noValidate autoComplete="on">
+                                <Topics style = {{marginBottom: 20}}/>
 
                                 <TextField
-
+                                    fullWidth
                                     placeholder="start typing.."
                                     multiline
                                     rows={11}
                                     value={subject}
                                     onChange={e => setSubject(e.target.value)}
-                                    style={{width: 500,marginBottom:10}}
+                                    style={{marginBottom:10}}
                                     label="add a subject line"
                                     variant="outlined"
                                     rowsMax={1}
                                 />
 
                                 <TextField
+                                    fullWidth
                                     placeholder="start typing..."
                                     multiline
                                     rows={10}
                                     value={feedback}
                                     onChange={e => setFeedback(e.target.value)}
-                                    style={{width: 500}}
                                     label="leave feedback here"
                                     variant="outlined"
                                     rowsMax={8}
                                 />
-                                <div style = {{textAlign: 'left'}}>
-                                <p style = {{marginTop: 15, marginBottom: 0, textAlign: 'left', size: 12,color: '#353C49'}}>If you win the raffle, we will send your prize to the email provided below.
+                                { (feedback)
+                                    ?
+                                <div style = {{textAlign: 'left', padding: 0}}>
+                                <p style = {{
+                                    marginTop: 15,
+                                    marginBottom: 0,
+                                    textAlign: 'left',
+                                    size: 12,
+                                    color: '#353C49'
+                                }}>
+                                    Leave an email to get send a prize if the recipient finds your feedback helpful
                                 </p>
-                                <p style = {{marginTop:0, textAlign: 'left',  size: 12, color: '#353C49'}}>Your email will only show to the recipient if you submit non-anonymously.
+                                <p style = {{marginTop:0, textAlign: 'left',  size: 12, color: '#353C49'}}>
+                                    Note: Your email will only be visible if you submit non-anonymously.
                                 </p>
-                                </div>
 
                                 <TextField
                                     placeholder="start typing..."
                                     rows={11}
+                                    fullWidth
                                     type = 'email'
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
-                                    style={{width: 500, marginTop: 10}}
+                                    style={{ marginTop: 10}}
                                     label="email address"
                                     variant="outlined"
                                     rowsMax={1}
                                 />
+                                </div>
+                                    : null
+                                }
                                 <Button
                                     className={classes.submitButton}
                                     variant="contained"
@@ -162,7 +178,7 @@ export default function Feedbox(props) {
                 }
             </Grid>
         </Grid>
-        </div>
+        </Box>
     );
 }
 

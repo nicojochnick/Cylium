@@ -15,6 +15,8 @@ import {auth} from "../api/firebase";
 import moment from 'moment';
 import RewardTracker from "../components/rewardTracker";
 import Divider from "@material-ui/core/Divider";
+import Pulse from "../assets/images/pulse.gif"
+import FeedbackTracker from "../components/feedbackTracker";
 
 
 function Feed(props) {
@@ -35,21 +37,27 @@ function Feed(props) {
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <div>
+        <div className={classes.root} >
             <Container maxWidth="lg" className={classes.container}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} md={8} lg={9}>
+                <Grid container spacing={1} xs={12}>
+
+                    <Grid item xs={12} md={8} lg={8}>
                         <Box className={classes.box} boxShadow = {4}>
+                            <Grid justify="space-between" direction = "row" container >
                                 <h2
                                     style ={{
                                         margin: 15,
+                                        marginRight: -10,
                                         color:"#9FA5B1",
                                         fontSize: 15,
                                         fontWeight: 600
                                     }}>
                                     FEEDBACK
                                 </h2>
-                            <Divider style ={{marginTop:30}}/>
+                            <img style={{height: 60, margin: 0}} src={Pulse}/>
+                            </Grid>
+
+                            <Divider style ={{marginTop:0}}/>
 
                             {feed.map((item) =>
                                     <Feedback item = {item}/>
@@ -58,11 +66,11 @@ function Feed(props) {
                         </Box>
 
                     </Grid>
-                    <RewardTracker isSubscribed = {props.isSubscribed} />
 
-                </Grid>
-                <Box pt={4}>
-                </Box>
+                        <RewardTracker isSubscribed = {props.isSubscribed} />
+
+
+            </Grid>
             </Container>
         </div>
     );
@@ -72,7 +80,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
+        flexGrow: 1,
     },
     box:{
         flexGrow: 1,
@@ -93,8 +101,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3),
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
     },
 
     paper: {

@@ -15,14 +15,23 @@ import Avatar from '@material-ui/core/Avatar';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
+import Divider from "@material-ui/core/Divider";
+import {BsX,BsPlus} from "react-icons/bs";
+
+
+
 
 
 import Feedbox from "../views/feedbox"
+import Feedback from "../components/feedback";
 
 function EditFeedbox(props) {
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
+
+    const [categories, setCategories] = React.useState([{name: 'comms'}]);
+
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
@@ -30,25 +39,39 @@ function EditFeedbox(props) {
     const handleSave = () => {
 
         //TODO: send data to firestore
+    };
+
+    const handleAddCategory = (name) => {
+
+        let cats = categories.slice();
+        cats.push({name: name});
+        setCategories(cats)
 
     };
 
     return (
         <Grid container component = "main" className = {classes.root}>
             <Grid item xs={4} sm={4}  style={{backgroundColor: "white"}} >
-                <form onSubmit = {handleSave}>
                 <Box className={classes.box}>
+                    <h2
+                        style ={{
+                            margin:15,
+                            color:"#6B7280",
+                            fontSize: 20,
+                            fontWeight: 600
+                        }}>
+                        Edit Your Feedboxx
+                    </h2>
+                    <Divider/>
+                    <Box className={classes.container}>
                     <Grid container wrap="nowrap" spacing={2}>
                         <Grid item>
                             <Avatar>W</Avatar>
                         </Grid>
                         <Grid item xs zeroMinWidth>
-                            <InputLabel htmlFor="standard-adornment-amount">Name</InputLabel>
-                            <Input
-                                fullWidth
-                                label = "Name"
-                                id="standard-adornment-amount"
-                            />
+
+                            <TextField id="filled-basic" label="Name" fullWidth/>
+
                         </Grid>
                     </Grid>
                     <Grid style = {{marginTop: 20}} item>
@@ -60,14 +83,41 @@ function EditFeedbox(props) {
                             fullWidth={true}
                             label="Welcome message"
                             variant="outlined"
-                            rowsMax={8}
+                            rowsMax={3}
                         />
                     </Grid>
+                        <Grid style = {{marginTop: 20}}>
+                            <form onSubmit={handleAddCategory}>
+                            <Box
+                                alignItems="flex-end"
+                                display="flex"
+                                flexDirection="row"
+                                width = {1}
+                            >
+                                <TextField
+                                    fullWidth
+                                    type='submit'
+                                    id="filled-basic"
+                                    label="Add Feedback Category"
+                                />
+                                <BsPlus style = {{marginTop: 5, color: "#3574EE"}} size = {35}/>
+                            </Box>
+                            </form>
+
+                            {categories.map((item) =>
+                                <div>
+                                    {item.name}
+                                </div>
+                            )}
+
+
+                        </Grid>
+
+
 
                     <Button
                         className={classes.submitButton}
                         variant="contained"
-                        type='submit'
                         style={{
                             marginRight: 45,
                             marginLeft: 0,
@@ -78,12 +128,12 @@ function EditFeedbox(props) {
                         }}
                     >
                         <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
-                            Save Changes
+                            Update
                         </p>
 
                     </Button>
                 </Box>
-                </form>
+                </Box>
             </Grid>
 
             <Grid item xs={6} sm={8} >
@@ -97,11 +147,15 @@ function EditFeedbox(props) {
 const useStyles = makeStyles((theme) => ({
 
     box: {
-        padding: 15,
-        margin: 10,
+        padding: 0,
+        margin: 0,
         marginBottom: 20,
         borderRadius: 5,
         // backgroundColor: '#EFF2F9'
+
+    },
+    container:{
+        margin: 20
 
     },
     formGroup: {

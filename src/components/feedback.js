@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
         width: theme.spacing(7),
         height: theme.spacing(7),
         color: theme.palette.getContrastText("#3574EE"),
-        backgroundColor: "#B9C1CF",
+        backgroundColor: "#6B7280",
     },
     contained: {
         marginRight: 50
