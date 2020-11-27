@@ -7,7 +7,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Topic from "./topic";
 
 
-function Topics(props) {
+function MyTopics(props) {
     const [value, setValue] = React.useState('female');
 
     const handleChange = (event) => {
@@ -26,4 +26,4 @@ function Topics(props) {
         </FormControl>
     );
 }
-export default Topics;
+export default MyTopics;

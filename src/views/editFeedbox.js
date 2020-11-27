@@ -96,7 +96,6 @@ function EditFeedbox(props) {
                             >
                                 <TextField
                                     fullWidth
-                                    type='submit'
                                     id="filled-basic"
                                     label="Add Feedback Category"
                                 />

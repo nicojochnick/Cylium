@@ -13,7 +13,7 @@ import {db} from "../api/firebase";
 import moment from 'moment'
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import Topics from "../components/topics";
+import MyTopics from "../components/myTopics";
 
 export default function Feedbox(props) {
     let {id} = useParams();
@@ -99,7 +99,7 @@ export default function Feedbox(props) {
                             </Grid>
                             <Divider style = {{marginTop: 10, marginBottom: 20}}/>
                             <FormGroup className={classes.formGroup} noValidate autoComplete="on">
-                                <Topics style = {{marginBottom: 20}}/>
+                                <MyTopics style = {{marginBottom: 20}}/>
 
                                 <TextField
                                     fullWidth
