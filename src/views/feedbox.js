@@ -12,7 +12,7 @@ import {Signup} from "../helpers/auth";
 import {db} from "../api/firebase";
 import moment from 'moment'
 import Box from "@material-ui/core/Box";
-
+import Divider from "@material-ui/core/Divider";
 
 export default function Feedbox(props) {
     let {id} = useParams();
@@ -45,10 +45,8 @@ export default function Feedbox(props) {
                 timeStamp:moment().format(),
             });
 
-            setSuccess(true)
-
+            setSuccess(true);
             console.log('Added document with ID: ', res.id);
-
 
         } catch (error) {
             console.log(error)
@@ -75,18 +73,6 @@ export default function Feedbox(props) {
                 item xs={12}>
                 <h1 className="display-4"> Welcome to Nico's FeedBoxx </h1>
                 <p style = {{color: '#353C49'}}> Feel free to leave any kind of feedback</p>
-                {/*<ul>*/}
-                {/*    <li>*/}
-                {/*        <p> communication style </p>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*        <p>clarity and correctness of my writing</p>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*        <p> being a team player </p>*/}
-                {/*    </li>*/}
-
-                {/*</ul>*/}
 
                 {(!successSubmit) ?
 
@@ -154,7 +140,6 @@ export default function Feedbox(props) {
                                     variant="outlined"
                                     rowsMax={1}
                                 />
-
                                 <Button
                                     className={classes.submitButton}
                                     variant="contained"
@@ -162,8 +147,8 @@ export default function Feedbox(props) {
                                     style={{
                                         borderRadius: 5,
                                         backgroundColor: "#3574EE",
-                                    }}
-                                >
+                                    }}>
+
                                     <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
 
                                     Submit

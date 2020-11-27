@@ -17,23 +17,28 @@ import Row from 'react-bootstrap/Row'
 import { blue,} from '@material-ui/core/colors';
 
 import Col from 'react-bootstrap/Col'
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer/Drawer";
 
 const Feedback = (props) => {
     const classes = useStyles();
     return (
-        <Box className={classes.box} boxShadow = {3}  borderRadius={7} >
+        <div>
+        <Box className={classes.box} >
             <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
                     <Avatar className = {classes.large} alt={props.item.email} src="/static/images/avatar/1.jpg" />
                 </Grid>
                 <Grid className = {classes.contained} item xs>
-                    <p style = {{fontWeight: 550, fontSize: 18, marginTop: 0}}>{props.item.subject}</p>
-                    <p style = {{marginTop: -15, fontSize: 12}}>{props.item.email}</p>
-                    <p style = {{fontWeight: 400, fontSize: 15, marginTop: 0}}>{props.item.feedback}</p>
-                    <p style = {{marginTop: 0, fontSize: 12}}>{moment(props.item.timeStamp).startOf('day').fromNow()}</p>
+                    <p style = {{fontWeight: 450, fontSize: 18, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
+                    <p style = {{marginTop: -15, fontSize: 12, color: "#4F5258"}}>{props.item.email}</p>
+                    <p style = {{fontWeight: 400, fontSize: 15, color:"#4F5258", marginTop: 0}}>{props.item.feedback}</p>
+                    <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}>{moment(props.item.timeStamp).startOf('day').fromNow()}</p>
                 </Grid>
             </Grid>
         </Box>
+            <Divider/>
+        </div>
     );
 };
 
@@ -42,23 +47,27 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     box:{
+        padding: 25,
         // flexGrow: 1,
-        padding: 15,
         // display: 'start',
         // overflow: 'auto',
         // flexDirection: 'row',
-        margin: 10,
-        marginBottom: 20,
         backgroundColor: 'white'
     },
     large: {
         width: theme.spacing(7),
         height: theme.spacing(7),
         color: theme.palette.getContrastText("#3574EE"),
-        backgroundColor: "#3574EE",
+        backgroundColor: "#B9C1CF",
     },
     contained: {
         marginRight: 50
+    },
+    hr: {
+        size: 1,
+        color: '#C6C9D1',
+        borderColor: "#C6C9D1"
+
     }
 
 

@@ -14,6 +14,8 @@ import Feedback from "../components/feedback"
 import {auth} from "../api/firebase";
 import moment from 'moment';
 import RewardTracker from "../components/rewardTracker";
+import Divider from "@material-ui/core/Divider";
+
 
 function Feed(props) {
     const classes = useStyles();
@@ -35,16 +37,28 @@ function Feed(props) {
     return (
         <div>
             <Container maxWidth="lg" className={classes.container}>
-
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={8} lg={9}>
-                                <h2 style = {{margin: 10}}> Feedback </h2>
-                                {feed.map((item) =>
+                        <Box className={classes.box} boxShadow = {4}>
+                                <h2
+                                    style ={{
+                                        margin: 15,
+                                        color:"#9FA5B1",
+                                        fontSize: 15,
+                                        fontWeight: 600
+                                    }}>
+                                    FEEDBACK
+                                </h2>
+                            <Divider style ={{marginTop:30}}/>
+
+                            {feed.map((item) =>
                                     <Feedback item = {item}/>
-                                )}
+                                    )}
+
+                        </Box>
 
                     </Grid>
-                    <RewardTracker/>
+                    <RewardTracker isSubscribed = {props.isSubscribed} />
 
                 </Grid>
                 <Box pt={4}>
@@ -62,13 +76,14 @@ const useStyles = makeStyles((theme) => ({
     },
     box:{
         flexGrow: 1,
-        padding: theme.spacing(2),
+        padding: 0,
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
         margin: 10,
         marginBottom: 20,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        borderRadius: 10,
     },
 
     content: {

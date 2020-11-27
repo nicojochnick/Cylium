@@ -67,7 +67,7 @@ export default function Dashboard() {
                         borderRadius: 5,
                         backgroundColor: "#3574EE",
                     }}>
-                        <p style = {{color: 'white', margin: 0,fontWeight: 500}}>
+                        <p style = {{color: 'white', margin: 5,fontWeight: 600}}>
                         Go to Live Box
                         </p>
                         </Button>
@@ -119,7 +119,7 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <Feed url = {url}/>
+                                <Feed url = {url} isSubscribed = {false}/>
                             </Route>
                             <Route path="/editfeedboxx">
                                 <EditFeedbox/>
