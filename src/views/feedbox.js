@@ -17,10 +17,7 @@ import Divider from "@material-ui/core/Divider";
 import MyTopics from "../components/Topics/myTopics";
 import firebase from "./feed";
 
-const user ={
-    name: "nicojochnick",
-    img: ""
-};
+
 
 export default function Feedbox(props) {
     let {id} = useParams();
@@ -31,6 +28,8 @@ export default function Feedbox(props) {
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [myTopics, setMyTopics] = React.useState([]);
+    const [user, setUser] = React.useState({name: null, img: null, welcome: null})
+    const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
 
     const [error, setError] = React.useState('');
     const handleSwitch = (event) => {
@@ -60,17 +59,50 @@ export default function Feedbox(props) {
         }
     };
 
+    const getFeedBoxxUser = async(id) => {
+
+        if (typeof id === 'string'){
+            id = parseInt(id)
+
+        }
+        const feedRef = db.collection('users');
+        console.log(feedRef, id)
+        const snapshot = await feedRef.where('url', '==', id).get();
+        console.log(snapshot)
+        if (snapshot.empty) {
+            console.log('No matching documents.');
+            return;
+        }
+        let feedID = null;
+        snapshot.forEach(doc => {
+            feedID = doc.id
+
+        });
+        setFeedBoxxEmail(feedID)
+        console.log(feedID)
+
+        db.collection("users").doc(feedID)
+            .onSnapshot(function(doc) {
+                console.log("Current data: ", doc.data());
+                setUser(doc.data())
+            });
+
+    };
+
 
     useEffect(() => {
+
+        let urlID = null;
+        if (id) {
+            urlID = id
+        } else {
+            urlID = props.urlID
+        }
+
+        getFeedBoxxUser(urlID);
+
         //TODO: Pull String from URL or PROPS
-        let url = ''
-        db.collection("users").where('url', '==', url.toString())
-            .onSnapshot(function (querySnapshot) {
-                let user = [];
-                querySnapshot.forEach(function (doc) {
-                    user.push(doc.data());
-                });
-            });
+
     }, []);
 
 
@@ -87,11 +119,12 @@ export default function Feedbox(props) {
                 style={{minHeight: '90vh'}}
             >
                 <Grid
+
                     direction="column"
                     alignItems="center"
                     justify="center"
                     item xs={12}
-                    style = {{maxWidth: 600}}
+                    style = {{width: 550}}
                 >
                     <Grid
                         container
@@ -105,7 +138,7 @@ export default function Feedbox(props) {
                             </Grid>
                             <Grid item xs zeroMinWidth>
                                 <p style = {{marginTop: 0, marginBottom: -5, fontWeight: 600,}}>{user.name}</p>
-                                <p style={{color: '#353C49'}}> Feel free to leave any kind of feedback. askskjalsjjdasjjssdjodiodasjiodjso ksjksdkjhkjdashkjhskdjkjdahhasjkhjajkshhs</p>
+                                <p style={{color: '#353C49'}}> {user.welcome} </p>
                             </Grid>
                     </Grid>
 

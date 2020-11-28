@@ -30,16 +30,19 @@ export default function Dashboard() {
     // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
+    const [url, setURL] = React.useState(null);
+    const [email, setEmail] = React.useState(null);
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    const [url, setURL] = React.useState(null);
     useEffect(() => {
         console.log('listen');
         let email = firebase.auth().currentUser.email;
+        setEmail(email);
         console.log(email);
         db.collection("users").doc(email)
             .onSnapshot(function(doc) {
@@ -122,7 +125,7 @@ export default function Dashboard() {
                                 <Feed url = {url} isSubscribed = {false}/>
                             </Route>
                             <Route path="/editfeedboxx">
-                                <EditFeedbox/>
+                                <EditFeedbox url = {url} email = {email} />
                             </Route>
                             <Route path="/settings">
                                 <Settings/>

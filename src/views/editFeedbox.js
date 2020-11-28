@@ -23,26 +23,14 @@ import AllTopics from "../components/Topics/allTopics";
 import {db} from "../api/firebase";
 import moment from "./feedbox";
 
-let topics = [
-    {name: "Communication", checked: false,},
-    {name: "Leadership", checked: false,},
-    {name: "Writing", checked: false,},
-    {name: "Management", checked: false,},
-    {name: "Product Management", checked: false,},
-    {name: "Organization", checked: false,},
-    {name: "Strategic Thinking", checked: false,},
-    {name: "Design", checked: false,},
-    {name: "Other", checked: false,},
-];
+//
 
 function EditFeedbox(props) {
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
-    const [categories, setCategories] = React.useState(topics);
     const [name, setName] = React.useState('');
     const [error, setError] = React.useState('');
-
     const [welcome, setWelcomeMessage] = React.useState('');
     const [profileImage, setProfileImage] = React.useState('');
 
@@ -55,11 +43,11 @@ function EditFeedbox(props) {
         event.preventDefault();
         try {
             //write to store
-            const res = db.collection('users').add({
+            const res = db.collection('users').doc(props.email).set({
                 name: name,
                 welcome: welcome,
+                url: props.url,
                 img: profileImage,
-
             });
 
             setSuccess(true);
@@ -75,7 +63,6 @@ function EditFeedbox(props) {
     };
 
     const handleWelcomeChange= (message) => {
-
         setWelcomeMessage(message)
     };
 
@@ -85,37 +72,12 @@ function EditFeedbox(props) {
         setProfileImage(profile);
     };
 
-
-
-
-
-    // const handleAddCategory = (name) => {
-    //     let cats = categories.slice();
-    //     cats.push({name: name});
-    //     setCategories(cats)
-    //
-    // };
-    const handleSelect = (item) => {
-
-        let topics = categories.slice();
-        topics.push(item);
-        setCategories(topics);
-    };
-
-    const handleDeselect = (item) => {
-        let topics = categories.slice();
-        const index = topics.indexOf(item);
-        if (index > -1) {
-            topics.splice(index, 1);
-        }
-        setCategories(topics);
-    };
-
-    console.log(categories);
-
     return (
         <Grid container component = "main" className = {classes.root}>
+
             <Grid item xs={4} sm={4}  style={{backgroundColor: "white"}} >
+                <form onSubmit={handleSave} noValidate>
+
                 <Box className={classes.box}>
                     <h2
                         style ={{
@@ -173,6 +135,7 @@ function EditFeedbox(props) {
 
                     <Button
                         className={classes.submitButton}
+                        type='submit'
                         variant="contained"
                         style={{
                             marginRight: 45,
@@ -189,9 +152,11 @@ function EditFeedbox(props) {
                     </Button>
                 </Box>
                 </Box>
+                </form>
+
             </Grid>
             <Grid item xs={6} sm={8} >
-            <Feedbox/>
+            <Feedbox urlID = {props.url} />
             </Grid>
         </Grid>
     );
@@ -250,3 +215,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default EditFeedbox;
+
+
+// const handleAddCategory = (name) => {
+//     let cats = categories.slice();
+//     cats.push({name: name});
+//     setCategories(cats)
+//
+// };
+// const handleSelect = (item) => {
+//     let topics = categories.slice();
+//     topics.push(item);
+//     setCategories(topics);
+// };
+//
+// const handleDeselect = (item) => {
+//     let topics = categories.slice();
+//     const index = topics.indexOf(item);
+//     if (index > -1) {
+//         topics.splice(index, 1);
+//     }
+//     setCategories(topics);
+// };
+
+
+// let topics = [
+//     {name: "Communication", checked: false,},
+//     {name: "Leadership", checked: false,},
+//     {name: "Writing", checked: false,},
+//     {name: "Management", checked: false,},
+//     {name: "Product Management", checked: false,},
+//     {name: "Organization", checked: false,},
+//     {name: "Strategic Thinking", checked: false,},
+//     {name: "Design", checked: false,},
+//     {name: "Other", checked: false,},
+// ];
