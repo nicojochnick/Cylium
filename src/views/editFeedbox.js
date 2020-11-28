@@ -38,12 +38,12 @@ function EditFeedbox(props) {
         setSwitch(!switchState);
     };
 
-    const handleSave = (event) => {
+    const handleSave = async (event) => {
         //TODO: send data to firestore
         event.preventDefault();
         try {
             //write to store
-            const res = db.collection('users').doc(props.email).set({
+            const res = await db.collection('users').doc(props.email).set({
                 name: name,
                 welcome: welcome,
                 url: props.url,
@@ -56,6 +56,13 @@ function EditFeedbox(props) {
             console.log(error);
             setError({error: error.message});
         }
+
+        if (setSuccess){
+            setName('')
+            setWelcomeMessage('')
+        }
+
+
     };
 
     const handleNameChange= (name) => {
@@ -74,21 +81,20 @@ function EditFeedbox(props) {
 
     return (
         <Grid container component = "main" className = {classes.root}>
-
             <Grid item xs={4} sm={4}  style={{backgroundColor: "white"}} >
                 <form onSubmit={handleSave} noValidate>
-
                 <Box className={classes.box}>
+                    <Url url = {props.url}/>
+                    <Divider style = {{marginTop: 20}} />
                     <h2
                         style ={{
-                            margin:15,
-                            color:"#6B7280",
-                            fontSize: 20,
+                            margin:20,
+                            color:"#61626F",
+                            fontSize: 18,
                             fontWeight: 600
                         }}>
-                        Edit Your Feedboxx
+                        Edit
                     </h2>
-                    <Divider/>
                     <Box className={classes.container}>
                     <Grid container wrap="nowrap" spacing={2}>
                         <Grid item>
@@ -123,27 +129,13 @@ function EditFeedbox(props) {
                                 flexDirection="row"
                                 width = {1}
                             >
-                                {/*<TextField*/}
-                                {/*    fullWidth*/}
-                                {/*    id="filled-basic"*/}
-                                {/*    label="Add Feedback Category"*/}
-                                {/*/>*/}
-                                {/*<BsPlus style = {{marginTop: 5, color: "#3574EE"}} size = {35}/>*/}
                             </Box>
-                            {/*<AllTopics topics = {categories} handleSelect = {handleSelect} handleDeselect = {handleDeselect} />*/}
                         </Grid>
-
                     <Button
                         className={classes.submitButton}
                         type='submit'
                         variant="contained"
-                        style={{
-                            marginRight: 45,
-                            marginLeft: 0,
-                            paddingRight: 60,
-                            paddingLeft: 60,
-                            borderRadius: 5,
-                            backgroundColor: "#3574EE",
+                        style={{marginRight: 45, marginLeft: 0, paddingRight: 60, paddingLeft: 60, borderRadius: 5, backgroundColor: "#3574EE",
                         }}
                     >
                         <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
@@ -152,6 +144,7 @@ function EditFeedbox(props) {
                     </Button>
                 </Box>
                 </Box>
+                    <Divider/>
                 </form>
 
             </Grid>

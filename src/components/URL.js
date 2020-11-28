@@ -8,38 +8,30 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {db} from "../api/firebase";
 import {auth} from "../api/firebase";
+import Box from "@material-ui/core/Box";
 
 function Url(props) {
     const classes = useStyles();
     const [url, setURL] = React.useState();
-    useEffect(() => {
-        let email = firebase.auth().currentUser.email;
-        console.log(email);
-        db.collection("users").doc(email)
-            .onSnapshot(function(doc) {
-                console.log("Current data: ", doc.data());
-                setURL(doc.data().url)
-            });
-    }, []);
-
-    const updateURL = () => {
-        db.collection("users").doc("nico.jochnick@gmail.com")
-            .set({url: Date.now()})
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-    };
     return (
-        <Grid spacing = {3} item xs={12}>
-            <Paper className={classes.paper}>
-                <p>
-                Your Unique ID: https://feedboxx.io/{url}
+        <div>
+            <h2
+                style ={{
+                    margin:20,
+                    color:"#61626F",
+                    fontSize: 18,
+                    fontWeight: 600
+                }}>
+                Share
+            </h2>
+            <Box
+                style = {{backgroundColor:"#E1E4ED", borderRadius: 10, padding: 3}}
+                className={classes.container}>
+                <p style = {{color: "#202740", margin: 5, fontWeight: 400}}>
+                    https://feedbox.io/{props.url}
                 </p>
-            </Paper>
-        </Grid>
+            </Box>
+        </div>
     );
 }
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +42,31 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         margin: 10,
     },
+    container:{
+        margin: 20
+
+    },
 }));
+
+// useEffect(() => {
+//     let email = firebase.auth().currentUser.email;
+//     console.log(email);
+//     db.collection("users").doc(email)
+//         .onSnapshot(function(doc) {
+//             console.log("Current data: ", doc.data());
+//             setURL(doc.data().url)
+//         });
+// }, []);
+
+// const updateURL = () => {
+//     db.collection("users").doc("nico.jochnick@gmail.com")
+//         .set({url: Date.now()})
+//         .then(function() {
+//             console.log("Document successfully written!");
+//         })
+//         .catch(function(error) {
+//             console.error("Error writing document: ", error);
+//         });
+// };
 
 export default Url;

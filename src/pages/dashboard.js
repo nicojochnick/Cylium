@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import {BrowserRouter as Router, Switch, Route, Link, Redirect,} from "react-router-dom";
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -21,6 +23,17 @@ import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import Settings from "../views/settings"
 import EditFeedbox from "../views/editFeedbox"
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MoreIcon from '@material-ui/icons/MoreVert';
+
+
 import Feed from "../views/feed"
 import Feedbox from "../views/feedbox"
 import {db} from "../api/firebase";
@@ -65,6 +78,31 @@ export default function Dashboard() {
                     >
                         <MenuIcon />
                     </IconButton>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="space-between"
+                        alignItems="center"
+                    >
+
+                    <Box
+                        borderRadius={16}
+                        className={classes.search}
+                    >
+                        <div className={classes.searchIcon}>
+                            <SearchIcon />
+                        </div>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                                root: classes.inputRoot,
+                                input: classes.inputInput,
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </Box>
+
+
                     <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
                     <Button  variant="contained" style={{
                         borderRadius: 5,
@@ -75,6 +113,7 @@ export default function Dashboard() {
                         </p>
                         </Button>
                     </Link>
+                    </Grid>
                 </Toolbar>
             </AppBar>
             <Router>
@@ -93,7 +132,7 @@ export default function Dashboard() {
                 </div>
                 <Divider />
                 <List>
-                        <Link to="/feed"  style={{ textDecoration: 'none' }}>
+                        <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
                                     <IoIosMail size = {25}/>
@@ -101,12 +140,12 @@ export default function Dashboard() {
                                 <ListItemText primary="Feedback" />
                             </ListItem>
                         </Link>
-                    <Link to="/editfeedboxx"  style={{ textDecoration: 'none' }} >
+                    <Link to="/editfeedboxx" style={{fontWeight: 600, color:"#3C3F48", textDecoration: 'none' }} >
                         <ListItem button>
                             <ListItemIcon>
                                 <FaEdit size = {20}/>
                             </ListItemIcon>
-                            <ListItemText primary="My Box" />
+                            <ListItemText  primary="My Boxx" />
                         </ListItem>
                     </Link>
                     <Link to="/dashboard"  style={{ textDecoration: 'none' }}>
@@ -219,6 +258,55 @@ const useStyles = makeStyles((theme) => ({
     },
     fixedHeight: {
         height: 240,
+    },
+    search: {
+        position: 'relative',
+        // borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade("#A8ADBC", 0.15),
+        '&:hover': {
+            backgroundColor: fade("#A8ADBC", 0.25),
+        },
+        marginRight: theme.spacing(2),
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    },
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '20ch',
+        },
+    },
+    sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+    },
+    sectionMobile: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
     },
 }));
 

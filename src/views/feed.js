@@ -17,12 +17,17 @@ import RewardTracker from "../components/rewardTracker";
 import Divider from "@material-ui/core/Divider";
 import Pulse from "../assets/images/pulse.gif"
 import FeedbackTracker from "../components/feedbackTracker";
+import NetworkBrowse from "../components/Network/networkBrowse";
 
 
 function Feed(props) {
     const classes = useStyles();
     const [feed, setFeed] = React.useState([]);
     const [url, setURL] = React.useState(null);
+
+    const makeChrono = () => {
+
+    };
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         db.collection("feedback").where('url', '==', props.url.toString())
@@ -33,6 +38,10 @@ function Feed(props) {
                 });
                 setFeed(feedback);
             });
+
+        makeChrono(feed);
+
+
     }, []);
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -66,7 +75,7 @@ function Feed(props) {
 
                     </Grid>
 
-                        <RewardTracker isSubscribed = {props.isSubscribed} />
+                        <NetworkBrowse/>
 
 
             </Grid>

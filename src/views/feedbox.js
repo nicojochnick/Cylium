@@ -144,7 +144,7 @@ export default function Feedbox(props) {
 
                     {(!successSubmit) ?
 
-                        <Box boxShadow={5} borderRadius={7} className={classes.box}>
+                        <Box boxShadow={0} style = {{boxShadow: "0px 5px 20px #C8CEEB"}} borderRadius={15} className={classes.box}>
                             <form onSubmit={handleSubmit} noValidate>
                                 <Grid container direction="row">
                                     <Switch
@@ -188,7 +188,7 @@ export default function Feedbox(props) {
                                         rows={10}
                                         value={feedback}
                                         onChange={e => setFeedback(e.target.value)}
-                                        label="leave feedback here"
+                                        label="Write feedback here"
                                         variant="outlined"
                                         rowsMax={8}
                                     />
