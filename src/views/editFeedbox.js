@@ -20,9 +20,10 @@ import {BsX,BsPlus} from "react-icons/bs";
 import Feedbox from "../views/feedbox"
 import Feedback from "../components/feedback";
 import AllTopics from "../components/Topics/allTopics";
+import {db} from "../api/firebase";
+import moment from "./feedbox";
 
 let topics = [
-
     {name: "Communication", checked: false,},
     {name: "Leadership", checked: false,},
     {name: "Writing", checked: false,},
@@ -34,21 +35,59 @@ let topics = [
     {name: "Other", checked: false,},
 ];
 
-
 function EditFeedbox(props) {
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
-
     const [categories, setCategories] = React.useState(topics);
+    const [name, setName] = React.useState('');
+    const [error, setError] = React.useState('');
+
+    const [welcome, setWelcomeMessage] = React.useState('');
+    const [profileImage, setProfileImage] = React.useState('');
 
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
 
-    const handleSave = () => {
+    const handleSave = (event) => {
         //TODO: send data to firestore
+        event.preventDefault();
+        try {
+            //write to store
+            const res = db.collection('users').add({
+                name: name,
+                welcome: welcome,
+                img: profileImage,
+
+            });
+
+            setSuccess(true);
+
+        } catch (error) {
+            console.log(error);
+            setError({error: error.message});
+        }
     };
+
+    const handleNameChange= (name) => {
+        setName(name)
+    };
+
+    const handleWelcomeChange= (message) => {
+
+        setWelcomeMessage(message)
+    };
+
+    const handleProfileImageChange= (event) => {
+        //TODO: upload docs from computer
+        let profile = null;
+        setProfileImage(profile);
+    };
+
+
+
+
 
     // const handleAddCategory = (name) => {
     //     let cats = categories.slice();
@@ -56,7 +95,6 @@ function EditFeedbox(props) {
     //     setCategories(cats)
     //
     // };
-
     const handleSelect = (item) => {
 
         let topics = categories.slice();
@@ -65,7 +103,6 @@ function EditFeedbox(props) {
     };
 
     const handleDeselect = (item) => {
-
         let topics = categories.slice();
         const index = topics.indexOf(item);
         if (index > -1) {
@@ -74,8 +111,7 @@ function EditFeedbox(props) {
         setCategories(topics);
     };
 
-    console.log(categories)
-
+    console.log(categories);
 
     return (
         <Grid container component = "main" className = {classes.root}>
@@ -97,18 +133,22 @@ function EditFeedbox(props) {
                             <Avatar>W</Avatar>
                         </Grid>
                         <Grid item xs zeroMinWidth>
-
-                            <TextField id="filled-basic" label="Name" fullWidth/>
-
+                            <TextField
+                                onChange={e => handleNameChange(e.target.value)}
+                                id="filled-basic"
+                                label="Name"
+                                fullWidth
+                                value = {name}
+                            />
                         </Grid>
                     </Grid>
                     <Grid style = {{marginTop: 20}} item>
-
                         <TextField
                             placeholder="start typing..."
                             multiline
                             rows={10}
                             fullWidth={true}
+                            onChange={e => handleWelcomeChange(e.target.value)}
                             label="Welcome message"
                             variant="outlined"
                             rowsMax={3}
@@ -128,7 +168,7 @@ function EditFeedbox(props) {
                                 {/*/>*/}
                                 {/*<BsPlus style = {{marginTop: 5, color: "#3574EE"}} size = {35}/>*/}
                             </Box>
-                            <AllTopics topics = {categories} handleSelect = {handleSelect} handleDeselect = {handleDeselect} />
+                            {/*<AllTopics topics = {categories} handleSelect = {handleSelect} handleDeselect = {handleDeselect} />*/}
                         </Grid>
 
                     <Button
@@ -146,12 +186,10 @@ function EditFeedbox(props) {
                         <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
                             Update
                         </p>
-
                     </Button>
                 </Box>
                 </Box>
             </Grid>
-
             <Grid item xs={6} sm={8} >
             <Feedbox/>
             </Grid>

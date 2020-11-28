@@ -5,23 +5,15 @@ import Feedback from "../feedback";
 import Checkbox from '@material-ui/core/Checkbox';
 import { BsChat } from "react-icons/bs";
 
-
-
-
-
 function AllTopics(props) {
     console.log(props.topics);
-
     const handleCheck = (name,checked) => {
-
         if (checked) {
             props.handleDeselect(name)
 
         } else {
             props.handleSelect(name)
-
         }
-
     };
     return (
         <div>
