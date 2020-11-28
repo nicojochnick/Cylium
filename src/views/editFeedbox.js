@@ -21,29 +21,61 @@ import Feedbox from "../views/feedbox"
 import Feedback from "../components/feedback";
 import AllTopics from "../components/Topics/allTopics";
 
+let topics = [
+
+    {name: "Communication", checked: false,},
+    {name: "Leadership", checked: false,},
+    {name: "Writing", checked: false,},
+    {name: "Management", checked: false,},
+    {name: "Product Management", checked: false,},
+    {name: "Organization", checked: false,},
+    {name: "Strategic Thinking", checked: false,},
+    {name: "Design", checked: false,},
+    {name: "Other", checked: false,},
+];
+
+
 function EditFeedbox(props) {
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
 
-    const [categories, setCategories] = React.useState([{name: 'comms'}]);
+    const [categories, setCategories] = React.useState(topics);
 
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
 
     const handleSave = () => {
-
         //TODO: send data to firestore
     };
 
-    const handleAddCategory = (name) => {
+    // const handleAddCategory = (name) => {
+    //     let cats = categories.slice();
+    //     cats.push({name: name});
+    //     setCategories(cats)
+    //
+    // };
 
-        let cats = categories.slice();
-        cats.push({name: name});
-        setCategories(cats)
+    const handleSelect = (item) => {
 
+        let topics = categories.slice();
+        topics.push(item);
+        setCategories(topics);
     };
+
+    const handleDeselect = (item) => {
+
+        let topics = categories.slice();
+        const index = topics.indexOf(item);
+        if (index > -1) {
+            topics.splice(index, 1);
+        }
+        setCategories(topics);
+    };
+
+    console.log(categories)
+
 
     return (
         <Grid container component = "main" className = {classes.root}>
@@ -83,7 +115,6 @@ function EditFeedbox(props) {
                         />
                     </Grid>
                         <Grid style = {{marginTop: 20}}>
-                            <form onSubmit={handleAddCategory}>
                             <Box
                                 alignItems="flex-end"
                                 display="flex"
@@ -97,14 +128,8 @@ function EditFeedbox(props) {
                                 {/*/>*/}
                                 {/*<BsPlus style = {{marginTop: 5, color: "#3574EE"}} size = {35}/>*/}
                             </Box>
-                            </form>
-
-                            <AllTopics/>
-
-
+                            <AllTopics topics = {categories} handleSelect = {handleSelect} handleDeselect = {handleDeselect} />
                         </Grid>
-
-
 
                     <Button
                         className={classes.submitButton}
@@ -136,14 +161,11 @@ function EditFeedbox(props) {
 
 
 const useStyles = makeStyles((theme) => ({
-
     box: {
         padding: 0,
         margin: 0,
         marginBottom: 20,
         borderRadius: 5,
-        // backgroundColor: '#EFF2F9'
-
     },
     container:{
         margin: 20

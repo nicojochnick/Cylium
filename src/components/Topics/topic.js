@@ -8,13 +8,6 @@ function Topic(props) {
     return (
         <div>
             <Radio/>
-            {(props.isEdit)
-                ? <BsX/>
-                : null
-
-            }
-
-
         </div>
     );
 }

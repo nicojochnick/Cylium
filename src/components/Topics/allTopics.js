@@ -7,28 +7,27 @@ import { BsChat } from "react-icons/bs";
 
 
 
-let topics = [
-
-    {name: "Communication", checked: false,},
-    {name: "Leadership", checked: false,},
-    {name: "Writing", checked: false,},
-    {name: "Management", checked: false,},
-    {name: "Product Management", checked: false,},
-    {name: "Organization", checked: false,},
-    {name: "Strategic Thinking", checked: false,},
-    {name: "Design", checked: false,},
-    {name: "Other", checked: false,},
-];
-
-
 
 
 function AllTopics(props) {
+    console.log(props.topics);
+
+    const handleCheck = (name,checked) => {
+
+        if (checked) {
+            props.handleDeselect(name)
+
+        } else {
+            props.handleSelect(name)
+
+        }
+
+    };
     return (
         <div>
             <Box display = "flex" fullWidth flexWrap="wrap" flexDirection="row" >
 
-        {topics.map((item) =>
+        {props.topics.map((item) =>
                <div>
                    <Box
                        style = {{borderRadius:10, margin: 5, paddingLeft: 15, paddingRight: 5}}
@@ -42,7 +41,7 @@ function AllTopics(props) {
                        </p>
                        <Checkbox
                            checked={item.checked}
-                           onChange={console.log('add to my categories')}
+                           onChange={()=>handleCheck(item.name, item.check)}
                            inputProps={{ 'aria-label': 'primary checkbox' }}
                        />
                    </Grid>
