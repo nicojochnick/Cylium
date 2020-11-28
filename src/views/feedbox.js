@@ -13,7 +13,7 @@ import {db} from "../api/firebase";
 import moment from 'moment'
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import MyTopics from "../components/myTopics";
+import MyTopics from "../components/Topics/myTopics";
 
 export default function Feedbox(props) {
     let {id} = useParams();

@@ -17,13 +17,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import Divider from "@material-ui/core/Divider";
 import {BsX,BsPlus} from "react-icons/bs";
-
-
-
-
-
 import Feedbox from "../views/feedbox"
 import Feedback from "../components/feedback";
+import AllTopics from "../components/Topics/allTopics";
 
 function EditFeedbox(props) {
     const classes = useStyles();
@@ -94,20 +90,16 @@ function EditFeedbox(props) {
                                 flexDirection="row"
                                 width = {1}
                             >
-                                <TextField
-                                    fullWidth
-                                    id="filled-basic"
-                                    label="Add Feedback Category"
-                                />
-                                <BsPlus style = {{marginTop: 5, color: "#3574EE"}} size = {35}/>
+                                {/*<TextField*/}
+                                {/*    fullWidth*/}
+                                {/*    id="filled-basic"*/}
+                                {/*    label="Add Feedback Category"*/}
+                                {/*/>*/}
+                                {/*<BsPlus style = {{marginTop: 5, color: "#3574EE"}} size = {35}/>*/}
                             </Box>
                             </form>
 
-                            {categories.map((item) =>
-                                <div>
-                                    {item.name}
-                                </div>
-                            )}
+                            <AllTopics/>
 
 
                         </Grid>
