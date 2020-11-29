@@ -9,6 +9,8 @@ import Url from '../components/URL'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {db} from "../api/firebase";
+import 'draft-js/dist/Draft.css';
+
 import {auth} from "../api/firebase";
 import moment from 'moment';
 import Avatar from '@material-ui/core/Avatar';

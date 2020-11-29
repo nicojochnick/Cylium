@@ -28,14 +28,19 @@ import moment from "./feedbox";
 //
 
 function EditFeedbox(props) {
+    let allInputs = {imgUrl: ''}
+
+    if (props.user && props.user.img_url_Profile && props.user.img_url_Profile.imgUrl){
+        allInputs = props.user.img_url_Profile;
+    }
+
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
-    const [name, setName] = React.useState('');
+    const [name, setName] = React.useState(props.user.name);
     const [error, setError] = React.useState('');
-    const [welcome, setWelcomeMessage] = React.useState('');
+    const [welcome, setWelcomeMessage] = React.useState(props.user.welcome);
     const [profileImage, setProfileImage] = React.useState('');
-    const allInputs = {imgUrl: ''}
     const [imageAsFile, setImageAsFile] = React.useState('');
     const [imageAsUrl, setImageAsUrl] = React.useState(allInputs);
 
@@ -130,12 +135,13 @@ function EditFeedbox(props) {
                     <Divider style = {{marginTop: 20}} />
                     <h2
                         style ={{
-                            margin:20,
-                            color:"#61626F",
-                            fontSize: 18,
+                            margin: 15,
+                            marginRight: -10,
+                            color:"#9FA5B1",
+                            fontSize: 15,
                             fontWeight: 600
                         }}>
-                        Edit
+                        EDIT
                     </h2>
                     <Box className={classes.container}>
                     <Grid  justify="center" wrap="nowrap" spacing={2} >
@@ -149,7 +155,7 @@ function EditFeedbox(props) {
                             <input type ='file' onChange={handleImageAsFile} />
 
                         </Grid>
-                        <Grid item xs zeroMinWidth>
+                        <Grid style={{marginTop: 20}} item xs zeroMinWidth>
                             <TextField
                                 onChange={e => handleNameChange(e.target.value)}
                                 id="filled-basic"
@@ -180,6 +186,7 @@ function EditFeedbox(props) {
                             >
                             </Box>
                         </Grid>
+                        <p> Depending on your file size, it may take some time for your profile image to load. Please wait for it to appear before pressing update </p>
                     <Button
                         className={classes.submitButton}
                         type='submit'

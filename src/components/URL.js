@@ -17,17 +17,17 @@ function Url(props) {
         <div>
             <h2
                 style ={{
-                    margin:20,
-                    color:"#61626F",
-                    fontSize: 18,
-                    fontWeight: 600
+                    color:"#9FA5B1",
+                    fontSize: 15,
+                    fontWeight: 600,
+                    margin: 10,
                 }}>
-                Share
+                SHARE
             </h2>
             <Box
-                style = {{backgroundColor:"#E1E4ED", borderRadius: 10, padding: 3}}
+                style = {{backgroundColor:"#E1E4ED", margin: 5, borderRadius: 10, padding: 3}}
                 className={classes.container}>
-                <p style = {{color: "#202740", margin: 5, fontWeight: 400}}>
+                <p style = {{color: "#202740", fontSize: 13, margin: 8, fontWeight: 400}}>
                     https://feedbox.io/{props.url}
                 </p>
             </Box>

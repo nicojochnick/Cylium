@@ -18,6 +18,7 @@ import Divider from "@material-ui/core/Divider";
 import Pulse from "../assets/images/pulse.gif"
 import FeedbackTracker from "../components/feedbackTracker";
 import NetworkBrowse from "../components/Network/networkBrowse";
+import ShareBoxx from "../components/Share/shareBoxx";
 
 
 function Feed(props) {
@@ -74,9 +75,7 @@ function Feed(props) {
                         </Box>
 
                     </Grid>
-
-                        <NetworkBrowse/>
-
+                       <ShareBoxx url = {props.url}/>
 
             </Grid>
             </Container>

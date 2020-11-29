@@ -45,6 +45,7 @@ export default function Dashboard() {
     const [open, setOpen] = React.useState(true);
     const [url, setURL] = React.useState(null);
     const [email, setEmail] = React.useState(null);
+    const [user, setUser] = React.useState(null);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -60,8 +61,10 @@ export default function Dashboard() {
         db.collection("users").doc(email)
             .onSnapshot(function(doc) {
                 console.log("Current data: ", doc.data());
-                if (doc.data().url) {
-                    setURL(doc.data().url)
+                //Fixes bug where doc.data() is undefined on first signin
+                if (doc.data()) {
+                    setURL(doc.data().url);
+                    setUser(doc.data())
                 }
             });
     }, []);
@@ -156,7 +159,7 @@ export default function Dashboard() {
                 </List>
                 <Divider />
             </Drawer>
-                {(url) ?
+                {(url && user) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
                         <Switch>
@@ -164,7 +167,7 @@ export default function Dashboard() {
                                 <Feed url = {url} isSubscribed = {false}/>
                             </Route>
                             <Route path="/editfeedboxx">
-                                <EditFeedbox url = {url} email = {email} />
+                                <EditFeedbox user = {user} url = {url} email = {email} />
                             </Route>
                             <Route path="/settings">
                                 <Settings/>

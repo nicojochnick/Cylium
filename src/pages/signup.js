@@ -43,6 +43,10 @@ class signup extends Component {
             await db.collection("users").doc(this.state.email).set({
                 email: this.state.email,
                 url: Date.now(),
+                img_url_Profile: {imgUrl: null},
+                welcome: "....",
+                name: "add a name"
+
             }).then(function() {
                 console.log("Document successfully written!");
             }).catch(function(error) {
