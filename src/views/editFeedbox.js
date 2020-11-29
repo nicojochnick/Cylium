@@ -21,6 +21,8 @@ import Feedbox from "../views/feedbox"
 import Feedback from "../components/feedback";
 import AllTopics from "../components/Topics/allTopics";
 import {db} from "../api/firebase";
+import {storage} from "../api/firebase";
+
 import moment from "./feedbox";
 
 //
@@ -33,6 +35,9 @@ function EditFeedbox(props) {
     const [error, setError] = React.useState('');
     const [welcome, setWelcomeMessage] = React.useState('');
     const [profileImage, setProfileImage] = React.useState('');
+    const allInputs = {imgUrl: ''}
+    const [imageAsFile, setImageAsFile] = React.useState('');
+    const [imageAsUrl, setImageAsUrl] = React.useState(allInputs);
 
     const handleSwitch = (event) => {
         setSwitch(!switchState);
@@ -42,15 +47,17 @@ function EditFeedbox(props) {
         //TODO: send data to firestore
         event.preventDefault();
         try {
+            await handleFireBaseUpload(event)
             //write to store
-            const res = await db.collection('users').doc(props.email).set({
+            await db.collection('users').doc(props.email).set({
                 name: name,
                 welcome: welcome,
                 url: props.url,
-                img: profileImage,
+                img_url_Profile: imageAsUrl,
             });
-
             setSuccess(true);
+
+
 
         } catch (error) {
             console.log(error);
@@ -61,9 +68,39 @@ function EditFeedbox(props) {
             setName('')
             setWelcomeMessage('')
         }
-
-
     };
+
+    const handleFireBaseUpload = async e => {
+        e.preventDefault()
+        console.log('start of upload')
+
+        if(imageAsFile === '' ) {
+            console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+        }
+
+        if(imageAsFile === '') {
+            console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+        }
+        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
+        //initiates the firebase side uploading
+        uploadTask.on('state_changed',
+            (snapShot) => {
+                //takes a snap shot of the process as it is happening
+                console.log(snapShot)
+            }, (err) => {
+                //catches the errors
+                console.log(err)
+            }, () => {
+                // gets the functions from storage refences the image storage in firebase by the children
+                // gets the download url then sets the image from firebase as the value for the imgUrl key:
+                storage.ref('images').child(imageAsFile.name).getDownloadURL()
+                    .then(fireBaseUrl => {
+                        setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+                    })
+            })
+
+
+    }
 
     const handleNameChange= (name) => {
         setName(name)
@@ -72,6 +109,11 @@ function EditFeedbox(props) {
     const handleWelcomeChange= (message) => {
         setWelcomeMessage(message)
     };
+
+    const handleImageAsFile = (e) => {
+        const image = e.target.files[0]
+        setImageAsFile(imageFile => (image))
+    }
 
     const handleProfileImageChange= (event) => {
         //TODO: upload docs from computer
@@ -96,9 +138,16 @@ function EditFeedbox(props) {
                         Edit
                     </h2>
                     <Box className={classes.container}>
-                    <Grid container wrap="nowrap" spacing={2}>
-                        <Grid item>
-                            <Avatar>W</Avatar>
+                    <Grid  justify="center" wrap="nowrap" spacing={2} >
+                        <Grid
+                            container
+                              direction="column"
+                              justify="center"
+                              alignItems="center"
+                        >
+                            <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
+                            <input type ='file' onChange={handleImageAsFile} />
+
                         </Grid>
                         <Grid item xs zeroMinWidth>
                             <TextField
@@ -203,6 +252,11 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    large: {
+        width: theme.spacing(8),
+        height: theme.spacing(8),
+        marginBottom: 20
     },
 
 }));

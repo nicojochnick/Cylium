@@ -28,7 +28,7 @@ export default function Feedbox(props) {
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [myTopics, setMyTopics] = React.useState([]);
-    const [user, setUser] = React.useState({name: null, img: null, welcome: null})
+    const [user, setUser] = React.useState({name: null, img_url_Profile: {imgURL:null}, welcome: null})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
 
     const [error, setError] = React.useState('');
@@ -108,7 +108,9 @@ export default function Feedbox(props) {
 
 
     const classes = useStyles();
+
     return (
+
         <Box width={1} className={classes.root}>
             <Grid
                 container
@@ -134,7 +136,7 @@ export default function Feedbox(props) {
                         alignItems="flex-start"
                     >
                             <Grid item>
-                                <Avatar className={classes.large}/>
+                                <Avatar src = {user.img_url_Profile.imgUrl} className={classes.large}/>
                             </Grid>
                             <Grid item xs zeroMinWidth>
                                 <p style = {{marginTop: 0, marginBottom: -5, fontWeight: 600,}}>{user.name}</p>

@@ -60,7 +60,9 @@ export default function Dashboard() {
         db.collection("users").doc(email)
             .onSnapshot(function(doc) {
                 console.log("Current data: ", doc.data());
-                setURL(doc.data().url)
+                if (doc.data().url) {
+                    setURL(doc.data().url)
+                }
             });
     }, []);
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -84,7 +86,6 @@ export default function Dashboard() {
                         justify="space-between"
                         alignItems="center"
                     >
-
                     <Box
                         borderRadius={16}
                         className={classes.search}
@@ -155,7 +156,6 @@ export default function Dashboard() {
                 </List>
                 <Divider />
             </Drawer>
-
                 {(url) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
@@ -170,7 +170,6 @@ export default function Dashboard() {
                                 <Settings/>
                             </Route>
                         </Switch>
-
                     </main>
                     : <p> LOADING</p>
                 }

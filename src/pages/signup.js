@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { FaBoxOpen } from "react-icons/fa";
 import { withStyles } from "@material-ui/core/styles";
+import {db} from "../api/firebase";
 
 class signup extends Component {
     constructor(props) {
@@ -39,6 +40,14 @@ class signup extends Component {
         this.setState({ error: '' });
         try {
             await Signup(this.state.email, this.state.password);
+            await db.collection("users").doc(this.state.email).set({
+                email: this.state.email,
+                url: Date.now(),
+            }).then(function() {
+                console.log("Document successfully written!");
+            }).catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
         } catch (error) {
             this.setState({ error: error.message });
         }
