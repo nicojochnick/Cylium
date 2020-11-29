@@ -19,6 +19,7 @@ import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 
 import 'draft-js/dist/Draft.css';
+const MAX_LENGTH = 1500;
 
 export default function Feedbox(props) {
     let {id} = useParams();
@@ -130,6 +131,68 @@ export default function Feedbox(props) {
 
     const classes = useStyles();
 
+    const _handleBeforeInput = () => {
+        const currentContent = editorState.getCurrentContent();
+        const currentContentLength = currentContent.getPlainText('').length;
+        const selectedTextLength = _getLengthOfSelectedText();
+
+        if (currentContentLength - selectedTextLength > MAX_LENGTH - 1) {
+            console.log('you can type max ten characters');
+
+            return 'handled';
+        }
+    }
+
+    const _handlePastedText = (pastedText) => {
+        const currentContent = editorState.getCurrentContent();
+        const currentContentLength = currentContent.getPlainText('').length;
+        const selectedTextLength = _getLengthOfSelectedText();
+
+        if (currentContentLength + pastedText.length - selectedTextLength > MAX_LENGTH) {
+            console.log('you can type max ten characters');
+
+            return 'handled';
+        }
+    }
+
+    const _getLengthOfSelectedText = () => {
+        const currentSelection = editorState.getSelection();
+        const isCollapsed = currentSelection.isCollapsed()
+        let length = 0;
+
+        if (!isCollapsed) {
+            const currentContent = editorState.getCurrentContent();
+            const startKey = currentSelection.getStartKey();
+            const endKey = currentSelection.getEndKey();
+            const startBlock = currentContent.getBlockForKey(startKey);
+            const isStartAndEndBlockAreTheSame = startKey === endKey;
+            const startBlockTextLength = startBlock.getLength();
+            const startSelectedTextLength = startBlockTextLength - currentSelection.getStartOffset();
+            const endSelectedTextLength = currentSelection.getEndOffset();
+            const keyAfterEnd = currentContent.getKeyAfter(endKey);
+            console.log(currentSelection)
+            if (isStartAndEndBlockAreTheSame) {
+                length += currentSelection.getEndOffset() - currentSelection.getStartOffset();
+            } else {
+                let currentKey = startKey;
+
+                while (currentKey && currentKey !== keyAfterEnd) {
+                    if (currentKey === startKey) {
+                        length += startSelectedTextLength + 1;
+                    } else if (currentKey === endKey) {
+                        length += endSelectedTextLength;
+                    } else {
+                        length += currentContent.getBlockForKey(currentKey).getLength() + 1;
+                    }
+
+                    currentKey = currentContent.getKeyAfter(currentKey);
+                };
+            }
+        }
+
+        return length;
+    };
+
     return (
         <Box width={1} className={classes.root}>
             <Grid
@@ -165,21 +228,38 @@ export default function Feedbox(props) {
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
-                            <Box  boxShadow={0} style = {{minHeight: 300, boxShadow: "0px 5px 20px #C8CEEB"}} borderRadius={15} className={classes.box}>
-                                <TextField fullWidth placeholder="start typing.." multiline rows={11} value={subject} onChange={e => setSubject(e.target.value)} style={{marginBottom:10}} label="Subject" rowsMax={1}/>
+                            <Box boxShadow={0} style = {{minHeight: 300, maxHeight: 500,boxShadow: "0px 5px 20px #C8CEEB"}} borderRadius={15} className={classes.box}>
+                                <div className={classes.draft}>
+                                <TextField fullWidth placeholder="start typing.."
+                                           multiline rows={11}
+                                           value={subject}
+                                           onChange={e => setSubject(e.target.value)}
+                                           style={{marginBottom:20}} label="Subject"
+                                           rowsMax={1}/>
 
-                                <Editor placeholder="type feedback here..." handleKeyCommand={handleKeyCommand} editorState={editorState} onChange={onChange} />
+                                           <div style = {{ marginRight: -10}}>
+
+                                <Editor
+                                    placeholder="type feedback here..."
+                                    handleKeyCommand={handleKeyCommand}
+                                    editorState={editorState}
+                                    onChange={onChange}
+                                    handleBeforeInput={_handleBeforeInput}
+                                    handlePastedText={_handlePastedText}
+                                />
+                                           </div>
+                                </div>
                             </Box>
                             <Button
                                 className={classes.submitButton}
                                 variant="contained"
                                 onClick={(event)=>handleSubmit(event)}
                                 style={{
-                                    borderRadius: 5,
+                                    borderRadius: 10,
                                     backgroundColor: "#3574EE",
                                 }}>
-                                <p style={{color: 'white', fontWeight: '600', margin: 5}}>
-                                    Submit
+                                <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>
+                                    SEND
                                 </p>
                             </Button>
                         {/*</form>*/}
@@ -208,7 +288,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
     },
     box: {
-        padding: 15,
         // display: 'start',
         // overflow: 'auto',
         // flexDirection: 'row',
@@ -219,6 +298,12 @@ const useStyles = makeStyles((theme) => ({
     },
     formGroup: {
         alignItems: 'center'
+    },
+
+    draft:{
+        overflow: "auto",
+        maxHeight: 400,
+        padding: 20
     },
 
     submitButton: {

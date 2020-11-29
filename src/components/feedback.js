@@ -65,8 +65,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white'
     },
     large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
+        width: theme.spacing(5),
+        height: theme.spacing(5),
         color: theme.palette.getContrastText("#3574EE"),
         backgroundColor: "#6B7280",
     },
