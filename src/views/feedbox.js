@@ -69,10 +69,8 @@ export default function Feedbox(props) {
     };
 
     const getFeedBoxxUser = async(id) => {
-
         if (typeof id === 'string'){
             id = parseInt(id)
-
         }
         const feedRef = db.collection('users');
         console.log(feedRef, id)
@@ -87,8 +85,8 @@ export default function Feedbox(props) {
             feedID = doc.id
 
         });
-        setFeedBoxxEmail(feedID)
-        console.log(feedID)
+        setFeedBoxxEmail(feedID);
+        console.log(feedID);
 
         db.collection("users").doc(feedID)
             .onSnapshot(function(doc) {
@@ -104,7 +102,7 @@ export default function Feedbox(props) {
         setContentState(save)
         setEditorState(editorState)
 
-    }
+    };
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -119,26 +117,20 @@ export default function Feedbox(props) {
 
 
     useEffect(() => {
-
         let urlID = null;
         if (id) {
             urlID = id
         } else {
             urlID = props.urlID
         }
-
         getFeedBoxxUser(urlID);
-
         //TODO: Pull String from URL or PROPS
 
     }, []);
 
-
-
     const classes = useStyles();
 
     return (
-
         <Box width={1} className={classes.root}>
             <Grid
                 container
@@ -149,14 +141,12 @@ export default function Feedbox(props) {
                 style={{minHeight: '90vh'}}
             >
                 <Grid
-
                     direction="column"
                     alignItems="center"
                     justify="center"
                     item xs={12}
                     style = {{width: 550}}
                 >
-
                     {(!successSubmit) ?
                         <div>
                         <Grid
@@ -175,79 +165,11 @@ export default function Feedbox(props) {
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
-
-
                             <Box  boxShadow={0} style = {{minHeight: 300, boxShadow: "0px 5px 20px #C8CEEB"}} borderRadius={15} className={classes.box}>
+                                <TextField fullWidth placeholder="start typing.." multiline rows={11} value={subject} onChange={e => setSubject(e.target.value)} style={{marginBottom:10}} label="Subject" rowsMax={1}/>
 
-                                <TextField
-                                    fullWidth
-                                    placeholder="start typing.."
-                                    multiline
-                                    rows={11}
-                                    value={subject}
-                                    onChange={e => setSubject(e.target.value)}
-                                    style={{marginBottom:10}}
-                                    label="Subject"
-                                    rowsMax={1}
-                                />
-
-
-                                <Editor handleKeyCommand={handleKeyCommand} editorState={editorState} onChange={onChange} />
-
-
-
-                                {/*<FormGroup className={classes.formGroup} noValidate autoComplete="on">*/}
-
-
-
-                                    {/*<TextField*/}
-                                    {/*    fullWidth*/}
-                                    {/*    placeholder="start typing..."*/}
-                                    {/*    multiline*/}
-                                    {/*    rows={10}*/}
-                                    {/*    value={feedback}*/}
-                                    {/*    onChange={e => setFeedback(e.target.value)}*/}
-                                    {/*    label="Write feedback here"*/}
-                                    {/*    variant="outlined"*/}
-                                    {/*    rowsMax={8}*/}
-                                    {/*/>*/}
-
-
-                                    {/*{(feedback)*/}
-                                    {/*    ?*/}
-                                    {/*    <div style={{textAlign: 'left', padding: 0}}>*/}
-                                    {/*        <p style={{*/}
-                                    {/*            marginTop: 15,*/}
-                                    {/*            marginBottom: 0,*/}
-                                    {/*            textAlign: 'left',*/}
-                                    {/*            size: 12,*/}
-                                    {/*            color: '#353C49'*/}
-                                    {/*        }}>*/}
-                                    {/*            Leave an email to get send a prize if the recipient finds your feedback*/}
-                                    {/*            helpful*/}
-                                    {/*        </p>*/}
-                                    {/*        <p style={{marginTop: 0, textAlign: 'left', size: 12, color: '#353C49'}}>*/}
-                                    {/*            Note: Your email will only be visible if you submit non-anonymously.*/}
-                                    {/*        </p>*/}
-
-                                    {/*        <TextField*/}
-                                    {/*            placeholder="start typing..."*/}
-                                    {/*            rows={11}*/}
-                                    {/*            fullWidth*/}
-                                    {/*            type='email'*/}
-                                    {/*            value={email}*/}
-                                    {/*            onChange={e => setEmail(e.target.value)}*/}
-                                    {/*            style={{marginTop: 10}}*/}
-                                    {/*            label="email address"*/}
-                                    {/*            variant="outlined"*/}
-                                    {/*            rowsMax={1}*/}
-                                    {/*        />*/}
-                                    {/*    </div>*/}
-                                    {/*    : null*/}
-                                    {/*}*/}
-
-                                {/*</FormGroup>*/}
-                        </Box>
+                                <Editor placeholder="type feedback here..." handleKeyCommand={handleKeyCommand} editorState={editorState} onChange={onChange} />
+                            </Box>
                             <Button
                                 className={classes.submitButton}
                                 variant="contained"
@@ -256,12 +178,9 @@ export default function Feedbox(props) {
                                     borderRadius: 5,
                                     backgroundColor: "#3574EE",
                                 }}>
-
                                 <p style={{color: 'white', fontWeight: '600', margin: 5}}>
-
                                     Submit
                                 </p>
-
                             </Button>
                         {/*</form>*/}
                         </div>
@@ -271,7 +190,6 @@ export default function Feedbox(props) {
                             <p> Want your own feedboxx? Make one for free, <Link to="/">here</Link>.
                             </p>
                         </div>
-
                     }
                 </Grid>
             </Grid>
@@ -335,3 +253,58 @@ const useStyles = makeStyles((theme) => ({
 {/*    <p style={{marginTop: 7, color: '#3162F0'}}> Your Anonymous </p>*/}
 {/*}*/}
 
+
+
+
+
+{/*<FormGroup className={classes.formGroup} noValidate autoComplete="on">*/}
+
+
+
+{/*<TextField*/}
+{/*    fullWidth*/}
+{/*    placeholder="start typing..."*/}
+{/*    multiline*/}
+{/*    rows={10}*/}
+{/*    value={feedback}*/}
+{/*    onChange={e => setFeedback(e.target.value)}*/}
+{/*    label="Write feedback here"*/}
+{/*    variant="outlined"*/}
+{/*    rowsMax={8}*/}
+{/*/>*/}
+
+
+{/*{(feedback)*/}
+{/*    ?*/}
+{/*    <div style={{textAlign: 'left', padding: 0}}>*/}
+{/*        <p style={{*/}
+{/*            marginTop: 15,*/}
+{/*            marginBottom: 0,*/}
+{/*            textAlign: 'left',*/}
+{/*            size: 12,*/}
+{/*            color: '#353C49'*/}
+{/*        }}>*/}
+{/*            Leave an email to get send a prize if the recipient finds your feedback*/}
+{/*            helpful*/}
+{/*        </p>*/}
+{/*        <p style={{marginTop: 0, textAlign: 'left', size: 12, color: '#353C49'}}>*/}
+{/*            Note: Your email will only be visible if you submit non-anonymously.*/}
+{/*        </p>*/}
+
+{/*        <TextField*/}
+{/*            placeholder="start typing..."*/}
+{/*            rows={11}*/}
+{/*            fullWidth*/}
+{/*            type='email'*/}
+{/*            value={email}*/}
+{/*            onChange={e => setEmail(e.target.value)}*/}
+{/*            style={{marginTop: 10}}*/}
+{/*            label="email address"*/}
+{/*            variant="outlined"*/}
+{/*            rowsMax={1}*/}
+{/*        />*/}
+{/*    </div>*/}
+{/*    : null*/}
+{/*}*/}
+
+{/*</FormGroup>*/}

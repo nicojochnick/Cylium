@@ -10,7 +10,7 @@ function ShareBoxx(props) {
     const classes = useStyles();
     return (
         <Grid item xs={12} md={4} lg={3}>
-            <Box boxShadow = {4} className={classes.box}>
+            <Box boxShadow = {3} className={classes.box}>
                <Url url = {props.url}/>
             </Box>
         </Grid>

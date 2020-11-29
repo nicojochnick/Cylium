@@ -10,7 +10,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {db} from "../api/firebase";
 import 'draft-js/dist/Draft.css';
-
+import { EditorState, Editor, convertToRaw, convertFromRaw } from 'draft-js';
 import {auth} from "../api/firebase";
 import moment from 'moment';
 import Avatar from '@material-ui/core/Avatar';
@@ -24,6 +24,11 @@ import Drawer from "@material-ui/core/Drawer/Drawer";
 
 const Feedback = (props) => {
     const classes = useStyles();
+    let editorState = null
+    if (props.item.feedback) {
+        editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.item.feedback)));
+    }
+
     return (
         <div>
         <Box className={classes.box} >
@@ -34,7 +39,10 @@ const Feedback = (props) => {
                 <Grid className = {classes.contained} item xs>
                     <p style = {{fontWeight: 450, fontSize: 18, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
                     <p style = {{marginTop: -15, fontSize: 12, color: "#4F5258"}}>{props.item.email}</p>
-                    <p style = {{fontWeight: 400, fontSize: 15, color:"#4F5258", marginTop: 0}}>{props.item.feedback}</p>
+                    {(props.item.feedback)
+                        ?<Editor editorState={editorState} readOnly={true}/>
+                        : null
+                    }
                     <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}>{moment(props.item.timeStamp).startOf('day').fromNow()}</p>
                 </Grid>
             </Grid>
