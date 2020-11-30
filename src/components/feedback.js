@@ -5,19 +5,14 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import clsx from 'clsx';
-import Url from '../components/URL'
-import firebase from 'firebase/app';
 import 'firebase/firestore';
-import {db} from "../api/firebase";
+import Popover from '@material-ui/core/Popover';
 import 'draft-js/dist/Draft.css';
 import { EditorState, Editor, convertToRaw, convertFromRaw } from 'draft-js';
-import {auth} from "../api/firebase";
+import IconButton from '@material-ui/core/IconButton';
 import moment from 'moment';
 import Avatar from '@material-ui/core/Avatar';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import { blue,} from '@material-ui/core/colors';
-import Col from 'react-bootstrap/Col'
+import { FiMoreVertical } from "react-icons/fi";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 
@@ -29,9 +24,54 @@ const Feedback = (props) => {
         editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.item.feedback)));
     }
 
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     return (
         <div>
         <Box className={classes.box} >
+            <Grid
+                container
+                style = {{margin: -10,}}
+                direction="row"
+                justify="flex-end"
+                alignItems="flex-start">
+
+                    <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
+                        <FiMoreVertical  size = {20}/>
+                    </IconButton>
+
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                    }}
+                >
+                    <Button variant="contained" color="primary">
+                        Delete
+                    </Button>
+                </Popover>
+
+
+            </Grid>
             <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
                     <Avatar className = {classes.large} alt={props.item.email} src="/static/images/avatar/1.jpg" />
