@@ -56,7 +56,8 @@ function EditFeedbox(props) {
         //TODO: send data to firestore
         event.preventDefault();
         try {
-            await handleFireBaseUpload(event)
+            await handleFireBaseUpload(event, imageAsFile)
+
             //write to store
             await db.collection('users').doc(props.email).set({
                 name: name,
@@ -79,7 +80,7 @@ function EditFeedbox(props) {
         }
     };
 
-    const handleFireBaseUpload = async e => {
+    const handleFireBaseUpload = async (e, imageAsFile) => {
         e.preventDefault()
         console.log('start of upload')
 
@@ -119,11 +120,13 @@ function EditFeedbox(props) {
         setWelcomeMessage(message)
     };
 
-    const handleImageAsFile = (e) => {
+    const handleImageAsFile = async(e) => {
         setIsLoadingImage(true);
         const image = e.target.files[0];
-        setImageAsFile(imageFile => (image));
+        await setImageAsFile(image);
+        await handleFireBaseUpload(e, image)
         setIsLoadingImage(false);
+
 
     }
 
@@ -161,10 +164,11 @@ function EditFeedbox(props) {
                             <div className="sweet-loading">
                                 <ClipLoader
                                     css={override}
-                                    size={150}
+                                    size={ 10}
                                     color={"#123abc"}
                                     loading={isLoadingImage}
-                                />
+                                    >
+                                </ClipLoader>
                             </div>
                             <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
                             <input type ='file' onChange={handleImageAsFile} />
@@ -201,7 +205,8 @@ function EditFeedbox(props) {
                             >
                             </Box>
                         </Grid>
-                        <p> Depending on your file size, it may take some time for your profile image to load. Please wait for it to appear before pressing update </p>
+                        <p> Press update to save your changes. </p>
+                        {/*<p> Depending on your file size, it may take some time for your profile image to load. Please wait for it to appear before pressing update </p>*/}
                     <Button
                         className={classes.submitButton}
                         type='submit'
