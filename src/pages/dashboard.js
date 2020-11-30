@@ -25,6 +25,8 @@ import Settings from "../views/settings"
 import EditFeedbox from "../views/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import SettingsIcon from '@material-ui/icons/Settings';
+
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -37,6 +39,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import Feed from "../views/feed"
 import Feedbox from "../views/feedbox"
 import {db} from "../api/firebase";
+import Popover from "@material-ui/core/Popover/Popover";
 
 
 export default function Dashboard() {
@@ -47,12 +50,34 @@ export default function Dashboard() {
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
 
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleAccountClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const openAccount = Boolean(anchorEl);
+    const id = openAccount ? 'simple-popover' : undefined;
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const signout = () => {
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+        }).catch(function(error) {
+            // An error happened.
+        });
+    };
+
+
     useEffect(() => {
         console.log('listen');
         let email = firebase.auth().currentUser.email;
@@ -68,11 +93,23 @@ export default function Dashboard() {
                 }
             });
     }, []);
+
+
+
+
+
+
+
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:-1}} position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar
+                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:-1}}
+                position="absolute"
+                color = 'white'
+                className={clsx(classes.appBar, open && classes.appBarShift)}
+            >
                 <Toolbar noWrap className={classes.toolbar}>
                     <IconButton
                         edge="start"
@@ -106,17 +143,50 @@ export default function Dashboard() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Box>
-                    <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
+                        <div className={classes.sectionDesktop}>
+
+
+                        <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
                     <Button  variant="contained" noWrap style={{
                         borderRadius: 5,
                         margin: 10,
+                        marginRight: 20,
                         backgroundColor: "#3574EE",
                     }}>
-                        <p style = {{color: 'white', margin: 5,fontWeight: 600}}>
+                        <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
                         Go to Live Box
                         </p>
                         </Button>
                     </Link>
+                        <IconButton
+                            edge="end"
+                            aria-label="account of current user"
+                            aria-haspopup="true"
+                            style = {{margin: 5}}
+                            onClick={handleAccountClick}
+                            color="inherit"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                            <Popover
+                                id={id}
+                                open={openAccount}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}
+                            >
+                                <Button onClick={()=>signout()} variant="contained" color="primary">
+                                  Signout
+                                </Button>
+                            </Popover>
+                        </div>
                     </Grid>
                 </Toolbar>
                 <Divider/>
@@ -314,5 +384,6 @@ const useStyles = makeStyles((theme) => ({
             display: 'none',
         },
     },
+
 }));
 
