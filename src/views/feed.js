@@ -31,6 +31,7 @@ function Feed(props) {
         feed.sort(function(a,b){
             // Turn your strings into dates, and then subtract them
             // to get a value that is either negative, positive, or zero.
+            console.log(a.timeStamp)
             return b.timeStamp - a.timeStamp;
         });
 

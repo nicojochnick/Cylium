@@ -43,7 +43,8 @@ const Feedback = (props) => {
                         ?<Editor editorState={editorState} readOnly={true}/>
                         : null
                     }
-                    <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}>  </p>
+                    <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}> {props.item.timeStamp.toDate().toDateString()} </p>
+
                 </Grid>
             </Grid>
         </Box>
