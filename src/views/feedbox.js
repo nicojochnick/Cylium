@@ -45,19 +45,22 @@ export default function Feedbox(props) {
         setSwitch(!switchState);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             console.log(contentState)
             console.log('submitting' + feedback + id);
             //write to store
-            const res = db.collection('feedback').add({
+            const res = await db.collection('feedback').add({
                 url: id,
                 anon: switchState,
                 email: email,
                 subject: subject,
                 feedback: contentState,
                 timeStamp: new Date()
+            });
+            db.collection('feedback').doc(res.id).update({
+                id: res.id
             });
 
             setSuccess(true);

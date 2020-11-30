@@ -26,8 +26,14 @@ function Feed(props) {
     const [feed, setFeed] = React.useState([]);
     const [url, setURL] = React.useState(null);
 
-    const makeChrono = (feed) => {
+    const handleDelete = async(id) => {
 
+        await db.collection('feedback').doc(id).delete();
+
+
+    };
+
+    const makeChrono = (feed) => {
         feed.sort(function(a,b){
             // Turn your strings into dates, and then subtract them
             // to get a value that is either negative, positive, or zero.
@@ -79,7 +85,7 @@ function Feed(props) {
                             <Divider style ={{marginTop:0}}/>
 
                             {feed.map((item) =>
-                                    <Feedback item = {item}/>
+                                    <Feedback handleDelete = {handleDelete} item = {item}/>
                                     )}
 
                         </Box>

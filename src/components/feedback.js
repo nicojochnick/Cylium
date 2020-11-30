@@ -44,12 +44,16 @@ const Feedback = (props) => {
                 container
                 style = {{margin: -10,}}
                 direction="row"
-                justify="flex-end"
+                justify="space-between"
                 alignItems="flex-start">
 
-                    <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
+                <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
+
+
+                <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
                         <FiMoreVertical  size = {20}/>
                     </IconButton>
+
 
                 <Popover
                     id={id}
@@ -65,7 +69,7 @@ const Feedback = (props) => {
                         horizontal: 'center',
                     }}
                 >
-                    <Button variant="contained" color="primary">
+                    <Button onClick={()=>props.handleDelete(props.item.id)} variant="contained" color="primary">
                         Delete
                     </Button>
                 </Popover>
@@ -77,8 +81,7 @@ const Feedback = (props) => {
                     <Avatar className = {classes.large} alt={props.item.email} src="/static/images/avatar/1.jpg" />
                 </Grid>
                 <Grid className = {classes.contained} item xs>
-                    <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
-                    <p style = {{marginTop: -15, fontSize: 13, color: "#4F5258"}}>{props.item.email}</p>
+                    {/*<p style = {{marginTop:0, fontSize: 13, color: "#4F5258"}}>{props.item.email}</p>*/}
                     {(props.item.feedback)
                         ?<Editor editorState={editorState} readOnly={true}/>
                         : null
