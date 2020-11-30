@@ -72,8 +72,8 @@ export default function Dashboard() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
+            <AppBar style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:-1}} position="absolute"  color = 'white' className={clsx(classes.appBar, open && classes.appBarShift)}>
+                <Toolbar noWrap className={classes.toolbar}>
                     <IconButton
                         edge="start"
                         color="inherit"
@@ -91,6 +91,7 @@ export default function Dashboard() {
                     >
                     <Box
                         borderRadius={16}
+                        style ={{margin: 10}}
                         className={classes.search}
                     >
                         <div className={classes.searchIcon}>
@@ -106,8 +107,9 @@ export default function Dashboard() {
                         />
                     </Box>
                     <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
-                    <Button  variant="contained" style={{
+                    <Button  variant="contained" noWrap style={{
                         borderRadius: 5,
+                        margin: 10,
                         backgroundColor: "#3574EE",
                     }}>
                         <p style = {{color: 'white', margin: 5,fontWeight: 600}}>
@@ -117,6 +119,7 @@ export default function Dashboard() {
                     </Link>
                     </Grid>
                 </Toolbar>
+                <Divider/>
             </AppBar>
             <Router>
             <Drawer

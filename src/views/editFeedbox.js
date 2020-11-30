@@ -137,8 +137,8 @@ function EditFeedbox(props) {
     };
 
     return (
-        <Grid container component = "main" className = {classes.root}>
-            <Grid item xs={4} sm={4}  style={{backgroundColor: "white"}} >
+        <Grid container spacing ={1} component = "main" className = {classes.root}>
+            <Grid item xs={9} sm={4}  style={{backgroundColor: "white", maxWidth: 500, borderWidth: 1}} >
                 <form onSubmit={handleSave} noValidate>
                 <Box className={classes.box}>
                     <Url url = {props.url}/>
@@ -221,7 +221,7 @@ function EditFeedbox(props) {
                 </form>
 
             </Grid>
-            <Grid item xs={6} sm={8} >
+            <Grid item xs={15} sm={8} >
             <Feedbox urlID = {props.url} />
             </Grid>
         </Grid>
