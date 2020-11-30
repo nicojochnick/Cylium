@@ -21,11 +21,14 @@ import Feedbox from "../views/feedbox"
 import Feedback from "../components/feedback";
 import AllTopics from "../components/Topics/allTopics";
 import {db} from "../api/firebase";
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 import {storage} from "../api/firebase";
-
-import moment from "./feedbox";
-
-//
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function EditFeedbox(props) {
     let allInputs = {imgUrl: ''}
@@ -43,6 +46,7 @@ function EditFeedbox(props) {
     const [profileImage, setProfileImage] = React.useState('');
     const [imageAsFile, setImageAsFile] = React.useState('');
     const [imageAsUrl, setImageAsUrl] = React.useState(allInputs);
+    const [isLoadingImage, setIsLoadingImage] = React.useState(false)
 
     const handleSwitch = (event) => {
         setSwitch(!switchState);
@@ -116,8 +120,11 @@ function EditFeedbox(props) {
     };
 
     const handleImageAsFile = (e) => {
-        const image = e.target.files[0]
-        setImageAsFile(imageFile => (image))
+        setIsLoadingImage(true);
+        const image = e.target.files[0];
+        setImageAsFile(imageFile => (image));
+        setIsLoadingImage(false);
+
     }
 
     const handleProfileImageChange= (event) => {
@@ -151,6 +158,14 @@ function EditFeedbox(props) {
                               justify="center"
                               alignItems="center"
                         >
+                            <div className="sweet-loading">
+                                <ClipLoader
+                                    css={override}
+                                    size={150}
+                                    color={"#123abc"}
+                                    loading={isLoadingImage}
+                                />
+                            </div>
                             <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
                             <input type ='file' onChange={handleImageAsFile} />
 

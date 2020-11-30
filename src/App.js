@@ -49,6 +49,12 @@ export default class App extends Component {
                   authenticated={this.state.authenticated}
                   component={Dashboard}
               />
+
+                <PrivateRoute
+                    path="/feedboxx-edit"
+                    authenticated={this.state.authenticated}
+                    component={Dashboard}
+                />
               <PublicRoute
                   path="/signup"
                   authenticated={this.state.authenticated}

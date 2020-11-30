@@ -105,8 +105,6 @@ export default function Dashboard() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Box>
-
-
                     <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
                     <Button  variant="contained" style={{
                         borderRadius: 5,
@@ -144,15 +142,18 @@ export default function Dashboard() {
                                 <ListItemText primary="Feedback" />
                             </ListItem>
                         </Link>
-                    <Link to="/editfeedboxx" style={{fontWeight: 600, color:"#3C3F48", textDecoration: 'none' }} >
+                    <Link
+                        to="/feedboxx-edit"
+                        style={{fontWeight: 600,
+                              color:"#3C3F48",
+                              textDecoration: 'none'
+                          }} >
                         <ListItem button>
                             <ListItemIcon>
                                 <FaEdit size = {20}/>
                             </ListItemIcon>
                             <ListItemText  primary="My Boxx" />
                         </ListItem>
-                    </Link>
-                    <Link to="/dashboard"  style={{ textDecoration: 'none' }}>
                     </Link>
                     <div>
                     </div>
@@ -166,7 +167,7 @@ export default function Dashboard() {
                             <Route exact path="/feed">
                                 <Feed url = {url} isSubscribed = {false}/>
                             </Route>
-                            <Route path="/editfeedboxx">
+                            <Route exact path="/feedboxx-edit">
                                 <EditFeedbox user = {user} url = {url} email = {email} />
                             </Route>
                             <Route path="/settings">

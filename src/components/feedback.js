@@ -37,8 +37,8 @@ const Feedback = (props) => {
                     <Avatar className = {classes.large} alt={props.item.email} src="/static/images/avatar/1.jpg" />
                 </Grid>
                 <Grid className = {classes.contained} item xs>
-                    <p style = {{fontWeight: 450, fontSize: 18, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
-                    <p style = {{marginTop: -15, fontSize: 12, color: "#4F5258"}}>{props.item.email}</p>
+                    <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
+                    <p style = {{marginTop: -15, fontSize: 13, color: "#4F5258"}}>{props.item.email}</p>
                     {(props.item.feedback)
                         ?<Editor editorState={editorState} readOnly={true}/>
                         : null
