@@ -43,7 +43,7 @@ const Feedback = (props) => {
                         ?<Editor editorState={editorState} readOnly={true}/>
                         : null
                     }
-                    <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}>{moment(props.item.timeStamp).startOf('day').fromNow()}</p>
+                    <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}>  </p>
                 </Grid>
             </Grid>
         </Box>
@@ -77,10 +77,7 @@ const useStyles = makeStyles((theme) => ({
         size: 1,
         color: '#C6C9D1',
         borderColor: "#C6C9D1"
-
     }
-
-
 }));
 
 export default Feedback;

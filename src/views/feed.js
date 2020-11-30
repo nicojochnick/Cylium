@@ -26,8 +26,17 @@ function Feed(props) {
     const [feed, setFeed] = React.useState([]);
     const [url, setURL] = React.useState(null);
 
-    const makeChrono = () => {
+    const makeChrono = (feed) => {
 
+        feed.sort(function(a,b){
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return b.timeStamp - a.timeStamp;
+        });
+
+        console.log(feed)
+
+        setFeed(feed)
     };
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
@@ -37,10 +46,10 @@ function Feed(props) {
                 querySnapshot.forEach(function (doc) {
                     feedback.push(doc.data());
                 });
-                setFeed(feedback);
+                makeChrono(feedback);
+                console.log(feedback)
             });
 
-        makeChrono(feed);
 
 
     }, []);

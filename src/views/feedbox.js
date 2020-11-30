@@ -57,7 +57,7 @@ export default function Feedbox(props) {
                 email: email,
                 subject: subject,
                 feedback: contentState,
-                timeStamp: moment().format(),
+                timeStamp: new Date()
             });
 
             setSuccess(true);
@@ -219,11 +219,11 @@ export default function Feedbox(props) {
                             justify="center"
                             alignItems="flex-start"
                         >
-                            <Grid item>
+                            <Grid style = {{marginLeft: 10}} item>
                                 <Avatar src = {user.img_url_Profile.imgUrl} className={classes.large}/>
                             </Grid>
                             <Grid item xs zeroMinWidth>
-                                <p style = {{marginTop: 0, marginBottom: -5, fontWeight: 600,}}>{user.name}</p>
+                                <p style = {{marginTop: 0, marginBottom: -9, fontWeight: 600,}}>{user.name}</p>
                                 <p style={{color: '#353C49'}}> {user.welcome} </p>
                             </Grid>
                         </Grid>
@@ -255,6 +255,8 @@ export default function Feedbox(props) {
                                 variant="contained"
                                 onClick={(event)=>handleSubmit(event)}
                                 style={{
+                                    marginLeft: 10,
+                                    marginTop: 0,
                                     borderRadius: 10,
                                     backgroundColor: "#3574EE",
                                 }}>
