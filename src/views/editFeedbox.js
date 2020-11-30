@@ -165,7 +165,7 @@ function EditFeedbox(props) {
                             <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
                             <input className={classes.input} id="contained-button-file" accept="image/*" type ='file' onChange={handleImageAsFile} />
                             <label htmlFor="contained-button-file">
-                                <Button style ={{backgroundColor: "#3574EE"}} variant="contained" color="primary" component="span">
+                                <Button style ={{backgroundColor: "#4D6DF1"}} variant="contained" color="primary" component="span">
                                     Upload
                                 </Button>
                             </label>
@@ -208,7 +208,7 @@ function EditFeedbox(props) {
                         className={classes.submitButton}
                         type='submit'
                         variant="contained"
-                        style={{marginRight: 45, marginLeft: 0, paddingRight: 60, paddingLeft: 60, borderRadius: 5, backgroundColor: "#3574EE",
+                        style={{marginRight: 45, marginLeft: 0, paddingRight: 60, paddingLeft: 60, borderRadius: 5, backgroundColor: "#4D6DF1",
                         }}
                     >
                         <p style = {{color: 'white', fontWeight: '600', margin: 5}}>

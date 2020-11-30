@@ -26,6 +26,7 @@ import EditFeedbox from "../views/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import SettingsIcon from '@material-ui/icons/Settings';
+import logo from "../assets/images/logo.png"
 
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -105,7 +106,7 @@ export default function Dashboard() {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
-                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:-1}}
+                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}
                 position="absolute"
                 color = 'white'
                 className={clsx(classes.appBar, open && classes.appBarShift)}
@@ -151,7 +152,7 @@ export default function Dashboard() {
                         borderRadius: 5,
                         margin: 10,
                         marginRight: 20,
-                        backgroundColor: "#3574EE",
+                        backgroundColor: '#4D6DF1',
                     }}>
                         <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
                         Go to Live Box
@@ -182,7 +183,7 @@ export default function Dashboard() {
                                     horizontal: 'center',
                                 }}
                             >
-                                <Button onClick={()=>signout()} variant="contained" color="primary">
+                                <Button style = {{backgroundColor: "#5F7FFF"}}onClick={()=>signout()} variant="contained" color="primary">
                                   Signout
                                 </Button>
                             </Popover>
@@ -200,7 +201,7 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <h2 className="display-4">FeedBoxx</h2>
+                    <img style = {{height: 48}} src ={logo}/>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>

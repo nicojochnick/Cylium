@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper/Paper";
 import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
 import {FaBoxOpen} from "react-icons/fa";
+import Lander from "../views/lander"
 
 class home extends Component {
     render() {
@@ -14,37 +15,7 @@ class home extends Component {
         return (
             <div>
             <Header/>
-                <Container
-                    className={classes.container}>
-                    <Grid
-                        direction="column"
-                        alignItems="center"
-                        justify="center"
-                        maxWidth="lg"
-                        container spacing={1}>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <section>
-                                    <div className="jumbotron jumbotron-fluid py-5">
-                                        <div className="container text-center py-5">
-                                            <FaBoxOpen size = {50}/>
-                                            <h1 className="display-4">FeedBoxx</h1>
-                                            <p className="lead">Your virtual feedback box
-                                            </p>
-                                            <div className="mt-4">
-                                                <Link className="btn btn-primary px-5 mr-3" to="/signup">Create New Account </Link>
-                                                <hr/>
-                                                <Link className="btn px-5" to="/login">Login to Your Account</Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                    <Box pt={4}>
-                    </Box>
-                </Container>
+                    <Lander/>
                 <div className="home">
             </div>
             </div>
@@ -75,3 +46,34 @@ const styles = theme => ({
 
 export default withStyles(styles, { withTheme: true })(home);
 
+{/*<Paper className={classes.paper}>*/}
+{/*    <section>*/}
+{/*        <div className="jumbotron jumbotron-fluid py-5">*/}
+{/*            <div className="container text-center py-5">*/}
+{/*                <FaBoxOpen size = {50}/>*/}
+{/*                <h1 className="display-4">FeedBoxx</h1>*/}
+{/*                <p className="lead">Your virtual feedback box*/}
+{/*                </p>*/}
+{/*                <div className="mt-4">*/}
+{/*                    <Link className="btn btn-primary px-5 mr-3" to="/signup">Create New Account </Link>*/}
+{/*                    <hr/>*/}
+{/*                    <Link className="btn px-5" to="/login">Login to Your Account</Link>*/}
+{/*                </div>*/}
+{/*            </div>*/}
+{/*        </div>*/}
+{/*    </section>*/}
+{/*</Paper>*/}
+
+{/*<Grid item xs={4}>*/}
+
+
+{/*</Grid>*/}
+//
+// <Grid
+//     direction="column"
+//     alignItems="center"
+//     justify="center"
+//     maxWidth="lg"
+//     container spacing={1}>
+//
+// </Grid>

@@ -9,6 +9,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
 
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
@@ -20,6 +22,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import logo from "../assets/images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,12 +44,26 @@ function Header() {
         <div className={classes.root}>
             <AppBar color = "white" position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
-                    {/*<Button color="inherit">Login</Button>*/}
+                    <Grid container
+                          direction="row"
+                          justify="space-between"
+                          alignItems="center">
+                        <img style = {{height: 48}} src ={logo}/>
+                        <Link to={`/login`} style={{ textDecoration: 'none' }}>
+                        <Button  variant="contained" noWrap style={{
+                            borderRadius: 5,
+                            margin: 10,
+                            backgroundColor: '#4D6DF1',
+                        }}>
+                            <p style = {{color: 'white', margin: 2, marginRight: 20, marginLeft: 20,fontWeight: 500}}>
+                                Login
+                            </p>
+                        </Button>
+                        </Link>
+                    </Grid>
                 </Toolbar>
             </AppBar>
+
         </div>
     );
 }

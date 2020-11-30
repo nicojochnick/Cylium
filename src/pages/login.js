@@ -36,6 +36,7 @@ class login extends Component {
         event.preventDefault();
         this.setState({ error: "" });
         try {
+            console.log(this.state.email, this.state.password)
             await Signin(this.state.email, this.state.password);
         } catch (error) {
             this.setState({ error: error.message });
@@ -48,10 +49,7 @@ class login extends Component {
             <Container component="main" maxWidth="xs">
                 <CssBaseline>
                     <div className={classes.paper}>
-
-
                         <FaBoxOpen size = {50} />
-
                         <h1>
                             Login to <Link to="/">
                             FeedBoxx
@@ -61,7 +59,7 @@ class login extends Component {
                             Fill in the form below to login to your account.
                         </p>
 
-                        <form className={classes.form} noValidate>
+                        <form onSubmit={this.handleSubmit} className={classes.form} noValidate>
                             <TextField
                                 variant="outlined"
                                 margin="normal"

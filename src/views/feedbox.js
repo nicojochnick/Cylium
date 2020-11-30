@@ -231,7 +231,7 @@ export default function Feedbox(props) {
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
-                            <Box boxShadow={0} style = {{minHeight: 300, maxHeight: 500,boxShadow: "0px 5px 20px #C8CEEB"}} borderRadius={15} className={classes.box}>
+                            <Box boxShadow={0} style = {{minHeight: 300, maxHeight: 500,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
                                 <div className={classes.draft}>
                                 <TextField fullWidth placeholder="start typing.."
                                            multiline rows={11}
@@ -261,7 +261,7 @@ export default function Feedbox(props) {
                                     marginLeft: 10,
                                     marginTop: 0,
                                     borderRadius: 10,
-                                    backgroundColor: "#3574EE",
+                                    backgroundColor: "#4D6DF1",
                                 }}>
                                 <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>
                                     SEND
