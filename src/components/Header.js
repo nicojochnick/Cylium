@@ -48,7 +48,9 @@ function Header() {
                           direction="row"
                           justify="space-between"
                           alignItems="center">
+                        <Link to="/">
                         <img style = {{height: 48}} src ={logo}/>
+                        </Link>
                         <Link to={`/login`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5,

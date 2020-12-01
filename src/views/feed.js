@@ -115,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 20,
         backgroundColor: 'white',
         borderRadius: 10,
+        minHeight: 300,
     },
 
     content: {

@@ -10,6 +10,11 @@ import Container from '@material-ui/core/Container';
 import { FaBoxOpen } from "react-icons/fa";
 import { withStyles } from "@material-ui/core/styles";
 import {db} from "../api/firebase";
+import logo from "../assets/images/logo.png";
+import Header from "../components/Header";
+import Box from "@material-ui/core/Box";
+import boxx from "../assets/images/boxx.png"
+
 
 class signup extends Component {
     constructor(props) {
@@ -52,6 +57,19 @@ class signup extends Component {
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });
+
+            await db.collection("feedback").doc(this.state.email).set({
+                email: this.state.email,
+                url: Date.now(),
+                img_url_Profile: {imgUrl: null},
+                welcome: "....",
+                name: "add a name"
+
+            }).then(function() {
+                console.log("Document successfully written!");
+            }).catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
         } catch (error) {
             this.setState({ error: error.message });
         }
@@ -61,14 +79,16 @@ class signup extends Component {
     render() {
         const { classes } = this.props;
         return (
+            <div>
+            <Header/>
             <Container component="main" maxWidth="xs">
                 <CssBaseline>
 
                     <div className={classes.paper}>
-                        <FaBoxOpen size = {50} />
-                        <h1>
-                            Sign Up to <Link to="/">FeedBoxx</Link>
-                        </h1>
+                        <img style ={{height: 50}}src = {boxx} />
+
+                        <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Sign Up</p>
+
                         <p>Fill in the form below to create an account.</p>
                         <form className={classes.form} onSubmit={this.handleSubmit} noValidate>
                             <Grid container spacing={2}>
@@ -123,17 +143,19 @@ class signup extends Component {
                     </div>
                 <div>
                 <form onSubmit={this.handleSubmit}>
-                    <p>Or</p>
-                    <button onClick={this.googleSignIn} type="button">
-                        Sign up with Google
-                    </button>
-                    <hr></hr>
+                    {/*<p>Or</p>*/}
+                    {/*<button onClick={this.googleSignIn} type="button">*/}
+                    {/*    Sign up with Google*/}
+                    {/*</button>*/}
+                    {/*<hr></hr>*/}
                     <p>Already have an account? <Link to="/login">Login</Link></p>
                 </form>
             </div>
                 </CssBaseline>
             </Container>
+        </div>
         )
+
     }
 }
 

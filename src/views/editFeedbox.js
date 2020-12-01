@@ -177,6 +177,8 @@ function EditFeedbox(props) {
                                 id="filled-basic"
                                 label="Name"
                                 fullWidth
+                                variant="outlined"
+
                                 value = {name}
                             />
                         </Grid>

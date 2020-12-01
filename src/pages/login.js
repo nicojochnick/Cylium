@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
-
-
+import logo from "../assets/images/logo.png";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +10,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from "@material-ui/core/styles";
 import Container from '@material-ui/core/Container';
+import boxx from "../assets/images/boxx.png"
+import Header from "../components/Header";
+
 import { FaBoxOpen } from "react-icons/fa";
 
 
@@ -46,18 +48,16 @@ class login extends Component {
     render() {
         const { classes } = this.props;
         return (
+            <div>
+                <Header/>
             <Container component="main" maxWidth="xs">
                 <CssBaseline>
                     <div className={classes.paper}>
-                        <FaBoxOpen size = {50} />
-                        <h1>
-                            Login to <Link to="/">
-                            FeedBoxx
-                        </Link>
-                        </h1>
-                        <p>
-                            Fill in the form below to login to your account.
-                        </p>
+                        <img style ={{height: 50}}src = {boxx} />
+
+                        <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Login</p>
+
+                        <p>Fill in the form below to create an account.</p>
 
                         <form onSubmit={this.handleSubmit} className={classes.form} noValidate>
                             <TextField
@@ -122,6 +122,7 @@ class login extends Component {
                     </div>
                 </CssBaseline>
             </Container>
+            </div>
         );
     }
 }

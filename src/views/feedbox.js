@@ -19,6 +19,7 @@ import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 
 import 'draft-js/dist/Draft.css';
+import Container from "@material-ui/core/Container";
 const MAX_LENGTH = 1500;
 
 export default function Feedbox(props) {
@@ -197,21 +198,25 @@ export default function Feedbox(props) {
     };
 
     return (
-        <Box width={1} className={classes.root}>
+        <Box className={classes.root}>
             <Grid
                 container
-                spacing={3}
+                spacing={0}
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{minHeight: '90vh'}}
+                style={{minHeight: '99vh',}}
+                overflow = 'auto'
             >
+                <Container component="main" maxWidth="sm">
+
+
                 <Grid
                     direction="column"
                     alignItems="center"
                     justify="center"
                     item xs={12}
-                    style = {{width: 550}}
+                    style = {{}}
                 >
                     {(!successSubmit) ?
                         <div>
@@ -231,7 +236,7 @@ export default function Feedbox(props) {
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
-                            <Box boxShadow={0} style = {{minHeight: 300, maxHeight: 500,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
+                            <Box boxShadow={0} width={1} style = {{minHeight: 350, boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
                                 <div className={classes.draft}>
                                 <TextField fullWidth placeholder="start typing.."
                                            multiline rows={11}
@@ -240,7 +245,7 @@ export default function Feedbox(props) {
                                            style={{marginBottom:20}} label="Subject"
                                            rowsMax={1}/>
 
-                                           <div style = {{ marginRight: -10}}>
+                                           <div style = {{ }}>
 
                                 <Editor
                                     placeholder="type feedback here..."
@@ -277,6 +282,7 @@ export default function Feedbox(props) {
                         </div>
                     }
                 </Grid>
+                </Container>
             </Grid>
         </Box>
     );
@@ -286,7 +292,8 @@ export default function Feedbox(props) {
 const useStyles = makeStyles((theme) => ({
 
     root: {
-        flexGrow: 1,
+        // flexGrow: 1,
+        // backgroundColor: "#ECEFF3",
     },
     paper: {
         padding: theme.spacing(2),
@@ -298,7 +305,7 @@ const useStyles = makeStyles((theme) => ({
         // flexDirection: 'row',
         margin: 10,
         marginBottom: 20,
-        backgroundColor: 'white'
+        backgroundColor: '#FFFFFF'
 
     },
     formGroup: {
