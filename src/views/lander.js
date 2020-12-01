@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 import {convertToRaw, Editor, EditorState, RichUtils} from "draft-js";
 import {db} from "../api/firebase";
 import Divider from "@material-ui/core/Divider";
+import email_feedboxx from "../assets/images/email_feedboxx.png"
 
 import 'draft-js/dist/Draft.css';
 
@@ -121,14 +122,14 @@ function Lander(props) {
 
     return (
         <div className={classes.root}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
             <Grid container
                   direction="column"
-                  justify="flex-start"
-                  alignItems="flex-start"
+                  justify="center"
+                  alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 70, fontWeight: 600, marginBottom: 20, color:"#10102F"}}> Get more feedback, faster</p>
+                    <p style = {{fontSize: 73, fontWeight: 600, marginTop: -40, marginBottom: 20, color:"#10102F"}}> Get more feedback, faster</p>
                     <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source feedback from your colleagues, clients and customers with just a link in your email signature.</p>
                     <Link to={`/login`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
@@ -136,7 +137,7 @@ function Lander(props) {
                             margin: 10,
                             backgroundColor: '#4D6DF1',
                         }}>
-                            <p style = {{color: 'white', fontSize: 15, margin: 2, marginRight: 20, marginLeft: 20,fontWeight: 800}}>
+                            <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
                                 Create Feedboxx
                             </p>
                         </Button>
@@ -146,16 +147,18 @@ function Lander(props) {
             </Grid>
             <Grid
                 direction="column"
-                justify="flex-end"
-                alignItems="flex-end"
-                item xs={12} sm={6}>
+                justify="center"
+                alignItems="center"
+                container xs={12} sm={6}>
 
                 <Grid
                     direction="row"
                     justify="flex-end"
                     alignItems="flex-end"
-                    style = {{maxWidth: 500, margin: 60, marginRight: 0, marginTop: 80,}}
+                    style = {{maxWidth: 500, margin: 60, marginTop: 80,}}
                 >
+                    <img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>
+
                     <Divider style = {{marginBottom: 40}}/>
                     <Grid
                         container
@@ -178,7 +181,7 @@ function Lander(props) {
                         </Grid>
                     </Grid>
                     {/*<form onSubmit={handleSubmit} noValidate>*/}
-                    <Box boxShadow={0} style = {{minHeight: 300, maxWidth: 500, maxHeight: 500,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
+                    <Box boxShadow={0} style = {{minHeight: 280, maxWidth: 550, maxHeight: 400,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
                         <div className={classes.draft}>
                             <TextField fullWidth placeholder="start typing.."
                                        multiline rows={11}
