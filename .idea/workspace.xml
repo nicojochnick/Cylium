@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/email_feedboxx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/profileIllustration.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/mscott.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/images/mscott.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/URL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/URL.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/lander.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/lander.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -50,8 +52,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/views/lander.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="485">
-                  <caret line="157" column="56" selection-start-line="157" selection-start-column="56" selection-end-line="157" selection-end-column="56" />
+                <state relative-caret-position="358">
+                  <caret line="166" column="67" selection-start-line="166" selection-start-column="67" selection-end-line="166" selection-end-column="67" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                     <element signature="e#1170#2817#0" />
@@ -62,12 +64,29 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/assets/images/email_feedboxx.png">
-              <provider selected="true" editor-type-id="images" />
+            <entry file="file://$PROJECT_DIR$/src/components/URL.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="84">
+                  <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/assets/images/mscott.png">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/assets/images/profileIllustration.png">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/assets/images/email_feedboxx.png">
               <provider selected="true" editor-type-id="images" />
             </entry>
           </file>
@@ -78,30 +97,6 @@
                   <caret line="61" column="31" lean-forward="true" selection-start-line="51" selection-start-column="24" selection-end-line="61" selection-end-column="31" />
                   <folding>
                     <element signature="e#1#41#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/pages/login.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/pages/signup.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="399">
-                  <caret line="72" column="83" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="83" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -135,7 +130,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/views/feedbox.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4935">
+                <state relative-caret-position="3772">
                   <caret line="235" column="75" lean-forward="true" selection-start-line="235" selection-start-column="75" selection-end-line="235" selection-end-column="75" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
@@ -174,8 +169,8 @@
       <find>leave</find>
       <find>topics</find>
       <find>setImageAsFile</find>
-      <find>3</find>
       <find>img</find>
+      <find>3</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -209,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/components/Network/networkBrowse.js" />
         <option value="$PROJECT_DIR$/src/api/firebase.js" />
         <option value="$PROJECT_DIR$/src/pages/signup.js" />
-        <option value="$PROJECT_DIR$/src/components/URL.js" />
         <option value="$PROJECT_DIR$/src/components/Share/shareBoxx.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/views/feed.js" />
@@ -221,15 +215,15 @@
         <option value="$PROJECT_DIR$/src/pages/dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/Header.js" />
         <option value="$PROJECT_DIR$/src/pages/home.js" />
+        <option value="$PROJECT_DIR$/src/components/URL.js" />
         <option value="$PROJECT_DIR$/src/views/lander.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-470" />
-    <option name="y" value="-1057" />
-    <option name="width" value="1300" />
-    <option name="height" value="1057" />
+    <option name="y" value="23" />
+    <option name="width" value="720" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -353,12 +347,12 @@
       <workItem from="1606153663118" duration="72000" />
       <workItem from="1606153756478" duration="16749000" />
       <workItem from="1606231287372" duration="69766000" />
-      <workItem from="1606519592342" duration="71396000" />
+      <workItem from="1606519592342" duration="75470000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166672000" />
+    <option name="totallyTimeSpent" value="170746000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -370,10 +364,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-470" y="-1057" width="2560" height="1057" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23522459" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.021156559" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -389,7 +383,7 @@
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.32946146" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.2090813" />
+      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.25814864" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -575,16 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/URL.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -702,19 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/images/mscott.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/feedbox.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2430">
-          <caret line="264" column="35" lean-forward="true" selection-start-line="264" selection-start-column="35" selection-end-line="264" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3129">
@@ -735,10 +706,36 @@
     <entry file="file://$PROJECT_DIR$/src/assets/images/email_feedboxx.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/images/profileIllustration.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/images/mscott.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/URL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/feedbox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2430">
+          <caret line="264" column="35" lean-forward="true" selection-start-line="264" selection-start-column="35" selection-end-line="264" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/lander.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="157" column="56" selection-start-line="157" selection-start-column="56" selection-end-line="157" selection-end-column="56" />
+        <state relative-caret-position="358">
+          <caret line="166" column="67" selection-start-line="166" selection-start-column="67" selection-end-line="166" selection-end-column="67" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#1170#2817#0" />

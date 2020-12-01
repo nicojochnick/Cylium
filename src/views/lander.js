@@ -11,11 +11,14 @@ import TextField from "@material-ui/core/TextField/TextField";
 import {convertToRaw, Editor, EditorState, RichUtils} from "draft-js";
 import {db} from "../api/firebase";
 import Divider from "@material-ui/core/Divider";
+import mscott from "../assets/images/mscott.png";
 import email_feedboxx from "../assets/images/email_feedboxx.png"
+import Url from "../components/URL"
+
 
 import 'draft-js/dist/Draft.css';
 
-import mscott from "../assets/images/mscott.png"
+import profileIllustration from "../assets/images/profileIllustration.png"
 const MAX_LENGTH = 1500;
 
 
@@ -25,7 +28,7 @@ function Lander(props) {
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [myTopics, setMyTopics] = React.useState([]);
-    const [user, setUser] = React.useState({name: "Michael Scott", img_url_Profile: {imgURL:mscott}, welcome: "Help me improve my communication, project management and writing"})
+    const [user, setUser] = React.useState({name: "Amy (Product Manager)", img_url_Profile: {imgURL:null}, welcome: "How can I better serve you?"})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty(),
@@ -122,23 +125,23 @@ function Lander(props) {
 
     return (
         <div className={classes.root}>
-        <Grid container spacing={2}>
+        <Grid container style = {{padding: 20}} spacing={3}>
             <Grid container
                   direction="column"
                   justify="center"
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 73, fontWeight: 600, marginTop: -40, marginBottom: 20, color:"#10102F"}}> Get more feedback, faster</p>
-                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source feedback from your colleagues, clients and customers with just a link in your email signature.</p>
+                    <p style = {{fontSize: 73, fontWeight: 600, marginTop: -50, marginBottom: 20, color:"#10102F"}}> Get feedback, faster</p>
+                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source feedback from your colleagues, clients and customers from a single link in your email signature.</p>
                     <Link to={`/login`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5,
-                            margin: 10,
+                            margin: 15,
                             backgroundColor: '#4D6DF1',
                         }}>
                             <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
-                                Create Feedboxx
+                                Create My Feedboxx
                             </p>
                         </Button>
                     </Link>
@@ -157,7 +160,14 @@ function Lander(props) {
                     alignItems="flex-end"
                     style = {{maxWidth: 500, margin: 60, marginTop: 80,}}
                 >
-                    <img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>
+                    <Grid justify="flex-start"
+                          alignItems="center" container direction = "row">
+                        <img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>
+
+                        <p style ={{color: '#8B8FA0', marginLeft: 5}}> Ideas for how I could be more helpful? Let me know {" "} </p>
+                        <p style = {{color:"#4D6DF1", marginLeft: 3}}>here</p>
+                    {/*<Url noShare={true} url={'amy'} />*/}
+                    </Grid>
 
                     <Divider style = {{marginBottom: 40}}/>
                     <Grid
@@ -181,14 +191,14 @@ function Lander(props) {
                         </Grid>
                     </Grid>
                     {/*<form onSubmit={handleSubmit} noValidate>*/}
-                    <Box boxShadow={0} style = {{minHeight: 280, maxWidth: 550, maxHeight: 400,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
+                    <Box boxShadow={0} style = {{minHeight: 280, marginTop: 12, minWidth: 500, maxHeight: 400,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
                         <div className={classes.draft}>
-                            <TextField fullWidth placeholder="start typing.."
-                                       multiline rows={11}
-                                       value={subject}
-                                       onChange={e => setSubject(e.target.value)}
-                                       style={{marginBottom:20}} label="What is your feedback about?"
-                                       rowsMax={1}/>
+                            {/*<TextField fullWidth placeholder="start typing.."*/}
+                            {/*           multiline rows={11}*/}
+                            {/*           value={subject}*/}
+                            {/*           onChange={e => setSubject(e.target.value)}*/}
+                            {/*           style={{marginBottom:20}} label="What is your feedback about?"*/}
+                            {/*           rowsMax={1}/>*/}
 
                             <div style = {{ marginRight: -10}}>
 
@@ -257,7 +267,7 @@ const useStyles = makeStyles((theme) => ({
     draft:{
         overflow: "auto",
         maxHeight: 400,
-        padding: 20
+        padding: 25
     },
 
     submitButton: {

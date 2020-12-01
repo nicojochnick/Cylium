@@ -15,15 +15,18 @@ function Url(props) {
     const [url, setURL] = React.useState();
     return (
         <div>
-            <h2
-                style ={{
-                    color:"#9FA5B1",
-                    fontSize: 15,
-                    fontWeight: 600,
-                    margin: 10,
-                }}>
-                SHARE
-            </h2>
+            {(!props.noShare)
+               ? <h2
+                    style={{
+                        color: "#9FA5B1",
+                        fontSize: 15,
+                        fontWeight: 600,
+                        margin: 10,
+                    }}>
+                    SHARE
+                </h2>
+                :null
+            }
             <Box
                 style = {{backgroundColor:"#E1E4ED", margin: 5, borderRadius: 10, padding: 3}}
                 className={classes.container}>
