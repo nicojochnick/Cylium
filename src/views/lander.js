@@ -10,6 +10,8 @@ import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField/TextField";
 import {convertToRaw, Editor, EditorState, RichUtils} from "draft-js";
 import {db} from "../api/firebase";
+import Divider from "@material-ui/core/Divider";
+
 import 'draft-js/dist/Draft.css';
 
 import mscott from "../assets/images/mscott.png"
@@ -22,7 +24,7 @@ function Lander(props) {
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [myTopics, setMyTopics] = React.useState([]);
-    const [user, setUser] = React.useState({name: "Michael Scott", img_url_Profile: {imgURL:mscott}, welcome: "Hi there! I'm looking for help improving my communication, project management and writing "})
+    const [user, setUser] = React.useState({name: "Michael Scott", img_url_Profile: {imgURL:mscott}, welcome: "Help me improve my communication, project management and writing"})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty(),
@@ -125,8 +127,8 @@ function Lander(props) {
                   justify="flex-start"
                   alignItems="flex-start"
                   item xs={12} sm={6}>
-                <Box style = {{padding: 40}}>
-                    <p style = {{fontSize: 68, fontWeight: 600, marginBottom: 20, color:"#10102F"}}> Get more feedback, faster</p>
+                <Box style = {{padding: 20, paddingLeft: 50}}>
+                    <p style = {{fontSize: 70, fontWeight: 600, marginBottom: 20, color:"#10102F"}}> Get more feedback, faster</p>
                     <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source feedback from your colleagues, clients and customers with just a link in your email signature.</p>
                     <Link to={`/login`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
@@ -154,6 +156,7 @@ function Lander(props) {
                     alignItems="flex-end"
                     style = {{maxWidth: 500, margin: 60, marginRight: 0, marginTop: 80,}}
                 >
+                    <Divider style = {{marginBottom: 40}}/>
                     <Grid
                         container
                         wrap="nowrap"
@@ -161,6 +164,8 @@ function Lander(props) {
                         justify="center"
                         alignItems="center"
                     >
+
+
                         <Grid style = {{marginLeft: 10}} item>
                             <Box border = {2} borderColor = {'#10102F'} borderRadius = {50}>
                             <Avatar  src = {mscott} className={classes.large}/>
@@ -168,7 +173,7 @@ function Lander(props) {
 
                         </Grid>
                         <Grid item xs zeroMinWidth>
-                            <p style = {{marginTop: 0, marginBottom: -9, fontWeight: 600,}}>{user.name}</p>
+                            <p style = {{marginTop: 0, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
                             <p style={{color: '#353C49'}}> {user.welcome} </p>
                         </Grid>
                     </Grid>
@@ -195,6 +200,12 @@ function Lander(props) {
                             </div>
                         </div>
                     </Box>
+                    <Grid
+                        container
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                    >
                     <Button
                         className={classes.submitButton}
                         variant="contained"
@@ -203,12 +214,13 @@ function Lander(props) {
                             marginLeft: 10,
                             marginTop: 0,
                             borderRadius: 10,
-                            backgroundColor: "#4D6DF1",
+                            backgroundColor: "#10102F",
                         }}>
                         <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>
                             SEND FEEDBACK
                         </p>
                     </Button>
+                    </Grid>
 
             </Grid>
             </Grid>
