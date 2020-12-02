@@ -14,6 +14,7 @@ import logo from "../assets/images/logo.png";
 import Header from "../components/Header";
 import Box from "@material-ui/core/Box";
 import boxx from "../assets/images/boxx.png"
+import {analytics} from "../api/firebase";
 
 let intro = `{"blocks":[{"key":"8brqe","text":"Get started with FeedBoxx in three steps!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"468lu","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"fnhn6","text":"1.) Personalize your FeedBoxx 💁","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":31,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"edmo0","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"9omk3","text":"Go to the My Boxx tab to personalize your FeedBoxx with a profile picture, display name, and welcome message. Make it yours!","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":9,"length":9,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"abdrv","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"aeecn","text":"2.) Link your FeedBoxx 🔗","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":24,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"87ufd","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"5mj2k","text":"Add your unique Feedboxx link anywhere. We recommend using it in your work email signature but get creative - websites, blog posts, slack, etc., are all great places to source feedback.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":30,"length":10,"style":"ITALIC"}],"entityRanges":[],"data":{}},{"key":"ctkkm","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"8k53g","text":"3.) Turn on Send to Email ✉️","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":28,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"9lfd3","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"b6ujq","text":"Turn on \\"Send to Email\\" (on your right) to get your feedback sent directly to your inbox. Turn it off anytime.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"5a5ee","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"c67br","text":"Questions? Email us at help@feedboxx.io","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":23,"length":16,"style":"UNDERLINE"}],"entityRanges":[],"data":{}},{"key":"6nmri","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"518uv","text":"Enjoy,","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1n1fm","text":"The FeedBoxx Team","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"edfhk","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`
 
@@ -86,6 +87,9 @@ class signup extends Component {
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });
+
+            analytics.logEvent('user signed up');
+
         } catch (error) {
             this.setState({ error: error.message });
         }
