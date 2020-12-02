@@ -166,7 +166,7 @@ function Lander(props) {
                     direction="row"
                     justify="flex-end"
                     alignItems="flex-end"
-                    style = {{maxWidth: 500, margin: 60, marginTop: 80,}}
+                    style = {{margin: 60, marginTop: 80,}}
                 >
                     <Grid justify="flex-start"
                           alignItems="center" container direction = "row">
@@ -242,18 +242,15 @@ function Lander(props) {
                         </p>
                     </Button>
                     </Grid>
-
             </Grid>
             </Grid>
-
         </Grid>
         </div>
-
     );
 }
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        // flexGrow: 1,
     },
     paper: {
         padding: theme.spacing(2),

@@ -67,7 +67,7 @@ function Feed(props) {
             <Container maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1} xs={12}>
                     <Grid item xs={12} md={8} lg={9}>
-                        <Box className={classes.box} boxShadow = {3}>
+                        <Box className={classes.box} boxShadow = {0} style = {{minHeight: 350, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <Grid justify="space-between" direction = "row" container >
                                 <h2
                                     style ={{
@@ -114,7 +114,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
         marginBottom: 20,
         backgroundColor: 'white',
-        borderRadius: 10,
         minHeight: 300,
     },
 

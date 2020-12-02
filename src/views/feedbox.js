@@ -17,6 +17,8 @@ import MyTopics from "../components/Topics/myTopics";
 import firebase from "./feed";
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
+import logo from "../assets/images/logo.png";
+
 
 import 'draft-js/dist/Draft.css';
 import Container from "@material-ui/core/Container";
@@ -228,10 +230,12 @@ export default function Feedbox(props) {
                             alignItems="flex-start"
                         >
                             <Grid style = {{marginLeft: 10}} item>
+                                <Box border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
                                 <Avatar src = {user.img_url_Profile.imgUrl} className={classes.large}/>
+                                </Box>
                             </Grid>
                             <Grid item xs zeroMinWidth>
-                                <p style = {{marginTop: 0, marginBottom: -9, fontWeight: 600,}}>{user.name}</p>
+                                <p style = {{marginTop: 0, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
                                 <p style={{color: '#353C49'}}> {user.welcome} </p>
                             </Grid>
                         </Grid>
@@ -258,6 +262,12 @@ export default function Feedbox(props) {
                                            </div>
                                 </div>
                             </Box>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="center"
+                                alignItems="center"
+                            >
                             <Button
                                 className={classes.submitButton}
                                 variant="contained"
@@ -269,16 +279,22 @@ export default function Feedbox(props) {
                                     backgroundColor: "#4D6DF1",
                                 }}>
                                 <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>
-                                    SEND
+                                    SEND Feedback
                                 </p>
                             </Button>
+                            </Grid>
                         {/*</form>*/}
                         </div>
                         :
                         <div>
+
+                            {/*<img  style = {{height: 50, margin: -10}} src = {logo} />*/}
+
                         <h2> Feedback submitted! </h2>
-                            <p> Want your own feedboxx? Make one for free, <Link to="/">here</Link>.
+                            <p> Want your own Feedboxx? Make one for free, <Link to="/">here</Link>.
                             </p>
+                            <Divider style = {{margin: 10}} />
+                            <img  style = {{height: 50, margin: -10}} src = {logo} />
                         </div>
                     }
                 </Grid>

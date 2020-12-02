@@ -10,8 +10,20 @@ function ShareBoxx(props) {
     const classes = useStyles();
     return (
         <Grid item xs={12} md={4} lg={3}>
-            <Box boxShadow = {3} className={classes.box}>
+            <Box style = {{boxShadow: "0px 5px 10px #D7D7DA"}} boxShadow = {0} className={classes.box}>
                <Url url = {props.url}/>
+                <Divider/>
+                <h2
+                    style={{
+                        color: "#9FA5B1",
+                        fontSize: 15,
+                        fontWeight: 600,
+                        margin: 15,
+                    }}>
+                    NOTIFICATIONS
+                </h2>
+
+
             </Box>
         </Grid>
     );

@@ -161,11 +161,12 @@ function EditFeedbox(props) {
                               justify="center"
                               alignItems="center"
                         >
-
+                            <Box border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
                             <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
+                            </Box>
                             <input className={classes.input} id="contained-button-file" accept="image/*" type ='file' onChange={handleImageAsFile} />
                             <label htmlFor="contained-button-file">
-                                <Button style ={{backgroundColor: "#4D6DF1"}} variant="contained" color="primary" component="span">
+                                <Button style ={{backgroundColor: '#4D6DF1', marginTop: 10}} variant="contained" color="primary" component="span">
                                     Upload
                                 </Button>
                             </label>
@@ -282,7 +283,6 @@ const useStyles = makeStyles((theme) => ({
     large: {
         width: theme.spacing(8),
         height: theme.spacing(8),
-        marginBottom: 20
     },
     input: {
         display: 'none',

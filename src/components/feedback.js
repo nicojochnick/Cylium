@@ -47,7 +47,7 @@ const Feedback = (props) => {
                 justify="space-between"
                 alignItems="flex-start">
 
-                <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#4F5258"}}>{props.item.subject}</p>
+                <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#10102F"}}>{props.item.subject}</p>
 
 
                 <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
@@ -101,12 +101,16 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     box:{
-        padding: 25,
+        margin: 10,
+        marginRight: 0,
+        padding: 35,
         // flexGrow: 1,
         // display: 'start',
         // overflow: 'auto',
         // flexDirection: 'row',
-        backgroundColor: 'white'
+        borderRadius: 20,
+        borderWidth: 1,
+        // backgroundColor:"#F9FAFC",
     },
     large: {
         width: theme.spacing(5),

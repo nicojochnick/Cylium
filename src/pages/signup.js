@@ -15,6 +15,8 @@ import Header from "../components/Header";
 import Box from "@material-ui/core/Box";
 import boxx from "../assets/images/boxx.png"
 
+let intro =
+    `{"blocks":[{"key":"fvjfl","text":"Hey there!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"40m60","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1b694","text":"Get started with FeedBoxx in three steps! ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"2l9pm","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"4nje3","text":"1.) Personalize your FeedBoxx 💁","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":31,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"ap7ne","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"ea14i","text":"Go to your My Boxx tab on the left and personalize your FeedBoxx with a profile picture, display name, and welcome message.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":10,"length":9,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"96pmh","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"f2akr","text":"2.) Link your FeedBoxx 🔗","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":24,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"9at5b","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"bsr55","text":"Add your unique Feedboxx link anywhere. We recommend your email signature, but you can get creative - websites, blog posts, slack, etc., are all great places to source feedback. ","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":30,"length":10,"style":"ITALIC"}],"entityRanges":[],"data":{}},{"key":"7dif8","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"eat4r","text":"3.) Turn on notifications ✉️","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":28,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"bcu00","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"4scj7","text":"If you want to receive email notifications when you get new feedback, make sure to turn on notifications. You can change this at any time. ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"cqpmb","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"bil6u","text":"Feel free to email us at help@feedboxx.io with any questions. ","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":25,"length":16,"style":"UNDERLINE"}],"entityRanges":[],"data":{}},{"key":"8hrf0","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"ahq9v","text":"Enjoy,","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"7b91m","text":"The FeedBoxx Team ","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"7aq66","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"9fpdi","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"ec4qj","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`
 
 class signup extends Component {
     constructor(props) {
@@ -44,10 +46,11 @@ class signup extends Component {
         event.preventDefault();
         this.setState({ error: '' });
         try {
+            let url = Date.now();
             await Signup(this.state.email, this.state.password);
             await db.collection("users").doc(this.state.email).set({
                 email: this.state.email,
-                url: Date.now(),
+                url: url,
                 img_url_Profile: {imgUrl: null},
                 welcome: "....",
                 name: "add a name"
@@ -58,15 +61,29 @@ class signup extends Component {
                 console.error("Error writing document: ", error);
             });
 
-            await db.collection("feedback").doc(this.state.email).set({
-                email: this.state.email,
-                url: Date.now(),
-                img_url_Profile: {imgUrl: null},
-                welcome: "....",
-                name: "add a name"
+            const res = await db.collection('feedback').add({
+                email: "help@feedboxx.io",
+                url: url.toString(),
+                subject: "Welcome to your Feedboxx! 🗳️🤗",
+                feedback: intro,
+                name: "The FeedBoxx Team",
+                timeStamp: new Date(),
+                anon: false,
 
             }).then(function() {
-                console.log("Document successfully written!");
+                console.log("Feedback written successfully!");
+            }).catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+
+
+            db.collection('feedback').doc(res.id).update({
+                id: res.id
+
+
+            }).then(function() {
+                console.log("Feedback ID added successfully!");
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });

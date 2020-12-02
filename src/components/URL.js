@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper/Paper";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from '@material-ui/core/styles';
-
+import Divider from "@material-ui/core/Divider";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {db} from "../api/firebase";
@@ -28,12 +28,16 @@ function Url(props) {
                 :null
             }
             <Box
-                style = {{backgroundColor:"#E1E4ED", margin: 5, borderRadius: 10, padding: 3}}
+                border = {2}
+                borderColor = {"#4D6DF1"}
+                style = {{ backgroundColor:"white", margin: 8, borderRadius: 13, padding: 3}}
                 className={classes.container}>
-                <p style = {{color: "#202740", fontSize: 13, margin: 8, fontWeight: 400}}>
+                <p style = {{color: "#28286C", fontSize: 13, margin: 8, fontWeight: 400}}>
                     https://feedbox.io/{props.url}
                 </p>
+
             </Box>
+
         </div>
     );
 }
