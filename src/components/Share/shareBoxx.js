@@ -5,9 +5,22 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
 import Url from "../URL"
+import Switch from '@material-ui/core/Switch';
+
 
 function ShareBoxx(props) {
+    const [switchNotification, setSwitchNotification] = React.useState(false);
+
+    const handleSwitchNotification = () => {
+
+        setSwitchNotification(!switchNotification)
+
+    };
+
     const classes = useStyles();
+
+
+
     return (
         <Grid item xs={12} md={4} lg={3}>
             <Box style = {{boxShadow: "0px 5px 10px #D7D7DA"}} boxShadow = {0} className={classes.box}>
@@ -20,8 +33,27 @@ function ShareBoxx(props) {
                         fontWeight: 600,
                         margin: 15,
                     }}>
-                    NOTIFICATIONS
+                    SEND TO EMAIL
                 </h2>
+
+                <Grid container direction = "row" >
+
+
+                <Switch
+                    style={{colorSecondary: '#3162F0',}}
+                    checked={switchNotification}
+                    onChange={handleSwitchNotification}
+                    color="primary"
+                    name="checkedB"
+                    inputProps={{'aria-label': 'primary checkbox'}}
+                />
+                {(!switchNotification)
+                    ?
+                    <p style={{marginTop: 7, color: '#353C49'}}> Off</p>
+                    :
+                    <p style={{marginTop: 7, color: '#3162F0'}}> On</p>
+                }
+                </Grid>
 
 
             </Box>

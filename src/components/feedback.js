@@ -78,7 +78,9 @@ const Feedback = (props) => {
             </Grid>
             <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
+                    <Box border = {2} borderColor ={"#3162F0"} borderRadius = {100}>
                     <Avatar className = {classes.large} alt={props.item.email} src="/static/images/avatar/1.jpg" />
+                    </Box>
                 </Grid>
                 <Grid className = {classes.contained} item xs>
                     {/*<p style = {{marginTop:0, fontSize: 13, color: "#4F5258"}}>{props.item.email}</p>*/}
@@ -116,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
         width: theme.spacing(5),
         height: theme.spacing(5),
         color: theme.palette.getContrastText("#3574EE"),
-        backgroundColor: "#6B7280",
+        backgroundColor: "#171740",
     },
     contained: {
         marginRight: 50

@@ -322,7 +322,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
         marginBottom: 20,
         backgroundColor: '#FFFFFF'
-
     },
     formGroup: {
         alignItems: 'center'
