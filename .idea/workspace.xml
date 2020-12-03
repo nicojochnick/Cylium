@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/components/Share/shareBoxx.js" line="10" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
-    </list>
+    <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -195,6 +193,16 @@
               <item name=".github" type="462c0819:PsiDirectoryNode" />
               <item name="workflows" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="feedboxx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="feedboxx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -263,12 +271,12 @@
       <workItem from="1606153756478" duration="16749000" />
       <workItem from="1606231287372" duration="69766000" />
       <workItem from="1606519592342" duration="75897000" />
-      <workItem from="1606828448178" duration="18876000" />
+      <workItem from="1606828448178" duration="19111000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190049000" />
+    <option name="totallyTimeSpent" value="190284000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -281,7 +289,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-453" y="-1057" width="1433" height="1057" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1601701" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
