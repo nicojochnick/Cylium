@@ -238,7 +238,7 @@ function Lander(props) {
                             backgroundColor: "#10102F",
                         }}>
                         <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>
-                            SEND FEEDBACK
+                            SEND
                         </p>
                     </Button>
                     </Grid>
