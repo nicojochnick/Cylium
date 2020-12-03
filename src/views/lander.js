@@ -20,6 +20,8 @@ import 'draft-js/dist/Draft.css';
 import profileIllustration from "../assets/images/profileIllustration.png"
 const MAX_LENGTH = 1500;
 
+let prefill = ''; //Prefill the feedback box with some feedback. You want to have a full example.
+
 
 function Lander(props) {
 
@@ -27,7 +29,7 @@ function Lander(props) {
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [myTopics, setMyTopics] = React.useState([]);
-    const [user, setUser] = React.useState({name: "Amy (Product Manager)", img_url_Profile: {imgURL:null}, welcome: "How can I better serve you?"})
+    const [user, setUser] = React.useState({name: "Amy Reed | Product Manager", img_url_Profile: {imgURL:null}, welcome: "How can I better serve you?"})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty(),
@@ -91,8 +93,8 @@ function Lander(props) {
 
     const onChange = (editorState) => {
         const contentState = editorState.getCurrentContent();
-        let save = JSON.stringify(convertToRaw(contentState))
-        setContentState(save)
+        let save = JSON.stringify(convertToRaw(contentState));
+        setContentState(save);
         setEditorState(editorState)
 
     };
@@ -131,8 +133,8 @@ function Lander(props) {
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: -50, marginBottom: 20, color:"#10102F"}}> Get more feedback, using one link</p>
-                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source feedback effortlessly from your colleagues, clients and customers from a single link in your email signature.</p>
+                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: -50, marginBottom: 20, color:"#10102F"}}> Get more feedback, in real-time</p>
+                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source more feedback from your colleagues, clients and customers using a link in your email signature.</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5,
@@ -142,7 +144,7 @@ function Lander(props) {
                             backgroundColor: '#4D6DF1',
                         }}>
                             <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
-                                Create My Feedboxx
+                                Get Started
                             </p>
                         </Button>
                     </Link>
@@ -156,6 +158,9 @@ function Lander(props) {
                     </Grid>
                 </Box>
             </Grid>
+
+
+
             <Grid
                 direction="column"
                 justify="center"
@@ -166,40 +171,40 @@ function Lander(props) {
                     direction="row"
                     justify="flex-end"
                     alignItems="flex-end"
-                    style = {{margin: 60, marginTop: 80,}}
+                    style = {{margin: 60, marginTop: 50,}}
                 >
                     <Grid justify="flex-start"
-                          alignItems="center" container direction = "row">
-                        <img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>
+                          alignItems="flex-start" container direction = "column">
+                        <p style = {{marginBottom: 10, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique url</p>
+                        <Grid container alignItems = "center" style = {{marginTop: 10, marginLeft: -10}}>
+                        <Url url = {'amy'} noShare = {true}/>
+                        </Grid>
+                        {/*<Url noShare={true} url={'amy'} />*/}
+                    </Grid>
 
-                        <p style ={{color: '#8B8FA0', marginLeft: 5}}> Ideas for how I could be more helpful? Let me know {" "} </p>
-                        <p style = {{color:"#4D6DF1", marginLeft: 3}}>here</p>
+                    {/*<Divider style = {{marginBottom: 20}}/>*/}
+
+                    <Grid justify="flex-start"
+                          alignItems="center" container direction = "row">
+                        <p style = {{marginBottom: 10, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url to your work email signature</p>
+
+                        {/*<img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>*/}
+                        <Grid spacing = {0} container style = {{marginLeft: 5}} direction = "column" >
+                            <p style ={{color: '#8B8FA0', margin: 0}}> ....</p>
+                            <p style ={{color: '#8B8FA0',margin: 0 }}> Amy Reed  </p>
+                            <p style ={{color: '#8B8FA0',margin: 0 }}> Product Manager | OpenPulse  </p>
+                            <Grid direction='row' container>
+                            <p style ={{color: '#8B8FA0',margin: 0, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0,  marginLeft: 3, }}>here</p>
+                            </Grid>
+                        </Grid>
                     {/*<Url noShare={true} url={'amy'} />*/}
                     </Grid>
 
-                    <Divider style = {{marginBottom: 40}}/>
-                    <Grid
-                        container
-                        wrap="nowrap"
-                        spacing={2}
-                        justify="center"
-                        alignItems="center"
-                    >
+                    <p style = {{marginBottom: 20, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 3: Enjoy more feedback</p>
 
 
-                        <Grid style = {{marginLeft: 10}} item>
-                            <Box border = {2} borderColor = {'#10102F'} borderRadius = {50}>
-                            <Avatar  src = {mscott} className={classes.large}/>
-                            </Box>
-
-                        </Grid>
-                        <Grid item xs zeroMinWidth>
-                            <p style = {{marginTop: 0, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
-                            <p style={{color: '#353C49'}}> {user.welcome} </p>
-                        </Grid>
-                    </Grid>
                     {/*<form onSubmit={handleSubmit} noValidate>*/}
-                    <Box boxShadow={0} style = {{minHeight: 280, marginTop: 12, minWidth: 500, maxHeight: 400,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
+                    <Box boxShadow={0} style = {{minHeight: 240, maxWidth: 500, margin: 0, maxHeight: 400,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
                         <div className={classes.draft}>
                             {/*<TextField fullWidth placeholder="start typing.."*/}
                             {/*           multiline rows={11}*/}
@@ -209,6 +214,26 @@ function Lander(props) {
                             {/*           rowsMax={1}/>*/}
 
                             <div style = {{ marginRight: -10}}>
+                                <Grid
+                                    container
+                                    wrap="nowrap"
+                                    spacing={2}
+                                    justify="center"
+                                    alignItems="center"
+                                >
+
+                                    <Grid style = {{marginLeft: 10,}} item>
+                                        <Box border = {3} borderColor = {'#4D6DF1'} borderRadius = {50}>
+                                            <Avatar  src = {mscott} className={classes.large}/>
+                                        </Box>
+
+                                    </Grid>
+                                    <Grid item xs zeroMinWidth>
+                                        <p style = {{marginTop: 0, fontSize: 13, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name} </p>
+                                        <p style={{color: '#353C49'}}> {user.welcome} </p>
+                                    </Grid>
+                                </Grid>
+                                <Divider style = {{marginTop:10, marginBottom: 10}} />
 
                                 <Editor
                                     placeholder="Type feedback here..."
@@ -227,20 +252,20 @@ function Lander(props) {
                         justify="center"
                         alignItems="center"
                     >
-                    <Button
-                        className={classes.submitButton}
-                        variant="contained"
-                        onClick={(event)=>handleSubmit(event)}
-                        style={{
-                            marginLeft: 10,
-                            marginTop: 0,
-                            borderRadius: 10,
-                            backgroundColor: "#10102F",
-                        }}>
-                        <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>
-                            SEND
-                        </p>
-                    </Button>
+                    {/*<Button*/}
+                    {/*    className={classes.submitButton}*/}
+                    {/*    variant="contained"*/}
+                    {/*    onClick={(event)=>handleSubmit(event)}*/}
+                    {/*    style={{*/}
+                    {/*        marginLeft: 10,*/}
+                    {/*        marginTop: 0,*/}
+                    {/*        borderRadius: 10,*/}
+                    {/*        backgroundColor: "#10102F",*/}
+                    {/*    }}>*/}
+                    {/*    <p style={{color: 'white', fontWeight: '600', marginRight: 20, marginLeft: 20, margin: 4}}>*/}
+                    {/*        SEND*/}
+                    {/*    </p>*/}
+                    {/*</Button>*/}
                     </Grid>
             </Grid>
             </Grid>
@@ -280,8 +305,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
+        width: theme.spacing(6),
+        height: theme.spacing(6),
     },
 }));
 

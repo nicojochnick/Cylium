@@ -30,10 +30,10 @@ function Url(props) {
             <Box
                 border = {2}
                 borderColor = {"#4D6DF1"}
-                style = {{ backgroundColor:"white", margin: 8, borderRadius: 13, padding: 3}}
+                style = {{ backgroundColor:"white", margin: 8, borderRadius: 13, padding: 3, minWidth: 200}}
                 className={classes.container}>
-                <p style = {{color: "#28286C", fontSize: 13, margin: 8, fontWeight: 400}}>
-                    https://feedbox.io/{props.url}
+                <p style = {{color: "#4D6DF1", fontSize: 13, margin: 8, fontWeight: 400, textAlign: "center"}}>
+                    https://feedboxx.io/{props.url}
                 </p>
 
             </Box>

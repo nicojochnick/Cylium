@@ -31,7 +31,7 @@ const override = css`
 `;
 
 function EditFeedbox(props) {
-    let allInputs = {imgUrl: ''}
+    let allInputs = {imgUrl: ''};
 
     if (props.user && props.user.img_url_Profile && props.user.img_url_Profile.imgUrl){
         allInputs = props.user.img_url_Profile;
