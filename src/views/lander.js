@@ -133,7 +133,7 @@ function Lander(props) {
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: -50, marginBottom: 20, color:"#10102F"}}> Get more feedback, in real-time</p>
+                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: -50, marginBottom: 20, color:"#10102F"}}> Get more feedback, effortlessly</p>
                     <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}>Source more feedback from your colleagues, clients and customers using a link in your email signature.</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
@@ -186,15 +186,15 @@ function Lander(props) {
 
                     <Grid justify="flex-start"
                           alignItems="center" container direction = "row">
-                        <p style = {{marginBottom: 10, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url to your work email signature</p>
+                        <p style = {{marginBottom: 10, fontSize: 21, color: "#10102F", fontWeight: 800,}}> Step 2: Add your url to your work email signature</p>
 
                         {/*<img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>*/}
                         <Grid spacing = {0} container style = {{marginLeft: 5}} direction = "column" >
-                            <p style ={{color: '#8B8FA0', margin: 0}}> ....</p>
-                            <p style ={{color: '#8B8FA0',margin: 0 }}> Amy Reed  </p>
-                            <p style ={{color: '#8B8FA0',margin: 0 }}> Product Manager | OpenPulse  </p>
+                            <p style ={{color: '#8B8FA0', margin: 0, fontSize: 18}}> ....</p>
+                            <p style ={{color: '#8B8FA0',margin: 0,  fontSize: 18 }}> Amy Reed  </p>
+                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 18}}> Product Manager | OpenPulse  </p>
                             <Grid direction='row' container>
-                            <p style ={{color: '#8B8FA0',margin: 0, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0,  marginLeft: 3, }}>here</p>
+                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 18, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 18, marginLeft: 3, }}>here</p>
                             </Grid>
                         </Grid>
                     {/*<Url noShare={true} url={'amy'} />*/}
