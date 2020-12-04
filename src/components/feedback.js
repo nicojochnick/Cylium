@@ -12,31 +12,37 @@ import { EditorState, Editor, convertToRaw, convertFromRaw } from 'draft-js';
 import IconButton from '@material-ui/core/IconButton';
 import moment from 'moment';
 import Avatar from '@material-ui/core/Avatar';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 import { FiMoreVertical } from "react-icons/fi";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer/Drawer";
-
-
+import {Link} from "react-router-dom";
 const Feedback = (props) => {
     const classes = useStyles();
-    let editorState = null
+    let editorState = null;
     if (props.item.feedback) {
         editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.item.feedback)));
     }
-
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    const [anchorElReward, setAnchorElReward] = React.useState(null);
+    const handleClickReward = (event) => {
+        setAnchorElReward(event.currentTarget);
+    };
+    const handleCloseReward = () => {
+        setAnchorElReward(null);
+    };
+    const openReward = Boolean(anchorElReward);
+    const idReward = openReward ? 'simple-popover-re' : undefined;
     return (
         <div>
         <Box className={classes.box} >
@@ -46,15 +52,10 @@ const Feedback = (props) => {
                 direction="row"
                 justify="space-between"
                 alignItems="flex-start">
-
                 <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#10102F"}}>{props.item.subject}</p>
-
-
                 <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
-                        <FiMoreVertical  size = {20}/>
-                    </IconButton>
-
-
+                    <FiMoreVertical  size = {20}/>
+                </IconButton>
                 <Popover
                     id={id}
                     open={open}
@@ -73,8 +74,6 @@ const Feedback = (props) => {
                         Delete
                     </Button>
                 </Popover>
-
-
             </Grid>
             <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
@@ -89,14 +88,60 @@ const Feedback = (props) => {
                         : null
                     }
                     <p style = {{marginTop: 0, fontSize: 12, color: "#9299A6"}}> {props.item.timeStamp.toDate().toDateString()} </p>
-
                 </Grid>
+            </Grid>
+            <Grid
+                container
+                style = {{margin: -20, marginRight: -50,}}
+                direction="row"
+                justify="flex-end"
+                alignItems="flex-end">
+                <Button   onClick={handleClickReward} variant="contained" noWrap style={{
+                    borderRadius: 5,
+                    margin: 10,
+                    marginRight: 20,
+                    backgroundColor: '#4D6DF1',
+
+                }}>
+                    <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
+                        Send Reward
+                    </p>
+                </Button>
+                <Popover
+                    style = {{marginLeft: 15}}
+                    id={idReward}
+                    open={openReward}
+                    anchorEl={anchorElReward}
+                    onClose={handleCloseReward}
+                    anchorOrigin={{
+                        vertical: 'center',
+                        horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                        vertical: 'center',
+                        horizontal: 'left',
+                    }}
+                >
+                        <ButtonGroup
+                            orientation="vertical"
+                            color="primary"
+                            aria-label="vertical contained primary button group"
+                            variant="contained"
+                        >
+                            <Button onClick = {props.handleSendReward(10)} style = {{backgroundColor: "#AEAEF7"}}> Send 10 Points ($1)</Button>
+                            <Button onClick = {props.handleSendReward(25)} style = {{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
+                            <Button onClick = {props.handleSendReward(50)} style = {{backgroundColor: "#7676E1"}}> Send 50 Points ($5)</Button>
+                            <Button onClick = {props.handleSendReward(100)} style = {{backgroundColor: "#5B5BDD"}}> Send 100 Points ($10)</Button>
+                            <Button onClick = {props.handleSendReward(200)} style = {{backgroundColor: "#4545DF"}}> Send 200 Points ($20)</Button>
+                        </ButtonGroup>
+                </Popover>
             </Grid>
         </Box>
             <Divider/>
         </div>
     );
 };
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -118,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
         width: theme.spacing(5),
         height: theme.spacing(5),
         color: theme.palette.getContrastText("#3574EE"),
-        backgroundColor: "#171740",
+        backgroundColor: "#10102F",
     },
     contained: {
         marginRight: 50

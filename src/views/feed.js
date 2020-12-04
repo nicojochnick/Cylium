@@ -20,17 +20,17 @@ import FeedbackTracker from "../components/feedbackTracker";
 import NetworkBrowse from "../components/Network/networkBrowse";
 import ShareBoxx from "../components/Share/shareBoxx";
 
-
 function Feed(props) {
     const classes = useStyles();
     const [feed, setFeed] = React.useState([]);
     const [url, setURL] = React.useState(null);
 
     const handleDelete = async(id) => {
-
         await db.collection('feedback').doc(id).delete();
+    };
 
-
+    const handleSendReward = async(id) => {
+        //TODO send reward
     };
 
     const makeChrono = (feed) => {
@@ -40,11 +40,10 @@ function Feed(props) {
             console.log(a.timeStamp)
             return b.timeStamp - a.timeStamp;
         });
-
         console.log(feed)
-
         setFeed(feed)
     };
+
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         db.collection("feedback").where('url', '==', props.url.toString())
@@ -56,12 +55,10 @@ function Feed(props) {
                 makeChrono(feedback);
                 console.log(feedback)
             });
-
-
-
     }, []);
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
     return (
         <div className={classes.root} >
             <Container maxWidth="lg" className={classes.container}>
@@ -69,30 +66,18 @@ function Feed(props) {
                     <Grid item xs={12} md={8} lg={9}>
                         <Box className={classes.box} boxShadow = {0} style = {{minHeight: 350, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <Grid justify="space-between" direction = "row" container >
-                                <h2
-                                    style ={{
-                                        margin: 15,
-                                        marginRight: -10,
-                                        color:"#9FA5B1",
-                                        fontSize: 15,
-                                        fontWeight: 600
-                                    }}>
+                                <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                     FEEDBACK
                                 </h2>
                             <img style={{height: 60, margin: 0}} src={Pulse}/>
                             </Grid>
-
                             <Divider style ={{marginTop:0}}/>
-
                             {feed.map((item) =>
-                                    <Feedback handleDelete = {handleDelete} item = {item}/>
+                                    <Feedback handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>
                                     )}
-
                         </Box>
-
                     </Grid>
                        <ShareBoxx url = {props.url}/>
-
             </Grid>
             </Container>
         </div>

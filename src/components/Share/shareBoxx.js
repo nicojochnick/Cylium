@@ -10,17 +10,10 @@ import Switch from '@material-ui/core/Switch';
 
 function ShareBoxx(props) {
     const [switchNotification, setSwitchNotification] = React.useState(false);
-
     const handleSwitchNotification = () => {
-
         setSwitchNotification(!switchNotification)
-
     };
-
     const classes = useStyles();
-
-
-
     return (
         <Grid item xs={12} md={4} lg={3}>
             <Box style = {{boxShadow: "0px 5px 10px #D7D7DA"}} boxShadow = {0} className={classes.box}>
@@ -33,7 +26,7 @@ function ShareBoxx(props) {
                         fontWeight: 600,
                         margin: 15,
                     }}>
-                    SEND TO EMAIL
+                    SEND FEEDBACK TO EMAIL
                 </h2>
 
                 <Grid container direction = "row" >

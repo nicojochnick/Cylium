@@ -50,8 +50,8 @@ class signup extends Component {
                 email: this.state.email,
                 url: url,
                 img_url_Profile: {imgUrl: null},
-                welcome: "....",
-                name: "add a name"
+                welcome: "...",
+                name: "..."
 
             }).then(function() {
                 console.log("Document successfully written!");

@@ -57,7 +57,6 @@ function EditFeedbox(props) {
         event.preventDefault();
         try {
             await handleFireBaseUpload(event, imageAsFile)
-
             //write to store
             await db.collection('users').doc(props.email).set({
                 name: name,
@@ -66,30 +65,25 @@ function EditFeedbox(props) {
                 img_url_Profile: imageAsUrl,
             });
             setSuccess(true);
-
-
+            setName('');
+            setWelcomeMessage('')
 
         } catch (error) {
             console.log(error);
             setError({error: error.message});
         }
-
-        if (setSuccess){
-            setName('')
-            setWelcomeMessage('')
-        }
+        // if (setSuccess){
+        //
+        // }
     };
 
     const handleFireBaseUpload = async (e, imageAsFile) => {
         e.preventDefault()
         console.log('start of upload')
-
         if(imageAsFile === '' ) {
             console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
         }
         if (imageAsFile) {
-
-
             const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
             //initiates the firebase side uploading
             uploadTask.on('state_changed',
@@ -177,16 +171,16 @@ function EditFeedbox(props) {
                                 onChange={e => handleNameChange(e.target.value)}
                                 id="filled-basic"
                                 label="Name"
+                                placeholder='John Doe | Product Manager'
                                 fullWidth
                                 variant="outlined"
-
                                 value = {name}
                             />
                         </Grid>
                     </Grid>
                     <Grid style = {{marginTop: 20}} item>
                         <TextField
-                            placeholder="start typing..."
+                            placeholder="consider including three areas where you want feedback..."
                             multiline
                             rows={10}
                             fullWidth={true}
@@ -281,8 +275,10 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
     large: {
-        width: theme.spacing(8),
-        height: theme.spacing(8),
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+        backgroundColor: "#10102F"
+
     },
     input: {
         display: 'none',
