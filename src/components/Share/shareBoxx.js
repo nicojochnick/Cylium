@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
 import Url from "../URL"
 import Switch from '@material-ui/core/Switch';
+import RewardTracker from "../rewardTracker";
 
 
 function ShareBoxx(props) {
@@ -16,7 +17,8 @@ function ShareBoxx(props) {
     const classes = useStyles();
     return (
         <Grid item xs={12} md={4} lg={3}>
-            <Box style = {{boxShadow: "0px 5px 10px #D7D7DA"}} boxShadow = {0} className={classes.box}>
+        <RewardTracker/>
+        <Box style = {{boxShadow: "0px 5px 10px #D7D7DA"}} boxShadow = {0} className={classes.box}>
                <Url url = {props.url}/>
                 <Divider/>
                 <h2

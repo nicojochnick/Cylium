@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/components/Share/shareBoxx.js" line="10" />
+    <bookmark url="file://$PROJECT_DIR$/src/components/Share/shareBoxx.js" line="11" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Share/shareBoxx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Share/shareBoxx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/URL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/URL.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/feedback.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/editFeedbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/editFeedbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/feedbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/feedbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/lander.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/lander.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/rewardTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rewardTracker.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,15 +29,6 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="28" selection-start-line="12" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -96,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/feedback.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="123" column="17" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="17" />
+            <state relative-caret-position="238">
+              <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="47" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -111,8 +96,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Share/shareBoxx.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-20">
-              <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+            <state relative-caret-position="311">
+              <caret line="63" column="20" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/rewardTracker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="503">
+              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -204,7 +201,6 @@
         <option value="$PROJECT_DIR$/src/components/Topics/myTopics.js" />
         <option value="$PROJECT_DIR$/src/components/Topics/allTopics.js" />
         <option value="$PROJECT_DIR$/src/components/User/userID.js" />
-        <option value="$PROJECT_DIR$/src/components/rewardTracker.js" />
         <option value="$PROJECT_DIR$/src/components/feedbackTracker.js" />
         <option value="$PROJECT_DIR$/src/components/Network/networkBrowse.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
@@ -220,10 +216,11 @@
         <option value="$PROJECT_DIR$/src/views/feedbox.js" />
         <option value="$PROJECT_DIR$/src/views/editFeedbox.js" />
         <option value="$PROJECT_DIR$/src/views/lander.js" />
-        <option value="$PROJECT_DIR$/src/components/Share/shareBoxx.js" />
         <option value="$PROJECT_DIR$/src/components/URL.js" />
         <option value="$PROJECT_DIR$/src/views/feed.js" />
         <option value="$PROJECT_DIR$/src/components/feedback.js" />
+        <option value="$PROJECT_DIR$/src/components/Share/shareBoxx.js" />
+        <option value="$PROJECT_DIR$/src/components/rewardTracker.js" />
       </list>
     </option>
   </component>
@@ -338,12 +335,12 @@
       <workItem from="1606519592342" duration="75897000" />
       <workItem from="1606828448178" duration="19456000" />
       <workItem from="1607023130052" duration="10924000" />
-      <workItem from="1607107881673" duration="5446000" />
+      <workItem from="1607107881673" duration="7088000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206999000" />
+    <option name="totallyTimeSpent" value="208641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -358,7 +355,7 @@
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.119181946" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15726376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -374,14 +371,14 @@
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.32946146" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.18383312" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.18383312" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2519562" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15726376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -397,7 +394,7 @@
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.32946146" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.2090813" />
+      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.18383312" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -469,16 +466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
           <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/rewardTracker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="131" selection-end-column="4" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -686,16 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Share/shareBoxx.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/URL.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
@@ -743,12 +720,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Share/shareBoxx.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="63" column="20" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/feedback.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="123" column="17" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="17" />
+        <state relative-caret-position="238">
+          <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="47" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/rewardTracker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

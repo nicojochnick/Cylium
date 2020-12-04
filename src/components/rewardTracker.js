@@ -17,7 +17,6 @@ function RewardTracker(props) {
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <Grid item xs={12} md={4} lg={3}>
             <Box boxShadow = {4} className={classes.box}>
                 <h2
                     style ={{
@@ -26,27 +25,25 @@ function RewardTracker(props) {
                         fontSize: 15,
                         fontWeight: 600
                     }}>
-                    REWARDS
+                    POINTS
                 </h2>
                 <Divider style ={{marginTop:20, marginBottom: -20}}/>
                 <div style = {{padding: 20,paddingTop:0,margin:0 }}>
                     <Grid
                           container
                           direction="row"
-                          justify="space-around"
+                          justify="center"
                           alignItems="center"
                     >
                         <div>
-                    <h2 style = {{color:"#686D75", fontSize: 40}}> ${0}
+                    <h2 style = {{color:"#686D75", fontSize: 40, textAlign:"center"}}> {0}
                     </h2>
-                    <p style = {{color: "#686D75", marginTop: -30}}> given </p>
+                    <p style = {{color: "#686D75", marginTop: -30, textAlign:"center"}}> Available </p>
                     </div>
-                    <div>
 
-                    <h2 style = {{color:"#686D75", fontSize: 40}}> ${10}
-                    </h2>
-                    <p style = {{color: "#686D75", marginTop: -30}}> received</p>
-                    </div>
+                    {/*<h2 style = {{color:"#686D75", fontSize: 40}}> {10}*/}
+                    {/*</h2>*/}
+                    {/*<p style = {{color: "#686D75", marginTop: -30}}> received</p>*/}
 
                     </Grid>
                     <Divider style = {{margin:10}}/>
@@ -57,21 +54,30 @@ function RewardTracker(props) {
                         alignItems="center">
 
                     <Button
-                        className={classes.submitButton}
                         variant="contained"
-                        type='submit'
                         style={{
-                            padding:5,
-                            paddingRight: 40,
-                            paddingLeft: 40,
-                            borderRadius: 5,
-                            backgroundColor: "#3574EE",
+                            borderRadius: 8,
+                            margin: 3,
+                            padding: 3,
+                            backgroundColor: '#4D6DF1',
                         }}>
 
-                        <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
-                            Give Rewards
+                        <p style = {{color: 'white', fontWeight: '600', margin: 5, marginRight: 8, marginLeft: 8}}>
+                            Add Points
                         </p>
                     </Button>
+                        <Button
+                            variant="contained"
+                            style={{
+                                borderRadius: 8,
+                                padding: 3,
+                                margin: 3,
+                                backgroundColor: '#4D6DF1',
+                            }}>
+                            <p style = {{color: 'white', fontWeight: '600', margin: 5, marginRight: 8, marginLeft: 8}}>
+                                Cash In
+                            </p>
+                        </Button>
                     </Grid>
 
                 </div>
@@ -79,7 +85,6 @@ function RewardTracker(props) {
             </Box>
 
 
-        </Grid>
     );
 }
 

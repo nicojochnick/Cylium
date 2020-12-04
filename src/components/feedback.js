@@ -13,11 +13,11 @@ import IconButton from '@material-ui/core/IconButton';
 import moment from 'moment';
 import Avatar from '@material-ui/core/Avatar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-
 import { FiMoreVertical } from "react-icons/fi";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
+
 const Feedback = (props) => {
     const classes = useStyles();
     let editorState = null;
@@ -68,8 +68,7 @@ const Feedback = (props) => {
                     transformOrigin={{
                         vertical: 'top',
                         horizontal: 'center',
-                    }}
-                >
+                    }}>
                     <Button onClick={()=>props.handleDelete(props.item.id)} variant="contained" color="primary">
                         Delete
                     </Button>
