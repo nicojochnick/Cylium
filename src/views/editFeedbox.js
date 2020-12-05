@@ -1,5 +1,5 @@
 import React from 'react';
-import Url from "../components/URL";
+import Url from "../components/Share/URL";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import Box from "@material-ui/core/Box";
@@ -18,7 +18,7 @@ import Input from '@material-ui/core/Input';
 import Divider from "@material-ui/core/Divider";
 import {BsX,BsPlus} from "react-icons/bs";
 import Feedbox from "../views/feedbox"
-import Feedback from "../components/feedback";
+import Feedback from "../components/Feedback/feedback";
 import AllTopics from "../components/Topics/allTopics";
 import {db} from "../api/firebase";
 import { css } from "@emotion/core";

@@ -5,10 +5,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import clsx from 'clsx';
 import Box from "@material-ui/core/Box";
 import Card from 'react-bootstrap/Card'
-import teamwork from '../assets/images/teamwork.svg'
+import teamwork from '../../assets/images/teamwork.svg'
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import FeedbackTracker from "./feedbackTracker";
+import FeedbackTracker from "../Analytics/feedbackTracker";
 
 
 function RewardTracker(props) {
@@ -40,10 +40,6 @@ function RewardTracker(props) {
                     </h2>
                     <p style = {{color: "#686D75", marginTop: -30, textAlign:"center"}}> Available </p>
                     </div>
-
-                    {/*<h2 style = {{color:"#686D75", fontSize: 40}}> {10}*/}
-                    {/*</h2>*/}
-                    {/*<p style = {{color: "#686D75", marginTop: -30}}> received</p>*/}
 
                     </Grid>
                     <Divider style = {{margin:10}}/>

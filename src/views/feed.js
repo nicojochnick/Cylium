@@ -6,17 +6,17 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import clsx from 'clsx';
-import Url from '../components/URL'
+import Url from '../components/Share/URL'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {db} from "../api/firebase";
-import Feedback from "../components/feedback"
+import Feedback from "../components/Feedback/feedback"
 import {auth} from "../api/firebase";
 import moment from 'moment';
-import RewardTracker from "../components/rewardTracker";
+import RewardTracker from "../components/Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
 import Pulse from "../assets/images/pulse.gif"
-import FeedbackTracker from "../components/feedbackTracker";
+import FeedbackTracker from "../components/Analytics/feedbackTracker";
 import NetworkBrowse from "../components/Network/networkBrowse";
 import ShareBoxx from "../components/Share/shareBoxx";
 

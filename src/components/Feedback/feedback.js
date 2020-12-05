@@ -52,7 +52,11 @@ const Feedback = (props) => {
                 direction="row"
                 justify="space-between"
                 alignItems="flex-start">
+                <Grid item direction = "column" justify = "flex-start">
                 <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#10102F"}}>{props.item.subject}</p>
+                <p style = {{marginTop:-12, marginBottom: 15, fontSize: 12, color: "#4F5258"}}>{props.item.email}</p>
+                </Grid>
+
                 <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
                     <FiMoreVertical  size = {20}/>
                 </IconButton>
@@ -81,7 +85,6 @@ const Feedback = (props) => {
                     </Box>
                 </Grid>
                 <Grid className = {classes.contained} item xs>
-                    {/*<p style = {{marginTop:0, fontSize: 13, color: "#4F5258"}}>{props.item.email}</p>*/}
                     {(props.item.feedback)
                         ?<Editor editorState={editorState} readOnly={true}/>
                         : null

@@ -10,14 +10,16 @@ import Button from "@material-ui/core/Button";
 import FormGroup from '@material-ui/core/FormGroup';
 import {Signup} from "../helpers/auth";
 import {db} from "../api/firebase";
+import {auth} from "../api/firebase"
 import moment from 'moment'
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import MyTopics from "../components/Topics/myTopics";
-import firebase from "./feed";
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import logo from "../assets/images/logo.png";
+import firebase from 'firebase/app';
+
 
 
 import 'draft-js/dist/Draft.css';
@@ -35,15 +37,14 @@ export default function Feedbox(props) {
     const [myTopics, setMyTopics] = React.useState([]);
     const [user, setUser] = React.useState({name: null, img_url_Profile: {imgURL:null}, welcome: null})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
-    const [editorState, setEditorState] = React.useState(() =>
-        EditorState.createEmpty(),
-    );
-
-    const [contentState, setContentState] = React.useState(() =>
-        null
-    );
-
+    const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
+    const [contentState, setContentState] = React.useState(() => null);
     const [error, setError] = React.useState('');
+    const [viewerEmail, setViewerEmail] = React.useState(null);
+    const [viewerUser, setViewerUser] = React.useState(null);
+
+
+
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
@@ -57,7 +58,7 @@ export default function Feedbox(props) {
             const res = await db.collection('feedback').add({
                 url: id,
                 anon: switchState,
-                email: email,
+                email: viewerEmail,
                 subject: subject,
                 feedback: contentState,
                 timeStamp: new Date()
@@ -80,9 +81,7 @@ export default function Feedbox(props) {
             id = parseInt(id)
         }
         const feedRef = db.collection('users');
-        console.log(feedRef, id)
         const snapshot = await feedRef.where('url', '==', id).get();
-        console.log(snapshot)
         if (snapshot.empty) {
             console.log('No matching documents.');
             return;
@@ -90,23 +89,34 @@ export default function Feedbox(props) {
         let feedID = null;
         snapshot.forEach(doc => {
             feedID = doc.id
-
         });
         setFeedBoxxEmail(feedID);
-        console.log(feedID);
-
         db.collection("users").doc(feedID)
             .onSnapshot(function(doc) {
                 console.log("Current data: ", doc.data());
                 setUser(doc.data())
             });
+    };
 
+    const getViewerUser = async() => {
+        let user = firebase.auth().currentUser;
+        if (user) {
+            let email = await firebase.auth().currentUser.email;
+            setViewerEmail(email);
+            console.log(email);
+            await db.collection("users").doc(email)
+                .onSnapshot(function(doc) {
+                    if (doc.data()) {
+                        setViewerUser(doc.data())
+                    }
+                });
+        }
     };
 
     const onChange = (editorState) => {
         const contentState = editorState.getCurrentContent();
-        let save = JSON.stringify(convertToRaw(contentState))
-        setContentState(save)
+        let save = JSON.stringify(convertToRaw(contentState));
+        setContentState(save);
         setEditorState(editorState)
 
     };
@@ -124,14 +134,14 @@ export default function Feedbox(props) {
 
 
     useEffect(() => {
-        let urlID = null;4
+        let urlID = null;
         if (id) {
             urlID = id
         } else {
             urlID = props.urlID
         }
         getFeedBoxxUser(urlID);
-        //TODO: Pull String from URL or PROPS
+        getViewerUser();
 
     }, []);
 
@@ -147,7 +157,7 @@ export default function Feedbox(props) {
 
             return 'handled';
         }
-    }
+    };
 
     const _handlePastedText = (pastedText) => {
         const currentContent = editorState.getCurrentContent();
@@ -159,7 +169,7 @@ export default function Feedbox(props) {
 
             return 'handled';
         }
-    }
+    };
 
     const _getLengthOfSelectedText = () => {
         const currentSelection = editorState.getSelection();
@@ -211,8 +221,6 @@ export default function Feedbox(props) {
                 overflow = 'auto'
             >
                 <Container component="main" maxWidth="sm">
-
-
                 <Grid
                     direction="column"
                     alignItems="center"
@@ -240,7 +248,11 @@ export default function Feedbox(props) {
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
-                            <Box boxShadow={0} width={1} style = {{minHeight: 350, boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
+                            <Box boxShadow={0}
+                                 width={1}
+                                 style = {{minHeight: 350, boxShadow: "0px 10px 20px #BBC2E0"}}
+                                 borderRadius={20}
+                                 className={classes.box}>
                                 <div className={classes.draft}>
                                 <TextField fullWidth placeholder="start typing.."
                                            multiline rows={11}
@@ -262,6 +274,25 @@ export default function Feedbox(props) {
                                            </div>
                                 </div>
                             </Box>
+                            { (viewerUser)
+                                ? null
+                                :
+                                <TextField
+                                    placeholder="start typing..."
+                                    rows={11}
+                                    type='email'
+                                    fullWidth
+                                    value={email}
+                                    onChange={e => setViewerEmail(e.target.value)}
+                                    style={{margin: 10, marginRight: 20, marginTop: 5}}
+                                    label="email address"
+                                    variant="outlined"
+                                    rowsMax={1}
+                                />
+
+                            }
+
+
                             <Grid
                                 container
                                 direction="row"
@@ -287,9 +318,6 @@ export default function Feedbox(props) {
                         </div>
                         :
                         <div>
-
-                            {/*<img  style = {{height: 50, margin: -10}} src = {logo} />*/}
-
                         <h2> Feedback submitted! </h2>
                             <p> Want your own Feedboxx? Make one for free, <Link to="/">here</Link>.
                             </p>

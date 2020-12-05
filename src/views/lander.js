@@ -13,7 +13,7 @@ import {db} from "../api/firebase";
 import Divider from "@material-ui/core/Divider";
 import mscott from "../assets/images/mscott.png";
 import email_feedboxx from "../assets/images/email_feedboxx.png"
-import Url from "../components/URL"
+import Url from "../components/Share/URL"
 import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
 

@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Divider from "@material-ui/core/Divider";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import {db} from "../api/firebase";
-import {auth} from "../api/firebase";
+import {db} from "../../api/firebase";
+import {auth} from "../../api/firebase";
 import Box from "@material-ui/core/Box";
 
 function Url(props) {

@@ -11,7 +11,7 @@ import { FaBoxOpen } from "react-icons/fa";
 import { withStyles } from "@material-ui/core/styles";
 import {db} from "../api/firebase";
 import logo from "../assets/images/logo.png";
-import Header from "../components/Header";
+import Header from "../components/Utilities/Header";
 import Box from "@material-ui/core/Box";
 import boxx from "../assets/images/boxx.png"
 import {analytics} from "../api/firebase";

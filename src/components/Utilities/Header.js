@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { auth } from '../api/firebase';
+import { auth } from '../../api/firebase';
 import Container from '@material-ui/core/Container';
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -22,7 +22,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import logo from "../assets/images/logo.png";
+import logo from "../../assets/images/logo.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {

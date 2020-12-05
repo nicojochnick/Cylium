@@ -11,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from "@material-ui/core/styles";
 import Container from '@material-ui/core/Container';
 import boxx from "../assets/images/boxx.png"
-import Header from "../components/Header";
+import Header from "../components/Utilities/Header";
 
 import { FaBoxOpen } from "react-icons/fa";
 

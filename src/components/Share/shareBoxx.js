@@ -4,20 +4,19 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
-import Url from "../URL"
+import Url from "./URL"
 import Switch from '@material-ui/core/Switch';
-import RewardTracker from "../rewardTracker";
+import RewardTracker from "../Market/rewardTracker";
 import firebase from "../../pages/dashboard";
 import {db} from "../../api/firebase";
 
 function ShareBoxx(props) {
     const [switchNotification, setSwitchNotification] = React.useState(false);
-    const [points, setPoints] = React.useState(0)
+    const [points, setPoints] = React.useState(0);
     const handleSwitchNotification = () => {
         setSwitchNotification(!switchNotification)
     };
     const classes = useStyles();
-
 
     useEffect(() => {
         let points = 0;
