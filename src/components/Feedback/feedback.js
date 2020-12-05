@@ -17,14 +17,25 @@ import { FiMoreVertical } from "react-icons/fi";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
+import Alert from '@material-ui/lab/Alert';
+import Collapse from '@material-ui/core/Collapse';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 const Feedback = (props) => {
     const classes = useStyles();
+    const [didConfirm, setConfirm] = React.useState(false);
+    const [isConfirming, setIsConfirming] = React.useState(false);
+    const [amount, setAmount] = React.useState(0);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorElReward, setAnchorElReward] = React.useState(null);
+    const [openConfirm, setOpenConfirm] = React.useState(true);
+
+
     let editorState = null;
     if (props.item.feedback) {
         editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.item.feedback)));
     }
-    const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -34,12 +45,27 @@ const Feedback = (props) => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const [anchorElReward, setAnchorElReward] = React.useState(null);
     const handleClickReward = (event) => {
         setAnchorElReward(event.currentTarget);
     };
     const handleCloseReward = () => {
         setAnchorElReward(null);
+    };
+
+    const handleSendReward = (email, amount) => {
+        setAmount(amount);
+        setIsConfirming(true);
+    };
+
+    const handleSendRewardConfirm = () => {
+        setConfirm(true);
+        props.handleSendReward(props.item.email, amount)
+    };
+
+    const handleSendRewardCancel = () => {
+        setAmount(0);
+        setIsConfirming(false);
+        handleCloseReward()
     };
     const openReward = Boolean(anchorElReward);
     const idReward = openReward ? 'simple-popover-re' : undefined;
@@ -106,45 +132,92 @@ const Feedback = (props) => {
                 direction="row"
                 justify="flex-end"
                 alignItems="flex-end">
-                <Button   onClick={handleClickReward} variant="contained" noWrap style={{
-                    borderRadius: 5,
-                    margin: 10,
-                    marginRight: 20,
-                    backgroundColor: '#4D6DF1',
 
-                }}>
-                    <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
-                        Send Reward
-                    </p>
-                </Button>
-                <Popover
-                    style = {{marginLeft: 15}}
-                    id={idReward}
-                    open={openReward}
-                    anchorEl={anchorElReward}
-                    onClose={handleCloseReward}
-                    anchorOrigin={{
-                        vertical: 'center',
-                        horizontal: 'right',
-                    }}
-                    transformOrigin={{
-                        vertical: 'center',
-                        horizontal: 'left',
-                    }}
-                >
-                        <ButtonGroup
-                            orientation="vertical"
-                            color="primary"
-                            aria-label="vertical contained primary button group"
-                            variant="contained"
+                {(didConfirm)
+                    ? <div>
+
+                        <Collapse in={openConfirm}>
+                        <Alert
+                            action={
+                                <IconButton
+                                    aria-label="close"
+                                    color="inherit"
+                                    size="small"
+                                    onClick={() => {
+                                        setOpenConfirm(false);
+                                    }}
+                                >
+                                    <CloseIcon fontSize="inherit" />
+                                </IconButton>
+                            }
                         >
-                            <Button onClick = {() => props.handleSendReward(props.item.email, 10)} style = {{backgroundColor: "#AEAEF7"}}> Send 10 Points ($1)</Button>
-                            <Button onClick = {() => props.handleSendReward(props.item.email, 25)} style = {{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
-                            <Button onClick = {() => props.handleSendReward(props.item.email, 50)} style = {{backgroundColor: "#7676E1"}}> Send 50 Points ($5)</Button>
-                            <Button onClick = {() => props.handleSendReward(props.item.email, 100)} style = {{backgroundColor: "#5B5BDD"}}> Send 100 Points ($10)</Button>
-                            <Button onClick = {() => props.handleSendReward(props.item.email, 200)} style = {{backgroundColor: "#4545DF"}}> Send 200 Points ($20)</Button>
-                        </ButtonGroup>
-                </Popover>
+                            {amount} points successfully sent
+                        </Alert>
+                    </Collapse>
+
+                    </div>
+                    :<div>
+
+                    {(!isConfirming)
+
+                        ? <div>
+                            <Button onClick={handleClickReward} variant="contained" noWrap style={{
+                                borderRadius: 5,
+                                margin: 10,
+                                marginRight: 20,
+                                backgroundColor: '#4D6DF1',
+
+                            }}>
+                                <p style={{color: 'white', margin: 3, fontWeight: 600}}>
+                                    Send Reward
+                                </p>
+                            </Button>
+                            <Popover
+                                style={{marginLeft: 15}}
+                                id={idReward}
+                                open={openReward}
+                                anchorEl={anchorElReward}
+                                onClose={handleCloseReward}
+                                anchorOrigin={{
+                                    vertical: 'center',
+                                    horizontal: 'right',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'center',
+                                    horizontal: 'left',
+                                }}
+                            >
+                                <ButtonGroup
+                                    orientation="vertical"
+                                    color="primary"
+                                    aria-label="vertical contained primary button group"
+                                    variant="contained"
+                                >
+                                    <Button onClick={() => handleSendReward(props.item.email, 10)}
+                                            style={{backgroundColor: "#AEAEF7"}}> Send 10 Points ($1)</Button>
+                                    <Button onClick={() => handleSendReward(props.item.email, 25)}
+                                            style={{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
+                                    <Button onClick={() => handleSendReward(props.item.email, 50)}
+                                            style={{backgroundColor: "#7676E1"}}> Send 50 Points ($5)</Button>
+                                    <Button onClick={() => handleSendReward(props.item.email, 100)}
+                                            style={{backgroundColor: "#5B5BDD"}}> Send 100 Points ($10)</Button>
+                                    <Button onClick={() => handleSendReward(props.item.email, 200)}
+                                            style={{backgroundColor: "#4545DF"}}> Send 200 Points ($20)</Button>
+                                </ButtonGroup>
+                            </Popover>
+                        </div>
+                        :
+                        <Box border={1} borderRadius={10} borderColor={"#3162F0"} style={{padding: 10}}>
+                            <p> Please confirm you want to send the author of this feedback {amount} points.</p>
+                            <Button color='primary' style={{margin: 10}} variant="outlined"
+                                    onClick={() => handleSendRewardConfirm()}> Confirm </Button>
+                            <Button variant="outlined" style={{margin: 10}}
+                                    onClick={() => handleSendRewardCancel()}> Cancel </Button>
+                        </Box>
+
+                }
+                    </div>
+                }
             </Grid>
         </Box>
             <Divider/>

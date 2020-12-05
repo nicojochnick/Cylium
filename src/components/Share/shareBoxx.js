@@ -16,13 +16,10 @@ function ShareBoxx(props) {
 
     const handleSwitchNotification = async() => {
         setSwitchNotification(!switchNotification);
-        console.log(props.user.email)
-
+        console.log(props.user.email);
         let res = await db.collection('users').doc(props.email).update({
             sendFeedbackToEmail: !switchNotification
         });
-
-
     };
     const classes = useStyles();
 

@@ -66,7 +66,7 @@ function RewardTracker(props) {
                                 borderRadius: 8,
                                 padding: 3,
                                 margin: 3,
-                                backgroundColor: '#4D6DF1',
+                                backgroundColor: '#191B44',
                             }}>
                             <p style = {{color: 'white', fontWeight: '600', margin: 5, marginRight: 8, marginLeft: 8}}>
                                 Cash out
