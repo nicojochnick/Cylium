@@ -31,11 +31,10 @@ const override = css`
 `;
 
 function EditFeedbox(props) {
-    let allInputs = {imgUrl: ''};
-
-    if (props.user && props.user.img_url_Profile && props.user.img_url_Profile.imgUrl){
-        allInputs = props.user.img_url_Profile;
-    }
+    // let allInputs = {imgUrl: ''};
+    // if (props.user && props.user.img_url_Profile && props.user.img_url_Profile.imgUrl){
+    //     allInputs = props.user.img_url_Profile;
+    // }
 
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
@@ -45,7 +44,7 @@ function EditFeedbox(props) {
     const [welcome, setWelcomeMessage] = React.useState(props.user.welcome);
     const [profileImage, setProfileImage] = React.useState('');
     const [imageAsFile, setImageAsFile] = React.useState('');
-    const [imageAsUrl, setImageAsUrl] = React.useState(allInputs);
+    const [imageAsUrl, setImageAsUrl] = React.useState(props.user.img_url_Profile);
     const [isLoadingImage, setIsLoadingImage] = React.useState(false)
 
     const handleSwitch = (event) => {
@@ -82,6 +81,7 @@ function EditFeedbox(props) {
         console.log('start of upload')
         if(imageAsFile === '' ) {
             console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+            return;
         }
         if (imageAsFile) {
             const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
@@ -115,6 +115,7 @@ function EditFeedbox(props) {
     };
 
     const handleImageAsFile = async(e) => {
+        console.log('upload')
         setIsLoadingImage(true);
         const image = e.target.files[0];
         await setImageAsFile(image);
@@ -122,7 +123,7 @@ function EditFeedbox(props) {
         setIsLoadingImage(false);
 
 
-    }
+    };
 
     const handleProfileImageChange= (event) => {
         //TODO: upload docs from computer

@@ -51,7 +51,8 @@ class signup extends Component {
                 url: url,
                 img_url_Profile: {imgUrl: null},
                 welcome: "...",
-                name: "..."
+                name: "...",
+                points: 25,
 
             }).then(function() {
                 console.log("Document successfully written!");

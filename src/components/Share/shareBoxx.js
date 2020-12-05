@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
@@ -7,17 +7,29 @@ import {makeStyles} from "@material-ui/core/styles";
 import Url from "../URL"
 import Switch from '@material-ui/core/Switch';
 import RewardTracker from "../rewardTracker";
-
+import firebase from "../../pages/dashboard";
+import {db} from "../../api/firebase";
 
 function ShareBoxx(props) {
     const [switchNotification, setSwitchNotification] = React.useState(false);
+    const [points, setPoints] = React.useState(0)
     const handleSwitchNotification = () => {
         setSwitchNotification(!switchNotification)
     };
     const classes = useStyles();
+
+
+    useEffect(() => {
+        let points = 0;
+        if (props.user.points) {
+            points = props.user.points;
+            setPoints(points)
+        }
+    }, []);
+
     return (
         <Grid item xs={12} md={4} lg={3}>
-        <RewardTracker/>
+        <RewardTracker points = {points} />
         <Box style = {{boxShadow: "0px 5px 10px #D7D7DA"}} boxShadow = {0} className={classes.box}>
                <Url url = {props.url}/>
                 <Divider/>
@@ -30,10 +42,7 @@ function ShareBoxx(props) {
                     }}>
                     SEND FEEDBACK TO EMAIL
                 </h2>
-
                 <Grid container direction = "row" >
-
-
                 <Switch
                     style={{colorSecondary: '#3162F0',}}
                     checked={switchNotification}
@@ -49,8 +58,6 @@ function ShareBoxx(props) {
                     <p style={{marginTop: 7, color: '#3162F0'}}> On</p>
                 }
                 </Grid>
-
-
             </Box>
         </Grid>
     );

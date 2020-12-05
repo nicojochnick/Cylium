@@ -36,7 +36,7 @@ function RewardTracker(props) {
                           alignItems="center"
                     >
                         <div>
-                    <h2 style = {{color:"#686D75", fontSize: 40, textAlign:"center"}}> {0}
+                    <h2 style = {{color:"#686D75", fontSize: 40, textAlign:"center"}}> {props.points}
                     </h2>
                     <p style = {{color: "#686D75", marginTop: -30, textAlign:"center"}}> Available </p>
                     </div>
@@ -52,7 +52,6 @@ function RewardTracker(props) {
                         direction="row"
                         justify="space-around"
                         alignItems="center">
-
                     <Button
                         variant="contained"
                         style={{
@@ -61,9 +60,8 @@ function RewardTracker(props) {
                             padding: 3,
                             backgroundColor: '#4D6DF1',
                         }}>
-
                         <p style = {{color: 'white', fontWeight: '600', margin: 5, marginRight: 8, marginLeft: 8}}>
-                            Add Points
+                            Add
                         </p>
                     </Button>
                         <Button
@@ -75,7 +73,7 @@ function RewardTracker(props) {
                                 backgroundColor: '#4D6DF1',
                             }}>
                             <p style = {{color: 'white', fontWeight: '600', margin: 5, marginRight: 8, marginLeft: 8}}>
-                                Cash In
+                                Cash out
                             </p>
                         </Button>
                     </Grid>

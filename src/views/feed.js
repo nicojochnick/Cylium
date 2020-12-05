@@ -77,7 +77,7 @@ function Feed(props) {
                                     )}
                         </Box>
                     </Grid>
-                       <ShareBoxx url = {props.url}/>
+                       <ShareBoxx user = {props.user} url = {props.url}/>
             </Grid>
             </Container>
         </div>
