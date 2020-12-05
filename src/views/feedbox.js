@@ -253,6 +253,24 @@ export default function Feedbox(props) {
                                  style = {{minHeight: 350, boxShadow: "0px 10px 20px #BBC2E0"}}
                                  borderRadius={20}
                                  className={classes.box}>
+                                <Grid container direction = "row" alignItems='center' justify = "flex-start">
+                                    <Switch
+                                        style={{colorSecondary: '#3162F0',}}
+                                        checked={switchState}
+                                        onChange={handleSwitch}
+                                        color="primary"
+                                        name="checkedB"
+
+                                        inputProps={{'aria-label': 'primary checkbox'}}
+                                    />
+                                    {(!switchState)
+                                        ?
+                                        <p style={{marginTop: 12, color: '#353C49'}}> Not Anonymous </p>
+                                        :
+                                        <p style={{marginTop:12, color: '#3162F0'}}> Anonymous </p>
+                                    }
+                                </Grid>
+
                                 <div className={classes.draft}>
                                 <TextField fullWidth placeholder="start typing.."
                                            multiline rows={11}
@@ -358,7 +376,8 @@ const useStyles = makeStyles((theme) => ({
     draft:{
         overflow: "auto",
         maxHeight: 400,
-        padding: 20
+        padding: 20,
+        marginTop: -20,
     },
 
     submitButton: {

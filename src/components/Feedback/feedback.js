@@ -54,7 +54,15 @@ const Feedback = (props) => {
                 alignItems="flex-start">
                 <Grid item direction = "column" justify = "flex-start">
                 <p style = {{fontWeight: 450, fontSize: 17, marginTop: 0, color: "#10102F"}}>{props.item.subject}</p>
-                <p style = {{marginTop:-12, marginBottom: 15, fontSize: 12, color: "#4F5258"}}>{props.item.email}</p>
+                    {!(props.item.anon)
+                        ? <p style={{
+                            marginTop: -12,
+                            marginBottom: 15,
+                            fontSize: 12,
+                            color: "#4F5258"
+                        }}>{props.item.email}</p>
+                        : null
+                    }
                 </Grid>
 
                 <IconButton onClick={handleClick} style = {{marginRight: -20}} aria-label="open">
@@ -81,7 +89,7 @@ const Feedback = (props) => {
             <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
                     <Box border = {2} borderColor ={"#3162F0"} borderRadius = {100}>
-                    <Avatar className = {classes.large} alt={props.item.email} src="/static/images/avatar/1.jpg" />
+                    <Avatar className = {classes.large} alt={(props.item.anon) ?null : props.item.email} src="/static/images/avatar/1.jpg" />
                     </Box>
                 </Grid>
                 <Grid className = {classes.contained} item xs>
