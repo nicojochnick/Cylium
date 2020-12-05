@@ -14,7 +14,7 @@ function Url(props) {
     const classes = useStyles();
     const [url, setURL] = React.useState();
     return (
-        <div>
+        <Grid style = {{width: '100%'}} direction = "column"wrap="nowrap" >
             {(!props.noShare)
                ? <h2
                     style={{
@@ -28,16 +28,17 @@ function Url(props) {
                 :null
             }
             <Box
-                border = {2}
+                flexWrap="wrap"
+                border = {1}
                 borderColor = {"#4D6DF1"}
-                style = {{ backgroundColor:"white", margin: 8, borderRadius: 13, padding: 1, minWidth: 200}}
+                style = {{ flexGrow: 1, backgroundColor:"white", margin: 4, borderRadius: 13, padding: 0, minWidth: 200}}
                 className={classes.container}>
-                <p style = {{color: "#4D6DF1", fontSize: 12, margin: 8, fontWeight: 400,}}>
-                    https://feedboxx.io/{props.url}
+                <p style = {{color: "#4D6DF1",fontSize: 10, margin: 4, marginTop: 7, marginBottom: 7, fontWeight: 400,}}>
+                    https://feedboxx.io/feed#/feedboxx/{props.url}
                 </p>
             </Box>
 
-        </div>
+        </Grid>
     );
 }
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
     },
     container:{
-        margin: 20
+        margin: 10
 
     },
 }));

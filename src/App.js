@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
+import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
 import home from './pages/home';
 import Dashboard from './pages/dashboard'
 import signup from './pages/signup';
@@ -41,7 +41,7 @@ export default class App extends Component {
             <span className="sr-only">Loading...</span>
           </div>
       ) : (
-          <Router>
+          <HashRouter>
             <Switch>
               <Route exact path="/" component={home} />
               <PrivateRoute
@@ -71,7 +71,7 @@ export default class App extends Component {
                   component={login}
               />
             </Switch>
-          </Router>
+          </HashRouter>
       );
     }
   }

@@ -10,7 +10,6 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import FeedbackTracker from "../Analytics/feedbackTracker";
 
-
 function RewardTracker(props) {
     const classes = useStyles();
     let isSubscribed = props.isSubscribed;
@@ -30,17 +29,15 @@ function RewardTracker(props) {
                 <Divider style ={{marginTop:20, marginBottom: -20}}/>
                 <div style = {{padding: 20,paddingTop:0,margin:0 }}>
                     <Grid
-                          container
-                          direction="row"
-                          justify="center"
-                          alignItems="center"
+                        container
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
                     >
                         <div>
-                    <h2 style = {{color:"#686D75", fontSize: 40, textAlign:"center"}}> {props.points}
-                    </h2>
-                    <p style = {{color: "#686D75", marginTop: -30, textAlign:"center"}}> Available </p>
-                    </div>
-
+                            <h2 style = {{color:"#686D75", fontSize: 40, textAlign:"center"}}> {props.points}</h2>
+                            <p style = {{color: "#686D75", marginTop: -30, textAlign:"center"}}> Available </p>
+                        </div>
                     </Grid>
                     <Divider style = {{margin:10}}/>
                     <Grid
@@ -75,7 +72,6 @@ function RewardTracker(props) {
                     </Grid>
 
                 </div>
-
             </Box>
 
 
