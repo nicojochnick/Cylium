@@ -20,6 +20,7 @@ import FeedbackTracker from "../components/Analytics/feedbackTracker";
 import NetworkBrowse from "../components/Network/networkBrowse";
 import ShareBoxx from "../components/Share/shareBoxx";
 
+
 function Feed(props) {
     const classes = useStyles();
     const [feed, setFeed] = React.useState([]);
@@ -29,23 +30,26 @@ function Feed(props) {
         await db.collection('feedback').doc(id).delete();
     };
 
-    const handleSendReward = async(id) => {
-        //TODO send reward
+    const handleSendReward = async(email, points) => {
+        let curremail = await firebase.auth().currentUser.email;
+        console.log('sending');
+        await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points+5))});
+        await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)})
+
     };
 
     const makeChrono = (feed) => {
         feed.sort(function(a,b){
             // Turn your strings into dates, and then subtract them
             // to get a value that is either negative, positive, or zero.
-            console.log(a.timeStamp)
+            console.log(a.timeStamp);
             return b.timeStamp - a.timeStamp;
         });
-        console.log(feed)
+        console.log(feed);
         setFeed(feed)
     };
 
     useEffect(() => {
-        let email = firebase.auth().currentUser.email;
         db.collection("feedback").where('url', '==', props.url.toString())
             .onSnapshot(function (querySnapshot) {
                 let feedback = [];
@@ -77,7 +81,7 @@ function Feed(props) {
                                     )}
                         </Box>
                     </Grid>
-                       <ShareBoxx user = {props.user} url = {props.url}/>
+                       <ShareBoxx email = {props.email} user = {props.user} url = {props.url}/>
             </Grid>
             </Container>
         </div>

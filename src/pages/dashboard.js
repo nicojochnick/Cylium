@@ -98,9 +98,6 @@ export default function Dashboard() {
 
 
 
-
-
-
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div className={classes.root}>
@@ -239,7 +236,7 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <Feed user = {user} url = {url} isSubscribed = {false}/>
+                                <Feed user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
                             <Route exact path="/feedboxx-edit">
                                 <EditFeedbox user = {user} url = {url} email = {email} />

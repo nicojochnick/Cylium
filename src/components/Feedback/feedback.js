@@ -138,11 +138,11 @@ const Feedback = (props) => {
                             aria-label="vertical contained primary button group"
                             variant="contained"
                         >
-                            <Button onClick = {props.handleSendReward(10)} style = {{backgroundColor: "#AEAEF7"}}> Send 10 Points ($1)</Button>
-                            <Button onClick = {props.handleSendReward(25)} style = {{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
-                            <Button onClick = {props.handleSendReward(50)} style = {{backgroundColor: "#7676E1"}}> Send 50 Points ($5)</Button>
-                            <Button onClick = {props.handleSendReward(100)} style = {{backgroundColor: "#5B5BDD"}}> Send 100 Points ($10)</Button>
-                            <Button onClick = {props.handleSendReward(200)} style = {{backgroundColor: "#4545DF"}}> Send 200 Points ($20)</Button>
+                            <Button onClick = {() => props.handleSendReward(props.item.email, 10)} style = {{backgroundColor: "#AEAEF7"}}> Send 10 Points ($1)</Button>
+                            <Button onClick = {() => props.handleSendReward(props.item.email, 25)} style = {{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
+                            <Button onClick = {() => props.handleSendReward(props.item.email, 50)} style = {{backgroundColor: "#7676E1"}}> Send 50 Points ($5)</Button>
+                            <Button onClick = {() => props.handleSendReward(props.item.email, 100)} style = {{backgroundColor: "#5B5BDD"}}> Send 100 Points ($10)</Button>
+                            <Button onClick = {() => props.handleSendReward(props.item.email, 200)} style = {{backgroundColor: "#4545DF"}}> Send 200 Points ($20)</Button>
                         </ButtonGroup>
                 </Popover>
             </Grid>

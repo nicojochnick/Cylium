@@ -11,10 +11,18 @@ import firebase from "../../pages/dashboard";
 import {db} from "../../api/firebase";
 
 function ShareBoxx(props) {
-    const [switchNotification, setSwitchNotification] = React.useState(false);
+    const [switchNotification, setSwitchNotification] = React.useState(props.user.sendFeedbackToEmail);
     const [points, setPoints] = React.useState(0);
-    const handleSwitchNotification = () => {
-        setSwitchNotification(!switchNotification)
+
+    const handleSwitchNotification = async() => {
+        setSwitchNotification(!switchNotification);
+        console.log(props.user.email)
+
+        let res = await db.collection('users').doc(props.email).update({
+            sendFeedbackToEmail: !switchNotification
+        });
+
+
     };
     const classes = useStyles();
 
