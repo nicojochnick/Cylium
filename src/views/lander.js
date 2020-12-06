@@ -18,6 +18,8 @@ import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
 
 import profileIllustration from "../assets/images/profileIllustration.png"
+import Popover from "@material-ui/core/Popover/Popover";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 const MAX_LENGTH = 1500;
 
 let prefill = ''; //Prefill the feedback box with some feedback. You want to have a full example.
@@ -28,12 +30,32 @@ function Lander(props) {
     const [feedback, setFeedback] = React.useState('');
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
+    const [isConfirming, setIsConfirming] = React.useState(false);
+    const [anchorElReward, setAnchorElReward] = React.useState(null);
+    const [openConfirm, setOpenConfirm] = React.useState(true);
     const [myTopics, setMyTopics] = React.useState([]);
-    const [user, setUser] = React.useState({name: "Amy Reed | Product Manager", img_url_Profile: {imgURL:null}, welcome: "How can I better serve you?"})
+    const [user, setUser] = React.useState({name: "Angela | Product User", img_url_Profile: {imgURL:null}, welcome: "While I love the new features, I wish it was easier to navigate through the app"})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty(),
     );
+    const handleClickReward = (event) => {
+        setAnchorElReward(event.currentTarget);
+    };
+
+    const handleCloseReward = () => {
+        setAnchorElReward(null);
+    };
+
+    const handleSendReward = (email, amount) => {
+        console.log('yike')
+    };
+
+    const openReward = Boolean(anchorElReward);
+    const idReward = openReward ? 'simple-popover-re' : undefined;
+
+
+
     const [contentState, setContentState] = React.useState(() =>
         null
     );
@@ -126,14 +148,14 @@ function Lander(props) {
 
     return (
         <div className={classes.root}>
-        <Grid container style = {{padding: 10}} spacing={5}>
+        <Grid container style = {{padding: 10}} spacing={0}>
             <Grid container
                   direction="column"
                   justify="center"
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> 10x your feedback</p>
+                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Get valuable feedback, at scale</p>
                     <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}>Source more feedback from your colleagues, clients and customers by rewarding them for their time</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
@@ -161,19 +183,21 @@ function Lander(props) {
                 direction="column"
                 justify="center"
                 alignItems="center"
-                container xs={12} sm={6}>
+                container xs={12} sm={6}
+            >
+                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {10} style = {{ boxShadow: "0px 5px 15px #D7D7DA", margin: 35, maxWidth:500}}>
 
                 <Grid
                     direction="row"
                     justify="flex-end"
                     alignItems="flex-end"
-                    style = {{margin: 60, marginTop: 50,}}
+                    style = {{margin: 30, marginTop: 10,}}
                 >
                     <Grid justify="flex-start"
                           alignItems="flex-start" container direction = "column">
-                        <p style = {{marginBottom: 10, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique feedback url</p>
-                        <Grid container alignItems = "center" style = {{marginTop: 10, marginLeft: -10}}>
-                        <Url url = {'amy'} noShare = {true}/>
+                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique feedback url</p>
+                        <Grid container alignItems = "center" style = {{marginTop: 10, marginLeft: 0}}>
+                        <Url big = {true} url = {'amy'} noShare = {true}/>
                         </Grid>
                         {/*<Url noShare={true} url={'amy'} />*/}
                     </Grid>
@@ -182,30 +206,30 @@ function Lander(props) {
 
                     <Grid justify="flex-start"
                           alignItems="center" container direction = "row">
-                        <p style = {{marginBottom: 10, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url to your work email signature</p>
+                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url anywhere, including your work email signature</p>
 
                         {/*<img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>*/}
+                        <Box
+                            flexWrap="wrap"
+                            border = {1}
+                            borderColor = {"#4D6DF1"}
+                            style = {{ flexGrow: 1, backgroundColor:"white", margin: 4, borderRadius: 13, padding: 5, minWidth: 150}}
+                            className={classes.container}>
                         <Grid spacing = {0} container style = {{marginLeft: 5, marginBottom: 10}} direction = "column" >
-                            <p style ={{color: '#8B8FA0', margin: 0, fontSize: 18}}> ....</p>
-                            <p style ={{color: '#8B8FA0',margin: 0,  fontSize: 18 }}> Amy Reed  </p>
-                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 18}}> Product Manager | OpenPulse  </p>
+                            <p style ={{color: '#8B8FA0', margin: 0, fontSize: 16}}> ....</p>
+                            <p style ={{color: '#8B8FA0',margin: 0,  fontSize: 16 }}> Amy Reed  </p>
+                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 16}}> Product Manager </p>
                             <Grid direction='row' container>
-                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 18, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 18, marginLeft: 3, }}>here</p>
+                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 16, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 16, marginLeft: 3, }}>here</p>
                             </Grid>
                         </Grid>
+                        </Box>
                     {/*<Url noShare={true} url={'amy'} />*/}
                     </Grid>
-                    <p style = {{marginBottom: 30, fontSize: 21, color: "#10102F", fontWeight: 600,}}> Step 3: Enjoy more feedback</p>
+                    <p style = {{marginBottom: 20, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 3: Reward the best insights</p>
 
-                    {/*<form onSubmit={handleSubmit} noValidate>*/}
-                    <Box boxShadow={0} style = {{minHeight: 240, maxWidth: 500, margin: 0, maxHeight: 400,boxShadow: "0px 10px 20px #BBC2E0"}} borderRadius={20} className={classes.box}>
+                    <Box  border = {1} borderColor = {"#4D6DF1"} boxShadow={0}  style = {{ flexGrow: 1, backgroundColor:"white", margin: 4, borderRadius: 13, padding: 3, minWidth: 150}} borderRadius={20} className={classes.box}>
                         <div className={classes.draft}>
-                            {/*<TextField fullWidth placeholder="start typing.."*/}
-                            {/*           multiline rows={11}*/}
-                            {/*           value={subject}*/}
-                            {/*           onChange={e => setSubject(e.target.value)}*/}
-                            {/*           style={{marginBottom:20}} label="What is your feedback about?"*/}
-                            {/*           rowsMax={1}/>*/}
 
                             <div style = {{ marginRight: -10}}>
                                 <Grid
@@ -215,28 +239,68 @@ function Lander(props) {
                                     justify="center"
                                     alignItems="center"
                                 >
-
                                     <Grid style = {{marginLeft: 10,}} item>
-                                        <Box border = {3} borderColor = {'#4D6DF1'} borderRadius = {50}>
+                                        <Box border = {1} borderColor = {'#4D6DF1'} borderRadius = {50}>
                                             <Avatar  src = {mscott} className={classes.large}/>
                                         </Box>
 
                                     </Grid>
                                     <Grid item xs zeroMinWidth>
-                                        <p style = {{marginTop: 0, fontSize: 15, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name} </p>
-                                        <p style={{color: '#353C49'}}> {user.welcome} </p>
+                                        <p style = {{marginTop: 0, fontSize: 15, color: '#8B8FA0', fontWeight: 500,}}>{user.name} </p>
                                     </Grid>
                                 </Grid>
-                                <Divider style = {{marginTop:10, marginBottom: 10}} />
+                                <p style={{color: '#8B8FA0', margin: 15}}> {user.welcome} </p>
+                                <div>
+                                            <Button onClick={handleClickReward} variant="contained" noWrap style={{
+                                                borderRadius: 5,
+                                                margin: 0,
+                                                marginRight: 0,
+                                                backgroundColor: '#4D6DF1',
 
-                                <Editor
-                                    placeholder="Type feedback here..."
-                                    handleKeyCommand={handleKeyCommand}
-                                    editorState={editorState}
-                                    onChange={onChange}
-                                    handleBeforeInput={_handleBeforeInput}
-                                    handlePastedText={_handlePastedText}
-                                />
+                                            }}>
+                                                <p style={{color: 'white', margin: 3, fontWeight: 600}}>
+                                                    Send Reward
+                                                </p>
+                                            </Button>
+                                            <Popover
+                                                style={{marginLeft: 15}}
+                                                id={idReward}
+                                                open={openReward}
+                                                anchorEl={anchorElReward}
+                                                onClose={handleCloseReward}
+                                                anchorOrigin={{
+                                                    vertical: 'center',
+                                                    horizontal: 'right',
+                                                }}
+                                                transformOrigin={{
+                                                    vertical: 'center',
+                                                    horizontal: 'left',
+                                                }}
+                                            >
+                                                <ButtonGroup
+                                                    orientation="vertical"
+                                                    color="primary"
+                                                    aria-label="vertical contained primary button group"
+                                                    variant="contained"
+                                                >
+                                                    <Button onClick={() => handleSendReward('', 10)}
+                                                            style={{backgroundColor: "#AEAEF7"}}> Send 10 Points
+                                                        ($1)</Button>
+                                                    <Button onClick={() => handleSendReward('', 25)}
+                                                            style={{backgroundColor: "#9393E5"}}> Send 25 Points
+                                                        ($2.5)</Button>
+                                                    <Button onClick={() => handleSendReward('', 50)}
+                                                            style={{backgroundColor: "#7676E1"}}> Send 50 Points
+                                                        ($5)</Button>
+                                                    <Button onClick={() => handleSendReward('', 100)}
+                                                            style={{backgroundColor: "#5B5BDD"}}> Send 100 Points
+                                                        ($10)</Button>
+                                                    <Button onClick={() => handleSendReward('', 200)}
+                                                            style={{backgroundColor: "#4545DF"}}> Send 200 Points
+                                                        ($20)</Button>
+                                                </ButtonGroup>
+                                            </Popover>
+                                    </div>
                             </div>
                         </div>
                     </Box>
@@ -262,6 +326,7 @@ function Lander(props) {
                     {/*</Button>*/}
                     </Grid>
             </Grid>
+                </Box>
             </Grid>
         </Grid>
         </div>
@@ -291,7 +356,7 @@ const useStyles = makeStyles((theme) => ({
     draft:{
         overflow: "auto",
         maxHeight: 400,
-        padding: 25
+        padding: 10,
     },
 
     submitButton: {
@@ -299,9 +364,18 @@ const useStyles = makeStyles((theme) => ({
     },
 
     large: {
-        width: theme.spacing(6),
-        height: theme.spacing(6),
+        width: theme.spacing(5),
+        height: theme.spacing(5),
     },
 }));
 
 export default Lander;
+
+{/*<Editor*/}
+{/*    placeholder="Type feedback here..."*/}
+{/*    handleKeyCommand={handleKeyCommand}*/}
+{/*    editorState={editorState}*/}
+{/*    onChange={onChange}*/}
+{/*    handleBeforeInput={_handleBeforeInput}*/}
+{/*    handlePastedText={_handlePastedText}*/}
+{/*/>*/}

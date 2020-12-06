@@ -13,6 +13,13 @@ import Box from "@material-ui/core/Box";
 function Url(props) {
     const classes = useStyles();
     const [url, setURL] = React.useState();
+
+    let textSize = 10;
+    if (props.big) {
+        textSize = 14;
+
+    }
+
     return (
         <Grid style = {{width: '100%'}} direction = "column"wrap="nowrap" >
             {(!props.noShare)
@@ -31,9 +38,9 @@ function Url(props) {
                 flexWrap="wrap"
                 border = {1}
                 borderColor = {"#4D6DF1"}
-                style = {{ flexGrow: 1, backgroundColor:"white", margin: 4, borderRadius: 13, padding: 0, minWidth: 200}}
+                style = {{ flexGrow: 1, backgroundColor:"white", margin: 4, borderRadius: 13, padding: 0, maxWidth: 300, minWidth: 150}}
                 className={classes.container}>
-                <p style = {{color: "#4D6DF1",fontSize: 10, margin: 4, marginTop: 7, marginBottom: 7, fontWeight: 400,}}>
+                <p style = {{color: "#4D6DF1",fontSize: textSize, margin: 4, marginTop: 7, marginBottom: 7, fontWeight: 400,}}>
                     https://feedboxx.io/feed#/feedboxx/{props.url}
                 </p>
             </Box>

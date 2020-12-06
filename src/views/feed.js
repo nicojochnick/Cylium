@@ -25,17 +25,13 @@ function Feed(props) {
     const classes = useStyles();
     const [feed, setFeed] = React.useState([]);
     const [url, setURL] = React.useState(null);
-
-    const handleDelete = async(id) => {
-        await db.collection('feedback').doc(id).delete();
-    };
+    const handleDelete = async(id) => {await db.collection('feedback').doc(id).delete();};
 
     const handleSendReward = async(email, points) => {
         let curremail = await firebase.auth().currentUser.email;
         console.log('sending');
         await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points+5))});
-        await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)})
-
+        await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)});
     };
 
     const makeChrono = (feed) => {
@@ -45,7 +41,6 @@ function Feed(props) {
             console.log(a.timeStamp);
             return b.timeStamp - a.timeStamp;
         });
-        console.log(feed);
         setFeed(feed)
     };
 
@@ -57,7 +52,6 @@ function Feed(props) {
                     feedback.push(doc.data());
                 });
                 makeChrono(feedback);
-                console.log(feedback)
             });
     }, []);
 
@@ -76,9 +70,7 @@ function Feed(props) {
                             <img style={{height: 60, margin: 0}} src={Pulse}/>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
-                            {feed.map((item) =>
-                                    <Feedback handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>
-                                    )}
+                            {feed.map((item) => <Feedback handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>)}
                         </Box>
                     </Grid>
                        <ShareBoxx email = {props.email} user = {props.user} url = {props.url}/>
@@ -89,7 +81,6 @@ function Feed(props) {
 }
 
 const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
