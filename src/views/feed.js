@@ -28,10 +28,12 @@ function Feed(props) {
     const handleDelete = async(id) => {await db.collection('feedback').doc(id).delete();};
 
     const handleSendReward = async(email, points) => {
-        let curremail = await firebase.auth().currentUser.email;
-        console.log('sending');
-        await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points+5))});
-        await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)});
+        if (firebase.auth().currentUser) {
+            let curremail = await firebase.auth().currentUser.email;
+            console.log('sending');
+            await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points + 5))});
+            await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)});
+        }
     };
 
     const makeChrono = (feed) => {
@@ -51,6 +53,7 @@ function Feed(props) {
                 querySnapshot.forEach(function (doc) {
                     feedback.push(doc.data());
                 });
+                console.log(feedback)
                 makeChrono(feedback);
             });
     }, []);
@@ -61,7 +64,7 @@ function Feed(props) {
         <div className={classes.root} >
             <Container maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1} xs={12}>
-                    <Grid item xs={12} md={8} lg={9}>
+                    <Grid item xs={10} md={8} lg={9}>
                         <Box className={classes.box} boxShadow = {0} style = {{minHeight: 350, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <Grid justify="space-between" direction = "row" container >
                                 <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>

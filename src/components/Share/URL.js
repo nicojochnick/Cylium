@@ -38,10 +38,10 @@ function Url(props) {
                 flexWrap="wrap"
                 border = {1}
                 borderColor = {"#4D6DF1"}
-                style = {{ flexGrow: 1, backgroundColor:"white", margin: 4, borderRadius: 13, padding: 0, maxWidth: 300, minWidth: 150}}
+                style = {{ flexGrow: 1, backgroundColor:"white", margin: 7, borderRadius: 13, padding: 0, maxWidth: 300, minWidth: 150}}
                 className={classes.container}>
                 <p style = {{color: "#4D6DF1",fontSize: textSize, margin: 4, marginTop: 7, marginBottom: 7, fontWeight: 400,}}>
-                    https://feedboxx.io/feed#/feedboxx/{props.url}
+                    https://feedboxx.io/feedboxx/{props.url}
                 </p>
             </Box>
 

@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import {BrowserRouter as Router, Switch, Route, Link, Redirect,} from "react-router-dom";
+import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,} from "react-router-dom";
 import clsx from 'clsx';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,6 +27,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
+import { BiTransferAlt, BiEdit, BiHome} from "react-icons/bi";
+
 
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -41,6 +43,7 @@ import Feed from "../views/feed"
 import Feedbox from "../views/feedbox"
 import {db} from "../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
+import Transactions from "../views/transactions";
 
 
 export default function Dashboard() {
@@ -142,8 +145,6 @@ export default function Dashboard() {
                         />
                     </Box>
                         <div className={classes.sectionDesktop}>
-
-
                         <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
                     <Button  variant="contained" noWrap style={{
                         borderRadius: 5,
@@ -208,24 +209,34 @@ export default function Dashboard() {
                         <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <IoIosMail size = {25}/>
+                                    <BiHome size = {25}/>
                                 </ListItemIcon>
                                 <ListItemText primary="Feedback" />
                             </ListItem>
                         </Link>
-                    <Link
-                        to="/feedboxx-edit"
-                        style={{fontWeight: 600,
-                              color:"#3C3F48",
-                              textDecoration: 'none'
-                          }} >
-                        <ListItem button>
-                            <ListItemIcon>
-                                <FaEdit size = {20}/>
-                            </ListItemIcon>
-                            <ListItemText  primary="My Boxx" />
-                        </ListItem>
-                    </Link>
+                        <Link
+                            to="/feedboxx-edit"
+                            style={{fontWeight: 600,
+                                  color:"#3C3F48",
+                                  textDecoration: 'none'
+                              }} >
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <BiEdit size = {25}/>
+                                </ListItemIcon>
+                                <ListItemText  primary="Edit" />
+
+                            </ListItem>
+                        </Link>
+
+                        <Link to="/transactions"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <BiTransferAlt size = {25}/>
+                                </ListItemIcon>
+                                <ListItemText primary="Transactions" />
+                            </ListItem>
+                        </Link>
                     <div>
                     </div>
                 </List>
@@ -243,6 +254,9 @@ export default function Dashboard() {
                             </Route>
                             <Route path="/settings">
                                 <Settings/>
+                            </Route>
+                            <Route path="/transactions">
+                                <Transactions/>
                             </Route>
                         </Switch>
                     </main>

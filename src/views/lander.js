@@ -155,11 +155,11 @@ function Lander(props) {
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 68, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Get valuable feedback, at scale</p>
-                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}>Source more feedback from your colleagues, clients and customers by rewarding them for their time</p>
+                    <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> The First Marketplace for User Feedback</p>
+                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}>  Buy and sell feedback that pushes products, teams and individuals forward.</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
-                            borderRadius: 5, margin: 0, marginTop: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
+                            borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
                         }}>
                             <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
                                 Get Started
@@ -176,7 +176,6 @@ function Lander(props) {
                     </Grid>
                 </Box>
             </Grid>
-
 
 
             <Grid

@@ -41,7 +41,7 @@ export default class App extends Component {
             <span className="sr-only">Loading...</span>
           </div>
       ) : (
-          <HashRouter>
+          <Router>
             <Switch>
               <Route exact path="/" component={home} />
               <PrivateRoute
@@ -71,7 +71,7 @@ export default class App extends Component {
                   component={login}
               />
             </Switch>
-          </HashRouter>
+          </Router>
       );
     }
   }

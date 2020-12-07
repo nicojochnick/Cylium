@@ -9,6 +9,7 @@ import teamwork from '../../assets/images/teamwork.svg'
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import FeedbackTracker from "../Analytics/feedbackTracker";
+import {Link} from "react-router-dom";
 
 function RewardTracker(props) {
     const classes = useStyles();
@@ -35,8 +36,8 @@ function RewardTracker(props) {
                         alignItems="center"
                     >
                         <div>
-                            <h2 style = {{color:"#686D75", fontSize: 40, textAlign:"center"}}> {props.points}</h2>
-                            <p style = {{color: "#686D75", marginTop: -30, textAlign:"center"}}> Available </p>
+                            <h2 style = {{color:'#191B44', fontSize: 40, textAlign:"center"}}> {props.points}</h2>
+                            <p style = {{color: '#191B44', marginTop: -30, textAlign:"center"}}> Available </p>
                         </div>
                     </Grid>
                     <Divider style = {{margin:10}}/>
@@ -45,7 +46,10 @@ function RewardTracker(props) {
                         direction="row"
                         justify="space-around"
                         alignItems="center">
-                    <Button
+                        <Link to={`/transactions`} style={{ textDecoration: 'none' }}>
+
+                        <Button
+
                         variant="contained"
                         style={{
                             borderRadius: 8,
@@ -57,6 +61,8 @@ function RewardTracker(props) {
                             Add
                         </p>
                     </Button>
+                        </Link>
+                        <Link to={`/transactions`} style={{ textDecoration: 'none' }}>
                         <Button
                             variant="contained"
                             style={{
@@ -69,6 +75,7 @@ function RewardTracker(props) {
                                 Cash out
                             </p>
                         </Button>
+                        </Link>
                     </Grid>
 
                 </div>
