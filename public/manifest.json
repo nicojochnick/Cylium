@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FeedBoxx",
+  "name": "The first marketplace for actionable feedback",
   "icons": [
     {
       "src": "favicon.ico",

@@ -151,14 +151,21 @@ function Lander(props) {
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
                     <img style = {{height: 160, margin: -30, marginLeft: -60}} src = {pulse} />
-                    <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> The First Marketplace for Actionable Feedback</p>
-                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback that pushes products, teams and individuals forward.</p>
+                    <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Join the Marketplace for Actionable Feedback</p>
+                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source more feedback from colleagues and customers that push your product, team and career forward.</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
                         }}>
                             <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
-                                Get Started
+                                Get Feedback
+                            </p>
+                        </Button>
+                        <Button  variant="contained" noWrap style={{
+                            borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: "#10102F",
+                        }}>
+                            <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
+                                Get Paid
                             </p>
                         </Button>
                     </Link>
@@ -189,7 +196,7 @@ function Lander(props) {
                 >
                     <Grid justify="flex-start"
                           alignItems="flex-start" container direction = "column">
-                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique feedback url for yourself or for your product</p>
+                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique feedback url for yourself or for your product/service</p>
                         <Grid container alignItems = "center" style = {{marginTop: 10, marginLeft: 0}}>
                         <Url big = {true} url = {'amy'} noShare = {true}/>
                         </Grid>
@@ -198,7 +205,7 @@ function Lander(props) {
                     {/*<Divider style = {{marginBottom: 20}}/>*/}
                     <Grid justify="flex-start"
                           alignItems="center" container direction = "row">
-                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url anywhere, including a work email signature</p>
+                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url anywhere, including a work email signature or website</p>
 
                         {/*<img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>*/}
                         <Box
