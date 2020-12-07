@@ -28,6 +28,8 @@ import InputBase from '@material-ui/core/InputBase';
 import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
 import { BiTransferAlt, BiEdit, BiHome} from "react-icons/bi";
+import NotificationsIcon from '@material-ui/icons/Notifications';
+
 
 
 import Badge from '@material-ui/core/Badge';
@@ -35,7 +37,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 
@@ -65,6 +66,18 @@ export default function Dashboard() {
     };
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
+
+    const [anchorElNotification, setAnchorElNotification] = React.useState(null);
+
+    const handleNotificationClick = (event) => {
+        setAnchorElNotification(event.currentTarget);
+    };
+
+    const handleCloseNotification = () => {
+        setAnchorElNotification(null);
+    };
+    const openNotification = Boolean(anchorElNotification);
+    const idNotification = openAccount ? 'simple-popover-notification' : undefined;
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -157,6 +170,35 @@ export default function Dashboard() {
                         </p>
                         </Button>
                     </Link>
+                            <IconButton
+                                onClick={handleNotificationClick}
+                                aria-haspopup="true"
+                                style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">
+                                <Badge badgeContent={1} color="secondary">
+                                    <NotificationsIcon />
+                                </Badge>
+                            </IconButton>
+
+                            <Popover
+                                id={idNotification}
+                                open={openNotification}
+                                anchorEl={anchorElNotification}
+                                onClose={handleCloseNotification}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'center',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'center',
+                                }}
+                            >
+                                <div>
+                                    <p> place notifications here</p>
+                                </div>
+                            </Popover>
+
+
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
