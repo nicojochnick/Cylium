@@ -152,7 +152,7 @@ function Lander(props) {
                 <Box style = {{padding: 20, paddingLeft: 50}}>
                     <img style = {{height: 160, margin: -30, marginLeft: -60}} src = {pulse} />
                     <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Join the Marketplace for Actionable Feedback</p>
-                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source more feedback from colleagues and customers that push your product, team and career forward.</p>
+                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source more feedback from colleagues and customers that push your product, team or career forward.</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
