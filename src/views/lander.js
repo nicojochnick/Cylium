@@ -150,9 +150,9 @@ function Lander(props) {
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <img style = {{height: 160, margin: -30, marginLeft: -60}} src = {pulse} />
+                    <img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />
                     <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Join the Marketplace for Actionable Feedback</p>
-                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source more feedback from colleagues and customers that push your product, team or career forward.</p>
+                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward more feedback from colleagues that push you forward</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
@@ -207,7 +207,6 @@ function Lander(props) {
                           alignItems="center" container direction = "row">
                         <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url anywhere, including a work email signature or website</p>
 
-                        {/*<img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>*/}
                         <Box
                             flexWrap="wrap"
                             border = {1}
