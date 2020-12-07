@@ -13,12 +13,10 @@ class home extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div>
-            <Header/>
-                    <Lander/>
-                <div className="home">
-            </div>
-            </div>
+            <Grid style = {{backgroundColor: "white",height: '100vh',}}>
+                <Header/>
+                <Lander/>
+            </Grid>
         )
     }
 }

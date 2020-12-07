@@ -16,6 +16,7 @@ import email_feedboxx from "../assets/images/email_feedboxx.png"
 import Url from "../components/Share/URL"
 import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
+import pulse from "../assets/images/pulse.gif"
 
 import profileIllustration from "../assets/images/profileIllustration.png"
 import Popover from "@material-ui/core/Popover/Popover";
@@ -42,19 +43,14 @@ function Lander(props) {
     const handleClickReward = (event) => {
         setAnchorElReward(event.currentTarget);
     };
-
     const handleCloseReward = () => {
         setAnchorElReward(null);
     };
-
     const handleSendReward = (email, amount) => {
         console.log('yike')
     };
-
     const openReward = Boolean(anchorElReward);
     const idReward = openReward ? 'simple-popover-re' : undefined;
-
-
 
     const [contentState, setContentState] = React.useState(() =>
         null
@@ -94,7 +90,6 @@ function Lander(props) {
                 };
             }
         }
-
         return length;
     };
 
@@ -132,7 +127,7 @@ function Lander(props) {
 
             return 'handled';
         }
-    }
+    };
 
     const _handlePastedText = (pastedText) => {
         const currentContent = editorState.getCurrentContent();
@@ -145,18 +140,19 @@ function Lander(props) {
             return 'handled';
         }
     };
-
     return (
         <div className={classes.root}>
-        <Grid container style = {{padding: 10}} spacing={0}>
+        <Grid container style = {{padding: 10,}} spacing={0}>
             <Grid container
+                  style = {{backgroundColor: "white",height: '80vh',}}
                   direction="column"
                   justify="center"
                   alignItems="center"
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
-                    <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> The First Marketplace for User Feedback</p>
-                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}>  Buy and sell feedback that pushes products, teams and individuals forward.</p>
+                    <img style = {{height: 160, margin: -30, marginLeft: -60}} src = {pulse} />
+                    <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> The First Marketplace for Actionable Feedback</p>
+                    <p style = {{fontSize: 22, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback that pushes products, teams and individuals forward.</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
@@ -176,9 +172,8 @@ function Lander(props) {
                     </Grid>
                 </Box>
             </Grid>
-
-
             <Grid
+                style = {{backgroundColor: "white"}}
                 direction="column"
                 justify="center"
                 alignItems="center"
@@ -194,18 +189,16 @@ function Lander(props) {
                 >
                     <Grid justify="flex-start"
                           alignItems="flex-start" container direction = "column">
-                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique feedback url</p>
+                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 1: Sign up to create a unique feedback url for yourself or for your product</p>
                         <Grid container alignItems = "center" style = {{marginTop: 10, marginLeft: 0}}>
                         <Url big = {true} url = {'amy'} noShare = {true}/>
                         </Grid>
                         {/*<Url noShare={true} url={'amy'} />*/}
                     </Grid>
-
                     {/*<Divider style = {{marginBottom: 20}}/>*/}
-
                     <Grid justify="flex-start"
                           alignItems="center" container direction = "row">
-                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url anywhere, including your work email signature</p>
+                        <p style = {{marginBottom: 10, fontSize: 19, color: "#10102F", fontWeight: 600,}}> Step 2: Add your url anywhere, including a work email signature</p>
 
                         {/*<img style = {{height: 40, marginTop: 0}} src = {email_feedboxx}/>*/}
                         <Box
@@ -296,7 +289,7 @@ function Lander(props) {
                                                         ($10)</Button>
                                                     <Button onClick={() => handleSendReward('', 200)}
                                                             style={{backgroundColor: "#4545DF"}}> Send 200 Points
-                                                        ($20)</Button>
+                                                        3($20)</Button>
                                                 </ButtonGroup>
                                             </Popover>
                                     </div>
@@ -334,6 +327,7 @@ function Lander(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         // flexGrow: 1,
+
     },
     paper: {
         padding: theme.spacing(2),
