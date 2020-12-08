@@ -27,12 +27,26 @@ function Feed(props) {
     const [url, setURL] = React.useState(null);
     const handleDelete = async(id) => {await db.collection('feedback').doc(id).delete();};
 
-    const handleSendReward = async(email, points) => {
+    const handleSendReward = async(email, points, feedback) => {
         if (firebase.auth().currentUser) {
             let curremail = await firebase.auth().currentUser.email;
             console.log('sending');
-            await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points + 5))});
+            await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points))});
             await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)});
+            const res = await db.collection('user_transactions').add({
+                sender: curremail,
+                receiver: email,
+                amount: points,
+                anon: feedback.anon,
+                subject: feedback.subject,
+                url: feedback.url,
+                timeStamp: new Date()
+            });
+            db.collection('user_transactions').doc(res.id).update({
+                id: res.id
+            });
+
+
         }
     };
 
@@ -53,7 +67,6 @@ function Feed(props) {
                 querySnapshot.forEach(function (doc) {
                     feedback.push(doc.data());
                 });
-                console.log(feedback)
                 makeChrono(feedback);
             });
     }, []);
@@ -73,7 +86,7 @@ function Feed(props) {
                             <img style={{height: 60, margin: 0}} src={Pulse}/>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
-                            {feed.map((item) => <Feedback handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>)}
+                            {feed.map((item) => <Feedback user = {props.user} handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>)}
                         </Box>
                     </Grid>
                        <ShareBoxx email = {props.email} user = {props.user} url = {props.url}/>

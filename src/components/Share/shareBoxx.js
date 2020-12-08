@@ -33,7 +33,7 @@ function ShareBoxx(props) {
 
     return (
         <Grid style = {{width: '100%',}} xs={12} md={4} lg={3}>
-        <RewardTracker points = {points} />
+        <RewardTracker email = {props.email} points = {points} />
         <Box flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>
                <Url url = {props.url}/>
                 <Divider/>

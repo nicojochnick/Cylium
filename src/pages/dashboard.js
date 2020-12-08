@@ -45,6 +45,8 @@ import Feedbox from "../views/feedbox"
 import {db} from "../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
 import Transactions from "../views/transactions";
+import Feedback from "../components/Feedback/feedback";
+import Notification from "../components/Notifications/notification";
 
 
 export default function Dashboard() {
@@ -54,6 +56,7 @@ export default function Dashboard() {
     const [url, setURL] = React.useState(null);
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
+    const [notifications, setNotifications] = React.useState([]);
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -109,9 +112,16 @@ export default function Dashboard() {
                     setUser(doc.data())
                 }
             });
+
+        db.collection("user_transactions").where('receiver', '==', email)
+            .onSnapshot(function (querySnapshot) {
+                let notifications = [];
+                querySnapshot.forEach(function (doc) {
+                    notifications.push(doc.data());
+                });
+                setNotifications(notifications)
+            });
     }, []);
-
-
 
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -180,6 +190,7 @@ export default function Dashboard() {
                             </IconButton>
 
                             <Popover
+                                style = {{borderRadius: 10, margin: 20}}
                                 id={idNotification}
                                 open={openNotification}
                                 anchorEl={anchorElNotification}
@@ -193,9 +204,10 @@ export default function Dashboard() {
                                     horizontal: 'center',
                                 }}
                             >
-                                <div>
-                                    <p> place notifications here</p>
-                                </div>
+                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, minWidth:250}}>
+                                    {notifications.map((item) => <Notification item = {item}/>)}
+                                </Box>
+
                             </Popover>
 
 

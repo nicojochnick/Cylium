@@ -25,11 +25,14 @@ import CloseIcon from '@material-ui/icons/Close';
 const Feedback = (props) => {
     const classes = useStyles();
     const [didConfirm, setConfirm] = React.useState(false);
+    const [didNotConfirm, setNotConfirm] = React.useState(false);
+
     const [isConfirming, setIsConfirming] = React.useState(false);
     const [amount, setAmount] = React.useState(0);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorElReward, setAnchorElReward] = React.useState(null);
     const [openConfirm, setOpenConfirm] = React.useState(true);
+    const [openNotConfirm, setOpenNotConfirm] = React.useState(true);
 
 
     let editorState = null;
@@ -59,7 +62,12 @@ const Feedback = (props) => {
 
     const handleSendRewardConfirm = () => {
         setConfirm(true);
-        props.handleSendReward(props.item.email, amount)
+
+        if (props.user.points>amount) {
+            props.handleSendReward(props.item.email, amount, props.item)
+        } else {
+            setNotConfirm(true)
+        }
     };
 
     const handleSendRewardCancel = () => {
@@ -133,30 +141,63 @@ const Feedback = (props) => {
                 justify="flex-end"
                 alignItems="flex-end">
 
-                {(didConfirm)
-                    ? <div>
 
-                        <Collapse in={openConfirm}>
-                        <Alert
-                            action={
-                                <IconButton
-                                    aria-label="close"
-                                    color="inherit"
-                                    size="small"
-                                    onClick={() => {
-                                        setOpenConfirm(false);
-                                    }}
-                                >
-                                    <CloseIcon fontSize="inherit" />
-                                </IconButton>
-                            }
-                        >
-                            {amount} points successfully sent
-                        </Alert>
-                    </Collapse>
+                {(didConfirm)
+                    ?
+                    <div>
+                        {(didNotConfirm)
+                            ? <div>
+
+                                <Collapse in={openNotConfirm}>
+                                    <Alert severity={'error'}
+                                           action={
+                                               <IconButton
+                                                   aria-label="close"
+                                                   color="inherit"
+                                                   size="small"
+                                                   onClick={() => {
+                                                       setOpenNotConfirm(false);
+                                                   }}
+                                               >
+                                                   <CloseIcon fontSize="inherit"/>
+                                               </IconButton>
+                                           }
+                                    >
+                                        You do not have enough points. Please add more under "Points". Note: it takes 24
+                                        hours for your balance to update.
+                                    </Alert>
+                                </Collapse>
+
+                            </div>
+                            : <div>
+
+                                <Collapse in={openConfirm}>
+                                    <Alert
+                                        action={
+                                            <IconButton
+                                                aria-label="close"
+                                                color="inherit"
+                                                size="small"
+                                                onClick={() => {
+                                                    setOpenConfirm(false);
+                                                }}
+                                            >
+                                                <CloseIcon fontSize="inherit" />
+                                            </IconButton>
+                                        }
+                                    >
+                                        {amount} points successfully sent
+                                    </Alert>
+                                </Collapse>
+
+                            </div>
+                        }
 
                     </div>
+
+
                     :<div>
+
 
                     {(!isConfirming)
 

@@ -11,27 +11,73 @@ import Button from "@material-ui/core/Button";
 import FeedbackTracker from "../Analytics/feedbackTracker";
 import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField/TextField";
+import {db} from "../../api/firebase";
+import Collapse from "@material-ui/core/Collapse/Collapse";
+import Alert from "@material-ui/lab/Alert/Alert";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/core/SvgIcon/SvgIcon";
 
 function RewardTracker(props) {
     const [isTransacting, setIsTransacting] = React.useState(false);
+    const [error, setError] = React.useState(null)
     const [isCash, setIsCash] = React.useState(false);
     const [isAdd, setIsAdd] = React.useState(false);
     const [add, setAdd] = React.useState(0);
-    const [widthraw, setWithdraw] = React.useState(0);
+    const [withdraw, setWithdraw] = React.useState(0);
+    const [successAdd, setSuccessAdd] = React.useState(false);
+    const [successWithdraw, setSuccessWithDraw] = React.useState(false);
+    const [openConfirm, setOpenConfirm] = React.useState(true);
+
 
 
     const classes = useStyles();
-    let isSubscribed = props.isSubscribed;
 
-    const handleAddBalance = (amount, email,) => {
-        let timeCreated = Date.now();
-        //TODO create request
 
+    const handleAddBalance = async(email, amount,event) => {
+        event.preventDefault();
+        try {
+            const res = await db.collection('store_transactions').add({
+                amount: amount,
+                email: email,
+                type: "add_points",
+                timeCreated: Date.now()
+            });
+            db.collection('store_transactions').doc(res.id).update({
+                id: res.id
+            });
+
+
+            setSuccessAdd(true);
+            setIsTransacting(false)
+            console.log('Added document with ID: ', res.id);
+
+        } catch (error) {
+            console.log(error);
+            setError({error: error.message});
+        }
     };
 
-    const handleCashoutBalance = (amount, email,) => {
-        let timeCreated = Date.now();
-        //TODO create request
+    const handleCashoutBalance = async(amount, email, event) => {
+        event.preventDefault();
+        try {
+            const res = await db.collection('store_transactions').add({
+                amount: amount,
+                email: email,
+                type: "cash_points",
+                timeCreated: Date.now()
+            });
+            db.collection('store_transactions').doc(res.id).update({
+                id: res.id
+            });
+            setIsTransacting(false)
+
+            setSuccessWithDraw(true);
+            console.log('Added document with ID: ', res.id);
+
+        } catch (error) {
+            console.log(error);
+            setError({error: error.message});
+        }
     };
 
     const add_or_cash = (type) => {
@@ -48,7 +94,7 @@ function RewardTracker(props) {
 
     const handleCancel = () => {
         setIsTransacting(false)
-    }
+    };
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
@@ -127,7 +173,7 @@ function RewardTracker(props) {
                                     />
 
                                     <Button
-                                        onClick = {()=>handleCashoutBalance()}
+                                        onClick = {(event)=>handleAddBalance(props.email, add, event)}
                                         fullWidth
                                         style={{
                                             borderRadius: 8,
@@ -175,8 +221,9 @@ function RewardTracker(props) {
                                     />
 
                                     <Button
-                                        onClick = {()=>handleAddBalance()}
                                         fullWidth
+                                        onClick = {(event)=>handleCashoutBalance(props.email, withdraw, event)}
+
                                         style={{
                                             borderRadius: 8,
                                             margin: 20,
@@ -207,7 +254,37 @@ function RewardTracker(props) {
                                 :null
                             }
                         </div>
-                        : null
+                        :
+                        <div>
+                            {(successAdd || successWithdraw)
+
+                                ? <div style={{margin: 10}}>
+
+                                    <Collapse in={openConfirm}>
+                                        <Alert
+                                            action={
+                                                <IconButton
+                                                    aria-label="close"
+                                                    color="inherit"
+                                                    size="small"
+                                                    onClick={() => {
+                                                        setOpenConfirm(false);
+                                                    }}
+                                                >
+                                                    <CloseIcon fontSize="inherit"/>
+                                                </IconButton>
+                                            }
+                                        >
+                                            Your request will be completed in the next 24 hours. You will receive an
+                                            email confirmation.
+                                        </Alert>
+                                    </Collapse>
+
+                                </div>
+                                : null
+                            }
+
+                        </div>
 
                     }
 
