@@ -7,15 +7,14 @@ import Divider from "@material-ui/core/Divider";
 import { RiCoinsLine } from "react-icons/ri";
 
 
-
 function Notification(props) {
     return (
         <Grid container justify='center' alignItems = 'center' direction = 'column'>
-            <Grid style = {{margin: 20}} item direction = "row" justify='center' alignItems = 'flex-start'>
-                <RiCoinsLine size = {25} style = {{ color:'#4D6DF1'}}  color = {'#4D6DF1'} />
-                <p> {props.item.sender} just sent you {props.item.amount} points for your feedback - [{props.item.subject}] </p>
+            <Grid item direction = "row" justify='center' alignItems = 'flex-start'>
+                <RiCoinsLine size = {25} style = {{ margin: 20, color:'#4D6DF1'}}  color = {'#4D6DF1'} />
+                <p style = {{ margin: 20, marginTop: -16,}} > {props.item.sender} just sent you {props.item.amount} points for your feedback - [{props.item.subject}] </p>
+                <Divider/>
             </Grid>
-            <Divider style = {{color: 'grey'}} />
         </Grid>
     );
 }

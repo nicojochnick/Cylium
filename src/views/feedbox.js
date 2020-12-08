@@ -21,7 +21,6 @@ import logo from "../assets/images/logo.png";
 import firebase from 'firebase/app';
 
 
-
 import 'draft-js/dist/Draft.css';
 import Container from "@material-ui/core/Container";
 const MAX_LENGTH = 1500;
@@ -42,8 +41,6 @@ export default function Feedbox(props) {
     const [error, setError] = React.useState('');
     const [viewerEmail, setViewerEmail] = React.useState(null);
     const [viewerUser, setViewerUser] = React.useState(null);
-
-
 
     const handleSwitch = (event) => {
         setSwitch(!switchState);
@@ -217,7 +214,7 @@ export default function Feedbox(props) {
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{minHeight: '99vh',}}
+                style={{minHeight: '99vh'}}
                 overflow = 'auto'
             >
                 <Container component="main" maxWidth="sm">
@@ -226,23 +223,30 @@ export default function Feedbox(props) {
                     alignItems="center"
                     justify="center"
                     item xs={12}
-                    style = {{}}
                 >
                     {(!successSubmit) ?
                         <div>
-                        <Grid
+                            <Grid container alignItems = 'center' justify = 'center'>
+                                <img style = {{height: 50}} src = {logo} />
+                                <p style = {{textAlign: "center", margin: 10, fontSize: 18, }}>
+                                    This boxx has rewarded: {user.pointsRewarded} points = ${user.pointsRewarded/10}
+                                </p>
+                            </Grid>
+                            <Divider style ={{margin:10, marginBottom: 40}} />
+
+                            <Grid
                             container
                             wrap="nowrap"
-                            spacing={2}
+                            spacing={1}
                             justify="center"
                             alignItems="flex-start"
                         >
-                            <Grid style = {{marginLeft: 10}} item>
+                            <Grid style = {{marginBottom: 15}} item>
                                 <Box border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
                                 <Avatar src = {user.img_url_Profile.imgUrl} className={classes.large}/>
                                 </Box>
                             </Grid>
-                            <Grid item xs zeroMinWidth>
+                            <Grid item xs zeroMinWidth style = {{marginLeft:10}}>
                                 <p style = {{marginTop: 0, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
                                 <p style={{color: '#353C49'}}> {user.welcome} </p>
                             </Grid>
@@ -250,7 +254,7 @@ export default function Feedbox(props) {
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
                             <Box boxShadow={0}
                                  width={1}
-                                 style = {{minHeight: 350, boxShadow: "0px 10px 20px #BBC2E0"}}
+                                 style = {{minHeight: 350, marginTop: 15, boxShadow: "0px 10px 20px #BBC2E0"}}
                                  borderRadius={20}
                                  className={classes.box}>
                                 <Grid container direction = "row" alignItems='center' justify = "flex-start">
@@ -295,21 +299,23 @@ export default function Feedbox(props) {
                             { (viewerUser)
                                 ? null
                                 :
+                                <div>
+                                <p style = {{textAlign: "center", margin: 8}}> Please leave an email in order to get rewarded for this feedback. If you're anonymous, your email will not be shown to the recipient.</p>
                                 <TextField
                                     placeholder="start typing..."
                                     rows={11}
                                     type='email'
                                     fullWidth
-                                    value={email}
+                                    value={viewerEmail}
                                     onChange={e => setViewerEmail(e.target.value)}
                                     style={{margin: 10, marginRight: 20, marginTop: 5}}
                                     label="email address"
                                     variant="outlined"
                                     rowsMax={1}
                                 />
+                                </div>
 
                             }
-
 
                             <Grid
                                 container
@@ -320,6 +326,7 @@ export default function Feedbox(props) {
                             <Button
                                 className={classes.submitButton}
                                 variant="contained"
+                                fullWidth
                                 onClick={(event)=>handleSubmit(event)}
                                 style={{
                                     marginLeft: 10,
@@ -365,7 +372,6 @@ const useStyles = makeStyles((theme) => ({
         // display: 'start',
         // overflow: 'auto',
         // flexDirection: 'row',
-        margin: 10,
         marginBottom: 20,
         backgroundColor: '#FFFFFF'
     },
