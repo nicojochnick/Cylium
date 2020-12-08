@@ -47,8 +47,6 @@ function Feed(props) {
             db.collection('user_transactions').doc(res.id).update({
                 id: res.id
             });
-
-
         }
     };
 

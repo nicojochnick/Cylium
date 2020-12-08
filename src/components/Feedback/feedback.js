@@ -234,8 +234,10 @@ const Feedback = (props) => {
                                     aria-label="vertical contained primary button group"
                                     variant="contained"
                                 >
+                                    <Button onClick={() => handleSendReward(props.item.email, 5)}
+                                            style={{backgroundColor: "#AEAEF7"}}> Send 5 Points ($0.5)</Button>
                                     <Button onClick={() => handleSendReward(props.item.email, 10)}
-                                            style={{backgroundColor: "#AEAEF7"}}> Send 10 Points ($1)</Button>
+                                            style={{backgroundColor: "#A3A3EA"}}> Send 10 Points ($1)</Button>
                                     <Button onClick={() => handleSendReward(props.item.email, 25)}
                                             style={{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
                                     <Button onClick={() => handleSendReward(props.item.email, 50)}
