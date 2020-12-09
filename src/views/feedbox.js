@@ -226,11 +226,14 @@ export default function Feedbox(props) {
                 >
                     {(!successSubmit) ?
                         <div>
-                            <Grid container alignItems = 'center' justify = 'center'>
-                                <img style = {{height: 50}} src = {logo} />
-                                <p style = {{textAlign: "center", margin: 10, fontSize: 18, }}>
-                                    This boxx has rewarded: {user.pointsRewarded} points = ${user.pointsRewarded/10}
+                            <Grid container direction = "column" alignItems = 'center' justify = 'center'>
+                                <img style = {{height: 45}} src = {logo} />
+                                {(user.pointsRewarded)
+                                ? <p style = {{textAlign: "center", margin: 10, marginTop: 5, fontSize: 16, }}>
+                                    This Boxx has rewarded: {user.pointsRewarded} points = ${user.pointsRewarded/10}
                                 </p>
+                                    : null
+                                    }
                             </Grid>
                             <Divider style ={{margin:10, marginBottom: 40}} />
 

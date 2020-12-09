@@ -27,6 +27,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
+import logowhite from "../assets/images/logowhite.png"
+
 import { BiTransferAlt, BiEdit, BiHome} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
@@ -115,7 +117,7 @@ export default function Dashboard() {
 
         db.collection("user_transactions").where('receiver', '==', email)
             .onSnapshot(function (querySnapshot) {
-                let notifications = [];
+                let notifications = [{sender: "help@feedboxx.io", amount: 25 }];
                 querySnapshot.forEach(function (doc) {
                     notifications.push(doc.data());
                 });
@@ -176,7 +178,7 @@ export default function Dashboard() {
                         backgroundColor: '#4D6DF1',
                     }}>
                         <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
-                        Go to Live Box
+                        Go to My Boxx
                         </p>
                         </Button>
                     </Link>
@@ -204,7 +206,7 @@ export default function Dashboard() {
                                     horizontal: 'center',
                                 }}
                             >
-                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, minWidth:250}}>
+                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, maxWidth:350}}>
                                     {notifications.map((item) => <Notification item = {item}/>)}
                                 </Box>
 
@@ -253,9 +255,9 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <img style = {{height: 48}} src ={logo}/>
+                    <img style = {{height: 44, marginLeft: 10}} src ={logowhite}/>
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
+                        <ChevronLeftIcon style = {{color:'white'}} color = "white"  />
                     </IconButton>
                 </div>
                 <Divider />
@@ -263,9 +265,9 @@ export default function Dashboard() {
                         <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <BiHome size = {25}/>
+                                    <BiHome size = {25} style = {{color:'white'}}  />
                                 </ListItemIcon>
-                                <ListItemText primary="Feedback" />
+                                <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Feedback" />
                             </ListItem>
                         </Link>
                         <Link
@@ -276,21 +278,19 @@ export default function Dashboard() {
                               }} >
                             <ListItem button>
                                 <ListItemIcon>
-                                    <BiEdit size = {25}/>
+                                    <BiEdit size = {25} style = {{color:'white'}} />
                                 </ListItemIcon>
-                                <ListItemText  primary="Edit" />
-
+                                <ListItemText  style = {{color: 'white', fontWeight: 600}} primary="Edit" />
                             </ListItem>
                         </Link>
-
-                        <Link to="/transactions"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <BiTransferAlt size = {25}/>
-                                </ListItemIcon>
-                                <ListItemText primary="Transactions" />
-                            </ListItem>
-                        </Link>
+                        {/*<Link to="/transactions"  style={{ color:"#3C3F48", textDecoration: 'none' }}>*/}
+                        {/*    <ListItem button>*/}
+                        {/*        <ListItemIcon>*/}
+                        {/*            <BiTransferAlt size = {25}/>*/}
+                        {/*        </ListItemIcon>*/}
+                        {/*        <ListItemText primary="Transactions" />*/}
+                        {/*    </ListItem>*/}
+                        {/*</Link>*/}
                     <div>
                     </div>
                 </List>
@@ -309,9 +309,9 @@ export default function Dashboard() {
                             <Route path="/settings">
                                 <Settings/>
                             </Route>
-                            <Route path="/transactions">
-                                <Transactions/>
-                            </Route>
+                            {/*<Route path="/transactions">*/}
+                            {/*    <Transactions/>*/}
+                            {/*</Route>*/}
                         </Switch>
                     </main>
                     : <p> LOADING</p>
@@ -322,7 +322,7 @@ export default function Dashboard() {
     );
 };
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -362,6 +362,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     drawerPaper: {
+        backgroundColor: '#4D6DF1',
         position: 'relative',
         whiteSpace: 'nowrap',
         width: drawerWidth,

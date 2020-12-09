@@ -98,7 +98,7 @@ function RewardTracker(props) {
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-            <Box boxShadow = {4} className={classes.box}>
+            <Box  style = {{boxShadow: "0px 5px 10px #D7D7DA",}} className={classes.box}>
                 <h2
                     style ={{
                         margin: 15,

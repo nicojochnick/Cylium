@@ -40,7 +40,7 @@ function Lander(props) {
     const [openConfirm, setOpenConfirm] = React.useState(true);
     const [myTopics, setMyTopics] = React.useState([]);
     const [user, setUser] = React.useState({
-        name: "Angela | Product User",
+        name: "Angela | Client",
         img_url_Profile: {imgURL:null},
         welcome: "While I love the new features, I wish it was easier to navigate through the app. I'm constantly switching between views."})
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
@@ -149,7 +149,7 @@ function Lander(props) {
     };
     return (
         <div className={classes.root}>
-        <Grid container style = {{padding: 10,}} spacing={3}>
+        <Grid container style = {{padding: 10,}} spacing={2}>
             <Grid container
                   style = {{height: '80vh',}}
                   direction="column"
@@ -159,7 +159,7 @@ function Lander(props) {
                 <Box style = {{padding: 20, paddingLeft: 50}}>
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
                     <p style = {{fontSize: 60, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Every email is a chance for feedback</p>
-                    <p style = {{fontSize: 19, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback using a link in your email signature</p>
+                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback using a link in your email signature</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
@@ -204,7 +204,7 @@ function Lander(props) {
                         <p style ={{color: '#8B8FA0',margin: 0,  fontSize: 17 }}> Mark Anderson </p>
                         <p style ={{color: '#8B8FA0',margin: 0, fontSize: 17}}> Product Manager </p>
                         <Grid direction='row' container>
-                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 16, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 16, marginLeft: 3, }}>here</p>
+                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 17, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 17, marginLeft: 3, }}>here</p>
                         </Grid>
                     </Grid>
                     <Divider/>
