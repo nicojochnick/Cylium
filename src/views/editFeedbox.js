@@ -35,7 +35,6 @@ function EditFeedbox(props) {
     // if (props.user && props.user.img_url_Profile && props.user.img_url_Profile.imgUrl){
     //     allInputs = props.user.img_url_Profile;
     // }
-
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState( false);
     const [successSubmit, setSuccess] = React.useState( false);
@@ -198,7 +197,7 @@ function EditFeedbox(props) {
                     </Grid>
                     <Grid style = {{marginTop: 20}} item>
                         <TextField
-                            placeholder="consider including three areas where you want feedback..."
+                            placeholder="add a quick welcome note or ask for specific feedback"
                             multiline
                             rows={10}
                             fullWidth={true}

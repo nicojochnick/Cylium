@@ -250,8 +250,8 @@ export default function Feedbox(props) {
                                 </Box>
                             </Grid>
                             <Grid item xs zeroMinWidth style = {{marginLeft:10}}>
-                                <p style = {{marginTop: 0, marginBottom: -9, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
-                                <p style={{color: '#353C49'}}> {user.welcome} </p>
+                                <p style = {{marginTop: 0, marginBottom: -13, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
+                                <p style={{color: '#353C49', fontSize: 18}}> {user.welcome} </p>
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
