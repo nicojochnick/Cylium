@@ -41,35 +41,43 @@ export default function Feedbox(props) {
     const [error, setError] = React.useState('');
     const [viewerEmail, setViewerEmail] = React.useState(null);
     const [viewerUser, setViewerUser] = React.useState(null);
+    const [withConfirm, setWithConfirm] = React.useState(false);
+    const [allConfirm, setAllConfirm] = React.useState(false);
+
 
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            console.log(contentState)
-            console.log('submitting' + feedback + id);
-            //write to store
-            const res = await db.collection('feedback').add({
-                url: id,
-                anon: switchState,
-                email: viewerEmail,
-                subject: subject,
-                feedback: contentState,
-                timeStamp: new Date()
-            });
-            db.collection('feedback').doc(res.id).update({
-                id: res.id
-            });
 
-            setSuccess(true);
-            console.log('Added document with ID: ', res.id);
+        if (viewerUser || withConfirm) {
+            event.preventDefault();
+            try {
+                console.log(contentState)
+                console.log('submitting' + feedback + id);
+                //write to store
+                const res = await db.collection('feedback').add({
+                    url: id,
+                    anon: switchState,
+                    email: viewerEmail,
+                    subject: subject,
+                    feedback: contentState,
+                    timeStamp: new Date()
+                });
+                db.collection('feedback').doc(res.id).update({
+                    id: res.id
+                });
 
-        } catch (error) {
-            console.log(error)
-            setError({error: error.message});
+                setSuccess(true);
+                console.log('Added document with ID: ', res.id);
+
+            } catch (error) {
+                console.log(error)
+                setError({error: error.message});
+            }
+        } else {
+            setWithConfirm(true)
         }
     };
 
@@ -217,7 +225,7 @@ export default function Feedbox(props) {
                 style={{minHeight: '99vh'}}
                 overflow = 'auto'
             >
-                <Container component="main" maxWidth="sm">
+                <Container component="main" maxWidth='sm'>
                 <Grid
                     direction="column"
                     alignItems="center"
@@ -226,22 +234,14 @@ export default function Feedbox(props) {
                 >
                     {(!successSubmit) ?
                         <div>
-                            <Grid container direction = "column" alignItems = 'center' justify = 'center'>
-                                <img style = {{height: 45}} src = {logo} />
-                                {(user.pointsRewarded)
-                                ? <p style = {{textAlign: "center", margin: 10, marginTop: 5, fontSize: 16, }}>
-                                    This Boxx has rewarded: {user.pointsRewarded} points = ${user.pointsRewarded/10}
-                                </p>
-                                    : null
-                                    }
-                            </Grid>
-                            <Divider style ={{margin:10, marginBottom: 40}} />
+
 
                             <Grid
                             container
                             wrap="nowrap"
                             spacing={1}
                             justify="center"
+                            style = {{paddingTop: 40}}
                             alignItems="flex-start"
                         >
                             <Grid style = {{marginBottom: 15}} item>
@@ -257,7 +257,7 @@ export default function Feedbox(props) {
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
                             <Box boxShadow={0}
                                  width={1}
-                                 style = {{minHeight: 350, marginTop: 15, boxShadow: "0px 10px 20px #BBC2E0"}}
+                                 style = {{minHeight: 400, marginTop: 15, boxShadow: "0px 10px 20px #BBC2E0"}}
                                  borderRadius={20}
                                  className={classes.box}>
                                 <Grid container direction = "row" alignItems='center' justify = "flex-start">
@@ -303,19 +303,26 @@ export default function Feedbox(props) {
                                 ? null
                                 :
                                 <div>
-                                <p style = {{textAlign: "center", margin: 8}}> Please leave an email in order to get rewarded for this feedback. If you're anonymous, your email will not be shown to the recipient.</p>
-                                <TextField
-                                    placeholder="start typing..."
-                                    rows={11}
-                                    type='email'
-                                    fullWidth
-                                    value={viewerEmail}
-                                    onChange={e => setViewerEmail(e.target.value)}
-                                    style={{margin: 10, marginRight: 20, marginTop: 5}}
-                                    label="email address"
-                                    variant="outlined"
-                                    rowsMax={1}
-                                />
+                                    {(withConfirm)
+                                       ?<div>
+                                        <p style={{textAlign: "center", margin: 8}}> Please leave an email in order to
+                                            get rewarded for this feedback. If you're anonymous, your email will not be
+                                            shown to the recipient.</p>
+                                        < TextField
+                                        placeholder="start typing..."
+                                        rows={11}
+                                        type='email'
+                                        fullWidth
+                                        value={viewerEmail}
+                                        onChange={e => setViewerEmail(e.target.value)}
+                                        style={{margin: 10, marginRight: 20, marginTop: 5}}
+                                        label="email address"
+                                        variant="outlined"
+                                        rowsMax={1}
+                                        />
+                                       </div>
+                                        :null
+                                    }
                                 </div>
 
                             }
@@ -343,6 +350,17 @@ export default function Feedbox(props) {
                             </Button>
                             </Grid>
                         {/*</form>*/}
+
+                            <Grid container direction = "column" alignItems = 'center' justify = 'center'>
+                                {(user.pointsRewarded)
+                                    ? <p style = {{textAlign: "center", margin: 0, marginTop: 5, fontSize: 15, fontWeight: 500 }}>
+                                        This form has rewarded ${user.pointsRewarded/10} for feedback given.
+                                    </p>
+                                    : null
+                                }
+                                <img style = {{height: 40}} src = {logo} />
+
+                            </Grid>
                         </div>
                         :
                         <div>
@@ -353,6 +371,7 @@ export default function Feedbox(props) {
                             <img  style = {{height: 50, margin: -10}} src = {logo} />
                         </div>
                     }
+
                 </Grid>
                 </Container>
             </Grid>
@@ -394,8 +413,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
+        width: theme.spacing(6),
+        height: theme.spacing(6),
         backgroundColor: "#10102F"
     },
 

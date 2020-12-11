@@ -30,10 +30,8 @@ function Feed(props) {
     const handleSendReward = async(email, points, feedback) => {
         if (firebase.auth().currentUser) {
             let curremail = await firebase.auth().currentUser.email;
-            console.log('sending');
             await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points))});
             await db.collection('users').doc(curremail).update({pointsRewarded: firebase.firestore.FieldValue.increment(points)});
-
             await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)});
             const res = await db.collection('user_transactions').add({
                 sender: curremail,

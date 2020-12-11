@@ -55,13 +55,30 @@ function EditFeedbox(props) {
         //TODO: send data to firestore
         event.preventDefault();
         try {
-            await handleFireBaseUpload(event, imageAsFile)
+            await handleFireBaseUpload(event, imageAsFile);
             //write to store
+            let pr = 0;
+            let sfte = false;
+            let p = 25;
+            if (props.user.points) {
+                p = props.user.points
+            };
+            if (props.user.sendFeedbackToEmail) {
+                sfte = props.user.sendFeedbackToEmail
+            };
+
+            if (props.user.pointsRewarded) {
+                pr = props.user.pointsRewarded
+            };
+
             await db.collection('users').doc(props.email).set({
                 name: name,
                 welcome: welcome,
                 url: props.url,
                 img_url_Profile: imageAsUrl,
+                points: p,
+                pointsRewarded: pr,
+                sendFeedbackToEmail: sfte,
             });
             setSuccess(true);
             setName('');

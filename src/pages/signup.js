@@ -60,32 +60,32 @@ class signup extends Component {
                 console.error("Error writing document: ", error);
             });
 
-            const res = await db.collection('feedback').add({
-                email: "help@feedboxx.io",
-                url: url.toString(),
-                subject: "Welcome to FeedBoxx! 🗳️🤗",
-                feedback: intro,
-                name: "The FeedBoxx Team",
-                timeStamp: new Date(),
-                anon: false,
-
-            }).then(function() {
-                console.log("Feedback written successfully!");
-            }).catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-
-
-
-            db.collection('feedback').doc(res.id).update({
-                id: res.id
-
-
-            }).then(function() {
-                console.log("Feedback ID added successfully!");
-            }).catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
+            // const res = await db.collection('feedback').add({
+            //     email: "help@feedboxx.io",
+            //     url: url.toString(),
+            //     subject: "Welcome to FeedBoxx! 🗳️🤗",
+            //     feedback: intro,
+            //     name: "The FeedBoxx Team",
+            //     timeStamp: new Date(),
+            //     anon: false,
+            //
+            // }).then(function() {
+            //     console.log("Feedback written successfully!");
+            // }).catch(function(error) {
+            //     console.error("Error writing document: ", error);
+            // });
+            //
+            //
+            //
+            // db.collection('feedback').doc(res.id).update({
+            //     id: res.id
+            //
+            //
+            // }).then(function() {
+            //     console.log("Feedback ID added successfully!");
+            // }).catch(function(error) {
+            //     console.error("Error writing document: ", error);
+            // });
 
             // analytics.logEvent('user signed up');
 

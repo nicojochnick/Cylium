@@ -275,8 +275,7 @@ function RewardTracker(props) {
                                                 </IconButton>
                                             }
                                         >
-                                            Your request will be completed in the next 24 hours. You will receive an
-                                            email confirmation.
+                                            Your request will be completed in the next 24 hours. Keep an eye on your email.
                                         </Alert>
                                     </Collapse>
 
