@@ -30,7 +30,7 @@ function Url(props) {
                         fontWeight: 600,
                         margin: 10,
                     }}>
-                    SHARE
+                    COPY
                 </h2>
                 :null
             }

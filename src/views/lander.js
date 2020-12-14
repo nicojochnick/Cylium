@@ -259,16 +259,16 @@ function Lander(props) {
                                                             ?
                                                             <div>
                                                                 <Grid container direction='row'>
-                                                                    <Box display="flex" flexDirection = "column"  justifyContent="center">
+                                                                    <Box display="flex" flexDirection = "column"  justifyContent="flex-start">
                                                                         <TextField
                                                                             placeholder="1-2 sentences"
                                                                             multiline
-                                                                            rows={10}
+                                                                            rows={12}
                                                                             style = {{marginRight: 10, marginBottom: 10, minWidth: 220}}
                                                                             onChange={e => console.log(e.target.value)}
                                                                             label="thank you message"
                                                                             variant="outlined"
-                                                                            rowsMax={7}
+                                                                            rowsMax={12}
                                                                         />
                                                                         {(amount)
                                                                             ? <p> + {amount} points attached </p>
@@ -286,7 +286,15 @@ function Lander(props) {
                                                                         {/*<p style = {{textAlign: 'center'}}> Add a Reward (optional) </p>*/}
                                                                         <Button variant="contained"
                                                                                 onClick={() => setGiftCard('Gift Card - Starbucks $5')}
-                                                                                style={{backgroundColor: "#0DB478",marginBottom: 20, color: "white"}}> $5 Starbucks Gift Card</Button>
+                                                                                style={{backgroundColor: "#0DB478",marginBottom: 5, color: "white"}}> $5 Starbucks Gift Card</Button>
+                                                                        <Button variant="contained"
+                                                                                onClick={() => setGiftCard( 'Gift Card - Chipotle $10')}
+                                                                                style={{backgroundColor: "#DA2E00",marginBottom: 5, color: "white"}}> $10 Chipotle Gift Card</Button>
+
+                                                                        <Button variant="contained"
+                                                                                onClick={() => setGiftCard( 'Gift Card - Panera $10')}
+                                                                                style={{backgroundColor: "#D4C63D" ,marginBottom: 20, color: "white"}}> $10 Panera Gift Card</Button>
+
 
                                                                         <ButtonGroup
                                                                             orientation="vertical"
