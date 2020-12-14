@@ -261,7 +261,7 @@ function Lander(props) {
                                                                 <Grid container direction='row'>
                                                                     <Box display="flex" flexDirection = "column"  justifyContent="flex-start">
                                                                         <TextField
-                                                                            placeholder="1-2 sentences"
+                                                                            placeholder="start typing..."
                                                                             multiline
                                                                             rows={12}
                                                                             style = {{marginRight: 10, marginBottom: 10, minWidth: 220}}
@@ -271,12 +271,12 @@ function Lander(props) {
                                                                             rowsMax={12}
                                                                         />
                                                                         {(amount)
-                                                                            ? <p> + {amount} points attached </p>
+                                                                            ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}}> + {amount} points attached </p>
                                                                             : null
 
                                                                         }
                                                                         {(giftCard)
-                                                                            ? <p> + {giftCard} </p>
+                                                                            ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}} > + {giftCard} </p>
                                                                             : null
 
                                                                         }
@@ -293,7 +293,7 @@ function Lander(props) {
 
                                                                         <Button variant="contained"
                                                                                 onClick={() => setGiftCard( 'Gift Card - Panera $10')}
-                                                                                style={{backgroundColor: "#D4C63D" ,marginBottom: 20, color: "white"}}> $10 Panera Gift Card</Button>
+                                                                                style={{backgroundColor: "#C1AD3F" ,marginBottom: 20, color: "white"}}> $10 Panera Gift Card</Button>
 
 
                                                                         <ButtonGroup

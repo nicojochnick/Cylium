@@ -50,8 +50,8 @@ class signup extends Component {
                 email: this.state.email,
                 url: url,
                 img_url_Profile: {imgUrl: null},
-                welcome: "...",
-                name: "...",
+                welcome: "feel free to leave any kind of feedback",
+                name: "name | title",
                 points: 25,
 
             }).then(function() {

@@ -283,22 +283,22 @@ const Feedback = (props) => {
                                         <Grid container direction='row'>
                                         <Box display="flex" flexDirection = "column"  alignItems = 'flex-start' justifyContent="flex-start">
                                         <TextField
-                                            placeholder="1-2 sentences"
+                                            placeholder="start typing..."
                                             multiline
                                             rows={12}
                                             style = {{marginRight: 10, marginBottom: 10, minWidth: 220}}
                                             onChange={e => handleThankYouMessage(e.target.value)}
                                             label="thank you message"
                                             variant="outlined"
-                                            rowsMax={10}
+                                            rowsMax={14}
                                         />
                                             {(amount)
-                                                ? <p> + {amount} points attached </p>
+                                                ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}}> + {amount} points attached </p>
                                                 : null
 
                                             }
                                             {(giftCard)
-                                                ? <p> + {giftCard} </p>
+                                                ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}}> + {giftCard} </p>
                                                 : null
 
                                             }
@@ -315,7 +315,7 @@ const Feedback = (props) => {
 
                                             <Button variant="contained"
                                                     onClick={() => handleSendReward(props.item.email, 5, 'Giftcard', 'Panera - $10')}
-                                                    style={{backgroundColor: "#D4C63D" ,marginBottom: 20, color: "white"}}> $10 Panera Gift Card</Button>
+                                                    style={{backgroundColor: "#C1AD3F" ,marginBottom: 20, color: "white"}}> $10 Panera Gift Card</Button>
 
                                         <ButtonGroup
                                         orientation="vertical"
