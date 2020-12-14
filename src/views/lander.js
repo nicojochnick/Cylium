@@ -251,7 +251,7 @@ function Lander(props) {
                                                     horizontal: 'left',
                                                 }}
                                             >
-                                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} >
+                                                <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {5} >
                                                     <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20,}}>
                                                         {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
                                                         {/*<Divider style={{marginBottom:10}}/>*/}
@@ -292,8 +292,8 @@ function Lander(props) {
                                                                                 style={{backgroundColor: "#DA2E00",marginBottom: 5, color: "white"}}> $10 Chipotle Gift Card</Button>
 
                                                                         <Button variant="contained"
-                                                                                onClick={() => setGiftCard( 'Gift Card - Panera $10')}
-                                                                                style={{backgroundColor: "#C1AD3F" ,marginBottom: 20, color: "white"}}> $10 Panera Gift Card</Button>
+                                                                                onClick={() => setGiftCard( 'Gift Card - Amazon $15')}
+                                                                                style={{backgroundColor: "#F29736" ,marginBottom: 20, color: "white"}}> $15 Amazon Gift Card</Button>
 
 
                                                                         <ButtonGroup
