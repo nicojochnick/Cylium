@@ -29,6 +29,7 @@ const Feedback = (props) => {
     const classes = useStyles();
     const [didConfirm, setConfirm] = React.useState(false);
     const [didNotConfirm, setNotConfirm] = React.useState(false);
+    const [error, setError] = React.useState(null)
 
     const [isConfirming, setIsConfirming] = React.useState(false);
     const [amount, setAmount] = React.useState(0);
@@ -38,6 +39,7 @@ const Feedback = (props) => {
     const [anchorElReward, setAnchorElReward] = React.useState(null);
     const [openConfirm, setOpenConfirm] = React.useState(true);
     const [openNotConfirm, setOpenNotConfirm] = React.useState(true);
+    const [thankYouMessage, setThankYouMessage] = React.useState(null);
 
 
     let editorState = null;
@@ -46,7 +48,7 @@ const Feedback = (props) => {
     }
 
     const handleThankYouMessage = (message) => {
-        console.log(message)
+        setThankYouMessage(message)
 
     };
 
@@ -76,19 +78,23 @@ const Feedback = (props) => {
                 setGiftCard(giftcard)
             }
 
-
-
         } else {
             setAmount(amount);
-            // setIsConfirming(true);
+        }
+    };
+
+    const settingConfirm = () => {
+        if (thankYouMessage) {
+            setIsConfirming(true);
+        } else {
+            setError('add a message')
         }
     };
 
     const handleSendRewardConfirm = () => {
         setConfirm(true);
-
         if (props.user.points>amount) {
-            props.handleSendReward(props.item.email, amount, props.item)
+            props.handleSendReward(props.item.email, amount, props.item, thankYouMessage, giftCard )
         } else {
             setNotConfirm(true)
         }
@@ -210,7 +216,7 @@ const Feedback = (props) => {
                                             </IconButton>
                                         }
                                     >
-                                        {amount} points successfully sent
+                                        thank you successfully sent
                                     </Alert>
                                 </Collapse>
 
@@ -311,9 +317,15 @@ const Feedback = (props) => {
 
                                     <Button
                                         fullWidth
-                                        onClick={() => setIsConfirming(true)}
+                                        onClick={() => settingConfirm()}
                                         style={{backgroundColor: "#10102F", marginTop: 10}}> <p style={{color:"white", margin:2}}> Send </p>
                                     </Button>
+                                    {(error)
+                                        ? <p style = {{color: 'red', textAlign: 'center'}}> {error} </p>
+                                        : null
+
+
+                                    }
 
                                 </Container>
 

@@ -27,7 +27,7 @@ function Feed(props) {
     const [url, setURL] = React.useState(null);
     const handleDelete = async(id) => {await db.collection('feedback').doc(id).delete();};
 
-    const handleSendReward = async(email, points, feedback) => {
+    const handleSendReward = async(email, points, feedback, thankYouMessage, giftcard) => {
         if (firebase.auth().currentUser) {
             let curremail = await firebase.auth().currentUser.email;
             await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points))});
@@ -39,8 +39,11 @@ function Feed(props) {
                 amount: points,
                 anon: feedback.anon,
                 subject: feedback.subject,
+                thankYouMessage: thankYouMessage,
+                giftcard: giftcard,
                 url: feedback.url,
                 timeStamp: new Date()
+
             });
             db.collection('user_transactions').doc(res.id).update({
                 id: res.id
