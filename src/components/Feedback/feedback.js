@@ -32,6 +32,8 @@ const Feedback = (props) => {
 
     const [isConfirming, setIsConfirming] = React.useState(false);
     const [amount, setAmount] = React.useState(0);
+    const [giftCard, setGiftCard] = React.useState(null);
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorElReward, setAnchorElReward] = React.useState(null);
     const [openConfirm, setOpenConfirm] = React.useState(true);
@@ -68,6 +70,12 @@ const Feedback = (props) => {
     const handleSendReward = (email, amount, type, giftcard) => {
 
         if (type == 'Giftcard') {
+            if (giftCard) {
+                setGiftCard(null)
+            } else {
+                setGiftCard(giftcard)
+            }
+
 
 
         } else {
@@ -226,7 +234,7 @@ const Feedback = (props) => {
 
                             }}>
                                 <p style={{color: 'white', margin: 3, fontWeight: 600}}>
-                                    Send Reward
+                                    Send Thank You
                                 </p>
                             </Button>
                             <Popover
@@ -245,7 +253,7 @@ const Feedback = (props) => {
                                     horizontal: 'left',
                                 }}
                             >
-                                <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20}}>
+                                <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20,}}>
                                     {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
                                     {/*<Divider style={{marginBottom:10}}/>*/}
                                     <Grid container direction='row'>
@@ -262,6 +270,11 @@ const Feedback = (props) => {
                                         />
                                             {(amount)
                                                 ? <p> + {amount} points attached </p>
+                                                : null
+
+                                            }
+                                            {(giftCard)
+                                                ? <p> + {giftCard} </p>
                                                 : null
 
                                             }
@@ -309,7 +322,7 @@ const Feedback = (props) => {
                         </div>
                         :
                         <Box border={1} borderRadius={10} borderColor={"#3162F0"} style={{padding: 10}}>
-                            <p> Please confirm you want to send the author of this feedback {amount} points.</p>
+                            <p> Please confirm you want to send the author of this feedback {amount} points and/or {giftCard} gift card.</p>
                             <Button color='primary' style={{margin: 10}} variant="outlined"
                                     onClick={() => handleSendRewardConfirm()}> Confirm </Button>
                             <Button variant="outlined" style={{margin: 10}}
