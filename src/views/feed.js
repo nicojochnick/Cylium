@@ -33,6 +33,9 @@ function Feed(props) {
             await db.collection('users').doc(curremail).update({points: firebase.firestore.FieldValue.increment(-(points))});
             await db.collection('users').doc(curremail).update({pointsRewarded: firebase.firestore.FieldValue.increment(points)});
             await db.collection('users').doc(email).update({points: firebase.firestore.FieldValue.increment(points)});
+
+            await db.collection('feedback').doc(feedback.id).update({thanked: true});
+
             const res = await db.collection('user_transactions').add({
                 sender: curremail,
                 receiver: email,

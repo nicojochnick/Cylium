@@ -63,6 +63,7 @@ export default function Feedbox(props) {
                     email: viewerEmail,
                     subject: subject,
                     feedback: contentState,
+                    thanked: false,
                     timeStamp: new Date()
                 });
                 db.collection('feedback').doc(res.id).update({

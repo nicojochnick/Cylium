@@ -18,6 +18,8 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
 import Container from '@material-ui/core/Container';
+import { BsCheck } from "react-icons/bs";
+
 
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
@@ -233,20 +235,29 @@ const Feedback = (props) => {
                     :<div>
 
 
-                    {(true)
+                  <div>
+                      {(!props.item.thanked)
+                         ? <Button onClick={handleClickReward} variant="contained" noWrap style={{
+                              borderRadius: 5,
+                              margin: 10,
+                              marginRight: 20,
+                              backgroundColor: '#4D6DF1',
 
-                        ? <div>
-                            <Button onClick={handleClickReward} variant="contained" noWrap style={{
-                                borderRadius: 5,
-                                margin: 10,
-                                marginRight: 20,
-                                backgroundColor: '#4D6DF1',
+                          }}>
+                              <p style={{color: 'white', margin: 3, fontWeight: 600}}>
+                                  Send Thank You
+                              </p>
+                          </Button>
+                          :
+                          <Box display = "flex" flexDirection = "row">
 
-                            }}>
-                                <p style={{color: 'white', margin: 3, fontWeight: 600}}>
-                                    Send Thank You
-                                </p>
-                            </Button>
+                              <Grid   justify = "flex-start" alignItems='center' direction = "row" container>
+                                  <BsCheck style = {{color: '#4CCD7B'}} size = {20} />
+                                  <p style = {{fontSize: 16, fontWeight: 500, margin: 10, color:"#4CCD7B"}}>Thank You Sent</p>
+                              </Grid>
+                          </Box>
+                      }
+
                             <Popover
                                 borderRadius = {20}
                                 style={{borderRadius: 20}}
@@ -357,16 +368,6 @@ const Feedback = (props) => {
                             </Popover>
 
                         </div>
-                        :
-                        <Box border={1} borderRadius={10} borderColor={"#3162F0"} style={{padding: 10}}>
-                            <p> Please confirm you want to send the author of this feedback {amount} points and/or {giftCard} gift card.</p>
-                            <Button color='primary' style={{margin: 10}} variant="outlined"
-                                    onClick={() => handleSendRewardConfirm()}> Confirm </Button>
-                            <Button variant="outlined" style={{margin: 10}}
-                                    onClick={() => handleSendRewardCancel()}> Cancel </Button>
-                        </Box>
-
-                }
                     </div>
                 }
             </Grid>
