@@ -1,8 +1,6 @@
 import React from 'react';
-
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
@@ -15,23 +13,17 @@ import mscott from "../assets/images/mscott.png";
 import email_feedboxx from "../assets/images/email_feedboxx.png"
 import boxx from "../assets/images/boxx.png"
 import { HiOutlineMail,HiOutlineTrendingUp } from "react-icons/hi";
-
-
 import Url from "../components/Share/URL"
 import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
 import pulse from "../assets/images/pulse.gif"
-
 import profileIllustration from "../assets/images/profileIllustration.png"
 import Popover from "@material-ui/core/Popover/Popover";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 const MAX_LENGTH = 1500;
-
 let prefill = ''; //Prefill the feedback box with some feedback. You want to have a full example.
 
-
 function Lander(props) {
-
     const [feedback, setFeedback] = React.useState('');
     const [subject, setSubject] = React.useState('');
     const [email, setEmail] = React.useState('');
@@ -158,8 +150,8 @@ function Lander(props) {
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
-                    <p style = {{fontSize: 60, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Every email is a chance for feedback</p>
-                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback from customers, clients and colleagues using a link in your email signature</p>
+                    <p style = {{fontSize: 60, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> The inbox designed for feedback</p>
+                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and recognize feedback from customers, clients and colleagues using a link in your email signature</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
@@ -186,8 +178,6 @@ function Lander(props) {
                     </Grid>
                 </Box>
             </Grid>
-
-
             <Grid
                 direction="column"
                 justify="center"
@@ -218,7 +208,7 @@ function Lander(props) {
                         >
                             <Grid container justify='flex-start' alignItems='center' direction = "row">
                                 {/*<img  style = {{height: 50,}} src = {boxx} />*/}
-                                <p style = {{fontSize: 23, fontWeight: 600, marginBottom: 20, color:"#10102F"}} >Step 2. Reward</p>
+                                <p style = {{fontSize: 23, fontWeight: 600, marginBottom: 20, color:"#10102F"}} >Step 2. Recognize</p>
                                 <HiOutlineTrendingUp style = {{marginLeft: 5}} size = {25} />
 
                             </Grid>
@@ -240,7 +230,7 @@ function Lander(props) {
 
                                             }}>
                                                 <p style={{color: 'white', margin: 3, fontWeight: 600}}>
-                                                    Send Reward
+                                                    Send Thank You
                                                 </p>
                                             </Button>
                                             <Popover

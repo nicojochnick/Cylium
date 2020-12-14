@@ -17,9 +17,12 @@ import { FiMoreVertical } from "react-icons/fi";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
+import Container from '@material-ui/core/Container';
+
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
+import TextField from "@material-ui/core/TextField/TextField";
 
 
 const Feedback = (props) => {
@@ -39,6 +42,13 @@ const Feedback = (props) => {
     if (props.item.feedback) {
         editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.item.feedback)));
     }
+
+    const handleThankYouMessage = (message) => {
+        console.log(message)
+
+    };
+
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -55,9 +65,15 @@ const Feedback = (props) => {
         setAnchorElReward(null);
     };
 
-    const handleSendReward = (email, amount) => {
-        setAmount(amount);
-        setIsConfirming(true);
+    const handleSendReward = (email, amount, type, giftcard) => {
+
+        if (type == 'Giftcard') {
+
+
+        } else {
+            setAmount(amount);
+            // setIsConfirming(true);
+        }
     };
 
     const handleSendRewardConfirm = () => {
@@ -214,40 +230,82 @@ const Feedback = (props) => {
                                 </p>
                             </Button>
                             <Popover
-                                style={{marginLeft: 15}}
+                                borderRadius = {20}
+                                style={{borderRadius: 20}}
                                 id={idReward}
                                 open={openReward}
                                 anchorEl={anchorElReward}
                                 onClose={handleCloseReward}
                                 anchorOrigin={{
                                     vertical: 'center',
-                                    horizontal: 'right',
+                                    horizontal: 'center',
                                 }}
                                 transformOrigin={{
                                     vertical: 'center',
                                     horizontal: 'left',
                                 }}
                             >
-                                <ButtonGroup
-                                    orientation="vertical"
-                                    color="primary"
-                                    aria-label="vertical contained primary button group"
-                                    variant="contained"
-                                >
-                                    <Button onClick={() => handleSendReward(props.item.email, 5)}
-                                            style={{backgroundColor: "#AEAEF7"}}> Send 5 Points ($0.5)</Button>
-                                    <Button onClick={() => handleSendReward(props.item.email, 10)}
-                                            style={{backgroundColor: "#A3A3EA"}}> Send 10 Points ($1)</Button>
-                                    <Button onClick={() => handleSendReward(props.item.email, 25)}
-                                            style={{backgroundColor: "#9393E5"}}> Send 25 Points ($2.5)</Button>
-                                    <Button onClick={() => handleSendReward(props.item.email, 50)}
-                                            style={{backgroundColor: "#7676E1"}}> Send 50 Points ($5)</Button>
-                                    <Button onClick={() => handleSendReward(props.item.email, 100)}
-                                            style={{backgroundColor: "#5B5BDD"}}> Send 100 Points ($10)</Button>
-                                    <Button onClick={() => handleSendReward(props.item.email, 200)}
-                                            style={{backgroundColor: "#4545DF"}}> Send 200 Points ($20)</Button>
-                                </ButtonGroup>
+                                <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20}}>
+                                    {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
+                                    {/*<Divider style={{marginBottom:10}}/>*/}
+                                    <Grid container direction='row'>
+                                        <Box display="flex" flexDirection = "column"  justifyContent="center">
+                                        <TextField
+                                            placeholder="1-2 sentences"
+                                            multiline
+                                            rows={10}
+                                            style = {{marginRight: 10, minWidth: 220}}
+                                            onChange={e => handleThankYouMessage(e.target.value)}
+                                            label="thank you message"
+                                            variant="outlined"
+                                            rowsMax={7}
+                                        />
+                                            {(amount)
+                                                ? <p> + {amount} points attached </p>
+                                                : null
+
+                                            }
+                                        </Box>
+
+                                        <Box  display="flex"  flexDirection = "column" justifyContent="center"  >
+                                            {/*<p style = {{textAlign: 'center'}}> Add a Reward (optional) </p>*/}
+                                            <Button variant="contained"
+                                                    onClick={() => handleSendReward(props.item.email, 5, 'Giftcard', 'Starbucks - $5')}
+                                                    style={{backgroundColor: "#14733A",marginBottom: 20, color: "white"}}> $5 Starbucks Gift Card</Button>
+
+                                        <ButtonGroup
+                                        orientation="vertical"
+                                        color="primary"
+                                        aria-label="vertical contained primary button group"
+                                        variant="contained"
+                                    >
+                                            <Button onClick={() => handleSendReward(props.item.email, 5)}
+                                                    style={{backgroundColor: "#AEAEF7"}}> Add 5 Points ($0.5)</Button>
+                                            <Button onClick={() => handleSendReward(props.item.email, 10)}
+                                                    style={{backgroundColor: "#A3A3EA"}}> Add 10 Points ($1)</Button>
+                                            <Button onClick={() => handleSendReward(props.item.email, 25)}
+                                                    style={{backgroundColor: "#9393E5"}}> Add 25 Points ($2.5)</Button>
+                                            <Button onClick={() => handleSendReward(props.item.email, 50)}
+                                                    style={{backgroundColor: "#7676E1"}}> Add 50 Points ($5)</Button>
+                                            <Button onClick={() => handleSendReward(props.item.email, 100)}
+                                                    style={{backgroundColor: "#5B5BDD"}}> Add 100 Points ($10)</Button>
+                                            {/*<Button onClick={() => handleSendReward(props.item.email, 200)}*/}
+                                            {/*        style={{backgroundColor: "#4545DF"}}> Add 200 Points ($20)</Button>*/}
+                                        </ButtonGroup>
+                                        </Box>
+                                    </Grid>
+
+
+                                    <Button
+                                        fullWidth
+                                        onClick={() => setIsConfirming(true)}
+                                        style={{backgroundColor: "#10102F", marginTop: 10}}> <p style={{color:"white", margin:2}}> Send </p>
+                                    </Button>
+
+                                </Container>
+
                             </Popover>
+
                         </div>
                         :
                         <Box border={1} borderRadius={10} borderColor={"#3162F0"} style={{padding: 10}}>
