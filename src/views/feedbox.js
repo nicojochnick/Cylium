@@ -306,8 +306,7 @@ export default function Feedbox(props) {
                                 <div>
                                     {(withConfirm)
                                        ?<div>
-                                        <p style={{textAlign: "center", margin: 8}}> Please leave an email in order to
-                                            get rewarded for this feedback. If you're anonymous, your email will not be
+                                        <p style={{textAlign: "center", margin: 8}}> Leave an email to receive a reward for this feedback. If you're anonymous, your email will not be
                                             shown to the recipient.</p>
                                         < TextField
                                         placeholder="start typing..."

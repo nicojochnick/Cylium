@@ -250,10 +250,9 @@ const Feedback = (props) => {
                           </Button>
                           :
                           <Box display = "flex" flexDirection = "row">
-
                               <Grid   justify = "flex-start" alignItems='center' direction = "row" container>
-                                  <BsCheck style = {{color: '#4CCD7B'}} size = {20} />
-                                  <p style = {{fontSize: 16, fontWeight: 500, margin: 10, color:"#4CCD7B"}}>Thank You Sent</p>
+                                  <BsCheck style = {{color: '#4CCD7B'}} size = {23} />
+                                  <p style = {{fontSize: 14, fontWeight: 500, margin: 8, color:"#4CCD7B"}}>Thank You Sent</p>
                               </Grid>
                           </Box>
                       }
@@ -274,6 +273,7 @@ const Feedback = (props) => {
                                     horizontal: 'left',
                                 }}
                             >
+                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} >
                                 <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20,}}>
                                     {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
                                     {/*<Divider style={{marginBottom:10}}/>*/}
@@ -286,7 +286,7 @@ const Feedback = (props) => {
                                             placeholder="1-2 sentences"
                                             multiline
                                             rows={10}
-                                            style = {{marginRight: 10, minWidth: 220}}
+                                            style = {{marginRight: 10, marginBottom: 10, minWidth: 220}}
                                             onChange={e => handleThankYouMessage(e.target.value)}
                                             label="thank you message"
                                             variant="outlined"
@@ -308,7 +308,7 @@ const Feedback = (props) => {
                                             {/*<p style = {{textAlign: 'center'}}> Add a Reward (optional) </p>*/}
                                             <Button variant="contained"
                                                     onClick={() => handleSendReward(props.item.email, 5, 'Giftcard', 'Starbucks - $5')}
-                                                    style={{backgroundColor: "#14733A",marginBottom: 20, color: "white"}}> $5 Starbucks Gift Card</Button>
+                                                    style={{backgroundColor: "#0DB478",marginBottom: 20, color: "white"}}> $5 Starbucks Gift Card</Button>
 
                                         <ButtonGroup
                                         orientation="vertical"
@@ -364,6 +364,7 @@ const Feedback = (props) => {
                                         }
 
                                 </Container>
+                                </Box>
 
                             </Popover>
 

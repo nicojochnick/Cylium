@@ -178,7 +178,7 @@ export default function Dashboard() {
                         backgroundColor: '#4D6DF1',
                     }}>
                         <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
-                        Go to My Boxx
+                            My Feedboxx
                         </p>
                         </Button>
                     </Link>
