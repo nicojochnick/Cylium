@@ -84,8 +84,12 @@ const Feedback = (props) => {
     };
 
     const settingConfirm = () => {
-        if (thankYouMessage) {
-            setIsConfirming(true);
+        if (thankYouMessage && thankYouMessage !== '') {
+            if (giftCard || amount) {
+                setIsConfirming(true);
+            } else {
+                handleSendRewardConfirm()
+            }
         } else {
             setError('add a message')
         }
@@ -216,7 +220,7 @@ const Feedback = (props) => {
                                             </IconButton>
                                         }
                                     >
-                                        thank you successfully sent
+                                        successfully sent
                                     </Alert>
                                 </Collapse>
 
@@ -229,7 +233,7 @@ const Feedback = (props) => {
                     :<div>
 
 
-                    {(!isConfirming)
+                    {(true)
 
                         ? <div>
                             <Button onClick={handleClickReward} variant="contained" noWrap style={{
@@ -262,7 +266,10 @@ const Feedback = (props) => {
                                 <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20,}}>
                                     {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
                                     {/*<Divider style={{marginBottom:10}}/>*/}
-                                    <Grid container direction='row'>
+                                    {(!isConfirming)
+                                        ?
+                                        <div>
+                                        <Grid container direction='row'>
                                         <Box display="flex" flexDirection = "column"  justifyContent="center">
                                         <TextField
                                             placeholder="1-2 sentences"
@@ -314,7 +321,6 @@ const Feedback = (props) => {
                                         </Box>
                                     </Grid>
 
-
                                     <Button
                                         fullWidth
                                         onClick={() => settingConfirm()}
@@ -326,6 +332,25 @@ const Feedback = (props) => {
 
 
                                     }
+                                        </div>
+                                        :   <Box border={1} borderRadius={10} borderColor={"#3162F0"} style={{padding: 10}}>
+                                            <p> Please confirm you want to send the author of this feedback:</p>
+                                            {(amount)
+                                                ? <p> {amount} points </p>
+                                                : null
+
+                                            }
+                                            {(giftCard)
+                                                ? <p> {giftCard} gift card </p>
+                                                : null
+
+                                            }
+                                            <Button color='primary' style={{margin: 10}} variant="outlined"
+                                                    onClick={() => handleSendRewardConfirm()}> Confirm </Button>
+                                            <Button variant="outlined" style={{margin: 10}}
+                                                    onClick={() => handleSendRewardCancel()}> Cancel </Button>
+                                        </Box>
+                                        }
 
                                 </Container>
 
