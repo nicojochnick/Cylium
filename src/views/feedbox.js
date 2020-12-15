@@ -252,7 +252,7 @@ export default function Feedbox(props) {
                             </Grid>
                             <Grid item xs zeroMinWidth style = {{marginLeft:10}}>
                                 <p style = {{marginTop: 0, marginBottom: -13, color: "#10102F", fontWeight: 600,}}>{user.name}</p>
-                                <p style={{color: '#353C49', fontSize: 18}}> {user.welcome} </p>
+                                <p style={{color: '#353C49', fontSize: 17}}> {user.welcome} </p>
                             </Grid>
                         </Grid>
                             {/*<form onSubmit={handleSubmit} noValidate>*/}
@@ -354,7 +354,7 @@ export default function Feedbox(props) {
                             <Grid container direction = "column" alignItems = 'center' justify = 'center'>
                                 {(user.pointsRewarded)
                                     ? <p style = {{textAlign: "center", margin: 0, marginTop: 5, fontSize: 15, fontWeight: 500 }}>
-                                        This form has rewarded ${user.pointsRewarded/10} for feedback given.
+                                        This form has rewarded ${user.pointsRewarded/10} for given feedback
                                     </p>
                                     : null
                                 }
@@ -365,7 +365,7 @@ export default function Feedbox(props) {
                         :
                         <div>
                         <h2> Feedback submitted! </h2>
-                            <p> Want your own Feedboxx? Make one for free, <Link to="/">here</Link>.
+                            <p> Want your own Feedboxx? Make one for free <Link to="/">here</Link>.
                             </p>
                             <Divider style = {{margin: 10}} />
                             <img  style = {{height: 50, margin: -10}} src = {logo} />
