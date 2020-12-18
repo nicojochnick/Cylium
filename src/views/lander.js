@@ -153,7 +153,7 @@ function Lander(props) {
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
-                    <p style = {{fontSize: 60, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> The inbox designed for feedback</p>
+                    <p style = {{fontSize: 60, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Get feedback from your email signature</p>
                     <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback from customers, clients and colleagues using a link in your email signature</p>
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
@@ -173,7 +173,7 @@ function Lander(props) {
                     </Link>
                     <Grid justify = "flex-start" alignItems='center' direction = "row" container>
                     <BsCheck size = {18} />
-                    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Takes 2 minutes</p>
+                    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Takes a minute</p>
                 </Grid>
                     <Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>
                         <BsCheck size = {18} />
