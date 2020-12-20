@@ -3,7 +3,7 @@ import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,usePa
 import home from './pages/home';
 import Dashboard from './pages/dashboard'
 import signup from './pages/signup';
-import Feedbox from './views/feedbox'
+import Feedbox from './views/Old/feedbox'
 import login from './pages/login';
 import {auth} from './api/firebase';
 import './styles.css';

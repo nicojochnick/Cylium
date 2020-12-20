@@ -13,7 +13,7 @@ import mscott from "../assets/images/mscott.png";
 import email_feedboxx from "../assets/images/email_feedboxx.png"
 import boxx from "../assets/images/boxx.png"
 import { HiOutlineMail,HiOutlineTrendingUp } from "react-icons/hi";
-import Url from "../components/Share/URL"
+import Url from "../components/Old/Share/URL"
 import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
 import pulse from "../assets/images/pulse.gif"

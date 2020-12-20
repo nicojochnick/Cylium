@@ -5,13 +5,13 @@ import {makeStyles} from "@material-ui/core/styles";
 import clsx from 'clsx';
 import Box from "@material-ui/core/Box";
 import Card from 'react-bootstrap/Card'
-import teamwork from '../../assets/images/teamwork.svg'
+import teamwork from '../../../assets/images/teamwork.svg'
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import FeedbackTracker from "../Analytics/feedbackTracker";
+import FeedbackTracker from "../../Analytics/feedbackTracker";
 import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField/TextField";
-import {db} from "../../api/firebase";
+import {db} from "../../../api/firebase";
 import Collapse from "@material-ui/core/Collapse/Collapse";
 import Alert from "@material-ui/lab/Alert/Alert";
 import IconButton from "@material-ui/core/IconButton";

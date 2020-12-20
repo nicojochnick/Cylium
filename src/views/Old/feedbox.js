@@ -8,16 +8,16 @@ import TextField from '@material-ui/core/TextField';
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import FormGroup from '@material-ui/core/FormGroup';
-import {Signup} from "../helpers/auth";
-import {db} from "../api/firebase";
-import {auth} from "../api/firebase"
+import {Signup} from "../../helpers/auth";
+import {db} from "../../api/firebase";
+import {auth} from "../../api/firebase"
 import moment from 'moment'
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import MyTopics from "../components/Topics/myTopics";
+import MyTopics from "../../components/Old/Topics/myTopics";
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
-import logo from "../assets/images/logo.png";
+import logo from "../../assets/images/logo.png";
 import firebase from 'firebase/app';
 
 

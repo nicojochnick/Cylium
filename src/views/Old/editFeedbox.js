@@ -1,5 +1,5 @@
 import React from 'react';
-import Url from "../components/Share/URL";
+import Url from "../../components/Old/Share/URL";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import Box from "@material-ui/core/Box";
@@ -17,13 +17,13 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import Divider from "@material-ui/core/Divider";
 import {BsX,BsPlus} from "react-icons/bs";
-import Feedbox from "../views/feedbox"
-import Feedback from "../components/Feedback/feedback";
-import AllTopics from "../components/Topics/allTopics";
-import {db} from "../api/firebase";
+import Feedbox from "./feedbox"
+import Feedback from "../../components/Old/Feedback/feedback";
+import AllTopics from "../../components/Old/Topics/allTopics";
+import {db} from "../../api/firebase";
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-import {storage} from "../api/firebase";
+import {storage} from "../../api/firebase";
 const override = css`
   display: block;
   margin: 0 auto;

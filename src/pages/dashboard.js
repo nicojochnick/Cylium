@@ -22,14 +22,15 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import Settings from "../views/settings"
-import EditFeedbox from "../views/editFeedbox"
+import EditFeedbox from "../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
-import logowhite from "../assets/images/logowhite.png"
+import logowhite from "../assets/images/TeamBoxxWhite.png"
+import UserHome from '../views/userHome'
 
-import { BiTransferAlt, BiEdit, BiHome} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiHome, BiUser} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 
@@ -42,12 +43,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 
-import Feed from "../views/feed"
-import Feedbox from "../views/feedbox"
+import Feed from "../views/Old/feed"
+import Feedbox from "../views/Old/feedbox"
 import {db} from "../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
-import Transactions from "../views/transactions";
-import Feedback from "../components/Feedback/feedback";
+import Transactions from "../views/Old/transactions";
+import Feedback from "../components/Old/Feedback/feedback";
 import Notification from "../components/Notifications/notification";
 
 
@@ -267,30 +268,19 @@ export default function Dashboard() {
                                 <ListItemIcon>
                                     <BiHome size = {25} style = {{color:'white'}}  />
                                 </ListItemIcon>
-                                <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Feedback" />
+                                <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Home" />
                             </ListItem>
                         </Link>
-                        <Link
-                            to="/feedboxx-edit"
-                            style={{fontWeight: 600,
-                                  color:"#3C3F48",
-                                  textDecoration: 'none'
-                              }} >
+                        <Link to="/settings"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <BiEdit size = {25} style = {{color:'white'}} />
+                                    <BiUser size = {25} style = {{color:'white'}}  />
                                 </ListItemIcon>
-                                <ListItemText  style = {{color: 'white', fontWeight: 600}} primary="Edit" />
+                                <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Profile" />
                             </ListItem>
                         </Link>
-                        {/*<Link to="/transactions"  style={{ color:"#3C3F48", textDecoration: 'none' }}>*/}
-                        {/*    <ListItem button>*/}
-                        {/*        <ListItemIcon>*/}
-                        {/*            <BiTransferAlt size = {25}/>*/}
-                        {/*        </ListItemIcon>*/}
-                        {/*        <ListItemText primary="Transactions" />*/}
-                        {/*    </ListItem>*/}
-                        {/*</Link>*/}
+
+
                     <div>
                     </div>
                 </List>
@@ -301,7 +291,7 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <Feed user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <UserHome user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
                             <Route exact path="/feedboxx-edit">
                                 <EditFeedbox user = {user} url = {url} email = {email} />
@@ -453,4 +443,30 @@ const useStyles = makeStyles((theme) => ({
     },
 
 }));
+
+
+///Links
+
+{/*<Link*/}
+{/*    to="/feedboxx-edit"*/}
+{/*    style={{fontWeight: 600,*/}
+{/*        color:"#3C3F48",*/}
+{/*        textDecoration: 'none'*/}
+{/*    }} >*/}
+{/*    <ListItem button>*/}
+{/*        <ListItemIcon>*/}
+{/*            <BiEdit size = {25} style = {{color:'white'}} />*/}
+{/*        </ListItemIcon>*/}
+{/*        <ListItemText  style = {{color: 'white', fontWeight: 600}} primary="Edit" />*/}
+{/*    </ListItem>*/}
+{/*</Link>*/}
+
+{/*<Link to="/transactions"  style={{ color:"#3C3F48", textDecoration: 'none' }}>*/}
+{/*    <ListItem button>*/}
+{/*        <ListItemIcon>*/}
+{/*            <BiTransferAlt size = {25}/>*/}
+{/*        </ListItemIcon>*/}
+{/*        <ListItemText primary="Transactions" />*/}
+{/*    </ListItem>*/}
+{/*</Link>*/}
 
