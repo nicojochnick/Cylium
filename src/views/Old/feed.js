@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles"
 import clsx from 'clsx';
 import Url from '../../components/Old/Share/URL'
 import firebase from 'firebase/app';

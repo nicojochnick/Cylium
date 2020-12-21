@@ -22,6 +22,7 @@ import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
+import Survey from "../components/Survey/survey";
 
 
 function UserHome(props) {
@@ -37,6 +38,7 @@ function UserHome(props) {
                                     SURVEY
                                 </h2>
                             <Divider style ={{marginTop:0}}/>
+                            <Survey/>
 
                         </Box>
 
@@ -49,10 +51,6 @@ function UserHome(props) {
                             </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
-                           <List  style={{maxHeight: '100%', overflow: 'auto'}}>
-                               <p> tab</p>
-
-                           </List>
                         </Box>
 
                         <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>
@@ -62,6 +60,11 @@ function UserHome(props) {
                                 </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
+
+                            <List  style={{maxHeight: '100%', overflow: 'auto'}}>
+
+
+                            </List>
                         </Box>
 
                     </Grid>

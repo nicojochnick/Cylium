@@ -7,6 +7,17 @@ import Feedbox from './views/Old/feedbox'
 import login from './pages/login';
 import {auth} from './api/firebase';
 import './styles.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#4D6DF1'
+        }
+    }
+});
 
 
 export default class App extends Component {
@@ -41,6 +52,8 @@ export default class App extends Component {
             <span className="sr-only">Loading...</span>
           </div>
       ) : (
+          <MuiThemeProvider theme={theme}>
+
           <Router>
             <Switch>
               <Route exact path="/" component={home} />
@@ -72,6 +85,7 @@ export default class App extends Component {
               />
             </Switch>
           </Router>
+          </MuiThemeProvider>
       );
     }
   }

@@ -171,18 +171,18 @@ export default function Dashboard() {
                         />
                     </Box>
                         <div className={classes.sectionDesktop}>
-                        <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>
-                    <Button  variant="contained" noWrap style={{
-                        borderRadius: 5,
-                        margin: 10,
-                        marginRight: 20,
-                        backgroundColor: '#4D6DF1',
-                    }}>
-                        <p style = {{color: 'white', margin: 3,fontWeight: 600}}>
-                            My Feedboxx
-                        </p>
-                        </Button>
-                    </Link>
+                    {/*    <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>*/}
+                    {/*<Button  variant="contained" noWrap style={{*/}
+                    {/*    borderRadius: 5,*/}
+                    {/*    margin: 10,*/}
+                    {/*    marginRight: 20,*/}
+                    {/*    backgroundColor: '#4D6DF1',*/}
+                    {/*}}>*/}
+                    {/*    <p style = {{color: 'white', margin: 3,fontWeight: 600}}>*/}
+                    {/*        My Feedboxx*/}
+                    {/*    </p>*/}
+                    {/*    </Button>*/}
+                    {/*</Link>*/}
                             <IconButton
                                 onClick={handleNotificationClick}
                                 aria-haspopup="true"
@@ -193,7 +193,7 @@ export default function Dashboard() {
                             </IconButton>
 
                             <Popover
-                                style = {{borderRadius: 10, margin: 20}}
+                                style = {{borderRadius: 10, marginRight: 20}}
                                 id={idNotification}
                                 open={openNotification}
                                 anchorEl={anchorElNotification}
@@ -207,7 +207,7 @@ export default function Dashboard() {
                                     horizontal: 'center',
                                 }}
                             >
-                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, maxWidth:350}}>
+                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, minWidth:400, maxHeight: 500}}>
                                     {notifications.map((item) => <Notification item = {item}/>)}
                                 </Box>
 
