@@ -9,9 +9,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import UserProfile from "../components/User/userProfile";
 
 function Settings(props) {
-
     const classes = useStyles();
-
     return (
         <div className={classes.root} >
             <Container fixed maxWidth="lg" className={classes.container}>
@@ -23,20 +21,17 @@ function Settings(props) {
                             </h2>
                             <Divider style ={{marginTop:0}}/>
                             <UserProfile email = {props.email} url = {props.url} user = {props.user} />
-
                         </Box>
-
                     </Grid>
                     <Grid item xs={12} sm ={12} md={6} lg={6}>
                         <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>
                             <Grid justify="space-between" direction = "row" container>
                                 <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
-                                    SETTINGS
+                                    TEAM
                                 </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
                         </Box>
-
                     </Grid>
                 </Grid>
             </Container>

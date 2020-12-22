@@ -81,7 +81,6 @@ function UserProfile(props) {
             if (props.user.pointsRewarded) {
                 pr = props.user.pointsRewarded
             };
-
             await db.collection('users').doc(props.email).set({
                 name: name,
                 welcome: welcome,

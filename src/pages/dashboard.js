@@ -29,6 +29,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/userHome'
+import TeamHome from '../views/teamHome'
 import { BiTransferAlt, BiEdit, BiHome, BiUser} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
@@ -235,14 +236,23 @@ export default function Dashboard() {
                 </div>
                 <Divider/>
                 <List>
-                        <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <BiHome size = {25} style = {{color:'white'}}  />
-                                </ListItemIcon>
-                                <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Home" />
-                            </ListItem>
-                        </Link>
+                    <Link to="/lead"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <BiHome size = {25} style = {{color:'white'}}  />
+                            </ListItemIcon>
+                            <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Team" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <BiEdit size = {25} style = {{color:'white'}}  />
+                            </ListItemIcon>
+                            <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Respond" />
+                        </ListItem>
+                    </Link>
                         <Link to="/settings"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
@@ -251,6 +261,8 @@ export default function Dashboard() {
                                 <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Profile" />
                             </ListItem>
                         </Link>
+
+
                     <div>
                     </div>
                 </List>
@@ -263,8 +275,11 @@ export default function Dashboard() {
                             <Route exact path="/feed">
                                 <UserHome user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
-                            <Route exact path="/feedboxx-edit">
-                                <EditFeedbox user = {user} url = {url} email = {email} />
+                            {/*<Route exact path="/feedboxx-edit">*/}
+                            {/*    <EditFeedbox user = {user} url = {url} email = {email} />*/}
+                            {/*</Route>*/}
+                            <Route exact path="/lead">
+                                <TeamHome user = {user} url = {url} email = {email}/>
                             </Route>
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>
