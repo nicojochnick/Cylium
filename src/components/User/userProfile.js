@@ -92,8 +92,6 @@ function UserProfile(props) {
                 sendFeedbackToEmail: sfte,
             });
             setSuccess(true);
-            setName('');
-            setWelcomeMessage('')
 
         } catch (error) {
             console.log(error);
@@ -135,10 +133,22 @@ function UserProfile(props) {
                     onChange={e => handleNameChange(e.target.value)}
                     id="filled-basic"
                     label="Name"
-                    placeholder='John Doe | Product Manager'
+                    placeholder='John Doe'
                     value = {name}
                 />
             </Grid>
+
+            <Button
+                className={classes.submitButton}
+                onClick={handleSave}
+                variant="contained"
+                style={{marginRight: 45, marginLeft: 0, paddingRight: 60, paddingLeft: 60, borderRadius: 5, backgroundColor: "#4D6DF1",
+                }}
+            >
+                <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
+                    Update
+                </p>
+            </Button>
 
 
         </Grid>

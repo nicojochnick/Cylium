@@ -22,7 +22,7 @@ function Settings(props) {
                                PROFILE
                             </h2>
                             <Divider style ={{marginTop:0}}/>
-                            <UserProfile user = {props.user} />
+                            <UserProfile email = {props.email} url = {props.url} user = {props.user} />
 
                         </Box>
 
