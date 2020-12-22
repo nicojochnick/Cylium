@@ -7,10 +7,9 @@ import TextField from "@material-ui/core/TextField/TextField";
 import {makeStyles} from "@material-ui/core/styles";
 import Slider from '@material-ui/core/Slider';
 
-
-
 function Survey(props) {
     const classes = useStyles();
+    const question_1 = 'Rate your team strength this week (1-10)';
 
     return (
         <div>
@@ -18,14 +17,15 @@ function Survey(props) {
             <form className={classes.form} onSubmit={console.log('submit')} noValidate>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-
+                        <p style = {{fontSize: 17, textAlign: 'center', fontWeight: 300, marginBottom: 35, color:"#10102F"}}>
+                            {question_1}
+                        </p>
                         <Slider
                             defaultValue={1}
                             getAriaValueText={''}
                             aria-labelledby="discrete-slider"
                             valueLabelDisplay="auto"
                             valueLabelDisplay="on"
-
                             step={1}
                             marks
                             min={1}
@@ -37,10 +37,8 @@ function Survey(props) {
                             rows={10}
                             multiline
                             required
-                            label="positives"
-                            autoComplete="email"
+                            label="What's working?"
                             placeholder="start typing"
-                            name="email" type="email"
                             onChange={console.log('submit')}
                             rowsMax={5}
                             value={''}
@@ -51,16 +49,13 @@ function Survey(props) {
                             variant="outlined"
                             fullWidth
                             required
-                            label="improvements"
-                            autoComplete="current-password"
+                            label="What could be improved?"
                             rows={10}
                             rowsMax={5}
                             multiline
                             placeholder="start typing..."
-                            name="password"
                             onChange={console.log('submit')}
                             value={''}
-                            type="password"
                         />
                     </Grid>
                 </Grid>

@@ -162,11 +162,6 @@ class signup extends Component {
                     </div>
                 <div>
                 <form onSubmit={this.handleSubmit}>
-                    {/*<p>Or</p>*/}
-                    {/*<button onClick={this.googleSignIn} type="button">*/}
-                    {/*    Sign up with Google*/}
-                    {/*</button>*/}
-                    {/*<hr></hr>*/}
                     <p>Already have an account? <Link to="/login">Login</Link></p>
                 </form>
             </div>
@@ -174,7 +169,6 @@ class signup extends Component {
             </Container>
         </div>
         )
-
     }
 }
 
@@ -198,6 +192,11 @@ const styles = theme => ({
     },
 });
 
-
 export default withStyles(styles, { withTheme: true })(signup);
 
+
+{/*<p>Or</p>*/}
+{/*<button onClick={this.googleSignIn} type="button">*/}
+{/*    Sign up with Google*/}
+{/*</button>*/}
+{/*<hr></hr>*/}

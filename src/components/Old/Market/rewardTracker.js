@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card'
 import teamwork from '../../../assets/images/teamwork.svg'
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import FeedbackTracker from "../../Analytics/feedbackTracker";
+import FeedbackTracker from "../feedbackTracker";
 import {Link} from "react-router-dom";
 import TextField from "@material-ui/core/TextField/TextField";
 import {db} from "../../../api/firebase";

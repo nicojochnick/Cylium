@@ -19,8 +19,6 @@ import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
 import Container from '@material-ui/core/Container';
 import { BsCheck } from "react-icons/bs";
-
-
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
@@ -32,7 +30,6 @@ const Feedback = (props) => {
     const [didConfirm, setConfirm] = React.useState(false);
     const [didNotConfirm, setNotConfirm] = React.useState(false);
     const [error, setError] = React.useState(null)
-
     const [isConfirming, setIsConfirming] = React.useState(false);
     const [amount, setAmount] = React.useState(0);
     const [giftCard, setGiftCard] = React.useState(null);

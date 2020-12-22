@@ -16,7 +16,7 @@ import moment from 'moment';
 import RewardTracker from "../../components/Old/Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
 import Pulse from "../../assets/images/pulse.gif"
-import FeedbackTracker from "../../components/Analytics/feedbackTracker";
+import FeedbackTracker from "../../components/Old/feedbackTracker";
 import NetworkBrowse from "../../components/Network/networkBrowse";
 import ShareBoxx from "../../components/Old/Share/shareBoxx";
 

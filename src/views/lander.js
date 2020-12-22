@@ -30,6 +30,7 @@ function Lander(props) {
     const [email, setEmail] = React.useState('');
     const [isConfirming, setIsConfirming] = React.useState(false);
     const [anchorElReward, setAnchorElReward] = React.useState(null);
+    const [contentState, setContentState] = React.useState(() => null);
     const [openConfirm, setOpenConfirm] = React.useState(true);
     const [amount, setAmount] = React.useState(0);
     const [giftCard, setGiftCard] = React.useState(null);
@@ -37,11 +38,10 @@ function Lander(props) {
     const [user, setUser] = React.useState({
         name: "Angela | Client",
         img_url_Profile: {imgURL:null},
-        welcome: "While I love the new features, I wish it was easier to navigate through the app. I'm constantly switching between views."})
+        welcome: "While I love the new features, I wish it was easier to navigate through the app. I'm constantly switching between views."});
     const [feedBoxxEmail, setFeedBoxxEmail] = React.useState('');
-    const [editorState, setEditorState] = React.useState(() =>
-        EditorState.createEmpty(),
-    );
+    const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
+
     const handleClickReward = (event) => {
         setAnchorElReward(event.currentTarget);
     };
@@ -49,20 +49,14 @@ function Lander(props) {
         setAnchorElReward(null);
     };
     const handleSendReward = (email, amount) => {
-        console.log('yike')
     };
     const openReward = Boolean(anchorElReward);
     const idReward = openReward ? 'simple-popover-re' : undefined;
 
-    const [contentState, setContentState] = React.useState(() =>
-        null
-    );
-
     const _getLengthOfSelectedText = () => {
         const currentSelection = editorState.getSelection();
-        const isCollapsed = currentSelection.isCollapsed()
+        const isCollapsed = currentSelection.isCollapsed();
         let length = 0;
-
         if (!isCollapsed) {
             const currentContent = editorState.getCurrentContent();
             const startKey = currentSelection.getStartKey();
@@ -73,7 +67,6 @@ function Lander(props) {
             const startSelectedTextLength = startBlockTextLength - currentSelection.getStartOffset();
             const endSelectedTextLength = currentSelection.getEndOffset();
             const keyAfterEnd = currentContent.getKeyAfter(endKey);
-            console.log(currentSelection)
             if (isStartAndEndBlockAreTheSame) {
                 length += currentSelection.getEndOffset() - currentSelection.getStartOffset();
             } else {
@@ -90,24 +83,17 @@ function Lander(props) {
 
                     currentKey = currentContent.getKeyAfter(currentKey);
                 };
-            }
-        }
+            };
+        };
         return length;
     };
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
-
-        if (newState) {
-            onChange(newState);
-            return 'handled';
-        }
-
-        return 'not-handled';
+        if (newState) {onChange(newState); return 'handled';} return 'not-handled';
     };
 
     const handleSubmit = async (event) => {
-      console.log('update state')
     };
 
     const onChange = (editorState) => {
@@ -126,7 +112,6 @@ function Lander(props) {
 
         if (currentContentLength - selectedTextLength > MAX_LENGTH - 1) {
             console.log('you can type max ten characters');
-
             return 'handled';
         }
     };
@@ -135,10 +120,8 @@ function Lander(props) {
         const currentContent = editorState.getCurrentContent();
         const currentContentLength = currentContent.getPlainText('').length;
         const selectedTextLength = _getLengthOfSelectedText();
-
         if (currentContentLength + pastedText.length - selectedTextLength > MAX_LENGTH) {
             console.log('you can type max ten characters');
-
             return 'handled';
         }
     };
@@ -163,13 +146,6 @@ function Lander(props) {
                                 Get Started
                             </p>
                         </Button>
-                        {/*<Button  variant="contained" noWrap style={{*/}
-                        {/*    borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: "#10102F",*/}
-                        {/*}}>*/}
-                        {/*    <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>*/}
-                        {/*        Get Paid*/}
-                        {/*    </p>*/}
-                        {/*</Button>*/}
                     </Link>
                     <Grid justify = "flex-start" alignItems='center' direction = "row" container>
                     <BsCheck size = {18} />
@@ -225,13 +201,13 @@ function Lander(props) {
                             <p style={{color: '#8B8FA0', fontSize: 17, marginTop: 15}}> {user.welcome} </p>
                             </Grid>
                         <div>
-                                            <Button onClick={handleClickReward} variant="contained" noWrap style={{
-                                                borderRadius: 5,
-                                                margin: 0,
-                                                marginRight: 0,
-                                                backgroundColor: '#4D6DF1',
+                            <Button onClick={handleClickReward} variant="contained" noWrap style={{
+                                borderRadius: 5,
+                                margin: 0,
+                                marginRight: 0,
+                                backgroundColor: '#4D6DF1',
 
-                                            }}>
+                            }}>
                                                 <p style={{color: 'white', margin: 3, fontWeight: 600}}>
                                                     Send Thank You
                                                 </p>

@@ -29,20 +29,14 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/userHome'
-
 import { BiTransferAlt, BiEdit, BiHome, BiUser} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
-
-
-
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
-
 import Feed from "../views/Old/feed"
 import Feedbox from "../views/Old/feedbox"
 import {db} from "../api/firebase";
@@ -50,7 +44,6 @@ import Popover from "@material-ui/core/Popover/Popover";
 import Transactions from "../views/Old/transactions";
 import Feedback from "../components/Old/Feedback/feedback";
 import Notification from "../components/Notifications/notification";
-
 
 export default function Dashboard() {
     // let email = firebase.auth().currentUser.email;
@@ -60,16 +53,9 @@ export default function Dashboard() {
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
-
     const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleAccountClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
+    const handleClose = () => {setAnchorEl(null);};
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
 
@@ -94,9 +80,7 @@ export default function Dashboard() {
 
     const signout = () => {
         firebase.auth().signOut().then(function() {
-            // Sign-out successful.
         }).catch(function(error) {
-            // An error happened.
         });
     };
 
@@ -171,18 +155,6 @@ export default function Dashboard() {
                         />
                     </Box>
                         <div className={classes.sectionDesktop}>
-                    {/*    <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>*/}
-                    {/*<Button  variant="contained" noWrap style={{*/}
-                    {/*    borderRadius: 5,*/}
-                    {/*    margin: 10,*/}
-                    {/*    marginRight: 20,*/}
-                    {/*    backgroundColor: '#4D6DF1',*/}
-                    {/*}}>*/}
-                    {/*    <p style = {{color: 'white', margin: 3,fontWeight: 600}}>*/}
-                    {/*        My Feedboxx*/}
-                    {/*    </p>*/}
-                    {/*    </Button>*/}
-                    {/*</Link>*/}
                             <IconButton
                                 onClick={handleNotificationClick}
                                 aria-haspopup="true"
@@ -213,7 +185,6 @@ export default function Dashboard() {
 
                             </Popover>
 
-
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -223,6 +194,7 @@ export default function Dashboard() {
                             color="inherit"
                         >
                             <AccountCircle />
+
                         </IconButton>
                             <Popover
                                 id={id}
@@ -261,7 +233,7 @@ export default function Dashboard() {
                         <ChevronLeftIcon style = {{color:'white'}} color = "white"  />
                     </IconButton>
                 </div>
-                <Divider />
+                <Divider/>
                 <List>
                         <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
@@ -279,8 +251,6 @@ export default function Dashboard() {
                                 <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Profile" />
                             </ListItem>
                         </Link>
-
-
                     <div>
                     </div>
                 </List>
@@ -299,9 +269,6 @@ export default function Dashboard() {
                             <Route path="/settings">
                                 <Settings/>
                             </Route>
-                            {/*<Route path="/transactions">*/}
-                            {/*    <Transactions/>*/}
-                            {/*</Route>*/}
                         </Switch>
                     </main>
                     : <p> LOADING</p>
@@ -318,7 +285,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     toolbar: {
-        paddingRight: 24, // keep right padding when drawer closed
+        paddingRight: 24,
     },
     toolbarIcon: {
         display: 'flex',
@@ -470,3 +437,20 @@ const useStyles = makeStyles((theme) => ({
 {/*    </ListItem>*/}
 {/*</Link>*/}
 
+
+
+
+//go to feedboxx button
+
+{/*    <Link to={`/feedboxx/${url}`} style={{ textDecoration: 'none' }}>*/}
+{/*<Button  variant="contained" noWrap style={{*/}
+{/*    borderRadius: 5,*/}
+{/*    margin: 10,*/}
+{/*    marginRight: 20,*/}
+{/*    backgroundColor: '#4D6DF1',*/}
+{/*}}>*/}
+{/*    <p style = {{color: 'white', margin: 3,fontWeight: 600}}>*/}
+{/*        My Feedboxx*/}
+{/*    </p>*/}
+{/*    </Button>*/}
+{/*</Link>*/}

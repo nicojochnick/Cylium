@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
@@ -14,8 +13,7 @@ import Feedback from "../components/Old/Feedback/feedback"
 import moment from 'moment';
 import RewardTracker from "../components/Old/Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
-import Pulse from "../assets/images/pulse.gif"
-import FeedbackTracker from "../components/Analytics/feedbackTracker";
+import FeedbackTracker from "../components/Old/feedbackTracker";
 import NetworkBrowse from "../components/Network/networkBrowse";
 import ShareBoxx from "../components/Old/Share/shareBoxx";
 import { FixedSizeList } from 'react-window';
@@ -23,6 +21,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import Survey from "../components/Survey/survey";
+import TeamMemberStats from "../components/Analytics/teamMemberStats";
+import Response from "../components/Messaging/response";
 
 
 function UserHome(props) {
@@ -33,7 +33,7 @@ function UserHome(props) {
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1}>
                     <Grid direction = 'column' container xs={12} sm={12} md={4} lg={4}>
-                        <Box className={classes.boxSticky} boxShadow = {0} style = {{minHeight: 450, maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
+                        <Box className={classes.boxSticky} boxShadow = {0} style = {{minHeight: 450, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                                 <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                     SURVEY
                                 </h2>
@@ -44,16 +44,18 @@ function UserHome(props) {
 
                     </Grid>
                     <Grid item xs={12} sm ={12} md={8} lg={8}>
-                        <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>
+                        <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 5px #D7D7DA",}} boxShadow = {0} className={classes.box}>
                             <Grid justify="space-between" direction = "row" container>
                             <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
-                                MY STATS
+                                STATS
                             </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
+                            <TeamMemberStats/>
+
                         </Box>
 
-                        <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>
+                        <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 5px #D7D7DA",}} boxShadow = {0} className={classes.box}>
                             <Grid justify="space-between" direction = "row" container>
                                 <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                     MY RESPONSES
@@ -62,6 +64,7 @@ function UserHome(props) {
                             <Divider style ={{marginTop:0}}/>
 
                             <List  style={{maxHeight: '100%', overflow: 'auto'}}>
+                                <Response item = {{}}/>
 
 
                             </List>
