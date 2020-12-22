@@ -120,7 +120,7 @@ function EditFeedbox(props) {
         }
 
 
-    }
+    };
 
     const handleNameChange= (name) => {
         setName(name)

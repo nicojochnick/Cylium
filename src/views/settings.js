@@ -6,6 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Survey from "../components/Survey/survey";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
+import UserProfile from "../components/User/userProfile";
 
 function Settings(props) {
 
@@ -21,6 +22,7 @@ function Settings(props) {
                                PROFILE
                             </h2>
                             <Divider style ={{marginTop:0}}/>
+                            <UserProfile user = {props.user} />
 
                         </Box>
 

@@ -17,9 +17,8 @@ function TeamMemberStats(props) {
                 </div>
 
             </Grid>
-
                 <Grid>
-                    <LineChart width={500} height={200} data={data}>
+                    <LineChart width={400} height={200} data={data}>
                         <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <XAxis dataKey="name" />

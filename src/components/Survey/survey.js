@@ -17,7 +17,7 @@ function Survey(props) {
             <form className={classes.form} onSubmit={console.log('submit')} noValidate>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <p style = {{fontSize: 17, textAlign: 'center', fontWeight: 300, marginBottom: 35, color:"#10102F"}}>
+                        <p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 35, color:"#10102F"}}>
                             {question_1}
                         </p>
                         <Slider

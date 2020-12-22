@@ -31,7 +31,29 @@ function Response(props) {
                 direction="row"
                 justify="space-between"
                 alignItems="flex-start">
-                <Grid item direction="column" justify="flex-start">
+                <Grid item direction="column" justify="flex-end">
+                    {/*<Grid item>*/}
+                    {/*    <IconButton onClick={handleClick} style={{marginRight: -20}} aria-label="open">*/}
+                    {/*        <FiMoreVertical size={20}/>*/}
+                    {/*    </IconButton>*/}
+                    {/*    <Popover*/}
+                    {/*        id={id}*/}
+                    {/*        open={open}*/}
+                    {/*        anchorEl={anchorEl}*/}
+                    {/*        onClose={handleClose}*/}
+                    {/*        anchorOrigin={{*/}
+                    {/*            vertical: 'bottom',*/}
+                    {/*            horizontal: 'center',*/}
+                    {/*        }}*/}
+                    {/*        transformOrigin={{*/}
+                    {/*            vertical: 'top',*/}
+                    {/*            horizontal: 'center',*/}
+                    {/*        }}>*/}
+                    {/*        <Button onClick={() => props.handleDelete(props.item.id)} variant="contained" color="primary">*/}
+                    {/*            Delete*/}
+                    {/*        </Button>*/}
+                    {/*    </Popover>*/}
+                    {/*</Grid>*/}
                 </Grid>
             </Grid>
             <Grid style = {{margin: 15}} container direction = 'row' wrap="nowrap" spacing={2}>
@@ -41,40 +63,18 @@ function Response(props) {
                     </Box>
                 </Grid>
                 <Grid className={classes.boxed_in} item>
-                    <Box style={{padding: 10, minWidth: 280}} borderRadius={10} border={1}>
+                    <Box style={{padding: 10, minWidth: 240}} borderRadius={10} border={1}>
                        <p>
                            Answer 1
                        </p>
                     </Box>
                 </Grid>
                 <Grid className={classes.boxed_in} item>
-                    <Box style={{padding: 10, minWidth: 280}} borderRadius={10} border={1}>
+                    <Box style={{padding: 10, minWidth: 240}} borderRadius={10} border={1}>
                         <p>
                             Answer 2
                         </p>
                     </Box>
-                </Grid>
-                <Grid item>
-                <IconButton onClick={handleClick} style={{marginRight: -20}} aria-label="open">
-                    <FiMoreVertical size={20}/>
-                </IconButton>
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center',
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center',
-                    }}>
-                    <Button onClick={() => props.handleDelete(props.item.id)} variant="contained" color="primary">
-                        Delete
-                    </Button>
-                </Popover>
                 </Grid>
             </Grid>
             <Divider style = {{marginTop: 10}} />

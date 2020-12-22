@@ -267,7 +267,7 @@ export default function Dashboard() {
                                 <EditFeedbox user = {user} url = {url} email = {email} />
                             </Route>
                             <Route path="/settings">
-                                <Settings/>
+                                <Settings user = {user}/>
                             </Route>
                         </Switch>
                     </main>

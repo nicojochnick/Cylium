@@ -32,7 +32,7 @@ function UserHome(props) {
         <div className={classes.root} >
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1}>
-                    <Grid direction = 'column' container xs={12} sm={12} md={4} lg={4}>
+                    <Grid direction = 'column' container xs={12} sm={12} md={5} lg={5}>
                         <Box className={classes.boxSticky} boxShadow = {0} style = {{minHeight: 450, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                                 <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                     SURVEY
@@ -43,7 +43,7 @@ function UserHome(props) {
                         </Box>
 
                     </Grid>
-                    <Grid item xs={12} sm ={12} md={8} lg={8}>
+                    <Grid item xs={12} sm ={12} md={7} lg={7}>
                         <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 5px #D7D7DA",}} boxShadow = {0} className={classes.box}>
                             <Grid justify="space-between" direction = "row" container>
                             <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
@@ -62,11 +62,8 @@ function UserHome(props) {
                                 </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
-
                             <List  style={{maxHeight: '100%', overflow: 'auto'}}>
                                 <Response item = {{}}/>
-
-
                             </List>
                         </Box>
 
@@ -85,8 +82,6 @@ const useStyles = makeStyles((theme) => ({
     box:{
         flexGrow: 1,
         padding: 0,
-        display: 'start',
-        overflow: 'auto',
         flexDirection: 'column',
         margin: 10,
         marginBottom: 20,
