@@ -9,12 +9,9 @@ import UserId from '../User/userID'
 import Feedback from "../Old/Feedback/feedback";
 import {db} from "../../api/firebase";
 
-
 function TeamBox(props) {
-
     const classes = useStyles();
     const [team, setTeam] = React.useState([]);
-
 
     const getTeam = async() => {
         let id = props.user.team
@@ -36,12 +33,15 @@ function TeamBox(props) {
 
 
     return (
-        <Grid container>
-            <Box border = {1}>
+        <Grid direction = 'column' container>
+            <p style = {{margin: 10, fontSize: 19, }}>
+                {props.user.team}
+            </p>
             <List>
+                <Box border = {1}>
                 {team.map((item) => <UserId  email = {item} />)}
+                </Box>
             </List>
-            </Box>
         </Grid>
     );
 }
