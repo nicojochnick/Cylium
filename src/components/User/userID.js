@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -11,13 +11,23 @@ import Checkbox from '@material-ui/core/Checkbox';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import {makeStyles} from "@material-ui/core/styles";
+import {db} from "../../api/firebase";
 
 
 function UserId(props) {
     const classes = useStyles();
+    const [user, setUser] = React.useState(null);
 
 
     const [checked, setChecked] = React.useState([1]);
+
+    const getUser = async () => {
+        let userRef = db.collection("users").doc(props.email)
+        const user = await userRef.get();
+        const userData = user.data();
+        console.log(userData)
+        setUser(userData);
+    }
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -31,6 +41,13 @@ function UserId(props) {
 
         setChecked(newChecked);
     };
+
+    useEffect(() => {
+        getUser()
+
+    }, []);
+
+
     return (
         <div>
             {/*<Box component="span" style = {{margin: 10}} border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>*/}
@@ -38,14 +55,14 @@ function UserId(props) {
             {/*</Box>*/}
             {/*<p> {props.user.name} </p>*/}
 
-            {(props.user.img_url_Profile)
+            {(user)
                 ?
                 <Grid container justify = 'flex-start'>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
                         <Grid container>
                         <Box component="span" style = {{margin: 0}} border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
-                            <Avatar src={props.user.img_url_Profile.imgUrl} className = {classes.large}></Avatar>
+                            <Avatar src={user.img_url_Profile.imgUrl} className = {classes.large}></Avatar>
                         </Box>
                         </Grid>
                     </ListItemAvatar>
@@ -53,7 +70,7 @@ function UserId(props) {
                     <ListItemText
                         style = {{margin: 15, marginLeft: 5}}
                         aria-setsize={20}
-                        primary={props.user.name}
+                        primary={user.name}
                     />
                     </Grid>
                     <ListItemSecondaryAction>

@@ -13,7 +13,7 @@ import Feedback from "../components/Old/Feedback/feedback"
 import moment from 'moment';
 import RewardTracker from "../components/Old/Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
-import FeedbackTracker from "../components/Old/feedbackTracker";
+import FeedbackTracker from "../components/Old/Feedback/feedbackTracker";
 import TeamManage from "../components/Team/teamManage";
 import ShareBoxx from "../components/Old/Share/shareBoxx";
 import { FixedSizeList } from 'react-window';
@@ -66,7 +66,6 @@ function UserHome(props) {
                                 <Response item = {{}}/>
                             </List>
                         </Box>
-
                     </Grid>
                 </Grid>
             </Container>
