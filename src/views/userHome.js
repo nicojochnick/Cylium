@@ -14,7 +14,7 @@ import moment from 'moment';
 import RewardTracker from "../components/Old/Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
 import FeedbackTracker from "../components/Old/feedbackTracker";
-import NetworkBrowse from "../components/Network/networkBrowse";
+import TeamManage from "../components/Team/teamManage";
 import ShareBoxx from "../components/Old/Share/shareBoxx";
 import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';

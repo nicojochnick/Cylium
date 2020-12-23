@@ -7,6 +7,7 @@ import Survey from "../components/Survey/survey";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
 import UserProfile from "../components/User/userProfile";
+import TeamBox from "../components/Team/teamBox";
 
 function Settings(props) {
     const classes = useStyles();
@@ -31,6 +32,7 @@ function Settings(props) {
                                 </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
+                            <TeamBox user = {props.user}/>
                         </Box>
                     </Grid>
                 </Grid>

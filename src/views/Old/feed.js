@@ -17,7 +17,7 @@ import RewardTracker from "../../components/Old/Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
 import Pulse from "../../assets/images/pulse.gif"
 import FeedbackTracker from "../../components/Old/feedbackTracker";
-import NetworkBrowse from "../../components/Network/networkBrowse";
+import TeamManage from "../../components/Team/teamManage";
 import ShareBoxx from "../../components/Old/Share/shareBoxx";
 
 
