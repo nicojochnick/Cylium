@@ -21,14 +21,17 @@ function TeamHome(props) {
                                 SURVEY
                             </h2>
                             <Divider style ={{marginTop:0}}/>
-                            <SurveySettings survey = {props.survey} />
+                            {(props.survey['date'])
+                                ?<SurveySettings user = {props.user} survey={props.survey}/>
+                                : null //TODO add loader
+                            }
                         </Box>
                         <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                 TRENDS
                             </h2>
                             <Divider style ={{marginTop:0}}/>
-                            <TeamOverallStats/>
+                            <TeamOverallStats user = {props.user} />
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm ={12} md={8} lg={8}>

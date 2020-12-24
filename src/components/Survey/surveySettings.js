@@ -7,6 +7,16 @@ import EditSurveyQuestion from './editSurveyQuestion'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import SurveyQuestion from "./surveyQuestion";
+import {db} from "../../api/firebase";
+
+
+let rand = function() {
+    return Math.random().toString(36).substr(2); // remove `0.`
+};
+
+let token = function() {
+    return rand() + rand(); // to make it longer
+};
 
 function SurveySettings(props) {
     const [state, setState] = React.useState({
@@ -19,22 +29,23 @@ function SurveySettings(props) {
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
-
-    console.log(props.survey)
-
+    const handleSwitchQuestion = async(key, on) => {
+        let path = `survey.questions.${key}.on`;
+        const res = await db.collection('teams').doc(props.user.team).update({
+            path: !on
+        })
+    };
+    console.log(props.survey);
     return (
         <div>
             <Grid style = {{padding: 10}} container justify='center' direction = 'column'>
                 <p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 10, color:"#10102F"}}>
                     Send Date: {props.survey.date.toDate().toDateString()}
-
                 </p>
-
                 <Divider/>
-
                 {
                     <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(props.survey.questions).map((item) => <EditSurveyQuestion item={props.survey.questions[item]}/>)}
+                        {Object.keys(props.survey.questions).map((key) => <EditSurveyQuestion handleSwitchQuestion = {handleSwitchQuestion} key = {key} item={props.survey.questions[key]}/>)}
                     </Grid>
                 }
 

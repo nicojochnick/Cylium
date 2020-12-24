@@ -13,8 +13,7 @@ function EditSurveyQuestion(props) {
         <div>
             {(props.item)
                 ? <FormControlLabel
-                    control={<Checkbox checked={props.item.checked} onChange={props.handleChange} name="checkedB"
-                                       color="primary"/>}
+                    control={<Checkbox checked={props.item.on} onChange={props.handleSwitchQuestion(props.key, props.item.on)} color="primary"/>}
                     label={props.item.label}
                 />
                 : null

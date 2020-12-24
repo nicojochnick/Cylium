@@ -6,10 +6,8 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import {makeStyles} from "@material-ui/core/styles";
 import SurveyQuestion from './surveyQuestion'
-
-
-import Slider from '@material-ui/core/Slider';
 import {db} from "../../api/firebase";
+import Slider from '@material-ui/core/Slider';
 
 function isEmpty(obj) {
     for(let prop in obj) {

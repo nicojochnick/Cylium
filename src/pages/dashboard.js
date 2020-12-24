@@ -91,15 +91,17 @@ export default function Dashboard() {
             .onSnapshot(function(doc) {
                 console.log("Current data: ", doc.data());
                 //Fixes bug where doc.data() is undefined on first signin
-                if (doc.data()) {
-                    setURL(doc.data().url);
-                    setUser(doc.data())
+                let user = doc.data()
+                if (user) {
+                    setURL(user.url);
+                    setUser(user)
+                    getSurvey(user)
                 }
             });
 
     };
 
-    const getSurvey = async() => {
+    const getSurvey = async(user) => {
         if (user) {
             let survRef = db.collection("teams").doc(user.team);
             let survData = await survRef.get();
@@ -111,12 +113,10 @@ export default function Dashboard() {
         }
     };
 
-
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
         getUser(email);
-        getSurvey()
     }, []);
 
     console.log(survey)
@@ -174,7 +174,6 @@ export default function Dashboard() {
                                     <NotificationsIcon />
                                 </Badge>
                             </IconButton>
-
                             <Popover
                                 style = {{borderRadius: 10, marginRight: 20}}
                                 id={idNotification}
@@ -193,9 +192,7 @@ export default function Dashboard() {
                                 <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, minWidth:400, maxHeight: 500}}>
                                     {notifications.map((item) => <Notification item = {item}/>)}
                                 </Box>
-
                             </Popover>
-
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -254,7 +251,6 @@ export default function Dashboard() {
                             <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Team" />
                         </ListItem>
                     </Link>
-
                     <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
@@ -271,14 +267,12 @@ export default function Dashboard() {
                                 <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Profile" />
                             </ListItem>
                         </Link>
-
-
                     <div>
                     </div>
                 </List>
                 <Divider />
             </Drawer>
-                {(url && user && survey['date']) ?
+                {(url && user) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
                         <Switch>
@@ -289,7 +283,7 @@ export default function Dashboard() {
                             {/*    <EditFeedbox user = {user} url = {url} email = {email} />*/}
                             {/*</Route>*/}
                             <Route exact path="/lead">
-                                <TeamHome survey = {survey} user = {user} url = {url} email = {email}/>
+                                <TeamHome getSurvey = {getSurvey} survey = {survey} user = {user} url = {url} email = {email}/>
                             </Route>
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>
