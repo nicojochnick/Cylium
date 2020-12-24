@@ -117,6 +117,7 @@ export default function Dashboard() {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
         getUser(email);
+        getSurvey(user);
     }, []);
 
     console.log(survey)

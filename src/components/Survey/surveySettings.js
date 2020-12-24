@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
@@ -18,6 +18,7 @@ let token = function() {
 };
 
 function SurveySettings(props) {
+    const [survey, setSurvey] = React.useState(null)
     const [state, setState] = React.useState({
         checkedA: true,
         checkedB: true,
@@ -27,29 +28,39 @@ function SurveySettings(props) {
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
-    const handleSwitchQuestion = async(key, on) => {
-        console.log(key)
-        let survey = {};
-        let path = `survey.questions.${key}.on`;
-        survey[path] = !on;
-        const res = await db.collection('teams').doc(props.user.team).update(survey)
+    const handleSwitchQuestion = async(id, on) => {
+        let fb_survey = {};
+        let path = `survey.questions.${id}.on`;
+        fb_survey[path] = on;
+        const res = await db.collection('teams').doc(props.user.team).update(fb_survey)
     };
-    console.log(props.survey);
+
+    useEffect(() => {
+        db.collection("teams").doc(props.user.team)
+            .onSnapshot(function (doc) {
+                let survey = doc.data().survey
+                console.log(survey)
+                setSurvey(survey)
+            });
+    }, []);
+
+
+
+    console.log(survey);
     return (
         <div>
-            <Grid style = {{padding: 10}} container justify='center' direction = 'column'>
+            {(survey)
+              ? <Grid style = {{padding: 10}} container justify='center' direction = 'column'>
                 <p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 10, color:"#10102F"}}>
-                    Send Date: {props.survey.date.toDate().toDateString()}
+                    Send Date: {survey.date.toDate().toDateString()}
                 </p>
                 <Divider/>
-                {
                     <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(props.survey.questions).map((key) => <EditSurveyQuestion handleSwitchQuestion = {handleSwitchQuestion} id = {key} item={props.survey.questions[key]}/>)}
+                        {Object.keys(survey.questions).map((id) => <EditSurveyQuestion handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
                     </Grid>
-                }
-
             </Grid>
-
+                :null
+                }
         </div>
     );
 }
