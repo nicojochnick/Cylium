@@ -51,6 +51,7 @@ export default function Dashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const [url, setURL] = React.useState(null);
+    const [survey, setSurvey] = React.useState({});
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
@@ -85,13 +86,8 @@ export default function Dashboard() {
         });
     };
 
-
-    useEffect(() => {
-        console.log('listen');
-        let email = firebase.auth().currentUser.email;
-        setEmail(email);
-        console.log(email);
-        db.collection("users").doc(email)
+    const getUser = async(email) => {
+        await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
                 console.log("Current data: ", doc.data());
                 //Fixes bug where doc.data() is undefined on first signin
@@ -101,15 +97,27 @@ export default function Dashboard() {
                 }
             });
 
-        db.collection("user_transactions").where('receiver', '==', email)
-            .onSnapshot(function (querySnapshot) {
-                let notifications = [{sender: "help@feedboxx.io", amount: 25 }];
-                querySnapshot.forEach(function (doc) {
-                    notifications.push(doc.data());
-                });
-                setNotifications(notifications)
-            });
+    };
+
+    const getSurvey = async() => {
+        if (user) {
+            let survRef = db.collection("teams").doc(user.team);
+            let survData = await survRef.get();
+            let surv = survData.data();
+            console.log(surv.survey)
+            setSurvey(surv.survey)
+        }
+    };
+
+
+    useEffect(() => {
+        let email = firebase.auth().currentUser.email;
+        setEmail(email);
+        getUser(email)
+        getSurvey()
     }, []);
+
+    console.log(survey)
 
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -268,18 +276,18 @@ export default function Dashboard() {
                 </List>
                 <Divider />
             </Drawer>
-                {(url && user) ?
+                {(url && user && survey['date']) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <UserHome user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <UserHome survey = {survey} user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
                             {/*<Route exact path="/feedboxx-edit">*/}
                             {/*    <EditFeedbox user = {user} url = {url} email = {email} />*/}
                             {/*</Route>*/}
                             <Route exact path="/lead">
-                                <TeamHome user = {user} url = {url} email = {email}/>
+                                <TeamHome survey = {survey} user = {user} url = {url} email = {email}/>
                             </Route>
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>

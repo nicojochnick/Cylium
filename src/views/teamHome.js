@@ -21,7 +21,7 @@ function TeamHome(props) {
                                 SURVEY
                             </h2>
                             <Divider style ={{marginTop:0}}/>
-                            <SurveySettings/>
+                            <SurveySettings survey = {props.survey} />
                         </Box>
                         <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>

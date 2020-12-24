@@ -18,11 +18,14 @@ function SurveySettings(props) {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
 
+    console.log(props.survey)
+
     return (
         <div>
             <Grid style = {{padding: 10}} container justify='center' direction = 'column'>
                 <p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 10, color:"#10102F"}}>
-                    Send Date:
+                    Send Date: {props.survey.date.toDate().toDateString()}
+
                 </p>
 
                 <Divider/>

@@ -38,7 +38,7 @@ function UserHome(props) {
                                     SURVEY
                                 </h2>
                             <Divider style ={{marginTop:0}}/>
-                            <Survey user = {props.user} />
+                            <Survey survey = {props.survey} user = {props.user} />
 
                         </Box>
 

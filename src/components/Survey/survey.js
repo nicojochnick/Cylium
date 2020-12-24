@@ -26,6 +26,7 @@ function Survey(props) {
     const [responses, setResponses] = React.useState({});
 
     const getSurvey = async() => {
+        //TODO: refactor this with dashboard pull
         if (props.user.team) {
             let survRef = db.collection("teams").doc(props.user.team);
             let survData = await survRef.get();
@@ -44,7 +45,7 @@ function Survey(props) {
             <Grid style = {{padding: 20}}>
             <form className={classes.form} onSubmit={console.log('submit')} noValidate>
                 {(!isEmpty(survey.questions))
-                    ?<Grid container direction = 'column' spacing={2}>
+                    ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
                         {Object.keys(survey.questions).map((item) => <SurveyQuestion question={survey.questions[item]}/>)}
                     </Grid>
                     : null

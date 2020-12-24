@@ -24,17 +24,20 @@ function SurveyQuestion(props) {
                         rowsMax={5}
                         value={''}
                     />
-                    :<Slider
-                        defaultValue={1}
+                    :
+                    <div style = {{marginTop: 35}}>
+                    <Slider
+                        defaultValue={5}
                         getAriaValueText={''}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
                         valueLabelDisplay="on"
-                        step={1}
+                        step={0.5}
                         marks
                         min={1}
                         max={10}
                     />
+                    </div>
 
                 }
 
