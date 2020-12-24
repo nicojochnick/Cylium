@@ -3,8 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import EditSurveyQuestion from './editSurveyQuestion'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import SurveyQuestion from "./surveyQuestion";
 
 function SurveySettings(props) {
     const [state, setState] = React.useState({
@@ -30,18 +32,11 @@ function SurveySettings(props) {
 
                 <Divider/>
 
-                <FormControlLabel
-                control={<Checkbox checked={state.checkedA} onChange={handleChange} color="primary" name="checkedA" />}
-                              label='Form Question 1'
-                />
-                <FormControlLabel control={<Checkbox checked={state.checkedB} onChange={handleChange} name="checkedB" color="primary"/>}
-                              label="Form Question 2"
-                />
-                <FormControlLabel control={<Checkbox checked={state.checkedC} onChange={handleChange} name="checkedC" color="primary"/>}
-                              label="Form Question 2"
-                />
-                <FormControlLabel control={<Checkbox checked={state.checkedD} onChange={handleChange} name="checkedD" color="primary"/>}
-                              label="Form Question 2"/>
+                {
+                    <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
+                        {Object.keys(props.survey.questions).map((item) => <EditSurveyQuestion item={props.survey.questions[item]}/>)}
+                    </Grid>
+                }
 
             </Grid>
 

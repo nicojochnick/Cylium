@@ -106,6 +106,8 @@ export default function Dashboard() {
             let surv = survData.data();
             console.log(surv.survey)
             setSurvey(surv.survey)
+        } else {
+            console.log('nouser')
         }
     };
 
@@ -113,7 +115,7 @@ export default function Dashboard() {
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
-        getUser(email)
+        getUser(email);
         getSurvey()
     }, []);
 
