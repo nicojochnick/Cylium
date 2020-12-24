@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 
 
 function SurveyQuestion(props) {
-    console.log(props.question)
+    console.log(props.question);
     return (
         <div>
             <Grid item>
@@ -38,11 +38,7 @@ function SurveyQuestion(props) {
                         max={10}
                     />
                     </div>
-
                 }
-
-
-
             </Grid>
 
         </div>

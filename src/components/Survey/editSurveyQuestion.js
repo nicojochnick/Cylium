@@ -8,12 +8,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 function EditSurveyQuestion(props) {
     const classes = useStyles();
+    console.log(props.id)
 
     return (
         <div>
             {(props.item)
                 ? <FormControlLabel
-                    control={<Checkbox checked={props.item.on} onChange={props.handleSwitchQuestion(props.key, props.item.on)} color="primary"/>}
+                    control={<Checkbox checked={props.item.on} onChange={()=>props.handleSwitchQuestion(props.id, props.item.on)} color="primary"/>}
                     label={props.item.label}
                 />
                 : null

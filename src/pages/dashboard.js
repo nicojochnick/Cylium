@@ -94,8 +94,8 @@ export default function Dashboard() {
                 let user = doc.data()
                 if (user) {
                     setURL(user.url);
-                    setUser(user)
-                    getSurvey(user)
+                    setUser(user);
+                    getSurvey(user);
                 }
             });
 

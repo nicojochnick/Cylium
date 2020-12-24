@@ -9,7 +9,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import SurveyQuestion from "./surveyQuestion";
 import {db} from "../../api/firebase";
 
-
 let rand = function() {
     return Math.random().toString(36).substr(2); // remove `0.`
 };
@@ -25,15 +24,15 @@ function SurveySettings(props) {
         checkedC: true,
         checkedD: true,
     });
-
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
     const handleSwitchQuestion = async(key, on) => {
+        console.log(key)
+        let survey = {};
         let path = `survey.questions.${key}.on`;
-        const res = await db.collection('teams').doc(props.user.team).update({
-            path: !on
-        })
+        survey[path] = !on;
+        const res = await db.collection('teams').doc(props.user.team).update(survey)
     };
     console.log(props.survey);
     return (
@@ -45,7 +44,7 @@ function SurveySettings(props) {
                 <Divider/>
                 {
                     <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(props.survey.questions).map((key) => <EditSurveyQuestion handleSwitchQuestion = {handleSwitchQuestion} key = {key} item={props.survey.questions[key]}/>)}
+                        {Object.keys(props.survey.questions).map((key) => <EditSurveyQuestion handleSwitchQuestion = {handleSwitchQuestion} id = {key} item={props.survey.questions[key]}/>)}
                     </Grid>
                 }
 
