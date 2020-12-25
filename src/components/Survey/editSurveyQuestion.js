@@ -3,26 +3,45 @@ import {makeStyles, withStyles} from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
+import Box from "@material-ui/core/Box";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 function EditSurveyQuestion(props) {
     const classes = useStyles();
-    console.log(props.id)
-    const [on, setOn] = React.useState(props.item.on)
+    console.log(props.id);
+    const [on, setOn] = React.useState(props.item.on);
 
     const handleSwitchQuestion = (on) => {
-        props.handleSwitchQuestion(props.id, !on)
+        props.handleSwitchQuestion(props.id, !on);
         setOn(!on)
-    }
+    };
 
     return (
         <div>
             {(props.item)
-                ? <FormControlLabel
-                    control={<Checkbox checked={on} onChange={() => handleSwitchQuestion(on)} color="primary"/>}
-                    label={props.item.label}
-                />
+                ?
+                    <Grid style = {{margin: 4}} container>
+                        <Grid container direction = 'row' alignItems = 'center' justify='space-between'>
+                            <p style = {{fontSize: 16, color:"#9FA5B1", fontWeight: 500, margin: 3}}>
+                                QUESTION: {props.id}
+                            </p>
+                            <Grid item>
+                            <Box style = {{margin: 0, padding: 4}} borderRadius = {20} border = {1} >
+                            <p style = {{margin:5, fontSize: 10}}>
+                                Category: Team Strength
+                            </p>
+                            </Box>
+                            </Grid>
+                        </Grid>
+                        <Divider/>
+                        <p> {props.item.label} </p>
+                        <Checkbox checked={on} onChange={() => handleSwitchQuestion(on)} color="primary"/>
+                        {/*<FormControlLabel*/}
+                        {/*    control={<Checkbox checked={on} onChange={() => handleSwitchQuestion(on)} color="primary"/>}*/}
+                        {/*    label={props.item.label}*/}
+                        {/*/>*/}
+                    </Grid>
                 : null
             }
         </div>

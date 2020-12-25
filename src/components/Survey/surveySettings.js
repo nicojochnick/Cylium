@@ -39,7 +39,7 @@ function SurveySettings(props) {
         db.collection("teams").doc(props.user.team)
             .onSnapshot(function (doc) {
                 let survey = doc.data().survey
-                console.log(survey)
+                console.log(survey);
                 setSurvey(survey)
             });
     }, []);
