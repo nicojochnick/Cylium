@@ -17,7 +17,7 @@ let token = function() {
     return rand() + rand(); // to make it longer
 };
 
-function SurveySettings(props) {
+function QuestionSettings(props) {
     const [survey, setSurvey] = React.useState(null)
     const [state, setState] = React.useState({
         checkedA: true,
@@ -65,4 +65,4 @@ function SurveySettings(props) {
     );
 }
 
-export default SurveySettings;
+export default QuestionSettings;
