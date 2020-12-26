@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import EditSurveyQuestion from './editSurveyQuestion'
+import EditQuestion from './editQuestion'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import SurveyQuestion from "./surveyQuestion";
+import QuestionItem from "./questionItem";
 import {db} from "../../api/firebase";
 
 let rand = function() {
@@ -38,25 +38,19 @@ function QuestionSettings(props) {
     useEffect(() => {
         db.collection("teams").doc(props.user.team)
             .onSnapshot(function (doc) {
-                let survey = doc.data().survey
-                console.log(survey);
-                setSurvey(survey)
+                let survey = doc.data().survey;
+                setSurvey(survey);
             });
     }, []);
 
 
-
-    console.log(survey);
     return (
         <div>
             {(survey)
-              ? <Grid style = {{padding: 10}} container justify='center' direction = 'column'>
-                <p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 10, color:"#10102F"}}>
-                    Send Date: {survey.date.toDate().toDateString()}
-                </p>
-                <Divider/>
+              ? <Grid container justify='center' direction = 'column'>
+
                     <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(survey.questions).map((id) => <EditSurveyQuestion handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
+                        {Object.keys(survey.questions).map((id) => <EditQuestion handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
                     </Grid>
             </Grid>
                 :null
@@ -66,3 +60,8 @@ function QuestionSettings(props) {
 }
 
 export default QuestionSettings;
+
+{/*<p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 10, color:"#10102F"}}>*/}
+{/*    Send Date: {survey.date.toDate().toDateString()}*/}
+{/*</p>*/}
+{/*<Divider/>*/}

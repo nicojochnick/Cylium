@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-function EditSurveyQuestion(props) {
+function EditQuestion(props) {
     const classes = useStyles();
     console.log(props.id);
     const [on, setOn] = React.useState(props.item.on);
@@ -16,9 +16,10 @@ function EditSurveyQuestion(props) {
         props.handleSwitchQuestion(props.id, !on);
         setOn(!on)
     };
-
     return (
         <div>
+            <Box className={classes.box} boxShadow = {0} style = {{padding: 20, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10}>
+
             {(props.item)
                 ?
                     <Grid style = {{margin: 4}} container>
@@ -44,16 +45,21 @@ function EditSurveyQuestion(props) {
                     </Grid>
                 : null
             }
+            </Box>
         </div>
     );
 }
 
 const useStyles = makeStyles((theme) => ({
     box: {
+        flexGrow: 1,
         padding: 0,
-        margin: 0,
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+        margin: 10,
         marginBottom: 20,
-        borderRadius: 5,
+        backgroundColor: 'white',
     },
     container:{
         margin: 20
@@ -108,4 +114,4 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default EditSurveyQuestion;
+export default EditQuestion;

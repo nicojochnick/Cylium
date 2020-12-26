@@ -20,7 +20,7 @@ import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
-import Survey from "../components/Questions/survey";
+import Questions from "../components/Questions/questions";
 import TeamMemberStats from "../components/Analytics/teamMemberStats";
 import Response from "../components/Messaging/response";
 
@@ -33,14 +33,15 @@ function UserHome(props) {
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1}>
                     <Grid direction = 'column' container xs={12} sm={12} md={5} lg={5}>
-                        <Box className={classes.boxSticky} boxShadow = {0} style = {{minHeight: 450, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
+                        <Box className={classes.box} boxShadow = {0} style = {{boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                                 <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
-                                    SURVEY
+                                    QUESTIONS
                                 </h2>
-                            <Divider style ={{marginTop:0}}/>
-                            <Survey survey = {props.survey} user = {props.user} />
-
                         </Box>
+                            <Divider style ={{marginTop:0}}/>
+                            <Questions survey = {props.survey} user = {props.user} />
+
+
 
                     </Grid>
                     <Grid item xs={12} sm ={12} md={7} lg={7}>
@@ -85,7 +86,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
         marginBottom: 20,
         backgroundColor: 'white',
-        minHeight: 300,
     },
 
     boxSticky:{
@@ -98,7 +98,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
         marginBottom: 20,
         backgroundColor: 'white',
-        minHeight: 300,
     },
 
     content: {

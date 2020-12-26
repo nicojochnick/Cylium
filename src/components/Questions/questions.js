@@ -5,9 +5,10 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import {makeStyles} from "@material-ui/core/styles";
-import SurveyQuestion from './surveyQuestion'
+import QuestionItem from './questionItem'
 import {db} from "../../api/firebase";
 import Slider from '@material-ui/core/Slider';
+
 
 function isEmpty(obj) {
     for(let prop in obj) {
@@ -17,7 +18,7 @@ function isEmpty(obj) {
     return true;
 };
 
-function Survey(props) {
+function Questions(props) {
     const classes = useStyles();
     // const question_1 = 'Rate your team strength this week (1-10)';
     const [survey, setSurvey] = React.useState({});
@@ -40,15 +41,14 @@ function Survey(props) {
 
     return (
         <div>
-            <Grid style = {{padding: 20}}>
+            <Grid>
             <form className={classes.form} onSubmit={console.log('submit')} noValidate>
                 {(!isEmpty(survey.questions))
                     ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(survey.questions).map((item) => <SurveyQuestion question={survey.questions[item]}/>)}
+                        {Object.keys(survey.questions).map((item) => <QuestionItem question={survey.questions[item]}/>)}
                     </Grid>
                     : null
                 }
-
                 <div>
                     {''? <p>{''}</p> : null}
                     <Button
@@ -61,11 +61,8 @@ function Survey(props) {
                         Submit
                     </Button>
                 </div>
-
             </form>
             </Grid>
-
-
         </div>
     );
 }
@@ -130,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default Survey;
+export default Questions;
 
 
 {/*<Grid item xs={12}>*/}

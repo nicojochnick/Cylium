@@ -16,16 +16,17 @@ function TeamHome(props) {
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={2}>
                     <Grid direction = 'column' container xs={12} sm={12} md={4} lg={4}>
-                        <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
+                        <Box className={classes.box} boxShadow = {0} style = {{ boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
-                                SURVEY
+                                QUESTIONS
                             </h2>
-                            <Divider style ={{marginTop:0}}/>
+                        </Box>
+
+                        <Divider style ={{marginTop:0}}/>
                             {(props.survey['date'])
                                 ?<QuestionSettings user = {props.user} survey={props.survey}/>
                                 : null //TODO add loader
                             }
-                        </Box>
                         <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
                             <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                 TRENDS
@@ -64,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
         marginBottom: 20,
         backgroundColor: 'white',
-        minHeight: 300,
     },
 
     boxSticky:{
