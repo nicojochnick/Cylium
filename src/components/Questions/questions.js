@@ -18,6 +18,7 @@ function isEmpty(obj) {
     return true;
 };
 
+
 function Questions(props) {
     const classes = useStyles();
     // const question_1 = 'Rate your team strength this week (1-10)';
@@ -25,14 +26,17 @@ function Questions(props) {
     const [responses, setResponses] = React.useState({});
 
     const getSurvey = async() => {
-        //TODO: refactor this with dashboard pull
-        if (props.user.team) {
-            let survRef = db.collection("teams").doc(props.user.team);
-            let survData = await survRef.get();
-            let surv = survData.data();
-            console.log(surv.survey.questions);
-            setSurvey(surv.survey)
+        function getById (path, ids) {
+            let survRef = db.collection("questions").doc(props.user.team);
+
         }
+        //TODO: refactor this with dashboard pull
+        // if (props.user.team) {
+        //     let survRef = db.collection("questions").doc(props.user.team);
+        //     let survData = await survRef.get();
+        //     let surv = survData.data();
+        //     setSurvey(surv.survey)
+        // }
     };
 
     useEffect(() => {
@@ -42,7 +46,7 @@ function Questions(props) {
     return (
         <div>
             <Grid>
-            <form className={classes.form} onSubmit={console.log('submit')} noValidate>
+            {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
                 {(!isEmpty(survey.questions))
                     ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
                         {Object.keys(survey.questions).map((item) => <QuestionItem question={survey.questions[item]}/>)}
@@ -50,18 +54,8 @@ function Questions(props) {
                     : null
                 }
                 <div>
-                    {''? <p>{''}</p> : null}
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                    >
-                        Submit
-                    </Button>
                 </div>
-            </form>
+            {/*</form>*/}
             </Grid>
         </div>
     );
@@ -171,3 +165,14 @@ export default Questions;
 {/*value={''}*/}
 {/*/>*/}
 {/*</Grid>*/}
+
+
+{/*<Button*/}
+{/*    type="submit"*/}
+{/*    fullWidth*/}
+{/*    variant="contained"*/}
+{/*    color="primary"*/}
+{/*    className={classes.submit}*/}
+{/*>*/}
+{/*    Submit*/}
+{/*</Button>*/}

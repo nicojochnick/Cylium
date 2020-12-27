@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-function EditQuestion(props) {
+function QuestionEdit(props) {
     const classes = useStyles();
     console.log(props.id);
     const [on, setOn] = React.useState(props.item.on);
@@ -28,11 +28,7 @@ function EditQuestion(props) {
                                 QUESTION: {props.id}
                             </p>
                             <Grid item>
-                            <Box style = {{margin: 0, padding: 4}} borderRadius = {20} border = {1} >
-                            <p style = {{margin:5, fontSize: 10}}>
-                                Category: Team Strength
-                            </p>
-                            </Box>
+
                             </Grid>
                         </Grid>
                         <Divider/>
@@ -114,4 +110,10 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default EditQuestion;
+export default QuestionEdit;
+
+{/*<Box style = {{margin: 0, padding: 4}} borderRadius = {20} border = {1} >*/}
+{/*<p style = {{margin:5, fontSize: 10}}>*/}
+{/*    Category: Team Strength*/}
+{/*</p>*/}
+{/*</Box>*/}

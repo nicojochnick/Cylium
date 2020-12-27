@@ -28,23 +28,20 @@ import InputBase from '@material-ui/core/InputBase';
 import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
-import UserHome from '../views/userHome'
-import TeamHome from '../views/teamHome'
+import UserHome from '../views/Old/userHome'
+import TeamHome from '../views/Old/teamHome'
 import { BiTransferAlt, BiEdit, BiHome, BiUser} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import Feed from "../views/Old/feed"
-import Feedbox from "../views/Old/feedbox"
+import Base from '../views/base'
 import {db} from "../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
 import Transactions from "../views/Old/transactions";
 import Feedback from "../components/Old/Feedback/feedback";
-import Notification from "../components/Notifications/notification";
+import Notification from "../components/Utilities/Notifications/notification";
 
 export default function Dashboard() {
     // let email = firebase.auth().currentUser.email;
@@ -244,22 +241,22 @@ export default function Dashboard() {
                 </div>
                 <Divider/>
                 <List>
-                    <Link to="/lead"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
+                    <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
                                 <BiHome size = {25} style = {{color:'white'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Team" />
+                            <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Home" />
                         </ListItem>
                     </Link>
-                    <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <BiEdit size = {25} style = {{color:'white'}}  />
-                            </ListItemIcon>
-                            <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Respond" />
-                        </ListItem>
-                    </Link>
+                    {/*<Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>*/}
+                    {/*    <ListItem button>*/}
+                    {/*        <ListItemIcon>*/}
+                    {/*            <BiEdit size = {25} style = {{color:'white'}}  />*/}
+                    {/*        </ListItemIcon>*/}
+                    {/*        <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Respond" />*/}
+                    {/*    </ListItem>*/}
+                    {/*</Link>*/}
                         <Link to="/settings"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
@@ -278,7 +275,7 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <UserHome survey = {survey} user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <Base survey = {survey} user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
                             {/*<Route exact path="/feedboxx-edit">*/}
                             {/*    <EditFeedbox user = {user} url = {url} email = {email} />*/}

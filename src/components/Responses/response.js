@@ -24,36 +24,14 @@ function Response(props) {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Box className={classes.box}>
-            <Grid
+        <Box className={classes.box} boxShadow = {0} style = {{padding: 10, margin: 10, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10}>
+        <Grid
                 container
-                style={{margin: 10}}
+                style={{margin: 0}}
                 direction="row"
                 justify="space-between"
                 alignItems="flex-start">
                 <Grid item direction="column" justify="flex-end">
-                    {/*<Grid item>*/}
-                    {/*    <IconButton onClick={handleClick} style={{marginRight: -20}} aria-label="open">*/}
-                    {/*        <FiMoreVertical size={20}/>*/}
-                    {/*    </IconButton>*/}
-                    {/*    <Popover*/}
-                    {/*        id={id}*/}
-                    {/*        open={open}*/}
-                    {/*        anchorEl={anchorEl}*/}
-                    {/*        onClose={handleClose}*/}
-                    {/*        anchorOrigin={{*/}
-                    {/*            vertical: 'bottom',*/}
-                    {/*            horizontal: 'center',*/}
-                    {/*        }}*/}
-                    {/*        transformOrigin={{*/}
-                    {/*            vertical: 'top',*/}
-                    {/*            horizontal: 'center',*/}
-                    {/*        }}>*/}
-                    {/*        <Button onClick={() => props.handleDelete(props.item.id)} variant="contained" color="primary">*/}
-                    {/*            Delete*/}
-                    {/*        </Button>*/}
-                    {/*    </Popover>*/}
-                    {/*</Grid>*/}
                 </Grid>
             </Grid>
             <Grid style = {{margin: 15}} container direction = 'row' wrap="nowrap" spacing={2}>
@@ -77,7 +55,6 @@ function Response(props) {
                     </Box>
                 </Grid>
             </Grid>
-            <Divider style = {{marginTop: 10}} />
         </Box>
     );
 }
@@ -89,10 +66,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     box:{
-        // flexGrow: 1,
-        // display: 'start',
-        // overflow: 'auto',
-        // flexDirection: 'row',
+        flexGrow: 1,
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'row',
         borderRadius: 20,
         borderWidth: 1,
         // backgroundColor:"#F9FAFC",
@@ -120,3 +97,27 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "#C6C9D1"
     }
 }));
+
+
+{/*<Grid item>*/}
+{/*    <IconButton onClick={handleClick} style={{marginRight: -20}} aria-label="open">*/}
+{/*        <FiMoreVertical size={20}/>*/}
+{/*    </IconButton>*/}
+{/*    <Popover*/}
+{/*        id={id}*/}
+{/*        open={open}*/}
+{/*        anchorEl={anchorEl}*/}
+{/*        onClose={handleClose}*/}
+{/*        anchorOrigin={{*/}
+{/*            vertical: 'bottom',*/}
+{/*            horizontal: 'center',*/}
+{/*        }}*/}
+{/*        transformOrigin={{*/}
+{/*            vertical: 'top',*/}
+{/*            horizontal: 'center',*/}
+{/*        }}>*/}
+{/*        <Button onClick={() => props.handleDelete(props.item.id)} variant="contained" color="primary">*/}
+{/*            Delete*/}
+{/*        </Button>*/}
+{/*    </Popover>*/}
+{/*</Grid>*/}

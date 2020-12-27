@@ -5,9 +5,9 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import List from '@material-ui/core/List';
-import UserId from '../User/userID'
-import Feedback from "../Old/Feedback/feedback";
-import {db} from "../../api/firebase";
+import UserId from '../userID'
+import Feedback from "../../Old/Feedback/feedback";
+import {db} from "../../../api/firebase";
 
 function TeamBox(props) {
     const classes = useStyles();

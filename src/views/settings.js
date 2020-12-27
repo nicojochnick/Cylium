@@ -7,7 +7,7 @@ import Questions from "../components/Questions/questions";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
 import UserProfile from "../components/User/userProfile";
-import TeamBox from "../components/Team/teamBox";
+import TeamBox from "../components/User/Team/teamBox";
 
 function Settings(props) {
     const classes = useStyles();

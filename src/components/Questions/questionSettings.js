@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import EditQuestion from './editQuestion'
+import QuestionEdit from './questionEdit'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import QuestionItem from "./questionItem";
@@ -50,7 +50,7 @@ function QuestionSettings(props) {
               ? <Grid container justify='center' direction = 'column'>
 
                     <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(survey.questions).map((id) => <EditQuestion handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
+                        {Object.keys(survey.questions).map((id) => <QuestionEdit handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
                     </Grid>
             </Grid>
                 :null
