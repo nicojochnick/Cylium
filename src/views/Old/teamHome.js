@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import UserProfile from "../../components/User/userProfile";
 import {makeStyles} from "@material-ui/core/styles";
-import QuestionSettings from "../../components/Questions/questionSettings";
+import TrackerSettings from "../../components/Trackers/trackerSettings";
 import TeamOverallStats from "../../components/Old/Analytics/teamOverallStats";
 
 function TeamHome(props) {
@@ -22,7 +22,7 @@ function TeamHome(props) {
                             </h2>
                         </Box>
                             {(props.survey['date'])
-                                ?<QuestionSettings user = {props.user} survey={props.survey}/>
+                                ?<TrackerSettings user = {props.user} survey={props.survey}/>
                                 : null //TODO add loader
                             }
                     </Grid>

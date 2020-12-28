@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import QuestionEdit from './questionEdit'
+import TrackerEdit from './trackerEdit'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import QuestionItem from "./questionItem";
+import TrackerItem from "./trackerItem";
 import {db} from "../../api/firebase";
 
 let rand = function() {
@@ -17,7 +17,7 @@ let token = function() {
     return rand() + rand(); // to make it longer
 };
 
-function QuestionSettings(props) {
+function TrackerSettings(props) {
     const [survey, setSurvey] = React.useState(null)
     const [state, setState] = React.useState({
         checkedA: true,
@@ -50,7 +50,7 @@ function QuestionSettings(props) {
               ? <Grid container justify='center' direction = 'column'>
 
                     <Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(survey.questions).map((id) => <QuestionEdit handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
+                        {Object.keys(survey.questions).map((id) => <TrackerEdit handleSwitchQuestion = {handleSwitchQuestion} id = {id} item={survey.questions[id]}/>)}
                     </Grid>
             </Grid>
                 :null
@@ -59,7 +59,7 @@ function QuestionSettings(props) {
     );
 }
 
-export default QuestionSettings;
+export default TrackerSettings;
 
 {/*<p style = {{fontSize: 17, textAlign: 'left', fontWeight: 300, marginBottom: 10, color:"#10102F"}}>*/}
 {/*    Send Date: {survey.date.toDate().toDateString()}*/}

@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 
 
-function QuestionItem(props) {
+function TrackerItem(props) {
     const classes = useStyles();
 
     console.log(props.question);
@@ -104,4 +104,4 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default QuestionItem;
+export default TrackerItem;

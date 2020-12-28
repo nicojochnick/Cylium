@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import {makeStyles} from "@material-ui/core/styles";
-import QuestionItem from './questionItem'
+import TrackerItem from './trackerItem'
 import {db} from "../../api/firebase";
 import Slider from '@material-ui/core/Slider';
 
@@ -19,7 +19,7 @@ function isEmpty(obj) {
 };
 
 
-function Questions(props) {
+function TrackersList(props) {
     const classes = useStyles();
     // const question_1 = 'Rate your team strength this week (1-10)';
     const [survey, setSurvey] = React.useState({});
@@ -49,7 +49,7 @@ function Questions(props) {
             {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
                 {(!isEmpty(survey.questions))
                     ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(survey.questions).map((item) => <QuestionItem question={survey.questions[item]}/>)}
+                        {Object.keys(survey.questions).map((item) => <TrackerItem question={survey.questions[item]}/>)}
                     </Grid>
                     : null
                 }
@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default Questions;
+export default TrackersList;
 
 
 {/*<Grid item xs={12}>*/}

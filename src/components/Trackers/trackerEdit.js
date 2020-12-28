@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-function QuestionEdit(props) {
+function TrackerEdit(props) {
     const classes = useStyles();
     console.log(props.id);
     const [on, setOn] = React.useState(props.item.on);
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default QuestionEdit;
+export default TrackerEdit;
 
 {/*<Box style = {{margin: 0, padding: 4}} borderRadius = {20} border = {1} >*/}
 {/*<p style = {{margin:5, fontSize: 10}}>*/}
