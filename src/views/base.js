@@ -22,7 +22,7 @@ function Base(props) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,g
+        flexGrow: 1,
 
     },
     box:{
