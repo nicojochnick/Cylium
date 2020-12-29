@@ -4,24 +4,26 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
+import TrackerItem from "../components/Trackers/trackerItem";
 function Base(props) {
     const classes = useStyles();
-
     return (
-        <div>
+        <div className={classes.root} >
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1}>
+                    <Grid xs = {12} item>
+                    <TrackerItem/>
+                    </Grid>
                 </Grid>
             </Container>
-
-
         </div>
     );
 }
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        flexGrow: 1,g
+
     },
     box:{
         flexGrow: 1,

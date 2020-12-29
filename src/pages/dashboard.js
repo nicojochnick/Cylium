@@ -277,12 +277,6 @@ export default function Dashboard() {
                             <Route exact path="/feed">
                                 <Base survey = {survey} user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
-                            {/*<Route exact path="/feedboxx-edit">*/}
-                            {/*    <EditFeedbox user = {user} url = {url} email = {email} />*/}
-                            {/*</Route>*/}
-                            <Route exact path="/lead">
-                                <TeamHome getSurvey = {getSurvey} survey = {survey} user = {user} url = {url} email = {email}/>
-                            </Route>
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>
                             </Route>
@@ -471,3 +465,14 @@ const useStyles = makeStyles((theme) => ({
 {/*    </p>*/}
 {/*    </Button>*/}
 {/*</Link>*/}
+
+
+//old links
+
+
+{/*<Route exact path="/feedboxx-edit">*/}
+{/*    <EditFeedbox user = {user} url = {url} email = {email} />*/}
+{/*</Route>*/}
+{/*<Route exact path="/lead">*/}
+{/*    <TeamHome getSurvey = {getSurvey} survey = {survey} user = {user} url = {url} email = {email}/>*/}
+{/*</Route>*/}

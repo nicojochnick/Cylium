@@ -5,48 +5,23 @@ import Slider from "@material-ui/core/Slider";
 import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 
 function TrackerItem(props) {
     const classes = useStyles();
-
-    console.log(props.question);
     return (
-        <div>
-            <Grid item>
-                <Box className={classes.box} boxShadow = {0} style = {{padding: 20, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10}>
-                <p> {props.question.label} </p>
-                { (props.question.type === 'text')
-                    ? <TextField
-                        variant="outlined"
-                        fullWidth
-                        rows={10}
-                        multiline
-                        required
-                        label= 'start typing....'
-                        placeholder=""
-                        onChange={()=>console.log('submit')}
-                        rowsMax={5}
-                        value={''}
-                    />
-                    :
-                    <div style = {{marginTop: 35}}>
-                    <Slider
-                        defaultValue={5}
-                        getAriaValueText={''}
-                        aria-labelledby="discrete-slider"
-                        valueLabelDisplay="auto"
-                        valueLabelDisplay="on"
-                        step={0.5}
-                        marks
-                        min={1}
-                        max={10}
-                    />
-                    </div>
-                }
-                </Box>
-            </Grid>
-        </div>
+
+        <Box className={classes.box}
+             boxShadow = {0}
+             style ={{padding: 20, boxShadow: "0px 5px 10px #D7D7DA"}}
+             borderRadius={10}>
+
+            <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
+                            Tracker Title
+            </h2>
+        </Box>
+
     );
 }
 
@@ -56,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
     box:{
         flexGrow: 1,
+        width:'100hv',
         padding: 0,
         display: 'start',
         overflow: 'auto',
