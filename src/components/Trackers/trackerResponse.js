@@ -4,32 +4,31 @@ import {makeStyles} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import mscott from "../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
-
+import TrackerResponseItem from "./trackerResponseItem";
 
 function TrackerResponse(props) {
     const classes = useStyles();
-
     return (
         <div>
             <Box className={classes.box}
                  boxShadow = {0}
-                 style ={{padding: 20, minHeight: 100, boxShadow: "0px 5px 10px #D7D7DA"}}
-                 borderRadius={20}>
-                <Grid justify='flex-start' alignItems='flex-start' direction = "row" container style = {{marginLeft: 0,}}>
-                    <Grid item >
-                    <Box border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
-                        <Avatar  src = {mscott} className={classes.large}/>
+                 // border = {2}
+                 // borderColor = {'#8B8FA0'}
+                 style ={{padding: 20, marginBottom: 15, minHeight: 100, boxShadow: "0px 5px 13px -8px #585858"}}
+                 borderRadius={2}>
+                <Grid justify='flex-start' alignItems='flex-start' direction = "row" container style = {{margin: 0,}}>
+                    <Grid item xs={1.5} md={1.5} lg={1.5}>
+                    <Box style = {{margin: 5}} border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
+                        <Avatar src = {mscott} className={classes.large}/>
                     </Box>
                     </Grid>
-                    <Grid item xs={11} md={11} lg={11}>
+                    <Grid item xs={10} md={10} lg={10}>
                         <p style = {{margin: 8, marginTop:2, marginBottom: 0, fontSize: 15, color: '#8B8FA0', fontWeight: 500,}}>Amy Windsor</p>
-                        <p style={{color: '#262139', fontSize: 15, margin: 8, marginTop: 2,}}>Loerum Ipsum posum titsums hopesome. Jokesome lopesome ipsome, tomesome. </p>
+                        <TrackerResponseItem textData = {'lorem ipsum'} />
+                        <p style={{color: '#8B8FA0', fontSize: 12, margin: 8, marginTop: 2,}}>Monday, May 2020 </p>
                     </Grid>
-
                 </Grid>
-
             </Box>
-
         </div>
     );
 }
@@ -43,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        margin: 10,
         marginBottom: 20,
         backgroundColor: 'white',
     },

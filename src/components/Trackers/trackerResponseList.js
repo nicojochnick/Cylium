@@ -2,7 +2,7 @@ import React from 'react';
 import TrackerResponse from "./trackerResponse";
 import {makeStyles} from "@material-ui/core/styles";
 
-function TrackerResponses(props) {
+function TrackerResponseList(props) {
     const classes = useStyles();
 
     return (
@@ -66,4 +66,4 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default TrackerResponses;
+export default TrackerResponseList;
