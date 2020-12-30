@@ -12,6 +12,7 @@ import Pulse from "../../assets/images/pulse.gif";
 import UserId from "../User/userID";
 import ShareBoxx from "../Old/Share/shareBoxx";
 import TrackerLytics from "./trackerLytics";
+import TrackerResponses from "./trackerResponses";
 
 
 function TrackerItem(props) {
@@ -19,21 +20,18 @@ function TrackerItem(props) {
     let backgroundColor = '#6458FB';
     let trackerTitle = 'Team Well Being';
     return (
-
         <Box className={classes.box}
              boxShadow = {0}
              style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA"}}
              borderRadius={20}>
             <TrackerTitleTag backgroundColor = {backgroundColor} trackerTitle = {trackerTitle} />
-
             <Grid style = {{minHeight: 300}} container spacing={0} xs={12}>
-                <Grid style = {{backgroundColor:'#2F2C37'}} item xs={12} md={5} lg={5}>
+                <Grid style = {{backgroundColor:'#2F2C37', minHeight: 300git }} item xs={12} md={5} lg={5}>
                     <TrackerLytics/>
-
-
                 </Grid>
 
                 <Grid item xs={12} md={7} lg={7}>
+                    <TrackerResponses/>
 
                 </Grid>
             </Grid>
@@ -48,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     },
     box:{
         flexGrow: 1,
-        width:'100hv',
         padding: 0,
         display: 'start',
         overflow: 'auto',

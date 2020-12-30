@@ -16,7 +16,7 @@ function TrackerLytics(props) {
                         <Tooltip />
                         <Legend />
                         <Line type="monotone" dataKey="pv" stroke="#9067FF" />
-                        <Line type="monotone" dataKey="uv" stroke="#67FFA1" />
+                        <Line type="monotone" dataKey="uv" stroke="#63DF93" />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
