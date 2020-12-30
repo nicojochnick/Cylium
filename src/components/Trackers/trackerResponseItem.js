@@ -13,21 +13,16 @@ import { FiMoreVertical } from "react-icons/fi";
 function TrackerResponseItem(props) {
     return (
         <div>
-
             {(props.type === 'numerical')
                 ?
                 <div>
                     <p> Score:{props.intData} </p>
                 </div>
-
                 :
                 <div>
-
                     <p style={{color: '#262139', fontSize: 15, margin: 8, marginTop: 2,}}> {props.textData} </p>
-
                 </div>
             }
-
         </div>
     );
 }
