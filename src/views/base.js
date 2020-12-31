@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import TrackerItem from "../components/Trackers/trackerItem";
+import TrackersList from "../components/Trackers/trackersList";
 function Base(props) {
     const classes = useStyles();
     return (
@@ -19,7 +20,6 @@ function Base(props) {
                     <Grid container direction='row' justify= 'center' alignItems = 'center' >
                         <FormControl component="fieldset">
                             <FormGroup aria-label="position" row>
-
                                 <FormControlLabel
                                     value="top"
                                     control={<Switch color="primary" />}
@@ -29,9 +29,9 @@ function Base(props) {
                             </FormGroup>
                         </FormControl>
                     </Grid>
-
                     <Grid xs = {12} item>
-                    <TrackerItem/>
+                        <TrackersList user = {props.user} />
+                        {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>
             </Container>

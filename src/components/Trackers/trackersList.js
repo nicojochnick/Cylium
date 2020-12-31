@@ -22,34 +22,38 @@ function isEmpty(obj) {
 function TrackersList(props) {
     const classes = useStyles();
     // const question_1 = 'Rate your team strength this week (1-10)';
-    const [survey, setSurvey] = React.useState({});
-    const [responses, setResponses] = React.useState({});
+    const [trackers, setTrackers] = React.useState([]);
 
-    const getSurvey = async() => {
-        function getById (path, ids) {
-            let survRef = db.collection("questions").doc(props.user.team);
+    const getTrackers = async() => {
+            let teamTrackerIDs = ['MroP5uGEJLo74tLnJPcc'];
+            let trackRef = db.collection("trackers");
+            let teamTrackers = [];
+            await trackRef.where('ids', 'in', teamTrackerIDs).get()
+                . then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    teamTrackers.push(doc.data())
+                });
+                setTrackers(teamTrackers)
+                    console.log(teamTrackers)
 
-        }
-        //TODO: refactor this with dashboard pull
-        // if (props.user.team) {
-        //     let survRef = db.collection("questions").doc(props.user.team);
-        //     let survData = await survRef.get();
-        //     let surv = survData.data();
-        //     setSurvey(surv.survey)
-        // }
+                })
+                .catch(function(error) {
+                    console.log("Error getting documents: ", error);
+                });
     };
 
     useEffect(() => {
-        getSurvey()
+        getTrackers();
     }, []);
+
 
     return (
         <div>
             <Grid>
             {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
-                {(!isEmpty(survey.questions))
+                {(trackers.length >0)
                     ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(survey.questions).map((item) => <TrackerItem question={survey.questions[item]}/>)}
+                        {Object.keys(trackers).map((item) => <TrackerItem  user = {props.user} tracker={item} />)}
                     </Grid>
                     : null
                 }
@@ -176,3 +180,11 @@ export default TrackersList;
 {/*>*/}
 {/*    Submit*/}
 {/*</Button>*/}
+
+//TODO: refactor this with dashboard pull
+// if (props.user.team) {
+//     let survRef = db.collection("questions").doc(props.user.team);
+//     let survData = await survRef.get();
+//     let surv = survData.data();
+//     setSurvey(surv.survey)
+// }

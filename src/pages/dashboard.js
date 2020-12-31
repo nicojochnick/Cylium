@@ -92,19 +92,17 @@ export default function Dashboard() {
                 if (user) {
                     setURL(user.url);
                     setUser(user);
-                    getSurvey(user);
                 }
             });
 
     };
 
-    const getSurvey = async(user) => {
+    const getTeam = async(user) => {
         if (user) {
-            let survRef = db.collection("teams").doc(user.team);
-            let survData = await survRef.get();
-            let surv = survData.data();
-            console.log(surv.survey)
-            setSurvey(surv.survey)
+            let teamRef = db.collection("teams").doc(user.team);
+            let teamData = await teamRef.get();
+            let team = teamData.data();
+
         } else {
             console.log('nouser')
         }
@@ -114,10 +112,9 @@ export default function Dashboard() {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
         getUser(email);
-        getSurvey(user);
+        // getSurvey(user);
     }, []);
 
-    console.log(survey)
 
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);

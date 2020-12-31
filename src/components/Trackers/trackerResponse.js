@@ -24,7 +24,9 @@ function TrackerResponse(props) {
                     </Grid>
                     <Grid item xs={10} md={10} lg={10}>
                         <p style = {{margin: 8, marginTop:2, marginBottom: 0, fontSize: 15, color: '#8B8FA0', fontWeight: 500,}}>Amy Windsor</p>
-                        <TrackerResponseItem textData = {'lorem ipsum'} />
+                        <TrackerResponseItem type = {'text'} isDynamic = {false} label = {'lorem ipsum'} />
+                        <TrackerResponseItem type = {'numerical'} />
+
                         <p style={{color: '#8B8FA0', fontSize: 12, margin: 8, marginTop: 2,}}>Monday, May 2020 </p>
                     </Grid>
                 </Grid>
