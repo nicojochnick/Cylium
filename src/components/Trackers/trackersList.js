@@ -25,25 +25,30 @@ function TrackersList(props) {
     const [trackers, setTrackers] = React.useState([]);
 
     const getTrackers = async() => {
-            let teamTrackerIDs = ['MroP5uGEJLo74tLnJPcc'];
+        if (props.team.trackers) {
+            console.log('GOT IT')
+            let teamTrackerIDs = props.team.trackers;
             let trackRef = db.collection("trackers");
             let teamTrackers = [];
-            await trackRef.where('ids', 'in', teamTrackerIDs).get()
-                . then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    teamTrackers.push(doc.data())
-                });
-                setTrackers(teamTrackers)
+            await trackRef.where('id', 'in', teamTrackerIDs).get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        teamTrackers.push(doc.data())
+                    });
+                    setTrackers(teamTrackers);
                     console.log(teamTrackers)
 
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
+        }
+
     };
 
     useEffect(() => {
         getTrackers();
+        console.log(props.team)
     }, []);
 
 
@@ -53,7 +58,7 @@ function TrackersList(props) {
             {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
                 {(trackers.length >0)
                     ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(trackers).map((item) => <TrackerItem  user = {props.user} tracker={item} />)}
+                        {Object.keys(trackers).map((item) => <TrackerItem  team = {props.team} user = {props.user} tracker={trackers[item]} />)}
                     </Grid>
                     : null
                 }

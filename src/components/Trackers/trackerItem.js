@@ -25,16 +25,18 @@ function TrackerItem(props) {
     const getResponses = async() => {
         let resRef = db.collection("responses");
         let responses = [];
-        resRef.where('team', '==', props.user.team.toString()).where("trackerID", "==", props.tracker.id.toString()).get()
-            . then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    responses.push(doc.data())
+        if (props.user && props.user.team && props.tracker) {
+            resRef.where('team', '==', props.user.team.toString()).where("trackerID", "==", props.tracker.id).get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        responses.push(doc.data())
+                    });
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
                 });
-            })
-            .catch(function(error) {
-                console.log("Error getting documents: ", error);
-            });
-        setResponses(responses)
+            setResponses(responses)
+        }
     };
 
     useEffect(() => {

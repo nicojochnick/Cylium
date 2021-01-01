@@ -30,7 +30,7 @@ function Base(props) {
                         </FormControl>
                     </Grid>
                     <Grid xs = {12} item>
-                        <TrackersList user = {props.user} />
+                        <TrackersList team = {props.team} user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>

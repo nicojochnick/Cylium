@@ -48,7 +48,7 @@ export default function Dashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const [url, setURL] = React.useState(null);
-    const [survey, setSurvey] = React.useState({});
+    const [team, setTeam] = React.useState({});
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
@@ -92,6 +92,7 @@ export default function Dashboard() {
                 if (user) {
                     setURL(user.url);
                     setUser(user);
+                    getTeam(user);
                 }
             });
 
@@ -99,20 +100,22 @@ export default function Dashboard() {
 
     const getTeam = async(user) => {
         if (user) {
-            let teamRef = db.collection("teams").doc(user.team);
-            let teamData = await teamRef.get();
-            let team = teamData.data();
+            db.collection("teams").doc(user.team)
+                .onSnapshot(function(doc) {
+                    setTeam(doc.data())
+                    console.log(doc.data())
+            });
 
         } else {
             console.log('nouser')
         }
+
     };
 
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
         getUser(email);
-        // getSurvey(user);
     }, []);
 
 
@@ -272,7 +275,7 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <Base survey = {survey} user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <Base team = {team} user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>
