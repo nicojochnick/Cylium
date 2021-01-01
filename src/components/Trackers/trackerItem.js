@@ -12,7 +12,8 @@ import Pulse from "../../assets/images/pulse.gif";
 import UserId from "../User/userID";
 import ShareBoxx from "../Old/Share/shareBoxx";
 import TrackerLytics from "./trackerLytics";
-import TrackerResponseList from "./trackerResponseList";
+import TrackerResponse from "../Responses/trackerResponse";
+import TrackerResponseItem from "../Responses/trackerResponseItem";
 import {db} from "../../api/firebase";
 
 
@@ -26,7 +27,8 @@ function TrackerItem(props) {
         let resRef = db.collection("responses");
         let responses = [];
         if (props.user && props.user.team && props.tracker) {
-            resRef.where('team', '==', props.user.team.toString()).where("trackerID", "==", props.tracker.id).get()
+            console.log('TRIGGERED')
+            await resRef.where('teamID', '==', props.user.team).where("trackerID", "==", props.tracker.id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
                         responses.push(doc.data())
@@ -43,6 +45,8 @@ function TrackerItem(props) {
         getResponses()
     }, []);
 
+    console.log(responses)
+
     return (
         <Box className={classes.box}
              boxShadow = {0}
@@ -54,7 +58,7 @@ function TrackerItem(props) {
                     <TrackerLytics responses = {responses} />
                 </Grid>
                 <Grid item xs={12} md={7} lg={7}>
-                    <TrackerResponseList responses = {responses} />
+                    {Object.keys(responses).map((item) => <TrackerResponse response = {responses[item]}/>)}
                 </Grid>
             </Grid>
         </Box>

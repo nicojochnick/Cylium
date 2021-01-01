@@ -22,7 +22,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import TrackersList from "../../components/Trackers/trackersList";
 import TeamMemberStats from "../../components/Old/Analytics/teamMemberStats";
-import Response from "../../components/Responses/response";
+import Response from "../../components/Old/response";
 
 
 function UserHome(props) {

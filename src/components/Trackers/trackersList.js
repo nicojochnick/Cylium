@@ -23,10 +23,8 @@ function TrackersList(props) {
     const classes = useStyles();
     // const question_1 = 'Rate your team strength this week (1-10)';
     const [trackers, setTrackers] = React.useState([]);
-
     const getTrackers = async() => {
         if (props.team.trackers) {
-            console.log('GOT IT')
             let teamTrackerIDs = props.team.trackers;
             let trackRef = db.collection("trackers");
             let teamTrackers = [];
@@ -43,14 +41,12 @@ function TrackersList(props) {
                     console.log("Error getting documents: ", error);
                 });
         }
-
     };
 
     useEffect(() => {
         getTrackers();
         console.log(props.team)
     }, []);
-
 
     return (
         <div>

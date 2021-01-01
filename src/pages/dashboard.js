@@ -100,7 +100,7 @@ export default function Dashboard() {
 
     const getTeam = async(user) => {
         if (user) {
-            db.collection("teams").doc(user.team)
+            await db.collection("teams").doc(user.team)
                 .onSnapshot(function(doc) {
                     setTeam(doc.data())
                     console.log(doc.data())
