@@ -17,6 +17,16 @@ import TrackerResponseItem from "../Responses/trackerResponseItem";
 import {db} from "../../api/firebase";
 
 
+function mergeArrayObjects (arr1,arr2){
+    return arr1.map((item,i)=>{
+        if(item.callID === arr2[i].callID){
+            //merging two objects
+            return Object.assign({},item,arr2[i])
+        }
+    })
+}
+
+
 function TrackerItem(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
@@ -37,7 +47,13 @@ function TrackerItem(props) {
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
-            setResponses(responses)
+
+            let merged_responses = [];
+            for (let i = 0; i < responses.length; i++){
+                merged_responses.push(mergeArrayObjects(responses[i].responseData, props.tracker.call))
+            }
+            console.log(merged_responses, responses, props.tracker.call)
+            setResponses(merged_responses)
         }
     };
 
@@ -57,9 +73,13 @@ function TrackerItem(props) {
                 <Grid style = {{backgroundColor:'#2F2C37', minHeight: 300}} item xs={12} md={5} lg={5}>
                     <TrackerLytics responses = {responses} />
                 </Grid>
-                <Grid item xs={12} md={7} lg={7}>
-                    {Object.keys(responses).map((item) => <TrackerResponse response = {responses[item]}/>)}
-                </Grid>
+                {responses ?
+                    <Grid item xs={12} md={7} lg={7}>
+                        {Object.keys(responses).map((item) => <TrackerResponse tracker={props.tracker}
+                                                                               response={responses[item]}/>)}
+                    </Grid>
+                    : null
+                }
             </Grid>
         </Box>
     );
