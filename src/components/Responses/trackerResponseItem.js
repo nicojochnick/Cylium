@@ -12,29 +12,40 @@ import { FiMoreVertical } from "react-icons/fi";
 
 function TrackerResponseItem(props) {
 
-    console.log(props.response)
+    console.log(props.response);
     return (
         <div>
             {props.response
-
                 ?
                 <div>
                     {(props.type === 'numerical')
                         ?
                         <div>
                             <p style={{
-                                color: '#262139',
-                                fontSize: 15,
+                                color: '#8B8FA0',
+                                fontWeight: 500, fontSize: 15,
                                 margin: 10,
                                 marginTop: 2,
-                            }}> Score:{props.intData} </p>
+                            }}
+                            >
+                                {props.response.label} {' '} {props.response.recurringTime}?
+                            </p>
+
+                            <p style={{
+                                color: '#1C1B30',
+                                fontSize: 15,
+                                margin: 10,
+                                marginTop: -2,
+                            }}>
+                                {props.response.numberData} </p>
+
                         </div>
+
                         :
                         <div>
-
-                                <div>
+                            <div>
                                 <p style={{
-                                    color: '#5E5E66',
+                                    color: '#8B8FA0',
                                     fontWeight: 500, fontSize: 15,
                                     margin: 10,
                                     marginTop: 2,
@@ -52,13 +63,8 @@ function TrackerResponseItem(props) {
                                     {props.response.stringData} </p>
 
                                 </div>
-                            
-                            <p style={{
-                                color: '#262139',
-                                fontSize: 15,
-                                margin: 10,
-                                marginTop: 2,
-                            }}> {props.textData} </p>
+
+
                         </div>
 
 

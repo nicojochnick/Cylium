@@ -27,7 +27,7 @@ function Base(props) {
                                     control = {
                                         <Switch color="primary" />
                                     }
-                                    label="Manager View"
+                                    label={''}
                                     labelPlacement="right"
                                 />
                             </FormGroup>
