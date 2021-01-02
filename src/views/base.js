@@ -5,7 +5,6 @@ import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
@@ -17,12 +16,17 @@ function Base(props) {
         <div className={classes.root} >
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1}>
-                    <Grid container direction='row' justify= 'center' alignItems = 'center' >
+                    <Grid container
+                          direction='row'
+                          justify= 'center'
+                          alignItems = 'center' >
                         <FormControl component="fieldset">
                             <FormGroup aria-label="position" row>
                                 <FormControlLabel
                                     value="top"
-                                    control={<Switch color="primary" />}
+                                    control = {
+                                        <Switch color="primary" />
+                                    }
                                     label="Manager View"
                                     labelPlacement="right"
                                 />

@@ -11,37 +11,60 @@ import {makeStyles} from "@material-ui/core/styles";
 import { FiMoreVertical } from "react-icons/fi";
 
 function TrackerResponseItem(props) {
+
+    console.log(props.response)
     return (
         <div>
-            {(props.type === 'numerical')
+            {props.response
+
                 ?
                 <div>
-                    <p style={{color: '#262139', fontSize: 15, margin: 10, marginTop: 2,}}> Score:{props.intData} </p>
-                </div>
-                :
-                <div>
-                    { (props.isDynamic)
+                    {(props.type === 'numerical')
                         ?
-                        <p style={{
-                            color: '#5E5E66',
-                            fontWeight: 500, fontSize: 15,
-                            margin: 10,
-                            marginTop: 2,
-                        }}
-                        >
-                            {props.label} {' '} {props.recurringTime} </p>
+                        <div>
+                            <p style={{
+                                color: '#262139',
+                                fontSize: 15,
+                                margin: 10,
+                                marginTop: 2,
+                            }}> Score:{props.intData} </p>
+                        </div>
                         :
-                        <p style={{
-                            color: '#5E5E66',
-                            fontWeight: 500, fontSize: 15,
-                            margin: 10,
-                            marginTop: 2,
-                        }}
-                        >
-                            {props.label} </p>
+                        <div>
+
+                                <div>
+                                <p style={{
+                                    color: '#5E5E66',
+                                    fontWeight: 500, fontSize: 15,
+                                    margin: 10,
+                                    marginTop: 2,
+                                }}
+                                >
+                                    {props.response.label} {' '} {props.response.recurringTime}?
+                                </p>
+
+                                <p style={{
+                                    color: '#1C1B30',
+                                    fontSize: 15,
+                                    margin: 10,
+                                    marginTop: -2,
+                                }}>
+                                    {props.response.stringData} </p>
+
+                                </div>
+                            
+                            <p style={{
+                                color: '#262139',
+                                fontSize: 15,
+                                margin: 10,
+                                marginTop: 2,
+                            }}> {props.textData} </p>
+                        </div>
+
+
                     }
-                    <p style={{color: '#262139', fontSize: 15, margin: 10, marginTop: 2,}}> {props.textData} </p>
                 </div>
+                : null
             }
         </div>
     );
