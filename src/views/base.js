@@ -7,6 +7,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+
+
 import {makeStyles} from "@material-ui/core/styles";
 import TrackerItem from "../components/Trackers/trackerItem";
 import TrackersList from "../components/Trackers/trackersList";
@@ -26,9 +28,7 @@ function Base(props) {
                           direction='row'
                           justify= 'center'
                           alignItems = 'center' >
-
                         <Switch
-                            style={{colorSecondary: '#3162F0',}}
                             checked={switchState}
                             onChange={handleSwitch}
                             color="primary"
@@ -45,7 +45,7 @@ function Base(props) {
 
                     </Grid>
                     <Grid xs = {12} item>
-                        <TrackersList team = {props.team} user = {props.user} />
+                        <TrackersList isTeamView = {switchState} team = {props.team} user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>

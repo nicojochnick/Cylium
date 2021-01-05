@@ -54,7 +54,7 @@ function TrackersList(props) {
             {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
                 {(trackers.length >0)
                     ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(trackers).map((item) => <TrackerItem  team = {props.team} user = {props.user} tracker={trackers[item]} />)}
+                        {Object.keys(trackers).map((item) => <TrackerItem isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
                     </Grid>
                     : null
                 }

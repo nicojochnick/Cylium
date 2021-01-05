@@ -15,6 +15,7 @@ import TrackerLytics from "./trackerLytics";
 import TrackerResponse from "../Responses/trackerResponse";
 import TrackerResponseItem from "../Responses/trackerResponseItem";
 import {db} from "../../api/firebase";
+import TyperTracker from "../Typers/typerTracker";
 
 function mergeArrayObjects (arr1,arr2){
     return arr1.map((item,i) => {
@@ -72,17 +73,27 @@ function TrackerItem(props) {
                 <Grid style = {{backgroundColor:'#2F2C37', minHeight: 300}} item xs={12} md={5} lg={5}>
                     <TrackerLytics responses = {responses} />
                 </Grid>
+                <Grid item xs={12} md={7} lg={7}>
+                {props.isTeamView
+                    ? <div>
+                        <TyperTracker/>
+
+                    </div>
+                    : <div>
+
+                    </div>
+                }
                 {responses
                     ?
-                    <Grid item xs={12} md={7} lg={7}>
+                    <Grid>
                         {Object.keys(responses).map((item) =>
                             <TrackerResponse
-
                                 tracker={props.tracker}
                                 response={responses[item]}/>)}
                     </Grid>
                     : null
                 }
+            </Grid>
             </Grid>
         </Box>
     );
