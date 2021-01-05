@@ -12,6 +12,12 @@ import TrackerItem from "../components/Trackers/trackerItem";
 import TrackersList from "../components/Trackers/trackersList";
 function Base(props) {
     const classes = useStyles();
+    const [switchState, setSwitch] = React.useState(false);
+    const handleSwitch = (event) => {
+        setSwitch(!switchState);
+    };
+
+
     return (
         <div className={classes.root} >
             <Container fixed maxWidth="lg" className={classes.container}>
@@ -20,18 +26,23 @@ function Base(props) {
                           direction='row'
                           justify= 'center'
                           alignItems = 'center' >
-                        <FormControl component="fieldset">
-                            <FormGroup aria-label="position" row>
-                                <FormControlLabel
-                                    value="top"
-                                    control = {
-                                        <Switch color="primary" />
-                                    }
-                                    label={''}
-                                    labelPlacement="right"
-                                />
-                            </FormGroup>
-                        </FormControl>
+
+                        <Switch
+                            style={{colorSecondary: '#3162F0',}}
+                            checked={switchState}
+                            onChange={handleSwitch}
+                            color="primary"
+                            name="checkedB"
+
+                            inputProps={{'aria-label': 'primary checkbox'}}
+                        />
+                        {(!switchState)
+                            ?
+                            <p style={{marginTop: 12, color: '#353C49'}}> Manager View </p>
+                            :
+                            <p style={{marginTop:12, color: '#3162F0'}}> Team View </p>
+                        }
+
                     </Grid>
                     <Grid xs = {12} item>
                         <TrackersList team = {props.team} user = {props.user} />
