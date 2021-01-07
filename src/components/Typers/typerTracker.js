@@ -4,6 +4,12 @@ import {makeStyles} from "@material-ui/core/styles";
 import firebase from "../../views/Old/feedbox";
 import {db} from "../../api/firebase";
 import {auth} from "../../api/firebase"
+import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+
+
+
 
 
 
@@ -123,15 +129,29 @@ function TyperTracker(props) {
 
     return (
         <div>
-            <Editor
-                placeholder="type feedback here..."
-                handleKeyCommand={handleKeyCommand}
-                editorState={editorState}
-                onChange={onChange}
-                handleBeforeInput={_handleBeforeInput}
-                handlePastedText={_handlePastedText}
-            />
+        <div style = {{margin: 15}}>
+            {/*<Grid style = {{margin: 15}} container>*/}
+
+            <p>
+                {props.question}
+            </p>
+                <Box borderRadius = {10}
+                     style = {{backgroundColor: 'lightgrey', padding: 20}}>
+
+                <Editor
+                    placeholder="type here..."
+                    handleKeyCommand={handleKeyCommand}
+                    editorState={editorState}
+                    onChange={onChange}
+                    handleBeforeInput={_handleBeforeInput}
+                    handlePastedText={_handlePastedText}
+                />
+                </Box>
+            {/*</Grid>*/}
         </div>
+        <Divider/>
+        </div>
+
     );
 }
 

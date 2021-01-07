@@ -76,6 +76,7 @@ function TrackerItem(props) {
                 <Grid item xs={12} md={7} lg={7}>
                 {props.isTeamView
                     ? <div>
+
                         <TyperTracker/>
 
                     </div>
