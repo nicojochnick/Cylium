@@ -133,7 +133,7 @@ function TyperTracker(props) {
             {/*<Grid style = {{margin: 15}} container>*/}
 
             <p>
-                {props.question}
+                {props.question.label}
             </p>
                 <Box borderRadius = {10}
                      style = {{backgroundColor: 'lightgrey', padding: 20}}>

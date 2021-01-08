@@ -16,6 +16,7 @@ import TrackerResponse from "../Responses/trackerResponse";
 import TrackerResponseItem from "../Responses/trackerResponseItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
+import TyperList from "../Typers/typerList";
 
 function mergeArrayObjects (arr1,arr2){
     return arr1.map((item,i) => {
@@ -69,15 +70,17 @@ function TrackerItem(props) {
              style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA"}}
              borderRadius={20}>
             <TrackerTitleTag backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
-            <Grid style = {{minHeight: 300}} container spacing={0} xs={12}>
-                <Grid style = {{backgroundColor:'#2F2C37', minHeight: 300}} item xs={12} md={5} lg={5}>
+            <Grid style = {{height: 300}} container spacing={0} xs={12}>
+                <Grid className = {classes.boxSticky} style = {{backgroundColor:'#2F2C37', height: 300, }} item xs={12} md={5} lg={5}>
                     <TrackerLytics responses = {responses} />
                 </Grid>
-                <Grid item xs={12} md={7} lg={7}>
+
+                <Grid style = {{height: 300}} item xs={12} md={7} lg={7}>
+                    <Box style = {{height: 300}} className={classes.inner_gitbox}>
                 {props.isTeamView
                     ? <div>
 
-                        <TyperTracker/>
+                        <TyperList tracker = {props.tracker} />
 
                     </div>
                     : <div>
@@ -86,7 +89,7 @@ function TrackerItem(props) {
                 }
                 {responses
                     ?
-                    <Grid>
+                    <Grid >
                         {Object.keys(responses).map((item) =>
                             <TrackerResponse
                                 tracker={props.tracker}
@@ -94,6 +97,7 @@ function TrackerItem(props) {
                     </Grid>
                     : null
                 }
+                    </Box>
             </Grid>
             </Grid>
         </Box>
@@ -118,17 +122,23 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white',
     },
 
+    inner_box:{
+        flexGrow: 1,
+        padding: 0,
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+        backgroundColor: 'white',
+    },
+
     boxSticky:{
         padding: 0,
-        top: "5rem",
+        top: "0rem",
         position: "sticky",
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        margin: 10,
-        marginBottom: 20,
         backgroundColor: 'white',
-        minHeight: 300,
     },
 
     content: {
