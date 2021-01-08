@@ -74,8 +74,8 @@ function TrackerItem(props) {
                 <Grid className = {classes.boxSticky} style = {{backgroundColor:'#2F2C37', height: 300, }} item xs={12} md={5} lg={5}>
                     <TrackerLytics responses = {responses} />
                 </Grid>
-                <Grid style = {{height: 300}} item xs={12} md={7} lg={7}>
-                    <Box style = {{height: 300}} className={classes.inner_box}>
+                <Grid style = {{height: 300, backgroundColor:'lightgrey'}} item xs={12} md={7} lg={7}>
+                    <Box style = {{height: 300, backgroundColor:'lightgrey'}} className={classes.inner_box}>
                 {props.isTeamView
                     ? <div>
                         <TyperList tracker = {props.tracker} />
