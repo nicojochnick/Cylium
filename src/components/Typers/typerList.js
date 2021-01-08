@@ -7,16 +7,47 @@ import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 
-
 function TyperList(props) {
-    console.log(props.tracker)
+    const [successSubmit, setSuccess] = React.useState(false);
+    const [error, setError] = React.useState('');
+    const [responseCollection, setResponseCollection]  = React.useState([]);
     const classes = useStyles();
 
-
     useEffect(() => {
-
-
     }, []);
+
+    const handleSubmit = async (event) => {
+        try {
+            const res = await db.collection('responses').add({
+                responseData: responseCollection,
+                senderID: props.user.email,
+                teamID: props.user.team,
+                timeStamp: new Date(),
+            });
+            db.collection('responses').doc(res.id).update({
+                trackerID: res.id
+            });
+            setSuccess(true);
+            console.log('Added document with ID: ', res.id);
+        } catch (error) {
+            console.log(error);
+            setError({error: error.message});
+        }
+    };
+
+    const pushResponse = async (response, callID, type, order) => {
+
+        responseCollection[order] = {
+            callID: callID,
+            type: type,
+            response: response,
+        };
+
+        setResponseCollection(responseCollection);
+        console.log(responseCollection)
+
+    };
+
 
     return (
         <div className={classes.root}>
@@ -31,19 +62,24 @@ function TyperList(props) {
                 ?
                 <div>
                     {Object.keys(props.tracker.call).map((item) =>
-                    <TyperTracker question={props.tracker.call[item]}/>
-                    )}
+                        <TyperTracker
+                            question={props.tracker.call[item]}
+                            pushResponse = {pushResponse}
+                        />
+                        )}
                 </div>
                 : null
             }
             <Grid container justify='center'>
-            <Button style = {{width: 200, margin: 10}} variant="contained" color="primary">
+            <Button
+
+                onClick={()=> handleSubmit()}
+                style = {{width: 200, margin: 10}} variant="contained" color="primary">
                 Submit
             </Button>
             </Grid>
             </Grid>
             </Box>
-
         </div>
     );
 }

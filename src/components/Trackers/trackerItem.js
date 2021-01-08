@@ -78,7 +78,7 @@ function TrackerItem(props) {
                     <Box style = {{height: 300, backgroundColor:'lightgrey'}} className={classes.inner_box}>
                 {props.isTeamView
                     ? <div>
-                        <TyperList tracker = {props.tracker} />
+                        <TyperList user = {props.user} tracker = {props.tracker} />
                     </div>
                     : <div>
                     </div>
@@ -88,6 +88,7 @@ function TrackerItem(props) {
                     <Grid >
                         {Object.keys(responses).map((item) =>
                             <TrackerResponse
+                                user = {props.user}
                                 tracker={props.tracker}
                                 response={responses[item]}/>)}
                     </Grid>

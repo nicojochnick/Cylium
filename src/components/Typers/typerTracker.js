@@ -10,10 +10,6 @@ import Box from "@material-ui/core/Box";
 import Slider from '@material-ui/core/Slider';
 
 
-
-
-
-
 const MAX_LENGTH = 1500;
 
 function TyperTracker(props) {
@@ -24,12 +20,18 @@ function TyperTracker(props) {
     const [viewerEmail, setViewerEmail] = React.useState(null);
     const [viewerUser, setViewerUser] = React.useState(null);
 
-
-    const onChange = (editorState) => {
+    const onChangeText = (editorState) => {
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
         setContentState(save);
         setEditorState(editorState)
+        props.pushResponse(save, props.question.callID, props.question.type, props.question.order);
+
+    };
+
+    const onChangeSlider = (val) => {
+        let value = val;
+        props.pushResponse(value, props.question.callID, props.question.type, props.question.order);
 
     };
 
@@ -37,7 +39,7 @@ function TyperTracker(props) {
         const newState = RichUtils.handleKeyCommand(editorState, command);
 
         if (newState) {
-            onChange(newState);
+            onChangeText(newState);
             return 'handled';
         }
 
@@ -96,12 +98,10 @@ function TyperTracker(props) {
                     } else {
                         length += currentContent.getBlockForKey(currentKey).getLength() + 1;
                     }
-
                     currentKey = currentContent.getKeyAfter(currentKey);
                 };
             }
         }
-
         return length;
     };
 
@@ -122,7 +122,7 @@ function TyperTracker(props) {
     };
 
     useEffect(() => {
-        getViewerUser();
+        // getViewerUser();
 
     }, []);
 
@@ -136,7 +136,6 @@ function TyperTracker(props) {
         <div>
         <div style = {{margin: 15}}>
             {/*<Grid style = {{margin: 15}} container>*/}
-
             <p>
                 {props.question.label}
             </p>
@@ -149,6 +148,7 @@ function TyperTracker(props) {
                     getAriaValueText={valuetext}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
+                    onChangeCommitted={(e, val)=>{onChangeSlider(val)}}
                     step={1}
                     marks
                     min={0}
@@ -156,9 +156,6 @@ function TyperTracker(props) {
                 />
                     </div>
                 </Grid>
-
-
-
                 : <Box borderRadius = {10}
                      style = {{backgroundColor: 'lightgrey', padding: 20}}>
 
@@ -166,7 +163,7 @@ function TyperTracker(props) {
                     placeholder="type here..."
                     handleKeyCommand={handleKeyCommand}
                     editorState={editorState}
-                    onChange={onChange}
+                    onChange={onChangeText}
                     handleBeforeInput={_handleBeforeInput}
                     handlePastedText={_handlePastedText}
                 />
