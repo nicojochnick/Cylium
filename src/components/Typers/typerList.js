@@ -15,7 +15,6 @@ function TyperList(props) {
 
     useEffect(() => {
     }, []);
-
     const handleSubmit = async (event) => {
         try {
             const res = await db.collection('responses').add({
@@ -36,18 +35,15 @@ function TyperList(props) {
     };
 
     const pushResponse = async (response, callID, type, order) => {
-
         responseCollection[order] = {
             callID: callID,
             type: type,
             response: response,
         };
-
         setResponseCollection(responseCollection);
         console.log(responseCollection)
 
     };
-
 
     return (
         <div className={classes.root}>
@@ -55,9 +51,9 @@ function TyperList(props) {
                  boxShadow={0}
                 // border = {2}
                 // borderColor = {'#8B8FA0'}
-                 style={{padding: 10, marginBottom: 15, minHeight: 100, boxShadow: "0px 5px 13px -8px #585858"}}
+                 style={{padding: 10, minHeight: 100}}
                  borderRadius={2}>
-            <Grid style = {{width: '100%'}} direction = 'column' container justify = 'center'>
+            <Grid direction = 'column' container alignItems='center' justify = 'center'>
             {(props.tracker.call)
                 ?
                 <div>
@@ -93,7 +89,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        marginBottom: 20,
         backgroundColor: 'white',
     },
 

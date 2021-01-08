@@ -67,22 +67,20 @@ function TrackerItem(props) {
     return (
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA"}}
+             style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37'}}
              borderRadius={20}>
             <TrackerTitleTag backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
             <Grid style = {{height: 300}} container spacing={0} xs={12}>
-                <Grid className = {classes.boxSticky} style = {{backgroundColor:'#2F2C37', height: 300, }} item xs={12} md={5} lg={5}>
-                    <TrackerLytics responses = {responses} />
-                </Grid>
-                <Grid style = {{height: 300, backgroundColor:'lightgrey'}} item xs={12} md={7} lg={7}>
-                    <Box style = {{height: 300, backgroundColor:'lightgrey'}} className={classes.inner_box}>
-                {props.isTeamView
-                    ? <div>
+                <Grid className = {classes.boxSticky} style = {{ height: 300, }} item xs={12} md={5} lg={5}>
+                    <div>
                         <TyperList user = {props.user} tracker = {props.tracker} />
                     </div>
-                    : <div>
-                    </div>
-                }
+
+                </Grid>
+                <Grid style = {{height: 300, backgroundColor:'#2F2C37',}} item xs={12} md={7} lg={7}>
+                    <Box style = {{height: 300, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
+
+                        {/*<TrackerLytics responses = {responses} />*/}
                 {responses
                     ?
                     <Grid >
@@ -114,8 +112,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        margin: 10,
-        marginBottom: 20,
+        // margin: 10,
+        // marginBottom: 20,
         backgroundColor: 'white',
     },
 

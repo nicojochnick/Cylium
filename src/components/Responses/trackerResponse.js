@@ -43,7 +43,7 @@ function TrackerResponse(props) {
                        boxShadow={0}
                     // border = {2}
                     // borderColor = {'#8B8FA0'}
-                       style={{padding: 20, marginBottom: 15, minHeight: 100, boxShadow: "0px 5px 13px -8px #585858"}}
+                       style={{padding: 20, marginBottom: 15, minHeight: 100, }}
                        borderRadius={2}>
                     <Grid justify='flex-start' alignItems='flex-start' direction="row" container style={{margin: 0,}}>
                         <Grid item xs={1.5} md={1.5} lg={1.5}>
@@ -57,7 +57,7 @@ function TrackerResponse(props) {
                                 marginTop: 2,
                                 marginBottom: 0,
                                 fontSize: 15,
-                                color: '#8B8FA0',
+                                color: 'white',
                                 fontWeight: 500,
                             }}>{user.name} </p>
                             {(props.response)
@@ -67,7 +67,7 @@ function TrackerResponse(props) {
                                 </div>
                                 : null
                             }
-                            <p style={{color: '#8B8FA0', fontSize: 12, margin: 8, marginTop: 2,}}>Monday, May 2020 </p>
+                            <p style={{color: 'white', fontSize: 12, margin: 8, marginTop: 2,}}>Monday, May 2020 </p>
                         </Grid>
                     </Grid>
                 </Box>
@@ -87,7 +87,6 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         flexDirection: 'column',
         marginBottom: 20,
-        backgroundColor: 'white',
     },
 
     content: {

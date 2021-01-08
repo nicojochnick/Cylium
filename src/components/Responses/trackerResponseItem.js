@@ -45,7 +45,7 @@ function TrackerResponseItem(props) {
                         <div>
                             <div>
                                 <p style={{
-                                    color: '#8B8FA0',
+                                    color: 'white',
                                     fontWeight: 500, fontSize: 15,
                                     margin: 10,
                                     marginTop: 2,
@@ -55,7 +55,7 @@ function TrackerResponseItem(props) {
                                 </p>
 
                                 <p style={{
-                                    color: '#1C1B30',
+                                    color: 'white',
                                     fontSize: 15,
                                     margin: 10,
                                     marginTop: -2,
