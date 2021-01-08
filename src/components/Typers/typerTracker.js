@@ -7,6 +7,7 @@ import {auth} from "../../api/firebase"
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Slider from '@material-ui/core/Slider';
 
 
 
@@ -125,6 +126,10 @@ function TyperTracker(props) {
 
     }, []);
 
+    function valuetext(value) {
+        return `${value}`;
+    }
+
     const classes = useStyles();
 
     return (
@@ -135,7 +140,27 @@ function TyperTracker(props) {
             <p>
                 {props.question.label}
             </p>
-                <Box borderRadius = {10}
+            {(props.question.type == 'numeric')
+
+               ?
+                <Grid container justify = 'center' >
+                    <div style = {{width: 300}}>
+                <Slider
+                    defaultValue={5}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    marks
+                    min={0}
+                    max={10}
+                />
+                    </div>
+                </Grid>
+
+
+
+                : <Box borderRadius = {10}
                      style = {{backgroundColor: 'lightgrey', padding: 20}}>
 
                 <Editor
@@ -147,6 +172,7 @@ function TyperTracker(props) {
                     handlePastedText={_handlePastedText}
                 />
                 </Box>
+                }
             {/*</Grid>*/}
         </div>
         <Divider/>
