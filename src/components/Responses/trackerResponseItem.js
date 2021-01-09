@@ -7,10 +7,19 @@ import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import {convertFromRaw, Editor, EditorState} from "draft-js";
+
 import {makeStyles} from "@material-ui/core/styles";
 import { FiMoreVertical } from "react-icons/fi";
 
 function TrackerResponseItem(props) {
+
+    console.log(props.response)
+    let editorState = null;
+    if (props.response.type !== 'numeric') {
+        editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.response.response)));
+
+    }
+
 
     console.log(props.response);
     return (
@@ -37,7 +46,7 @@ function TrackerResponseItem(props) {
                                 margin: 10,
                                 marginTop: -2,
                             }}>
-                                {props.response.numberData} </p>
+                                {props.response.response} </p>
 
                         </div>
 
@@ -54,14 +63,11 @@ function TrackerResponseItem(props) {
                                     {props.response.label} {' '} {props.response.recurringTime}?
                                 </p>
 
-                                <p style={{
-                                    color: 'white',
-                                    fontSize: 15,
-                                    margin: 10,
-                                    marginTop: -2,
-                                }}>
-                                    {props.response.stringData} </p>
 
+                                {(editorState !== null)
+                                    ? <Editor editorState={editorState} readOnly={true}/>
+                                    : null
+                                }
                                 </div>
 
 

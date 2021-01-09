@@ -55,7 +55,7 @@ function TrackerItem(props) {
                 let objres = {'merged_responses': res, 'user': responses[i].senderID}
                 merged_responses.push(objres)
             }
-            console.log(merged_responses, responses, props.tracker.call)
+            console.log(merged_responses, responses, props.tracker.call);
             setResponses(merged_responses)
         }
     };
@@ -67,18 +67,18 @@ function TrackerItem(props) {
     return (
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37'}}
+             style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
              borderRadius={20}>
             <TrackerTitleTag backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
-            <Grid style = {{height: 300}} container spacing={0} xs={12}>
-                <Grid className = {classes.boxSticky} style = {{ height: 300, }} item xs={12} md={5} lg={5}>
+            <Grid style = {{height: 400}} container spacing={0} xs={12}>
+                <Grid className = {classes.boxSticky} style = {{ height: 400, }} item xs={12} md={5} lg={5}>
                     <div>
                         <TyperList user = {props.user} tracker = {props.tracker} />
                     </div>
 
                 </Grid>
-                <Grid style = {{height: 300, backgroundColor:'#2F2C37',}} item xs={12} md={7} lg={7}>
-                    <Box style = {{height: 300, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
+                <Grid style = {{height: 400, backgroundColor:'#2F2C37',}} item xs={12} md={7} lg={7}>
+                    <Box style = {{height: 400, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
 
                         {/*<TrackerLytics responses = {responses} />*/}
                 {responses

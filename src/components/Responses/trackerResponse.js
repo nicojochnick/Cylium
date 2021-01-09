@@ -27,13 +27,12 @@ function TrackerResponse(props) {
 
     };
 
-
     useEffect(() => {
-        getUser(props.response.user)
-        console.log(props.senderEmail)
+        getUser(props.response.user);
+        console.log(props.senderEmail);
     }, []);
 
-    console.log(props.response)
+    console.log(props.response);
 
 
     return (
@@ -61,8 +60,8 @@ function TrackerResponse(props) {
                                 fontWeight: 500,
                             }}>{user.name} </p>
                             {(props.response)
-                                ? <div> {Object.keys(props.response.merged_responses).map((item) => <TrackerResponseItem
-                                    response={props.response.merged_responses[item]}/>)
+                                ? <div> {Object.keys(props.response.merged_responses).map((item) => <
+                                    TrackerResponseItem response={props.response.merged_responses[item]}/>)
                                 }
                                 </div>
                                 : null

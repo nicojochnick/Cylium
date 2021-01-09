@@ -22,10 +22,11 @@ function TyperList(props) {
                 senderID: props.user.email,
                 teamID: props.user.team,
                 timeStamp: new Date(),
+                trackerID: props.tracker.id
             });
-            db.collection('responses').doc(res.id).update({
-                trackerID: res.id
-            });
+            // db.collection('responses').doc(res.id).update({
+            //     trackerID: res.id
+            // });
             setSuccess(true);
             console.log('Added document with ID: ', res.id);
         } catch (error) {
