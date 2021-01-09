@@ -171,7 +171,7 @@ function TyperTracker(props) {
                 }
             {/*</Grid>*/}
         </div>
-        <Divider/>
+        <Divider style = {{marginTop: 10}} />
         </div>
 
     );

@@ -67,17 +67,17 @@ function TrackerItem(props) {
     return (
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
+             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
              borderRadius={20}>
             <TrackerTitleTag backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
             <Grid style = {{height: 400}} container spacing={0} xs={12}>
-                <Grid className = {classes.boxSticky} style = {{ height: 400, }} item xs={12} md={5} lg={5}>
+                <Grid className = {classes.boxSticky} style = {{ height: 400, }} item xs={12} md={4} lg={4}>
                     <div>
                         <TyperList user = {props.user} tracker = {props.tracker} />
                     </div>
 
                 </Grid>
-                <Grid style = {{height: 400, backgroundColor:'#2F2C37',}} item xs={12} md={7} lg={7}>
+                <Grid style = {{height: 400, backgroundColor:'#2F2C37',}} item xs={12} md={8} lg={8}>
                     <Box style = {{height: 400, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
 
                         {/*<TrackerLytics responses = {responses} />*/}

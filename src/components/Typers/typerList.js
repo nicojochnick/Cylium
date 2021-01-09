@@ -52,7 +52,7 @@ function TyperList(props) {
                  boxShadow={0}
                 // border = {2}
                 // borderColor = {'#8B8FA0'}
-                 style={{padding: 10, minHeight: 100}}
+                 style={{minHeight: 100}}
                  borderRadius={2}>
             <Grid direction = 'column' container alignItems='center' justify = 'center'>
             {(props.tracker.call)
