@@ -11,6 +11,8 @@ import TrackerTitleTag from "./trackerTitleTag";
 import Pulse from "../../assets/images/pulse.gif";
 import UserId from "../User/userID";
 import ShareBoxx from "../Old/Share/shareBoxx";
+import Button from '@material-ui/core/Button';
+
 import TrackerLytics from "./trackerLytics";
 import TrackerResponse from "../Responses/trackerResponse";
 import TrackerResponseItem from "../Responses/trackerResponseItem";
@@ -33,6 +35,14 @@ function TrackerItem(props) {
     let backgroundColor = '#6458FB';
     let trackerTitle = 'Engagement';
     const [responses, setResponses] = React.useState([]);
+    const [isPosting, setPosting] = React.useState(false);
+
+    const switchPosting = async () =>{
+        setPosting(!isPosting)
+
+
+    }
+
 
     const getResponses = async() => {
         let resRef = db.collection("responses");
@@ -69,19 +79,30 @@ function TrackerItem(props) {
              boxShadow = {0}
              style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
              borderRadius={20}>
-            <TrackerTitleTag backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
-            <Grid style = {{height: 400}} container spacing={0} xs={12}>
-                <Grid className = {classes.boxSticky} style = {{ height: 400, }} item xs={12} md={4} lg={4}>
-                    <div>
-                        <TyperList user = {props.user} tracker = {props.tracker} />
-                    </div>
-
+            <TrackerTitleTag switchPosting = {switchPosting} isPosting = {isPosting} backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
+            <Grid style = {{height: 350}} container spacing={0} xs={12}>
+                <Grid className = {classes.boxSticky} style = {{ maxHeight: 400, }} item xs={12} md={4} lg={4}>
+                    {/*<Box border = {1} borderColor = {"white"}>*/}
+                        <TrackerLytics responses = {responses} />
+                    {/*</Box>*/}
                 </Grid>
-                <Grid style = {{height: 400, backgroundColor:'#2F2C37',}} item xs={12} md={8} lg={8}>
-                    <Box style = {{height: 400, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
+                <Grid style = {{height: 350, backgroundColor:'#2F2C37',}} item xs={12} md={8} lg={8}>
+                    <Box borderColor = {"white"}  border = {1} borderLeft = {1} style = {{height: 350, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
+                        <Grid container justify={'center'} alignItems = {'center'}>
+                        {/*<Button style = {{margin: 10, paddingBottom: 0, paddingTop: 0,}} onClick={()=>switchPosting()} variant="contained" color="primary">*/}
+                        {/*    {(!isPosting) ? <p> Create Post </p> : <p> Delete Post </p>}*/}
+                        {/*</Button>*/}
+                        </Grid>
 
-                        {/*<TrackerLytics responses = {responses} />*/}
-                {responses
+
+                        {(isPosting)
+                            ? <TyperList user={props.user} tracker={props.tracker}/>
+                            : null
+
+                        }
+                        <Divider/>
+
+                        {responses
                     ?
                     <Grid >
                         {Object.keys(responses).map((item) =>
@@ -133,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
     },
 
     content: {

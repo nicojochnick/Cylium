@@ -134,7 +134,7 @@ function TyperTracker(props) {
 
     return (
         <div>
-        <div style = {{margin: 15}}>
+        <div style = {{margin: 25}}>
             {/*<Grid style = {{margin: 15}} container>*/}
             <p>
                 {props.question.label}
