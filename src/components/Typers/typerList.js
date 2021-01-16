@@ -6,6 +6,7 @@ import TrackerResponseItem from "../Responses/trackerResponseItem";
 import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Avatar from "@material-ui/core/Avatar";
 
 function TyperList(props) {
     const [successSubmit, setSuccess] = React.useState(false);
@@ -48,13 +49,35 @@ function TyperList(props) {
 
     return (
         <div className={classes.root}>
+            <Grid container>
+            <Grid item xs = {12} md = {12} lg = {12}>
             <Box className={classes.box}
                  boxShadow={0}
+                 flexGrow = {1}
+                 display="flex"
                 // border = {2}
                 // borderColor = {'#8B8FA0'}
                  style={{minHeight: 100}}
                  borderRadius={2}>
-            <Grid direction = 'column' container alignItems='center' justify = 'center'>
+            <Grid direction = 'column' container alignItems="center" justify = "center">
+                <Grid justify='center' alignItems='center' direction="row" container style={{margin: 0,}}>
+                    <Grid item xs={1.5} md={1.5} lg={1.5}>
+                        <Box style={{margin: 10}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
+                            <Avatar src={props.user.img_url_Profile.imgUrl} className={classes.large}/>
+                        </Box>
+                    </Grid>
+                    {/*<Grid item xs={10} md={10} lg={10}>*/}
+                        <p style={{
+                            margin: 8,
+                            marginTop: 2,
+                            marginBottom: 0,
+                            fontSize: 15,
+                            color: 'white',
+                            fontWeight: 500,
+                        }}>{props.user.name} </p>
+
+                    {/*</Grid>*/}
+                </Grid>
             {(props.tracker.call)
                 ?
                 <div>
@@ -64,6 +87,7 @@ function TyperList(props) {
                             pushResponse = {pushResponse}
                         />
                         )}
+
                 </div>
                 : null
             }
@@ -71,12 +95,14 @@ function TyperList(props) {
             <Button
 
                 onClick={()=> handleSubmit()}
-                style = {{width: 200, margin: 10}} variant="contained" color="primary">
+                style = {{width: 200,marginTop: 10, margin: 20}} variant="contained" color="primary">
                 Submit
             </Button>
             </Grid>
             </Grid>
             </Box>
+            </Grid>
+            </Grid>
         </div>
     );
 }
@@ -87,10 +113,11 @@ const useStyles = makeStyles((theme) => ({
     },
     box:{
         padding: 0,
-        display: 'start',
+        flexGrow: 1,
         overflow: 'auto',
         flexDirection: 'column',
-        backgroundColor: 'white',
+        display: 'flex',
+
     },
 
     content: {

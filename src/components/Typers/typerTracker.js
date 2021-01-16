@@ -133,16 +133,15 @@ function TyperTracker(props) {
     const classes = useStyles();
 
     return (
-        <div>
         <div style = {{margin: 25}}>
             {/*<Grid style = {{margin: 15}} container>*/}
-            <p>
+            <p style = {{color: "white"}}>
                 {props.question.label}
             </p>
             {(props.question.type == 'numeric')
                ?
-                <Grid container justify = 'center' >
-                    <div style = {{width: 300}}>
+                <Grid container alignItems={'center'} justify = 'center' >
+                    <div style = {{minWidth: 400}}>
                 <Slider
                     defaultValue={5}
                     getAriaValueText={valuetext}
@@ -157,7 +156,7 @@ function TyperTracker(props) {
                     </div>
                 </Grid>
                 : <Box borderRadius = {10}
-                     style = {{backgroundColor: 'lightgrey', padding: 20}}>
+                     style = {{backgroundColor: 'white', padding: 20}}>
 
                 <Editor
                     placeholder="type here..."
@@ -170,8 +169,6 @@ function TyperTracker(props) {
                 </Box>
                 }
             {/*</Grid>*/}
-        </div>
-        <Divider style = {{marginTop: 10}} />
         </div>
 
     );
