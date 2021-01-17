@@ -21,6 +21,7 @@ import TrackerResponseItem from "../Responses/trackerResponseItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
+import TrackerManager from "../CreateTrackers/trackerManager";
 
 function mergeArrayObjects (arr1,arr2){
     return arr1.map((item,i) => {
@@ -32,18 +33,38 @@ function mergeArrayObjects (arr1,arr2){
 };
 
 
+
+
 function TrackerItem(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
     let trackerTitle = 'Engagement';
     const [responses, setResponses] = React.useState([]);
     const [isPosting, setPosting] = React.useState(false);
+    const [isCreating, setCreating] = React.useState(false);
+    const [isDatafying, setData] = React.useState(false)
+
 
     const switchPosting = async () =>{
         setPosting(!isPosting)
+    };
 
+    const switchCreating = async () =>{
+        setCreating(!isCreating);
+        setPosting(false);
 
     };
+
+    const switchData = async () =>{
+        setData(!isDatafying)
+
+    };
+
+    const defaultProps = {
+        m: 1,
+        borderColor: 'white',
+    };
+
 
 
     const getResponses = async() => {
@@ -79,50 +100,59 @@ function TrackerItem(props) {
     return (
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
+             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white', }}
              borderRadius={20}>
-            <TrackerTitleTag switchPosting = {switchPosting} isPosting = {isPosting} backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName} />
-            {!isPosting
+            <TrackerTitleTag switchData = {switchData} switchCreating = {switchCreating} switchPosting = {switchPosting} isCreating = {isCreating} isPosting = {isPosting} backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName}/>
+            {isCreating
+
+                ? <TrackerManager/>
+                :
+                <div>
+
+                    {!isPosting
+                        ? <Grid style = {{height: 350}} container spacing={0} xs={12}>
+                            <Grid className = {classes.boxSticky} style = {{ maxHeight: 400,backgroundColor:'#2F2C37' }} item xs={12} md={5} lg={5}>
+                                {/*<Box border = {1} borderColor = {"white"}>*/}
+                                <TrackerLytics responses = {responses} />
+                                {/*</Box>*/}
+                            </Grid>
+                            <Grid style = {{height: 350, backgroundColor:'#2F2C37',}} item xs={12} md={7} lg={7}>
+                                <Box borderColor = {"white"} borderLeft={1} style = {{height: 350, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
+                                    <Grid container justify={'center'} alignItems = {'center'}>
+                                        {(isPosting)
+                                            ? <TyperList user={props.user} tracker={props.tracker}/>
+                                            : null
+
+                                        }
+
+                                    </Grid>
 
 
+                                    <Divider/>
 
-            ? <Grid style = {{height: 350}} container spacing={0} xs={12}>
-                <Grid className = {classes.boxSticky} style = {{ maxHeight: 400, }} item xs={12} md={4} lg={4}>
-                    {/*<Box border = {1} borderColor = {"white"}>*/}
-                        <TrackerLytics responses = {responses} />
-                    {/*</Box>*/}
-                </Grid>
-                <Grid style = {{height: 350, backgroundColor:'#2F2C37',}} item xs={12} md={8} lg={8}>
-                    <Box borderColor = {"white"}  border = {1} borderLeft = {1} style = {{height: 350, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
-                        <Grid container justify={'center'} alignItems = {'center'}>
-                            {(isPosting)
-                                ? <TyperList user={props.user} tracker={props.tracker}/>
-                                : null
-
-                            }
+                                    {responses
+                                        ?
+                                        <Grid >
+                                            {Object.keys(responses).map((item) =>
+                                                <TrackerResponse
+                                                    user = {props.user}
+                                                    tracker={props.tracker}
+                                                    response={responses[item]}/>)}
+                                        </Grid>
+                                        : null
+                                    }
+                                </Box>
+                            </Grid>
 
                         </Grid>
+                        : <TyperList user={props.user} tracker={props.tracker}/>
+                    }
+                </div>
 
-
-                        <Divider/>
-
-                        {responses
-                    ?
-                    <Grid >
-                        {Object.keys(responses).map((item) =>
-                            <TrackerResponse
-                                user = {props.user}
-                                tracker={props.tracker}
-                                response={responses[item]}/>)}
-                    </Grid>
-                    : null
-                }
-                    </Box>
-            </Grid>
-
-            </Grid>
-                : <TyperList user={props.user} tracker={props.tracker}/>
             }
+
+
+
         </Box>
     );
 };
@@ -142,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         // margin: 10,
         // marginBottom: 20,
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
     },
 
     inner_box:{

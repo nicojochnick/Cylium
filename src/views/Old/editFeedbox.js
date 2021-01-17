@@ -45,7 +45,6 @@ function EditFeedbox(props) {
     const [imageAsFile, setImageAsFile] = React.useState('');
     const [imageAsUrl, setImageAsUrl] = React.useState(props.user.img_url_Profile);
     const [isLoadingImage, setIsLoadingImage] = React.useState(false)
-
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
