@@ -42,7 +42,8 @@ function TrackerItem(props) {
     const [responses, setResponses] = React.useState([]);
     const [isPosting, setPosting] = React.useState(false);
     const [isCreating, setCreating] = React.useState(false);
-    const [isDatafying, setData] = React.useState(false)
+    const [isDatafying, setData] = React.useState(false);
+    const [title, setTitle] = React.useState(props.tracker.trackerName);
 
 
     const switchPosting = async () =>{
@@ -93,6 +94,12 @@ function TrackerItem(props) {
         }
     };
 
+
+    const handleTitleChange = (val) => {
+        setTitle(val);
+
+    }
+
     useEffect(() => {
         getResponses()
     }, []);
@@ -100,11 +107,19 @@ function TrackerItem(props) {
     return (
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white', }}
+             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
              borderRadius={20}>
-            <TrackerTitleTag switchData = {switchData} switchCreating = {switchCreating} switchPosting = {switchPosting} isCreating = {isCreating} isPosting = {isPosting} backgroundColor = {backgroundColor} trackerTitle = {props.tracker.trackerName}/>
+            <TrackerTitleTag
+                switchData = {switchData}
+                switchCreating = {switchCreating}
+                switchPosting = {switchPosting}
+                isCreating = {isCreating}
+                isPosting = {isPosting}
+                backgroundColor = {backgroundColor}
+                trackerTitle = {title}
+                handleTitleChange = {handleTitleChange}
+            />
             {isCreating
-
                 ? <TrackerManager/>
                 :
                 <div>

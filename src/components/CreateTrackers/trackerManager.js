@@ -26,9 +26,6 @@ function TrackerManager(props) {
         setBackgroundColor(color.hex )
     };
 
-
-
-
     return (
         <div style = {{height: 350}} className={classes.root}>
             <Grid direction = 'column' container>
