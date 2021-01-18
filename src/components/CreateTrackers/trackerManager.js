@@ -32,7 +32,7 @@ function TrackerManager(props) {
                 <Grid item>
                     <Box style = {{margin: 20}}>
                     <p>
-                        Title and Format
+                        Title and Color
                     </p>
                         <Grid spacing={3} container direction = 'row'>
                             <Grid spacing={3} item xs={6} >
@@ -49,56 +49,26 @@ function TrackerManager(props) {
 
                                     />
                                     <Grid container space = {2} direction = 'row'>
-                                        <Grid spacing={3} item xs={6} >
-                                            <Box>
-                                                <p> Highlight Color </p>
-                                                <TwitterPicker
-                                                    color={ backgroundColor}
-                                                    onChangeComplete={ handleChangeComplete }
-                                                />
-                                            </Box>
-                                        </Grid>
-                                        <Grid spacing={3} item xs={6} >
-                                            {/*<div style={{height: 200}}>*/}
-                                            <Box>
-                                            <p> Icon </p>
-                                                <Picker
-                                                    // sheetSize = {16}
-                                                    emojiSize = {20}
-                                                    set='apple'
-                                                    perLine = {9}
-                                                    style = {{margin: 10}}
-                                                    title = 'Select'
-                                                    showPreview = {true}
-                                                />
-                                            {/*</div>*/}
-                                            </Box>
 
-
-
-                                        </Grid>
                                     </Grid>
                                 </Box>
                             </Grid>
 
                             <Grid item xs={6}>
-
-                                <Box>
-                                    <TextField
-                                        onChange={e => handleTitleChange(e.target.value)}
-                                        id="filled-basic"
-                                        label="Title"
-                                        placeholder='Add a Title'
-                                        fullWidth
-                                        variant="outlined"
-                                        value = {title}
-
-                                    />
+                                <Box style = {{marginTop: -40}}>
+                                            <TwitterPicker
+                                                color={ backgroundColor}
+                                                onChangeComplete={ handleChangeComplete }
+                                            />
                                 </Box>
+                                    </Grid>
+                                    <Grid spacing={3} item xs={6} >
+                                        {/*<div style={{height: 200}}>*/}
+                                        <Box>
+                                        </Box>
+                                    </Grid>
 
 
-
-                            </Grid>
 
 
                         </Grid>

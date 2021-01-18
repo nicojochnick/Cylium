@@ -14,9 +14,28 @@ import {
     makeStyles,
     createMuiTheme,
 } from '@material-ui/core/styles';
+import {TwitterPicker} from "react-color";
 
 function TrackerTitleTag(props) {
+
     const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+    const openToChange = (val) => {
+
+    }
+
 
     return (
         <Box borderBottom = {1} borderColor= {"white"} display="flex" justifyContent = 'space-between' alignItems = 'center' flexDirection="row" borderRadius = {0} borderBottom = {0} style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
@@ -31,10 +50,31 @@ function TrackerTitleTag(props) {
                         className: classes.input
                     }}
                     className={classes.margin}
-                    onChange={e => props.handleTitleChange(e.target.value)}
-
+                    // onChange={e => props.handleTitleChange(e.target.value)}
 
                 />
+
+                <Popover
+                    id={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                    }}
+                >
+                    <Box>
+                        <p> Highlight Color </p>
+                        <TwitterPicker
+                            color={ 'white'}
+                        />
+                    </Box>
+                </Popover>
 
 
             </Grid>
