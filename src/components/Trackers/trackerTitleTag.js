@@ -54,27 +54,6 @@ function TrackerTitleTag(props) {
 
                 />
 
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center',
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center',
-                    }}
-                >
-                    <Box>
-                        <p> Highlight Color </p>
-                        <TwitterPicker
-                            color={ 'white'}
-                        />
-                    </Box>
-                </Popover>
 
 
             </Grid>
@@ -84,15 +63,15 @@ function TrackerTitleTag(props) {
             <Grid justify = "flex-end" container direction = "row">
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchCreating()}>
-                        <BiUser style = {{color: "white"}} size = {20} />
+                        <BiCog style = {{color: "white"}} size = {20} />
                     </IconButton>
                 </Box>
 
-                <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
-                    <IconButton color = "white" onClick={()=>props.switchData()}>
-                        <BiBarChartAlt2 style = {{color: "white"}} size = {20} />
-                    </IconButton>
-                </Box>
+                {/*<Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>*/}
+                {/*    <IconButton color = "white" onClick={()=>props.switchData()}>*/}
+                {/*        <BiCog style = {{color: "white"}} size = {20} />*/}
+                {/*    </IconButton>*/}
+                {/*</Box>*/}
 
                 <Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>
                 <IconButton color = "white" onClick={()=>props.switchPosting()}>

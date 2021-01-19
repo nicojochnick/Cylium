@@ -10,12 +10,13 @@ import FormGroup from "@material-ui/core/FormGroup/FormGroup";
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker, NimblePicker } from 'emoji-mart'
 import {TwitterPicker} from "react-color";
+import TyperTracker from "../Typers/typerTracker";
 
 
 function TrackerManager(props) {
     const classes = useStyles();
 
-    const [title, setTitle] = React.useState(null);
+    const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [backgroundColor, setBackgroundColor] = React.useState('#fff')
 
     const handleTitleChange= (name) => {
@@ -26,16 +27,18 @@ function TrackerManager(props) {
         setBackgroundColor(color.hex )
     };
 
+    console.log(props.tracker.call)
+
     return (
-        <div style = {{height: 350}} className={classes.root}>
-            <Grid direction = 'column' container>
+        <div className={classes.root}>
+            <Grid  direction = 'column' container>
                 <Grid item>
                     <Box style = {{margin: 20}}>
                     <p>
                         Title and Color
                     </p>
-                        <Grid spacing={3} container direction = 'row'>
-                            <Grid spacing={3} item xs={6} >
+                        <Grid spacing={2} container direction = 'row'>
+                            <Grid spacing={3} item xs={4} md = {6} lg = {6} >
                                 <Box>
                                     <TextField
                                         onChange={e => handleTitleChange(e.target.value)}
@@ -54,7 +57,7 @@ function TrackerManager(props) {
                                 </Box>
                             </Grid>
 
-                            <Grid item xs={6}>
+                            <Grid item xs={8} md = {6} lg = {6}>
                                 <Box style = {{marginTop: -40}}>
                                             <TwitterPicker
                                                 color={ backgroundColor}
@@ -67,10 +70,6 @@ function TrackerManager(props) {
                                         <Box>
                                         </Box>
                                     </Grid>
-
-
-
-
                         </Grid>
                     </Box>
                     <Divider/>
@@ -80,6 +79,32 @@ function TrackerManager(props) {
                         <p>
                             Data
                         </p>
+                        <Grid spacing={3} container direction = 'row'>
+                            <Grid  item xs={12} md = {6} lg = {6} >
+
+                        {(props.tracker.call)
+                            ?
+                            <div>
+                                {Object.keys(props.tracker.call).map((item) =>
+
+                                    <Box borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+
+                                    <p style = {{marginLeft: 5}}>
+                                        {props.tracker.call[item].label}
+
+                                    </p>
+                                    </Box>
+                                )}
+
+                            </div>
+                            : null
+                        }
+                            </Grid>
+                            <Grid spacing={3} item xs={12} md = {6} lg = {6} >
+
+                            </Grid>
+
+                        </Grid>
                     </Box>
                         <Divider/>
 

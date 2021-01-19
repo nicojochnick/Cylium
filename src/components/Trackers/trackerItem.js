@@ -98,7 +98,7 @@ function TrackerItem(props) {
     const handleTitleChange = (val) => {
         setTitle(val);
 
-    }
+    };
 
     useEffect(() => {
         getResponses()
@@ -120,10 +120,14 @@ function TrackerItem(props) {
                 handleTitleChange = {handleTitleChange}
             />
             {isCreating
-                ? <TrackerManager/>
+                ?
+                <Grid style = {{height: 350}} container spacing={0} xs={12}>
+                <TrackerManager
+                    tracker={props.tracker}
+                />
+                </Grid>
                 :
                 <div>
-
                     {!isPosting
                         ? <Grid style = {{height: 350}} container spacing={0} xs={12}>
                             <Grid className = {classes.boxSticky} style = {{ maxHeight: 400,backgroundColor:'#2F2C37' }} item xs={12} md={5} lg={5}>
