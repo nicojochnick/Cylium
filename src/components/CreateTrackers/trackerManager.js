@@ -6,6 +6,10 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import Switch from "@material-ui/core/Switch/Switch";
+import MenuItem from '@material-ui/core/MenuItem';
+import { BiQuestionMark } from "react-icons/bi"
+
+import Menu from '@material-ui/core/Menu';
 import FormGroup from "@material-ui/core/FormGroup/FormGroup";
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker, NimblePicker } from 'emoji-mart'
@@ -27,7 +31,17 @@ function TrackerManager(props) {
         setBackgroundColor(color.hex )
     };
 
-    console.log(props.tracker.call)
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
 
     return (
         <div className={classes.root}>
@@ -57,8 +71,8 @@ function TrackerManager(props) {
                                 </Box>
                             </Grid>
 
-                            <Grid item xs={8} md = {6} lg = {6}>
-                                <Box style = {{marginTop: -40}}>
+                            <Grid alignItems='center' justify = 'center' item xs={8} md = {6} lg = {6}>
+                                <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -40}}>
                                             <TwitterPicker
                                                 color={ backgroundColor}
                                                 onChangeComplete={ handleChangeComplete }
@@ -80,19 +94,50 @@ function TrackerManager(props) {
                             Data
                         </p>
                         <Grid spacing={3} container direction = 'row'>
-                            <Grid  item xs={12} md = {6} lg = {6} >
+                            <Grid  item xs={12} md = {9} lg = {9} >
 
                         {(props.tracker.call)
                             ?
                             <div>
                                 {Object.keys(props.tracker.call).map((item) =>
-
-                                    <Box borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
-
-                                    <p style = {{marginLeft: 5}}>
-                                        {props.tracker.call[item].label}
-
-                                    </p>
+                                    <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+                                    <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
+                                        <Grid direction={'row'} item xs ={8} md={8} lg = {8}>
+                                            <Box alignItems="center" display="flex" flexDirection="row" >
+                                            <Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {2} borderColor = "lightgrey">
+                                            <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />
+                                            </Box>
+                                                <TextField
+                                                    placeholder="add a quick welcome note or ask for specific feedback"
+                                                    multiline
+                                                    value =  {props.tracker.call[item].label}
+                                                    fullWidth={true}
+                                                    variant="outlined"
+                                                    rowsMax={4}
+                                                />
+                                            </Box>
+                                        </Grid>
+                                        <Grid item direction={'row'}>
+                                            <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
+                                                <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                                                    Type:
+                                                </Button>
+                                                <Menu
+                                                    id="simple-menu"
+                                                    anchorEl={anchorEl}
+                                                    keepMounted
+                                                    open={Boolean(anchorEl)}
+                                                    onClose={handleClose}
+                                                >
+                                                    <MenuItem onClick={handleClose}>Text</MenuItem>
+                                                    <MenuItem onClick={handleClose}>Number</MenuItem>
+                                                </Menu>
+                                                    <p style = {{margin: 10}}>
+                                                        Text
+                                                    </p>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
                                     </Box>
                                 )}
 
@@ -100,8 +145,7 @@ function TrackerManager(props) {
                             : null
                         }
                             </Grid>
-                            <Grid spacing={3} item xs={12} md = {6} lg = {6} >
-
+                            <Grid spacing={3} item xs={12} md = {3} lg = {3} >
                             </Grid>
 
                         </Grid>
