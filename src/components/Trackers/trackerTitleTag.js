@@ -47,7 +47,8 @@ function TrackerTitleTag(props) {
                     value = {props.trackerTitle}
                     style = {{color: '#FAFAFA', margin: 5}}
                     InputProps={{
-                        className: classes.input
+                        className: classes.input,
+                        disableUnderline: true
                     }}
                     className={classes.margin}
                     // onChange={e => props.handleTitleChange(e.target.value)}

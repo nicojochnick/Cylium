@@ -7,10 +7,16 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import Switch from "@material-ui/core/Switch/Switch";
 import MenuItem from '@material-ui/core/MenuItem';
-import { BiQuestionMark } from "react-icons/bi"
-
+import { BiQuestionMark, BiPlus } from "react-icons/bi"
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
 import Menu from '@material-ui/core/Menu';
-import FormGroup from "@material-ui/core/FormGroup/FormGroup";
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker, NimblePicker } from 'emoji-mart'
 import {TwitterPicker} from "react-color";
@@ -21,7 +27,12 @@ function TrackerManager(props) {
     const classes = useStyles();
 
     const [title, setTitle] = React.useState(props.tracker.trackerName);
-    const [backgroundColor, setBackgroundColor] = React.useState('#fff')
+    const [backgroundColor, setBackgroundColor] = React.useState('#fff');
+    const [state, setState] = React.useState({
+        gilad: true,
+        jason: false,
+        antoine: false,
+    });
 
     const handleTitleChange= (name) => {
         setTitle(name)
@@ -29,6 +40,13 @@ function TrackerManager(props) {
 
     const handleChangeComplete = (color) => {
         setBackgroundColor(color.hex )
+    };
+
+
+    const [value, setValue] = React.useState('female');
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
     };
 
 
@@ -48,9 +66,6 @@ function TrackerManager(props) {
             <Grid  direction = 'column' container>
                 <Grid item>
                     <Box style = {{margin: 20}}>
-                    <p>
-                        Title and Color
-                    </p>
                         <Grid spacing={2} container direction = 'row'>
                             <Grid spacing={3} item xs={4} md = {6} lg = {6} >
                                 <Box>
@@ -72,7 +87,7 @@ function TrackerManager(props) {
                             </Grid>
 
                             <Grid alignItems='center' justify = 'center' item xs={8} md = {6} lg = {6}>
-                                <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -40}}>
+                                <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -30}}>
                                             <TwitterPicker
                                                 color={ backgroundColor}
                                                 onChangeComplete={ handleChangeComplete }
@@ -89,12 +104,12 @@ function TrackerManager(props) {
                     <Divider/>
                 </Grid>
                 <Grid item>
-                    <Box style = {{margin: 20}}>
-                        <p>
-                            Data
-                        </p>
+                    <Box style = {{margin: 20, marginTop: -10}}>
                         <Grid spacing={3} container direction = 'row'>
                             <Grid  item xs={12} md = {9} lg = {9} >
+                                <p>
+                                    Data
+                                </p>
 
                         {(props.tracker.call)
                             ?
@@ -108,11 +123,11 @@ function TrackerManager(props) {
                                             <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />
                                             </Box>
                                                 <TextField
-                                                    placeholder="add a quick welcome note or ask for specific feedback"
+                                                    placeholder="add a questions"
                                                     multiline
                                                     value =  {props.tracker.call[item].label}
-                                                    fullWidth={true}
-                                                    variant="outlined"
+                                                    fullWidth
+                                                    InputProps={{ disableUnderline: true }}
                                                     rowsMax={4}
                                                 />
                                             </Box>
@@ -144,8 +159,30 @@ function TrackerManager(props) {
                             </div>
                             : null
                         }
+
+                        <Button
+                            style = {{margin: 10}}
+                            variant="contained"
+                            color = 'primary'
+                            className={classes.button}
+                            startIcon={<BiPlus />}
+                        >
+                            Add Question
+                        </Button>
                             </Grid>
                             <Grid spacing={3} item xs={12} md = {3} lg = {3} >
+                                <p>
+                                    Schedule
+                                </p>
+
+                                <FormControl component="fieldset">
+                                    <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                                        <FormControlLabel value="female" control={<Radio />} label="Unlimited" />
+                                        <FormControlLabel value="male" control={<Radio />} label="Once a Week" />
+                                        <FormControlLabel value="other" control={<Radio />} label="Once a Month" />
+g                                    </RadioGroup>
+                                </FormControl>
+
                             </Grid>
 
                         </Grid>
