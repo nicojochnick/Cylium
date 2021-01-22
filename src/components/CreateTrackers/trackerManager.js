@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from "@material-ui/core/Box";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles, fade,} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
@@ -18,9 +18,18 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
-import { Picker, NimblePicker } from 'emoji-mart'
 import {TwitterPicker} from "react-color";
 import TyperTracker from "../Typers/typerTracker";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+
+
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
 
 function TrackerManager(props) {
@@ -28,11 +37,9 @@ function TrackerManager(props) {
 
     const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [backgroundColor, setBackgroundColor] = React.useState('#fff');
-    const [state, setState] = React.useState({
-        gilad: true,
-        jason: false,
-        antoine: false,
-    });
+
+    const [checked, setChecked] = React.useState([1]);
+
 
     const handleTitleChange= (name) => {
         setTitle(name)
@@ -58,6 +65,19 @@ function TrackerManager(props) {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleToggle = (value) => () => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+
+        setChecked(newChecked);
     };
 
 
@@ -180,7 +200,7 @@ function TrackerManager(props) {
                                         <FormControlLabel value="female" control={<Radio />} label="Unlimited" />
                                         <FormControlLabel value="male" control={<Radio />} label="Once a Week" />
                                         <FormControlLabel value="other" control={<Radio />} label="Once a Month" />
-g                                    </RadioGroup>
+                                   </RadioGroup>
                                 </FormControl>
 
                             </Grid>
@@ -195,8 +215,68 @@ g                                    </RadioGroup>
                     <p>
                         Users and Permissions
                     </p>
+                        <Grid spacing={3} container direction = 'row'>
+                            <Grid  item xs={12} md = {4} lg = {4} >
+                                <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+
+                                    <Box
+                                        borderRadius={16}
+                                        style ={{margin: 10}}
+                                        className={classes.search}
+                                    >
+                                        <div className={classes.searchIcon}>
+                                            <SearchIcon />
+                                        </div>
+                                        <InputBase
+                                            placeholder="Search…"
+                                            classes={{
+                                                root: classes.inputRoot,
+                                                input: classes.inputInput,
+                                            }}
+                                            inputProps={{ 'aria-label': 'search' }}
+                                        />
+                                    </Box>
+
+                                </Box>
+
+
+
+                            </Grid>
+                            <Grid  item xs={12} md = {8} lg = {8} >
+
+                                <List dense className={classes.root}>
+                                    {[0, 1, 2, 3].map((value) => {
+                                        const labelId = `checkbox-list-secondary-label-${value}`;
+                                        return (
+                                            <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+
+                                                <ListItem key={value} button>
+                                                    <ListItemAvatar>
+                                                        <Avatar
+                                                            alt={`Avatar n°${value + 1}`}
+                                                            src={`/static/images/avatar/${value + 1}.jpg`}
+                                                        />
+                                                    </ListItemAvatar>
+                                                    <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                                                    <ListItemSecondaryAction>
+                                                        <Checkbox
+                                                            edge="end"
+                                                            onChange={handleToggle(value)}
+                                                            checked={checked.indexOf(value) !== -1}
+                                                            inputProps={{ 'aria-labelledby': labelId }}
+                                                        />
+                                                    </ListItemSecondaryAction>
+                                                </ListItem>
+                                            </Box>
+                                        );
+                                    })}
+                                </List>
+                            </Grid>
+
+                            </Grid>
+
                     </Box>
-                    <Divider/>
+
                 </Grid>
             </Grid>
 
@@ -261,6 +341,44 @@ const useStyles = makeStyles((theme) => ({
 
     fixedHeight: {
         height: 350,
+    },
+
+    search: {
+        position: 'relative',
+        // borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade("#A8ADBC", 0.15),
+        '&:hover': {
+            backgroundColor: fade("#A8ADBC", 0.25),
+        },
+        marginRight: theme.spacing(2),
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    },
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '20ch',
+        },
     },
 }));
 
