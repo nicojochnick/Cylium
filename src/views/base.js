@@ -30,7 +30,7 @@ function Base(props) {
                           alignItems = 'center' >
                     </Grid>
                     <Grid xs = {12}  md = {6} lg = {6} container>
-                        <TrackersList isTeamView = {switchState} team = {props.team} user = {props.user} />
+                        <TrackersList isMe = {true} isTeamView = {switchState} team = {props.team} user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>

@@ -106,7 +106,7 @@ function TrackerManager(props) {
                                 </Box>
                             </Grid>
 
-                            <Grid alignItems='center' justify = 'center' item xs={8} md = {6} lg = {6}>
+                            <Grid alignItems='center' justify = 'center' item xs={12} md = {6} lg = {6}>
                                 <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -5}}>
                                             <TwitterPicker
                                                 color={ backgroundColor}
@@ -126,7 +126,7 @@ function TrackerManager(props) {
                 <Grid item>
                     <Box style = {{margin: 20, marginTop: -10}}>
                         <Grid spacing={3} container direction = 'row'>
-                            <Grid  item xs={12} md = {9} lg = {9} >
+                            <Grid  item xs={12} md = {12} lg = {12} >
                                 <p>
                                     Data
                                 </p>
@@ -190,7 +190,7 @@ function TrackerManager(props) {
                             Add Question
                         </Button>
                             </Grid>
-                            <Grid spacing={3} item xs={12} md = {3} lg = {3} >
+                            <Grid spacing={3} item xs={12} md = {12} lg = {12} >
                                 <p>
                                     Schedule
                                 </p>
@@ -216,7 +216,7 @@ function TrackerManager(props) {
                         Users and Permissions
                     </p>
                         <Grid spacing={3} container direction = 'row'>
-                            <Grid  item xs={12} md = {4} lg = {4} >
+                            <Grid  item xs={12} md = {12} lg = {12} >
                                 <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
 
                                     <Box
@@ -242,7 +242,7 @@ function TrackerManager(props) {
 
 
                             </Grid>
-                            <Grid  item xs={12} md = {8} lg = {8} >
+                            <Grid  item xs={12} md = {12} lg = {12} >
 
                                 <List dense className={classes.root}>
                                     {[0, 1, 2, 3].map((value) => {
@@ -287,13 +287,13 @@ function TrackerManager(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        maxWidth: 535,
         backgroundColor: 'white',
     },
     box:{
         flexGrow: 1,
         padding: 0,
         display: 'start',
-        overflow: 'auto',
         flexDirection: 'column',
         // margin: 10,
         // marginBottom: 20,
@@ -304,7 +304,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         display: 'start',
-        overflow: 'auto',
         flexDirection: 'column',
         backgroundColor: 'white',
     },
@@ -314,7 +313,6 @@ const useStyles = makeStyles((theme) => ({
         top: "0rem",
         position: "sticky",
         display: 'start',
-        overflow: 'auto',
         flexDirection: 'column',
         // backgroundColor: 'white',
     },

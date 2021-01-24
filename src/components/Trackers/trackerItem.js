@@ -44,6 +44,8 @@ function TrackerItem(props) {
     const [isCreating, setCreating] = React.useState(false);
     const [isDatafying, setData] = React.useState(false);
     const [title, setTitle] = React.useState(props.tracker.trackerName);
+    const [height, setHeight] = React.useState(600);
+
 
 
     const switchPosting = async () =>{
@@ -100,11 +102,19 @@ function TrackerItem(props) {
 
     };
 
+    let totalHeight = height + 100;
+
     useEffect(() => {
         getResponses()
+        if (false){
+            setHeight(600);
+        }
+
     }, []);
     console.log(responses);
     return (
+        <div className={classes.root}>
+            <Grid container>
         <Box className={classes.box}
              boxShadow = {0}
              style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
@@ -121,21 +131,25 @@ function TrackerItem(props) {
             />
             {isCreating
                 ?
-                <Box  style = {{height: 550, backgroundColor:'white'}} className={classes.inner_box}>
+                <Grid container spacing={0} xs={12}>
+                <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
+                <Box style = {{height: height, backgroundColor:'white'}} className={classes.inner_box}>
                 <TrackerManager
                     tracker={props.tracker}
                 />
                 </Box>
+                </Grid>
+                </Grid>
                 :
                 <div>
                     {!isPosting
                         ? <Grid container spacing={0} xs={12}>
-                            <Grid className = {classes.boxSticky} style = {{ maxHeight: 400,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
-                                {/*<Box border = {1} borderColor = {"white"}>*/}
+                            <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
                                 <TrackerLytics responses = {responses} />
                                 {responses
                                     ?
                                     <Grid >
+                                        <Divider/>
                                         {Object.keys(responses).map((item) =>
                                             <TrackerResponse
                                                 user = {props.user}
@@ -144,11 +158,13 @@ function TrackerItem(props) {
                                     </Grid>
                                     : null
                                 }
-                                {/*</Box>*/}
                             </Grid>
 
                         </Grid>
-                        : <TyperList user={props.user} tracker={props.tracker}/>
+                        :
+                        <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
+                        <TyperList user={props.user} tracker={props.tracker}/>
+                        </Grid>
                     }
                 </div>
 
@@ -157,6 +173,8 @@ function TrackerItem(props) {
 
 
         </Box>
+            </Grid>
+        </div>
     );
 };
 

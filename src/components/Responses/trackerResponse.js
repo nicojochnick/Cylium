@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import TrackerResponseItem from "./trackerResponseItem";
 import TrackerItem from "../Trackers/trackerItem";
 import {db} from "../../api/firebase";
+import Divider from "@material-ui/core/Divider";
+
 
 function TrackerResponse(props) {
     const classes = useStyles();
@@ -38,7 +40,7 @@ function TrackerResponse(props) {
     return (
         <div>
             {user
-                ? <Box className={classes.box}
+                ? <Box border = {1} borderRight = {0} borderBottom = {1} borderLeft = {0} borderTop = {0}  color = {'lightgrey'} className={classes.box}
                        boxShadow={0}
                     // border = {2}
                     // borderColor = {'#8B8FA0'}

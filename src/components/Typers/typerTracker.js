@@ -141,7 +141,7 @@ function TyperTracker(props) {
             {(props.question.type == 'numeric')
                ?
                 <Grid container alignItems={'center'} justify = 'center' >
-                    <div style = {{minWidth: 400}}>
+                    <div style = {{width: 500}}>
                 <Slider
                     defaultValue={5}
                     getAriaValueText={valuetext}

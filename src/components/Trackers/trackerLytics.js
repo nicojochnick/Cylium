@@ -5,10 +5,10 @@ import Grid from "@material-ui/core/Grid";
 
 function TrackerLytics(props) {
     return (
-        <Grid container justify='center' alignItems = 'center' direction = 'column' style = {{width: '100%', height: 200}} >
-            <div style = {{width: '80%', height: '80%'}}>
+        <Grid container justify='center' alignItems = 'center' direction = 'column' style = {{ height: 200}} >
+            <div style = {{width: '90%', height: '90%'}}>
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart width={730} height={200} data={data}
+                    <LineChart width={200} height={200} data={data}
                                margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
                         <CartesianGrid stroke = "grey" strokeDasharray="2 2" />
                         <XAxis stroke = "grey" dataKey="name" />
