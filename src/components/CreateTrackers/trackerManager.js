@@ -85,7 +85,7 @@ function TrackerManager(props) {
         <div className={classes.root}>
             <Grid  direction = 'column' container>
                 <Grid item>
-                    <Box style = {{margin: 20}}>
+                    <Box style = {{margin: 20, }}>
                         <Grid spacing={2} container direction = 'row'>
                             <Grid spacing={3} item xs={4} md = {6} lg = {6} >
                                 <Box>
@@ -107,7 +107,7 @@ function TrackerManager(props) {
                             </Grid>
 
                             <Grid alignItems='center' justify = 'center' item xs={8} md = {6} lg = {6}>
-                                <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -30}}>
+                                <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -5}}>
                                             <TwitterPicker
                                                 color={ backgroundColor}
                                                 onChangeComplete={ handleChangeComplete }
@@ -287,7 +287,7 @@ function TrackerManager(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     box:{
         flexGrow: 1,

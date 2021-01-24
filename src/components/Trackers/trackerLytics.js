@@ -10,9 +10,9 @@ function TrackerLytics(props) {
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart width={730} height={200} data={data}
                                margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                        {/*<CartesianGrid stroke = "#EFEFEF" strokeDasharray="2 2" />*/}
-                        <XAxis stroke = "#EFEFEF" dataKey="name" />
-                        <YAxis stroke = "#EFEFEF"/>
+                        <CartesianGrid stroke = "grey" strokeDasharray="2 2" />
+                        <XAxis stroke = "grey" dataKey="name" />
+                        <YAxis stroke = "grey"/>
                         <Tooltip />
                         <Legend />
                         <Line type="monotone" dataKey="pv" stroke="#9067FF" />

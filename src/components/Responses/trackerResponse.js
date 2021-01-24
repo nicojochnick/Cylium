@@ -56,7 +56,7 @@ function TrackerResponse(props) {
                                 marginTop: 2,
                                 marginBottom: 0,
                                 fontSize: 15,
-                                color: 'white',
+                                color: '#2F2C37',
                                 fontWeight: 500,
                             }}>{user.name} </p>
                             {(props.response)
@@ -66,7 +66,7 @@ function TrackerResponse(props) {
                                 </div>
                                 : null
                             }
-                            <p style={{color: 'white', fontSize: 12, margin: 8, marginTop: 2,}}>Monday, May 2020 </p>
+                            <p style={{color: '#2F2C37', fontSize: 12, margin: 8, marginTop: 2,}}>Monday, May 2020 </p>
                         </Grid>
                     </Grid>
                 </Box>

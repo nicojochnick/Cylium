@@ -62,7 +62,7 @@ function TrackerResponseItem(props) {
                         <div>
                             <div>
                                 <p style={{
-                                    color: 'white',
+                                    color: '#2F2C37',
                                     fontWeight: 500, fontSize: 15,
                                     margin: 10,
                                     marginTop: 2,
@@ -75,7 +75,7 @@ function TrackerResponseItem(props) {
                                 {(eState!== null)
 
                                     ?
-                                    <div style = {{color:'white', margin: 10, fontSize: 15}}>
+                                    <div style = {{color:'#2F2C37', margin: 10, fontSize: 15}}>
                                     <Editor customStyleMap={colorStyleMap} editorState={eState} readOnly={true}/>
                                     </div>
                                     : null

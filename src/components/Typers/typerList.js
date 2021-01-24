@@ -72,7 +72,6 @@ function TyperList(props) {
                             marginTop: 2,
                             marginBottom: 0,
                             fontSize: 15,
-                            color: 'white',
                             fontWeight: 500,
                         }}>{props.user.name} </p>
 

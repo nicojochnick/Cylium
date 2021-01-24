@@ -107,7 +107,7 @@ function TrackerItem(props) {
     return (
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#2F2C37', }}
+             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
              borderRadius={20}>
             <TrackerTitleTag
                 switchData = {switchData}
@@ -121,46 +121,30 @@ function TrackerItem(props) {
             />
             {isCreating
                 ?
-                <Grid style = {{height: 350}} container spacing={0} xs={12}>
+                <Box  style = {{height: 550, backgroundColor:'white'}} className={classes.inner_box}>
                 <TrackerManager
                     tracker={props.tracker}
                 />
-                </Grid>
+                </Box>
                 :
                 <div>
                     {!isPosting
-                        ? <Grid style = {{height: 350}} container spacing={0} xs={12}>
-                            <Grid className = {classes.boxSticky} style = {{ maxHeight: 400,backgroundColor:'#2F2C37' }} item xs={12} md={5} lg={5}>
+                        ? <Grid container spacing={0} xs={12}>
+                            <Grid className = {classes.boxSticky} style = {{ maxHeight: 400,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
                                 {/*<Box border = {1} borderColor = {"white"}>*/}
                                 <TrackerLytics responses = {responses} />
-                                {/*</Box>*/}
-                            </Grid>
-                            <Grid style = {{height: 350, backgroundColor:'#2F2C37',}} item xs={12} md={7} lg={7}>
-                                <Box borderColor = {"white"} borderLeft={1} style = {{height: 350, backgroundColor:'#2F2C37'}} className={classes.inner_box}>
-                                    <Grid container justify={'center'} alignItems = {'center'}>
-                                        {(isPosting)
-                                            ? <TyperList user={props.user} tracker={props.tracker}/>
-                                            : null
-
-                                        }
-
+                                {responses
+                                    ?
+                                    <Grid >
+                                        {Object.keys(responses).map((item) =>
+                                            <TrackerResponse
+                                                user = {props.user}
+                                                tracker={props.tracker}
+                                                response={responses[item]}/>)}
                                     </Grid>
-
-
-                                    <Divider/>
-
-                                    {responses
-                                        ?
-                                        <Grid >
-                                            {Object.keys(responses).map((item) =>
-                                                <TrackerResponse
-                                                    user = {props.user}
-                                                    tracker={props.tracker}
-                                                    response={responses[item]}/>)}
-                                        </Grid>
-                                        : null
-                                    }
-                                </Box>
+                                    : null
+                                }
+                                {/*</Box>*/}
                             </Grid>
 
                         </Grid>
@@ -240,3 +224,21 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default TrackerItem;
+
+
+{/*<Grid style = {{height: 350,}} item xs={12} md={7} lg={7}>*/}
+{/*    <Box borderColor = {"#2F2C37"} borderLeft={1} style = {{height: 350, backgroundColor:'#F7F7F7',}} className={classes.inner_box}>*/}
+{/*        <Grid container justify={'center'} alignItems = {'center'}>*/}
+{/*            {(isPosting)*/}
+{/*                ? <TyperList user={props.user} tracker={props.tracker}/>*/}
+{/*                : null*/}
+{/*            }*/}
+
+{/*        </Grid>*/}
+
+
+{/*        <Divider/>*/}
+
+
+{/*    </Box>*/}
+{/*</Grid>*/}

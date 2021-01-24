@@ -135,7 +135,7 @@ function TyperTracker(props) {
     return (
         <div style = {{margin: 25}}>
             {/*<Grid style = {{margin: 15}} container>*/}
-            <p style = {{color: "white"}}>
+            <p style = {{color: '#2F2C37'}}>
                 {props.question.label}
             </p>
             {(props.question.type == 'numeric')
@@ -156,9 +156,10 @@ function TyperTracker(props) {
                     </div>
                 </Grid>
                 : <Box borderRadius = {10}
-                     style = {{backgroundColor: 'white', padding: 20}}>
+                    style ={{padding: 20, margin: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white' , }}
+                       >
 
-                <Editor
+                    <Editor
                     placeholder="type here..."
                     handleKeyCommand={handleKeyCommand}
                     editorState={editorState}
