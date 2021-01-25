@@ -20,7 +20,7 @@ function TrackerResponse(props) {
             .onSnapshot(function(doc) {
                 console.log("Current data: ", doc.data());
                 //Fixes bug where doc.data() is undefined on first signin
-                let user = doc.data()
+                let user = doc.data();
                 if (user) {
                     setUser(user);
                 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import {BiHappy} from 'react-icons/bi'
 import Popover from '@material-ui/core/Popover';
@@ -15,6 +15,10 @@ import {
     createMuiTheme,
 } from '@material-ui/core/styles';
 import {TwitterPicker} from "react-color";
+import Avatar from "@material-ui/core/Avatar";
+import {db} from "../../api/firebase";
+
+
 
 function TrackerTitleTag(props) {
 
@@ -33,13 +37,44 @@ function TrackerTitleTag(props) {
     const id = open ? 'simple-popover' : undefined;
 
     const openToChange = (val) => {
+    };
 
-    }
+
+    const [user, setUser] = React.useState(null);
+
+    const getUser = async(email) => {
+        await db.collection("users").doc(email)
+            .onSnapshot(function(doc) {
+                // console.log("Current data: ", doc.data());
+                //Fixes bug where doc.data() is undefined on first signin
+                let user = doc.data()
+                if (user) {
+                    setUser(user);
+                }
+                console.log(user)
+            });
+
+    };
+
+    useEffect(() => {
+        getUser(props.ownerEmail);
+        // console.log(props.senderEmail);
+    }, []);
+
 
 
     return (
         <Box borderBottom = {1} borderColor= {"white"} display="flex" justifyContent = 'space-between' alignItems = 'center' flexDirection="row" borderRadius = {0} borderBottom = {0} style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
             <Grid container direction={'row'}>
+                { user
+                    ? <Grid item xs={1.5} md={1.5} lg={1.5}>
+                        <Box style={{margin: 5}} border={2} borderColor={'white'} borderRadius={50}>
+                            <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
+                        </Box>
+                    </Grid>
+                    : null
+
+                }
 
             {/*<BiHappy size = {25} style = {{color: "white"}} />*/}
 

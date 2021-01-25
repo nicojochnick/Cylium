@@ -120,6 +120,7 @@ function TrackerItem(props) {
              style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
              borderRadius={20}>
             <TrackerTitleTag
+                ownerEmail = {props.tracker.ownerEmail}
                 switchData = {switchData}
                 switchCreating = {switchCreating}
                 switchPosting = {switchPosting}
@@ -129,6 +130,7 @@ function TrackerItem(props) {
                 trackerTitle = {title}
                 handleTitleChange = {handleTitleChange}
             />
+
             {isCreating
                 ?
                 <Grid container spacing={0} xs={12}>
@@ -143,7 +145,7 @@ function TrackerItem(props) {
                 :
                 <div>
                     {!isPosting
-                        ? <Grid container spacing={0} xs={12}>
+                        ? <Grid className = {classes.box} container spacing={0} xs={12}>
                             <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
                                 <TrackerLytics responses = {responses} />
                                 {responses
@@ -189,8 +191,9 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         display: 'start',
-        overflow: 'auto',
+        overflow: 'hidden',
         flexDirection: 'column',
+        position: 'relative',
         // margin: 10,
         // marginBottom: 20,
         // backgroundColor: 'white',
@@ -200,9 +203,10 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         display: 'start',
-        overflow: 'auto',
+        overflowY: 'scroll',
         flexDirection: 'column',
         backgroundColor: 'white',
+        marginRight: -15
     },
 
     boxSticky:{
@@ -213,6 +217,11 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         flexDirection: 'column',
         // backgroundColor: 'white',
+    },
+    '@global': {
+        '*::-webkit-scrollbar': {
+            width: '0.4em'
+        },
     },
 
     content: {

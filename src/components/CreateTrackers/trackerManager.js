@@ -287,7 +287,7 @@ function TrackerManager(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        maxWidth: 535,
+        // maxWidth: 540,
         backgroundColor: 'white',
     },
     box:{
