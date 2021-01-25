@@ -60,23 +60,7 @@ function TyperList(props) {
                  style={{minHeight: 100}}
                  borderRadius={2}>
             <Grid direction = 'column' container alignItems="center" justify = "center">
-                <Grid justify='center' alignItems='center' direction="row" container style={{margin: 0,}}>
-                    <Grid item xs={1.5} md={1.5} lg={1.5}>
-                        <Box style={{margin: 10}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
-                            <Avatar src={props.user.img_url_Profile.imgUrl} className={classes.large}/>
-                        </Box>
-                    </Grid>
-                    {/*<Grid item xs={10} md={10} lg={10}>*/}
-                        <p style={{
-                            margin: 8,
-                            marginTop: 2,
-                            marginBottom: 0,
-                            fontSize: 15,
-                            fontWeight: 500,
-                        }}>{props.user.name} </p>
 
-                    {/*</Grid>*/}
-                </Grid>
             {(props.tracker.call)
                 ?
                 <div>
@@ -143,5 +127,27 @@ const useStyles = makeStyles((theme) => ({
         height: 350,
     },
 }));
+
+
+{/*<Grid item xs={1.5} md={1.5} lg={1.5}>*/}
+{/*    <Box style={{margin: 10}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>*/}
+{/*        <Avatar src={props.user.img_url_Profile.imgUrl} className={classes.large}/>*/}
+{/*    </Box>*/}
+{/*</Grid>*/}
+
+
+{/*<Grid justify='center' alignItems='center' direction="row" container style={{margin: 0,}}>*/}
+
+{/*    /!*<Grid item xs={10} md={10} lg={10}>*!/*/}
+{/*        <p style={{*/}
+{/*            margin: 8,*/}
+{/*            marginTop: 2,*/}
+{/*            marginBottom: 0,*/}
+{/*            fontSize: 15,*/}
+{/*            fontWeight: 500,*/}
+{/*        }}>{props.user.name} </p>*/}
+
+{/*    /!*</Grid>*!/*/}
+{/*</Grid>*/}
 
 export default TyperList;

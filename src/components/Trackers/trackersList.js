@@ -49,19 +49,17 @@ function TrackersList(props) {
     }, []);
 
     return (
-        <div>
-            <Grid>
+        <div className={classes.root}>
             {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
                 {(trackers.length >0)
-                    ?<Grid container direction = 'column' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(trackers).map((item) => <TrackerItem isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
+                    ?<Grid container direction = 'row' style ={{padding: 10}} spacing={2}>
+                        {Object.keys(trackers).map((item) => <TrackerItem setStretch = {props.setStretch} isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
                     </Grid>
                     : null
                 }
                 <div>
                 </div>
             {/*</form>*/}
-            </Grid>
         </div>
     );
 }
@@ -73,6 +71,10 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 20,
         borderRadius: 5,
     },
+    root: {
+        flexGrow: 1,
+    },
+
     container:{
         margin: 20
 
@@ -85,10 +87,6 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
     },
 
-    root: {
-        height: '100vh',
-        flexGrow:1
-    },
     image: {
         backgroundImage: 'url(https://source.unsplash.com/random)',
         backgroundRepeat: 'no-repeat',

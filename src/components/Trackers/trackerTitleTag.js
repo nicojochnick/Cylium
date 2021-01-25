@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import IconButton from '@material-ui/core/IconButton';
-import {BiPencil,BiUser, BiCog,BiBarChartAlt2} from "react-icons/bi"
+import {BiPencil,BiUser, BiCog,BiBarChartAlt2,BiMessageAltDetail} from "react-icons/bi"
 import TextField from '@material-ui/core/TextField';
 import {
     fade,
@@ -111,7 +111,7 @@ function TrackerTitleTag(props) {
 
                 <Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>
                 <IconButton color = "white" onClick={()=>props.switchPosting()}>
-                    <BiPencil style = {{color: props.backgroundColor}} size = {20} />
+                    <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />
                 </IconButton>
                 </Box>
 

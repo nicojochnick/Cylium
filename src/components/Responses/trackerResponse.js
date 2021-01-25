@@ -31,10 +31,7 @@ function TrackerResponse(props) {
 
     useEffect(() => {
         getUser(props.response.user);
-        console.log(props.senderEmail);
     }, []);
-
-    console.log(props.response);
 
 
     return (

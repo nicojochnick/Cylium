@@ -45,21 +45,26 @@ function TrackerItem(props) {
     const [isDatafying, setData] = React.useState(false);
     const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [height, setHeight] = React.useState(600);
+    const [stretch, setStretch] = React.useState(6)
 
 
 
     const switchPosting = async () =>{
         setPosting(!isPosting)
+        props.setStretch(6);
     };
 
     const switchCreating = async () =>{
+        isCreating ? props.setStretch(6) : props.setStretch(12);
         setCreating(!isCreating);
         setPosting(false);
+
 
     };
 
     const switchData = async () =>{
         setData(!isDatafying)
+        props.setStretch(6);
 
     };
 
@@ -111,7 +116,7 @@ function TrackerItem(props) {
         }
 
     }, []);
-    console.log(responses);
+
     return (
         <div className={classes.root}>
             <Grid container>
@@ -191,7 +196,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         display: 'start',
-        overflow: 'hidden',
+        overflow: 'auto',
         flexDirection: 'column',
         position: 'relative',
         // margin: 10,

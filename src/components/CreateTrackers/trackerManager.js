@@ -86,9 +86,9 @@ function TrackerManager(props) {
             <Grid  direction = 'column' container>
                 <Grid item>
                     <Box style = {{margin: 20, }}>
-                        <Grid spacing={2} container direction = 'row'>
-                            <Grid spacing={3} item xs={4} md = {6} lg = {6} >
-                                <Box>
+                        <Grid  style = {{marginTop: 20}}  spacing={2} container direction = 'row'>
+                            <Grid  spacing={3} item xs={4} md = {6} lg = {6} >
+                                <Box style = {{marginTop: 0}} >
                                     <TextField
                                         onChange={e => handleTitleChange(e.target.value)}
                                         id="filled-basic"
@@ -128,7 +128,7 @@ function TrackerManager(props) {
                         <Grid spacing={3} container direction = 'row'>
                             <Grid  item xs={12} md = {12} lg = {12} >
                                 <p>
-                                    Data
+                                    Questions
                                 </p>
 
                         {(props.tracker.call)
@@ -192,7 +192,7 @@ function TrackerManager(props) {
                             </Grid>
                             <Grid spacing={3} item xs={12} md = {12} lg = {12} >
                                 <p>
-                                    Schedule
+                                    How Often Do You Want Responses?
                                 </p>
 
                                 <FormControl component="fieldset">

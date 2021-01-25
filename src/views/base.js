@@ -13,8 +13,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import TrackerItem from "../components/Trackers/trackerItem";
 import TrackersList from "../components/Trackers/trackersList";
 function Base(props) {
+
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState(false);
+    const [stretch, setStretch] = React.useState(12);
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
@@ -22,15 +24,15 @@ function Base(props) {
 
     return (
         <div className={classes.root} >
-            <Container fixed maxWidth="lg" className={classes.container}>
+            <Container className={classes.container}>
                 <Grid container spacing={1}>
                     <Grid container
                           direction='row'
                           justify= 'center'
                           alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {6} lg = {6} container>
-                        <TrackersList isMe = {true} isTeamView = {switchState} team = {props.team} user = {props.user} />
+                    <Grid xs = {12}  md = {stretch} lg = {stretch} container>
+                        <TrackersList setStretch = {setStretch} isMe = {true} isTeamView = {switchState} team = {props.team} user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>
