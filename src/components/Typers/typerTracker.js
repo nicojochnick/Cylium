@@ -9,9 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Slider from '@material-ui/core/Slider';
 
-
 const MAX_LENGTH = 1500;
-
 function TyperTracker(props) {
     const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
     const [contentState, setContentState] = React.useState(() => null);
@@ -25,7 +23,6 @@ function TyperTracker(props) {
         setContentState(save);
         setEditorState(editorState)
         props.pushResponse(save, props.question.callID, props.question.type, props.question.order);
-
     };
 
     const onChangeSlider = (val) => {
@@ -35,11 +32,10 @@ function TyperTracker(props) {
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
-
         if (newState) {
             onChangeText(newState);
             return 'handled';
-        }
+        };
         return 'not-handled';
     };
 

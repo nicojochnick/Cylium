@@ -30,6 +30,7 @@ import InputBase from '@material-ui/core/InputBase';
 
 
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import EditQuestionItem from "./editQuestionItem";
 
 
 function TrackerManager(props) {
@@ -123,6 +124,61 @@ function TrackerManager(props) {
                     </Box>
                     <Divider/>
                 </Grid>
+
+                <Grid item>
+                    <Box style = {{margin: 20}}>
+                        <p>
+                            Users and Permissions
+                        </p>
+                        <Grid spacing={3} container direction = 'row'>
+                            <Grid  item xs={12} md = {6} lg = {6} >
+                                <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+
+                                    <Box
+                                        borderRadius={16}
+                                        style ={{margin: 10}}
+                                        className={classes.search}
+                                    >
+                                        <div className={classes.searchIcon}>
+                                            <SearchIcon />
+                                        </div>
+                                        <InputBase
+                                            placeholder="Search…"
+                                            classes={{
+                                                root: classes.inputRoot,
+                                                input: classes.inputInput,
+                                            }}
+                                            inputProps={{ 'aria-label': 'search' }}
+                                        />
+                                    </Box>
+
+                                </Box>
+
+
+
+                            </Grid>
+                            <Grid  item xs={12} md = {6} lg = {6} >
+
+                                <List dense className={classes.root}>
+                                    {[0, 1, 2, 3].map((value) => {
+                                        const labelId = `checkbox-list-secondary-label-${value}`;
+                                        return (
+                                           <EditQuestionItem value = {value} handleToggle = {handleToggle} labelID = {labelId} checked = {checked} />
+                                        );
+                                    })}
+                                </List>
+                            </Grid>
+
+                        </Grid>
+
+                    </Box>
+                    <Divider/>
+
+
+                </Grid>
+
+
+
                 <Grid item>
                     <Box style = {{margin: 20, marginTop: -10}}>
                         <Grid spacing={3} container direction = 'row'>
@@ -207,77 +263,9 @@ function TrackerManager(props) {
 
                         </Grid>
                     </Box>
-                        <Divider/>
 
                 </Grid>
-                <Grid item>
-                    <Box style = {{margin: 20}}>
-                    <p>
-                        Users and Permissions
-                    </p>
-                        <Grid spacing={3} container direction = 'row'>
-                            <Grid  item xs={12} md = {12} lg = {12} >
-                                <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
 
-                                    <Box
-                                        borderRadius={16}
-                                        style ={{margin: 10}}
-                                        className={classes.search}
-                                    >
-                                        <div className={classes.searchIcon}>
-                                            <SearchIcon />
-                                        </div>
-                                        <InputBase
-                                            placeholder="Search…"
-                                            classes={{
-                                                root: classes.inputRoot,
-                                                input: classes.inputInput,
-                                            }}
-                                            inputProps={{ 'aria-label': 'search' }}
-                                        />
-                                    </Box>
-
-                                </Box>
-
-
-
-                            </Grid>
-                            <Grid  item xs={12} md = {12} lg = {12} >
-
-                                <List dense className={classes.root}>
-                                    {[0, 1, 2, 3].map((value) => {
-                                        const labelId = `checkbox-list-secondary-label-${value}`;
-                                        return (
-                                            <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
-
-                                                <ListItem key={value} button>
-                                                    <ListItemAvatar>
-                                                        <Avatar
-                                                            alt={`Avatar n°${value + 1}`}
-                                                            src={`/static/images/avatar/${value + 1}.jpg`}
-                                                        />
-                                                    </ListItemAvatar>
-                                                    <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-                                                    <ListItemSecondaryAction>
-                                                        <Checkbox
-                                                            edge="end"
-                                                            onChange={handleToggle(value)}
-                                                            checked={checked.indexOf(value) !== -1}
-                                                            inputProps={{ 'aria-labelledby': labelId }}
-                                                        />
-                                                    </ListItemSecondaryAction>
-                                                </ListItem>
-                                            </Box>
-                                        );
-                                    })}
-                                </List>
-                            </Grid>
-
-                            </Grid>
-
-                    </Box>
-
-                </Grid>
             </Grid>
 
         </div>
