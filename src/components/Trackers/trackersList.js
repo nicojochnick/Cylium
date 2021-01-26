@@ -18,10 +18,8 @@ function isEmpty(obj) {
     return true;
 };
 
-
 function TrackersList(props) {
     const classes = useStyles();
-    // const question_1 = 'Rate your team strength this week (1-10)';
     const [trackers, setTrackers] = React.useState([]);
     const getTrackers = async() => {
         if (props.team.trackers) {
@@ -34,7 +32,6 @@ function TrackersList(props) {
                         teamTrackers.push(doc.data())
                     });
                     setTrackers(teamTrackers);
-                    console.log(teamTrackers)
 
                 })
                 .catch(function (error) {
@@ -45,21 +42,16 @@ function TrackersList(props) {
 
     useEffect(() => {
         getTrackers();
-        console.log(props.team)
     }, []);
 
     return (
         <div className={classes.root}>
-            {/*<form className={classes.form} onSubmit={console.log('submit')} noValidate>*/}
                 {(trackers.length >0)
                     ?<Grid container direction = 'row' style ={{padding: 10}} spacing={2}>
                         {Object.keys(trackers).map((item) => <TrackerItem setStretch = {props.setStretch} isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
                     </Grid>
                     : null
                 }
-                <div>
-                </div>
-            {/*</form>*/}
         </div>
     );
 }

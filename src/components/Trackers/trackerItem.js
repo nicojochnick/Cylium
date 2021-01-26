@@ -6,15 +6,10 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import {BiHappy} from 'react-icons/bi'
 import TrackerTitleTag from "./trackerTitleTag";
-import Pulse from "../../assets/images/pulse.gif";
 import UserId from "../User/userID";
-import ShareBoxx from "../Old/Share/shareBoxx";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-
-
 import TrackerLytics from "./trackerLytics";
 import TrackerResponse from "../Responses/trackerResponse";
 import TrackerResponseItem from "../Responses/trackerResponseItem";
@@ -65,12 +60,6 @@ function TrackerItem(props) {
         props.setStretch(6);
 
     };
-
-    const defaultProps = {
-        m: 1,
-        borderColor: 'white',
-    };
-
 
 
     const getResponses = async() => {
@@ -174,8 +163,6 @@ function TrackerItem(props) {
                 </div>
 
             }
-
-
 
         </Box>
             </Grid>

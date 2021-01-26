@@ -13,7 +13,6 @@ import Slider from '@material-ui/core/Slider';
 const MAX_LENGTH = 1500;
 
 function TyperTracker(props) {
-
     const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
     const [contentState, setContentState] = React.useState(() => null);
     const [user, setUser] = React.useState({name: null, img_url_Profile: {imgURL:null}, welcome: null})
@@ -32,7 +31,6 @@ function TyperTracker(props) {
     const onChangeSlider = (val) => {
         let value = val;
         props.pushResponse(value, props.question.callID, props.question.type, props.question.order);
-
     };
 
     const handleKeyCommand = (command, editorState) => {
@@ -42,7 +40,6 @@ function TyperTracker(props) {
             onChangeText(newState);
             return 'handled';
         }
-
         return 'not-handled';
     };
 
@@ -53,7 +50,6 @@ function TyperTracker(props) {
 
         if (currentContentLength - selectedTextLength > MAX_LENGTH - 1) {
             console.log('you can type max ten characters');
-
             return 'handled';
         }
     };
@@ -64,7 +60,6 @@ function TyperTracker(props) {
 
         if (currentContentLength + pastedText.length - selectedTextLength > MAX_LENGTH) {
             console.log('you can type max ten characters');
-
             return 'handled';
         }
     };
@@ -73,7 +68,6 @@ function TyperTracker(props) {
         const currentSelection = editorState.getSelection();
         const isCollapsed = currentSelection.isCollapsed()
         let length = 0;
-
         if (!isCollapsed) {
             const currentContent = editorState.getCurrentContent();
             const startKey = currentSelection.getStartKey();
@@ -84,7 +78,6 @@ function TyperTracker(props) {
             const startSelectedTextLength = startBlockTextLength - currentSelection.getStartOffset();
             const endSelectedTextLength = currentSelection.getEndOffset();
             const keyAfterEnd = currentContent.getKeyAfter(endKey);
-            console.log(currentSelection)
             if (isStartAndEndBlockAreTheSame) {
                 length += currentSelection.getEndOffset() - currentSelection.getStartOffset();
             } else {
@@ -105,13 +98,11 @@ function TyperTracker(props) {
         return length;
     };
 
-
     const getViewerUser = async() => {
         let user = auth().currentUser;
         if (user) {
             let email = await auth().currentUser.email;
             setViewerEmail(email);
-            console.log(email);
             await db.collection("users").doc(email)
                 .onSnapshot(function(doc) {
                     if (doc.data()) {
@@ -123,7 +114,6 @@ function TyperTracker(props) {
 
     useEffect(() => {
         // getViewerUser();
-
     }, []);
 
     function valuetext(value) {
@@ -134,7 +124,6 @@ function TyperTracker(props) {
 
     return (
         <div style = {{margin: 25}}>
-            {/*<Grid style = {{margin: 15}} container>*/}
             <p style = {{color: '#2F2C37'}}>
                 {props.question.label}
             </p>
@@ -155,21 +144,18 @@ function TyperTracker(props) {
                 />
                     </div>
                 </Grid>
-                : <Box borderRadius = {10}
-                    style ={{padding: 20, margin: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white' , }}
-                       >
-
+                :
+                <Box borderRadius = {10} style ={{padding: 20, margin: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white'}}>
                     <Editor
-                    placeholder="type here..."
-                    handleKeyCommand={handleKeyCommand}
-                    editorState={editorState}
-                    onChange={onChangeText}
-                    handleBeforeInput={_handleBeforeInput}
-                    handlePastedText={_handlePastedText}
-                />
+                        placeholder="type here..."
+                        handleKeyCommand={handleKeyCommand}
+                        editorState={editorState}
+                        onChange={onChangeText}
+                        handleBeforeInput={_handleBeforeInput}
+                        handlePastedText={_handlePastedText}
+                    />
                 </Box>
                 }
-            {/*</Grid>*/}
         </div>
 
     );

@@ -5,18 +5,12 @@ import Popover from "@material-ui/core/Popover/Popover";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
-import Avatar from "@material-ui/core/Avatar";
 import {convertFromRaw, RichUtils, Editor, EditorState} from "draft-js";
-
 import {makeStyles} from "@material-ui/core/styles";
-import { FiMoreVertical } from "react-icons/fi";
 
 function TrackerResponseItem(props) {
 
     const [eState, setEState] = React.useState(null)
-
-    console.log(props.response)
-
 
     useEffect(() => {
         let editorState = null;
@@ -29,7 +23,6 @@ function TrackerResponseItem(props) {
     }, []);
 
 
-    console.log(props.response);
     return (
         <div>
             {props.response
@@ -55,9 +48,7 @@ function TrackerResponseItem(props) {
                                 marginTop: -2,
                             }}>
                                 {props.response.response} </p>
-
                         </div>
-
                         :
                         <div>
                             <div>
@@ -84,7 +75,6 @@ function TrackerResponseItem(props) {
 
 
                         </div>
-
 
                     }
                 </div>

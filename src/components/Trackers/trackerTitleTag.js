@@ -7,21 +7,12 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from '@material-ui/core/IconButton';
 import {BiPencil,BiUser, BiCog,BiBarChartAlt2,BiMessageAltDetail} from "react-icons/bi"
 import TextField from '@material-ui/core/TextField';
-import {
-    fade,
-    ThemeProvider,
-    withStyles,
-    makeStyles,
-    createMuiTheme,
-} from '@material-ui/core/styles';
-import {TwitterPicker} from "react-color";
+import {fade, ThemeProvider,makeStyles,} from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
 import {db} from "../../api/firebase";
 
 
-
 function TrackerTitleTag(props) {
-
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -39,44 +30,34 @@ function TrackerTitleTag(props) {
     const openToChange = (val) => {
     };
 
-
     const [user, setUser] = React.useState(null);
 
     const getUser = async(email) => {
         await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
-                // console.log("Current data: ", doc.data());
                 //Fixes bug where doc.data() is undefined on first signin
                 let user = doc.data()
                 if (user) {
                     setUser(user);
                 }
-                console.log(user)
             });
-
     };
 
     useEffect(() => {
         getUser(props.ownerEmail);
-        // console.log(props.senderEmail);
     }, []);
-
-
 
     return (
         <Box borderBottom = {1} borderColor= {"white"} display="flex" justifyContent = 'space-between' alignItems = 'center' flexDirection="row" borderRadius = {0} borderBottom = {0} style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
             <Grid container direction={'row'}>
-                { user
+                {user
                     ? <Grid item xs={1.5} md={1.5} lg={1.5}>
                         <Box style={{margin: 5}} border={2} borderColor={'white'} borderRadius={50}>
                             <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
                         </Box>
                     </Grid>
                     : null
-
                 }
-
-            {/*<BiHappy size = {25} style = {{color: "white"}} />*/}
 
                 <TextField
                     value = {props.trackerTitle}
@@ -87,39 +68,21 @@ function TrackerTitleTag(props) {
                     }}
                     className={classes.margin}
                     // onChange={e => props.handleTitleChange(e.target.value)}
-
                 />
 
-
-
             </Grid>
-
-
-
             <Grid justify = "flex-end" container direction = "row">
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchCreating()}>
                         <BiCog style = {{color: "white"}} size = {20} />
                     </IconButton>
                 </Box>
-
-                {/*<Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>*/}
-                {/*    <IconButton color = "white" onClick={()=>props.switchData()}>*/}
-                {/*        <BiCog style = {{color: "white"}} size = {20} />*/}
-                {/*    </IconButton>*/}
-                {/*</Box>*/}
-
                 <Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>
                 <IconButton color = "white" onClick={()=>props.switchPosting()}>
                     <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />
                 </IconButton>
                 </Box>
-
             </Grid>
-
-            {/*<Button style = {{margin: 10, paddingBottom: 0, paddingTop: 0,}} onClick={()=>props.switchPosting()} variant="contained" color="primary">*/}
-            {/*    {(!props.isPosting) ? <p> Create Post </p> : <p> Delete Post </p>}*/}
-            {/*</Button>*/}
         </Box>
     );
 }
@@ -140,3 +103,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default TrackerTitleTag;
+
+
+
+{/*<Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>*/}
+{/*    <IconButton color = "white" onClick={()=>props.switchData()}>*/}
+{/*        <BiCog style = {{color: "white"}} size = {20} />*/}
+{/*    </IconButton>*/}
+{/*</Box>*/}
+
+
+{/*<Button style = {{margin: 10, paddingBottom: 0, paddingTop: 0,}} onClick={()=>props.switchPosting()} variant="contained" color="primary">*/}
+{/*    {(!props.isPosting) ? <p> Create Post </p> : <p> Delete Post </p>}*/}
+{/*</Button>*/}

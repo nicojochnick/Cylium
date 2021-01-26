@@ -25,7 +25,6 @@ import Settings from "../views/settings"
 import EditFeedbox from "../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import SettingsIcon from '@material-ui/icons/Settings';
 import logo from "../assets/images/logo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
@@ -39,8 +38,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Base from '../views/base'
 import {db} from "../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
-import Transactions from "../views/Old/transactions";
-import Feedback from "../components/Old/Feedback/feedback";
 import Notification from "../components/Utilities/Notifications/notification";
 
 export default function Dashboard() {
@@ -58,6 +55,7 @@ export default function Dashboard() {
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
 
+
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
 
     const handleNotificationClick = (event) => {
@@ -67,7 +65,9 @@ export default function Dashboard() {
     const handleCloseNotification = () => {
         setAnchorElNotification(null);
     };
+
     const openNotification = Boolean(anchorElNotification);
+
     const idNotification = openAccount ? 'simple-popover-notification' : undefined;
 
     const handleDrawerOpen = () => {
@@ -107,7 +107,7 @@ export default function Dashboard() {
             });
 
         } else {
-            console.log('nouser')
+            console.log('ERROR: no user')
         }
 
     };
@@ -187,7 +187,8 @@ export default function Dashboard() {
                                     horizontal: 'center',
                                 }}
                             >
-                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5} style = {{margin: 0, minWidth:400, maxHeight: 500}}>
+                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5}
+                                     style ={{margin: 0, minWidth:400, maxHeight: 500}}>
                                     {notifications.map((item) => <Notification item = {item}/>)}
                                 </Box>
                             </Popover>
@@ -199,6 +200,7 @@ export default function Dashboard() {
                             onClick={handleAccountClick}
                             color="inherit"
                         >
+
                             <AccountCircle />
 
                         </IconButton>
@@ -249,14 +251,6 @@ export default function Dashboard() {
                             <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Home" />
                         </ListItem>
                     </Link>
-                    {/*<Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>*/}
-                    {/*    <ListItem button>*/}
-                    {/*        <ListItemIcon>*/}
-                    {/*            <BiEdit size = {25} style = {{color:'white'}}  />*/}
-                    {/*        </ListItemIcon>*/}
-                    {/*        <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Respond" />*/}
-                    {/*    </ListItem>*/}
-                    {/*</Link>*/}
                         <Link to="/settings"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
@@ -476,3 +470,15 @@ const useStyles = makeStyles((theme) => ({
 {/*<Route exact path="/lead">*/}
 {/*    <TeamHome getSurvey = {getSurvey} survey = {survey} user = {user} url = {url} email = {email}/>*/}
 {/*</Route>*/}
+
+
+
+
+{/*<Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>*/}
+{/*    <ListItem button>*/}
+{/*        <ListItemIcon>*/}
+{/*            <BiEdit size = {25} style = {{color:'white'}}  />*/}
+{/*        </ListItemIcon>*/}
+{/*        <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Respond" />*/}
+{/*    </ListItem>*/}
+{/*</Link>*/}

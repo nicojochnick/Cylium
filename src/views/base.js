@@ -44,23 +44,10 @@ function Base(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-
     },
     box:{
         flexGrow: 1,
         padding: 0,
-        display: 'start',
-        overflow: 'auto',
-        flexDirection: 'column',
-        margin: 10,
-        marginBottom: 20,
-        backgroundColor: 'white',
-    },
-
-    boxSticky:{
-        padding: 0,
-        top: "5rem",
-        position: "sticky",
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
@@ -78,15 +65,6 @@ const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2),
-    },
-
-    paper: {
-        justify: 'center',
-        padding: theme.spacing(2),
-        display: 'start',
-        overflow: 'auto',
-        flexDirection: 'column',
-        margin: 0,
     },
 
 

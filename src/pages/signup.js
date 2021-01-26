@@ -17,6 +17,7 @@ import boxx from "../assets/images/boxx.png"
 import {analytics} from "../api/firebase";
 
 let intro = `{"blocks":[{"key":"48n69","text":"Hi there!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"4p1p2","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"cl4n2","text":"Feedboxx helps you source and reward more feedback. Here is a quick guide to getting started.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1tff8","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"140sn","text":"Step 1. Customize your FeedBoxx","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":31,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"4vkem","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"anmju","text":"Your FeedBoxx is where people can give you feedback. Make yours unique by going to the Edit tab and adding a profile picture, name, and welcome message. Click on My FeedBoxx to see your live changes.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":87,"length":5,"style":"BOLD"},{"offset":162,"length":12,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"fpfp9","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"upml","text":"Step 2. Add your FeedBoxx URL to your email signature","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":53,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"3o0tj","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"6eomh","text":"Share your FeedBoxx URL in your email signature. Just copy and paste your URL under Copy. Here is a sample signature:","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":84,"length":4,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"3ms2u","text":"---------------------------------","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"fq775","text":"John Doe","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"4dlml","text":"Account Executive","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"io4j","text":"Feedback? Let me know here.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":22,"length":5,"style":"UNDERLINE"}],"entityRanges":[],"data":{}},{"key":"ak39k","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"92rlf","text":"Step 3. Send Thank You Messages","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":0,"length":31,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"9d9a7","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"fgpb","text":"You can send a quick thank you message to the best feedback by clicking on Send Thank You. You can optionally attach FeedBoxx points or gift cards to your thank you message.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":75,"length":14,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"cacp3","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"8keea","text":"Feeboxx points are redeemable for real $. Click Add to add more points or click Cash Out to turn your points into $. The conversion is 10 points = $1.00.","type":"unstyled","depth":0,"inlineStyleRanges":[{"offset":48,"length":3,"style":"BOLD"},{"offset":80,"length":8,"style":"BOLD"}],"entityRanges":[],"data":{}},{"key":"1rtau","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"fmfrm","text":"We gifted you 25 points to start :)","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"d8p5","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"65ub4","text":"Questions? Email us at help@feedboxx.io.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"bme8n","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"45tef","text":"Enjoy,","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"16tai","text":"The FeedBoxx Team","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"dcj0s","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"dnci","text":"","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`
+
 class signup extends Component {
     constructor(props) {
         super(props);
@@ -59,7 +60,6 @@ class signup extends Component {
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });
-
             const res = await db.collection('feedback').add({
                 email: "help@feedboxx.io",
                 url: url.toString(),
@@ -75,11 +75,8 @@ class signup extends Component {
                 console.error("Error writing document: ", error);
             });
 
-
-
             db.collection('feedback').doc(res.id).update({
                 id: res.id
-
 
             }).then(function() {
                 console.log("Feedback ID added successfully!");

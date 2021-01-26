@@ -18,13 +18,11 @@ function TrackerResponse(props) {
     const getUser = async(email) => {
         await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
-                console.log("Current data: ", doc.data());
                 //Fixes bug where doc.data() is undefined on first signin
                 let user = doc.data();
                 if (user) {
                     setUser(user);
                 }
-                console.log(user)
             });
 
     };
@@ -37,12 +35,18 @@ function TrackerResponse(props) {
     return (
         <div>
             {user
-                ? <Box border = {1} borderRight = {0} borderBottom = {1} borderLeft = {0} borderTop = {0}  color = {'lightgrey'} className={classes.box}
-                       boxShadow={0}
-                    // border = {2}
-                    // borderColor = {'#8B8FA0'}
-                       style={{padding: 20, marginBottom: 15, minHeight: 100, }}
-                       borderRadius={2}>
+                ? <Box
+                    border = {1}
+                    borderRight = {0}
+                    borderBottom = {1}
+                    borderLeft = {0}
+                    borderTop = {0}
+                    color = {'lightgrey'}
+                    className={classes.box}
+                    boxShadow={0}
+                    style={{padding: 20, marginBottom: 15, minHeight: 100, }}
+                    borderRadius={2}
+                >
                     <Grid justify='flex-start' alignItems='flex-start' direction="row" container style={{margin: 0,}}>
                         <Grid item xs={1.5} md={1.5} lg={1.5}>
                             <Box style={{margin: 5}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
@@ -96,15 +100,6 @@ const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2),
-    },
-
-    paper: {
-        justify: 'center',
-        padding: theme.spacing(2),
-        display: 'start',
-        overflow: 'auto',
-        flexDirection: 'column',
-        margin: 0,
     },
 
     fixedHeight: {
