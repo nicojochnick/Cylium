@@ -33,8 +33,6 @@ function mergeArrayObjects (arr1,arr2){
 };
 
 
-
-
 function TrackerItem(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
