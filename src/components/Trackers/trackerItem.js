@@ -163,7 +163,6 @@ function TrackerItem(props) {
                 </div>
 
             }
-
         </Box>
             </Grid>
         </div>

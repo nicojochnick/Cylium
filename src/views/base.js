@@ -16,7 +16,7 @@ function Base(props) {
 
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState(false);
-    const [stretch, setStretch] = React.useState(12);
+    const [stretch, setStretch] = React.useState(6);
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };

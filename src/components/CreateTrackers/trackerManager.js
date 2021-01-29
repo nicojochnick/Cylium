@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import Switch from "@material-ui/core/Switch/Switch";
 import MenuItem from '@material-ui/core/MenuItem';
-import { BiQuestionMark, BiPlus } from "react-icons/bi"
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -20,6 +19,7 @@ import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
 import TyperTracker from "../Typers/typerTracker";
+import EditQuestionItem from "./editQuestionItem";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -27,10 +27,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import { BiSend, BiPlus } from "react-icons/bi";
+
 
 
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import EditQuestionItem from "./editQuestionItem";
+import EditTeamMemberItem from "./editTeamMemberItem";
 
 
 function TrackerManager(props) {
@@ -50,23 +52,12 @@ function TrackerManager(props) {
         setBackgroundColor(color.hex )
     };
 
-
     const [value, setValue] = React.useState('female');
 
     const handleChange = (event) => {
         setValue(event.target.value);
     };
 
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -155,6 +146,32 @@ function TrackerManager(props) {
                                 </Box>
 
 
+                                <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+
+                                    <Box
+                                        borderRadius={16}
+                                        style ={{margin: 10}}
+                                        className={classes.search2}
+                                    >
+                                        <div className={classes.searchIcon}>
+                                            <BiSend />
+                                        </div>
+                                        <InputBase
+                                            placeholder="john@sample.com"
+                                            classes={{
+                                                root: classes.inputRoot,
+                                                input: classes.inputInput,
+                                            }}
+                                            inputProps={{ 'aria-label': 'search' }}
+                                        />
+
+                                    </Box>
+                                    <Button> Send Invite </Button>
+
+
+                                </Box>
+
+
 
                             </Grid>
                             <Grid  item xs={12} md = {6} lg = {6} >
@@ -163,7 +180,11 @@ function TrackerManager(props) {
                                     {[0, 1, 2, 3].map((value) => {
                                         const labelId = `checkbox-list-secondary-label-${value}`;
                                         return (
-                                           <EditQuestionItem value = {value} handleToggle = {handleToggle} labelID = {labelId} checked = {checked} />
+                                           <EditTeamMemberItem
+                                               value = {value}
+                                               handleToggle = {handleToggle}
+                                               labelID = {labelId}
+                                               checked = {checked} />
                                         );
                                     })}
                                 </List>
@@ -191,45 +212,10 @@ function TrackerManager(props) {
                             ?
                             <div>
                                 {Object.keys(props.tracker.call).map((item) =>
-                                    <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
-                                    <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
-                                        <Grid direction={'row'} item xs ={8} md={8} lg = {8}>
-                                            <Box alignItems="center" display="flex" flexDirection="row" >
-                                            <Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {2} borderColor = "lightgrey">
-                                            <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />
-                                            </Box>
-                                                <TextField
-                                                    placeholder="add a questions"
-                                                    multiline
-                                                    value =  {props.tracker.call[item].label}
-                                                    fullWidth
-                                                    InputProps={{ disableUnderline: true }}
-                                                    rowsMax={4}
-                                                />
-                                            </Box>
-                                        </Grid>
-                                        <Grid item direction={'row'}>
-                                            <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
-                                                <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                                                    Type:
-                                                </Button>
-                                                <Menu
-                                                    id="simple-menu"
-                                                    anchorEl={anchorEl}
-                                                    keepMounted
-                                                    open={Boolean(anchorEl)}
-                                                    onClose={handleClose}
-                                                >
-                                                    <MenuItem onClick={handleClose}>Text</MenuItem>
-                                                    <MenuItem onClick={handleClose}>Number</MenuItem>
-                                                </Menu>
-                                                    <p style = {{margin: 10}}>
-                                                        Text
-                                                    </p>
-                                            </Box>
-                                        </Grid>
-                                    </Grid>
-                                    </Box>
+                                    <EditQuestionItem
+                                        item = {item}
+                                        tracker = {props.tracker}
+                                    />
                                 )}
 
                             </div>
@@ -339,6 +325,22 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    },
+
+    search2: {
+        position: 'relative',
+        // borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade("#A8ADBC", 0.15),
+        '&:hover': {
+            backgroundColor: fade("#A8ADBC", 0.25),
+        },
+        marginRight: theme.spacing(2),
+        marginLeft: 0,
+        width: '75%',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(3),
             width: 'auto',
