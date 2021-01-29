@@ -139,7 +139,7 @@ function TrackerItem(props) {
                     {!isPosting
                         ? <Grid className = {classes.box} container spacing={0} xs={12}>
                             <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
-                                <TrackerLytics responses = {responses} />
+                                {/*<TrackerLytics responses = {responses} />333*/}
                                 {responses
                                     ?
                                     <Grid >

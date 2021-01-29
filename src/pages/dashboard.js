@@ -127,7 +127,7 @@ export default function Dashboard() {
             <AppBar
                 style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}
                 position="absolute"
-                color = 'white'
+                color = '#F7F7F7'
                 className={clsx(classes.appBar, open && classes.appBarShift)}
             >
                 <Toolbar noWrap className={classes.toolbar}>
@@ -236,27 +236,27 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <img style = {{height: 44, marginLeft: 10}} src ={logowhite}/>
+                    <img style = {{height: 44, marginLeft: 10}} src ={logo}/>
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon style = {{color:'white'}} color = "white"  />
+                        <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />
                     </IconButton>
                 </div>
                 <Divider/>
                 <List>
-                    <Link to="/feed"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
+                    <Link to="/feed"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiHome size = {25} style = {{color:'white'}}  />
+                                <BiHome size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Home" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
                         </ListItem>
                     </Link>
-                        <Link to="/settings"  style={{ color:"#3C3F48", textDecoration: 'none' }}>
+                        <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <BiUser size = {25} style = {{color:'white'}}  />
+                                    <BiUser size = {25} style = {{color:'#3C3F48'}}  />
                                 </ListItemIcon>
-                                <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Profile" />
+                                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Profile" />
                             </ListItem>
                         </Link>
                     <div>
@@ -301,6 +301,7 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
+        backgroundColor: '#F8F8F8',
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -324,7 +325,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     drawerPaper: {
-        backgroundColor: '#302F3C',
+        backgroundColor: '#F8F8F8',
         position: 'relative',
         whiteSpace: 'nowrap',
         width: drawerWidth,
