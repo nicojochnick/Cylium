@@ -10,6 +10,10 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
 import Radio from "@material-ui/core/Radio/Radio";
+import Avatar from '@material-ui/core/Avatar';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+
+import EditTeamMemberItem from "./editTeamMemberItem";
 
 
 
@@ -19,6 +23,8 @@ function EditQuestionItem(props) {
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
     const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
     const [value, setValue] = React.useState('Unlimited');
+    const [checked, setChecked] = React.useState([1]);
+
 
 
     const handleClick = (event) => {
@@ -46,9 +52,25 @@ function EditQuestionItem(props) {
         setAnchorEl_schedule(null);
     };
 
+    const handleToggle = (value) => () => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+
+        setChecked(newChecked);
+    };
+
+
 
 
     return (
+
+
 
         <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
@@ -68,26 +90,6 @@ function EditQuestionItem(props) {
                     </Box>
                 </Grid>
 
-                <Grid item direction={'row'}>
-                    <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
-                        <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                            Type:
-                        </Button>
-                        <Menu
-                            id="simple-menu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-                        >
-                            <MenuItem onClick={handleClose}>Text</MenuItem>
-                            <MenuItem onClick={handleClose}>Number</MenuItem>
-                        </Menu>
-                        <p style = {{margin: 10}}>
-                            Text
-                        </p>
-                    </Box>
-                </Grid>
 
 
 
@@ -95,7 +97,7 @@ function EditQuestionItem(props) {
 
                     <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
                         <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_team}>
-                            Type:
+                            Recipients:
                         </Button>
                         <Menu
                             id="simple-menu"
@@ -104,12 +106,25 @@ function EditQuestionItem(props) {
                             open={Boolean(anchorEl_team)}
                             onClose={handleClose_team}
                         >
-                            <MenuItem onClick={handleClose_team}>Text</MenuItem>
-                            <MenuItem onClick={handleClose_team}>Number</MenuItem>
+                            {[0, 1, 2, 3].map((value) => {
+                                const labelId = `checkbox-list-secondary-label-${value}`;
+                                return (
+                                    <EditTeamMemberItem
+                                        withSelect = {true}
+                                        value = {value}
+                                        handleToggle = {handleToggle}
+                                        labelID = {labelId}
+                                        checked = {checked} />
+                                );
+                            })}
                         </Menu>
-                        <p style = {{margin: 10}}>
-                            Text
-                        </p>
+                        <AvatarGroup max={4}>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                            <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
+                            <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+                        </AvatarGroup>
                     </Box>
 
                 </Grid>
@@ -151,3 +166,25 @@ function EditQuestionItem(props) {
 }
 
 export default EditQuestionItem;
+
+
+{/*<Grid item direction={'row'}>*/}
+{/*    <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>*/}
+{/*        <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>*/}
+{/*            Type:*/}
+{/*        </Button>*/}
+{/*        <Menu*/}
+{/*            id="simple-menu"*/}
+{/*            anchorEl={anchorEl}*/}
+{/*            keepMounted*/}
+{/*            open={Boolean(anchorEl)}*/}
+{/*            onClose={handleClose}*/}
+{/*        >*/}
+{/*            <MenuItem onClick={handleClose}>Text</MenuItem>*/}
+{/*            <MenuItem onClick={handleClose}>Number</MenuItem>*/}
+{/*        </Menu>*/}
+{/*        <p style = {{margin: 10}}>*/}
+{/*            Text*/}
+{/*        </p>*/}
+{/*    </Box>*/}
+{/*</Grid>*/}

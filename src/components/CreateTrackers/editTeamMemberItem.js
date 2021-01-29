@@ -19,12 +19,15 @@ function EditTeamMemberItem(props) {
                 </ListItemAvatar>
                 <ListItemText id={props.labelId} primary={`Line item ${props.value + 1}`} />
                 <ListItemSecondaryAction>
-                    <Checkbox
+                    {props.withSelect
+                    ? < Checkbox
                         edge="end"
                         onChange={props.handleToggle(props.value)}
                         checked={props.checked.indexOf(props.value) !== -1}
-                        inputProps={{ 'aria-labelledby': props.labelId }}
-                    />
+                        inputProps={{'aria-labelledby': props.labelId}}
+                        />
+                        : null
+                    }
                 </ListItemSecondaryAction>
             </ListItem>
         </Box>

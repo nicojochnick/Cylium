@@ -181,6 +181,7 @@ function TrackerManager(props) {
                                         const labelId = `checkbox-list-secondary-label-${value}`;
                                         return (
                                            <EditTeamMemberItem
+                                               withSelect = {false}
                                                value = {value}
                                                handleToggle = {handleToggle}
                                                labelID = {labelId}
