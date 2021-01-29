@@ -232,21 +232,6 @@ function TrackerManager(props) {
                             Add Question
                         </Button>
                             </Grid>
-                            <Grid spacing={3} item xs={12} md = {12} lg = {12} >
-                                <p>
-                                    How Often Do You Want Responses?
-                                </p>
-
-                                <FormControl component="fieldset">
-                                    <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                        <FormControlLabel value="female" control={<Radio />} label="Unlimited" />
-                                        <FormControlLabel value="male" control={<Radio />} label="Once a Week" />
-                                        <FormControlLabel value="other" control={<Radio />} label="Once a Month" />
-                                   </RadioGroup>
-                                </FormControl>
-
-                            </Grid>
-
                         </Grid>
                     </Box>
 
