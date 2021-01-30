@@ -38,7 +38,7 @@ function TrackerResponseItem(props) {
                                 marginTop: 2,
                             }}
                             >
-                                {props.response.label} {' '} {props.response.recurringTime}?
+                                {props.response.label} {' '} {props.response.recurringTime}
                             </p>
 
                             <p style={{
@@ -59,7 +59,7 @@ function TrackerResponseItem(props) {
                                     marginTop: 2,
                                 }}
                                 >
-                                    {props.response.label} {' '} {props.response.recurringTime}?
+                                    {props.response.label} {' '} {props.response.recurringTime}
                                 </p>
 
 

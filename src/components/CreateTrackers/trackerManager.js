@@ -33,6 +33,7 @@ import { BiSend, BiPlus } from "react-icons/bi";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
 import UserProfile from "../User/userProfile";
+import SearchUsers from "./searchUsers";
 
 function TrackerManager(props) {
     const classes = useStyles();
@@ -64,8 +65,7 @@ function TrackerManager(props) {
             newChecked.push(value);
         } else {
             newChecked.splice(currentIndex, 1);
-        }
-
+        };
         setChecked(newChecked);
     };
 
@@ -78,17 +78,7 @@ function TrackerManager(props) {
                         <Grid  style = {{marginTop: 20}}  spacing={2} container direction = 'row'>
                             <Grid  spacing={3} item xs={4} md = {6} lg = {6} >
                                 <Box style = {{marginTop: 0}} >
-                                    {/*<TextField*/}
-                                    {/*    onChange={e => handleTitleChange(e.target.value)}*/}
-                                    {/*    id="filled-basic"*/}
-                                    {/*    label="Title"*/}
-                                    {/*    placeholder='Add a Title'*/}
-                                    {/*    fullWidth*/}
-                                    {/*    variant="outlined"*/}
-                                    {/*    value = {title}*/}
-                                    {/*    style = {{marginBottom: 10}}*/}
 
-                                    {/*/>*/}
 
                                     {props.user
 
@@ -124,57 +114,7 @@ function TrackerManager(props) {
                             Users and Permissions
                         </p>
                         <Grid spacing={3} container direction = 'row'>
-                            <Grid  item xs={12} md = {6} lg = {6} >
-                                <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
-
-                                    <Box
-                                        borderRadius={16}
-                                        style ={{margin: 10}}
-                                        className={classes.search}
-                                    >
-                                        <div className={classes.searchIcon}>
-                                            <SearchIcon />
-                                        </div>
-                                        <InputBase
-                                            placeholder="Search…"
-                                            classes={{
-                                                root: classes.inputRoot,
-                                                input: classes.inputInput,
-                                            }}
-                                            inputProps={{ 'aria-label': 'search' }}
-                                        />
-                                    </Box>
-                                </Box>
-                                <Box display="flex"  flexDirection="row" direction="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
-                                    <Box
-                                        borderRadius={16}
-                                        style ={{margin: 10}}
-                                        className={classes.search2}
-                                    >
-                                        <div className={classes.searchIcon}>
-                                            <BiSend />
-                                        </div>
-                                        <InputBase
-                                            placeholder="john@sample.com"
-                                            classes={{
-                                                root: classes.inputRoot,
-                                                input: classes.inputInput,
-                                            }}
-                                            inputProps={{ 'aria-label': 'search' }}
-                                        />
-
-                                    </Box>
-                                    <Button
-                                        style = {{margin: 10}}
-                                        variant="contained"
-                                        color = 'primary'
-                                        className={classes.button}
-                                    >
-                                        Invite
-                                    </Button>
-                                </Box>
-
-                            </Grid>
+                           <SearchUsers/>
                             <Grid  item xs={12} md = {6} lg = {6} >
 
                                 <List dense className={classes.root}>
@@ -196,12 +136,7 @@ function TrackerManager(props) {
 
                     </Box>
                     <Divider/>
-
-
                 </Grid>
-
-
-
                 <Grid item>
                     <Box style = {{margin: 20, marginTop: -10}}>
                         <Grid spacing={3} container direction = 'row'>
@@ -236,11 +171,8 @@ function TrackerManager(props) {
                             </Grid>
                         </Grid>
                     </Box>
-
                 </Grid>
-
             </Grid>
-
         </div>
     );
 }
@@ -356,4 +288,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 export default TrackerManager;
+
+
+
+{/*<TextField*/}
+{/*    onChange={e => handleTitleChange(e.target.value)}*/}
+{/*    id="filled-basic"*/}
+{/*    label="Title"*/}
+{/*    placeholder='Add a Title'*/}
+{/*    fullWidth*/}
+{/*    variant="outlined"*/}
+{/*    value = {title}*/}
+{/*    style = {{marginBottom: 10}}*/}
+
+{/*/>*/}

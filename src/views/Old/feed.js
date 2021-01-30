@@ -19,7 +19,7 @@ import Pulse from "../../assets/images/pulse.gif"
 import FeedbackTracker from "../../components/Old/Feedback/feedbackTracker";
 import TeamManage from "../../components/User/Team/teamManage";
 import ShareBoxx from "../../components/Old/Share/shareBoxx";
-import UserId from "../../components/User/userID";
+import EditableUserID from "../../components/User/editableUserID";
 
 
 function Feed(props) {
@@ -91,7 +91,7 @@ function Feed(props) {
                             <img style={{height: 60, margin: 0}} src={Pulse}/>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
-                            {feed.map((item) => <UserId user = {props.user} handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>)}
+                            {feed.map((item) => <EditableUserID user = {props.user} handleSendReward = {handleSendReward} handleDelete = {handleDelete} item = {item}/>)}
                         </Box>
                     </Grid>
                        <ShareBoxx email = {props.email} user = {props.user} url = {props.url}/>

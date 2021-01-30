@@ -49,28 +49,37 @@ function TrackerTitleTag(props) {
 
     return (
         <Box borderBottom = {1} borderColor= {"white"} display="flex" justifyContent = 'space-between' alignItems = 'center' flexDirection="row" borderRadius = {0} borderBottom = {0} style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
-            <Grid container direction={'row'}>
+
                 {user
-                    ? <Grid item xs={1.5} md={1.5} lg={1.5}>
-                        <Box style={{margin: 5}} border={2} borderColor={'white'} borderRadius={50}>
-                            <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
-                        </Box>
+                    ?
+                    <Grid container direction={'row'}>
+                            <Grid item xs={1.5} md={1.5} lg={1.5}>
+                                <Box style={{margin: 5}} border={2} borderColor={'white'} borderRadius={50}>
+                                    <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
+                                </Box>
+                            </Grid>
+
+                        {/*<TextField*/}
+                        {/*    value = {user.name}*/}
+                        {/*    style = {{color: 'white', margin: 10}}*/}
+                        {/*    InputProps={{*/}
+                        {/*        className: classes.input,*/}
+                        {/*        disableUnderline: true*/}
+                        {/*    }}*/}
+                        {/*    className={classes.margin}*/}
+                        {/*    // onChange={e => props.handleTitleChange(e.target.value)}*/}
+                        {/*/>*/}
+
+                        <p style  = {{color: 'white', fontWeight:500, fontSize: 17}}>
+                            {user.name}
+
+                        </p>
                     </Grid>
+
                     : null
                 }
 
-                <TextField
-                    value = {props.trackerTitle}
-                    style = {{color: '#FAFAFA', margin: 5}}
-                    InputProps={{
-                        className: classes.input,
-                        disableUnderline: true
-                    }}
-                    className={classes.margin}
-                    // onChange={e => props.handleTitleChange(e.target.value)}
-                />
 
-            </Grid>
             <Grid justify = "flex-end" container direction = "row">
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchCreating()}>

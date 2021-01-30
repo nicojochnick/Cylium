@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import List from '@material-ui/core/List';
-import UserId from '../userID'
+import EditableUserID from '../editableUserID'
 import Feedback from "../../Old/Feedback/feedback";
 import {db} from "../../../api/firebase";
 
@@ -39,7 +39,7 @@ function TeamBox(props) {
             </p>
             <List>
                 <Box border = {1}>
-                {team.map((item) => <UserId  email = {item} />)}
+                {team.map((item) => <EditableUserID email = {item} />)}
                 </Box>
             </List>
         </Grid>
