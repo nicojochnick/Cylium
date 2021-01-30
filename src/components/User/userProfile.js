@@ -17,6 +17,7 @@ function UserProfile(props) {
     const [successSubmit, setSuccess] = React.useState( false);
     const [welcome, setWelcomeMessage] = React.useState(props.user.welcome);
     const [error, setError] = React.useState('');
+    const [isEditing, setEditing] = React.useState(false)
 
     const handleFireBaseUpload = async (e, imageAsFile) => {
         e.preventDefault();
@@ -41,6 +42,7 @@ function UserProfile(props) {
                     storage.ref('images').child(imageAsFile.name).getDownloadURL()
                         .then(fireBaseUrl => {
                             setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+                            // handleSave()
                         })
                 })
         }
@@ -49,33 +51,37 @@ function UserProfile(props) {
 
 
     const handleImageAsFile = async(e) => {
-        console.log('upload')
+        setEditing(true)
         setIsLoadingImage(true);
         const image = e.target.files[0];
         await setImageAsFile(image);
-        await handleFireBaseUpload(e, image)
+        await handleFireBaseUpload(e, image);
         setIsLoadingImage(false);
     };
 
 
-    const handleNameChange= (name) => {
-        setName(name)
+    const handleNameChange = async(n) => {
+        setName(n);
+        setEditing(true)
     };
 
     const handleSave = async (event) => {
         //TODO: send data to firestore
-        event.preventDefault();
+
+        if (event) {
+            event.preventDefault();
+            // await handleFireBaseUpload(event, imageAsFile);
+        }
         try {
-            await handleFireBaseUpload(event, imageAsFile);
-
-
             await db.collection('users').doc(props.user.email).set({
                 name: name,
-                welcome: welcome,
-                url: props.user.url,
+                // url: props.user.url,
                 img_url_Profile: imageAsUrl,
+                email: props.user.email,
+                trackers: props.user.trackers
             });
             setSuccess(true);
+            setEditing(false)
 
         } catch (error) {
             console.log(error);
@@ -98,9 +104,9 @@ function UserProfile(props) {
             container
             direction="column"
             justify="flex-start"
-            alignItems="center"
+            alignItems="flex-start"
         >
-            <Grid style = {{padding: 20}} container direction = 'row' >
+            <Grid style = {{padding: 5}} container direction = 'row' >
 
                 {/*<label htmlFor="contained-button-file">*/}
                 {/*    <Button style ={{backgroundColor: '#4D6DF1, marginTop: 10}} variant="contained" color="primary" component="span">*/}
@@ -108,7 +114,7 @@ function UserProfile(props) {
                 {/*    </Button>*/}
                 {/*</label>*/}
                 <input className={classes.input} id="contained-button-file" accept="image/*" type ='file' onChange={handleImageAsFile} />
-                <Box component="span" style = {{margin: 10}} border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
+                <Box component="span" style = {{margin: 5}} border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
                     <label htmlFor="contained-button-file">
                 <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
                     </label>
@@ -120,19 +126,15 @@ function UserProfile(props) {
                     placeholder='John Doe'
                     value = {name}
                 />
+                {isEditing
+                    ? <Button
+                        onClick={(event)=>handleSave(event)}
+                    >
+                        Save
+                    </Button>
+                    : null
+                }
             </Grid>
-
-            <Button
-                className={classes.submitButton}
-                onClick={handleSave}
-                variant="contained"
-                style={{marginRight: 0, marginLeft: 0, paddingRight: 0, paddingLeft: 0, borderRadius: 5, backgroundColor: "#4D6DF1",
-                }}
-            >
-                <p style = {{color: 'white', fontWeight: '600', margin: 5}}>
-                    Update
-                </p>
-            </Button>
 
 
         </Grid>
@@ -201,3 +203,17 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default UserProfile;
+
+
+
+{/*<Button*/}
+{/*    className={classes.submitButton}*/}
+{/*    onClick={handleSave}*/}
+{/*    variant="contained"*/}
+{/*    style={{marginRight: 0, marginLeft: 0, paddingRight: 0, paddingLeft: 0, borderRadius: 5, backgroundColor: "#4D6DF1",*/}
+{/*    }}*/}
+{/*>*/}
+{/*    <p style = {{color: 'white', fontWeight: '600', margin: 5}}>*/}
+{/*        Update*/}
+{/*    </p>*/}
+{/*</Button>*/}

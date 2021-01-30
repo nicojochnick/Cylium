@@ -264,7 +264,7 @@ export default function Dashboard() {
                 </List>
                 <Divider />
             </Drawer>
-                {(url && user) ?
+                {(user) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
                         <Switch>

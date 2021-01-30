@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreateTrackers/trackerManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateTrackers/trackerManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Trackers/trackerItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Trackers/trackerItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/userProfile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Old/settings.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,11 +22,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.4569343">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Trackers/trackerItem.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="128" column="77" lean-forward="true" selection-start-line="128" selection-start-column="77" selection-end-line="128" selection-end-column="77" />
+                <state relative-caret-position="270">
+                  <caret line="141" column="62" selection-start-line="141" selection-start-column="62" selection-end-line="141" selection-end-column="62" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -101,11 +96,11 @@
               <provider selected="true" editor-type-id="images" />
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/pages/dashboard.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="220">
-                  <caret line="171" column="56" selection-start-line="171" selection-start-column="56" selection-end-line="171" selection-end-column="56" />
+                <state relative-caret-position="401">
+                  <caret line="281" column="14" lean-forward="true" selection-start-line="281" selection-start-column="14" selection-end-line="281" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#51#0" expanded="true" />
                   </folding>
@@ -142,8 +137,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/User/userProfile.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="497">
-                  <caret line="79" column="25" lean-forward="true" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
+                <state relative-caret-position="122">
+                  <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -277,7 +272,6 @@
         <option value="$PROJECT_DIR$/src/components/Typers/typerList.js" />
         <option value="$PROJECT_DIR$/src/components/Typers/typerTracker.js" />
         <option value="$PROJECT_DIR$/src/views/base.js" />
-        <option value="$PROJECT_DIR$/src/pages/dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/CreateTrackers/editTeamMemberItem.js" />
         <option value="$PROJECT_DIR$/src/components/CreateTrackers/editQuestionItem.js" />
         <option value="$PROJECT_DIR$/src/components/Trackers/trackerTitleTag.js" />
@@ -285,18 +279,19 @@
         <option value="$PROJECT_DIR$/build/index.html" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/views/settings.js" />
-        <option value="$PROJECT_DIR$/src/components/User/userProfile.js" />
         <option value="$PROJECT_DIR$/src/views/Old/settings.js" />
         <option value="$PROJECT_DIR$/src/components/CreateTrackers/trackerManager.js" />
         <option value="$PROJECT_DIR$/src/components/Trackers/trackerItem.js" />
+        <option value="$PROJECT_DIR$/src/pages/dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/User/userProfile.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-276" />
-    <option name="y" value="-982" />
-    <option name="width" value="2025" />
-    <option name="height" value="875" />
+    <option name="x" value="-435" />
+    <option name="y" value="-1043" />
+    <option name="width" value="1666" />
+    <option name="height" value="1001" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -461,12 +456,12 @@
       <workItem from="1611187260730" duration="29061000" />
       <workItem from="1611928148020" duration="6269000" />
       <workItem from="1611956949843" duration="4028000" />
-      <workItem from="1612011978129" duration="1374000" />
+      <workItem from="1612011978129" duration="4179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="536152000" />
+    <option name="totallyTimeSpent" value="538957000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -478,10 +473,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-276" y="-982" width="2025" height="875" extended-state="0" />
+    <frame x="-435" y="-1043" width="1666" height="1001" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.121817276" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.14841849" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -496,7 +491,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32946146" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49788433" visible="true" weight="0.13570487" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49788433" visible="true" weight="0.11638418" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50211567" side_tool="true" weight="0.31290743" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -895,26 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/User/userProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="79" column="25" lean-forward="true" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="171" column="56" selection-start-line="171" selection-start-column="56" selection-end-line="171" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/base.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -937,10 +912,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Trackers/trackerItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="128" column="77" lean-forward="true" selection-start-line="128" selection-start-column="77" selection-end-line="128" selection-end-column="77" />
+        <state relative-caret-position="270">
+          <caret line="141" column="62" selection-start-line="141" selection-start-column="62" selection-end-line="141" selection-end-column="62" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="281" column="14" lean-forward="true" selection-start-line="281" selection-start-column="14" selection-end-line="281" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/User/userProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
