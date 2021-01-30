@@ -3,11 +3,11 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import TrackersList from "../components/Trackers/trackersList";
+import TrackersList from "../../components/Trackers/trackersList";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
-import UserProfile from "../components/User/userProfile";
-import TeamBox from "../components/User/Team/teamBox";
+import UserProfile from "../../components/User/userProfile";
+import TeamBox from "../../components/User/Team/teamBox";
 
 function Settings(props) {
     const classes = useStyles();
@@ -21,7 +21,7 @@ function Settings(props) {
                                PROFILE
                             </h2>
                             <Divider style ={{marginTop:0}}/>
-                            <UserProfile email = {props.email} url = {props.url} user = {props.user} />
+                            {/*<UserProfile email = {props.email} url = {props.url} user = {props.user} />*/}
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm ={12} md={6} lg={6}>

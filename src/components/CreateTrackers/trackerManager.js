@@ -32,6 +32,7 @@ import { BiSend, BiPlus } from "react-icons/bi";
 
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
+import UserProfile from "../User/userProfile";
 
 function TrackerManager(props) {
     const classes = useStyles();
@@ -77,17 +78,24 @@ function TrackerManager(props) {
                         <Grid  style = {{marginTop: 20}}  spacing={2} container direction = 'row'>
                             <Grid  spacing={3} item xs={4} md = {6} lg = {6} >
                                 <Box style = {{marginTop: 0}} >
-                                    <TextField
-                                        onChange={e => handleTitleChange(e.target.value)}
-                                        id="filled-basic"
-                                        label="Title"
-                                        placeholder='Add a Title'
-                                        fullWidth
-                                        variant="outlined"
-                                        value = {title}
-                                        style = {{marginBottom: 10}}
+                                    {/*<TextField*/}
+                                    {/*    onChange={e => handleTitleChange(e.target.value)}*/}
+                                    {/*    id="filled-basic"*/}
+                                    {/*    label="Title"*/}
+                                    {/*    placeholder='Add a Title'*/}
+                                    {/*    fullWidth*/}
+                                    {/*    variant="outlined"*/}
+                                    {/*    value = {title}*/}
+                                    {/*    style = {{marginBottom: 10}}*/}
 
-                                    />
+                                    {/*/>*/}
+
+                                    {props.user
+
+                                        ?<UserProfile user={props.user}/>
+                                        : null
+
+                                    }
                                     <Grid container space = {2} direction = 'row'>
                                     </Grid>
                                 </Box>

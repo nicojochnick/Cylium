@@ -21,7 +21,7 @@ import {FaEdit} from "react-icons/fa"
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import Settings from "../views/settings"
+import Settings from "../views/Old/settings"
 import EditFeedbox from "../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';

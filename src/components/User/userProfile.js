@@ -67,28 +67,13 @@ function UserProfile(props) {
         event.preventDefault();
         try {
             await handleFireBaseUpload(event, imageAsFile);
-            //write to store
-            let pr = 0;
-            let sfte = false;
-            let p = 25;
-            if (props.user.points) {
-                p = props.user.points
-            };
-            if (props.user.sendFeedbackToEmail) {
-                sfte = props.user.sendFeedbackToEmail
-            };
 
-            if (props.user.pointsRewarded) {
-                pr = props.user.pointsRewarded
-            };
-            await db.collection('users').doc(props.email).set({
+
+            await db.collection('users').doc(props.user.email).set({
                 name: name,
                 welcome: welcome,
-                url: props.url,
+                url: props.user.url,
                 img_url_Profile: imageAsUrl,
-                points: p,
-                pointsRewarded: pr,
-                sendFeedbackToEmail: sfte,
             });
             setSuccess(true);
 
@@ -141,7 +126,7 @@ function UserProfile(props) {
                 className={classes.submitButton}
                 onClick={handleSave}
                 variant="contained"
-                style={{marginRight: 45, marginLeft: 0, paddingRight: 60, paddingLeft: 60, borderRadius: 5, backgroundColor: "#4D6DF1",
+                style={{marginRight: 0, marginLeft: 0, paddingRight: 0, paddingLeft: 0, borderRadius: 5, backgroundColor: "#4D6DF1",
                 }}
             >
                 <p style = {{color: 'white', fontWeight: '600', margin: 5}}>

@@ -129,6 +129,7 @@ function TrackerItem(props) {
                 <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
                 <Box style = {{height: height, backgroundColor:'white'}} className={classes.inner_box}>
                 <TrackerManager
+                    user = {props.user}
                     tracker={props.tracker}
                 />
                 </Box>
