@@ -30,19 +30,15 @@ import InputBase from '@material-ui/core/InputBase';
 import { BiSend, BiPlus } from "react-icons/bi";
 
 
-
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
-
 
 function TrackerManager(props) {
     const classes = useStyles();
 
     const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [backgroundColor, setBackgroundColor] = React.useState('#fff');
-
     const [checked, setChecked] = React.useState([1]);
-
 
     const handleTitleChange= (name) => {
         setTitle(name)
@@ -93,11 +89,9 @@ function TrackerManager(props) {
 
                                     />
                                     <Grid container space = {2} direction = 'row'>
-
                                     </Grid>
                                 </Box>
                             </Grid>
-
                             <Grid alignItems='center' justify = 'center' item xs={12} md = {6} lg = {6}>
                                 <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -5}}>
                                             <TwitterPicker
@@ -142,12 +136,8 @@ function TrackerManager(props) {
                                             inputProps={{ 'aria-label': 'search' }}
                                         />
                                     </Box>
-
                                 </Box>
-
-
-                                <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
-
+                                <Box display="flex"  flexDirection="row" direction="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
                                     <Box
                                         borderRadius={16}
                                         style ={{margin: 10}}
@@ -166,12 +156,15 @@ function TrackerManager(props) {
                                         />
 
                                     </Box>
-                                    <Button> Send Invite </Button>
-
-
+                                    <Button
+                                        style = {{margin: 10}}
+                                        variant="contained"
+                                        color = 'primary'
+                                        className={classes.button}
+                                    >
+                                        Invite
+                                    </Button>
                                 </Box>
-
-
 
                             </Grid>
                             <Grid  item xs={12} md = {6} lg = {6} >
@@ -329,7 +322,6 @@ const useStyles = makeStyles((theme) => ({
         width: '75%',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(3),
-            width: 'auto',
         },
     },
     searchIcon: {

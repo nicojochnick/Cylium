@@ -77,11 +77,11 @@ function TrackerTitleTag(props) {
                         <BiCog style = {{color: "white"}} size = {20} />
                     </IconButton>
                 </Box>
-                <Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>
-                <IconButton color = "white" onClick={()=>props.switchPosting()}>
-                    <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />
-                </IconButton>
-                </Box>
+                {/*<Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>*/}
+                {/*<IconButton color = "white" onClick={()=>props.switchPosting()}>*/}
+                {/*    <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />*/}
+                {/*</IconButton>*/}
+                {/*</Box>*/}
             </Grid>
         </Box>
     );

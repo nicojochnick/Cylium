@@ -32,7 +32,7 @@ function Settings(props) {
                                 </h2>
                             </Grid>
                             <Divider style ={{marginTop:0}}/>
-                            <TeamBox user = {props.user}/>
+                            {/*<TeamBox user = {props.user}/>*/}
                         </Box>
                     </Grid>
                 </Grid>

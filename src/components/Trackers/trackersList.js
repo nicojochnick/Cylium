@@ -22,8 +22,8 @@ function TrackersList(props) {
     const classes = useStyles();
     const [trackers, setTrackers] = React.useState([]);
     const getTrackers = async() => {
-        if (props.team.trackers) {
-            let teamTrackerIDs = props.team.trackers;
+        if (props.user) {
+            let teamTrackerIDs = props.user.trackers;
             let trackRef = db.collection("trackers");
             let teamTrackers = [];
             await trackRef.where('id', 'in', teamTrackerIDs).get()

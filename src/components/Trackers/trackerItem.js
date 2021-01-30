@@ -65,9 +65,9 @@ function TrackerItem(props) {
     const getResponses = async() => {
         let resRef = db.collection("responses");
         let responses = [];
-        if (props.user && props.user.team && props.tracker) {
+        if (props.user && props.user.trackers && props.tracker) {
             console.log('TRIGGERED')
-            await resRef.where('teamID', '==', props.user.team).where("trackerID", "==", props.tracker.id).get()
+            await resRef.where("trackerID", "==", props.tracker.id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
                         responses.push(doc.data())
