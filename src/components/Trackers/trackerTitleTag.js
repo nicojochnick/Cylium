@@ -50,7 +50,7 @@ function TrackerTitleTag(props) {
     return (
         <Box borderBottom = {1} borderColor= {"white"} display="flex" justifyContent = 'space-between' alignItems = 'center' flexDirection="row" borderRadius = {0} borderBottom = {0} style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
 
-                {user
+                {props.user
                     ?
                    <UserId user={props.user}/>
                     : null

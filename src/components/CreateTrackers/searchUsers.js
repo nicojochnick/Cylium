@@ -6,6 +6,9 @@ import Button from "@material-ui/core/Button";
 import {fade, makeStyles} from "@material-ui/core/styles";
 import { BiSend, BiPlus } from "react-icons/bi";
 import {db} from "../../api/firebase";
+import UserId from "../User/userID";
+import Divider from "@material-ui/core/Divider";
+
 
 function SearchUsers(props) {
     const classes = useStyles();
@@ -17,9 +20,9 @@ function SearchUsers(props) {
         let usersRef = db.collection("users");
         let query = await usersRef.where("email", "==", searchEmail).get();
         if (!query.empty) {
-            query.forEach(doc => {
-                console.log(query.data());
-                setSearchUser(query.data())
+            await query.forEach(doc => {
+                console.log(doc.data());
+                setSearchUser(doc.data())
             });
 
         }
@@ -76,7 +79,8 @@ function SearchUsers(props) {
                                 searchUser
                                 ?
                                     <div>
-
+                                        <Divider style = {{margin: 5}} />
+                                        <UserId background = {true} isAdding = {true} goDark = {true} user = {searchUser}/>
                                     </div>
                                 : <p> no user found</p>
 
