@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import {fade, ThemeProvider,makeStyles,} from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
 import {db} from "../../api/firebase";
-
+import UserId from "../User/userID";
 
 function TrackerTitleTag(props) {
     const classes = useStyles();
@@ -19,11 +19,9 @@ function TrackerTitleTag(props) {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -32,6 +30,8 @@ function TrackerTitleTag(props) {
 
     const [user, setUser] = React.useState(null);
 
+
+    //TODO delete this, user is passed down
     const getUser = async(email) => {
         await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
@@ -44,7 +44,7 @@ function TrackerTitleTag(props) {
     };
 
     useEffect(() => {
-        getUser(props.ownerEmail);
+        // getUser(props.ownerEmail);
     }, []);
 
     return (
@@ -52,30 +52,7 @@ function TrackerTitleTag(props) {
 
                 {user
                     ?
-                    <Grid container direction={'row'}>
-                            <Grid item xs={1.5} md={1.5} lg={1.5}>
-                                <Box style={{margin: 5}} border={2} borderColor={'white'} borderRadius={50}>
-                                    <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
-                                </Box>
-                            </Grid>
-
-                        {/*<TextField*/}
-                        {/*    value = {user.name}*/}
-                        {/*    style = {{color: 'white', margin: 10}}*/}
-                        {/*    InputProps={{*/}
-                        {/*        className: classes.input,*/}
-                        {/*        disableUnderline: true*/}
-                        {/*    }}*/}
-                        {/*    className={classes.margin}*/}
-                        {/*    // onChange={e => props.handleTitleChange(e.target.value)}*/}
-                        {/*/>*/}
-
-                        <p style  = {{color: 'white', fontWeight:500, fontSize: 17}}>
-                            {user.name}
-
-                        </p>
-                    </Grid>
-
+                   <UserId user={props.user}/>
                     : null
                 }
 
@@ -86,11 +63,7 @@ function TrackerTitleTag(props) {
                         <BiCog style = {{color: "white"}} size = {20} />
                     </IconButton>
                 </Box>
-                {/*<Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>*/}
-                {/*<IconButton color = "white" onClick={()=>props.switchPosting()}>*/}
-                {/*    <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />*/}
-                {/*</IconButton>*/}
-                {/*</Box>*/}
+
             </Grid>
         </Box>
     );
@@ -125,3 +98,23 @@ export default TrackerTitleTag;
 {/*<Button style = {{margin: 10, paddingBottom: 0, paddingTop: 0,}} onClick={()=>props.switchPosting()} variant="contained" color="primary">*/}
 {/*    {(!props.isPosting) ? <p> Create Post </p> : <p> Delete Post </p>}*/}
 {/*</Button>*/}
+
+
+{/*<TextField*/}
+{/*    value = {user.name}*/}
+{/*    style = {{color: 'white', margin: 10}}*/}
+{/*    InputProps={{*/}
+{/*        className: classes.input,*/}
+{/*        disableUnderline: true*/}
+{/*    }}*/}
+{/*    className={classes.margin}*/}
+{/*    // onChange={e => props.handleTitleChange(e.target.value)}*/}
+{/*/>*/}
+
+
+
+{/*<Box border = {1} style = {{backgroundColor: "white"}} borderColor = "white" borderRadius = {100}>*/}
+{/*<IconButton color = "white" onClick={()=>props.switchPosting()}>*/}
+{/*    <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />*/}
+{/*</IconButton>*/}
+{/*</Box>*/}

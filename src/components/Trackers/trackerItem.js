@@ -113,6 +113,7 @@ function TrackerItem(props) {
              borderRadius={20}>
             <TrackerTitleTag
                 ownerEmail = {props.tracker.ownerEmail}
+                user = {props.user}
                 switchData = {switchData}
                 switchCreating = {switchCreating}
                 switchPosting = {switchPosting}
