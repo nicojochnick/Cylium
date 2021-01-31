@@ -17,7 +17,11 @@ function SearchUsers(props) {
         let usersRef = db.collection("users");
         let query = await usersRef.where("email", "==", searchEmail).get();
         if (!query.empty) {
-            setSearchUser(query)
+            query.forEach(doc => {
+                console.log(query.data());
+                setSearchUser(query.data())
+            });
+
         }
         setDidSearch(true)
     };
@@ -32,13 +36,14 @@ function SearchUsers(props) {
                 <Box
                     display="flex" flexDirection="row" direction="row"
                     borderRadius={16}
-                    style={{margin: 10}}
+                    style={{margin: 10, flexGrow: 1}}
                     className={classes.search2}
                 >
                     <div className={classes.searchIcon}>
                         <BiPlus/>
                     </div>
                     <InputBase
+                        fullWidth
                         placeholder="Search by Email"
                         classes={{
                             root: classes.inputRoot,
@@ -48,7 +53,6 @@ function SearchUsers(props) {
                         inputProps={{'aria-label': 'search'}}
                     />
                 </Box>
-
                 <Button
                     style={{margin: 10}}
                     variant="contained"
@@ -105,12 +109,13 @@ function SearchUsers(props) {
                         <BiSend/>
                     </div>
                     <InputBase
+                        fullWidth
                         placeholder="Send Email Invite"
                         classes={{
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
-                        inputProps={{'aria-label': 'search'}}
+                        // inputProps={{'aria-label': 'search'}}
                     />
                 </Box>
                 <Button
@@ -233,7 +238,7 @@ const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-            width: '20ch',
+            width: '100%',
         },
     },
 }));

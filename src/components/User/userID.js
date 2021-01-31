@@ -8,6 +8,7 @@ function UserId(props) {
     const classes = useStyles();
     const [profilePicture, setProfilePicture] = React.useState(null);
     const [username, setUsername] = React.useState(null );
+    const [textColor, setTextColor] = React.useState('white')
 
 
 
@@ -15,10 +16,17 @@ function UserId(props) {
 
         console.log(props.user)
 
+        if (props.goDark){
+            setTextColor('black')
+
+
+        }
+
         if (props.user){
             setProfilePicture(props.user.img_url_Profile.imgUrl)
             setUsername(props.user.name)
             }
+
 
     });
 
@@ -30,7 +38,7 @@ function UserId(props) {
                     <Avatar src={profilePicture} className={classes.large}/>
                 </Box>
             </Grid>
-            <p style  = {{color: 'white', fontWeight:500, fontSize: 17}}>
+            <p style  = {{color: textColor, fontWeight:500, fontSize: 17}}>
                 {username}
 
             </p>

@@ -6,18 +6,13 @@ import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import Box from "@material-ui/core/Box";
+import UserId from "../User/userID";
 
 function EditTeamMemberItem(props) {
     return (
         <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
             <ListItem key={props.value} button>
-                <ListItemAvatar>
-                    <Avatar
-                        alt={`Avatar n°${props.value + 1}`}
-                        src={`/static/images/avatar/${props.value + 1}.jpg`}
-                    />
-                </ListItemAvatar>
-                <ListItemText id={props.labelId} primary={`Line item ${props.value + 1}`} />
+                <UserId goDark = {true} />
                 <ListItemSecondaryAction>
                     {props.withSelect
                     ? < Checkbox

@@ -162,7 +162,7 @@ function EditQuestionItem(props) {
 
             </Grid>
         </Box>
-    );
+    )
 }
 
 export default EditQuestionItem;
