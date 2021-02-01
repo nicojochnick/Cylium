@@ -14,6 +14,7 @@ function UserId(props) {
     const [username, setUsername] = React.useState(null );
     const [textColor, setTextColor] = React.useState('white');
     const [background, setBackGround] = React.useState(null);
+    const [pending, setPending] = React.useState('false')
 
     const sendFriendRequest = async() => {
         //Add both people to each other friend lists as "pending".
@@ -57,6 +58,9 @@ function UserId(props) {
             setProfilePicture(props.user.img_url_Profile.imgUrl);
             setUsername(props.user.name)
             }
+        if (props.user.pending){
+            props.setPending(true)
+        }
     }, []);
 
     return (
