@@ -107,16 +107,14 @@ function TrackerManager(props) {
                         <Grid spacing={3} container direction = 'row'>
                            <SearchUsers user = {props.user} />
                             <Grid  item xs={12} md = {6} lg = {6} >
-
                                 <List dense className={classes.root}>
-                                    {[0, 1, 2, 3].map((value) => {
-                                        const labelId = `checkbox-list-secondary-label-${value}`;
+                                    {props.user.friendList.map((value) => {
                                         return (
                                            <EditTeamMemberItem
+                                               user = {value}
                                                withSelect = {false}
                                                value = {value}
                                                handleToggle = {handleToggle}
-                                               labelID = {labelId}
                                                checked = {checked} />
                                         );
                                     })}
@@ -133,18 +131,18 @@ function TrackerManager(props) {
                                 <p>
                                     Questions
                                 </p>
-                        {(props.tracker.call)
-                            ?
-                            <div>
-                                {Object.keys(props.tracker.call).map((item) =>
-                                    <EditQuestionItem
-                                        item = {item}
-                                        tracker = {props.tracker}
-                                    />
-                                )}
-                            </div>
-                            : null
-                        }
+                        {/*{(props.tracker.call)*/}
+                        {/*    ?*/}
+                        {/*    <div>*/}
+                        {/*        {Object.keys(props.tracker.call).map((item) =>*/}
+                        {/*            <EditQuestionItem*/}
+                        {/*                item = {item}*/}
+                        {/*                tracker = {props.tracker}*/}
+                        {/*            />*/}
+                        {/*        )}*/}
+                        {/*    </div>*/}
+                        {/*    : null*/}
+                        {/*}*/}
                         <Button
                             style = {{margin: 10}}
                             variant="contained"

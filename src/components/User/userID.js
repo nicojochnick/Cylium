@@ -15,11 +15,8 @@ function UserId(props) {
     const [textColor, setTextColor] = React.useState('white');
     const [background, setBackGround] = React.useState(null);
 
-
     const sendFriendRequest = async() => {
-
         //Add both people to each other friend lists as "pending".
-
         let addedUserRef = await db.collection('users').doc(props.user.email);
         let addedUserGet = await addedUserRef.get();
         let addedUserData = addedUserGet.data();
@@ -33,6 +30,7 @@ function UserId(props) {
             {
                 name: props.viewingUser.name,
                 email: props.viewingUser.email,
+                img_url_Profile: {imgUrl: props.viewingUser.img_url_Profile.imgUrl},
                 pending: true,
                 timeStamp: new Date(),
             }
@@ -43,34 +41,23 @@ function UserId(props) {
             {
                 name: props.user.name,
                 email: props.user.email,
+                img_url_Profile: {imgUrl: props.user.img_url_Profile.imgUrl},
                 pending: true,
                 timeStamp: new Date(),
             }
         );
-
-        console.log(viewingList, addedList)
-
         const resAdded = await addedUserRef.update({friendList: addedList});
         const viewingAdded = await viewingUserRef.update({friendList: viewingList});
     };
 
-
-
     useEffect( () => {
-        if (props.goDark){
-            setTextColor('black')
-        }
-
-        if (props.background) {
-            setBackGround('lightgrey')
-        }
-
-        if (props.user){
-            setProfilePicture(props.user.img_url_Profile.imgUrl)
+        if (props.goDark){setTextColor('black')}
+        if (props.background) {setBackGround('lightgrey')}
+        if (props.user && props.user.img_url_Profile){
+            setProfilePicture(props.user.img_url_Profile.imgUrl);
             setUsername(props.user.name)
             }
     }, []);
-
 
     return (
         <Box borderRadius = {20} style = {{backgroundColor: background,}}>
@@ -86,27 +73,23 @@ function UserId(props) {
             </p>
             </Box>
             <Grid item>
-            {(props.isAdding)
-                ?
-                <div>
-                    <Button
-                        style = {{margin: 10}}
-                        variant="contained"
-                        color = 'primary'
-                        className={classes.button}
-                        startIcon={<BiPlus />}
-                        onClick={() => sendFriendRequest()}
-                    >
-                        Add to Friend List
-                    </Button>
-
-
-                </div>
-                :
-                null
-
-
-            }
+                {(props.isAdding)
+                    ?
+                    <div>
+                        <Button
+                            style = {{margin: 10}}
+                            variant="contained"
+                            color = 'primary'
+                            className={classes.button}
+                            startIcon={<BiPlus />}
+                            onClick={() => sendFriendRequest()}
+                        >
+                            Add to Friend List
+                        </Button>
+                    </div>
+                    :
+                    null
+                }
             </Grid>
         </Grid>
         </Box>

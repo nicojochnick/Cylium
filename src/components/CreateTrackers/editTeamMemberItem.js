@@ -9,17 +9,19 @@ import Box from "@material-ui/core/Box";
 import UserId from "../User/userID";
 
 function EditTeamMemberItem(props) {
+
+    console.log(props.user)
     return (
         <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
             <ListItem key={props.value} button>
-                <UserId goDark = {true} />
+                <UserId user = {props.user} goDark = {true} />
                 <ListItemSecondaryAction>
                     {props.withSelect
                     ? < Checkbox
                         edge="end"
                         onChange={props.handleToggle(props.value)}
                         checked={props.checked.indexOf(props.value) !== -1}
-                        inputProps={{'aria-labelledby': props.labelId}}
+                        inputProps={false}
                         />
                         : null
                     }
