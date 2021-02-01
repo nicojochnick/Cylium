@@ -28,8 +28,6 @@ import Avatar from '@material-ui/core/Avatar';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { BiSend, BiPlus } from "react-icons/bi";
-
-
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
 import UserProfile from "../User/userProfile";
@@ -39,23 +37,15 @@ function TrackerManager(props) {
     const classes = useStyles();
 
     const [title, setTitle] = React.useState(props.tracker.trackerName);
-    const [backgroundColor, setBackgroundColor] = React.useState('#fff');
+    const [backgroundColor, setBackgroundColor] = React.useState('white');
     const [checked, setChecked] = React.useState([1]);
-
-    const handleTitleChange= (name) => {
-        setTitle(name)
-    };
-
-    const handleChangeComplete = (color) => {
-        setBackgroundColor(color.hex )
-    };
-
     const [value, setValue] = React.useState('female');
+    const handleTitleChange= (name) => {setTitle(name)};
+    const handleChangeComplete = (color) => {setBackgroundColor(color.hex )};
 
     const handleChange = (event) => {
         setValue(event.target.value);
     };
-
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -65,10 +55,9 @@ function TrackerManager(props) {
             newChecked.push(value);
         } else {
             newChecked.splice(currentIndex, 1);
-        };
+        }
         setChecked(newChecked);
     };
-
 
     return (
         <div className={classes.root}>
@@ -78,30 +67,32 @@ function TrackerManager(props) {
                         <Grid  style = {{marginTop: 20}}  spacing={2} container direction = 'row'>
                             <Grid  spacing={3} item xs={4} md = {6} lg = {6} >
                                 <Box style = {{marginTop: 0}} >
-
-
                                     {props.user
-
                                         ?<UserProfile user={props.user}/>
                                         : null
-
                                     }
                                     <Grid container space = {2} direction = 'row'>
                                     </Grid>
                                 </Box>
                             </Grid>
-                            <Grid alignItems='center' justify = 'center' item xs={12} md = {6} lg = {6}>
-                                <Box display = 'flex' alignItems = 'start' justifyContent="center" style = {{marginTop: -5}}>
-                                            <TwitterPicker
-                                                color={ backgroundColor}
-                                                onChangeComplete={ handleChangeComplete }
-                                            />
+                            <Grid
+                                alignItems='center'
+                                justify = 'center'
+                                item xs={12}
+                                md = {6}
+                                lg = {6}>
+                                <Box
+                                    display = 'flex'
+                                    alignItems = 'start'
+                                    justifyContent="center"
+                                    style = {{marginTop: -5}}>
+                                    <TwitterPicker
+                                        color={ backgroundColor}
+                                        onChangeComplete={ handleChangeComplete }
+                                    />
                                 </Box>
                                     </Grid>
                                     <Grid spacing={3} item xs={6} >
-                                        {/*<div style={{height: 200}}>*/}
-                                        <Box>
-                                        </Box>
                                     </Grid>
                         </Grid>
                     </Box>
@@ -114,7 +105,7 @@ function TrackerManager(props) {
                             Users and Permissions
                         </p>
                         <Grid spacing={3} container direction = 'row'>
-                           <SearchUsers/>
+                           <SearchUsers user = {props.user} />
                             <Grid  item xs={12} md = {6} lg = {6} >
 
                                 <List dense className={classes.root}>
@@ -131,9 +122,7 @@ function TrackerManager(props) {
                                     })}
                                 </List>
                             </Grid>
-
                         </Grid>
-
                     </Box>
                     <Divider/>
                 </Grid>
@@ -144,7 +133,6 @@ function TrackerManager(props) {
                                 <p>
                                     Questions
                                 </p>
-
                         {(props.tracker.call)
                             ?
                             <div>
@@ -154,11 +142,9 @@ function TrackerManager(props) {
                                         tracker = {props.tracker}
                                     />
                                 )}
-
                             </div>
                             : null
                         }
-
                         <Button
                             style = {{margin: 10}}
                             variant="contained"

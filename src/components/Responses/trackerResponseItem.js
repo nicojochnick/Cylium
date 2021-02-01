@@ -9,9 +9,7 @@ import {convertFromRaw, RichUtils, Editor, EditorState} from "draft-js";
 import {makeStyles} from "@material-ui/core/styles";
 
 function TrackerResponseItem(props) {
-
-    const [eState, setEState] = React.useState(null)
-
+    const [eState, setEState] = React.useState(null);
     useEffect(() => {
         let editorState = null;
         if (props.response.type !== 'numeric') {

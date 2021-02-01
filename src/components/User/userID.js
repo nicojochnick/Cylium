@@ -5,6 +5,7 @@ import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { BiSend, BiPlus } from "react-icons/bi";
+import {db} from '../../api/firebase'
 
 
 function UserId(props) {
@@ -12,18 +13,52 @@ function UserId(props) {
     const [profilePicture, setProfilePicture] = React.useState(null);
     const [username, setUsername] = React.useState(null );
     const [textColor, setTextColor] = React.useState('white');
-    const [background, setBackGround] = React.useState(null)
+    const [background, setBackGround] = React.useState(null);
+
+
+    const sendFriendRequest = async() => {
+
+        //Add both people to each other friend lists as "pending".
+
+        let addedUserRef = await db.collection('users').doc(props.user.email);
+        let addedUserGet = await addedUserRef.get();
+        let addedUserData = addedUserGet.data();
+
+        let viewingUserRef =  await db.collection('users').doc(props.viewingUser.email);
+        let viewingUserGet =  await viewingUserRef.get();
+        let viewingUserData = viewingUserGet.data();
+
+        let addedList = addedUserData.friendList;
+        addedList.push(
+            {
+                name: props.viewingUser.name,
+                email: props.viewingUser.email,
+                pending: true,
+                timeStamp: new Date(),
+            }
+        );
+
+        let viewingList = viewingUserData.friendList;
+        viewingList.push(
+            {
+                name: props.user.name,
+                email: props.user.email,
+                pending: true,
+                timeStamp: new Date(),
+            }
+        );
+
+        console.log(viewingList, addedList)
+
+        const resAdded = await addedUserRef.update({friendList: addedList});
+        const viewingAdded = await viewingUserRef.update({friendList: viewingList});
+    };
 
 
 
     useEffect( () => {
-
-        console.log(props.user)
-
         if (props.goDark){
             setTextColor('black')
-
-
         }
 
         if (props.background) {
@@ -34,9 +69,7 @@ function UserId(props) {
             setProfilePicture(props.user.img_url_Profile.imgUrl)
             setUsername(props.user.name)
             }
-
-
-    });
+    }, []);
 
 
     return (
@@ -50,7 +83,6 @@ function UserId(props) {
             </Grid>
             <p style  = {{color: textColor, fontWeight:500, fontSize: 17}}>
                 {username}
-
             </p>
             </Box>
             <Grid item>
@@ -63,6 +95,7 @@ function UserId(props) {
                         color = 'primary'
                         className={classes.button}
                         startIcon={<BiPlus />}
+                        onClick={() => sendFriendRequest()}
                     >
                         Add to Friend List
                     </Button>

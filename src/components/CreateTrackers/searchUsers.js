@@ -16,25 +16,25 @@ function SearchUsers(props) {
     const [searchEmail, setSearchEmail] = React.useState('');
     const [searchUser, setSearchUser] = React.useState(false);
     const [didSearch, setDidSearch]  = React.useState(false);
+
     const handleSearch = async () => {
         let usersRef = db.collection("users");
         let query = await usersRef.where("email", "==", searchEmail).get();
         if (!query.empty) {
             await query.forEach(doc => {
-                console.log(doc.data());
                 setSearchUser(doc.data())
             });
-
         }
-        setDidSearch(true)
+        setDidSearch(true);
     };
+
+
 
     return (
         <Grid item xs={12} md={6} lg={6}>
             <Grid container direction={'column'}>
             <Box display="flex"  direction="column" flexDirection="column" borderRadius={10}
                  style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",}}>
-
                 <Box   display="flex" flexDirection="row" direction="row">
                 <Box
                     display="flex" flexDirection="row" direction="row"
@@ -66,44 +66,34 @@ function SearchUsers(props) {
                     Search
                 </Button>
                 </Box>
-
-
-
                     <Box>
-
-                {
-                    didSearch
-                    ?
+                        {didSearch
+                        ?
                         <div>
-                            {
-                                searchUser
+                            {searchUser
                                 ?
                                     <div>
                                         <Divider style = {{margin: 5}} />
-                                        <UserId background = {true} isAdding = {true} goDark = {true} user = {searchUser}/>
+                                        <UserId
+                                            viewingUser = {props.user}
+                                            background = {true}
+                                            isAdding = {true}
+                                            goDark = {true}
+                                            user = {searchUser}
+                                        />
+
                                     </div>
                                 : <p> no user found</p>
-
                             }
-
-
                         </div>
+                            :  null
 
-
-                    :  null
-
-
-
-                }
+                        }
                     </Box>
-
             </Box>
             </Grid>
-
-
-
             <Box display="flex" flexDirection="row" direction="row" borderRadius={10}
-                 style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",}}>
+                 style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA"}}>
                 <Box
                     borderRadius={16}
                     style={{margin: 10}}
