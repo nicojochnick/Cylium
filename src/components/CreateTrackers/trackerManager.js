@@ -65,7 +65,7 @@ function TrackerManager(props) {
                 <Grid item>
                     <Box style = {{margin: 20, }}>
                         <Grid  style = {{marginTop: 20}}  spacing={2} container direction = 'row'>
-                            <Grid  spacing={3} item xs={4} md = {6} lg = {6} >
+                            <Grid  spacing={3} item xs={6} md = {6} lg = {6} >
                                 <Box style = {{marginTop: 0}} >
                                     {props.user
                                         ?<UserProfile user={props.user}/>
@@ -78,7 +78,7 @@ function TrackerManager(props) {
                             <Grid
                                 alignItems='center'
                                 justify = 'center'
-                                item xs={12}
+                                item xs={6}
                                 md = {6}
                                 lg = {6}>
                                 <Box

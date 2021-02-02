@@ -13,12 +13,8 @@ import {fade, makeStyles} from "@material-ui/core/styles";
 
 function EditTeamMemberItem(props) {
     const classes = useStyles();
-
-
     const [pending, setPending] = React.useState('false');
 
-
-    console.log(props.user)
     return (
         <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
             <ListItem key={props.value} button>
@@ -33,17 +29,29 @@ function EditTeamMemberItem(props) {
                         />
                         : null
                     }
-                    {  pending && props.user.receiver
-                        ?
 
-                        <Button
-                            style={{margin: 10}}
-                            variant="contained"
-                            color='primary'
-                            className={classes.button}
-                        >
-                            Accept Friend Request
-                        </Button>
+                    { pending
+                        ?
+                        <div>
+                            <Box borderColor = {'#50E079'} borderRadius = {20} border = {1.5}>
+                                <p style = {{color: '#50E079', size: 15, fontWeight: 400, margin: 7}}> Friend Request Pending </p>
+                            </Box>
+
+                            {props.user.receiver
+                               ?
+                                   <div>
+                                        <Button
+                                        style={{margin: 10}}
+                                        variant="contained"
+                                        color='primary'
+                                        className={classes.button}
+                                    >
+                                        Accept Friend Request
+                                    </Button>
+                                    </div>
+                                    : null
+                            }
+                               </div>
                         : null
 
                     }
