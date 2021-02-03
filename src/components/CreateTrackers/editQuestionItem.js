@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -12,18 +12,26 @@ import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabe
 import Radio from "@material-ui/core/Radio/Radio";
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import { makeStyles } from '@material-ui/core';
+import Divider from "@material-ui/core/Divider";
+
+
 
 import EditTeamMemberItem from "./editTeamMemberItem";
+import {convertFromRaw, EditorState, RichUtils} from "draft-js";
 
 
 
 function EditQuestionItem(props) {
+
+    const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
     const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
     const [value, setValue] = React.useState('Unlimited');
     const [checked, setChecked] = React.useState([1]);
+    const [friendList, setFriendList] = React.useState([]);
 
 
 
@@ -65,12 +73,16 @@ function EditQuestionItem(props) {
         setChecked(newChecked);
     };
 
+    useEffect(() => {
+        if (props.user.friendList) {
+            let res = props.user.friendList.filter(friend => friend.pending === false);
+            setFriendList(res);
+        }
 
+    }, []);
 
 
     return (
-
-
 
         <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
@@ -91,11 +103,8 @@ function EditQuestionItem(props) {
                 </Grid>
 
 
-
-
                 <Grid item direction={'row'}>
-
-                    <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
+                    <Box style = {{padding: 0}} display="flex" flexDirection="row"  borderRadius = {10} border = {1} borderColor = {'lightgrey'} >
                         <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_team}>
                             Recipients:
                         </Button>
@@ -103,14 +112,17 @@ function EditQuestionItem(props) {
                             id="simple-menu"
                             anchorEl={anchorEl_team}
                             keepMounted
+                            className={classes.menu}
                             open={Boolean(anchorEl_team)}
                             onClose={handleClose_team}
                         >
-                            {[0, 1, 2, 3].map((value) => {
+                            {friendList.map((value) => {
                                 const labelId = `checkbox-list-secondary-label-${value}`;
                                 return (
                                     <EditTeamMemberItem
+                                        flat = {true}
                                         withSelect = {true}
+                                        user = {value}
                                         value = {value}
                                         handleToggle = {handleToggle}
                                         labelID = {labelId}
@@ -119,20 +131,17 @@ function EditQuestionItem(props) {
                             })}
                         </Menu>
                         <AvatarGroup max={4}>
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                            <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-                            <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+                            {friendList.map((friend) => {
+                                return (
+                                    <Avatar alt={friend.name} src={friend.img_url_Profile.imgUrl}/>
+                                    )}
+                                    )}
                         </AvatarGroup>
                     </Box>
 
                 </Grid>
 
-
-
                 <Grid item direction={'row'}>
-
                     <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
                         <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_schedule}>
                             Schedule:
@@ -166,6 +175,12 @@ function EditQuestionItem(props) {
 }
 
 export default EditQuestionItem;
+
+
+const useStyles = makeStyles({
+    menu: {
+    }
+});
 
 
 {/*<Grid item direction={'row'}>*/}

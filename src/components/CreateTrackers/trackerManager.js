@@ -131,18 +131,19 @@ function TrackerManager(props) {
                                 <p>
                                     Questions
                                 </p>
-                        {/*{(props.tracker.call)*/}
-                        {/*    ?*/}
-                        {/*    <div>*/}
-                        {/*        {Object.keys(props.tracker.call).map((item) =>*/}
-                        {/*            <EditQuestionItem*/}
-                        {/*                item = {item}*/}
-                        {/*                tracker = {props.tracker}*/}
-                        {/*            />*/}
-                        {/*        )}*/}
-                        {/*    </div>*/}
-                        {/*    : null*/}
-                        {/*}*/}
+                        {(props.tracker.call)
+                            ?
+                            <div>
+                                {Object.keys(props.tracker.call).map((item) =>
+                                    <EditQuestionItem
+                                        item = {item}
+                                        user = {props.user}
+                                        tracker = {props.tracker}
+                                    />
+                                )}
+                            </div>
+                            : null
+                        }
                         <Button
                             style = {{margin: 10}}
                             variant="contained"
