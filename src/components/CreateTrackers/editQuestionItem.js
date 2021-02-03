@@ -81,6 +81,8 @@ function EditQuestionItem(props) {
 
     }, []);
 
+    console.log(props.item)
+
 
     return (
 
@@ -131,7 +133,7 @@ function EditQuestionItem(props) {
                             })}
                         </Menu>
                         <AvatarGroup max={4}>
-                            {friendList.map((friend) => {
+                            {props.tracker.call[props.item].receivers.map((friend) => {
                                 return (
                                     <Avatar alt={friend.name} src={friend.img_url_Profile.imgUrl}/>
                                     )}

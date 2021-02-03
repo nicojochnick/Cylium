@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import {makeStyles, fade,} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -40,6 +40,9 @@ import firebase from "firebase/app";
 
 function TrackerManager(props) {
     const classes = useStyles();
+
+    const [tracker, setTracker] = React.useState(props.tracker);
+
     const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [backgroundColor, setBackgroundColor] = React.useState('white');
     const [checked, setChecked] = React.useState([1]);
@@ -51,7 +54,6 @@ function TrackerManager(props) {
 
 
     const addQuestion = async() => {
-
 
         let newCall = {
             callID: 'noID',
@@ -66,7 +68,6 @@ function TrackerManager(props) {
         const addCall = await trackRef.update({
             call: firebase.firestore.FieldValue.arrayUnion(newCall)
         })
-
     };
 
     const handleChange = (event) => {
@@ -84,6 +85,25 @@ function TrackerManager(props) {
         }
         setChecked(newChecked);
     };
+
+
+    const getTracker = async(tracker_id) => {
+        await db.collection("trackers").doc(tracker_id)
+            .onSnapshot(function(doc) {
+                let updateTracker = doc.data();
+                console.log(updateTracker)
+                if (updateTracker) {
+                    setTracker(updateTracker);
+                }
+            });
+
+    };
+
+    useEffect(() => {
+        getTracker(tracker.id);
+    }, []);
+
+    console.log(tracker)
 
     return (
         <div className={classes.root}>
@@ -157,14 +177,14 @@ function TrackerManager(props) {
                                 <p>
                                     Questions
                                 </p>
-                        {(props.tracker.call)
+                        {(tracker.call)
                             ?
                             <div>
-                                {Object.keys(props.tracker.call).map((item) =>
+                                {Object.keys(tracker.call).map((item) =>
                                     <EditQuestionItem
                                         item = {item}
                                         user = {props.user}
-                                        tracker = {props.tracker}
+                                        tracker = {tracker}
                                     />
                                 )}
                             </div>
