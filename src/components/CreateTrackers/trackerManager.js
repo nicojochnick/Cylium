@@ -32,16 +32,42 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
 import UserProfile from "../User/userProfile";
 import SearchUsers from "./searchUsers";
+import {db} from '../../api/firebase'
+import firebase from "firebase/app";
+
+
+
 
 function TrackerManager(props) {
     const classes = useStyles();
-
     const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [backgroundColor, setBackgroundColor] = React.useState('white');
     const [checked, setChecked] = React.useState([1]);
     const [value, setValue] = React.useState('female');
     const handleTitleChange= (name) => {setTitle(name)};
     const handleChangeComplete = (color) => {setBackgroundColor(color.hex )};
+    // const admin = require('firebase-admin');
+
+
+
+    const addQuestion = async() => {
+
+
+        let newCall = {
+            callID: 'noID',
+            label: 'nolabel',
+            order: 3,
+            receivers: [],
+            type: 'text',
+            timeStamp: new Date(),
+        };
+
+        const trackRef = await db.collection('trackers').doc(props.tracker.id)
+        const addCall = await trackRef.update({
+            call: firebase.firestore.FieldValue.arrayUnion(newCall)
+        })
+
+    };
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -150,6 +176,7 @@ function TrackerManager(props) {
                             color = 'primary'
                             className={classes.button}
                             startIcon={<BiPlus />}
+                            onClick={()=>addQuestion()}
                         >
                             Add Question
                         </Button>
