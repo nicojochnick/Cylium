@@ -25,11 +25,13 @@ function EditQuestionItem(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
     const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
-    const [scheduleValue, setScheduleValue] = React.useState('monthly');
+    const [scheduleValue, setScheduleValue] = React.useState(props.tracker.call[props.item].schedule);
     const [checked, setChecked] = React.useState([1]);
     const [friendList, setFriendList] = React.useState([]);
-    const [receiverFriendList, setReceiverFriendList] = React.useState([])
-    const [questionItem, setQuestionItem] = React.useState(props.tracker.call[props.item])
+    const [receiverFriendList, setReceiverFriendList] = React.useState([]);
+    const [questionItem, setQuestionItem] = React.useState(props.tracker.call[props.item]);
+    const [label, setLabel] = React.useState(props.tracker.call[props.item].label);
+    const [isEditing, setIsEditing] = React.useState(false)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -87,6 +89,35 @@ function EditQuestionItem(props) {
        )
     };
 
+    const changeQuestion = async () =>{
+        let value = label;
+        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+        let trackData = trackRef.data();
+
+        let calls = trackData.call;
+
+        for (let i of calls){
+            if (questionItem.id === i.id){
+                i.label = value;
+            }
+        };
+
+        let res = await db.collection('trackers').doc(props.tracker.id).update(
+            {call: calls}
+        )
+
+        setIsEditing(false)
+
+
+    };
+
+    const handleEditLabel = (event) => {
+        if (!isEditing){setIsEditing(true)}
+        setLabel(event.target.value)
+
+
+    };
+
 
     const addReceivers = () => {
 
@@ -99,7 +130,6 @@ function EditQuestionItem(props) {
     };
 
     const createReceiverFriendList = (friendList) => {
-
         let receivers = props.tracker.call[props.item].receivers;
         if (!receivers){return}
         let receiverFriendList = [];
@@ -112,7 +142,6 @@ function EditQuestionItem(props) {
         setReceiverFriendList(receiverFriendList)
     };
 
-
     useEffect(() => {
         if (props.user.friendList) {
             let res = props.user.friendList.filter(friend => friend.pending === false);
@@ -121,9 +150,6 @@ function EditQuestionItem(props) {
                 createReceiverFriendList(res)
             };
         };
-
-
-
     }, []);
 
 
@@ -139,12 +165,26 @@ function EditQuestionItem(props) {
                         <TextField
                             placeholder="add a questions"
                             multiline
-                            value =  {props.tracker.call[props.item].label}
+                            onChange={(event)=>handleEditLabel(event)}
+                            defaultValue= {label}
                             fullWidth
                             InputProps={{ disableUnderline: true }}
                             rowsMax={4}
                         />
                     </Box>
+                    {isEditing
+                        ?
+                        <Button
+                            style = {{margin: 10}}
+                            variant="contained"
+                            color = 'primary'
+                            className={classes.button}
+                            onClick={()=>changeQuestion()}
+                        >
+                            Save
+                        </Button>
+                        :null
+                    }
                 </Grid>
 
 
