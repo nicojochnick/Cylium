@@ -40,9 +40,7 @@ import firebase from "firebase/app";
 
 function TrackerManager(props) {
     const classes = useStyles();
-
     const [tracker, setTracker] = React.useState(props.tracker);
-
     const [title, setTitle] = React.useState(props.tracker.trackerName);
     const [backgroundColor, setBackgroundColor] = React.useState('white');
     const [checked, setChecked] = React.useState([1]);
@@ -54,7 +52,6 @@ function TrackerManager(props) {
 
 
     const addQuestion = async() => {
-
         let newCall = {
             callID: 'noID',
             label: 'nolabel',
@@ -63,7 +60,6 @@ function TrackerManager(props) {
             type: 'text',
             timeStamp: new Date(),
         };
-
         const trackRef = await db.collection('trackers').doc(props.tracker.id)
         const addCall = await trackRef.update({
             call: firebase.firestore.FieldValue.arrayUnion(newCall)

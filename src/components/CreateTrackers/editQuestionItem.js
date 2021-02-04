@@ -12,28 +12,23 @@ import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabe
 import Radio from "@material-ui/core/Radio/Radio";
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import {db} from '../../api/firebase'
 import { makeStyles } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
-
-
-
 import EditTeamMemberItem from "./editTeamMemberItem";
 import {convertFromRaw, EditorState, RichUtils} from "draft-js";
 
 
 
 function EditQuestionItem(props) {
-
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
     const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
-    const [value, setValue] = React.useState('Unlimited');
+    const [scheduleValue, setScheduleValue] = React.useState('monthly');
     const [checked, setChecked] = React.useState([1]);
     const [friendList, setFriendList] = React.useState([]);
-
-
+    const [receiverFriendList, setReceiverFriendList] = React.useState([])
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -55,33 +50,71 @@ function EditQuestionItem(props) {
         setAnchorEl_schedule(event.currentTarget);
     };
 
+
     const handleClose_schedule = (event) => {
-        setValue(event.target.value);
         setAnchorEl_schedule(null);
     };
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
-
         if (currentIndex === -1) {
             newChecked.push(value);
         } else {
             newChecked.splice(currentIndex, 1);
         }
-
         setChecked(newChecked);
     };
+
+    const changeSchedule = async (event) => {
+        handleClick_schedule(event.target);
+        let selected = event.target.value;
+        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+        let trackData = trackRef.data();
+
+        let res = await db.collection('trackers').doc(props.tracker.id).update(
+
+       )
+    };
+
+
+    const addReceivers = () => {
+
+
+    };
+
+    const removeReceivers = () => {
+
+
+    };
+
+    const createReceiverFriendList = (friendList) => {
+
+        let receivers = props.tracker.call[props.item].receivers;
+        if (!receivers){return}
+        let receiverFriendList = [];
+
+        for (let i of friendList){
+            if (receivers.includes(i.email)){
+                receiverFriendList.push(i)
+            }
+        }
+        setReceiverFriendList(receiverFriendList)
+    };
+
 
     useEffect(() => {
         if (props.user.friendList) {
             let res = props.user.friendList.filter(friend => friend.pending === false);
             setFriendList(res);
-        }
+            if (props.tracker.call[props.item].receivers.length > 0){
+                createReceiverFriendList(res)
+            };
+        };
+
+
 
     }, []);
-
-    console.log(props.item)
 
 
     return (
@@ -106,7 +139,7 @@ function EditQuestionItem(props) {
 
 
                 <Grid item direction={'row'}>
-                    <Box style = {{padding: 0}} display="flex" flexDirection="row"  borderRadius = {10} border = {1} borderColor = {'lightgrey'} >
+                    <Box style = {{padding: 0, width: 190, margin: 3}} display="flex" flexDirection="row"  borderRadius = {10} border = {1} borderColor = {'lightgrey'} >
                         <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_team}>
                             Recipients:
                         </Button>
@@ -133,7 +166,7 @@ function EditQuestionItem(props) {
                             })}
                         </Menu>
                         <AvatarGroup max={4}>
-                            {props.tracker.call[props.item].receivers.map((friend) => {
+                            {receiverFriendList.map((friend) => {
                                 return (
                                     <Avatar alt={friend.name} src={friend.img_url_Profile.imgUrl}/>
                                     )}
@@ -144,7 +177,7 @@ function EditQuestionItem(props) {
                 </Grid>
 
                 <Grid item direction={'row'}>
-                    <Box style = {{padding: 0}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
+                    <Box style = {{padding: 0, width: 190, margin: 5}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
                         <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_schedule}>
                             Schedule:
                         </Button>
@@ -155,16 +188,20 @@ function EditQuestionItem(props) {
                             open={Boolean(anchorEl_schedule)}
                             onClose={handleClose_schedule}
                         >
+                            <div style = {{padding: 10}}>
                             <FormControl component="fieldset">
-                                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleClick_schedule}>
-                                    <FormControlLabel value="female" control={<Radio />} label="Unlimited" />
-                                    <FormControlLabel value="male" control={<Radio />} label="Once a Week" />
-                                    <FormControlLabel value="other" control={<Radio />} label="Once a Month" />
+                                <RadioGroup aria-label="schedule" name="schedule" value={scheduleValue} onChange={(e)=>setScheduleValue(e.target.value)}>
+                                    <FormControlLabel value="Bi-Weekly" control={<Radio />} label="Bi-Weekly" />
+                                    <FormControlLabel value="Weekly" control={<Radio />} label="Weekly" />
+                                    <FormControlLabel value="Bi-Monthly" control={<Radio />} label="Bi-Monthly" />
+                                    <FormControlLabel value="Monthly" control={<Radio />} label="Monthly" />
+                                    <FormControlLabel value="Quarterly" control={<Radio />} label="Quarterly" />
                                 </RadioGroup>
                             </FormControl>
+                            </div>
                         </Menu>
                         <p style = {{margin: 10}}>
-                            Text
+                            {scheduleValue}
                         </p>
                     </Box>
 
