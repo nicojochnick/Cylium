@@ -29,6 +29,7 @@ function EditQuestionItem(props) {
     const [checked, setChecked] = React.useState([1]);
     const [friendList, setFriendList] = React.useState([]);
     const [receiverFriendList, setReceiverFriendList] = React.useState([])
+    const [questionItem, setQuestionItem] = React.useState(props.tracker.call[props.item])
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -67,13 +68,22 @@ function EditQuestionItem(props) {
     };
 
     const changeSchedule = async (event) => {
-        handleClick_schedule(event.target);
+        setScheduleValue(event.target.value);
+
         let selected = event.target.value;
         let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
         let trackData = trackRef.data();
 
-        let res = await db.collection('trackers').doc(props.tracker.id).update(
+        let calls = trackData.call;
 
+        for (let i of calls){
+            if (questionItem.id === i.id){
+                i.schedule = selected;
+            }
+        };
+
+        let res = await db.collection('trackers').doc(props.tracker.id).update(
+            {call: calls}
        )
     };
 
@@ -190,7 +200,7 @@ function EditQuestionItem(props) {
                         >
                             <div style = {{padding: 10}}>
                             <FormControl component="fieldset">
-                                <RadioGroup aria-label="schedule" name="schedule" value={scheduleValue} onChange={(e)=>setScheduleValue(e.target.value)}>
+                                <RadioGroup aria-label="schedule" name="schedule" value={scheduleValue} onChange={(e)=>changeSchedule(e)}>
                                     <FormControlLabel value="Bi-Weekly" control={<Radio />} label="Bi-Weekly" />
                                     <FormControlLabel value="Weekly" control={<Radio />} label="Weekly" />
                                     <FormControlLabel value="Bi-Monthly" control={<Radio />} label="Bi-Monthly" />

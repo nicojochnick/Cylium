@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreateTrackers/editQuestionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateTrackers/editQuestionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreateTrackers/trackerManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateTrackers/trackerManager.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -104,8 +102,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/CreateTrackers/editQuestionItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+            <state relative-caret-position="350">
+              <caret line="198" column="58" lean-forward="true" selection-start-line="198" selection-start-column="58" selection-end-line="198" selection-end-column="58" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -399,12 +397,12 @@
       <workItem from="1612119862132" duration="6217000" />
       <workItem from="1612209611860" duration="5273000" />
       <workItem from="1612284908347" duration="9982000" />
-      <workItem from="1612440853023" duration="2989000" />
+      <workItem from="1612440853023" duration="3854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="571270000" />
+    <option name="totallyTimeSpent" value="572135000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -869,8 +867,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CreateTrackers/editQuestionItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="179" column="45" selection-start-line="179" selection-start-column="45" selection-end-line="179" selection-end-column="45" />
+        <state relative-caret-position="350">
+          <caret line="198" column="58" lean-forward="true" selection-start-line="198" selection-start-column="58" selection-end-line="198" selection-end-column="58" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
