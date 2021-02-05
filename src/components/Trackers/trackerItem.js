@@ -19,8 +19,9 @@ import TyperList from "../Typers/typerList";
 import TrackerManager from "../CreateTrackers/trackerManager";
 
 function mergeArrayObjects (arr1,arr2){
+    console.log(arr1,arr2)
     return arr1.map((item,i) => {
-        if(item.callID === arr2[i].callID){
+        if(arr2[i] && item.callID === arr2[i].callID){
             //merging two objects
             return Object.assign({},item,arr2[i])
         }
@@ -79,9 +80,12 @@ function TrackerItem(props) {
 
             let merged_responses = [];
             for (let i = 0; i < responses.length; i++){
-                let res = mergeArrayObjects(responses[i].responseData, props.tracker.call);
-                let objres = {'merged_responses': res, 'user': responses[i].senderID}
-                merged_responses.push(objres)
+                if (props.tracker.call) {
+                    let res = mergeArrayObjects(responses[i].responseData, props.tracker.call);
+                    let objres = {'merged_responses': res, 'user': responses[i].senderID};
+                    merged_responses.push(objres)
+                }
+
             }
             console.log(merged_responses, responses, props.tracker.call);
             setResponses(merged_responses)
@@ -97,7 +101,9 @@ function TrackerItem(props) {
     let totalHeight = height + 100;
 
     useEffect(() => {
-        getResponses()
+        if (props.tracker.call && props.tracker.call.length > 0) {
+            getResponses()
+        }
         if (false){
             setHeight(600);
         }

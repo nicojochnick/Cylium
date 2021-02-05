@@ -19,7 +19,6 @@ function EditTeamMemberItem(props) {
     const [shadow, setShadow] = React.useState("0px 5px 10px #D7D7DA");
     const [margin, setMargin] = React.useState(10);
     const [padding, setPadding] = React.useState(5);
-
     useEffect( () => {
         if (props.flat){
             setShadow(null)
@@ -43,7 +42,6 @@ function EditTeamMemberItem(props) {
                         />
                         : null
                     }
-
                     {props.user.pending
                         ?
                         <div>

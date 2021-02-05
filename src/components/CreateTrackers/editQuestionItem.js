@@ -15,23 +15,41 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import {db} from '../../api/firebase'
 import { makeStyles } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
+import {BiDotsVerticalRounded} from "react-icons/bi"
 import EditTeamMemberItem from "./editTeamMemberItem";
+import { FiMoreVertical } from "react-icons/fi";
 import {convertFromRaw, EditorState, RichUtils} from "draft-js";
+import IconButton from "@material-ui/core/IconButton";
+import Popover from "@material-ui/core/Popover/Popover";
 
 
 
 function EditQuestionItem(props) {
     const classes = useStyles();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
     const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
+    const [anchorEl_edit, setAnchorEl_edit] = React.useState(null);
+
     const [scheduleValue, setScheduleValue] = React.useState(props.tracker.call[props.item].schedule);
     const [checked, setChecked] = React.useState([1]);
     const [friendList, setFriendList] = React.useState([]);
     const [receiverFriendList, setReceiverFriendList] = React.useState([]);
     const [questionItem, setQuestionItem] = React.useState(props.tracker.call[props.item]);
     const [label, setLabel] = React.useState(props.tracker.call[props.item].label);
-    const [isEditing, setIsEditing] = React.useState(false)
+    const [isEditing, setIsEditing] = React.useState(false);
+
+
+    const handleClick_Edit = (event) => {
+        setAnchorEl_edit(event.currentTarget);
+    };
+    const handleClose_Edit = () => {
+        setAnchorEl_edit(null);
+    };
+    const open = Boolean(anchorEl_edit);
+    const id = open ? 'simple-popover' : undefined;
+
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -107,6 +125,24 @@ function EditQuestionItem(props) {
         )
 
         setIsEditing(false)
+    };
+
+    const deleteQuestion = async() => {
+
+        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+        let trackData = trackRef.data();
+
+        let calls = trackData.call;
+
+        for (let i in calls){
+            if (questionItem.id === calls[i].id){
+                calls.splice(i,1)
+            }
+        };
+
+        let res = await db.collection('trackers').doc(props.tracker.id).update(
+            {call: calls}
+        )
 
 
     };
@@ -163,7 +199,7 @@ function EditQuestionItem(props) {
                             <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />
                         </Box>
                         <TextField
-                            placeholder="add a questions"
+                            placeholder="type a question"
                             multiline
                             onChange={(event)=>handleEditLabel(event)}
                             defaultValue= {label}
@@ -256,6 +292,27 @@ function EditQuestionItem(props) {
                     </Box>
 
                 </Grid>
+
+                <IconButton onClick={handleClick_Edit} style = {{marginRight: -20}} aria-label="open">
+                    <FiMoreVertical  size = {20}/>
+                </IconButton>
+                <Popover
+                    // id={id}
+                    open={open}
+                    anchorEl={anchorEl_edit}
+                    onClose={handleClose_Edit}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                    }}>
+                    <Button onClick={()=>deleteQuestion()} variant="contained" color="primary">
+                        Delete
+                    </Button>
+                </Popover>
 
 
             </Grid>

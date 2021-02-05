@@ -12,7 +12,7 @@ function TrackerResponseItem(props) {
     const [eState, setEState] = React.useState(null);
     useEffect(() => {
         let editorState = null;
-        if (props.response.type !== 'numeric') {
+        if (props.response && props.response.type !== 'numeric') {
             editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.response.response)));
             editorState = RichUtils.toggleInlineStyle(editorState, 'rgba(255, 0, 0, 1.0)',
             );

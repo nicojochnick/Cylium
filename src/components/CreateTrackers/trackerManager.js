@@ -15,6 +15,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import nextId from "react-id-generator";
+
 import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
@@ -52,10 +54,11 @@ function TrackerManager(props) {
 
 
     const addQuestion = async() => {
+        let id =  nextId();
         let newCall = {
-            callID: 'noID',
-            label: 'nolabel',
-            order: 3,
+            callID: id,
+            label: 'type your question here...',
+            order: id,
             receivers: [],
             type: 'text',
             timeStamp: new Date(),
