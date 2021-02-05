@@ -40,62 +40,37 @@ function EditQuestionItem(props) {
     const [label, setLabel] = React.useState(props.tracker.call[props.item].label);
     const [isEditing, setIsEditing] = React.useState(false);
 
-
-    const handleClick_Edit = (event) => {
-        setAnchorEl_edit(event.currentTarget);
-    };
-    const handleClose_Edit = () => {
-        setAnchorEl_edit(null);
-    };
+    const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
+    const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const open = Boolean(anchorEl_edit);
-    const id = open ? 'simple-popover' : undefined;
+    const handleClick = (event) => {setAnchorEl(event.currentTarget);};
+    const handleClose = () => {setAnchorEl(null);};
+    const handleClick_team = (event) => {setAnchorEl_team(event.currentTarget);};
+    const handleClose_team = () => {setAnchorEl_team(null);};
+    const handleClick_schedule = (event) => {setAnchorEl_schedule(event.currentTarget);};
+    const handleClose_schedule = (event) => {setAnchorEl_schedule(null);};
 
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const handleClick_team = (event) => {
-        setAnchorEl_team(event.currentTarget);
-    };
-
-    const handleClose_team = () => {
-        setAnchorEl_team(null);
-    };
-
-    const handleClick_schedule = (event) => {
-        setAnchorEl_schedule(event.currentTarget);
-    };
-
-
-    const handleClose_schedule = (event) => {
-        setAnchorEl_schedule(null);
-    };
-
-    const handleToggle = (value) => () => {
+    const handleToggle = (value, user,) => () => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
         if (currentIndex === -1) {
             newChecked.push(value);
+            console.log('add')
+            addReceivers(user)
         } else {
             newChecked.splice(currentIndex, 1);
+            console.log('delete')
+            removeReceivers(user)
         }
         setChecked(newChecked);
     };
 
     const changeSchedule = async (event) => {
         setScheduleValue(event.target.value);
-
         let selected = event.target.value;
         let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
         let trackData = trackRef.data();
-
         let calls = trackData.call;
-
         for (let i of calls){
             if (questionItem.id === i.id){
                 i.schedule = selected;
@@ -111,9 +86,7 @@ function EditQuestionItem(props) {
         let value = label;
         let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
         let trackData = trackRef.data();
-
         let calls = trackData.call;
-
         for (let i of calls){
             if (questionItem.id === i.id){
                 i.label = value;
@@ -122,7 +95,7 @@ function EditQuestionItem(props) {
 
         let res = await db.collection('trackers').doc(props.tracker.id).update(
             {call: calls}
-        )
+        );
 
         setIsEditing(false)
     };
@@ -143,25 +116,54 @@ function EditQuestionItem(props) {
         let res = await db.collection('trackers').doc(props.tracker.id).update(
             {call: calls}
         )
-
-
     };
 
     const handleEditLabel = (event) => {
         if (!isEditing){setIsEditing(true)}
         setLabel(event.target.value)
-
-
     };
 
 
-    const addReceivers = () => {
+    const addReceivers = async(user) => {
 
+        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+        let trackData = trackRef.data();
+        let calls = trackData.call;
+        for (let question of calls){
+            console.log(question)
+            if (questionItem.id === question.id){
+                if (!question.receivers.includes(user.email)){
+                    question.receivers.push(user.email)
+                }
 
+            }
+        };
+
+        let res = await db.collection('trackers').doc(props.tracker.id).update(
+            {call: calls}
+        );
     };
 
-    const removeReceivers = () => {
+    const removeReceivers = async (user) => {
+        let value = label;
+        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+        let trackData = trackRef.data();
+        let calls = trackData.call;
+        for (let question of calls){
+            console.log(question)
+            if (questionItem.id === question.id){
+                if (question.receivers.includes(user.email)){
+                   let elem =  question.receivers.indexOf(user.email);
+                    question.receivers.splice(elem, 1)
 
+                }
+
+            }
+        };
+
+        let res = await db.collection('trackers').doc(props.tracker.id).update(
+            {call: calls}
+        );
 
     };
 
