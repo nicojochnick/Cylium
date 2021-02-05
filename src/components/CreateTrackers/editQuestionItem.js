@@ -167,16 +167,31 @@ function EditQuestionItem(props) {
 
     };
 
-    const createReceiverFriendList = (friendList) => {
+    const createReceiverFriendList = async(friendList) => {
         let receivers = props.tracker.call[props.item].receivers;
         if (!receivers){return}
+
+
+        //create list
         let receiverFriendList = [];
+        let rec
 
         for (let i of friendList){
             if (receivers.includes(i.email)){
                 receiverFriendList.push(i)
             }
         }
+
+        //addcheckmarks to friendList
+        for (let friend of friendList){
+            if (receivers.includes(friend.email)){
+                friend.checked = true;
+            } else{
+                friend.checked = false;
+            }
+        }
+
+        setFriendList(friendList);
         setReceiverFriendList(receiverFriendList)
     };
 
@@ -188,6 +203,8 @@ function EditQuestionItem(props) {
                 createReceiverFriendList(res)
             };
         };
+
+
     }, []);
 
 
@@ -249,7 +266,7 @@ function EditQuestionItem(props) {
                                         value = {value}
                                         handleToggle = {handleToggle}
                                         labelID = {labelId}
-                                        checked = {checked} />
+                                    />
                                 );
                             })}
                         </Menu>

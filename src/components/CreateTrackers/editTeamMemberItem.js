@@ -37,7 +37,7 @@ function EditTeamMemberItem(props) {
                     ? < Checkbox
                         edge="end"
                         onChange={props.handleToggle(props.value, props.user)}
-                        checked={props.checked.indexOf(props.value) !== -1}
+                        checked={props.user.checked}
                         inputProps={false}
                         />
                         : null
