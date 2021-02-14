@@ -52,7 +52,6 @@ function TrackerManager(props) {
     // const admin = require('firebase-admin');
 
 
-
     const addQuestion = async() => {
         let id =  nextId();
         let newCall = {
@@ -85,7 +84,6 @@ function TrackerManager(props) {
         setChecked(newChecked);
     };
 
-
     const getTracker = async(tracker_id) => {
         await db.collection("trackers").doc(tracker_id)
             .onSnapshot(function(doc) {
@@ -102,7 +100,7 @@ function TrackerManager(props) {
         getTracker(tracker.id);
     }, []);
 
-    console.log(tracker)
+    // console.log(tracker)
 
     return (
         <div className={classes.root}>

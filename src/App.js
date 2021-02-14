@@ -10,7 +10,6 @@ import './styles.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 
-
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -19,11 +18,10 @@ const theme = createMuiTheme({
     }
 });
 
-
 export default class App extends Component {
     constructor() {
         super();
-      this.state = {
+        this.state = {
         authenticated: false,
         loading: true
       };
