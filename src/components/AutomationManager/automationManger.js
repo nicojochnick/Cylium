@@ -40,7 +40,7 @@ import firebase from "firebase/app";
 
 
 
-function TrackerManager(props) {
+function AutomationManger(props) {
     const classes = useStyles();
     const [tracker, setTracker] = React.useState(props.tracker);
     const [title, setTitle] = React.useState(props.tracker.trackerName);
@@ -318,7 +318,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default TrackerManager;
+export default AutomationManger;
 
 
 

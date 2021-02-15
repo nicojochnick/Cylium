@@ -10,8 +10,8 @@ import Box from "@material-ui/core/Box";
 
 
 import {makeStyles} from "@material-ui/core/styles";
-import TrackerItem from "../components/Trackers/trackerItem";
-import TrackersList from "../components/Trackers/trackersList";
+import AutomationItem from "../components/Automation/automationItem";
+import AutomationList from "../components/Automation/automationList";
 function Base(props) {
 
     const classes = useStyles();
@@ -32,7 +32,7 @@ function Base(props) {
                           alignItems = 'center' >
                     </Grid>
                     <Grid xs = {12}  md = {stretch} lg = {stretch} container>
-                        <TrackersList setStretch = {setStretch} isMe = {true} isTeamView = {switchState} team = {props.team} user = {props.user} />
+                        <AutomationList setStretch = {setStretch} isMe = {true}  user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>

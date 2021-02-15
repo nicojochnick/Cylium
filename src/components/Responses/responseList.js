@@ -4,13 +4,13 @@ import {makeStyles} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import mscott from "../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
-import TrackerResponseItem from "./trackerResponseItem";
-import TrackerItem from "../Trackers/trackerItem";
+import ResponseItem from "./responseItem";
+import AutomationItem from "../Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
 
 
-function TrackerResponse(props) {
+function ResponseList(props) {
     const classes = useStyles();
 
     const [user, setUser] = React.useState(null);
@@ -64,7 +64,7 @@ function TrackerResponse(props) {
                             }}>{user.name} </p>
                             {(props.response)
                                 ? <div> {Object.keys(props.response.merged_responses).map((item) => <
-                                    TrackerResponseItem response={props.response.merged_responses[item]}/>)
+                                    ResponseItem response={props.response.merged_responses[item]}/>)
                                 }
                                 </div>
                                 : null
@@ -107,4 +107,4 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default TrackerResponse;
+export default ResponseList;

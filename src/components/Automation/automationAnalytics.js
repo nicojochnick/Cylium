@@ -3,7 +3,7 @@ import {ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Toolt
 import Grid from "@material-ui/core/Grid";
 
 
-function TrackerLytics(props) {
+function AutomationAnalytics(props) {
     return (
         <Grid container justify='center' alignItems = 'center' direction = 'column' style = {{ height: 200}} >
             <div style = {{width: '90%', height: '90%'}}>
@@ -70,4 +70,4 @@ const data = [
 ]
 
 
-export default TrackerLytics;
+export default AutomationAnalytics;

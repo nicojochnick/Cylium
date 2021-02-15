@@ -6,17 +6,17 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import TrackerTitleTag from "./trackerTitleTag";
+import AutomationHeader from "./automationHeader";
 import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-import TrackerLytics from "./trackerLytics";
-import TrackerResponse from "../Responses/trackerResponse";
-import TrackerResponseItem from "../Responses/trackerResponseItem";
+import AutomationAnalytics from "./automationAnalytics";
+import ResponseList from "../Responses/responseList";
+import ResponseItem from "../Responses/responseItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
-import TrackerManager from "../CreateTrackers/trackerManager";
+import AutomationManger from "../AutomationManager/automationManger";
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2)
@@ -29,7 +29,7 @@ function mergeArrayObjects (arr1,arr2){
 };
 
 
-function TrackerItem(props) {
+function AutomationItem(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
     let trackerTitle = 'Engagement';
@@ -117,7 +117,7 @@ function TrackerItem(props) {
              boxShadow = {0}
              style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
              borderRadius={20}>
-            <TrackerTitleTag
+            <AutomationHeader
                 ownerEmail = {props.tracker.ownerEmail}
                 user = {props.user}
                 switchData = {switchData}
@@ -135,7 +135,7 @@ function TrackerItem(props) {
                 <Grid container spacing={0} xs={12}>
                 <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
                 <Box style = {{height: height, backgroundColor:'white'}} className={classes.inner_box}>
-                <TrackerManager
+                <AutomationManger
                     user = {props.user}
                     tracker={props.tracker}
                 />
@@ -153,7 +153,7 @@ function TrackerItem(props) {
                                     <Grid >
                                         <Divider/>
                                         {Object.keys(responses).map((item) =>
-                                            <TrackerResponse
+                                            <ResponseList
                                                 user = {props.user}
                                                 tracker={props.tracker}
                                                 response={responses[item]}/>)}
@@ -247,7 +247,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default TrackerItem;
+export default AutomationItem;
 
 
 {/*<Grid style = {{height: 350,}} item xs={12} md={7} lg={7}>*/}

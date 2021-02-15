@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
 import {makeStyles} from "@material-ui/core/styles";
-import TrackerItem from './trackerItem'
+import AutomationItem from './automationItem'
 import {db} from "../../api/firebase";
 import Slider from '@material-ui/core/Slider';
 
@@ -18,7 +18,7 @@ function isEmpty(obj) {
     return true;
 };
 
-function TrackersList(props) {
+function AutomationList(props) {
     const classes = useStyles();
     const [trackers, setTrackers] = React.useState([]);
     const getTrackers = async() => {
@@ -48,7 +48,7 @@ function TrackersList(props) {
         <div className={classes.root}>
                 {(trackers.length >0)
                     ?<Grid container direction = 'row' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(trackers).map((item) => <TrackerItem setStretch = {props.setStretch} isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
+                        {Object.keys(trackers).map((item) => <AutomationItem setStretch = {props.setStretch} isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
                     </Grid>
                     : null
                 }
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default TrackersList;
+export default AutomationList;
 
 
 {/*<Grid item xs={12}>*/}

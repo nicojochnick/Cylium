@@ -20,7 +20,7 @@ import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
-import TrackersList from "../../components/Trackers/trackersList";
+import AutomationList from "../../components/Automation/automationList";
 import TeamMemberStats from "../../components/Old/Analytics/teamMemberStats";
 import Response from "../../components/Old/response";
 
@@ -38,7 +38,7 @@ function UserHome(props) {
                                     QUESTIONS
                                 </h2>
                         </Box>
-                            <TrackersList survey = {props.survey} user = {props.user} />
+                            <AutomationList survey = {props.survey} user = {props.user} />
                     </Grid>
                     <Grid item xs={12} sm ={12} md={8} lg={8}>
 
