@@ -48,12 +48,21 @@ function AutomationHeader(props) {
     }, []);
 
     return (
-        <Box borderBottom = {1} borderColor= {"white"} display="flex" justifyContent = 'space-between' alignItems = 'center' flexDirection="row" borderRadius = {0} borderBottom = {0} style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
-                {props.user
+        <Box
+            borderBottom = {1}
+            borderColor= {"white"}
+            display="flex"
+            justifyContent = 'space-between'
+            alignItems = 'center'
+            flexDirection="row"
+            borderRadius = {0}
+            borderBottom = {0}
+            style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
+            {props.user
                     ?
                    <UserId user={props.user}/>
                     : null
-                }
+            }
             <Grid justify = "flex-end" container direction = "row">
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchCreating()}>

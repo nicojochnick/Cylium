@@ -1,25 +1,14 @@
 import React from 'react';
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-
-
-import {makeStyles} from "@material-ui/core/styles";
-import AutomationItem from "../components/Automation/automationItem";
 import AutomationList from "../components/Automation/automationList";
-function Base(props) {
+import Container from "@material-ui/core/Container";
+import {makeStyles} from "@material-ui/core/styles";
+
+function AutomationView(props) {
 
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState(false);
-    const [stretch, setStretch] = React.useState(6);
-    const handleSwitch = (event) => {
-        setSwitch(!switchState);
-    };
+    const [stretch, setStretch] = React.useState(12);
 
 
     return (
@@ -40,6 +29,7 @@ function Base(props) {
         </div>
     );
 }
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,24 +59,4 @@ const useStyles = makeStyles((theme) => ({
 
 
 }));
-
-{/*<Switch*/}
-{/*    checked={switchState}*/}
-{/*    onChange={handleSwitch}*/}
-{/*    color="primary"*/}
-{/*    name="checkedB"*/}
-
-{/*    inputProps={{'aria-label': 'primary checkbox'}}*/}
-{/*/>*/}
-{/*{(!switchState)*/}
-{/*    ?*/}
-{/*    <p style={{marginTop: 12, color: '#353C49'}}> Manager View </p>*/}
-{/*    :*/}
-{/*    <p style={{marginTop:12, color: '#3162F0'}}> Team View </p>*/}
-{/*}*/}
-
-
-
-
-
-export default Base;
+export default AutomationView;

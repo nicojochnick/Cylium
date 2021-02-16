@@ -29,13 +29,14 @@ import logo from "../assets/images/logo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiHome, BiUser} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiHome, BiUser, BiSend} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Base from '../views/base'
+import BaseView from '../views/baseView'
+import AutomationView from '../views/automationView'
 import {db} from "../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
 import Notification from "../components/Utilities/Notifications/notification";
@@ -49,6 +50,10 @@ export default function Dashboard() {
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
+
+    const [trackers, setTrackers] = React.useState([]);
+
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
@@ -93,9 +98,28 @@ export default function Dashboard() {
                     setURL(user.url);
                     setUser(user);
                     getTeam(user);
+                    getTrackers(user);
                 }
             });
 
+    };
+
+    const getTrackers = async(user) => {
+        if (user) {
+            let teamTrackerIDs = user.trackers;
+            let trackRef = db.collection("trackers");
+            let teamTrackers = [];
+            await trackRef.where('id', 'in', teamTrackerIDs).get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        teamTrackers.push(doc.data())
+                    });
+                    setTrackers(teamTrackers);
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+        }
     };
 
     const getTeam = async(user) => {
@@ -116,6 +140,8 @@ export default function Dashboard() {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
         getUser(email);
+
+
     }, []);
 
 
@@ -251,12 +277,21 @@ export default function Dashboard() {
                             <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
                         </ListItem>
                     </Link>
+
+                    <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <BiSend size = {25} style = {{color:'#3C3F48'}}  />
+                            </ListItemIcon>
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Automations" />
+                        </ListItem>
+                    </Link>
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
                                     <BiUser size = {25} style = {{color:'#3C3F48'}}  />
                                 </ListItemIcon>
-                                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Profile" />
+                                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Settings" />
                             </ListItem>
                         </Link>
                     <div>
@@ -269,8 +304,13 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <Base team = {team} user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <BaseView team = {team} user = {user} url = {url} email = {email} isSubscribed = {false}/>
                             </Route>
+
+                            <Route exact path="/automations">
+                                <AutomationView team = {team} user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                            </Route>
+
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>
                             </Route>
