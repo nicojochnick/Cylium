@@ -26,6 +26,7 @@ import EditFeedbox from "../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import logo from "../assets/images/logo.png"
+import recurrencelogo from "../assets/images/recurrencelogo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
@@ -262,7 +263,7 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <img style = {{height: 44, marginLeft: 10}} src ={logo}/>
+                    <img style = {{height: 35, marginLeft: 10}} src ={recurrencelogo}/>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />
                     </IconButton>
