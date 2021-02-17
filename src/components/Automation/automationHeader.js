@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import {fade, ThemeProvider,makeStyles,} from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
 import {db} from "../../api/firebase";
+import AutomationId from "./automationID"
 import UserId from "../User/userID";
 
 function AutomationHeader(props) {
@@ -58,17 +59,25 @@ function AutomationHeader(props) {
             borderRadius = {0}
             borderBottom = {0}
             style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
-            {props.user
+            {props.name
                     ?
-                   <UserId user={props.user}/>
+                   <AutomationId title = {props.name} />
                     : null
             }
             <Grid justify = "flex-end" container direction = "row">
+
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchCreating()}>
-                        <BiCog style = {{color: "white"}} size = {20} />
+                        <BiPencil style = {{color: "white"}} size = {20} />
                     </IconButton>
                 </Box>
+
+                <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
+                    <IconButton color = "white" onClick={()=>props.switchData()}>
+                        <BiMessageAltDetail style = {{color: "white"}} size = {20} />
+                    </IconButton>
+                </Box>
+
 
             </Grid>
         </Box>

@@ -29,7 +29,7 @@ import logo from "../assets/images/logo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiHome, BiUser, BiSend} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiCog, BiHome, BiUser, BiSend, BiStore} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -286,10 +286,19 @@ export default function Dashboard() {
                             <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Automations" />
                         </ListItem>
                     </Link>
+
+                    <Link to="/automationstore"  style={{ color:"white", textDecoration: 'none' }}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <BiStore size = {25} style = {{color:'#3C3F48'}}  />
+                            </ListItemIcon>
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Store" />
+                        </ListItem>
+                    </Link>
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <BiUser size = {25} style = {{color:'#3C3F48'}}  />
+                                    <BiCog size = {25} style = {{color:'#3C3F48'}}  />
                                 </ListItemIcon>
                                 <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Settings" />
                             </ListItem>

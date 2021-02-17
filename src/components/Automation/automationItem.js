@@ -35,9 +35,9 @@ function AutomationItem(props) {
     let trackerTitle = 'Engagement';
     const [responses, setResponses] = React.useState([]);
     const [isPosting, setPosting] = React.useState(false);
-    const [isCreating, setCreating] = React.useState(false);
+    const [isCreating, setCreating] = React.useState(true);
     const [isDatafying, setData] = React.useState(false);
-    const [title, setTitle] = React.useState(props.tracker.trackerName);
+    const [title, setTitle] = React.useState(props.tracker.name);
     const [height, setHeight] = React.useState(600);
     const [stretch, setStretch] = React.useState(6)
 
@@ -45,20 +45,17 @@ function AutomationItem(props) {
 
     const switchPosting = async () =>{
         setPosting(!isPosting)
-        props.setStretch(6);
     };
 
     const switchCreating = async () =>{
-        isCreating ? props.setStretch(6) : props.setStretch(12);
-        setCreating(!isCreating);
+        setCreating(true);
         setPosting(false);
 
 
     };
 
     const switchData = async () =>{
-        setData(!isDatafying)
-        props.setStretch(6);
+        setCreating(false)
 
     };
 
@@ -126,7 +123,7 @@ function AutomationItem(props) {
                 isCreating = {isCreating}
                 isPosting = {isPosting}
                 backgroundColor = {backgroundColor}
-                trackerTitle = {title}
+                name= {title}
                 handleTitleChange = {handleTitleChange}
             />
 
@@ -143,32 +140,15 @@ function AutomationItem(props) {
                 </Grid>
                 </Grid>
                 :
-                <div>
-                    {!isPosting
-                        ? <Grid className = {classes.box} container spacing={0} xs={12}>
-                            <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
-                                {/*<TrackerLytics responses = {responses} />333*/}
-                                {responses
-                                    ?
-                                    <Grid >
-                                        <Divider/>
-                                        {Object.keys(responses).map((item) =>
-                                            <ResponseList
-                                                user = {props.user}
-                                                tracker={props.tracker}
-                                                response={responses[item]}/>)}
-                                    </Grid>
-                                    : null
-                                }
-                            </Grid>
 
-                        </Grid>
-                        :
-                        <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
-                        <TyperList user={props.user} tracker={props.tracker}/>
-                        </Grid>
-                    }
-                </div>
+                <Grid >
+                    <Divider/>
+                    {Object.keys(responses).map((item) =>
+                        <ResponseList
+                            user = {props.user}
+                            tracker={props.tracker}
+                            response={responses[item]}/>)}
+                </Grid>
 
             }
         </Box>
@@ -266,3 +246,32 @@ export default AutomationItem;
 
 {/*    </Box>*/}
 {/*</Grid>*/}
+
+
+
+// <div>
+//     {!isPosting
+//         ? <Grid className = {classes.box} container spacing={0} xs={12}>
+//             <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
+//                 {/*<TrackerLytics responses = {responses} />333*/}
+//                 {responses
+//                     ?
+//                     <Grid >
+//                         <Divider/>
+//                         {Object.keys(responses).map((item) =>
+//                             <ResponseList
+//                                 user = {props.user}
+//                                 tracker={props.tracker}
+//                                 response={responses[item]}/>)}
+//                     </Grid>
+//                     : null
+//                 }
+//             </Grid>
+//
+//         </Grid>
+//         :
+//         <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
+//         <TyperList user={props.user} tracker={props.tracker}/>
+//         </Grid>
+//     }
+// </div>
