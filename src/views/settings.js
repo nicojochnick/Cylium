@@ -3,14 +3,23 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import AutomationList from "../../components/Automation/automationList";
+import AutomationList from "../components/Automation/automationList";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
-import UserProfile from "../../components/User/userProfile";
-import TeamBox from "../../components/User/Team/teamBox";
+import UserProfile from "../components/User/userProfile";
+import TeamBox from "../components/User/Team/teamBox";
+import {TwitterPicker} from "react-color";
 
 function Settings(props) {
     const classes = useStyles();
+
+
+    const [backgroundColor, setBackgroundColor] = React.useState('white');
+    const handleChangeComplete = (color) => {setBackgroundColor(color.hex )};
+
+
+
+
     return (
         <div className={classes.root} >
             <Container fixed maxWidth="lg" className={classes.container}>
@@ -22,6 +31,39 @@ function Settings(props) {
                             </h2>
                             <Divider style ={{marginTop:0}}/>
                             {/*<UserProfile email = {props.email} url = {props.url} user = {props.user} />*/}
+                            <Box style = {{margin: 20, }}>
+                                <Grid  style = {{marginTop: 20}}  spacing={2} container direction = 'row'>
+                                    <Grid  spacing={3} item xs={6} md = {6} lg = {6} >
+                                        <Box style = {{marginTop: 0}} >
+                                            {props.user
+                                                ?<UserProfile user={props.user}/>
+                                                : null
+                                            }
+                                            <Grid container space = {2} direction = 'row'>
+                                            </Grid>
+                                        </Box>
+                                    </Grid>
+                                    <Grid
+                                        alignItems='center'
+                                        justify = 'center'
+                                        item xs={6}
+                                        md = {6}
+                                        lg = {6}>
+                                        <Box
+                                            display = 'flex'
+                                            alignItems = 'start'
+                                            justifyContent="center"
+                                            style = {{marginTop: -5}}>
+                                            <TwitterPicker
+                                                color={ backgroundColor}
+                                                onChangeComplete={ handleChangeComplete }
+                                            />
+                                        </Box>
+                                    </Grid>
+                                    <Grid spacing={3} item xs={6} >
+                                    </Grid>
+                                </Grid>
+                            </Box>
                         </Box>
                     </Grid>
                     <Grid item xs={12} sm ={12} md={6} lg={6}>

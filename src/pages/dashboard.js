@@ -21,7 +21,7 @@ import {FaEdit} from "react-icons/fa"
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import Settings from "../views/Old/settings"
+import Settings from "../views/settings"
 import EditFeedbox from "../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
@@ -30,7 +30,7 @@ import recurrencelogo from "../assets/images/recurrencelogo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiCog, BiHome, BiUser, BiSend, BiStore} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiCog, BiHome, BiUser, BiSend, BiStore, BiRotateRight} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -282,9 +282,9 @@ export default function Dashboard() {
                     <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiSend size = {25} style = {{color:'#3C3F48'}}  />
+                                <BiRotateRight size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Automations" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Currents" />
                         </ListItem>
                     </Link>
 
