@@ -130,7 +130,7 @@ function AutomationItem(props) {
                 ?
                 <Grid container xs={12}>
                 <Grid className = {classes.inner_box} item xs={12} md={12} lg={12}>
-                <Box style = {{height: height,}}>
+                <Box style = {{height: height}}>
                 <AutomationManger
                     user = {props.user}
                     tracker={props.tracker}
@@ -140,14 +140,18 @@ function AutomationItem(props) {
                 </Grid>
                 :
 
-                <Grid >
-                    <Divider/>
+
+
+                <Grid className = {classes.inner_box} item xs={12} md={12} lg={12}>
+                    <Box style = {{height: height}}>
                     {Object.keys(responses).map((item) =>
                         <ResponseList
                             user = {props.user}
                             tracker={props.tracker}
                             response={responses[item]}/>)}
+                    </Box>
                 </Grid>
+
 
             }
         </Box>

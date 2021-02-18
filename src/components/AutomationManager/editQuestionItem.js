@@ -203,7 +203,7 @@ function EditQuestionItem(props) {
 
 
     return (
-        <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
+        <Box flexDirection="row" borderRadius ={10} style ={{padding: 8, paddingLeft: 12, margin: 10, boxShadow: "0px 3px 10px #D7D7DA", }} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
                 <Grid direction={'row'} item xs ={11} md={11} lg = {11}>
                     <Box alignItems="center" display="flex" flexDirection="row" >

@@ -284,7 +284,7 @@ export default function Dashboard() {
                             <ListItemIcon>
                                 <BiGitBranch size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Branches" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Tasks" />
                         </ListItem>
                     </Link>
 

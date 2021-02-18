@@ -33,8 +33,8 @@ function SearchUsers(props) {
     return (
         <Grid item xs={12} md={12} lg={12}>
             <Grid container direction={'column'}>
-            <Box display="flex"  direction="column" flexDirection="column" borderRadius={10}
-                 style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",}}>
+            <Box display="flex"  direction="column" flexDirection="column" borderRadius={0}
+                 style={{padding: 5,}}>
                 <Box   display="flex" flexDirection="row" direction="row">
                 <Box
                     display="flex" flexDirection="row" direction="row"

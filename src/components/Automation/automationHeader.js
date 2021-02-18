@@ -58,7 +58,7 @@ function AutomationHeader(props) {
             flexDirection="row"
             borderRadius = {0}
             borderBottom = {0}
-            style = {{backgroundColor: props.backgroundColor, padding: 10, height: 60, width: '100%'}}>
+            style = {{backgroundColor: props.backgroundColor, padding: 15, height: 60, width: '100%'}}>
             {props.name
                     ?
                    <AutomationId title = {props.name} />
@@ -68,13 +68,13 @@ function AutomationHeader(props) {
 
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchCreating()}>
-                        <BiPencil style = {{color: "white"}} size = {20} />
+                        <BiPencil style = {{color: "white"}} size = {17} />
                     </IconButton>
                 </Box>
 
                 <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
                     <IconButton color = "white" onClick={()=>props.switchData()}>
-                        <BiMessageAltDetail style = {{color: "white"}} size = {20} />
+                        <BiMessageAltDetail style = {{color: "white"}} size = {17} />
                     </IconButton>
                 </Box>
 

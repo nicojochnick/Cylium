@@ -110,19 +110,21 @@ function AutomationManger(props) {
                 {/*    <Divider/>*/}
                 {/*</Grid>*/}
 
-                <Grid xs={4} item>
-                    <Box style = {{padding: 5}}>
-                        <p>
-                            Users and Permissions
+                <Grid xs={4} item direction={'column'}>
+                    <Box>
+                        <p style = {{margin: 10, fontWeight: 500,}}>
+                            Users
                         </p>
-                        <Grid spacing={0} container direction = 'column'>
+
+                        <Divider/>
                            <SearchUsers user = {props.user} />
-                            <Grid  item xs={12} md = {6} lg = {6} >
+                            <Divider/>
                                 <List dense className={classes.root}>
                                     {props.user.friendList.map((value) => {
                                         return (
                                            <EditTeamMemberItem
                                                user = {value}
+                                               flat = {true}
                                                withSelect = {false}
                                                value = {value}
                                                handleToggle = {handleToggle}
@@ -130,25 +132,24 @@ function AutomationManger(props) {
                                         );
                                     })}
                                 </List>
-                            </Grid>
-                        </Grid>
-
                     </Box>
-
-
-                    <Divider/>
                 </Grid>
-                <Grid xs={4} item>
-                    <Box style = {{padding: 5, margin: 0, marginTop: -10}}>
-                        <Grid  container direction = 'row'>
-                            <Grid  item xs={12} md = {12} lg = {12} >
-                                <p>
-                                    Questions
-                                </p>
-                        {(tracker.call)
-                            ?
-                            <div>
-                                {Object.keys(tracker.call).map((item) =>
+                <Divider orientation="vertical" flexItem />
+
+
+                <Grid xs={5}  item>
+                    <Box>
+                        <p style = {{margin: 10, fontWeight: 500,}}>
+                            Data
+                        </p>
+                        <Divider/>
+
+                        <Grid style = {{margin: 10}} item xs={12} md = {12} lg = {12} >
+
+                                {(tracker.call)
+                                    ?
+                                    <div>
+                                        {Object.keys(tracker.call).map((item) =>
                                     <EditQuestionItem
                                         item = {item}
                                         user = {props.user}
@@ -157,25 +158,27 @@ function AutomationManger(props) {
                                 )}
                             </div>
                             : null
-                        }
-                        <Button
-                            style = {{margin: 10}}
-                            variant="contained"
-                            color = 'primary'
-                            className={classes.button}
-                            startIcon={<BiPlus />}
-                            onClick={()=>addQuestion()}
-                        >
-                            Add Question
-                        </Button>
+                                }
+                                <Button
+                                    style = {{margin: 10}}
+                                    variant="contained"
+                                    color = 'primary'
+                                    className={classes.button}
+                                    startIcon={<BiPlus />}
+                                    onClick={()=>addQuestion()}
+                                >
+                                    Add Question
+                                </Button>
                             </Grid>
-                        </Grid>
+
                     </Box>
                 </Grid>
-
-                <Grid xs={4} item>
-                    <p> Time </p>
-
+                <Divider orientation="vertical" flexItem />
+                <Grid xs={2} item>
+                    <p style = {{margin: 10, fontWeight: 500,}}>
+                        Schedule
+                    </p>
+                    <Divider/>
 
                 </Grid>
             </Grid>
@@ -188,6 +191,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
+        minHeight: 200,
         // maxWidth: 540,
         // backgroundColor: 'white',
     },

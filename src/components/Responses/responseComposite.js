@@ -38,7 +38,9 @@ function ResponseComposite(props) {
         let resRef = db.collection("responses");
         let responses = [];
         console.log('TRIGGERED');
-        await resRef.where("trackerID", "==", trackers[0].id).get()
+
+        if (trackers.length > 0) {
+            await resRef.where("trackerID", "==", trackers[0].id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
                         responses.push(doc.data())
@@ -49,7 +51,7 @@ function ResponseComposite(props) {
                 });
 
             let merged_responses = [];
-            for (let i = 0; i < responses.length; i++){
+            for (let i = 0; i < responses.length; i++) {
                 if (trackers[0].call) {
                     let res = mergeArrayObjects(responses[i].responseData, trackers[0].call);
                     let objres = {'merged_responses': res, 'user': responses[i].senderID};
@@ -59,6 +61,8 @@ function ResponseComposite(props) {
             }
             console.log(merged_responses, responses, trackers[0].call);
             setResponses(merged_responses)
+
+        }
     };
 
     const getTrackers = async() => {
@@ -84,11 +88,8 @@ function ResponseComposite(props) {
     let totalHeight = height + 100;
 
     useEffect(() => {
-
         getTrackers();
-
-
-    }, []);
+    }, [trackers]);
 
     return (
         <div className={classes.root}>
