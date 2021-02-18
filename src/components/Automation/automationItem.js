@@ -38,7 +38,7 @@ function AutomationItem(props) {
     const [isCreating, setCreating] = React.useState(true);
     const [isDatafying, setData] = React.useState(false);
     const [title, setTitle] = React.useState(props.tracker.name);
-    const [height, setHeight] = React.useState(600);
+    const [height, setHeight] = React.useState(300);
     const [stretch, setStretch] = React.useState(6)
 
 
@@ -126,12 +126,11 @@ function AutomationItem(props) {
                 name= {title}
                 handleTitleChange = {handleTitleChange}
             />
-
             {isCreating
                 ?
-                <Grid container spacing={0} xs={12}>
-                <Grid className = {classes.inner_box} style = {{ maxHeight: height,backgroundColor:'##F7F7F7' }} item xs={12} md={12} lg={12}>
-                <Box style = {{height: height, backgroundColor:'white'}} className={classes.inner_box}>
+                <Grid container xs={12}>
+                <Grid className = {classes.inner_box} item xs={12} md={12} lg={12}>
+                <Box style = {{height: height,}}>
                 <AutomationManger
                     user = {props.user}
                     tracker={props.tracker}
@@ -163,10 +162,13 @@ function AutomationItem(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        padding: 0,
+        margin: 0,
     },
     box:{
         flexGrow: 1,
         padding: 0,
+        margin: 0,
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
@@ -222,7 +224,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     fixedHeight: {
-        height: 350,
     },
 }));
 

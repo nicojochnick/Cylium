@@ -30,7 +30,7 @@ import recurrencelogo from "../assets/images/recurrencelogo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiCog, BiHome, BiUser, BiSend, BiStore, BiRotateRight} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiCog, BiHome, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -263,7 +263,7 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <img style = {{height: 35, marginLeft: 10}} src ={recurrencelogo}/>
+                    <img style = {{height: 35, marginLeft: 10}}/>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />
                     </IconButton>
@@ -282,9 +282,9 @@ export default function Dashboard() {
                     <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiRotateRight size = {25} style = {{color:'#3C3F48'}}  />
+                                <BiGitBranch size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Currents" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Branches" />
                         </ListItem>
                     </Link>
 

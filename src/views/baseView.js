@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import ResponseComposite from "../components/Responses/responseComposite"
 
 
 import {makeStyles} from "@material-ui/core/styles";
@@ -32,7 +33,7 @@ function BaseView(props) {
                           alignItems = 'center' >
                     </Grid>
                     <Grid xs = {12}  md = {stretch} lg = {stretch} container>
-                        <AutomationList setStretch = {setStretch} isMe = {true}  user = {props.user} />
+                        <ResponseComposite setStretch = {setStretch} isMe = {true}  user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>

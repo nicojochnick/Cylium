@@ -23,15 +23,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Popover from "@material-ui/core/Popover/Popover";
 
 
-
 function EditQuestionItem(props) {
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
     const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
     const [anchorEl_edit, setAnchorEl_edit] = React.useState(null);
-
     const [scheduleValue, setScheduleValue] = React.useState(props.tracker.call[props.item].schedule);
     const [checked, setChecked] = React.useState([1]);
     const [friendList, setFriendList] = React.useState([]);
@@ -39,7 +36,6 @@ function EditQuestionItem(props) {
     const [questionItem, setQuestionItem] = React.useState(props.tracker.call[props.item]);
     const [label, setLabel] = React.useState(props.tracker.call[props.item].label);
     const [isEditing, setIsEditing] = React.useState(false);
-
     const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
     const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const open = Boolean(anchorEl_edit);
@@ -209,11 +205,11 @@ function EditQuestionItem(props) {
     return (
         <Box flexDirection="row" borderRadius ={10} style ={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA", }} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
-                <Grid direction={'row'} item xs ={12} md={6} lg = {6}>
+                <Grid direction={'row'} item xs ={11} md={11} lg = {11}>
                     <Box alignItems="center" display="flex" flexDirection="row" >
-                        <Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {2} borderColor = "lightgrey">
-                            <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />
-                        </Box>
+                        {/*<Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {2} borderColor = "lightgrey">*/}
+                        {/*    <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />*/}
+                        {/*</Box>*/}
                         <TextField
                             placeholder="type a question"
                             multiline
@@ -238,71 +234,7 @@ function EditQuestionItem(props) {
                         :null
                     }
                 </Grid>
-                <Grid item direction={'row'}>
-                    <Box style = {{padding: 0, width: 190, margin: 3}} display="flex" flexDirection="row"  borderRadius = {10} border = {1} borderColor = {'lightgrey'} >
-                        <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_team}>
-                            Recipients:
-                        </Button>
-                        <Menu
-                            id="simple-menu"
-                            anchorEl={anchorEl_team}
-                            keepMounted
-                            className={classes.menu}
-                            open={Boolean(anchorEl_team)}
-                            onClose={handleClose_team}
-                        >
-                            {friendList.map((value) => {
-                                const labelId = `checkbox-list-secondary-label-${value}`;
-                                return (
-                                    <EditTeamMemberItem
-                                        flat = {true}
-                                        withSelect = {true}
-                                        user = {value}
-                                        value = {value}
-                                        handleToggle = {handleToggle}
-                                        labelID = {labelId}
-                                    />
-                                );
-                            })}
-                        </Menu>
-                        <AvatarGroup max={4}>
-                            {receiverFriendList.map((friend) => {
-                                return (
-                                    <Avatar alt={friend.name} src={friend.img_url_Profile.imgUrl}/>
-                                    )}
-                                    )}
-                        </AvatarGroup>
-                    </Box>
-                </Grid>
-                <Grid item direction={'row'}>
-                    <Box style = {{padding: 0, width: 190, margin: 5}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>
-                        <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_schedule}>
-                            Schedule:
-                        </Button>
-                        <Menu
-                            id="simple-menu"
-                            anchorEl={anchorEl_schedule}
-                            keepMounted
-                            open={Boolean(anchorEl_schedule)}
-                            onClose={handleClose_schedule}
-                        >
-                            <div style = {{padding: 10}}>
-                            <FormControl component="fieldset">
-                                <RadioGroup aria-label="schedule" name="schedule" value={scheduleValue} onChange={(e)=>changeSchedule(e)}>
-                                    <FormControlLabel value="Bi-Weekly" control={<Radio />} label="Bi-Weekly" />
-                                    <FormControlLabel value="Weekly" control={<Radio />} label="Weekly" />
-                                    <FormControlLabel value="Bi-Monthly" control={<Radio />} label="Bi-Monthly" />
-                                    <FormControlLabel value="Monthly" control={<Radio />} label="Monthly" />
-                                    <FormControlLabel value="Quarterly" control={<Radio />} label="Quarterly" />
-                                </RadioGroup>
-                            </FormControl>
-                            </div>
-                        </Menu>
-                        <p style = {{margin: 10}}>
-                            {scheduleValue}
-                        </p>
-                    </Box>
-                </Grid>
+
                 <IconButton onClick={handleClick_Edit} style = {{marginRight: -20}} aria-label="open">
                     <FiMoreVertical  size = {20}/>
                 </IconButton>
@@ -351,6 +283,77 @@ const useStyles = makeStyles({
 {/*        </Menu>*/}
 {/*        <p style = {{margin: 10}}>*/}
 {/*            Text*/}
+{/*        </p>*/}
+{/*    </Box>*/}
+{/*</Grid>*/}
+
+
+
+
+///
+
+{/*<Grid item direction={'row'}>*/}
+{/*    <Box style = {{padding: 0, width: 190, margin: 3}} display="flex" flexDirection="row"  borderRadius = {10} border = {1} borderColor = {'lightgrey'} >*/}
+{/*        <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_team}>*/}
+{/*            Recipients:*/}
+{/*        </Button>*/}
+{/*        <Menu*/}
+{/*            id="simple-menu"*/}
+{/*            anchorEl={anchorEl_team}*/}
+{/*            keepMounted*/}
+{/*            className={classes.menu}*/}
+{/*            open={Boolean(anchorEl_team)}*/}
+{/*            onClose={handleClose_team}*/}
+{/*        >*/}
+{/*            {friendList.map((value) => {*/}
+{/*                const labelId = `checkbox-list-secondary-label-${value}`;*/}
+{/*                return (*/}
+{/*                    <EditTeamMemberItem*/}
+{/*                        flat = {true}*/}
+{/*                        withSelect = {true}*/}
+{/*                        user = {value}*/}
+{/*                        value = {value}*/}
+{/*                        handleToggle = {handleToggle}*/}
+{/*                        labelID = {labelId}*/}
+{/*                    />*/}
+{/*                );*/}
+{/*            })}*/}
+{/*        </Menu>*/}
+{/*        <AvatarGroup max={4}>*/}
+{/*            {receiverFriendList.map((friend) => {*/}
+{/*                return (*/}
+{/*                    <Avatar alt={friend.name} src={friend.img_url_Profile.imgUrl}/>*/}
+{/*                    )}*/}
+{/*                    )}*/}
+{/*        </AvatarGroup>*/}
+{/*    </Box>*/}
+{/*</Grid>*/}
+{/*<Grid item direction={'row'}>*/}
+{/*    <Box style = {{padding: 0, width: 190, margin: 5}} borderColor={ 'lightgrey'} display="flex" flexDirection="row"  borderRadius = {10} border = {1}>*/}
+{/*        <Button style = {{margin: 0}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick_schedule}>*/}
+{/*            Schedule:*/}
+{/*        </Button>*/}
+{/*        <Menu*/}
+{/*            id="simple-menu"*/}
+{/*            anchorEl={anchorEl_schedule}*/}
+{/*            keepMounted*/}
+{/*            open={Boolean(anchorEl_schedule)}*/}
+{/*            onClose={handleClose_schedule}*/}
+{/*        >*/}
+{/*            <div style = {{padding: 10}}>*/}
+{/*            <FormControl component="fieldset">*/}
+{/*                <RadioGroup aria-label="schedule" name="schedule" value={scheduleValue} onChange={(e)=>changeSchedule(e)}>*/}
+{/*                    <FormControlLabel value="Bi-Weekly" control={<Radio />} label="Bi-Weekly" />*/}
+{/*                    <FormControlLabel value="Weekly" control={<Radio />} label="Weekly" />*/}
+{/*                    <FormControlLabel value="Bi-Monthly" control={<Radio />} label="Bi-Monthly" />*/}
+{/*                    <FormControlLabel value="Monthly" control={<Radio />} label="Monthly" />*/}
+{/*                    <FormControlLabel value="Quarterly" control={<Radio />} label="Quarterly" />*/}
+{/*                </RadioGroup>*/}
+{/*            </FormControl>*/}
+{/*            </div>*/}
+{/*        </Menu>*/}
+{/*        <p style = {{margin: 10}}>*/}
+{/*            {scheduleValue}*/}
 {/*        </p>*/}
 {/*    </Box>*/}
 {/*</Grid>*/}

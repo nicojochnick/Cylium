@@ -31,7 +31,7 @@ function SearchUsers(props) {
 
 
     return (
-        <Grid item xs={12} md={6} lg={6}>
+        <Grid item xs={12} md={12} lg={12}>
             <Grid container direction={'column'}>
             <Box display="flex"  direction="column" flexDirection="column" borderRadius={10}
                  style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",}}>
@@ -92,35 +92,35 @@ function SearchUsers(props) {
                     </Box>
             </Box>
             </Grid>
-            <Box display="flex" flexDirection="row" direction="row" borderRadius={10}
-                 style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA"}}>
-                <Box
-                    borderRadius={16}
-                    style={{margin: 10}}
-                    className={classes.search2}
-                >
-                    <div className={classes.searchIcon}>
-                        <BiSend/>
-                    </div>
-                    <InputBase
-                        fullWidth
-                        placeholder="Send Email Invite"
-                        classes={{
-                            root: classes.inputRoot,
-                            input: classes.inputInput,
-                        }}
-                        // inputProps={{'aria-label': 'search'}}
-                    />
-                </Box>
-                <Button
-                    style={{margin: 10}}
-                    variant="contained"
-                    color='primary'
-                    className={classes.button}
-                >
-                    Invite
-                </Button>
-            </Box>
+            {/*<Box display="flex" flexDirection="row" direction="row" borderRadius={10}*/}
+            {/*     style={{padding: 5, margin: 10, boxShadow: "0px 5px 10px #D7D7DA"}}>*/}
+            {/*    <Box*/}
+            {/*        borderRadius={16}*/}
+            {/*        style={{margin: 10}}*/}
+            {/*        className={classes.search2}*/}
+            {/*    >*/}
+            {/*        <div className={classes.searchIcon}>*/}
+            {/*            <BiSend/>*/}
+            {/*        </div>*/}
+            {/*        <InputBase*/}
+            {/*            fullWidth*/}
+            {/*            placeholder="Send Email Invite"*/}
+            {/*            classes={{*/}
+            {/*                root: classes.inputRoot,*/}
+            {/*                input: classes.inputInput,*/}
+            {/*            }}*/}
+            {/*            // inputProps={{'aria-label': 'search'}}*/}
+            {/*        />*/}
+            {/*    </Box>*/}
+            {/*    <Button*/}
+            {/*        style={{margin: 10}}*/}
+            {/*        variant="contained"*/}
+            {/*        color='primary'*/}
+            {/*        className={classes.button}*/}
+            {/*    >*/}
+            {/*        Invite*/}
+            {/*    </Button>*/}
+            {/*</Box>*/}
         </Grid>
     );
 }

@@ -104,18 +104,18 @@ function AutomationManger(props) {
 
     return (
         <div className={classes.root}>
-            <Grid  direction = 'column' container>
-                <Grid item>
+            <Grid  direction = 'row' container>
+                {/*<Grid xs={12} item>*/}
 
-                    <Divider/>
-                </Grid>
+                {/*    <Divider/>*/}
+                {/*</Grid>*/}
 
-                <Grid item>
-                    <Box style = {{margin: 20}}>
+                <Grid xs={4} item>
+                    <Box style = {{padding: 5}}>
                         <p>
                             Users and Permissions
                         </p>
-                        <Grid spacing={3} container direction = 'row'>
+                        <Grid spacing={0} container direction = 'column'>
                            <SearchUsers user = {props.user} />
                             <Grid  item xs={12} md = {6} lg = {6} >
                                 <List dense className={classes.root}>
@@ -132,12 +132,15 @@ function AutomationManger(props) {
                                 </List>
                             </Grid>
                         </Grid>
+
                     </Box>
+
+
                     <Divider/>
                 </Grid>
-                <Grid item>
-                    <Box style = {{margin: 20, marginTop: -10}}>
-                        <Grid spacing={3} container direction = 'row'>
+                <Grid xs={4} item>
+                    <Box style = {{padding: 5, margin: 0, marginTop: -10}}>
+                        <Grid  container direction = 'row'>
                             <Grid  item xs={12} md = {12} lg = {12} >
                                 <p>
                                     Questions
@@ -169,6 +172,12 @@ function AutomationManger(props) {
                         </Grid>
                     </Box>
                 </Grid>
+
+                <Grid xs={4} item>
+                    <p> Time </p>
+
+
+                </Grid>
             </Grid>
         </div>
     );
@@ -177,8 +186,10 @@ function AutomationManger(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        padding: 0,
+        margin: 0,
         // maxWidth: 540,
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
     },
     box:{
         flexGrow: 1,
@@ -187,7 +198,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         // margin: 10,
         // marginBottom: 20,
-        backgroundColor: 'white',
     },
 
     inner_box:{
