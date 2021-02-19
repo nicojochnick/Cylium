@@ -16,7 +16,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import nextId from "react-id-generator";
-
 import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
@@ -37,7 +36,7 @@ import SearchUsers from "./searchUsers";
 import {db} from '../../api/firebase'
 import firebase from "firebase/app";
 import AutomationDataEditor from "./automationDataEditor";
-
+import AutomationRecurrenceEditor from "./automationRecurrenceEditor";
 
 
 
@@ -118,7 +117,7 @@ function AutomationManger(props) {
                         </p>
                         <Divider/>
 
-                        <Grid style = {{margin: 10}} item xs={12} md = {12} lg = {12} >
+                        <Grid style = {{margin: 20}} item xs={12} md = {12} lg = {12} >
                             <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>
                         </Grid>
                     </Box>
@@ -132,6 +131,7 @@ function AutomationManger(props) {
                         <p style = {{margin: 10, fontWeight: 500,}}>
                             Users
                         </p>
+
 
                         <Divider/>
                            <SearchUsers user = {props.user} />
@@ -153,11 +153,20 @@ function AutomationManger(props) {
                 </Grid>
 
                 <Divider orientation="vertical" flexItem />
-                <Grid xs={2} item>
+                <Grid xs={2} >
+                    <Box style = {{ minWidth: 300}}>
                     <p style = {{margin: 10, fontWeight: 500,}}>
-                        Schedule
+                        Recurrence
                     </p>
+
                     <Divider/>
+
+
+                    <AutomationRecurrenceEditor/>
+
+                    </Box>
+
+
 
                 </Grid>
             </Grid>
@@ -171,6 +180,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 0,
         margin: 0,
         minHeight: 200,
+        overflow: 'hidden'
         // maxWidth: 540,
         // backgroundColor: 'white',
     },
@@ -182,6 +192,15 @@ const useStyles = makeStyles((theme) => ({
         // margin: 10,
         // marginBottom: 20,
     },
+
+    textroot: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
+    },
+
+
 
     inner_box:{
         flexGrow: 1,
