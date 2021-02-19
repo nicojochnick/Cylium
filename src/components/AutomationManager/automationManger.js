@@ -36,6 +36,7 @@ import UserProfile from "../User/userProfile";
 import SearchUsers from "./searchUsers";
 import {db} from '../../api/firebase'
 import firebase from "firebase/app";
+import AutomationDataEditor from "./automationDataEditor";
 
 
 
@@ -110,6 +111,22 @@ function AutomationManger(props) {
                 {/*    <Divider/>*/}
                 {/*</Grid>*/}
 
+                <Grid xs={5}  item>
+                    <Box>
+                        <p style = {{margin: 10, fontWeight: 500,}}>
+                            Data
+                        </p>
+                        <Divider/>
+
+                        <Grid style = {{margin: 10}} item xs={12} md = {12} lg = {12} >
+                            <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>
+                        </Grid>
+                    </Box>
+                </Grid>
+
+                <Divider orientation="vertical" flexItem />
+
+
                 <Grid xs={4} item direction={'column'}>
                     <Box>
                         <p style = {{margin: 10, fontWeight: 500,}}>
@@ -134,45 +151,7 @@ function AutomationManger(props) {
                                 </List>
                     </Box>
                 </Grid>
-                <Divider orientation="vertical" flexItem />
 
-
-                <Grid xs={5}  item>
-                    <Box>
-                        <p style = {{margin: 10, fontWeight: 500,}}>
-                            Data
-                        </p>
-                        <Divider/>
-
-                        <Grid style = {{margin: 10}} item xs={12} md = {12} lg = {12} >
-
-                                {(tracker.call)
-                                    ?
-                                    <div>
-                                        {Object.keys(tracker.call).map((item) =>
-                                    <EditQuestionItem
-                                        item = {item}
-                                        user = {props.user}
-                                        tracker = {tracker}
-                                    />
-                                )}
-                            </div>
-                            : null
-                                }
-                                <Button
-                                    style = {{margin: 10}}
-                                    variant="contained"
-                                    color = 'primary'
-                                    className={classes.button}
-                                    startIcon={<BiPlus />}
-                                    onClick={()=>addQuestion()}
-                                >
-                                    Add Question
-                                </Button>
-                            </Grid>
-
-                    </Box>
-                </Grid>
                 <Divider orientation="vertical" flexItem />
                 <Grid xs={2} item>
                     <p style = {{margin: 10, fontWeight: 500,}}>

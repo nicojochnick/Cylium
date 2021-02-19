@@ -17,6 +17,7 @@ import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
 import AutomationManger from "../AutomationManager/automationManger";
+import AutomationDataEditor from "../AutomationManager/automationDataEditor";
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2)
@@ -35,7 +36,7 @@ function AutomationItem(props) {
     let trackerTitle = 'Engagement';
     const [responses, setResponses] = React.useState([]);
     const [isPosting, setPosting] = React.useState(false);
-    const [isCreating, setCreating] = React.useState(true);
+    const [isCreating, setCreating] = React.useState(false);
     const [isDatafying, setData] = React.useState(false);
     const [title, setTitle] = React.useState(props.tracker.name);
     const [height, setHeight] = React.useState(300);
@@ -140,9 +141,21 @@ function AutomationItem(props) {
                 </Grid>
                 :
 
+                <Grid container xs={12} md={12} lg={12}>
 
 
-                <Grid className = {classes.inner_box} item xs={12} md={12} lg={12}>
+                    <Grid className={classes.box} style = {{backgroundColor:'white'}} item xs={6} md={6} lg={6}>
+                        <p style = {{margin: 10, fontWeight: 500,}}>
+                            Data
+                        </p>
+                        <Divider/>
+                        <Box style = {{height: 250, margin: 20}}>
+                         <AutomationDataEditor user = {props.user} tracker = {props.tracker} />
+                        </Box>
+                    </Grid>
+                    <Divider orientation="vertical" flexItem />
+
+                    <Grid className = {classes.inner_box} item xs={6} sm = {6} md={6} lg={6}>
                     <Box style = {{height: height}}>
                     {Object.keys(responses).map((item) =>
                         <ResponseList
@@ -150,6 +163,9 @@ function AutomationItem(props) {
                             tracker={props.tracker}
                             response={responses[item]}/>)}
                     </Box>
+                </Grid>
+
+
                 </Grid>
 
 
@@ -168,15 +184,20 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
+
     },
     box:{
         flexGrow: 1,
         padding: 0,
-        margin: 0,
+
         display: 'start',
-        overflow: 'auto',
+        overflow: 'hidden',
         flexDirection: 'column',
         position: 'relative',
+        overflowY: 'scroll',
+        backgroundColor: 'white',
+
+        // overflowY: 'scroll',
         // margin: 10,
         // marginBottom: 20,
         // backgroundColor: 'white',
