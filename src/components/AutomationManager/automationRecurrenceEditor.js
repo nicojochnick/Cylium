@@ -23,13 +23,31 @@ function AutomationRecurrenceEditor(props) {
     const classes = useStyles();
 
     const [cycle, setCycle] = React.useState('week');
+    const [monthlyDay, setMonthlyDay] = React.useState('Monday');
+    const [monthlyWeek, setMonthlyWeek] = React.useState('1st');
     const [repeatNumber, setRepeatNumber] = React.useState(1);
     const [end, setEnd] = React.useState('Never');
+
 
 
     const handleChangeCycle  = (cycle) => {
         setCycle(cycle)
     };
+
+    const handleChangeMonthlyDay = (day) => {
+
+        setMonthlyDay(day);
+
+    };
+
+    const handleChangeMonthlyWeek = (week) => {
+
+        setMonthlyWeek(week);
+
+    };
+
+
+
 
     const handleChangeEnd = (end) => {
 
@@ -79,14 +97,12 @@ function AutomationRecurrenceEditor(props) {
 
 
                     </Grid>
-git
+
 
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
 
                         {(cycle == 'week')
-
                             ? <Box style={{marginTop: 10}}>
-
                                 <FormGroup aria-label="position" row>
                                     <FormControlLabel
                                         value="Sunday"
@@ -145,22 +161,70 @@ git
                                         className={classes.checkBox}
                                     />
                                 </FormGroup>
+                            </Box>
+                            :null
+                        }
+
+                        {(cycle == 'month')
+
+                            ?
+
+                            <Box display = 'flex' flexDirection = 'row' justify = 'center' alignItems = 'flex-start '>
+
+                                <p style ={{fontSize: 15}}> Monthly on </p>
+
+                                <Box display = 'flex' flexDirection = 'row' justify = 'center' alignItems = 'flex-start ' style = {{ marginLeft: 15, marginRight: 15}}>
+
+                                    <FormControl className={classes.formControl}>
+
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={monthlyWeek}
+                                            placeholder = 'day of the week'
+                                            onChange={e => handleChangeMonthlyWeek(e.target.value)}
+                                        >
+                                            <MenuItem value={1}>1st</MenuItem>
+                                            <MenuItem value={2}>2nd</MenuItem>
+                                            <MenuItem value={3}>3rd</MenuItem>
+                                            <MenuItem value={4}>4th</MenuItem>
+                                        </Select>
+                                    </FormControl>
+
+                                </Box>
+
+                                <FormControl className={classes.formControl}>
+
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={monthlyDay}
+                                        placeholder = 'day of the week'
+                                        onChange={e => handleChangeMonthlyDay(e.target.value)}
+                                    >
+                                        <MenuItem value={'Sunday'}>Sunday</MenuItem>
+                                        <MenuItem value={'Monday'}>Monday</MenuItem>
+                                        <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
+                                        <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
+                                        <MenuItem value={'Thursday'}>Thursday</MenuItem>
+                                        <MenuItem value={'Friday'}>Friday</MenuItem>
+                                        <MenuItem value={'Saturday'}>Saturday</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+
 
                             </Box>
 
+
+
                             :null
 
+
                         }
-
                     </Grid>
-
                 </Grid>
-
-
                 <Grid xs = {12} md ={12} lg={12} direction = 'column' container>
-
-
-
                 </Grid>
 
             </form>

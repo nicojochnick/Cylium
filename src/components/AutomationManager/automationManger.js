@@ -109,9 +109,11 @@ function AutomationManger(props) {
 
 
                 <Grid xs={12} item direction={'column'}>
+
+
                     <Box>
-                        <p style = {{margin: 10, fontWeight: 500,}}>
-                            Users
+                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
+                            USERS
                         </p>
 
 
@@ -135,8 +137,8 @@ function AutomationManger(props) {
                 </Grid>
                 <Grid item  >
                     <Box>
-                        <p style = {{margin: 10, fontWeight: 500,}}>
-                        Recurrence
+                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
+                        RECURRENCE
                     </p>
                     <Divider/>
                     <AutomationRecurrenceEditor/>

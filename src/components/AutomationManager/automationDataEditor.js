@@ -4,16 +4,14 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {fade, makeStyles} from "@material-ui/core/styles";
 
-import { BiSend, BiPlus } from "react-icons/bi";
+import { BiSend, BiPlus,BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import nextId from "react-id-generator";
 import {db} from "../../api/firebase";
 import firebase from "firebase/app";
 
 
 function AutomationDataEditor(props) {
-
     const classes = useStyles();
-
     const addQuestion = async() => {
         let id =  nextId();
         let newCall = {
@@ -38,7 +36,7 @@ function AutomationDataEditor(props) {
                 variant="contained"
                 color = 'primary'
                 className={classes.button}
-                startIcon={<BiPlus />}
+                startIcon={<BiPlus/>}
                 onClick={()=>addQuestion()}
             >
                 Add Question
@@ -49,10 +47,22 @@ function AutomationDataEditor(props) {
                 variant="contained"
                 color = 'primary'
                 className={classes.button}
+                startIcon={<BiPlus/>}
+                onClick={()=>addQuestion()}
+            >
+                Add Task
+            </Button>
+
+
+            <Button
+                style = {{margin: 10}}
+                variant="contained"
+                color = 'primary'
+                className={classes.button}
                 startIcon={<BiPlus />}
                 onClick={()=>addQuestion()}
             >
-                Add a Task
+                Add Reminder
             </Button>
 
 
@@ -83,8 +93,6 @@ const useStyles = makeStyles((theme) => ({
         // maxWidth: 540,
         // backgroundColor: 'white',
     },
-
-
 }));
 
 export default AutomationDataEditor;
