@@ -18,6 +18,9 @@ import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
 import AutomationManger from "../AutomationManager/automationManger";
 import AutomationDataEditor from "../AutomationManager/automationDataEditor";
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2)
@@ -40,9 +43,12 @@ function AutomationItem(props) {
     const [isDatafying, setData] = React.useState(false);
     const [title, setTitle] = React.useState(props.tracker.name);
     const [height, setHeight] = React.useState(300);
-    const [stretch, setStretch] = React.useState(6)
+    const [stretch, setStretch] = React.useState(6);
+    const [value, setValue] = React.useState(0);
 
-
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     const switchPosting = async () =>{
         setPosting(!isPosting)
@@ -127,26 +133,12 @@ function AutomationItem(props) {
                 name= {title}
                 handleTitleChange = {handleTitleChange}
             />
-            {isCreating
-                ?
-                <Grid container xs={12}>
-                <Grid className = {classes.inner_box} item xs={12} md={12} lg={12}>
-                <Box style = {{height: height}}>
-                <AutomationManger
-                    user = {props.user}
-                    tracker={props.tracker}
-                />
-                </Box>
-                </Grid>
-                </Grid>
-                :
+
 
                 <Grid container xs={12} md={12} lg={12}>
-
-
                     <Grid className={classes.box} style = {{backgroundColor:'white'}} item xs={6} md={6} lg={6}>
-                        <p style = {{margin: 10, fontWeight: 500,}}>
-                            Data
+                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
+                            TASKS
                         </p>
                         <Divider/>
                         <Box style = {{height: 250, margin: 20}}>
@@ -156,20 +148,49 @@ function AutomationItem(props) {
                     <Divider orientation="vertical" flexItem />
 
                     <Grid className = {classes.inner_box} item xs={6} sm = {6} md={6} lg={6}>
-                    <Box style = {{height: height}}>
-                    {Object.keys(responses).map((item) =>
-                        <ResponseList
-                            user = {props.user}
-                            tracker={props.tracker}
-                            response={responses[item]}/>)}
-                    </Box>
+
+                        <Paper style = {{margin: 10, marginBottom: 0, background: 'white', boxShadow: "0px 3px 10px 0px #DDDAEA"}} className={classes.boxSticky}>
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                indicatorColor="primary"
+                                textColor="primary"
+                                centered
+                            >
+                                <Tab label="Responses" />
+                                <Tab label="Settings" />
+                            </Tabs>
+                        </Paper>
+
+                        <Grid container xs={12}>
+                            <Grid className={classes.inner_box} item xs={12} md={12} lg={12}>
+
+                        {(value == 1)
+                            ?
+
+                            <Box style={{height: height}}>
+                                <AutomationManger
+                                    user={props.user}
+                                    tracker={props.tracker}
+                                />
+                            </Box>
+
+                            :
+                            <Box style={{height: height}}>
+                                {Object.keys(responses).map((item) =>
+                                    <ResponseList
+                                        user={props.user}
+                                        tracker={props.tracker}
+                                        response={responses[item]}/>)}
+                            </Box>
+                        }
+
+                            </Grid>
+                        </Grid>
                 </Grid>
 
-
                 </Grid>
 
-
-            }
         </Box>
             </Grid>
         </div>
@@ -206,19 +227,20 @@ const useStyles = makeStyles((theme) => ({
     inner_box:{
         flexGrow: 1,
         padding: 0,
-        display: 'start',
+        margin:0,
+        display: 'flex',
         overflowY: 'scroll',
         flexDirection: 'column',
         backgroundColor: 'white',
-        marginRight: -15
+        marginRight: -20,
     },
 
     boxSticky:{
         padding: 0,
         top: "0rem",
         position: "sticky",
-        display: 'start',
-        overflow: 'auto',
+        display: 'flex',
+        // overflow: 'auto',
         flexDirection: 'column',
         // backgroundColor: 'white',
     },

@@ -5,16 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField/TextField";
-import Switch from "@material-ui/core/Switch/Switch";
-import MenuItem from '@material-ui/core/MenuItem';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
 import nextId from "react-id-generator";
 import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
@@ -22,12 +12,6 @@ import {TwitterPicker} from "react-color";
 import TyperTracker from "../Typers/typerTracker";
 import EditQuestionItem from "./editQuestionItem";
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import { BiSend, BiPlus } from "react-icons/bi";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
@@ -50,8 +34,6 @@ function AutomationManger(props) {
     const handleTitleChange= (name) => {setTitle(name)};
     const handleChangeComplete = (color) => {setBackgroundColor(color.hex )};
     // const admin = require('firebase-admin');
-
-
     const addQuestion = async() => {
         let id =  nextId();
         let newCall = {
@@ -104,29 +86,29 @@ function AutomationManger(props) {
 
     return (
         <div className={classes.root}>
-            <Grid  direction = 'row' container>
+            <Grid  direction = 'column' container>
                 {/*<Grid xs={12} item>*/}
 
                 {/*    <Divider/>*/}
                 {/*</Grid>*/}
 
-                <Grid xs={5}  item>
-                    <Box>
-                        <p style = {{margin: 10, fontWeight: 500,}}>
-                            Data
-                        </p>
-                        <Divider/>
+                {/*<Grid xs={5}  item>*/}
+                {/*    <Box>*/}
+                {/*        <p style = {{margin: 10, fontWeight: 500,}}>*/}
+                {/*            Data*/}
+                {/*        </p>*/}
+                {/*        <Divider/>*/}
 
-                        <Grid style = {{margin: 20}} item xs={12} md = {12} lg = {12} >
-                            <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>
-                        </Grid>
-                    </Box>
-                </Grid>
+                {/*        <Grid style = {{margin: 20}} item xs={12} md = {12} lg = {12} >*/}
+                {/*            <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>*/}
+                {/*        </Grid>*/}
+                {/*    </Box>*/}
+                {/*</Grid>*/}
 
                 <Divider orientation="vertical" flexItem />
 
 
-                <Grid xs={4} item direction={'column'}>
+                <Grid xs={12} item direction={'column'}>
                     <Box>
                         <p style = {{margin: 10, fontWeight: 500,}}>
                             Users
@@ -151,21 +133,15 @@ function AutomationManger(props) {
                                 </List>
                     </Box>
                 </Grid>
-
-                <Divider orientation="vertical" flexItem />
-                <Grid xs={2} >
-                    <Box style = {{ minWidth: 300}}>
-                    <p style = {{margin: 10, fontWeight: 500,}}>
+                <Grid item  >
+                    <Box>
+                        <p style = {{margin: 10, fontWeight: 500,}}>
                         Recurrence
                     </p>
-
                     <Divider/>
-
-
                     <AutomationRecurrenceEditor/>
 
                     </Box>
-
 
 
                 </Grid>
@@ -179,8 +155,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
-        minHeight: 200,
-        overflow: 'hidden'
+        // maxHeight: 200,
+        // overflow: 'hidden'
         // maxWidth: 540,
         // backgroundColor: 'white',
     },
@@ -205,7 +181,8 @@ const useStyles = makeStyles((theme) => ({
     inner_box:{
         flexGrow: 1,
         padding: 0,
-        display: 'start',
+        margin: 0,
+        display: 'flex',
         flexDirection: 'column',
         backgroundColor: 'white',
     },

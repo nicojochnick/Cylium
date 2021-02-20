@@ -211,7 +211,7 @@ function EditQuestionItem(props) {
                         {/*    <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />*/}
                         {/*</Box>*/}
                         <TextField
-                            placeholder="type a question"
+                            placeholder="request info, ask a question etc..."
                             multiline
                             onChange={(event)=>handleEditLabel(event)}
                             defaultValue= {label}

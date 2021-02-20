@@ -12,10 +12,13 @@ import Avatar from "@material-ui/core/Avatar";
 import {db} from "../../api/firebase";
 import AutomationId from "./automationID"
 import UserId from "../User/userID";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 function AutomationHeader(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [onSwitch, setOnSwitch] = React.useState(false);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -30,6 +33,10 @@ function AutomationHeader(props) {
     };
 
     const [user, setUser] = React.useState(null);
+
+    const handleSwitch = (event) => {
+        setOnSwitch(!onSwitch)
+    };
 
 
     //TODO delete this, user is passed down
@@ -66,17 +73,17 @@ function AutomationHeader(props) {
             }
             <Grid justify = "flex-end" container direction = "row">
 
-                <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
-                    <IconButton color = "white" onClick={()=>props.switchCreating()}>
-                        <BiPencil style = {{color: "white"}} size = {17} />
-                    </IconButton>
-                </Box>
 
-                <Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>
-                    <IconButton color = "white" onClick={()=>props.switchData()}>
-                        <BiMessageAltDetail style = {{color: "white"}} size = {17} />
-                    </IconButton>
-                </Box>
+                <FormControlLabel
+                    control={
+                        <Switch
+                            checked={onSwitch}
+                            onChange={()=>handleSwitch()}
+                            name="checkedB"
+                            color="default"
+                        />
+                    }
+                />
 
 
             </Grid>
@@ -132,4 +139,19 @@ export default AutomationHeader;
 {/*<IconButton color = "white" onClick={()=>props.switchPosting()}>*/}
 {/*    <BiMessageAltDetail style = {{color: props.backgroundColor}} size = {20} />*/}
 {/*</IconButton>*/}
+{/*</Box>*/}
+
+
+
+
+{/*<Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>*/}
+{/*    <IconButton color = "white" onClick={()=>props.switchCreating()}>*/}
+{/*        <BiPencil style = {{color: "white"}} size = {17} />*/}
+{/*    </IconButton>*/}
+{/*</Box>*/}
+
+{/*<Box style ={{marginRight: 10}} border = {1} borderColor = "white" borderRadius = {100}>*/}
+{/*    <IconButton color = "white" onClick={()=>props.switchData()}>*/}
+{/*        <BiMessageAltDetail style = {{color: "white"}} size = {17} />*/}
+{/*    </IconButton>*/}
 {/*</Box>*/}

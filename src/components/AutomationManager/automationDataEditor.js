@@ -29,10 +29,32 @@ function AutomationDataEditor(props) {
             call: firebase.firestore.FieldValue.arrayUnion(newCall)
         })
     };
-    
 
     return (
         <div>
+
+            <Button
+                style = {{margin: 10}}
+                variant="contained"
+                color = 'primary'
+                className={classes.button}
+                startIcon={<BiPlus />}
+                onClick={()=>addQuestion()}
+            >
+                Add Question
+            </Button>
+
+            <Button
+                style = {{margin: 10}}
+                variant="contained"
+                color = 'primary'
+                className={classes.button}
+                startIcon={<BiPlus />}
+                onClick={()=>addQuestion()}
+            >
+                Add a Task
+            </Button>
+
 
             {(props.tracker.call)
                 ?
@@ -47,16 +69,7 @@ function AutomationDataEditor(props) {
                 </div>
                 : null
             }
-            <Button
-                style = {{margin: 10}}
-                variant="contained"
-                color = 'primary'
-                className={classes.button}
-                startIcon={<BiPlus />}
-                onClick={()=>addQuestion()}
-            >
-                Add Question
-            </Button>
+
         </div>
     );
 }
@@ -66,12 +79,12 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
-        minHeight: 200,
+        // minHeight: 200,
         // maxWidth: 540,
         // backgroundColor: 'white',
     },
-    
- 
+
+
 }));
 
 export default AutomationDataEditor;

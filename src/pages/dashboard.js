@@ -30,7 +30,7 @@ import recurrencelogo from "../assets/images/recurrencelogo.png"
 import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiCog, BiHome, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiCog, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -284,16 +284,16 @@ export default function Dashboard() {
                             <ListItemIcon>
                                 <BiGitBranch size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Tasks" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Thread" />
                         </ListItem>
                     </Link>
 
                     <Link to="/automationstore"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiStore size = {25} style = {{color:'#3C3F48'}}  />
+                                <BiDonateHeart size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Store" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Community" />
                         </ListItem>
                     </Link>
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
