@@ -24,7 +24,7 @@ import AutomationRecurrenceEditor from "./automationRecurrenceEditor";
 
 
 
-function AutomationManger(props) {
+function AutomationRecipients(props) {
     const classes = useStyles();
     const [tracker, setTracker] = React.useState(props.tracker);
     const [title, setTitle] = React.useState(props.tracker.trackerName);
@@ -89,38 +89,13 @@ function AutomationManger(props) {
     return (
         <div className={classes.root}>
             <Grid  direction = 'column' container>
-                {/*<Grid xs={12} item>*/}
-
-                {/*    <Divider/>*/}
-                {/*</Grid>*/}
-
-                {/*<Grid xs={5}  item>*/}
-                {/*    <Box>*/}
-                {/*        <p style = {{margin: 10, fontWeight: 500,}}>*/}
-                {/*            Data*/}
-                {/*        </p>*/}
-                {/*        <Divider/>*/}
-
-                {/*        <Grid style = {{margin: 20}} item xs={12} md = {12} lg = {12} >*/}
-                {/*            <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>*/}
-                {/*        </Grid>*/}
-                {/*    </Box>*/}
-                {/*</Grid>*/}
 
                 <Divider orientation="vertical" flexItem />
 
-
                 <Grid xs={12} item direction={'column'}>
 
-
                     <Box>
-                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
-                            USERS
-                        </p>
-
-
-                        <Divider/>
-                           <SearchUsers user = {props.user} />
+                        <SearchUsers user = {props.user} />
                             <Divider/>
                                 <List dense className={classes.root}>
                                     {props.user.friendList.map((value) => {
@@ -138,16 +113,6 @@ function AutomationManger(props) {
                     </Box>
                 </Grid>
                 <Grid item  >
-                    <Box>
-                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
-                        SCHEDULE
-                    </p>
-                    <Divider/>
-                    <AutomationRecurrenceEditor/>
-
-
-                    </Box>
-
 
                 </Grid>
             </Grid>
@@ -280,7 +245,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default AutomationManger;
+export default AutomationRecipients;
 
 
 
@@ -295,3 +260,25 @@ export default AutomationManger;
 {/*    style = {{marginBottom: 10}}*/}
 
 {/*/>*/}
+
+
+
+
+
+{/*<Grid xs={12} item>*/}
+
+{/*    <Divider/>*/}
+{/*</Grid>*/}
+
+{/*<Grid xs={5}  item>*/}
+{/*    <Box>*/}
+{/*        <p style = {{margin: 10, fontWeight: 500,}}>*/}
+{/*            Data*/}
+{/*        </p>*/}
+{/*        <Divider/>*/}
+
+{/*        <Grid style = {{margin: 20}} item xs={12} md = {12} lg = {12} >*/}
+{/*            <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>*/}
+{/*        </Grid>*/}
+{/*    </Box>*/}
+{/*</Grid>*/}

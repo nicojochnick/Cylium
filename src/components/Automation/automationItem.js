@@ -16,7 +16,7 @@ import ResponseItem from "../Responses/responseItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
-import AutomationManger from "../AutomationManager/automationManger";
+import AutomationRecipients from "../AutomationManager/automationRecipients";
 import AutomationDataEditor from "../AutomationManager/automationDataEditor";
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -58,15 +58,11 @@ function AutomationItem(props) {
     const switchCreating = async () =>{
         setCreating(true);
         setPosting(false);
-
-
     };
 
     const switchData = async () =>{
         setCreating(false)
-
     };
-
 
     const getResponses = async() => {
         let resRef = db.collection("responses");
@@ -90,7 +86,6 @@ function AutomationItem(props) {
                     let objres = {'merged_responses': res, 'user': responses[i].senderID};
                     merged_responses.push(objres)
                 }
-
             }
             console.log(merged_responses, responses, props.tracker.call);
             setResponses(merged_responses)
@@ -100,7 +95,6 @@ function AutomationItem(props) {
 
     const handleTitleChange = (val) => {
         setTitle(val);
-
     };
 
     let totalHeight = height + 100;
@@ -135,8 +129,6 @@ function AutomationItem(props) {
                 name= {title}
                 handleTitleChange = {handleTitleChange}
             />
-
-
                 <Grid container xs={12} md={12} lg={12}>
                     <Grid className={classes.box} style = {{backgroundColor:'white'}} item xs={6} md={6} lg={6}>
                         <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
@@ -148,9 +140,7 @@ function AutomationItem(props) {
                         </Box>
                     </Grid>
                     <Divider orientation="vertical" flexItem />
-
                     <Grid className = {classes.inner_box} item xs={6} sm = {6} md={6} lg={6}>
-
                         <Paper style = {{margin: 10, marginBottom: 0, background: 'white', boxShadow: "0px 3px 10px 0px #DDDAEA"}} className={classes.boxSticky}>
                             <Tabs
                                 value={value}
@@ -159,19 +149,15 @@ function AutomationItem(props) {
                                 textColor="primary"
                                 variant="fullWidth"
                                 centered
-
-
                             >
                                 <Tab style={{maxWidth:50}}  label="Responses" />
-                                <Tab style={{maxWidth:50}}  label="Users" />
+                                <Tab style={{maxWidth:50}}  label="Recipients" />
                                 <Tab style={{maxWidth:50}} label="Schedule" />
                             </Tabs>
                         </Paper>
 
                         <Grid container xs={12}>
                             <Grid className={classes.inner_box} item xs={12} md={12} lg={12}>
-
-
                                 {(value == 0)
                                     ?
 
@@ -188,7 +174,7 @@ function AutomationItem(props) {
                                     ?
 
                                     <Box style={{height: height}}>
-                                        <AutomationManger
+                                        <AutomationRecipients
                                             user={props.user}
                                             tracker={props.tracker}
                                         />
@@ -196,28 +182,15 @@ function AutomationItem(props) {
 
                                     : null
                                 }
-
-
                                 {(value == 2)
                                     ?
 
-                                    <Box>
-                                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
-                                            SCHEDULE
-                                        </p>
-                                        <Divider/>
+                                    <Box style={{height: height}}>
                                         <AutomationRecurrenceEditor/>
-
-
                                     </Box>
 
                                     : null
                                 }
-
-
-
-
-
 
 
                             </Grid>

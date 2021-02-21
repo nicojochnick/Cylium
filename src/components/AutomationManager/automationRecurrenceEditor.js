@@ -17,6 +17,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import RadioButtonUncheckedOutlinedIcon from '@material-ui/icons/RadioButtonUncheckedOutlined';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
+import Button from "@material-ui/core/Button";
 
 function AutomationRecurrenceEditor(props) {
 
@@ -184,9 +185,41 @@ function AutomationRecurrenceEditor(props) {
                             </Box>
                             :null
                         }
+
+
                     </Grid>
+
+
                 </Grid>
-                <Grid xs = {12} md ={12} lg={12} direction = 'column' container>
+                <Grid style = {{marginTop:60, marginBottom: 0}} xs = {12} md ={12} lg={12} direction = 'column' container>
+
+                    <TextField
+                        id="time"
+                        label="Send Time"
+                        type="time"
+                        defaultValue="12:00"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        inputProps={{
+                            step: 300, // 5 min
+                        }}
+                    />
+                </Grid>
+
+                <Grid container justify={'center'} alignItems = 'center'>
+
+
+                <Button
+                    style = {{margin: 10}}
+                    variant="contained"
+                    color = 'primary'
+                    className={classes.stickybutton}
+                    onClick={()=>console.log('save')}
+                >
+                    Save
+                </Button>
                 </Grid>
             </form>
         </Box>
@@ -202,6 +235,21 @@ const useStyles = makeStyles((theme) => ({
             // maxWidth: 540,
             // backgroundColor: 'white',
         },
+
+        stickybutton: {
+
+
+                top: "0rem",
+                position: "sticky",
+                display: 'flex',
+                // overflow: 'auto',
+                flexDirection: 'column',
+                // backgroundColor: 'white',
+
+
+
+        },
+
         box: {
             flexGrow: 1,
             padding: 0,
@@ -212,7 +260,7 @@ const useStyles = makeStyles((theme) => ({
         },
 
         formControl: {
-            minWidth: 100,
+            minWidth: 75,
         },
 
         textroot: {
@@ -222,11 +270,18 @@ const useStyles = makeStyles((theme) => ({
             },
         },
 
+        textField: {
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            width: 150,
+        },
+
         checkBox: {
             height: 25,
             fontSize: 16,
             width: 25,
         },
+
 
     }
 
