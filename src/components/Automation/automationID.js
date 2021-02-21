@@ -64,7 +64,9 @@ const useStyles = makeStyles((theme) => ({
         color: "white"
     },
     input: {
-        color: "white"
+        color: "white",
+        fontWeight: 600,
+        // backgroundColor:'white',
     }
 }));
 

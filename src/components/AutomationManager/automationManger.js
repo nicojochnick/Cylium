@@ -138,10 +138,11 @@ function AutomationManger(props) {
                 <Grid item  >
                     <Box>
                         <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
-                        RECURRENCE
+                        SCHEDULE
                     </p>
                     <Divider/>
                     <AutomationRecurrenceEditor/>
+
 
                     </Box>
 
