@@ -33,6 +33,8 @@ function AutomationManger(props) {
     const [value, setValue] = React.useState('female');
     const handleTitleChange= (name) => {setTitle(name)};
     const handleChangeComplete = (color) => {setBackgroundColor(color.hex )};
+
+
     // const admin = require('firebase-admin');
     const addQuestion = async() => {
         let id =  nextId();

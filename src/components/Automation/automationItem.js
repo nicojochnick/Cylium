@@ -21,6 +21,7 @@ import AutomationDataEditor from "../AutomationManager/automationDataEditor";
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import AutomationRecurrenceEditor from "../AutomationManager/automationRecurrenceEditor";
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2)
@@ -156,35 +157,68 @@ function AutomationItem(props) {
                                 onChange={handleChange}
                                 indicatorColor="primary"
                                 textColor="primary"
+                                variant="fullWidth"
                                 centered
+
+
                             >
-                                <Tab label="Responses" />
-                                <Tab label="Settings" />
+                                <Tab style={{maxWidth:50}}  label="Responses" />
+                                <Tab style={{maxWidth:50}}  label="Users" />
+                                <Tab style={{maxWidth:50}} label="Schedule" />
                             </Tabs>
                         </Paper>
 
                         <Grid container xs={12}>
                             <Grid className={classes.inner_box} item xs={12} md={12} lg={12}>
 
-                        {(value == 1)
-                            ?
 
-                            <Box style={{height: height}}>
-                                <AutomationManger
-                                    user={props.user}
-                                    tracker={props.tracker}
-                                />
-                            </Box>
+                                {(value == 0)
+                                    ?
 
-                            :
-                            <Box style={{height: height}}>
-                                {Object.keys(responses).map((item) =>
-                                    <ResponseList
-                                        user={props.user}
-                                        tracker={props.tracker}
-                                        response={responses[item]}/>)}
-                            </Box>
-                        }
+                                    <Box style={{height: height}}>
+                                        {Object.keys(responses).map((item) =>
+                                            <ResponseList
+                                                user={props.user}
+                                                tracker={props.tracker}
+                                                response={responses[item]}/>)}
+                                    </Box>
+                                    : null
+                                }
+                                {(value == 1)
+                                    ?
+
+                                    <Box style={{height: height}}>
+                                        <AutomationManger
+                                            user={props.user}
+                                            tracker={props.tracker}
+                                        />
+                                    </Box>
+
+                                    : null
+                                }
+
+
+                                {(value == 2)
+                                    ?
+
+                                    <Box>
+                                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
+                                            SCHEDULE
+                                        </p>
+                                        <Divider/>
+                                        <AutomationRecurrenceEditor/>
+
+
+                                    </Box>
+
+                                    : null
+                                }
+
+
+
+
+
+
 
                             </Grid>
                         </Grid>
@@ -206,6 +240,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
+
+    },
+
+    tabs: {
+        maxWidth: 50,
 
     },
     box:{
