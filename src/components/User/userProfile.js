@@ -78,7 +78,8 @@ function UserProfile(props) {
                 // url: props.user.url,
                 img_url_Profile: imageAsUrl,
                 email: props.user.email,
-                trackers: props.user.trackers
+                trackers: props.user.trackers,
+                friendList: props.user.friendList
             });
             setSuccess(true);
             setEditing(false)

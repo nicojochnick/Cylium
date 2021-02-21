@@ -16,6 +16,10 @@ function UserId(props) {
     const [background, setBackGround] = React.useState(null);
     const [pending, setPending] = React.useState('false')
 
+
+
+    //TODO Move this functionality somewhere else, please.
+
     const sendFriendRequest = async() => {
         //Add both people to each other friend lists as "pending".
         let addedUserRef = await db.collection('users').doc(props.user.email);

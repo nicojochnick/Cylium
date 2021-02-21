@@ -122,7 +122,8 @@ function AutomationItem(props) {
              style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
              borderRadius={20}>
             <AutomationHeader
-                ownerEmail = {props.tracker.ownerEmail}
+                id = {props.tracker.id}
+                tracker = {props.tracker}
                 user = {props.user}
                 switchData = {switchData}
                 switchCreating = {switchCreating}

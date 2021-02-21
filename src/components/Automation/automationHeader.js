@@ -18,7 +18,7 @@ import Switch from '@material-ui/core/Switch';
 function AutomationHeader(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [onSwitch, setOnSwitch] = React.useState(false);
+    const [onSwitch, setOnSwitch] = React.useState(props.tracker.on);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -36,6 +36,20 @@ function AutomationHeader(props) {
 
     const handleSwitch = (event) => {
         setOnSwitch(!onSwitch)
+        let trackerRef = db.collection('trackers').doc(props.id);
+        return trackerRef.update({
+            on: !onSwitch
+        })
+
+    };
+
+
+    const changeTitle = (title) => {
+        let trackerRef = db.collection('trackers').doc(props.id);
+        return trackerRef.update({
+            name: title
+        })
+
     };
 
 
@@ -68,12 +82,10 @@ function AutomationHeader(props) {
             style = {{backgroundColor: props.backgroundColor, padding: 15, height: 60, width: '100%'}}>
             {props.name
                     ?
-                   <AutomationId title = {props.name} />
+                   <AutomationId changeTitle = {changeTitle} title = {props.name} />
                     : null
             }
             <Grid justify = "flex-end" container direction = "row">
-
-
                 <FormControlLabel
                     control={
                         <Switch
@@ -84,8 +96,6 @@ function AutomationHeader(props) {
                         />
                     }
                 />
-
-
             </Grid>
         </Box>
     );

@@ -28,26 +28,17 @@ function AutomationRecurrenceEditor(props) {
     const [repeatNumber, setRepeatNumber] = React.useState(1);
     const [end, setEnd] = React.useState('Never');
 
-
-
     const handleChangeCycle  = (cycle) => {
         setCycle(cycle)
     };
 
     const handleChangeMonthlyDay = (day) => {
-
         setMonthlyDay(day);
-
     };
 
     const handleChangeMonthlyWeek = (week) => {
-
         setMonthlyWeek(week);
-
     };
-
-
-
 
     const handleChangeEnd = (end) => {
 
@@ -56,32 +47,19 @@ function AutomationRecurrenceEditor(props) {
 
     return (
         <Box style = {{padding: 20, marginTop: -10, minWidth: 200}}>
-
             <form noValidate autoComplete="off">
-
                 <Grid xs = {12} md ={12} lg={12} direction = 'column' container>
-
-
-
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
-
-
                         <p style ={{fontSize: 15}}> Repeat every </p>
-
                         <div style = {{maxWidth: 50, marginLeft: 15, marginRight: 15}}>
-
                         <TextField
                             id="standard-number"
                             type="number"
                             value = {repeatNumber}
 
                         />
-
                         </div>
-
-
                         <FormControl className={classes.formControl}>
-
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
@@ -94,11 +72,7 @@ function AutomationRecurrenceEditor(props) {
                                 <MenuItem value={'month'}>Month</MenuItem>
                             </Select>
                         </FormControl>
-
-
                     </Grid>
-
-
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
 
                         {(cycle == 'week')
@@ -114,8 +88,7 @@ function AutomationRecurrenceEditor(props) {
                                     />
                                     <FormControlLabel
                                         value="Monday"
-                                        control={<Checkbox icon={<RadioButtonUncheckedOutlinedIcon/>}
-                                                           checkedIcon={<RadioButtonCheckedIcon/>} color="primary"/>}
+                                        control={<Checkbox icon={<RadioButtonUncheckedOutlinedIcon/>} checkedIcon={<RadioButtonCheckedIcon/>} color="primary"/>}
                                         label="M"
                                         labelPlacement="bottom"
                                         className={classes.checkBox}
@@ -164,19 +137,19 @@ function AutomationRecurrenceEditor(props) {
                             </Box>
                             :null
                         }
-
                         {(cycle == 'month')
-
                             ?
-
                             <Box display = 'flex' flexDirection = 'row' justify = 'center' alignItems = 'flex-start '>
-
-                                <p style ={{fontSize: 15}}> Monthly on </p>
-
-                                <Box display = 'flex' flexDirection = 'row' justify = 'center' alignItems = 'flex-start ' style = {{ marginLeft: 15, marginRight: 15}}>
-
+                                <p style ={{fontSize: 15}}>
+                                    Monthly on
+                                </p>
+                                <Box display = 'flex'
+                                     flexDirection = 'row'
+                                     justify = 'center'
+                                     alignItems = 'flex-start '
+                                     style = {{ marginLeft: 15, marginRight: 15}}
+                                >
                                     <FormControl className={classes.formControl}>
-
                                         <Select
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
@@ -190,11 +163,8 @@ function AutomationRecurrenceEditor(props) {
                                             <MenuItem value={4}>4th</MenuItem>
                                         </Select>
                                     </FormControl>
-
                                 </Box>
-
                                 <FormControl className={classes.formControl}>
-
                                     <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
@@ -209,26 +179,16 @@ function AutomationRecurrenceEditor(props) {
                                         <MenuItem value={'Thursday'}>Thursday</MenuItem>
                                         <MenuItem value={'Friday'}>Friday</MenuItem>
                                         <MenuItem value={'Saturday'}>Saturday</MenuItem>
-
                                     </Select>
                                 </FormControl>
-
-
                             </Box>
-
-
-
                             :null
-
-
                         }
                     </Grid>
                 </Grid>
                 <Grid xs = {12} md ={12} lg={12} direction = 'column' container>
                 </Grid>
-
             </form>
-
         </Box>
     );
 }
@@ -263,11 +223,9 @@ const useStyles = makeStyles((theme) => ({
         },
 
         checkBox: {
-
             height: 25,
+            fontSize: 16,
             width: 25,
-
-
         },
 
     }

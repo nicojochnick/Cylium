@@ -51,11 +51,11 @@ function EditQuestionItem(props) {
         const newChecked = [...checked];
         if (currentIndex === -1) {
             newChecked.push(value);
-            console.log('add')
+            console.log('add');
             addReceivers(user)
         } else {
             newChecked.splice(currentIndex, 1);
-            console.log('delete')
+            console.log('delete');
             removeReceivers(user)
         }
         setChecked(newChecked);
