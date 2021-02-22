@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import IconButton from '@material-ui/core/IconButton';
-import {BiPencil,BiUser, BiCog,BiBarChartAlt2,BiMessageAltDetail} from "react-icons/bi"
+import {BiPencil,BiUser, BiCog,BiBarChartAlt2,BiMessageAltDetail,BiTime} from "react-icons/bi"
 import TextField from '@material-ui/core/TextField';
 import {fade, ThemeProvider,makeStyles,} from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
@@ -13,7 +13,10 @@ import {db} from "../../api/firebase";
 import AutomationId from "./automationID"
 import UserId from "../User/userID";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Divider from '@material-ui/core/Divider';
+
 import Switch from '@material-ui/core/Switch';
+import AutomationRecurrenceHeaderEditor from "../AutomationManager/automationRecurrenceHeaderEditor";
 
 function AutomationHeader(props) {
     const classes = useStyles();
@@ -80,11 +83,21 @@ function AutomationHeader(props) {
             borderRadius = {0}
             borderBottom = {0}
             style = {{backgroundColor: props.backgroundColor, padding: 15, height: 60, width: '100%'}}>
+            <Grid container  alignItems = 'center' direction = "row">
             {props.name
                     ?
                    <AutomationId changeTitle = {changeTitle} title = {props.name} />
                     : null
             }
+                <Divider className={classes.divider} orientation="vertical" flexItem />
+                <IconButton color = "white" onClick={()=>console.log('setup time')}>
+                            <BiTime style = {{color: "white", margin: 0}} size = {25} />
+                </IconButton>
+
+                <AutomationRecurrenceHeaderEditor/>
+
+            </Grid>
+
             <Grid justify = "flex-end" container direction = "row">
                 <FormControlLabel
                     control={
@@ -101,7 +114,6 @@ function AutomationHeader(props) {
     );
 }
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -113,6 +125,12 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         color: "white"
+    },
+    divider: {
+        color: 'white',
+        backgroundColor: 'white',
+        border: 2,
+
     }
 }));
 

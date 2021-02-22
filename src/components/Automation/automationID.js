@@ -28,13 +28,15 @@ function AutomationId(props) {
         <div>
 
             <Box display = 'flex' flexDirection = 'row'>
-                <Grid item xs={1.5} md={1.5} lg={1.5}>
-                </Grid>
+
+                <div style ={{color:'white'}}>
                 <TextField
                     InputProps={{ disableUnderline: true, className: classes.input}}
                     defaultValue={title}
                     onChange = {(e)=>changeTitle(e.target.value)}
                 />
+                </div>
+
                 {isEditing
                     ?
                     <Button
@@ -59,13 +61,18 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
     },
 
+    button: {
+        marginRight: 10
+
+    },
+
     margin: {
         margin: theme.spacing(1),
         color: "white"
     },
     input: {
         color: "white",
-        fontWeight: 600,
+        fontWeight: 500,
         // backgroundColor:'white',
     }
 }));

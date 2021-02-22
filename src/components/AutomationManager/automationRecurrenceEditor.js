@@ -26,8 +26,10 @@ function AutomationRecurrenceEditor(props) {
     const [cycle, setCycle] = React.useState('week');
     const [monthlyDay, setMonthlyDay] = React.useState('Monday');
     const [monthlyWeek, setMonthlyWeek] = React.useState('1st');
+    const [weeklyDays, setWeeklyDays] = React.useState(['Monday', 'Tuesday']);
     const [repeatNumber, setRepeatNumber] = React.useState(1);
     const [end, setEnd] = React.useState('Never');
+    const [color, setColor] = React.useState('black');
 
     const handleChangeCycle  = (cycle) => {
         setCycle(cycle)
@@ -44,6 +46,15 @@ function AutomationRecurrenceEditor(props) {
     const handleChangeEnd = (end) => {
 
         setEnd(end)
+    };
+
+    const handleChangeWeeklyDay  = (order, day) => {
+
+        let days = weeklyDays;
+        days[order] = day;
+        setWeeklyDays(days)
+
+
     };
 
     return (
@@ -73,7 +84,10 @@ function AutomationRecurrenceEditor(props) {
                                 <MenuItem value={'month'}>Month</MenuItem>
                             </Select>
                         </FormControl>
+
                     </Grid>
+
+
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
 
                         {(cycle == 'week')
@@ -208,9 +222,9 @@ function AutomationRecurrenceEditor(props) {
                     />
                 </Grid>
 
+
+
                 <Grid container justify={'center'} alignItems = 'center'>
-
-
                 <Button
                     style = {{margin: 10}}
                     variant="contained"
@@ -238,16 +252,12 @@ const useStyles = makeStyles((theme) => ({
 
         stickybutton: {
 
-
                 top: "0rem",
                 position: "sticky",
                 display: 'flex',
                 // overflow: 'auto',
                 flexDirection: 'column',
                 // backgroundColor: 'white',
-
-
-
         },
 
         box: {
