@@ -34,10 +34,12 @@ function ResponseComposite(props) {
 
 
 
-    const getResponses = async() => {
+    const getResponses = async(trackers) => {
         let resRef = db.collection("responses");
         let responses = [];
         console.log('TRIGGERED');
+
+        console.log(trackers.length)
 
         if (trackers.length > 0) {
             await resRef.where("trackerID", "==", trackers[0].id).get()
@@ -45,22 +47,25 @@ function ResponseComposite(props) {
                     querySnapshot.forEach(function (doc) {
                         responses.push(doc.data())
                     });
+
+                    let merged_responses = [];
+                    for (let i = 0; i < responses.length; i++) {
+                        if (trackers[0].call) {
+                            let res = mergeArrayObjects(responses[i].responseData, trackers[0].call);
+                            let objres = {'merged_responses': res, 'user': responses[i].senderID};
+                            merged_responses.push(objres)
+                        }
+
+                    }
+                    setResponses(merged_responses)
+
                 })
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
 
-            let merged_responses = [];
-            for (let i = 0; i < responses.length; i++) {
-                if (trackers[0].call) {
-                    let res = mergeArrayObjects(responses[i].responseData, trackers[0].call);
-                    let objres = {'merged_responses': res, 'user': responses[i].senderID};
-                    merged_responses.push(objres)
-                }
 
-            }
-            console.log(merged_responses, responses, trackers[0].call);
-            setResponses(merged_responses)
+            // console.log(merged_responses, responses, trackers[0].call);
 
         }
     };
@@ -75,8 +80,9 @@ function ResponseComposite(props) {
                     querySnapshot.forEach(function (doc) {
                         teamTrackers.push(doc.data())
                     });
+                    console.log(teamTrackers);
                     setTrackers(teamTrackers);
-                    getResponses()
+                    getResponses(teamTrackers)
                 })
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
@@ -84,12 +90,11 @@ function ResponseComposite(props) {
         }
     };
 
-
     let totalHeight = height + 100;
 
     useEffect(() => {
         getTrackers();
-    }, [trackers]);
+    }, []);
 
     return (
         <div className={classes.root}>

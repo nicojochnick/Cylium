@@ -94,9 +94,24 @@ function AutomationRecurrenceHeaderEditor(props) {
                     </Select>
                 </FormControl>
 
+                {props.isEditing
+                    ?
+                    <Button
+                        variant="contained"
+                        color = 'white'
+                        className={classes.button}
+                        onClick={()=>props.uploadSchedule()}
+                    >
+                        Save
+                    </Button>
+                    :null
+                }
+
             </Grid>
 
             </form>
+
+
 
 
 

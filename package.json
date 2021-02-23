@@ -17,6 +17,7 @@
     "firebase-functions": "^3.13.1",
     "history": "^5.0.0",
     "moment": "^2.29.1",
+    "moment-recur": "^1.0.7",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-color": "^2.19.3",
