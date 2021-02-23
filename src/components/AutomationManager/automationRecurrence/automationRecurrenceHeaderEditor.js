@@ -66,9 +66,9 @@ function AutomationRecurrenceHeaderEditor(props) {
                         placeholder = 'cycle'
                         onChange={e => props.handleChangeCycle(e.target.value)}
                     >
-                        <MenuItem value={'day'}>Day</MenuItem>
-                        <MenuItem value={'week'}>Week</MenuItem>
-                        <MenuItem value={'month'}>Month</MenuItem>
+                        <MenuItem value={'day'}>Day(s)</MenuItem>
+                        <MenuItem value={'week'}>Week(s)</MenuItem>
+                        <MenuItem value={'month'}>Month(s)</MenuItem>
                     </Select>
                 </FormControl>
 

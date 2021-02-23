@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Automation/automationHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Automation/automationHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Automation/automationItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Automation/automationItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AutomationManager/automationRecipients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutomationManager/automationRecipients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrenceEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrenceHeaderEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,11 +33,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="387">
-                  <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+                <state relative-caret-position="-272">
+                  <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -85,11 +81,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Automation/automationItem.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="159" column="64" selection-start-line="159" selection-start-column="64" selection-end-line="159" selection-end-column="92" />
+                <state relative-caret-position="466">
+                  <caret line="188" column="66" selection-start-line="188" selection-start-column="66" selection-end-line="188" selection-end-column="66" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -140,8 +136,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="379">
-                  <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+                <state relative-caret-position="355">
+                  <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -152,8 +148,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="422">
-                  <caret line="43" selection-start-line="43" selection-end-line="43" />
+                <state relative-caret-position="317">
+                  <caret line="64" column="66" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -261,15 +257,15 @@
         <option value="$PROJECT_DIR$/functions/index.js" />
         <option value="$PROJECT_DIR$/src/components/AutomationManager/automationManger.js" />
         <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecipients.js" />
-        <option value="$PROJECT_DIR$/src/components/Automation/automationItem.js" />
         <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrenceHeaderEditor.js" />
         <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrenceEditor.js" />
-        <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" />
         <option value="$PROJECT_DIR$/src/components/Automation/automationID.js" />
         <option value="$PROJECT_DIR$/src/pages/dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/Automation/automationHeader.js" />
-        <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" />
         <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/Automation/automationItem.js" />
+        <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" />
+        <option value="$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" />
       </list>
     </option>
   </component>
@@ -479,12 +475,12 @@
       <workItem from="1613432278974" duration="259000" />
       <workItem from="1613443954437" duration="4548000" />
       <workItem from="1613573669432" duration="11016000" />
-      <workItem from="1613700660378" duration="37480000" />
+      <workItem from="1613700660378" duration="38576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="681062000" />
+    <option name="totallyTimeSpent" value="682158000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -499,7 +495,7 @@
     <frame x="-470" y="-1055" width="2052" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.13300492" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.13300492" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -514,7 +510,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32946146" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49788433" visible="true" weight="0.13631523" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49788433" visible="true" weight="0.13631523" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50211567" side_tool="true" weight="0.31290743" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -823,46 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationDataEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="42" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecipients.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="29" column="72" lean-forward="true" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Automation/automationItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="159" column="64" selection-start-line="159" selection-start-column="64" selection-end-line="159" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -893,20 +849,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="-272">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceContainer.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationDataEditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+        <state relative-caret-position="48">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="42" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecipients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="29" column="72" lean-forward="true" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Automation/automationItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="188" column="66" selection-start-line="188" selection-start-column="66" selection-end-line="188" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="64" column="66" selection-start-line="64" selection-start-column="66" selection-end-line="64" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

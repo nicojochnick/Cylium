@@ -23,60 +23,46 @@ function AutomationRecurrenceEditor(props) {
 
     const classes = useStyles();
 
-    const [cycle, setCycle] = React.useState('week');
-    const [monthlyDay, setMonthlyDay] = React.useState('Monday');
-    const [monthlyWeek, setMonthlyWeek] = React.useState('1st');
-    const [weeklyDays, setWeeklyDays] = React.useState(['Monday', 'Tuesday']);
-    const [repeatNumber, setRepeatNumber] = React.useState(1);
-
-
-    const handleChangeCycle  = (cycle) => {
-        setCycle(cycle)
-    };
-
-    const handleChangeMonthlyDay = (day) => {
-        setMonthlyDay(day);
-    };
-
-    const handleChangeMonthlyWeek = (week) => {
-        setMonthlyWeek(week);
-    };
-
-    const handleChangeWeeklyDay  = (order, day) => {
-
-        let days = weeklyDays;
-        days[order] = day;
-        setWeeklyDays(days)
-
-
-    };
-
     return (
         <Box style = {{padding: 20, marginTop: -10, minWidth: 200}}>
             <form noValidate autoComplete="off">
                 <Grid xs = {12} md ={12} lg={12} direction = 'column' container>
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
                         <p style ={{fontSize: 15}}> Sends every </p>
-                        <div style = {{maxWidth: 50, marginLeft: 15, marginRight: 15}}>
-                        <TextField
-                            id="standard-number"
-                            type="number"
-                            value = {repeatNumber}
-
-                        />
+                        <div style = {{ marginLeft: 15, marginRight: 15}}>
+                            <FormControl className={classes.formControl}>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    disableUnderline={true}
+                                    style = {{maxWidth: 38}}
+                                    value={props.cycleNumber}
+                                    InputProps={{  disableUnderline: true, className: classes.input}}
+                                    placeholder = 'cycle'
+                                    onChange={e => props.handleChangeCycleNumber(e.target.value)}
+                                >
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                    <MenuItem value={3}>3</MenuItem>
+                                    <MenuItem value={4}>4</MenuItem>
+                                    <MenuItem value={5}>5</MenuItem>
+                                    <MenuItem value={6}>6</MenuItem>
+                                </Select>
+                            </FormControl>
                         </div>
 
                         <FormControl className={classes.formControl}>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={cycle}
+                                style = {{marginLeft: 10}}
+                                value={props.cycle}
                                 placeholder = 'cycle'
-                                onChange={e => handleChangeCycle(e.target.value)}
+                                onChange={e => props.handleChangeCycle(e.target.value)}
                             >
-                                <MenuItem value={'day'}>Day</MenuItem>
-                                <MenuItem value={'week'}>Week</MenuItem>
-                                <MenuItem value={'month'}>Month</MenuItem>
+                                <MenuItem value={'day'}>Day(s)</MenuItem>
+                                <MenuItem value={'week'}>Week(s)</MenuItem>
+                                <MenuItem value={'month'}>Month(s)</MenuItem>
                             </Select>
                         </FormControl>
 
@@ -85,7 +71,7 @@ function AutomationRecurrenceEditor(props) {
 
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
 
-                        {(cycle == 'week')
+                        {(props.cycle == 'week')
                             ? <Box style={{marginTop: 10}}>
                                 <FormGroup aria-label="position" row>
                                     <FormControlLabel
@@ -147,7 +133,7 @@ function AutomationRecurrenceEditor(props) {
                             </Box>
                             :null
                         }
-                        {(cycle == 'month')
+                        {(props.cycle == 'month')
                             ?
                             <Box display = 'flex' flexDirection = 'row' justify = 'center' alignItems = 'flex-start '>
                                 <p style ={{fontSize: 15}}>
@@ -163,9 +149,9 @@ function AutomationRecurrenceEditor(props) {
                                         <Select
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
-                                            value={monthlyWeek}
+                                            value={props.monthlyWeek}
                                             placeholder = 'day of the week'
-                                            onChange={e => handleChangeMonthlyWeek(e.target.value)}
+                                            onChange={e => props.handleChangeMonthlyWeek(e.target.value)}
                                         >
                                             <MenuItem value={1}>1st</MenuItem>
                                             <MenuItem value={2}>2nd</MenuItem>
@@ -178,9 +164,9 @@ function AutomationRecurrenceEditor(props) {
                                     <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={monthlyDay}
+                                        value={props.monthlyDay}
                                         placeholder = 'day of the week'
-                                        onChange={e => handleChangeMonthlyDay(e.target.value)}
+                                        onChange={e => props.handleChangeMonthlyDay(e.target.value)}
                                     >
                                         <MenuItem value={'Sunday'}>Sunday</MenuItem>
                                         <MenuItem value={'Monday'}>Monday</MenuItem>
@@ -265,7 +251,6 @@ const useStyles = makeStyles((theme) => ({
         },
 
         formControl: {
-            minWidth: 75,
         },
 
         textroot: {
