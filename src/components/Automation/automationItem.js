@@ -21,7 +21,7 @@ import AutomationDataEditor from "../AutomationManager/automationDataEditor";
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import AutomationRecurrenceEditor from "../AutomationManager/automationRecurrenceEditor";
+import AutomationRecurrenceEditor from "../AutomationManager/automationRecurrence/automationRecurrenceEditor";
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2)

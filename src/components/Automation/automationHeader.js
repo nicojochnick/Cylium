@@ -16,7 +16,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
 
 import Switch from '@material-ui/core/Switch';
-import AutomationRecurrenceHeaderEditor from "../AutomationManager/automationRecurrenceHeaderEditor";
+import AutomationRecurrenceHeaderEditor from "../AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor";
+import AutomationRecurrenceContainer from "../AutomationManager/automationRecurrence/automationRecurrenceContainer";
 
 function AutomationHeader(props) {
     const classes = useStyles();
@@ -82,8 +83,11 @@ function AutomationHeader(props) {
             flexDirection="row"
             borderRadius = {0}
             borderBottom = {0}
-            style = {{backgroundColor: props.backgroundColor, padding: 15, height: 60, width: '100%'}}>
-            <Grid container  alignItems = 'center' direction = "row">
+            style = {{backgroundColor: props.backgroundColor, padding: 15, height: 60, }}>
+
+            <Grid container>
+
+            <Grid container xs={8} md={8} lg={8} alignItems = 'center' direction = "row">
             {props.name
                     ?
                    <AutomationId changeTitle = {changeTitle} title = {props.name} />
@@ -94,11 +98,13 @@ function AutomationHeader(props) {
                             <BiTime style = {{color: "white", margin: 0}} size = {25} />
                 </IconButton>
 
-                <AutomationRecurrenceHeaderEditor/>
+
+                <AutomationRecurrenceContainer isHeader={true}/>
+
 
             </Grid>
 
-            <Grid justify = "flex-end" container direction = "row">
+            <Grid xs={4} md={4} lg={4} justify = "flex-end" container direction = "row">
                 <FormControlLabel
                     control={
                         <Switch
@@ -110,6 +116,11 @@ function AutomationHeader(props) {
                     }
                 />
             </Grid>
+
+
+            </Grid>
+
+
         </Box>
     );
 }

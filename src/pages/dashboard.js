@@ -282,9 +282,9 @@ export default function Dashboard() {
                     <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiGitBranch size = {25} style = {{color:'#3C3F48'}}  />
+                                <BiSend size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Thread" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Jobs" />
                         </ListItem>
                     </Link>
 

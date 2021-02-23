@@ -28,8 +28,7 @@ function AutomationRecurrenceEditor(props) {
     const [monthlyWeek, setMonthlyWeek] = React.useState('1st');
     const [weeklyDays, setWeeklyDays] = React.useState(['Monday', 'Tuesday']);
     const [repeatNumber, setRepeatNumber] = React.useState(1);
-    const [end, setEnd] = React.useState('Never');
-    const [color, setColor] = React.useState('black');
+
 
     const handleChangeCycle  = (cycle) => {
         setCycle(cycle)
@@ -41,11 +40,6 @@ function AutomationRecurrenceEditor(props) {
 
     const handleChangeMonthlyWeek = (week) => {
         setMonthlyWeek(week);
-    };
-
-    const handleChangeEnd = (end) => {
-
-        setEnd(end)
     };
 
     const handleChangeWeeklyDay  = (order, day) => {
@@ -62,7 +56,7 @@ function AutomationRecurrenceEditor(props) {
             <form noValidate autoComplete="off">
                 <Grid xs = {12} md ={12} lg={12} direction = 'column' container>
                     <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
-                        <p style ={{fontSize: 15}}> Repeat every </p>
+                        <p style ={{fontSize: 15}}> Sends every </p>
                         <div style = {{maxWidth: 50, marginLeft: 15, marginRight: 15}}>
                         <TextField
                             id="standard-number"
@@ -71,6 +65,7 @@ function AutomationRecurrenceEditor(props) {
 
                         />
                         </div>
+
                         <FormControl className={classes.formControl}>
                             <Select
                                 labelId="demo-simple-select-label"
