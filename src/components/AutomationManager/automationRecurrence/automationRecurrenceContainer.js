@@ -13,7 +13,7 @@ function AutomationRecurrenceContainer(props) {
     const [cycleNumber, setCycleNumber] = React.useState(1);
     const [monthlyDay, setMonthlyDay] = React.useState('Monday');
     const [monthlyWeek, setMonthlyWeek] = React.useState('1st');
-    const [weeklyDays, setWeeklyDays] = React.useState(["Monday"]);
+    const [weeklyDays, setWeeklyDays] = React.useState(['Monday']);
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
     require('moment-recur');
@@ -33,7 +33,13 @@ function AutomationRecurrenceContainer(props) {
         if (cycle == 'week'){
             // console.log(weeklyDays)
             // let cal = moment.recur().every(weeklyDays).daysOfWeek();
-            let recurrence = myDate.recur().daysOfWeek(['Saturday']);
+            let days = [];
+            let match =  { 'Sunday': 1, 'Monday': 2, 'Tuesday': 3, 'Wednesday': 4, 'Thursday': 5, 'Friday': 6, 'Saturday': 0,};
+            let i = 0;
+            for (i of weeklyDays){
+                days.push(match[i])
+            }
+            let recurrence = myDate.recur().daysOfWeek(days);
             console.log(recurrence)
             let next = recurrence.next(5);
             console.log(next)
