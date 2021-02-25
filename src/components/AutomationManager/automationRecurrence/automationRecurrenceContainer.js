@@ -3,6 +3,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import AutomationRecurrenceHeaderEditor from "./automationRecurrenceHeaderEditor";
 import AutomationRecurrenceEditor from "./automationRecurrenceEditor";
 import moment from 'moment'
+import {db} from "../../../api/firebase";
+
 
 
 function AutomationRecurrenceContainer(props) {
@@ -11,24 +13,33 @@ function AutomationRecurrenceContainer(props) {
 
     const [cycle, setCycle] = React.useState('week');
     const [cycleNumber, setCycleNumber] = React.useState(1);
-
     const [weeklyDays, setWeeklyDays] = React.useState(['Monday']);
-
-
     const [monthlyDay, setMonthlyDay] = React.useState('Monday');
     const [monthlyWeek, setMonthlyWeek] = React.useState([1]);
-
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
+
+
+    const [next20, setNext20] = React.useState([]);
+    const [recurrence, setRecurrence] = React.useState(null);
+
+
     require('moment-recur');
 
+    const uploadRecurrenceToDB = (rec, dates) => {
+        console.log(props.id);
+        let ref = db.collection('trackers').doc(props.id);
+        return  ref.update({
+            recurrence: JSON.parse( JSON.stringify(rec))
+        })
 
-    //TODO: Schematize and send to DB
-    const uploadSchedule = () => {
-        setEditing(false);
-        let dates = createDates()
     };
 
+    //TODO: Schematize and send to DB
+    const uploadSchedule =async() => {
+        setEditing(false);
+        return createDates()
+    };
 
     const createDates = () => {
         let myDate = moment();
@@ -43,12 +54,15 @@ function AutomationRecurrenceContainer(props) {
                 days.push(match[i])
             }
             console.log(cycleNumber, days);
-            // let recurrence = myDate.recur().every(cycleNumber).weeks().every(days).daysOfWeek()
             let recurrence = myDate.recur().every(cycleNumber).weeks().every(days).daysOfWeek();
-
             console.log(recurrence);
-            let next = recurrence.next(5);
-            console.log(next)
+
+            // let next_20 = recurrence.next(20);
+            // console.log(next_20);
+            // setRecurrence(recurrence);
+            // setNext20(next_20);
+
+            uploadRecurrenceToDB(recurrence);
 
         } else if (cycle == 'day'){
             let recurrence = myDate.recur().every(cycleNumber).day()
@@ -60,11 +74,8 @@ function AutomationRecurrenceContainer(props) {
             for (i of monthlyDay){
                 days.push(match[i])
             }
-           let recurrence = myDate.recur().every(days).day().every().weeksOfMonth(monthlyWeek)
-
+           // let recurrence = myDate.recur().every(days).day().every().weeksOfMonth(monthlyWeek)
         }
-
-
 
     };
 

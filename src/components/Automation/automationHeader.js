@@ -101,7 +101,7 @@ function AutomationHeader(props) {
                 </IconButton>
 
 
-                <AutomationRecurrenceContainer isHeader={true}/>
+                <AutomationRecurrenceContainer id = {props.id} isHeader={true}/>
                 </Box>
             </Grid>
 
