@@ -11,9 +11,13 @@ function AutomationRecurrenceContainer(props) {
 
     const [cycle, setCycle] = React.useState('week');
     const [cycleNumber, setCycleNumber] = React.useState(1);
-    const [monthlyDay, setMonthlyDay] = React.useState('Monday');
-    const [monthlyWeek, setMonthlyWeek] = React.useState('1st');
+
     const [weeklyDays, setWeeklyDays] = React.useState(['Monday']);
+
+
+    const [monthlyDay, setMonthlyDay] = React.useState('Monday');
+    const [monthlyWeek, setMonthlyWeek] = React.useState([1]);
+
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
     require('moment-recur');
@@ -22,16 +26,15 @@ function AutomationRecurrenceContainer(props) {
     //TODO: Schematize and send to DB
     const uploadSchedule = () => {
         setEditing(false);
-
         let dates = createDates()
     };
 
 
-    const createDates = async() => {
+    const createDates = () => {
         let myDate = moment();
         console.log(myDate);
         if (cycle == 'week'){
-            // console.log(weeklyDays)
+            console.log(weeklyDays)
             // let cal = moment.recur().every(weeklyDays).daysOfWeek();
             let days = [];
             let match =  { 'Sunday': 1, 'Monday': 2, 'Tuesday': 3, 'Wednesday': 4, 'Thursday': 5, 'Friday': 6, 'Saturday': 0,};
@@ -39,11 +42,29 @@ function AutomationRecurrenceContainer(props) {
             for (i of weeklyDays){
                 days.push(match[i])
             }
-            let recurrence = myDate.recur().daysOfWeek(days);
-            console.log(recurrence)
+            console.log(cycleNumber, days);
+            // let recurrence = myDate.recur().every(cycleNumber).weeks().every(days).daysOfWeek()
+            let recurrence = myDate.recur().every(cycleNumber).weeks().every(days).daysOfWeek();
+
+            console.log(recurrence);
             let next = recurrence.next(5);
             console.log(next)
+
+        } else if (cycle == 'day'){
+            let recurrence = myDate.recur().every(cycleNumber).day()
+
+        } else {
+            let days = [];
+            let match =  { 'Sunday': 1, 'Monday': 2, 'Tuesday': 3, 'Wednesday': 4, 'Thursday': 5, 'Friday': 6, 'Saturday': 0,};
+            let i = 0;
+            for (i of monthlyDay){
+                days.push(match[i])
+            }
+           let recurrence = myDate.recur().every(days).day().every().weeksOfMonth(monthlyWeek)
+
         }
+
+
 
     };
 

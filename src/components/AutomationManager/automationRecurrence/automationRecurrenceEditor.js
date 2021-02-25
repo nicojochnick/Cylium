@@ -151,7 +151,7 @@ function AutomationRecurrenceEditor(props) {
                                             id="demo-simple-select"
                                             value={props.monthlyWeek}
                                             placeholder = 'day of the week'
-                                            onChange={e => props.handleChangeMonthlyWeek(e.target.value)}
+                                            onChange={e => props.handleChangeMonthlyWeek(e.target.value, 0)}
                                         >
                                             <MenuItem value={1}>1st</MenuItem>
                                             <MenuItem value={2}>2nd</MenuItem>
