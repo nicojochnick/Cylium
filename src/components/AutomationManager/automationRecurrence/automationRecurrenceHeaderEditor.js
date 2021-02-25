@@ -30,7 +30,7 @@ function AutomationRecurrenceHeaderEditor(props) {
 
             <form noValidate autoComplete="off">
 
-            <Grid direction='row' justify = 'flex-start' alignItems='center' container xs = {12} md ={12} lg={12}>
+            <Grid direction='row' justify = 'flex-start' alignItems='center' container>
                 <p style ={{fontSize: 15, color: 'white'}}> Sends every </p>
                 <div style = {{maxWidth:35, marginLeft: 15, marginRight: 0, color:'white'}}>
 

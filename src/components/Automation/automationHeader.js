@@ -83,28 +83,30 @@ function AutomationHeader(props) {
             flexDirection="row"
             borderRadius = {0}
             borderBottom = {0}
-            style = {{backgroundColor: props.backgroundColor, padding: 15, height: 60, }}>
+            style = {{backgroundColor: props.backgroundColor, padding: 15, }}>
 
             <Grid container>
 
-            <Grid container xs={8} md={8} lg={8} alignItems = 'center' direction = "row">
+            <Grid container xs={10} sm = {10} md={10}  lg={10} alignItems = 'center' direction = "row">
             {props.name
                     ?
                    <AutomationId changeTitle = {changeTitle} title = {props.name} />
                     : null
             }
                 <Divider className={classes.divider} orientation="vertical" flexItem />
+
+                <Box display = 'flex' flexDirection = 'row'>
                 <IconButton color = "white" onClick={()=>console.log('setup time')}>
                             <BiTime style = {{color: "white", margin: 0}} size = {25} />
                 </IconButton>
 
 
                 <AutomationRecurrenceContainer isHeader={true}/>
-
-
+                </Box>
             </Grid>
 
-            <Grid xs={4} md={4} lg={4} justify = "flex-end" container direction = "row">
+
+            <Grid xs={2} md={2} lg={2} justify = "flex-end" container direction = "row">
                 <FormControlLabel
                     control={
                         <Switch
