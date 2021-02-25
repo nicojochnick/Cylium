@@ -72,27 +72,90 @@ function AutomationRecurrenceHeaderEditor(props) {
                     </Select>
                 </FormControl>
 
-                <p style ={{fontSize: 15, color: 'white', marginLeft: 5, marginRight: 5 }}> on </p>
+                { (props.cycle == 'day')
 
-                <FormControl className={classes.formControl}>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        style ={{color:'white', marginLeft: 10}}
-                        value={props.weeklyDays[0]}
-                        disableUnderline={true}
-                        onChange={(e) => props.handleChangeWeeklyDay(0, e.target.value)}
-                    >
-                        <MenuItem value={'Sunday'}>Sunday</MenuItem>
-                        <MenuItem value={'Monday'}>Monday</MenuItem>
-                        <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
-                        <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
-                        <MenuItem value={'Thursday'}>Thursday</MenuItem>
-                        <MenuItem value={'Friday'}>Friday</MenuItem>
-                        <MenuItem value={'Saturday'}>Saturday</MenuItem>
+                    ? null
+                    :
+                    <div className={classes.root}>
+                    <Grid direction='row' justify = 'flex-start' alignItems='center' container>
 
-                    </Select>
-                </FormControl>
+                        <p style={{fontSize: 15, color: 'white', marginLeft: 5, marginRight: 5}}> on </p>
+
+                        {(props.cycle == 'week')
+                            ?
+                            <FormControl className={classes.formControl}>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    style={{color: 'white', marginLeft: 10}}
+                                    value={props.weeklyDays[0]}
+                                    disableUnderline={true}
+                                    onChange={(e) => props.handleChangeWeeklyDay(0, e.target.value)}
+                                >
+                                    <MenuItem value={'Sunday'}>Sunday</MenuItem>
+                                    <MenuItem value={'Monday'}>Monday</MenuItem>
+                                    <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
+                                    <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
+                                    <MenuItem value={'Thursday'}>Thursday</MenuItem>
+                                    <MenuItem value={'Friday'}>Friday</MenuItem>
+                                    <MenuItem value={'Saturday'}>Saturday</MenuItem>
+
+                                </Select>
+                            </FormControl>
+
+
+                            :
+
+                            <Box display='flex'
+                                 flexDirection='row'
+                                 justify='center'
+                                 alignItems='flex-start '
+                                 style={{marginLeft: 15, marginRight: 15}}
+                            >
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        style={{color: 'white', marginLeft: 10}}
+                                        value={props.monthlyWeek}
+                                        placeholder='day of the week'
+                                        disableUnderline={true}
+                                        onChange={e => props.handleChangeMonthlyWeek(e.target.value, 0)}
+                                    >
+                                        <MenuItem value={1}>1st</MenuItem>
+                                        <MenuItem value={2}>2nd</MenuItem>
+                                        <MenuItem value={3}>3rd</MenuItem>
+                                        <MenuItem value={4}>4th</MenuItem>
+                                    </Select>
+                                </FormControl>
+
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={props.monthlyDay}
+                                        style={{color: 'white', marginLeft: 10}}
+                                        placeholder='day of the week'
+                                        disableUnderline={true}
+                                        onChange={e => props.handleChangeMonthlyDay(e.target.value)}
+                                    >
+                                        <MenuItem value={'Sunday'}>Sunday</MenuItem>
+                                        <MenuItem value={'Monday'}>Monday</MenuItem>
+                                        <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
+                                        <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
+                                        <MenuItem value={'Thursday'}>Thursday</MenuItem>
+                                        <MenuItem value={'Friday'}>Friday</MenuItem>
+                                        <MenuItem value={'Saturday'}>Saturday</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        }
+
+
+                    </Grid>
+                    </div>
+                }
+
 
                 {props.isEditing
                     ?
@@ -107,12 +170,12 @@ function AutomationRecurrenceHeaderEditor(props) {
                     :null
                 }
 
+
             </Grid>
 
+
+
             </form>
-
-
-
 
 
         </div>

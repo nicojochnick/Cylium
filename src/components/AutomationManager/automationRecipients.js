@@ -72,7 +72,7 @@ function AutomationRecipients(props) {
         await db.collection("trackers").doc(tracker_id)
             .onSnapshot(function(doc) {
                 let updateTracker = doc.data();
-                console.log(updateTracker)
+                console.log(updateTracker);
                 if (updateTracker) {
                     setTracker(updateTracker);
                 }
