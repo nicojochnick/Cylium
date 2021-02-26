@@ -19,23 +19,21 @@ function AutomationRecurrenceContainer(props) {
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
 
-
     const [next20, setNext20] = React.useState([]);
     const [recurrence, setRecurrence] = React.useState(null);
 
-
     require('moment-recur');
 
-    const uploadRecurrenceToDB = (rec, dates) => {
-        console.log(props.id);
+    const uploadRecurrenceToDB = (rec, dates,) => {
+        console.log('Uploading Recurrence to DB:', rec, time);
+        let timeCopy = time;
         let ref = db.collection('trackers').doc(props.id);
         return  ref.update({
-            recurrence: JSON.parse( JSON.stringify(rec))
+            recurrence: JSON.parse( JSON.stringify(rec)),
+            recurrence_Time: timeCopy,
         })
-
     };
 
-    //TODO: Schematize and send to DB
     const uploadSchedule =async() => {
         setEditing(false);
         return createDates()
@@ -76,57 +74,45 @@ function AutomationRecurrenceContainer(props) {
             }
            // let recurrence = myDate.recur().every(days).day().every().weeksOfMonth(monthlyWeek)
         }
-
     };
-
     const switchEditing = () => {
         setEditing(!isEditing)
     };
 
     const handleChangeCycle  = (cycle) => {
         setEditing(true);
-
         setCycle(cycle)
     };
-
     const handleChangeMonthlyDay = (day) => {
         setEditing(true);
-
         setMonthlyDay(day);
     };
-
     const handleChangeMonthlyWeek = (week) => {
         setEditing(true);
-
         setMonthlyWeek(week);
     };
-
     const handleChangeCycleNumber = (number) => {
         setEditing(true);
-
         setCycleNumber(number);
     };
-
     const handleChangeWeeklyDay  = (order, day) => {
         setEditing(true);
-
         console.log(order,day);
         let days = weeklyDays.slice();
         days[order] = day;
         console.log(days)
         setWeeklyDays(days)
     };
-
     const handleAddWeeklyDay = () =>{
         setEditing(true);
-
         let days = weeklyDays;
         days.push('Monday');
         setWeeklyDays(days);
-
     };
-
-
+    const handleChangeTime = (time) => {
+        setEditing(true);
+        setTime(time)
+    };
     return (
         <div>
             {console.log(weeklyDays)}
@@ -147,6 +133,7 @@ function AutomationRecurrenceContainer(props) {
                     handleChangeMonthlyDay = {handleChangeMonthlyDay}
                     isEditing = {isEditing}
                     uploadSchedule = {uploadSchedule}
+                    handleChangeTime = {handleChangeTime}
                 />
                 :
                 <AutomationRecurrenceEditor
@@ -156,6 +143,7 @@ function AutomationRecurrenceContainer(props) {
                     monthlyWeek = {monthlyWeek}
                     monthlyDay  = {monthlyDay}
                     time = {time}
+                    handleChangeTime = {handleChangeTime}
                     handleChangeWeeklyDay = {handleChangeWeeklyDay}
                     handleAddWeeklyDay = {handleAddWeeklyDay}
                     handleChangeCycleNumber = {handleChangeCycleNumber}
@@ -164,7 +152,6 @@ function AutomationRecurrenceContainer(props) {
                     handleChangeMonthlyDay = {handleChangeMonthlyDay}
                 />
             }
-
         </div>
     );
 }

@@ -21,19 +21,13 @@ import Button from "@material-ui/core/Button";
 
 
 function AutomationRecurrenceHeaderEditor(props) {
-
     const classes = useStyles();
-
-
     return (
         <div className={classes.root}>
-
             <form noValidate autoComplete="off">
-
             <Grid direction='row' justify = 'flex-start' alignItems='center' container>
                 <p style ={{fontSize: 15, color: 'white'}}> Sends every </p>
                 <div style = {{maxWidth:35, marginLeft: 15, marginRight: 0, color:'white'}}>
-
                     <FormControl className={classes.formControl}>
                         <Select
                             labelId="demo-simple-select-label"
@@ -53,7 +47,6 @@ function AutomationRecurrenceHeaderEditor(props) {
                             <MenuItem value={6}>6</MenuItem>
                         </Select>
                     </FormControl>
-
                 </div>
                 <FormControl className={classes.formControl}>
                     <Select
@@ -71,9 +64,7 @@ function AutomationRecurrenceHeaderEditor(props) {
                         <MenuItem value={'month'}>Month(s)</MenuItem>
                     </Select>
                 </FormControl>
-
-                { (props.cycle == 'day')
-
+                {(props.cycle == 'day')
                     ? null
                     :
                     <div className={classes.root}>
@@ -102,10 +93,7 @@ function AutomationRecurrenceHeaderEditor(props) {
 
                                 </Select>
                             </FormControl>
-
-
                             :
-
                             <Box display='flex'
                                  flexDirection='row'
                                  justify='center'
@@ -128,7 +116,6 @@ function AutomationRecurrenceHeaderEditor(props) {
                                         <MenuItem value={4}>4th</MenuItem>
                                     </Select>
                                 </FormControl>
-
                                 <FormControl className={classes.formControl}>
                                     <Select
                                         labelId="demo-simple-select-label"
@@ -150,11 +137,31 @@ function AutomationRecurrenceHeaderEditor(props) {
                                 </FormControl>
                             </Box>
                         }
-
-
                     </Grid>
                     </div>
                 }
+
+                <p style ={{fontSize: 15, marginLeft: 5, marginRight: 20, color: 'white'}}> at </p>
+
+                <div style = {{color:'white', marginTop: -5, marginRight: 10}}>
+                    <TextField
+                        id="time"
+                        label="Send Time"
+                        type="time"
+                        defaultValue="12:00"
+                        className={classes.textField}
+                        onChange={(event)=>props.handleChangeTime(event.target.value)}
+                        InputLabelProps={{
+                            color: 'white', shrink: true,disableUnderline: true, className: classes.textFieldWhite
+
+                        }}
+                        InputProps={{
+                            disableUnderline: true,
+                            className: classes.textField,
+                            step: 300, // 5 min
+                        }}
+                    />
+                </div>
 
 
                 {props.isEditing
@@ -169,15 +176,8 @@ function AutomationRecurrenceHeaderEditor(props) {
                     </Button>
                     :null
                 }
-
-
             </Grid>
-
-
-
             </form>
-
-
         </div>
     );
 }
@@ -233,9 +233,12 @@ const useStyles = makeStyles((theme) => ({
         },
 
         textField: {
-            marginLeft: theme.spacing(1),
-            marginRight: theme.spacing(1),
-            width: 150,
+            width: 110,
+            color: "white"
+        },
+
+        textFieldWhite: {
+            color: "white"
         },
 
         checkBox: {

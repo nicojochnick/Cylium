@@ -51,10 +51,7 @@ export default function Dashboard() {
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
-
     const [trackers, setTrackers] = React.useState([]);
-
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};

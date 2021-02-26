@@ -24,7 +24,6 @@ export const storage = firebase.storage();
 
 
 
-
 //FIREBASE FUNCTIONS
 
 export const streamURL = (userID, observer) => {

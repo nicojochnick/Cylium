@@ -188,14 +188,16 @@ function AutomationRecurrenceEditor(props) {
                 </Grid>
                 <Grid style = {{marginTop:60, marginBottom: 0}} xs = {12} md ={12} lg={12} direction = 'column' container>
 
+
                     <TextField
                         id="time"
                         label="Send Time"
                         type="time"
+                        color = 'secondary'
                         defaultValue="12:00"
                         className={classes.textField}
                         InputLabelProps={{
-                            shrink: true,
+                             shrink: true,
                         }}
                         inputProps={{
                             step: 300, // 5 min
@@ -264,6 +266,7 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
             width: 150,
+
         },
 
         checkBox: {
