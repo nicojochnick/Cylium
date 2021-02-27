@@ -99,7 +99,6 @@ function AutomationRecurrenceContainer(props) {
             } else {
                 console.log('error: dates not generated')
             }
-
         } else if (cycle === 'day'){
             let recurrence = myDate.recur().every(cycleNumber).day()
 
