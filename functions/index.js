@@ -25,26 +25,31 @@ exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun((contex
           snapshot.forEach(doc => {
             let id = doc.id;
             let tracker = doc.data();
-            // let rec = JSON.parse(tracker.recurrence)
-            console.log(id)
+            let dates = tracker.dates;
+            let nextDate = new dates[0];
+            let time = tracker.time;
+            let tracker_DateTime = Date.parse(nextDate+':'+time);
+            let current_DateTime = new Date().getTime();
+            let future_DateTime = new Date(current_DateTime + 5 * 60000);
+              //STEP TWO: IF they do, send a message
+              if (current_DateTime <= tracker_DateTime <= future_DateTime) {
+                console.log('matchingDateTime, creating message');
+                let res = db.collection('message').doc('test3').set({
+                    name: 'test3'
+                }).then(() => {
+                    console.log("Message successfully written!");
+                }).catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
+                return null;
+            }
           });
         })
         .catch(reason => {
-          console.log('db.collection error, reason: ' + reason);
+          console.log('could not pull tracker collection, reason: ' + reason);
         });
 
-    //STEP TWO: IF they do, send a message
-    let res = db.collection('message').doc('test2').set({
-      name: 'test'
-    }).then(() => {
-          console.log("Document successfully written!");
-    }).catch((error) => {
-          console.error("Error writing document: ", error);
-    });
 
-    console.log('every five minutes create;', res);
-
-    return null;
 });
 
 
