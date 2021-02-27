@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import AutomationRecurrenceHeaderEditor from "./automationRecurrenceHeaderEditor";
 import AutomationRecurrenceEditor from "./automationRecurrenceEditor";
+import {generateDates} from "../../../helpers/dateManagement";
 import moment from 'moment'
+
 import {db} from "../../../api/firebase";
 
 
 
 function AutomationRecurrenceContainer(props) {
 
+    require('moment-recur');
     const classes = useStyles();
 
     const [cycle, setCycle] = React.useState('week');
@@ -19,19 +22,53 @@ function AutomationRecurrenceContainer(props) {
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
 
-    const [next20, setNext20] = React.useState([]);
-    const [recurrence, setRecurrence] = React.useState(null);
+    const [next10, setNext10] = React.useState([]);
+    // const [recurrence, setRecurrence] = React.useState(null);
 
-    require('moment-recur');
 
-    const uploadRecurrenceToDB = (rec, dates,) => {
-        console.log('Uploading Recurrence to DB:', rec, time);
+    const uploadRecurrenceToDB = async (rec, dates,) => {
+        console.log('Uploading Recurrence to DB:', rec, time, dates);
         let timeCopy = time;
-        let ref = db.collection('trackers').doc(props.id);
-        return  ref.update({
-            recurrence: JSON.parse( JSON.stringify(rec)),
-            recurrence_Time: timeCopy,
-        })
+        let dbdates= dates.slice();
+        let recObj = {
+            start: Date(),
+            cycle: cycle,
+            cycleNumber: cycleNumber,
+            weeklyDays: weeklyDays,
+            monthlyDay: monthlyDay,
+            monthlyWeek: monthlyWeek,
+            time: time
+        };
+
+        if (dates.length > 0) {
+            let ref = db.collection('trackers').doc(props.id);
+            const res = await ref.update({
+                recurrence: recObj,
+                dates: dbdates,
+                time: timeCopy,
+            })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+
+                .catch(e => {
+                    console.log('error' + e)
+                })
+        }
+    };
+
+    const parseRecurrenceFromDB = () => {
+
+        let ref = db.collection('trackers').doc(props.id).get()
+            .then((doc => {
+                let track = doc.data();
+                console.log(track)
+
+            })
+            )
+            .catch((error) => {
+                console.log("Error getting document:", error);
+            });
     };
 
     const uploadSchedule =async() => {
@@ -39,30 +76,31 @@ function AutomationRecurrenceContainer(props) {
         return createDates()
     };
 
-    const createDates = () => {
+    const createDates = async () => {
         let myDate = moment();
         console.log(myDate);
-        if (cycle == 'week'){
-            console.log(weeklyDays)
-            // let cal = moment.recur().every(weeklyDays).daysOfWeek();
+        if (cycle === 'week'){
             let days = [];
             let match =  { 'Sunday': 1, 'Monday': 2, 'Tuesday': 3, 'Wednesday': 4, 'Thursday': 5, 'Friday': 6, 'Saturday': 0,};
             let i = 0;
             for (i of weeklyDays){
                 days.push(match[i])
             }
-            console.log(cycleNumber, days);
-            let recurrence = myDate.recur().every(cycleNumber).weeks().every(days).daysOfWeek();
-            console.log(recurrence);
+            // let recurrence = myDate.recur().every(cycleNumber).weeks()
+            // setRecurrence(nonCycleRecurrence);
 
-            // let next_20 = recurrence.next(20);
-            // console.log(next_20);
-            // setRecurrence(recurrence);
-            // setNext20(next_20);
+            let nonCycleRecurrence = await myDate.recur().every(days).daysOfWeek();
+            console.log('inputs:   ',nonCycleRecurrence, cycleNumber);
+            let next_10 = await generateDates(nonCycleRecurrence, cycleNumber);
+            console.log('next ten' + next_10);
+            setNext10(next_10);
+            if (next_10.length === 10) {
+                await uploadRecurrenceToDB(nonCycleRecurrence, next_10);
+            } else {
+                console.log('error: dates not generated')
+            }
 
-            uploadRecurrenceToDB(recurrence);
-
-        } else if (cycle == 'day'){
+        } else if (cycle === 'day'){
             let recurrence = myDate.recur().every(cycleNumber).day()
 
         } else {
@@ -113,6 +151,12 @@ function AutomationRecurrenceContainer(props) {
         setEditing(true);
         setTime(time)
     };
+
+    useEffect(() => {
+        // parseRecurrenceFromDB()
+
+    }, []);
+
     return (
         <div>
             {console.log(weeklyDays)}

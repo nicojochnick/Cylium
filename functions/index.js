@@ -3,6 +3,8 @@ const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
+const moment = require('moment');
+
 
 
 // Create and Deploy Your First Cloud Functions
@@ -14,7 +16,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
 
-exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun((context) => {
+exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun((context) => {
     let db = admin.firestore();
     //STEP ONE: Check if conditions match on any trackers
     db.collection('trackers')
@@ -23,8 +25,8 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun((contex
           snapshot.forEach(doc => {
             let id = doc.id;
             let tracker = doc.data();
-            let rec = JSON.parse(tracker.recurrence);
-            console.log(tracker)
+            // let rec = JSON.parse(tracker.recurrence)
+            console.log(id)
           });
         })
         .catch(reason => {
