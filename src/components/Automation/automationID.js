@@ -25,7 +25,7 @@ function AutomationId(props) {
     };
 
     return (
-        <div>
+        <div style = {{margin: 10, marginLeft: 16}}>
 
             <Box display = 'flex' flexDirection = 'row'>
 

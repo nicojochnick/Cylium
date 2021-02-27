@@ -6,14 +6,12 @@ require('moment-recur');
 
 //Take in a recurring object rule, and a cycle, and return the next 10 dates
 export async function generateDates(recurrentObjectRule, cycleNumber){
-    console.log('generating Dates:', recurrentObjectRule, cycleNumber)
     let numberOfIterations = cycleNumber * 10;
     let alldates = recurrentObjectRule.next(numberOfIterations);
     let dates = [];
     let j = 0;
     let i = 0;
     while (numberOfIterations > j) {
-        console.log(dates)
         if (dates.length > 10) {
             break;
         } else if (i === cycleNumber-1) {
@@ -24,6 +22,5 @@ export async function generateDates(recurrentObjectRule, cycleNumber){
         }
         j++;
     }
-    console.log('DATES', dates);
     return dates
 };

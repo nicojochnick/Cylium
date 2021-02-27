@@ -83,9 +83,9 @@ function AutomationHeader(props) {
             flexDirection="row"
             borderRadius = {0}
             borderBottom = {0}
-            style = {{backgroundColor: props.backgroundColor, padding: 15, }}>
+            style = {{backgroundColor: props.backgroundColor,}}>
 
-            <Grid container>
+            <Grid container >
 
             <Grid container xs={10} sm = {10} md={10}  lg={10} alignItems = 'center' direction = "row">
             {props.name
@@ -95,7 +95,7 @@ function AutomationHeader(props) {
             }
                 <Divider className={classes.divider} orientation="vertical" flexItem />
 
-                <Box display = 'flex' flexDirection = 'row'>
+                <Box style = {{margin: 7}}display = 'flex' flexDirection = 'row'>
                 <IconButton color = "white" onClick={()=>console.log('setup time')}>
                             <BiTime style = {{color: "white", margin: 0}} size = {25} />
                 </IconButton>
@@ -103,6 +103,8 @@ function AutomationHeader(props) {
 
                 <AutomationRecurrenceContainer id = {props.id} isHeader={true}/>
                 </Box>
+                <Divider className={classes.divider} orientation="vertical" flexItem />
+
             </Grid>
 
 

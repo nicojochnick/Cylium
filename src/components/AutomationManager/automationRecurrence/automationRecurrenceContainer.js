@@ -85,7 +85,7 @@ function AutomationRecurrenceContainer(props) {
             let i = 0;
             for (i of weeklyDays){
                 days.push(match[i])
-            }
+            };
             // let recurrence = myDate.recur().every(cycleNumber).weeks()
             // setRecurrence(nonCycleRecurrence);
 
