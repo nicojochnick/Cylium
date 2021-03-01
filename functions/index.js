@@ -1,4 +1,7 @@
+import {db} from "../src/api/firebase";
+
 const functions = require("firebase-functions");
+import {generateNextTime} from "./helper/dateManager";
 
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
@@ -30,9 +33,29 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun((contex
             let time = tracker.time;
             let lowerBound_DateTime = new Date().getTime();
             let upperBound_DateTime = new Date(current_DateTime + 5 * 60000);
-              //STEP TWO: IF they do, send a message
+              //STEP TWO: IF they do, update Next DateTime and send a message
+
               if (lowerBound_DateTime <= nextSendDateTime <= upperBound_DateTime) {
-                console.log('matchingDateTime, creating message');
+
+                  console.log('recurrence triggered!');
+
+                  console.log('updating nextDateTime');
+
+                  let nextDateTime = generateNextTime(tracker.recurrence, 1);
+
+                  let nextDateTimeUpdateResponse = db.collection('trackers').doc(id).update({
+                      nextDateTime: nextDateTime
+
+                  })
+                      .then(() => {
+                          console.log("nextDateTime Successfully Updated to: " + nextDateTime);
+                      }).catch((error) => {
+                          console.error("Error writing document: ", error);
+                      });
+
+
+                  console.log('creating message');
+
                 let res = db.collection('message').doc('test3').set({
                     name: 'test3'
                 }).then(() => {
@@ -42,7 +65,6 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun((contex
                 });
                 return null;
             }
-              //TODO: STEP Three: remove the first node from the stack, if the stack is now empty, generate 10 more.
           });
         })
         .catch(reason => {

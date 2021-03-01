@@ -46,6 +46,7 @@ function AutomationRecurrenceContainer(props) {
                 recurrence: recObj,
                 dates: dbdates,
                 time: timeCopy,
+                nextDateTime: dbdates[0]
             })
                 .then(() => {
                     console.log("Document successfully updated!");
@@ -91,8 +92,9 @@ function AutomationRecurrenceContainer(props) {
 
             let t = time.slice();
             let nonCycleRecurrence = await myDate.recur().every(days).daysOfWeek();
-            console.log('inputs:   ',nonCycleRecurrence, cycleNumber);
-            let next_10 = await generateDates(nonCycleRecurrence, cycleNumber,t);
+            console.log('inputs:  ',nonCycleRecurrence, cycleNumber);
+            let next_10 = await generateDates(nonCycleRecurrence, cycleNumber,t,10);
+
             console.log('next ten' + next_10);
             setNext10(next_10);
             if (next_10.length === 10) {
