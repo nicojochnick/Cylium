@@ -89,13 +89,14 @@ function AutomationRecurrenceContainer(props) {
             // let recurrence = myDate.recur().every(cycleNumber).weeks()
             // setRecurrence(nonCycleRecurrence);
 
+            let t = time.slice();
             let nonCycleRecurrence = await myDate.recur().every(days).daysOfWeek();
             console.log('inputs:   ',nonCycleRecurrence, cycleNumber);
-            let next_10 = await generateDates(nonCycleRecurrence, cycleNumber);
+            let next_10 = await generateDates(nonCycleRecurrence, cycleNumber,t);
             console.log('next ten' + next_10);
             setNext10(next_10);
             if (next_10.length === 10) {
-                await uploadRecurrenceToDB(nonCycleRecurrence, next_10);
+                await uploadRecurrenceToDB(nonCycleRecurrence, next_10, );
             } else {
                 console.log('error: dates not generated')
             }
@@ -148,6 +149,7 @@ function AutomationRecurrenceContainer(props) {
     };
     const handleChangeTime = (time) => {
         setEditing(true);
+        console.log(time);
         setTime(time)
     };
 

@@ -20,9 +20,7 @@ import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import Button from "@material-ui/core/Button";
 
 function AutomationRecurrenceEditor(props) {
-
     const classes = useStyles();
-
     return (
         <Box style = {{padding: 20, marginTop: -10, minWidth: 200}}>
             <form noValidate autoComplete="off">
@@ -187,8 +185,6 @@ function AutomationRecurrenceEditor(props) {
 
                 </Grid>
                 <Grid style = {{marginTop:60, marginBottom: 0}} xs = {12} md ={12} lg={12} direction = 'column' container>
-
-
                     <TextField
                         id="time"
                         label="Send Time"
@@ -204,9 +200,6 @@ function AutomationRecurrenceEditor(props) {
                         }}
                     />
                 </Grid>
-
-
-
                 <Grid container justify={'center'} alignItems = 'center'>
                 <Button
                     style = {{margin: 10}}

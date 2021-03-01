@@ -140,13 +140,10 @@ function AutomationRecurrenceHeaderEditor(props) {
                     </Grid>
                     </div>
                 }
-
                 <p style ={{fontSize: 15, marginLeft: 5, marginRight: 20, color: 'white'}}> at </p>
-
-                <div style = {{color:'white', marginTop: -5, marginRight: 10}}>
+                <div style = {{color:'white', marginRight: 10}}>
                     <TextField
                         id="time"
-                        label="Send Time"
                         type="time"
                         defaultValue="12:00"
                         className={classes.textField}
@@ -162,7 +159,6 @@ function AutomationRecurrenceHeaderEditor(props) {
                         }}
                     />
                 </div>
-
 
                 {props.isEditing
                     ?

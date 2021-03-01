@@ -100,7 +100,6 @@ function AutomationHeader(props) {
                             <BiTime style = {{color: "white", margin: 0}} size = {25} />
                 </IconButton>
 
-
                 <AutomationRecurrenceContainer id = {props.id} isHeader={true}/>
                 </Box>
                 <Divider className={classes.divider} orientation="vertical" flexItem />
