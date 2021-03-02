@@ -16,7 +16,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello from Firebase!");
 });
 
-exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (context) => {
+exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun(async (context) => {
     let db = admin.firestore();
     let lowerBound_DateTime = new Date().getTime();
     let upperBound_DateTime = new Date(lowerBound_DateTime + 300000).getTime();
@@ -33,7 +33,6 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (
                 if (nextSendDateTime) {
                     let time = tracker.time;
                     let trackerDateTime = nextSendDateTime.toDate().getTime();
-
                     console.log(lowerBound_DateTime, trackerDateTime, upperBound_DateTime);
                     //STEP TWO: IF they do, update Next DateTime and send a message
                     if (lowerBound_DateTime <= trackerDateTime && trackerDateTime <= upperBound_DateTime) {
@@ -69,9 +68,6 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (
             console.log('could not pull tracker collection, reason: ' + reason);
         });
 });
-
-
-
 
 
 
