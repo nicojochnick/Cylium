@@ -18,6 +18,8 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
 exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (context) => {
     let db = admin.firestore();
+    let lowerBound_DateTime = new Date().getTime();
+    let upperBound_DateTime = new Date(lowerBound_DateTime + 300000).getTime();
     //STEP ONE: Check if conditions match on any trackers
     await db.collection('trackers')
         .get()
@@ -30,12 +32,11 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (
                 console.log('pulled from tracker: ' + nextSendDateTime);
                 if (nextSendDateTime) {
                     let time = tracker.time;
-                    let trackerDateTime = nextSendDateTime;
-                    let lowerBound_DateTime = new Date().getTime();
-                    let upperBound_DateTime = new Date(lowerBound_DateTime + 5 * 60000).getTime();
+                    let trackerDateTime = nextSendDateTime.toDate().getTime();
+
                     console.log(lowerBound_DateTime, trackerDateTime, upperBound_DateTime);
                     //STEP TWO: IF they do, update Next DateTime and send a message
-                    if (lowerBound_DateTime <= trackerDateTime <= upperBound_DateTime) {
+                    if (lowerBound_DateTime <= trackerDateTime && trackerDateTime <= upperBound_DateTime) {
                         console.log('recurrence triggered!');
                         console.log('updating nextDateTime');
                         let nextNewDateTime = await generateNextTime(tracker.recurrence, 1);
@@ -48,8 +49,6 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (
                             console.error("Error writing document: ", error);
                         });
                         console.log('creating message');
-
-
                         let sendMessageResponse = db.collection('message').doc('test3').set({
                             name: 'test3'
                         }).then(() => {
@@ -58,6 +57,8 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (
                             console.error("Error writing document: ", error);
                         });
                         return null;
+                    } else {
+                        console.log('not in frame')
                     }
                 } else {
                     console.log('error: nextDateTime is Null')
@@ -68,6 +69,9 @@ exports.scheduledFunction = functions.pubsub.schedule('* * * * *').onRun(async (
             console.log('could not pull tracker collection, reason: ' + reason);
         });
 });
+
+
+
 
 
 
