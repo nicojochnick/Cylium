@@ -25,16 +25,14 @@ import AutomationRecurrenceEditor from "../AutomationManager/automationRecurrenc
 import AutomationRecurrenceContainer from "../AutomationManager/automationRecurrence/automationRecurrenceContainer";
 
 function mergeArrayObjects (arr1,arr2){
-    console.log(arr1,arr2)
+    console.log(arr1,arr2);
     return arr1.map((item,i) => {
         if(arr2[i] && item.callID === arr2[i].callID){
             //merging two objects
             return Object.assign({},item,arr2[i])
         }
     })
-};
-
-
+}
 function AutomationItem(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
@@ -69,7 +67,7 @@ function AutomationItem(props) {
         let resRef = db.collection("responses");
         let responses = [];
         if (props.user && props.user.trackers && props.tracker) {
-            console.log('TRIGGERED')
+            console.log('TRIGGERED');
             await resRef.where("trackerID", "==", props.tracker.id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
@@ -204,11 +202,7 @@ function AutomationItem(props) {
             </Grid>
         </div>
     );
-};
-
-
-
-
+}
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,

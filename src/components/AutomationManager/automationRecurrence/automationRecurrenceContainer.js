@@ -8,7 +8,6 @@ import moment from 'moment'
 import {db} from "../../../api/firebase";
 
 
-
 function AutomationRecurrenceContainer(props) {
 
     require('moment-recur');
@@ -51,7 +50,6 @@ function AutomationRecurrenceContainer(props) {
                 .then(() => {
                     console.log("Document successfully updated!");
                 })
-
                 .catch(e => {
                     console.log('error' + e)
                 })
@@ -86,15 +84,13 @@ function AutomationRecurrenceContainer(props) {
             let i = 0;
             for (i of weeklyDays){
                 days.push(match[i])
-            };
+            }
             // let recurrence = myDate.recur().every(cycleNumber).weeks()
             // setRecurrence(nonCycleRecurrence);
-
             let t = time.slice();
             let nonCycleRecurrence = await myDate.recur().every(days).daysOfWeek();
             console.log('inputs:  ',nonCycleRecurrence, cycleNumber);
             let next_10 = await generateDates(nonCycleRecurrence, cycleNumber,t,10);
-
             console.log('next ten' + next_10);
             setNext10(next_10);
             if (next_10.length === 10) {
@@ -140,7 +136,7 @@ function AutomationRecurrenceContainer(props) {
         console.log(order,day);
         let days = weeklyDays.slice();
         days[order] = day;
-        console.log(days)
+        console.log(days);
         setWeeklyDays(days)
     };
     const handleAddWeeklyDay = () =>{

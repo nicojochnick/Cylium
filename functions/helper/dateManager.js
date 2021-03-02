@@ -1,20 +1,15 @@
-import moment from 'moment'
+const moment = require('moment');
 require('moment-recur');
 
-
-
-
 //Get the next date in .getTime() format
-export async function generateNextTime(recurrenceObject,numberOfDates) {
-
+export async function generateNextTime(recurrenceObject, numberOfDates) {
     let generatedDate = null;
-
     let cycle = recurrenceObject.cycle;
     let cycleNumber = recurrenceObject.cycleNumber;
     let monthlyDay = recurrenceObject.monthlyDay;
     let monthlyWeek = recurrenceObject.monthlyWeek;
     let weeklyDays = recurrenceObject.weeklyDays;
-
+    let time = recurrenceObject.time;
     let myDate = moment();
 
     if (cycle === 'day'){
@@ -24,12 +19,9 @@ export async function generateNextTime(recurrenceObject,numberOfDates) {
         for (i of weeklyDays){
             days.push(match[i])
         }
-
         let nonCycleRecurrence = await myDate.recur().every(days).daysOfWeek();
         generatedDate = await generateDates(nonCycleRecurrence, cycleNumber, numberOfDates);
-
     } else if (cycle === 'week') {
-
 
     } else if (cycle === 'month') {
 
@@ -37,14 +29,12 @@ export async function generateNextTime(recurrenceObject,numberOfDates) {
     } else {
         console.log('error: no cycle present')
     }
-
     return generatedDate;
-
 }
 
 
 //Take in a recurring object rule, and a cycle, and return the next 10 dates
-export async function generateDates(recurrentObjectRule, cycleNumber, numberOfDates){
+function generateDates(recurrentObjectRule, cycleNumber, numberOfDates){
     // console.log('generating Dates:', recurrentObjectRule, cycleNumber)
     let numberOfIterations = cycleNumber * numberOfDates;
     let alldates = recurrentObjectRule.next(numberOfIterations);
