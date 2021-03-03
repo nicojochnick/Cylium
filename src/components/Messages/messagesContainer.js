@@ -10,20 +10,8 @@ import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import MessageItem from "./messageItem"
-import MessageList from "./messageList"
-
+import MessagePackage from "./messagePackage"
 import {db} from "../../api/firebase";
-
-
-function mergeArrayObjects (arr1,arr2){
-    console.log(arr1,arr2)
-    return arr1.map((item,i) => {
-        if(arr2[i] && item.callID === arr2[i].callID){
-            //merging two objects
-            return Object.assign({},item,arr2[i])
-        }
-    })
-};
 
 
 function MessagesContainer(props) {
@@ -33,55 +21,55 @@ function MessagesContainer(props) {
     const [height, setHeight] = React.useState(300);
     const [automations, setAutomations] = React.useState([]);
 
+    //
+    // const getMessages = async(trackers) => {
+    //     let resRef = db.collection("messages");
+    //     let messages = [];
+    //     if (trackers.length > 0) {
+    //         await resRef.where("automationID", "==", trackers[0].id).get()
+    //             .then(function (querySnapshot) {
+    //                 querySnapshot.forEach(function (doc) {
+    //                     messages.push(doc.data())
+    //                 });
+    //                 let merged_messages = [];
+    //                 for (let i = 0; i < messages.length; i++) {
+    //                     if (trackers[0].call) {
+    //                         let res = mergeArrayObjects(messages[i].responseData, trackers[0].call);
+    //                         let objres = {'merged_responses': res, 'user': messages[i].senderID};
+    //                         merged_messages.push(objres)
+    //                     }
+    //                 }
+    //                 setMessages(merged_messages);
+    //             })
+    //             .catch(function (error) {
+    //                 console.log("Error getting documents: ", error);
+    //             });
+    //         // console.log(merged_responses, messages, trackers[0].call);
+    //     }
+    // };
+    //
+    // const getAutomations = async() => {
+    //     if (props.user) {
+    //         let userAutomationIDs = props.user.trackers;
+    //         let autoRef = db.collection("trackers");
+    //         let automations = [];
+    //         await autoRef.where('id', 'in', userAutomationIDs).get()
+    //             .then(function (querySnapshot) {
+    //                 querySnapshot.forEach(function (doc) {
+    //                     automations.push(doc.data())
+    //                 });
+    //                 console.log(automations);
+    //                 setAutomations(automations);
+    //                 getMessages(automations)
+    //             })
+    //             .catch(function (error) {
+    //                 console.log("Error getting documents: ", error);
+    //             });
+    //     }
+    // };
 
-    const getMessages = async(trackers) => {
-        let resRef = db.collection("messages");
-        let messages = [];
-        if (trackers.length > 0) {
-            await resRef.where("automationID", "==", trackers[0].id).get()
-                .then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        messages.push(doc.data())
-                    });
-                    let merged_messages = [];
-                    for (let i = 0; i < messages.length; i++) {
-                        if (trackers[0].call) {
-                            let res = mergeArrayObjects(messages[i].responseData, trackers[0].call);
-                            let objres = {'merged_responses': res, 'user': messages[i].senderID};
-                            merged_messages.push(objres)
-                        }
-                    }
-                    setMessages(merged_messages);
-                })
-                .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                });
-            // console.log(merged_responses, messages, trackers[0].call);
-        }
-    };
-
-    const getAutomations = async() => {
-        if (props.user) {
-            let userAutomationIDs = props.user.trackers;
-            let autoRef = db.collection("trackers");
-            let automations = [];
-            await autoRef.where('id', 'in', userAutomationIDs).get()
-                .then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        automations.push(doc.data())
-                    });
-                    console.log(automations);
-                    setAutomations(automations);
-                    getMessages(automations)
-                })
-                .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                });
-        }
-    };
-    let totalHeight = height + 100;
     useEffect(() => {
-        getAutomations();
+        // getAutomations();
     }, []);
 
     return (
@@ -92,12 +80,11 @@ function MessagesContainer(props) {
                      style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
                      borderRadius={20}>
                         <Grid >
-                            <Divider/>
-                            {Object.keys(messages).map((item) =>
-                                <MessageList
+                            {Object.keys(props.messages).map((item) =>
+                                <MessagePackage
                                     user = {props.user}
-                                    tracker={props.tracker}
-                                    response={messages[item]}/>)}
+                                    automations={props.automations}
+                                    package={props.messages[item]}/>)}
                         </Grid>
 
                 </Box>

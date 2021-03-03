@@ -52,12 +52,15 @@ export default function Dashboard(props) {
     const [open, setOpen] = React.useState(true);
     const [notifications, setNotifications] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
-    const handleClose = () => {setAnchorEl(null);};
+    const [anchorElNotification, setAnchorElNotification] = React.useState(null);
+
+
+
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
 
-    const [anchorElNotification, setAnchorElNotification] = React.useState(null);
+
+    const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
 
     const handleNotificationClick = (event) => {
         setAnchorElNotification(event.currentTarget);
@@ -66,6 +69,8 @@ export default function Dashboard(props) {
     const handleCloseNotification = () => {
         setAnchorElNotification(null);
     };
+
+    const handleClose = () => {setAnchorEl(null);};
 
     const openNotification = Boolean(anchorElNotification);
 
@@ -86,7 +91,6 @@ export default function Dashboard(props) {
 
     useEffect(() => {
     }, []);
-
 
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -247,7 +251,7 @@ export default function Dashboard(props) {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <BaseView  team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
+                                <BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
                             </Route>
                             <Route exact path="/automations">
                                 <AutomationView team = {null}  automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />

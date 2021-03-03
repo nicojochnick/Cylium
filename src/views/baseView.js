@@ -32,9 +32,11 @@ function BaseView(props) {
                           justify= 'center'
                           alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {stretch} lg = {stretch} container>
-                        <MessagesContainer setStretch = {setStretch} isMe = {true} user = {props.user} />
-                        {/*<TrackerItem/>*/}
+                    <Grid xs = {12}  md = {8} lg = {8} container>
+                        <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
+                    </Grid>
+
+                    <Grid style = {{backgroundColor: 'grey', height: 50}} xs = {12}  md = {4} lg = {4} container>
                     </Grid>
                 </Grid>
             </Container>

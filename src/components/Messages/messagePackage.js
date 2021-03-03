@@ -9,7 +9,7 @@ import AutomationItem from "../Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
 
-function MessageList(props) {
+function MessagePackage(props) {
     const classes = useStyles();
     const [user, setUser] = React.useState(null);
     const getUser = async(email) => {
@@ -24,7 +24,7 @@ function MessageList(props) {
     };
 
     useEffect(() => {
-        getUser(props.response.user);
+        // getUser(props.automation.user);
     }, []);
 
 
@@ -58,9 +58,9 @@ function MessageList(props) {
                                 color: '#2F2C37',
                                 fontWeight: 500,
                             }}>{user.name} </p>
-                            {(props.response)
-                                ? <div> {Object.keys(props.response.merged_responses).map((item) => <
-                                    MessageItem response={props.response.merged_responses[item]}/>)
+                            {(props.package)
+                                ? <div> {Object.keys(props.package.merged_packageItems).map((item) => <
+                                    MessageItem packageItem={props.package.merged_packageItems[item]}/>)
                                 }
                                 </div>
                                 : null
@@ -103,4 +103,4 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default MessageList;
+export default MessagePackage;

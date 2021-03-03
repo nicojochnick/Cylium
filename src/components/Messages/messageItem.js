@@ -10,9 +10,10 @@ import {makeStyles} from "@material-ui/core/styles";
 
 function MessageItem(props) {
     const [eState, setEState] = React.useState(null);
+
     useEffect(() => {
         let editorState = null;
-        if (props.response && props.response.type !== 'numeric') {
+        if (props.packageItem && props.packageItem.type !== 'numeric') {
             editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.response.response)));
             editorState = RichUtils.toggleInlineStyle(editorState, 'rgba(255, 0, 0, 1.0)',
             );
@@ -20,10 +21,10 @@ function MessageItem(props) {
         }
     }, []);
 
-
     return (
         <div>
-            {props.response
+            { console.log(props.packageItem)}
+            {props.packageItem
                 ?
                 <div>
                     {(props.type === 'numerical')
@@ -36,7 +37,7 @@ function MessageItem(props) {
                                 marginTop: 2,
                             }}
                             >
-                                {props.response.label} {' '} {props.response.recurringTime}
+                                {props.packageItem.label} {' '} {props.packageItem.recurringTime}
                             </p>
 
                             <p style={{
@@ -45,7 +46,7 @@ function MessageItem(props) {
                                 margin: 10,
                                 marginTop: -2,
                             }}>
-                                {props.response.response} </p>
+                                {props.packageItem.response} </p>
                         </div>
                         :
                         <div>
@@ -57,10 +58,8 @@ function MessageItem(props) {
                                     marginTop: 2,
                                 }}
                                 >
-                                    {props.response.label} {' '} {props.response.recurringTime}
+                                    {props.packageItem.label} {' '} {props.packageItem.recurringTime}
                                 </p>
-
-
                                 {(eState!== null)
 
                                     ?
@@ -70,10 +69,7 @@ function MessageItem(props) {
                                     : null
                                 }
                                 </div>
-
-
                         </div>
-
                     }
                 </div>
                 : null

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {db} from "../../api/firebase";
 import firebase from 'firebase/app';
-import {mergeAutomationIDsandMessages} from "../../helpers/filters";
+import {mergeAutomationSchemaandMessages} from "../../helpers/filters";
 import Dashboard from "./dashboard";
 import {fade, makeStyles} from "@material-ui/core";
 
@@ -18,44 +18,52 @@ function DashboardContainer(props) {
     const getUser = async(email) => {
         await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
-                console.log("Current data: ", doc.data());
+                console.log("user pulled: ", doc.data());
                 //Fixes bug where doc.data() is undefined on first signin
-                let user = doc.data()
+                let user = doc.data();
                 if (user) {
                     setURL(user.url);
                     setUser(user);
                     getAutomations(user);
                 }
-            });
+            })
     };
 
-    const getMessages = async(trackers) => {
+    const getMessages = async(autos) => {
+        console.log(autos);
         let resRef = db.collection("messages");
         let messages = [];
-        if (trackers.length > 0) {
-            await resRef.where("automationID", "==", trackers[0].id).get()
+        if (autos.length > 0) {
+            await resRef.where("automationID", "==", autos[0].id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
                         messages.push(doc.data())
                     });
+
                     let merged_messages = [];
-                    for (let i = 0; i < messages.length; i++) {
-                        if (trackers[0].call) {
-                            let res = mergeAutomationIDsandMessages(messages[i].responseData, trackers[0].call);
-                            let objres = {'merged_responses': res, 'user': messages[i].senderID};
-                            merged_messages.push(objres)
+                    if (messages.length > 0) {
+                        for (let i = 0; i < messages.length; i++) {
+                            if (autos[0].call) {
+                                let res = mergeAutomationSchemaandMessages(messages[i].messageData, autos[0].call);
+                                let objres = {'merged_packageItems': res, 'user': messages[i].senderID};
+                                merged_messages.push(objres)
+                            }
                         }
                     }
+                    console.log('merged messages:  ' + merged_messages);
                     setMessages(merged_messages);
+                })
+                .then(() => {
+                    console.log("Messages successfully pulled");
                 })
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
-            // console.log(merged_responses, messages, trackers[0].call);
+            // console.log(merged_responses, messages, autos[0].call);
         }
     };
 
-    const getAutomations= async(user) => {
+    const getAutomations = async(user) => {
         if (user) {
             let userAutomations = user.trackers;
             let automatonRef = db.collection("trackers");
@@ -66,13 +74,17 @@ function DashboardContainer(props) {
                         automations.push(doc.data())
                     });
                     setAutomations(automations);
+                    getMessages(automations)
                 })
+                .then(() => {
+                    console.log("Automations successfully pulled");
+                })
+
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
         }
     };
-
 
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
@@ -81,7 +93,7 @@ function DashboardContainer(props) {
     }, []);
 
     return (
-            <Dashboard url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
+        <Dashboard url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
     );
 }
 
