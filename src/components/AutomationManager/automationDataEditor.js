@@ -53,7 +53,6 @@ function AutomationDataEditor(props) {
                 Add Task
             </Button>
 
-
             <Button
                 style = {{margin: 10}}
                 variant="contained"
@@ -62,9 +61,8 @@ function AutomationDataEditor(props) {
                 startIcon={<BiPlus />}
                 onClick={()=>addQuestion()}
             >
-                Add Reminder
+                Add Rating
             </Button>
-
 
             {(props.tracker.call)
                 ?

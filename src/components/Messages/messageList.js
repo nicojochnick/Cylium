@@ -9,11 +9,9 @@ import AutomationItem from "../Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
 
-
 function MessageList(props) {
     const classes = useStyles();
     const [user, setUser] = React.useState(null);
-
     const getUser = async(email) => {
         await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
@@ -23,7 +21,6 @@ function MessageList(props) {
                     setUser(user);
                 }
             });
-
     };
 
     useEffect(() => {

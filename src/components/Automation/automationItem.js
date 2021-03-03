@@ -149,7 +149,7 @@ function AutomationItem(props) {
                                 variant="fullWidth"
                                 centered
                             >
-                                <Tab style={{maxWidth:50}}  label="Responses" />
+                                <Tab style={{maxWidth:50}}  label="Feed" />
                                 <Tab style={{maxWidth:50}}  label="Recipients" />
                                 <Tab style={{maxWidth:50}} label="Schedule" />
                             </Tabs>

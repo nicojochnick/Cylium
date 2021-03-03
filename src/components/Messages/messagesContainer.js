@@ -38,9 +38,6 @@ function MessagesContainer(props) {
     const getResponses = async(trackers) => {
         let resRef = db.collection("responses");
         let responses = [];
-        console.log('TRIGGERED');
-
-        console.log(trackers.length)
 
         if (trackers.length > 0) {
             await resRef.where("trackerID", "==", trackers[0].id).get()
