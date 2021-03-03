@@ -50,18 +50,12 @@ export default function Dashboard(props) {
     // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
-    const [url, setURL] = React.useState(null);
-    const [team, setTeam] = React.useState({});
-    const [email, setEmail] = React.useState(null);
-    const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
-    const [automations, setAutomations] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
-    const [messages, setMessages] = React.useState([]);
 
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
 
@@ -248,18 +242,18 @@ export default function Dashboard(props) {
                 </List>
                 <Divider />
             </Drawer>
-                {(user) ?
+                {(props.user) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <BaseView team = {team} automations = {props.automations} user = {user} url = {url} email = {email} />
+                                <BaseView  team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
                             </Route>
                             <Route exact path="/automations">
-                                <AutomationView team = {team} automations = {props.automations} user = {user} url = {url} email = {email} />
+                                <AutomationView team = {null}  automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
                             </Route>
                             <Route path="/settings">
-                                <Settings email = {props.email} url = {props.url}  user = {props.user}/>
+                                <Settings team = {null}  email = {props.email} url = {props.url}  user = {props.user}/>
                             </Route>
                         </Switch>
                     </main>

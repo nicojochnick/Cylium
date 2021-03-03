@@ -8,6 +8,7 @@ import login from './products/authentication/login';
 import {auth} from './api/firebase';
 import './styles.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import DashboardContainer from "./products/core/dashboardContainer";
 
 
 const theme = createMuiTheme({
@@ -61,7 +62,7 @@ export default class App extends Component {
               <PrivateRoute
                   path="/feed"
                   authenticated={this.state.authenticated}
-                  component={Dashboard}
+                  component={DashboardContainer}
               />
 
                 <PrivateRoute
