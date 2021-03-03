@@ -24,10 +24,9 @@ function MessagePackage(props) {
     };
 
     useEffect(() => {
-        // getUser(props.automation.user);
+        getUser(props.senderID);
+        console.log()
     }, []);
-
-
     return (
         <div>
             {user
@@ -59,8 +58,8 @@ function MessagePackage(props) {
                                 fontWeight: 500,
                             }}>{user.name} </p>
                             {(props.package)
-                                ? <div> {Object.keys(props.package.merged_packageItems).map((item) => <
-                                    MessageItem packageItem={props.package.merged_packageItems[item]}/>)
+                                ? <div> {Object.keys(props.message.call).map((item) => <
+                                    MessageItem packageItem={props.package.call[item]}/>)
                                 }
                                 </div>
                                 : null

@@ -19,7 +19,7 @@ import UserProfile from "../../User/userProfile";
 import SearchUsers from "./searchUsers";
 import {db} from '../../../api/firebase'
 import firebase from "firebase/app";
-import AutomationDataEditor from "./automationDataEditor";
+import AutomationDataEditor from "./packageEditor/automationDataEditor";
 import AutomationRecurrenceEditor from "./automationRecurrence/automationRecurrenceEditor";
 
 

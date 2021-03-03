@@ -40,18 +40,20 @@ function DashboardContainer(props) {
                         messages.push(doc.data())
                     });
 
-                    let merged_messages = [];
-                    if (messages.length > 0) {
-                        for (let i = 0; i < messages.length; i++) {
-                            if (autos[0].call) {
-                                let res = mergeAutomationSchemaandMessages(messages[i].messageData, autos[0].call);
-                                let objres = {'merged_packageItems': res, 'user': messages[i].senderID};
-                                merged_messages.push(objres)
-                            }
-                        }
-                    }
-                    console.log('merged messages:  ' + merged_messages);
-                    setMessages(merged_messages);
+                    // Probably not necessary
+
+                    // let merged_messages = [];
+                    // if (messages.length > 0) {
+                    //     for (let i = 0; i < messages.length; i++) {
+                    //         if (autos[0].call) {
+                    //             let res = mergeAutomationSchemaandMessages(messages[i].messageData, autos[0].call);
+                    //             let objres = {'merged_packageItems': res, 'user': messages[i].senderID};
+                    //             merged_messages.push(objres)
+                    //         }
+                    //     }
+                    // }
+                    // console.log('merged messages:  ' + merged_messages);
+                    setMessages(messages);
                 })
                 .then(() => {
                     console.log("Messages successfully pulled");

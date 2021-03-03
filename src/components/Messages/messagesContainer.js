@@ -70,6 +70,7 @@ function MessagesContainer(props) {
 
     useEffect(() => {
         // getAutomations();
+        console.log(props.messages, props.automations, props.user)
     }, []);
 
     return (
@@ -82,9 +83,9 @@ function MessagesContainer(props) {
                         <Grid >
                             {Object.keys(props.messages).map((item) =>
                                 <MessagePackage
-                                    user = {props.user}
+                                    senderID = {props.messages[item].senderID}
                                     automations={props.automations}
-                                    package={props.messages[item]}/>)}
+                                    message={props.messages[item]}/>)}
                         </Grid>
 
                 </Box>

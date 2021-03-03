@@ -1,12 +1,12 @@
 import React from 'react';
-import EditQuestionItem from "./editQuestionItem";
+import EditQuestionItem from "../editQuestionItem";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {fade, makeStyles} from "@material-ui/core/styles";
 
 import { BiSend, BiPlus,BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import nextId from "react-id-generator";
-import {db} from "../../../api/firebase";
+import {db} from "../../../../api/firebase";
 import firebase from "firebase/app";
 
 
@@ -18,11 +18,12 @@ function AutomationDataEditor(props) {
             callID: id,
             label: 'type your question here...',
             order: id,
-            receivers: [],
             type: 'text',
+            responseData: null,
+            structuredMessage: true,
             timeStamp: new Date(),
         };
-        const trackRef = await db.collection('trackers').doc(props.tracker.id)
+        const trackRef = await db.collection('trackers').doc(props.tracker.id);
         const addCall = await trackRef.update({
             call: firebase.firestore.FieldValue.arrayUnion(newCall)
         })

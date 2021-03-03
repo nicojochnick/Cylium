@@ -27,7 +27,7 @@ function MessageItem(props) {
             {props.packageItem
                 ?
                 <div>
-                    {(props.type === 'numerical')
+                    {(props.packageItem.type === 'numerical')
                         ?
                         <div>
                             <p style={{
@@ -37,7 +37,7 @@ function MessageItem(props) {
                                 marginTop: 2,
                             }}
                             >
-                                {props.packageItem.label} {' '} {props.packageItem.recurringTime}
+                                {props.packageItem.label} {' '}
                             </p>
 
                             <p style={{
@@ -46,7 +46,7 @@ function MessageItem(props) {
                                 margin: 10,
                                 marginTop: -2,
                             }}>
-                                {props.packageItem.response} </p>
+                                {props.packageItem.data} </p>
                         </div>
                         :
                         <div>
