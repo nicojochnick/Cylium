@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
-import home from './pages/home';
-import Dashboard from './pages/dashboard'
-import signup from './pages/signup';
+import home from './products/home';
+import Dashboard from './products/core/dashboard'
+import signup from './products/authentication/signup';
 import Feedbox from './views/Old/feedbox'
-import login from './pages/login';
+import login from './products/authentication/login';
 import {auth} from './api/firebase';
 import './styles.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';

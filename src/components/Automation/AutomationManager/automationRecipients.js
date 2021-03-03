@@ -9,15 +9,15 @@ import nextId from "react-id-generator";
 import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
-import TyperTracker from "../Typers/typerTracker";
+import TyperTracker from "../../Typers/typerTracker";
 import EditQuestionItem from "./editQuestionItem";
 import List from '@material-ui/core/List';
 import { BiSend, BiPlus } from "react-icons/bi";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
-import UserProfile from "../User/userProfile";
+import UserProfile from "../../User/userProfile";
 import SearchUsers from "./searchUsers";
-import {db} from '../../api/firebase'
+import {db} from '../../../api/firebase'
 import firebase from "firebase/app";
 import AutomationDataEditor from "./automationDataEditor";
 import AutomationRecurrenceEditor from "./automationRecurrence/automationRecurrenceEditor";

@@ -21,15 +21,15 @@ import {FaEdit} from "react-icons/fa"
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import Settings from "../views/settings"
-import EditFeedbox from "../views/Old/editFeedbox"
+import Settings from "../../views/settings"
+import EditFeedbox from "../../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import logo from "../assets/images/logo.png"
-import recurrencelogo from "../assets/images/recurrencelogo.png"
-import logowhite from "../assets/images/TeamBoxxWhite.png"
-import UserHome from '../views/Old/userHome'
-import TeamHome from '../views/Old/teamHome'
+import logo from "../../assets/images/logo.png"
+import recurrencelogo from "../../assets/images/recurrencelogo.png"
+import logowhite from "../../assets/images/TeamBoxxWhite.png"
+import UserHome from '../../views/Old/userHome'
+import TeamHome from '../../views/Old/teamHome'
 import { BiTransferAlt, BiEdit, BiCog, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
 import {FiInbox} from 'react-icons/fi';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -37,11 +37,11 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import BaseView from '../views/baseView'
-import AutomationView from '../views/automationView'
-import {db} from "../api/firebase";
+import BaseView from '../../views/baseView'
+import AutomationView from '../../views/automationView'
+import {db} from "../../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
-import Notification from "../components/Utilities/Notifications/notification";
+import Notification from "../../components/Utilities/Notifications/notification";
 
 export default function Dashboard() {
     // let email = firebase.auth().currentUser.email;
@@ -52,7 +52,7 @@ export default function Dashboard() {
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [notifications, setNotifications] = React.useState([]);
-    const [trackers, setTrackers] = React.useState([]);
+    const [automations, setAutomations] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
@@ -96,24 +96,23 @@ export default function Dashboard() {
                 if (user) {
                     setURL(user.url);
                     setUser(user);
-                    getTeam(user);
-                    getTrackers(user);
+                    getAutomations(user);
                 }
             });
 
     };
 
-    const getTrackers = async(user) => {
+    const getAutomations= async(user) => {
         if (user) {
-            let teamTrackerIDs = user.trackers;
-            let trackRef = db.collection("trackers");
-            let teamTrackers = [];
-            await trackRef.where('id', 'in', teamTrackerIDs).get()
+            let userAutomations = user.trackers;
+            let automatonRef = db.collection("trackers");
+            let automations = [];
+            await automatonRef.where('id', 'in', userAutomations).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        teamTrackers.push(doc.data())
+                        automations.push(doc.data())
                     });
-                    setTrackers(teamTrackers);
+                    setAutomations(automations);
                 })
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
@@ -121,26 +120,11 @@ export default function Dashboard() {
         }
     };
 
-    const getTeam = async(user) => {
-        if (user) {
-            await db.collection("teams").doc(user.team)
-                .onSnapshot(function(doc) {
-                    setTeam(doc.data())
-                    console.log(doc.data())
-            });
-
-        } else {
-            console.log('ERROR: no user')
-        }
-
-    };
 
     useEffect(() => {
         let email = firebase.auth().currentUser.email;
         setEmail(email);
         getUser(email);
-
-
     }, []);
 
 
@@ -276,7 +260,6 @@ export default function Dashboard() {
                             <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Inbox" />
                         </ListItem>
                     </Link>
-
                     <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
@@ -286,14 +269,6 @@ export default function Dashboard() {
                         </ListItem>
                     </Link>
 
-                    {/*<Link to="/automationstore"  style={{ color:"white", textDecoration: 'none' }}>*/}
-                    {/*    <ListItem button>*/}
-                    {/*        <ListItemIcon>*/}
-                    {/*            <BiDonateHeart size = {25} style = {{color:'#3C3F48'}}  />*/}
-                    {/*        </ListItemIcon>*/}
-                    {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Community" />*/}
-                    {/*    </ListItem>*/}
-                    {/*</Link>*/}
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
@@ -312,13 +287,11 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <BaseView team = {team} user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <BaseView team = {team} automations = {automations} user = {user} url = {url} email = {email} />
                             </Route>
-
                             <Route exact path="/automations">
-                                <AutomationView team = {team} user = {user} url = {url} email = {email} isSubscribed = {false}/>
+                                <AutomationView team = {team} automations = {automations} user = {user} url = {url} email = {email} />
                             </Route>
-
                             <Route path="/settings">
                                 <Settings email = {email} url = {url}  user = {user}/>
                             </Route>
@@ -531,3 +504,31 @@ const useStyles = makeStyles((theme) => ({
 {/*        <ListItemText style = {{color: 'white', fontWeight: 600}} primary="Respond" />*/}
 {/*    </ListItem>*/}
 {/*</Link>*/}
+
+
+
+{/*<Link to="/automationstore"  style={{ color:"white", textDecoration: 'none' }}>*/}
+{/*    <ListItem button>*/}
+{/*        <ListItemIcon>*/}
+{/*            <BiDonateHeart size = {25} style = {{color:'#3C3F48'}}  />*/}
+{/*        </ListItemIcon>*/}
+{/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Community" />*/}
+{/*    </ListItem>*/}
+{/*</Link>*/}
+
+
+//
+//
+// const getTeam = async(user) => {
+//     if (user) {
+//         await db.collection("teams").doc(user.team)
+//             .onSnapshot(function(doc) {
+//                 setTeam(doc.data())
+//                 console.log(doc.data())
+//             });
+//
+//     } else {
+//         console.log('ERROR: no user')
+//     }
+//
+// };

@@ -6,7 +6,7 @@ import {fade, makeStyles} from "@material-ui/core/styles";
 
 import { BiSend, BiPlus,BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import nextId from "react-id-generator";
-import {db} from "../../api/firebase";
+import {db} from "../../../api/firebase";
 import firebase from "firebase/app";
 
 

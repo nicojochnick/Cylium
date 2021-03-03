@@ -12,7 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabe
 import Radio from "@material-ui/core/Radio/Radio";
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import {db} from '../../api/firebase'
+import {db} from '../../../api/firebase'
 import { makeStyles } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
 import {BiDotsVerticalRounded} from "react-icons/bi"

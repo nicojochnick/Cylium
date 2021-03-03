@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
-import logo from "../assets/images/logo.png";
+import { Signin, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import logo from "../../assets/images/logo.png";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,8 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from "@material-ui/core/styles";
 import Container from '@material-ui/core/Container';
-import boxx from "../assets/images/boxx.png"
-import Header from "../components/Utilities/Header";
+import boxx from "../../assets/images/boxx.png"
+import Header from "../../components/Utilities/Header";
 import { FaBoxOpen } from "react-icons/fa";
 
 

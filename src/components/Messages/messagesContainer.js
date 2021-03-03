@@ -29,69 +29,59 @@ function mergeArrayObjects (arr1,arr2){
 function MessagesContainer(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
-    const [responses, setResponses] = React.useState([]);
+    const [messages, setMessages] = React.useState([]);
     const [height, setHeight] = React.useState(300);
-    const [trackers, setTrackers] = React.useState([]);
+    const [automations, setAutomations] = React.useState([]);
 
 
-
-    const getResponses = async(trackers) => {
-        let resRef = db.collection("responses");
-        let responses = [];
-
+    const getMessages = async(trackers) => {
+        let resRef = db.collection("messages");
+        let messages = [];
         if (trackers.length > 0) {
-            await resRef.where("trackerID", "==", trackers[0].id).get()
+            await resRef.where("automationID", "==", trackers[0].id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        responses.push(doc.data())
+                        messages.push(doc.data())
                     });
-
-                    let merged_responses = [];
-                    for (let i = 0; i < responses.length; i++) {
+                    let merged_messages = [];
+                    for (let i = 0; i < messages.length; i++) {
                         if (trackers[0].call) {
-                            let res = mergeArrayObjects(responses[i].responseData, trackers[0].call);
-                            let objres = {'merged_responses': res, 'user': responses[i].senderID};
-                            merged_responses.push(objres)
+                            let res = mergeArrayObjects(messages[i].responseData, trackers[0].call);
+                            let objres = {'merged_responses': res, 'user': messages[i].senderID};
+                            merged_messages.push(objres)
                         }
-
                     }
-                    setResponses(merged_responses)
-
+                    setMessages(merged_messages);
                 })
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
-
-
-            // console.log(merged_responses, responses, trackers[0].call);
-
+            // console.log(merged_responses, messages, trackers[0].call);
         }
     };
 
-    const getTrackers = async() => {
+    const getAutomations = async() => {
         if (props.user) {
-            let teamTrackerIDs = props.user.trackers;
-            let trackRef = db.collection("trackers");
-            let teamTrackers = [];
-            await trackRef.where('id', 'in', teamTrackerIDs).get()
+            let userAutomationIDs = props.user.trackers;
+            let autoRef = db.collection("trackers");
+            let automations = [];
+            await autoRef.where('id', 'in', userAutomationIDs).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
-                        teamTrackers.push(doc.data())
+                        automations.push(doc.data())
                     });
-                    console.log(teamTrackers);
-                    setTrackers(teamTrackers);
-                    getResponses(teamTrackers)
+                    console.log(automations);
+                    setAutomations(automations);
+                    getMessages(automations)
                 })
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
         }
     };
-
     let totalHeight = height + 100;
-
     useEffect(() => {
-        getTrackers();
+        getAutomations();
     }, []);
 
     return (
@@ -101,14 +91,13 @@ function MessagesContainer(props) {
                      boxShadow = {0}
                      style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
                      borderRadius={20}>
-
                         <Grid >
                             <Divider/>
-                            {Object.keys(responses).map((item) =>
+                            {Object.keys(messages).map((item) =>
                                 <MessageList
                                     user = {props.user}
                                     tracker={props.tracker}
-                                    response={responses[item]}/>)}
+                                    response={messages[item]}/>)}
                         </Grid>
 
                 </Box>

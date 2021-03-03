@@ -16,13 +16,13 @@ import MessageItem from "../Messages/messageItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
-import AutomationRecipients from "../AutomationManager/automationRecipients";
-import AutomationDataEditor from "../AutomationManager/automationDataEditor";
+import AutomationRecipients from "./AutomationManager/automationRecipients";
+import AutomationDataEditor from "./AutomationManager/automationDataEditor";
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import AutomationRecurrenceEditor from "../AutomationManager/automationRecurrence/automationRecurrenceEditor";
-import AutomationRecurrenceContainer from "../AutomationManager/automationRecurrence/automationRecurrenceContainer";
+import AutomationRecurrenceEditor from "./AutomationManager/automationRecurrence/automationRecurrenceEditor";
+import AutomationRecurrenceContainer from "./AutomationManager/automationRecurrence/automationRecurrenceContainer";
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2);
@@ -67,7 +67,6 @@ function AutomationItem(props) {
         let resRef = db.collection("responses");
         let responses = [];
         if (props.user && props.user.trackers && props.tracker) {
-            console.log('TRIGGERED');
             await resRef.where("trackerID", "==", props.tracker.id).get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {

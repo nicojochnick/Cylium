@@ -5,8 +5,8 @@ import InputBase from "@material-ui/core/InputBase/InputBase";
 import Button from "@material-ui/core/Button";
 import {fade, makeStyles} from "@material-ui/core/styles";
 import { BiSend, BiPlus } from "react-icons/bi";
-import {db} from "../../api/firebase";
-import UserId from "../User/userID";
+import {db} from "../../../api/firebase";
+import UserId from "../../User/userID";
 import Divider from "@material-ui/core/Divider";
 
 
