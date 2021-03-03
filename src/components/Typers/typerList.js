@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {db} from "../../api/firebase";
 import {makeStyles} from "@material-ui/core/styles";
 import TyperTracker from "./typerTracker";
-import ResponseItem from "../Responses/responseItem";
+import MessageItem from "../Messages/messageItem";
 import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -14,8 +14,7 @@ function TyperList(props) {
     const [responseCollection, setResponseCollection]  = React.useState([]);
     const classes = useStyles();
 
-    useEffect(() => {
-    }, []);
+
     const handleSubmit = async (event) => {
         try {
             const res = await db.collection('responses').add({
@@ -43,6 +42,9 @@ function TyperList(props) {
         };
         setResponseCollection(responseCollection);
     };
+
+    useEffect(() => {
+    }, []);
 
     return (
         <div className={classes.root}>

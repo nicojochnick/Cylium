@@ -11,8 +11,8 @@ import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import AutomationAnalytics from "./automationAnalytics";
-import ResponseList from "../Responses/responseList";
-import ResponseItem from "../Responses/responseItem";
+import MessageList from "../Messages/messageList";
+import MessageItem from "../Messages/messageItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
@@ -159,10 +159,9 @@ function AutomationItem(props) {
                             <Grid className={classes.inner_box} item xs={12} md={12} lg={12}>
                                 {(value == 0)
                                     ?
-
                                     <Box style={{height: height}}>
                                         {Object.keys(responses).map((item) =>
-                                            <ResponseList
+                                            <MessageList
                                                 user={props.user}
                                                 tracker={props.tracker}
                                                 response={responses[item]}/>)}
@@ -183,14 +182,12 @@ function AutomationItem(props) {
                                 }
                                 {(value == 2)
                                     ?
-
                                     <Box style={{height: height}}>
                                         <AutomationRecurrenceContainer/>
                                     </Box>
 
                                     : null
                                 }
-
 
                             </Grid>
                         </Grid>

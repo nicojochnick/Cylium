@@ -31,7 +31,7 @@ function AutomationRecurrenceContainer(props) {
      */
 
     const sendAutomationMessage = async () => {
-        console.log('writing')
+        console.log('writing');
         let sendMessageResponse = await db.collection('messages').add({
             automationID: props.id,
             senderID: props.tracker.adminID,

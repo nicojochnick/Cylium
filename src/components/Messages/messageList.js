@@ -4,15 +4,14 @@ import {makeStyles} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import mscott from "../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
-import ResponseItem from "./responseItem";
+import MessageItem from "./messageItem";
 import AutomationItem from "../Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
 
 
-function ResponseList(props) {
+function MessageList(props) {
     const classes = useStyles();
-
     const [user, setUser] = React.useState(null);
 
     const getUser = async(email) => {
@@ -64,7 +63,7 @@ function ResponseList(props) {
                             }}>{user.name} </p>
                             {(props.response)
                                 ? <div> {Object.keys(props.response.merged_responses).map((item) => <
-                                    ResponseItem response={props.response.merged_responses[item]}/>)
+                                    MessageItem response={props.response.merged_responses[item]}/>)
                                 }
                                 </div>
                                 : null
@@ -107,4 +106,4 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default ResponseList;
+export default MessageList;

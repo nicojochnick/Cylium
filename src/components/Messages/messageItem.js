@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import {convertFromRaw, RichUtils, Editor, EditorState} from "draft-js";
 import {makeStyles} from "@material-ui/core/styles";
 
-function ResponseItem(props) {
+function MessageItem(props) {
     const [eState, setEState] = React.useState(null);
     useEffect(() => {
         let editorState = null;
@@ -106,4 +106,4 @@ const colorStyleMap = {
     },
 };
 
-export default ResponseItem;
+export default MessageItem;

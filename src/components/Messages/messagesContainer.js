@@ -9,8 +9,9 @@ import Container from "@material-ui/core/Container";
 import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-import ResponseList from "../Responses/responseList";
-import ResponseItem from "../Responses/responseItem";
+import MessageItem from "./messageItem"
+import MessageList from "./messageList"
+
 import {db} from "../../api/firebase";
 
 
@@ -25,7 +26,7 @@ function mergeArrayObjects (arr1,arr2){
 };
 
 
-function ResponseComposite(props) {
+function MessagesContainer(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
     const [responses, setResponses] = React.useState([]);
@@ -107,7 +108,7 @@ function ResponseComposite(props) {
                         <Grid >
                             <Divider/>
                             {Object.keys(responses).map((item) =>
-                                <ResponseList
+                                <MessageList
                                     user = {props.user}
                                     tracker={props.tracker}
                                     response={responses[item]}/>)}
@@ -192,4 +193,4 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default ResponseComposite;
+export default MessagesContainer;

@@ -31,6 +31,7 @@ import logowhite from "../assets/images/TeamBoxxWhite.png"
 import UserHome from '../views/Old/userHome'
 import TeamHome from '../views/Old/teamHome'
 import { BiTransferAlt, BiEdit, BiCog, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
+import {FiInbox} from 'react-icons/fi';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -270,9 +271,9 @@ export default function Dashboard() {
                     <Link to="/feed"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiHome size = {25} style = {{color:'#3C3F48'}}  />
+                                <FiInbox size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Inbox" />
                         </ListItem>
                     </Link>
 
@@ -281,18 +282,18 @@ export default function Dashboard() {
                             <ListItemIcon>
                                 <BiSend size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Jobs" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Automations" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/automationstore"  style={{ color:"white", textDecoration: 'none' }}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <BiDonateHeart size = {25} style = {{color:'#3C3F48'}}  />
-                            </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Community" />
-                        </ListItem>
-                    </Link>
+                    {/*<Link to="/automationstore"  style={{ color:"white", textDecoration: 'none' }}>*/}
+                    {/*    <ListItem button>*/}
+                    {/*        <ListItemIcon>*/}
+                    {/*            <BiDonateHeart size = {25} style = {{color:'#3C3F48'}}  />*/}
+                    {/*        </ListItemIcon>*/}
+                    {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Community" />*/}
+                    {/*    </ListItem>*/}
+                    {/*</Link>*/}
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
