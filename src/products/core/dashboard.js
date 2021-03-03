@@ -42,8 +42,11 @@ import AutomationView from '../../views/automationView'
 import {db} from "../../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
 import Notification from "../../components/Utilities/Notifications/notification";
+import {mergeAutomationIDsandMessages} from "../../helpers/filters";
 
-export default function Dashboard() {
+
+
+export default function Dashboard(props) {
     // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
@@ -58,7 +61,7 @@ export default function Dashboard() {
     const handleClose = () => {setAnchorEl(null);};
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
-
+    const [messages, setMessages] = React.useState([]);
 
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
 
@@ -87,44 +90,7 @@ export default function Dashboard() {
         });
     };
 
-    const getUser = async(email) => {
-        await db.collection("users").doc(email)
-            .onSnapshot(function(doc) {
-                console.log("Current data: ", doc.data());
-                //Fixes bug where doc.data() is undefined on first signin
-                let user = doc.data()
-                if (user) {
-                    setURL(user.url);
-                    setUser(user);
-                    getAutomations(user);
-                }
-            });
-
-    };
-
-    const getAutomations= async(user) => {
-        if (user) {
-            let userAutomations = user.trackers;
-            let automatonRef = db.collection("trackers");
-            let automations = [];
-            await automatonRef.where('id', 'in', userAutomations).get()
-                .then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        automations.push(doc.data())
-                    });
-                    setAutomations(automations);
-                })
-                .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                });
-        }
-    };
-
-
     useEffect(() => {
-        let email = firebase.auth().currentUser.email;
-        setEmail(email);
-        getUser(email);
     }, []);
 
 
@@ -287,13 +253,13 @@ export default function Dashboard() {
                         <div className={classes.appBarSpacer} />
                         <Switch>
                             <Route exact path="/feed">
-                                <BaseView team = {team} automations = {automations} user = {user} url = {url} email = {email} />
+                                <BaseView team = {team} automations = {props.automations} user = {user} url = {url} email = {email} />
                             </Route>
                             <Route exact path="/automations">
-                                <AutomationView team = {team} automations = {automations} user = {user} url = {url} email = {email} />
+                                <AutomationView team = {team} automations = {props.automations} user = {user} url = {url} email = {email} />
                             </Route>
                             <Route path="/settings">
-                                <Settings email = {email} url = {url}  user = {user}/>
+                                <Settings email = {props.email} url = {props.url}  user = {props.user}/>
                             </Route>
                         </Switch>
                     </main>
