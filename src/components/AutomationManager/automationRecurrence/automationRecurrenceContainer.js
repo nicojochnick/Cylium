@@ -20,10 +20,39 @@ function AutomationRecurrenceContainer(props) {
     const [monthlyWeek, setMonthlyWeek] = React.useState([1]);
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
-
+    const [sendOption, setSendOption] = React.useState('onSchedule');
     const [next10, setNext10] = React.useState([]);
-    // const [recurrence, setRecurrence] = React.useState(null);
 
+
+
+    /*
+    TODO: consider changing scope and/or reduce the number of writes to one by creating a custom ID
+    Send Automation could be outside of the automation Recurrence scope, consider a larger refactor
+     */
+
+    const sendAutomationMessage = async () => {
+        console.log('writing')
+        let sendMessageResponse = await db.collection('messages').add({
+            automationID: props.id,
+            senderID: props.tracker.adminID,
+            messageData: props.tracker.call,
+            recipientIDs: props.tracker.recipientIDs,
+            timeStamp: new Date()
+        }).then(() => {
+            console.log("Message successfully written!");
+        }).catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+
+        // let updateRes = await db.collection('messages').doc().update({
+        //     messageID: sendMessageResponse.id
+        // }).then(() => {
+        //     console.log("Message ID successfully added");
+        // }).catch((error) => {
+        //     console.error("Error adding message ID: ", error);
+        // });
+
+    };
 
     const uploadRecurrenceToDB = async (rec, dates,) => {
         console.log('Uploading Recurrence to DB:', rec, time, dates);
@@ -38,7 +67,6 @@ function AutomationRecurrenceContainer(props) {
             monthlyWeek: monthlyWeek,
             time: time
         };
-
         if (dates.length > 0) {
             let ref = db.collection('trackers').doc(props.id);
             const res = await ref.update({
@@ -56,13 +84,13 @@ function AutomationRecurrenceContainer(props) {
         }
     };
 
-    const parseRecurrenceFromDB = () => {
 
+/* TODO: Tester Function should be added to unit tests */
+    const parseRecurrenceFromDB = () => {
         let ref = db.collection('trackers').doc(props.id).get()
             .then((doc => {
                 let track = doc.data();
                 console.log(track)
-
             })
             )
             .catch((error) => {
@@ -77,7 +105,6 @@ function AutomationRecurrenceContainer(props) {
 
     const createDates = async () => {
         let myDate = moment();
-        console.log(myDate);
         if (cycle === 'week'){
             let days = [];
             let match =  { 'Sunday': 1, 'Monday': 2, 'Tuesday': 3, 'Wednesday': 4, 'Thursday': 5, 'Friday': 6, 'Saturday': 0,};
@@ -113,6 +140,10 @@ function AutomationRecurrenceContainer(props) {
     };
     const switchEditing = () => {
         setEditing(!isEditing)
+    };
+
+    const handleChangeSendOption = (option) => {
+        setSendOption(option)
     };
 
     const handleChangeCycle  = (cycle) => {
@@ -177,6 +208,9 @@ function AutomationRecurrenceContainer(props) {
                     isEditing = {isEditing}
                     uploadSchedule = {uploadSchedule}
                     handleChangeTime = {handleChangeTime}
+                    handleChangeSendOption = {handleChangeSendOption}
+                    sendOption = {sendOption}
+                    sendAutomationMessage = {sendAutomationMessage}
                 />
                 :
                 <AutomationRecurrenceEditor

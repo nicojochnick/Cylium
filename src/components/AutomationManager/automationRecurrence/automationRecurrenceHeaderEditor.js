@@ -26,152 +26,197 @@ function AutomationRecurrenceHeaderEditor(props) {
         <div className={classes.root}>
             <form noValidate autoComplete="off">
             <Grid direction='row' justify = 'flex-start' alignItems='center' container>
-                <p style ={{fontSize: 15, color: 'white'}}> Sends every </p>
-                <div style = {{maxWidth:35, marginLeft: 15, marginRight: 0, color:'white'}}>
-                    <FormControl className={classes.formControl}>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            disableUnderline={true}
-                            style = {{color:'white', marginRight: 5}}
-                            value={props.cycleNumber}
-                            InputProps={{  disableUnderline: true, className: classes.input}}
-                            placeholder = 'cycle'
-                            onChange={e => props.handleChangeCycleNumber(e.target.value)}
-                        >
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={5}>5</MenuItem>
-                            <MenuItem value={6}>6</MenuItem>
-                        </Select>
-                    </FormControl>
-                </div>
+                <p style ={{fontSize: 15, color: 'white'}}> Send </p>
                 <FormControl className={classes.formControl}>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
+                        style={{color: 'white', marginLeft: 10}}
+                        value = {props.sendOption}
+                        defaultValue={props.sendOption}
                         disableUnderline={true}
-                        style = {{color:'white',marginLeft: 10}}
-                        value={props.cycle}
-                        InputProps={{  disableUnderline: true, className: classes.input}}
-                        placeholder = 'cycle'
-                        onChange={e => props.handleChangeCycle(e.target.value)}
+                        onChange={(e) => props.handleChangeSendOption(e.target.value)}
                     >
-                        <MenuItem value={'day'}>Day(s)</MenuItem>
-                        <MenuItem value={'week'}>Week(s)</MenuItem>
-                        <MenuItem value={'month'}>Month(s)</MenuItem>
+                        <MenuItem value={'onSchedule'}>every </MenuItem>
+                        <MenuItem value={'onClick'}>on click </MenuItem>
+
                     </Select>
                 </FormControl>
-                {(props.cycle == 'day')
-                    ? null
-                    :
-                    <div className={classes.root}>
-                    <Grid direction='row' justify = 'flex-start' alignItems='center' container>
 
-                        <p style={{fontSize: 15, color: 'white', marginLeft: 5, marginRight: 5}}> on </p>
+                {(props.sendOption === 'onSchedule')
 
-                        {(props.cycle == 'week')
-                            ?
+                   ? <div className={classes.root}>
+                        <Grid direction='row' justify='flex-start' alignItems='center' container>
+
+                            <div style={{maxWidth: 35, marginLeft: 15, marginRight: 0, color: 'white'}}>
+                                <FormControl className={classes.formControl}>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        disableUnderline={true}
+                                        style={{color: 'white', marginRight: 5}}
+                                        value={props.cycleNumber}
+                                        InputProps={{disableUnderline: true, className: classes.input}}
+                                        placeholder='cycle'
+                                        onChange={e => props.handleChangeCycleNumber(e.target.value)}
+                                    >
+                                        <MenuItem value={1}>1</MenuItem>
+                                        <MenuItem value={2}>2</MenuItem>
+                                        <MenuItem value={3}>3</MenuItem>
+                                        <MenuItem value={4}>4</MenuItem>
+                                        <MenuItem value={5}>5</MenuItem>
+                                        <MenuItem value={6}>6</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </div>
                             <FormControl className={classes.formControl}>
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    style={{color: 'white', marginLeft: 10}}
-                                    value={props.weeklyDays[0]}
                                     disableUnderline={true}
-                                    onChange={(e) => props.handleChangeWeeklyDay(0, e.target.value)}
+                                    style={{color: 'white', marginLeft: 10}}
+                                    value={props.cycle}
+                                    InputProps={{disableUnderline: true, className: classes.input}}
+                                    placeholder='cycle'
+                                    onChange={e => props.handleChangeCycle(e.target.value)}
                                 >
-                                    <MenuItem value={'Sunday'}>Sunday</MenuItem>
-                                    <MenuItem value={'Monday'}>Monday</MenuItem>
-                                    <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
-                                    <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
-                                    <MenuItem value={'Thursday'}>Thursday</MenuItem>
-                                    <MenuItem value={'Friday'}>Friday</MenuItem>
-                                    <MenuItem value={'Saturday'}>Saturday</MenuItem>
-
+                                    <MenuItem value={'day'}>Day(s)</MenuItem>
+                                    <MenuItem value={'week'}>Week(s)</MenuItem>
+                                    <MenuItem value={'month'}>Month(s)</MenuItem>
                                 </Select>
                             </FormControl>
-                            :
-                            <Box display='flex'
-                                 flexDirection='row'
-                                 justify='center'
-                                 alignItems='flex-start '
-                                 style={{marginLeft: 15, marginRight: 15}}
-                            >
-                                <FormControl className={classes.formControl}>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        style={{color: 'white', marginLeft: 10}}
-                                        value={props.monthlyWeek}
-                                        placeholder='day of the week'
-                                        disableUnderline={true}
-                                        onChange={e => props.handleChangeMonthlyWeek(e.target.value, 0)}
-                                    >
-                                        <MenuItem value={1}>1st</MenuItem>
-                                        <MenuItem value={2}>2nd</MenuItem>
-                                        <MenuItem value={3}>3rd</MenuItem>
-                                        <MenuItem value={4}>4th</MenuItem>
-                                    </Select>
-                                </FormControl>
-                                <FormControl className={classes.formControl}>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={props.monthlyDay}
-                                        style={{color: 'white', marginLeft: 10}}
-                                        placeholder='day of the week'
-                                        disableUnderline={true}
-                                        onChange={e => props.handleChangeMonthlyDay(e.target.value)}
-                                    >
-                                        <MenuItem value={'Sunday'}>Sunday</MenuItem>
-                                        <MenuItem value={'Monday'}>Monday</MenuItem>
-                                        <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
-                                        <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
-                                        <MenuItem value={'Thursday'}>Thursday</MenuItem>
-                                        <MenuItem value={'Friday'}>Friday</MenuItem>
-                                        <MenuItem value={'Saturday'}>Saturday</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Box>
-                        }
-                    </Grid>
+                            {(props.cycle == 'day')
+                                ? null
+                                :
+                                <div className={classes.root}>
+                                    <Grid direction='row' justify='flex-start' alignItems='center' container>
+
+                                        <p style={{
+                                            fontSize: 15,
+                                            color: 'white',
+                                            marginLeft: 5,
+                                            marginRight: 5
+                                        }}> on </p>
+
+                                        {(props.cycle == 'week')
+                                            ?
+                                            <FormControl className={classes.formControl}>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    style={{color: 'white', marginLeft: 10}}
+                                                    value={props.weeklyDays[0]}
+                                                    disableUnderline={true}
+                                                    onChange={(e) => props.handleChangeWeeklyDay(0, e.target.value)}
+                                                >
+                                                    <MenuItem value={'Sunday'}>Sunday</MenuItem>
+                                                    <MenuItem value={'Monday'}>Monday</MenuItem>
+                                                    <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
+                                                    <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
+                                                    <MenuItem value={'Thursday'}>Thursday</MenuItem>
+                                                    <MenuItem value={'Friday'}>Friday</MenuItem>
+                                                    <MenuItem value={'Saturday'}>Saturday</MenuItem>
+
+                                                </Select>
+                                            </FormControl>
+                                            :
+                                            <Box display='flex'
+                                                 flexDirection='row'
+                                                 justify='center'
+                                                 alignItems='flex-start '
+                                                 style={{marginLeft: 15, marginRight: 15}}
+                                            >
+                                                <FormControl className={classes.formControl}>
+                                                    <Select
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        style={{color: 'white', marginLeft: 10}}
+                                                        value={props.monthlyWeek}
+                                                        placeholder='day of the week'
+                                                        disableUnderline={true}
+                                                        onChange={e => props.handleChangeMonthlyWeek(e.target.value, 0)}
+                                                    >
+                                                        <MenuItem value={1}>1st</MenuItem>
+                                                        <MenuItem value={2}>2nd</MenuItem>
+                                                        <MenuItem value={3}>3rd</MenuItem>
+                                                        <MenuItem value={4}>4th</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                                <FormControl className={classes.formControl}>
+                                                    <Select
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        value={props.monthlyDay}
+                                                        style={{color: 'white', marginLeft: 10}}
+                                                        placeholder='day of the week'
+                                                        disableUnderline={true}
+                                                        onChange={e => props.handleChangeMonthlyDay(e.target.value)}
+                                                    >
+                                                        <MenuItem value={'Sunday'}>Sunday</MenuItem>
+                                                        <MenuItem value={'Monday'}>Monday</MenuItem>
+                                                        <MenuItem value={'Tuesday'}>Tuesday</MenuItem>
+                                                        <MenuItem value={'Wednesday'}>Wednesday</MenuItem>
+                                                        <MenuItem value={'Thursday'}>Thursday</MenuItem>
+                                                        <MenuItem value={'Friday'}>Friday</MenuItem>
+                                                        <MenuItem value={'Saturday'}>Saturday</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </Box>
+                                        }
+                                    </Grid>
+                                </div>
+                            }
+                            <p style={{fontSize: 15, marginLeft: 5, marginRight: 20, color: 'white'}}> at </p>
+                            <div style={{color: 'white', marginRight: 10}}>
+                                <TextField
+                                    id="time"
+                                    type="time"
+                                    defaultValue="12:00"
+                                    className={classes.textField}
+                                    onChange={(event) => props.handleChangeTime(event.target.value)}
+                                    InputLabelProps={{
+                                        color: 'white',
+                                        shrink: true,
+                                        disableUnderline: true,
+                                        className: classes.textFieldWhite
+
+                                    }}
+                                    InputProps={{
+                                        disableUnderline: true,
+                                        className: classes.textField,
+                                        step: 300, // 5 min
+                                    }}
+                                />
+                            </div>
+
+                            {props.isEditing
+                                ?
+                                <Button
+                                    variant="contained"
+                                    color='white'
+                                    className={classes.button}
+                                    onClick={() => props.uploadSchedule()}
+                                >
+                                    Save
+                                </Button>
+                                : null
+                            }
+                        </Grid>
                     </div>
-                }
-                <p style ={{fontSize: 15, marginLeft: 5, marginRight: 20, color: 'white'}}> at </p>
-                <div style = {{color:'white', marginRight: 10}}>
-                    <TextField
-                        id="time"
-                        type="time"
-                        defaultValue="12:00"
-                        className={classes.textField}
-                        onChange={(event)=>props.handleChangeTime(event.target.value)}
-                        InputLabelProps={{
-                            color: 'white', shrink: true,disableUnderline: true, className: classes.textFieldWhite
 
-                        }}
-                        InputProps={{
-                            disableUnderline: true,
-                            className: classes.textField,
-                            step: 300, // 5 min
-                        }}
-                    />
-                </div>
-
-                {props.isEditing
-                    ?
+                    :
                     <Button
+                        style = {{marginLeft: 15, marginRight: 15}}
                         variant="contained"
-                        color = 'white'
+                        color='white'
                         className={classes.button}
-                        onClick={()=>props.uploadSchedule()}
+                        onClick={() => props.sendAutomationMessage()}
                     >
-                        Save
+                        Send
                     </Button>
-                    :null
+
                 }
+
             </Grid>
             </form>
         </div>

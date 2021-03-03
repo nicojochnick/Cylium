@@ -39,7 +39,9 @@ exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun(async (
                         console.log('recurrence triggered!');
                         console.log('updating nextDateTime');
                         let nextNewDateTime = await generateNextTime(tracker.recurrence, 1);
+
                         console.log(nextNewDateTime);
+
                         let nextDateTimeUpdateResponse = db.collection('trackers').doc(id).update({
                             nextDateTime: nextNewDateTime
                         }).then(() => {
@@ -47,15 +49,24 @@ exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun(async (
                         }).catch((error) => {
                             console.error("Error writing document: ", error);
                         });
+
+
+
+
                         console.log('creating message');
-                        let sendMessageResponse = db.collection('message').doc('test3').set({
+
+
+                        let sendMessageResponse = db.collection('messages').doc('test3').set({
                             name: 'test3'
                         }).then(() => {
                             console.log("Message successfully written!");
                         }).catch((error) => {
                             console.error("Error writing document: ", error);
                         });
+
                         return null;
+
+
                     } else {
                         console.log('not in frame')
                     }
