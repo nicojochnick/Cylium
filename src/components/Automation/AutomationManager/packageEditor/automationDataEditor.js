@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {fade, makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import { BiSend, BiPlus,BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
+import {BiStar, BiLink, BiSend,BiPoll, BiPlus,BiSliderAlt,BiCheckSquare, BiChat, BiImport, BiBell, BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import nextId from "react-id-generator";
 import {db} from "../../../../api/firebase";
 import firebase from "firebase/app";
@@ -34,40 +34,63 @@ function AutomationDataEditor(props) {
     return (
         <Grid xs={12} md={12} lg={12} container className={classes.root} justifyContent= {'space-around'} alignItems={'space-around'} display = 'flex' flexDirection = 'row'>
             <Grid item xs={4} md={4} lg={4}>
-            <Box borderRadius = {20} style = {{backgroundColor: 'white', margin: 10, height: 350, boxShadow: "0px 3px 10px #D7D7DA"}} display = 'flex' flexDirection = 'column'>
+            <Box borderRadius = {20} style = {{backgroundColor: 'white',overflow:'scroll', margin: 10, height: 350, boxShadow: "0px 3px 10px #D7D7DA"}} display = 'flex' flexDirection = 'column'>
                 <p style = {{margin: 10, textAlign: 'center', fontSize: 14,fontWeight: 500, color: '#76777D'}} > ACTIONS </p>
                 <Divider/>
                 <Button
                     style = {{margin: 10}}
-                    variant="contained"
-                    color = 'primary'
+                    variant="outlined"
+                    color = 'secondary'
                     className={classes.button}
-                    startIcon={<BiPlus/>}
+                    startIcon={<BiChat/>}
                     onClick={()=>addQuestion()}
                 >
-                    Add Question
+                   Ask
                 </Button>
 
                 <Button
                     style = {{margin: 10}}
-                    variant="contained"
-                    color = 'primary'
+                    variant="outlined"
+                    color = 'secondary'
                     className={classes.button}
-                    startIcon={<BiPlus/>}
+                    startIcon={<BiCheckSquare/>}
                     onClick={()=>addQuestion()}
                 >
-                    Add Todo
+                     Confirm
                 </Button>
 
                 <Button
                     style = {{margin: 10}}
-                    variant="contained"
-                    color = 'primary'
+                    variant="outlined"
+                    color = 'secondary'
                     className={classes.button}
-                    startIcon={<BiPlus />}
+                    startIcon={<BiStar/>}
                     onClick={()=>addQuestion()}
                 >
-                    Add Rating
+                    Rate
+                </Button>
+
+
+                <Button
+                    style = {{margin: 10}}
+                    variant="outlined"
+                    color = 'secondary'
+                    className={classes.button}
+                    startIcon={<BiBell/>}
+                    onClick={()=>addQuestion()}
+                >
+                    Remind
+                </Button>
+
+                <Button
+                    style = {{margin: 10}}
+                    variant="outlined"
+                    color = 'secondary'
+                    className={classes.button}
+                    startIcon={<BiLink/>}
+                    onClick={()=>addQuestion()}
+                >
+                    Share
                 </Button>
             </Box>
             </Grid>

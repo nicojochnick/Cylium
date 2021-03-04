@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/editPackageItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/editPackageItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/automationDataEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/automationDataEditor.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,22 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Messages/messagesContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="80" column="110" selection-start-line="80" selection-start-column="110" selection-end-line="80" selection-end-column="110" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/editPackageItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
+            <state relative-caret-position="1210">
+              <caret line="238" column="21" lean-forward="true" selection-start-line="238" selection-start-column="21" selection-end-line="238" selection-end-column="21" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -48,11 +38,11 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/automationDataEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="43" />
+            <state relative-caret-position="506">
+              <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -61,9 +51,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Messages/message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="882">
               <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -75,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Automation/automationList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
+            <state relative-caret-position="777">
               <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -87,7 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Automation/automationItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
+            <state relative-caret-position="2289">
               <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -108,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
+            <state relative-caret-position="4053">
               <caret line="212" column="69" selection-start-line="212" selection-start-column="69" selection-end-line="212" selection-end-column="69" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -120,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/automationRecipients.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
+            <state relative-caret-position="1092">
               <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -217,7 +219,6 @@
         <option value="$PROJECT_DIR$/src/views/automationView.js" />
         <option value="$PROJECT_DIR$/src/products/core/appBar.js" />
         <option value="$PROJECT_DIR$/src/products/core/bar.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/helpers/filters.js" />
         <option value="$PROJECT_DIR$/src/products/core/dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/messageList.js" />
@@ -234,8 +235,9 @@
         <option value="$PROJECT_DIR$/src/components/Messages/structuredMessageItem.js" />
         <option value="$PROJECT_DIR$/src/components/Automation/AutomationManager/editPackageItem.js" />
         <option value="$PROJECT_DIR$/src/components/Automation/automationItem.js" />
-        <option value="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/automationDataEditor.js" />
         <option value="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/editPackageItem.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/automationDataEditor.js" />
       </list>
     </option>
   </component>
@@ -251,6 +253,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,7 +331,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -470,12 +472,13 @@
       <workItem from="1614344448880" duration="25587000" />
       <workItem from="1614625109853" duration="6710000" />
       <workItem from="1614689350032" duration="32032000" />
-      <workItem from="1614859060326" duration="9321000" />
+      <workItem from="1614859060326" duration="9501000" />
+      <workItem from="1614890321630" duration="1540000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="772428000" />
+    <option name="totallyTimeSpent" value="774148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -711,13 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helpers/dateManagement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -824,19 +820,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Messages/message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Messages/messagesContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
+        <state relative-caret-position="1407">
           <caret line="80" column="110" selection-start-line="80" selection-start-column="110" selection-end-line="80" selection-end-column="110" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -847,10 +833,30 @@
     <entry file="file://$PROJECT_DIR$/src/assets/images/buildingbackground.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Messages/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="51" column="42" lean-forward="true" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Automation/automationList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="777">
           <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Automation/automationItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2289">
+          <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -866,7 +872,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
+        <state relative-caret-position="4053">
           <caret line="212" column="69" selection-start-line="212" selection-start-column="69" selection-end-line="212" selection-end-column="69" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -876,7 +882,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/automationRecipients.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
+        <state relative-caret-position="1092">
           <caret line="74" column="34" lean-forward="true" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -884,32 +890,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Automation/automationItem.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/editPackageItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+        <state relative-caret-position="1210">
+          <caret line="238" column="21" lean-forward="true" selection-start-line="238" selection-start-column="21" selection-end-line="238" selection-end-column="21" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/automationDataEditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="43" />
+        <state relative-caret-position="506">
+          <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Automation/AutomationManager/packageEditor/editPackageItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
