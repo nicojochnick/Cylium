@@ -25,8 +25,8 @@ function AutomationRecurrenceHeaderEditor(props) {
     return (
         <div className={classes.root}>
             <form noValidate autoComplete="off">
-            <Grid direction='row' justify = 'flex-start' alignItems='center' container>
-                <p style ={{fontSize: 15, color: 'white'}}> Send </p>
+            <Grid direction='row' justify = 'center' alignItems='center' container>
+                <p style ={{fontSize: 16, color: 'white'}}> Send </p>
                 <FormControl className={classes.formControl}>
                     <Select
                         labelId="demo-simple-select-label"

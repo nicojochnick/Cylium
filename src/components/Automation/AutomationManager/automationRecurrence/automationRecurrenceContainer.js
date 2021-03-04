@@ -20,9 +20,8 @@ function AutomationRecurrenceContainer(props) {
     const [monthlyWeek, setMonthlyWeek] = React.useState([1]);
     const [time, setTime] = React.useState('12:00');
     const [isEditing, setEditing] = React.useState(false);
-    const [sendOption, setSendOption] = React.useState('onSchedule');
+    const [sendOption, setSendOption] = React.useState('onClick');
     const [next10, setNext10] = React.useState([]);
-
 
 
     /*

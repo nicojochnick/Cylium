@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
 import TyperTracker from "../../Typers/typerTracker";
-import EditPackageItem from "./packageEditor/editPackageItem";
+import PackageItem from "./packageManger/packageItem";
 import List from '@material-ui/core/List';
 import { BiSend, BiPlus } from "react-icons/bi";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -19,7 +19,7 @@ import UserProfile from "../../User/userProfile";
 import SearchUsers from "./searchUsers";
 import {db} from '../../../api/firebase'
 import firebase from "firebase/app";
-import AutomationDataEditor from "./packageEditor/automationDataEditor";
+import PackageManger from "./packageManger/packageManger";
 import AutomationRecurrenceEditor from "./automationRecurrence/automationRecurrenceEditor";
 
 
@@ -278,7 +278,7 @@ export default AutomationRecipients;
 {/*        <Divider/>*/}
 
 {/*        <Grid style = {{margin: 20}} item xs={12} md = {12} lg = {12} >*/}
-{/*            <AutomationDataEditor addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>*/}
+{/*            <PackageManger addQuestion = {addQuestion} user = {props.user} tracker = {props.tracker}/>*/}
 {/*        </Grid>*/}
 {/*    </Box>*/}
 {/*</Grid>*/}

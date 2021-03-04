@@ -17,7 +17,7 @@ import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
 import AutomationRecipients from "./AutomationManager/automationRecipients";
-import AutomationDataEditor from "./AutomationManager/packageEditor/automationDataEditor";
+import PackageManger from "./AutomationManager/packageManger/packageManger";
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -131,7 +131,7 @@ function AutomationItem(props) {
                 <Grid style = {{backgroundColor: 'white'}} container xs={12} md={12} lg={12}>
                     <Grid className={classes.box} style = {{backgroundColor:'white',}} item xs={8} md={8} lg={8}>
                         <Box className={classes.root} display = 'flex' borderRadius = {15} border = {1} borderColor="grey.200" style = {{height: 400,backgroundSize: 'cover',backgroundImage: `url(${buildingbackground})`, padding: 5, margin: 15, overflow: 'hidden'}}>
-                         <AutomationDataEditor user = {props.user} tracker = {props.tracker} />
+                         <PackageManger user = {props.user} tracker = {props.tracker} />
                         </Box>
                     </Grid>
                     <Grid className = {classes.inner_box} item xs={4} sm = {4} md={4} lg={4}>
@@ -144,7 +144,7 @@ function AutomationItem(props) {
                                 variant="fullWidth"
                                 centered
                             >
-                                <Tab style={{maxWidth:50}}  label="Feed" />
+                                <Tab style={{maxWidth:50}}  label="Responses" />
                                 <Tab style={{maxWidth:50}}  label="Recipients" />
                             </Tabs>
                         </Paper>

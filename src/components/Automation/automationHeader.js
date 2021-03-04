@@ -94,10 +94,10 @@ function AutomationHeader(props) {
                     : null
             }
                 <Divider className={classes.divider} orientation="vertical" flexItem />
-                <Box style = {{margin: 7}}display = 'flex' flexDirection = 'row'>
-                <IconButton color = "white" onClick={()=>console.log('setup time')}>
-                            <BiTime style = {{color: "white", margin: 0}} size = {25} />
-                </IconButton>
+                <Box style = {{margin: 7, marginLeft: 13}} display = 'flex' flexDirection = 'row'>
+                {/*<IconButton color = "white" onClick={()=>console.log('setup time')}>*/}
+                {/*            <BiTime style = {{color: "white", margin: 0}} size = {25} />*/}
+                {/*</IconButton>*/}
                 <AutomationRecurrenceContainer tracker = {props.tracker} id = {props.id} isHeader={true}/>
                 </Box>
                 <Divider className={classes.divider} orientation="vertical" flexItem />

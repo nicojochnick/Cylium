@@ -1,5 +1,5 @@
 import React from 'react';
-import EditPackageItem from "./editPackageItem";
+import PackageItem from "./packageItem";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {fade, makeStyles} from "@material-ui/core/styles";
@@ -12,13 +12,16 @@ import Divider from "@material-ui/core/Divider";
 
 
 
-function AutomationDataEditor(props) {
+function PackageManger(props) {
     const classes = useStyles();
-    const addQuestion = async() => {
+
+
+    const addPackageItem = async(type) => {
         let id =  nextId();
         let newCall = {
-            callID: id,
-            label: 'type your question here...',
+            packageItemID: id,
+            actionType: type,
+            label: null,
             order: id,
             type: 'text',
             responseData: null,
@@ -34,7 +37,7 @@ function AutomationDataEditor(props) {
     return (
         <Grid xs={12} md={12} lg={12} container className={classes.root} justifyContent= {'space-around'} alignItems={'space-around'} display = 'flex' flexDirection = 'row'>
             <Grid item xs={4} md={4} lg={4}>
-            <Box borderRadius = {20} style = {{backgroundColor: 'white',overflow:'scroll', margin: 10, height: 350, boxShadow: "0px 3px 10px #D7D7DA"}} display = 'flex' flexDirection = 'column'>
+            <Box borderRadius = {20} style = {{backgroundColor: 'white',overflow:'hidden', margin: 10, height: 350, boxShadow: "0px 3px 10px #D7D7DA"}} display = 'flex' flexDirection = 'column'>
                 <p style = {{margin: 10, textAlign: 'center', fontSize: 14,fontWeight: 500, color: '#76777D'}} > ACTIONS </p>
                 <Divider/>
                 <Button
@@ -43,7 +46,7 @@ function AutomationDataEditor(props) {
                     color = 'secondary'
                     className={classes.button}
                     startIcon={<BiChat/>}
-                    onClick={()=>addQuestion()}
+                    onClick={()=>addPackageItem('ask')}
                 >
                    Ask
                 </Button>
@@ -54,9 +57,9 @@ function AutomationDataEditor(props) {
                     color = 'secondary'
                     className={classes.button}
                     startIcon={<BiCheckSquare/>}
-                    onClick={()=>addQuestion()}
+                    onClick={()=>addPackageItem('track')}
                 >
-                     Confirm
+                     Track
                 </Button>
 
                 <Button
@@ -65,7 +68,7 @@ function AutomationDataEditor(props) {
                     color = 'secondary'
                     className={classes.button}
                     startIcon={<BiStar/>}
-                    onClick={()=>addQuestion()}
+                    onClick={()=>addPackageItem('rate')}
                 >
                     Rate
                 </Button>
@@ -77,7 +80,7 @@ function AutomationDataEditor(props) {
                     color = 'secondary'
                     className={classes.button}
                     startIcon={<BiBell/>}
-                    onClick={()=>addQuestion()}
+                    onClick={()=>addPackageItem('remind')}
                 >
                     Remind
                 </Button>
@@ -88,7 +91,7 @@ function AutomationDataEditor(props) {
                     color = 'secondary'
                     className={classes.button}
                     startIcon={<BiLink/>}
-                    onClick={()=>addQuestion()}
+                    onClick={()=>addPackageItem('share')}
                 >
                     Share
                 </Button>
@@ -97,7 +100,7 @@ function AutomationDataEditor(props) {
 
             <Grid direction = 'column'  item xs={8} md={8} lg={8}>
                 {Object.keys(props.tracker.call).map((item) =>
-                        <EditPackageItem
+                        <PackageItem
                             item = {item}
                             user = {props.user}
                             tracker = {props.tracker}
@@ -122,4 +125,4 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default AutomationDataEditor;
+export default PackageManger;
