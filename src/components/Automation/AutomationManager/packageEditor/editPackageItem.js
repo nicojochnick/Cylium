@@ -207,7 +207,7 @@ function EditPackageItem(props) {
     return (
         <Box display = 'flex'  flexDirection="row" borderRadius ={10} style ={{padding: 8, paddingLeft: 12, margin: 10, backgroundColor: 'white', boxShadow: "0px 3px 10px #D7D7DA"}} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
-                <Grid direction={'row'} item >
+                <Grid item xs={10} md={10} lg={10} direction={'row'}  >
                     <Box alignItems="center" display="flex" flexDirection="row" >
                         {/*<Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {2} borderColor = "lightgrey">*/}
                         {/*    <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />*/}
@@ -227,7 +227,7 @@ function EditPackageItem(props) {
                     {isEditing
                         ?
                         <Button
-                            style = {{margin: 10}}
+                            style = {{marginTop: 10}}
                             variant="contained"
                             color = 'primary'
                             className={classes.button}
