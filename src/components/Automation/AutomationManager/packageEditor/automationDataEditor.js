@@ -1,13 +1,15 @@
 import React from 'react';
-import EditQuestionItem from "../editQuestionItem";
+import EditPackageItem from "./editPackageItem";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {fade, makeStyles} from "@material-ui/core/styles";
-
+import Box from "@material-ui/core/Box";
 import { BiSend, BiPlus,BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import nextId from "react-id-generator";
 import {db} from "../../../../api/firebase";
 import firebase from "firebase/app";
+import Divider from "@material-ui/core/Divider";
+
 
 
 function AutomationDataEditor(props) {
@@ -30,56 +32,58 @@ function AutomationDataEditor(props) {
     };
 
     return (
-        <div>
+        <Grid xs={12} md={12} lg={12} container className={classes.root} justifyContent= {'space-around'} alignItems={'space-around'} display = 'flex' flexDirection = 'row'>
+            <Grid item xs={4} md={4} lg={4}>
+            <Box borderRadius = {20} style = {{backgroundColor: 'white', margin: 10, height: 350, boxShadow: "0px 3px 10px #D7D7DA"}} display = 'flex' flexDirection = 'column'>
+                <p style = {{margin: 10, textAlign: 'center', fontSize: 14,fontWeight: 500, color: '#76777D'}} > ACTIONS </p>
+                <Divider/>
+                <Button
+                    style = {{margin: 10}}
+                    variant="contained"
+                    color = 'primary'
+                    className={classes.button}
+                    startIcon={<BiPlus/>}
+                    onClick={()=>addQuestion()}
+                >
+                    Add Question
+                </Button>
 
-            <Button
-                style = {{margin: 10}}
-                variant="contained"
-                color = 'primary'
-                className={classes.button}
-                startIcon={<BiPlus/>}
-                onClick={()=>addQuestion()}
-            >
-                Add Question
-            </Button>
+                <Button
+                    style = {{margin: 10}}
+                    variant="contained"
+                    color = 'primary'
+                    className={classes.button}
+                    startIcon={<BiPlus/>}
+                    onClick={()=>addQuestion()}
+                >
+                    Add Todo
+                </Button>
 
-            <Button
-                style = {{margin: 10}}
-                variant="contained"
-                color = 'primary'
-                className={classes.button}
-                startIcon={<BiPlus/>}
-                onClick={()=>addQuestion()}
-            >
-                Add Task
-            </Button>
+                <Button
+                    style = {{margin: 10}}
+                    variant="contained"
+                    color = 'primary'
+                    className={classes.button}
+                    startIcon={<BiPlus />}
+                    onClick={()=>addQuestion()}
+                >
+                    Add Rating
+                </Button>
+            </Box>
+            </Grid>
 
-            <Button
-                style = {{margin: 10}}
-                variant="contained"
-                color = 'primary'
-                className={classes.button}
-                startIcon={<BiPlus />}
-                onClick={()=>addQuestion()}
-            >
-                Add Rating
-            </Button>
-
-            {(props.tracker.call)
-                ?
-                <div>
-                    {Object.keys(props.tracker.call).map((item) =>
-                        <EditQuestionItem
+            <Grid direction = 'column'  item xs={8} md={8} lg={8}>
+                {Object.keys(props.tracker.call).map((item) =>
+                        <EditPackageItem
                             item = {item}
                             user = {props.user}
                             tracker = {props.tracker}
                         />
                     )}
-                </div>
-                : null
-            }
 
-        </div>
+            </Grid>
+
+        </Grid>
     );
 }
 
@@ -88,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
+        display:'flex',
         // minHeight: 200,
         // maxWidth: 540,
         // backgroundColor: 'white',

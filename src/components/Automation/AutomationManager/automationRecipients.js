@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
 import TyperTracker from "../../Typers/typerTracker";
-import EditQuestionItem from "./editQuestionItem";
+import EditPackageItem from "./packageEditor/editPackageItem";
 import List from '@material-ui/core/List';
 import { BiSend, BiPlus } from "react-icons/bi";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';

@@ -23,6 +23,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AutomationRecurrenceEditor from "./AutomationManager/automationRecurrence/automationRecurrenceEditor";
 import AutomationRecurrenceContainer from "./AutomationManager/automationRecurrence/automationRecurrenceContainer";
+import buildingbackground from "../../assets/images/buildingbackground.png"
 
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2);
@@ -112,7 +113,7 @@ function AutomationItem(props) {
             <Grid container>
         <Box className={classes.box}
              boxShadow = {0}
-             style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
+             style ={{padding: 0, margin: 0, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
              borderRadius={20}>
             <AutomationHeader
                 id = {props.tracker.id}
@@ -127,18 +128,13 @@ function AutomationItem(props) {
                 name= {title}
                 handleTitleChange = {handleTitleChange}
             />
-                <Grid container xs={12} md={12} lg={12}>
-                    <Grid className={classes.box} style = {{backgroundColor:'white'}} item xs={6} md={6} lg={6}>
-                        <p style = {{margin: 10, fontSize: 15, fontWeight: 500,color: '#6B6A6A'}}>
-                            TASKS
-                        </p>
-                        <Divider/>
-                        <Box style = {{height: 250, margin: 20}}>
+                <Grid style = {{backgroundColor: 'white'}} container xs={12} md={12} lg={12}>
+                    <Grid className={classes.box} style = {{backgroundColor:'white',}} item xs={8} md={8} lg={8}>
+                        <Box className={classes.root} display = 'flex' borderRadius = {15} border = {1} borderColor="grey.200" style = {{height: 400,backgroundSize: 'cover',backgroundImage: `url(${buildingbackground})`, padding: 5, margin: 15, overflow: 'hidden'}}>
                          <AutomationDataEditor user = {props.user} tracker = {props.tracker} />
                         </Box>
                     </Grid>
-                    <Divider orientation="vertical" flexItem />
-                    <Grid className = {classes.inner_box} item xs={6} sm = {6} md={6} lg={6}>
+                    <Grid className = {classes.inner_box} item xs={4} sm = {4} md={4} lg={4}>
                         <Paper style = {{margin: 10, marginBottom: 0, background: 'white', boxShadow: "0px 3px 10px 0px #DDDAEA"}} className={classes.boxSticky}>
                             <Tabs
                                 value={value}
@@ -150,7 +146,6 @@ function AutomationItem(props) {
                             >
                                 <Tab style={{maxWidth:50}}  label="Feed" />
                                 <Tab style={{maxWidth:50}}  label="Recipients" />
-                                <Tab style={{maxWidth:50}} label="Schedule" />
                             </Tabs>
                         </Paper>
 
@@ -191,10 +186,9 @@ function AutomationItem(props) {
                             </Grid>
                         </Grid>
                 </Grid>
-
                 </Grid>
-
         </Box>
+
             </Grid>
         </div>
     );

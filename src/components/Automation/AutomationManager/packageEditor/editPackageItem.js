@@ -12,18 +12,18 @@ import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabe
 import Radio from "@material-ui/core/Radio/Radio";
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import {db} from '../../../api/firebase'
+import {db} from '../../../../api/firebase'
 import { makeStyles } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
 import {BiDotsVerticalRounded} from "react-icons/bi"
-import EditTeamMemberItem from "./editTeamMemberItem";
+import EditTeamMemberItem from "../editTeamMemberItem";
 import { FiMoreVertical } from "react-icons/fi";
 import {convertFromRaw, EditorState, RichUtils} from "draft-js";
 import IconButton from "@material-ui/core/IconButton";
 import Popover from "@material-ui/core/Popover/Popover";
 
 
-function EditQuestionItem(props) {
+function EditPackageItem(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorEl_team, setAnchorEl_team] = React.useState(null);
@@ -205,9 +205,9 @@ function EditQuestionItem(props) {
 
 
     return (
-        <Box flexDirection="row" borderRadius ={10} style ={{padding: 8, paddingLeft: 12, margin: 10, boxShadow: "0px 3px 10px #D7D7DA", }} >
+        <Box display = 'flex'  flexDirection="row" borderRadius ={10} style ={{padding: 8, paddingLeft: 12, margin: 10, backgroundColor: 'white', boxShadow: "0px 3px 10px #D7D7DA"}} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
-                <Grid direction={'row'} item xs ={11} md={11} lg = {11}>
+                <Grid direction={'row'} item >
                     <Box alignItems="center" display="flex" flexDirection="row" >
                         {/*<Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {2} borderColor = "lightgrey">*/}
                         {/*    <BiQuestionMark size = {20} style = {{color: 'lightgrey'}} />*/}
@@ -217,8 +217,10 @@ function EditQuestionItem(props) {
                             multiline
                             onChange={(event)=>handleEditLabel(event)}
                             defaultValue= {label}
+                            style = {{fontSize: 10}}
+                            className={classes.packageInputText}
                             fullWidth
-                            InputProps={{ disableUnderline: true }}
+                            InputProps={{ style: {fontSize: 15}, disableUnderline: true, }}
                             rowsMax={4}
                         />
                     </Box>
@@ -262,9 +264,16 @@ function EditQuestionItem(props) {
     )
 }
 
-export default EditQuestionItem;
+export default EditPackageItem;
 const useStyles = makeStyles({
     menu: {
+    },
+    packageInputText: {
+        fontSize: 13
+
+    },
+    root: {
+
     }
 });
 
