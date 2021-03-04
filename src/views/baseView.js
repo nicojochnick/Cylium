@@ -22,21 +22,16 @@ function BaseView(props) {
         setSwitch(!switchState);
     };
 
-
     return (
         <div className={classes.root} >
             <Container className={classes.container}>
                 <Grid container spacing={1}>
-                    <Grid container
-                          direction='row'
-                          justify= 'center'
-                          alignItems = 'center' >
+                    <Grid container direction='row' justify= 'center' alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {8} lg = {8} container>
+                    <Grid xs = {12}  md = {7} lg = {7} container>
                         <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
                     </Grid>
-
-                    <Grid style = {{backgroundColor: 'grey', height: 50}} xs = {12}  md = {4} lg = {4} container>
+                    <Grid  xs = {12}  md = {5} lg = {5} container>
                     </Grid>
                 </Grid>
             </Container>

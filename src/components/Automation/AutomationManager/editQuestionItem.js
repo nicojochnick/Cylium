@@ -195,9 +195,11 @@ function EditQuestionItem(props) {
         if (props.user.friendList) {
             let res = props.user.friendList.filter(friend => friend.pending === false);
             setFriendList(res);
-            if (props.tracker.call[props.item].receivers.length > 0){
-                createReceiverFriendList(res)
-            };
+
+
+            // if (props.tracker.call[props.item].receivers.length > 0){
+            //     createReceiverFriendList(res)
+            // };
         };
     }, []);
 

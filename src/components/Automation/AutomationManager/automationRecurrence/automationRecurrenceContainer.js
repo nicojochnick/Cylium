@@ -37,6 +37,7 @@ function AutomationRecurrenceContainer(props) {
             senderID: props.tracker.adminID,
             messageData: props.tracker.call,
             recipientIDs: props.tracker.recipientIDs,
+            structuredMessage: true,
             timeStamp: new Date()
         }).then(() => {
             console.log("Message successfully written!");

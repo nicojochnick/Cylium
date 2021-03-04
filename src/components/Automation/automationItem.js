@@ -11,8 +11,8 @@ import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import AutomationAnalytics from "./automationAnalytics";
-import MessagePackage from "../Messages/messagePackage";
-import MessageItem from "../Messages/messageItem";
+import Message from "../Messages/message";
+import StructuredMessageItem from "../Messages/structuredMessageItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Typers/typerTracker";
 import TyperList from "../Typers/typerList";
@@ -160,7 +160,7 @@ function AutomationItem(props) {
                                     ?
                                     <Box style={{height: height}}>
                                         {Object.keys(responses).map((item) =>
-                                            <MessagePackage
+                                            <Message
                                                 user={props.user}
                                                 tracker={props.tracker}
                                                 response={responses[item]}/>)}

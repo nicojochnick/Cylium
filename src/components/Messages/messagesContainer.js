@@ -9,8 +9,8 @@ import Container from "@material-ui/core/Container";
 import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-import MessageItem from "./messageItem"
-import MessagePackage from "./messagePackage"
+import StructuredMessageItem from "./structuredMessageItem"
+import Message from "./message"
 import {db} from "../../api/firebase";
 
 
@@ -70,7 +70,7 @@ function MessagesContainer(props) {
 
     useEffect(() => {
         // getAutomations();
-        console.log(props.messages, props.automations, props.user)
+        console.log('message loaded: ', props.messages, props.automations, props.user)
     }, []);
 
     return (
@@ -78,11 +78,11 @@ function MessagesContainer(props) {
             <Grid container>
                 <Box className={classes.box}
                      boxShadow = {0}
-                     style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'#F7F7F7' , }}
+                     style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white' , }}
                      borderRadius={20}>
                         <Grid >
                             {Object.keys(props.messages).map((item) =>
-                                <MessagePackage
+                                <Message
                                     senderID = {props.messages[item].senderID}
                                     automations={props.automations}
                                     message={props.messages[item]}/>)}

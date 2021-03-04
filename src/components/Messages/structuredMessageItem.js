@@ -8,13 +8,13 @@ import Box from "@material-ui/core/Box";
 import {convertFromRaw, RichUtils, Editor, EditorState} from "draft-js";
 import {makeStyles} from "@material-ui/core/styles";
 
-function MessageItem(props) {
-    const [eState, setEState] = React.useState(null);
+function StructuredMessageItem(props) {
+    const [eState, setEState] = React.useState(EditorState.createEmpty());
 
     useEffect(() => {
         let editorState = null;
-        if (props.packageItem && props.packageItem.type !== 'numeric') {
-            editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.response.response)));
+        if (props.packageItem.responseData && props.packageItem.type !== 'numeric') {
+            editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(props.packageItem.responseData)));
             editorState = RichUtils.toggleInlineStyle(editorState, 'rgba(255, 0, 0, 1.0)',
             );
             setEState(editorState)
@@ -23,7 +23,6 @@ function MessageItem(props) {
 
     return (
         <div>
-            { console.log(props.packageItem)}
             {props.packageItem
                 ?
                 <div>
@@ -32,7 +31,7 @@ function MessageItem(props) {
                         <div>
                             <p style={{
                                 color: '#8B8FA0',
-                                fontWeight: 500, fontSize: 15,
+                                fontSize: 15,
                                 margin: 10,
                                 marginTop: 2,
                             }}
@@ -53,21 +52,17 @@ function MessageItem(props) {
                             <div>
                                 <p style={{
                                     color: '#2F2C37',
-                                    fontWeight: 500, fontSize: 15,
+                                    fontSize: 15,
                                     margin: 10,
                                     marginTop: 2,
                                 }}
                                 >
                                     {props.packageItem.label} {' '} {props.packageItem.recurringTime}
                                 </p>
-                                {(eState!== null)
+                                    <Box borderRadius = {20} border = {2} borderColor = {'#EAEAEA'} style = {{color:'#2F2C37', margin: 10, padding: 15, fontSize: 15}}>
+                                    <Editor customStyleMap={colorStyleMap} editorState={eState}/>
+                                    </Box>
 
-                                    ?
-                                    <div style = {{color:'#2F2C37', margin: 10, fontSize: 15}}>
-                                    <Editor customStyleMap={colorStyleMap} editorState={eState} readOnly={true}/>
-                                    </div>
-                                    : null
-                                }
                                 </div>
                         </div>
                     }
@@ -102,4 +97,4 @@ const colorStyleMap = {
     },
 };
 
-export default MessageItem;
+export default StructuredMessageItem;

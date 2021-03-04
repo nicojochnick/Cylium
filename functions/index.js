@@ -39,7 +39,6 @@ exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun(async (
                         console.log('recurrence triggered!');
                         console.log('updating nextDateTime');
                         let nextNewDateTime = await generateNextTime(tracker.recurrence, 1);
-
                         console.log(nextNewDateTime);
 
                         let nextDateTimeUpdateResponse = db.collection('trackers').doc(id).update({
@@ -50,11 +49,7 @@ exports.scheduledFunction = functions.pubsub.schedule('0 0 * * *').onRun(async (
                             console.error("Error writing document: ", error);
                         });
 
-
-
-
                         console.log('creating message');
-
 
                         let sendMessageResponse = db.collection('messages').doc('test3').set({
                             name: 'test3'
