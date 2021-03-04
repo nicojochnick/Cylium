@@ -12,6 +12,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabe
 import Radio from "@material-ui/core/Radio/Radio";
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import Checkbox from '@material-ui/core/Checkbox';
+import Slider from '@material-ui/core/Slider';
 import {db} from '../../../../api/firebase'
 import { makeStyles } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
@@ -36,10 +38,13 @@ function PackageItem(props) {
     const [questionItem, setQuestionItem] = React.useState(props.tracker.call[props.item]);
     const [actionType, setType] =  React.useState(props.tracker.call[props.item].actionType);
     const [label, setLabel] = React.useState(props.tracker.call[props.item].label);
+    const [rating, setRating] = React.useState(5)
     const [isEditing, setIsEditing] = React.useState(false);
     const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
     const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const open = Boolean(anchorEl_edit);
+
+
     const handleClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
     const handleClick_team = (event) => {setAnchorEl_team(event.currentTarget);};
@@ -192,6 +197,10 @@ function PackageItem(props) {
         setReceiverFriendList(receiverFriendList)
     };
 
+    const onChangeSlider = (val) => {
+        setRating(val)
+    }
+
     const setIcon = () => {
         console.log(actionType)
 
@@ -226,25 +235,104 @@ function PackageItem(props) {
         <Box display = 'flex'  flexDirection="row" borderRadius ={10} style ={{padding: 8, paddingLeft: 12, margin: 10, backgroundColor: 'white', boxShadow: "0px 3px 10px #D7D7DA"}} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
                 <Grid item xs={10} md={10} lg={10} direction={'row'}  >
-                    <Box alignItems="center" display="flex" flexDirection="row" >
-                        <Box style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {0} borderColor = "lightgrey">
-
+                    <Box className={classes.root} alignItems="center" display="flex" flexDirection="row" >
+                        <Box  display="flex" style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {0} borderColor = "lightgrey">
                             {
                                 setIcon()
                             }
                         </Box>
-                        <TextField
-                            placeholder="request info, ask a question etc..."
-                            multiline
-                            onChange={(event)=>handleEditLabel(event)}
-                            defaultValue= {label}
-                            style = {{fontSize: 10}}
-                            className={classes.packageInputText}
-                            fullWidth
-                            InputProps={{ style: {fontSize: 15}, disableUnderline: true, }}
-                            rowsMax={4}
-                        />
-                    </Box>
+                        {(actionType == 'ask')
+                            ? <Box className={classes.root}  alignItems="center" display="flex" flexDirection="column" >
+                                <TextField
+                                    placeholder="request info, ask a question etc..."
+                                    multiline
+                                    onChange={(event) => handleEditLabel(event)}
+                                    defaultValue={label}
+                                    style={{fontSize: 10}}
+                                    className={classes.packageInputText}
+                                    fullWidth
+                                    InputProps={{style: {fontSize: 15, margin: 5}, disableUnderline: true,}}
+                                    rowsMax={5}
+                                />
+                            </Box>
+                            : null
+                                }
+
+
+                        {(actionType == 'track')
+                            ? <Box className={classes.root}  alignItems="center" justifyContent = 'flex-start' display="flex" flexDirection="row" >
+                                <TextField
+                                    placeholder="add a todo"
+                                    multiline
+                                    onChange={(event) => handleEditLabel(event)}
+                                    defaultValue={label}
+                                    style={{fontSize: 10}}
+                                    className={classes.packageInputText}
+                                    fullWidth
+                                    InputProps={{style: {fontSize: 15, margin: 5,}, disableUnderline: true,}}
+                                    rowsMax={5}
+                                />
+                                <Checkbox
+                                    size = {15}
+                                    color="primary"
+                                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    classesName = {classes.checkbox}
+                                />
+
+                            </Box>
+                            : null
+                        }
+
+
+                        {(actionType == 'rate')
+                            ? <Box className={classes.root}  alignItems="center" justifyContent = 'center' display="center" flexDirection="column" >
+                                <TextField
+                                    placeholder="ask for a rating (1-10)"
+                                    multiline
+                                    onChange={(event) => handleEditLabel(event)}
+                                    defaultValue={label}
+                                    style={{fontSize: 10}}
+                                    className={classes.packageInputText}
+                                    fullWidth
+                                    InputProps={{style: {fontSize: 15, margin: 5,}, disableUnderline: true,}}
+                                    rowsMax={5}
+                                />
+                                <Slider
+                                    defaultValue={5}
+                                    aria-labelledby="discrete-slider"
+                                    valueLabelDisplay="auto"
+                                    onChangeCommitted={(e, val)=>{onChangeSlider(val)}}
+                                    step={1}
+                                    marks
+                                    min={0}
+                                    max={10}
+                                />
+
+                            </Box>
+                            : null
+                        }
+
+                        {(actionType == 'remind')
+                            ? <Box className={classes.root}  alignItems="center" justifyContent = 'center' display="center" flexDirection="column" >
+                                <TextField
+                                    placeholder="add a reminder"
+                                    multiline
+                                    onChange={(event) => handleEditLabel(event)}
+                                    defaultValue={label}
+                                    style={{fontSize: 10}}
+                                    className={classes.packageInputText}
+                                    fullWidth
+                                    InputProps={{style: {fontSize: 15, margin: 5,}, disableUnderline: true,}}
+                                    rowsMax={5}
+                                />
+
+                            </Box>
+                            : null
+                        }
+
+
+                            </Box>
+
                     {isEditing
                         ?
                         <Button
@@ -294,6 +382,13 @@ const useStyles = makeStyles({
 
     },
     root: {
+        display: 'flex',
+        flexGrow: 1
+
+    },
+    checkbox:{
+        width: 30,
+        height: 30,
 
     }
 });
