@@ -21,7 +21,7 @@ function AutomationView(props) {
                           alignItems = 'center' >
                     </Grid>
                     <Grid xs = {12}  md = {stretch} lg = {stretch} container>
-                        <AutomationList setStretch = {setStretch} isMe = {true}  user = {props.user} />
+                        <AutomationList automations = {props.automations} setStretch = {setStretch} isMe = {true}  user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>
