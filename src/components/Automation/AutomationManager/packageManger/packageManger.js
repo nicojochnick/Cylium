@@ -15,16 +15,20 @@ import Divider from "@material-ui/core/Divider";
 function PackageManger(props) {
     const classes = useStyles();
 
-
+    //TODO add to firebase function file
     const addPackageItem = async(type) => {
         let id =  nextId();
+        let resData = null;
+        if (type === 'track'){
+            resData = false;
+        }
         let newCall = {
             packageItemID: id,
             actionType: type,
             label: null,
             order: id,
             type: 'text',
-            responseData: null,
+            responseData: resData,
             structuredMessage: true,
             timeStamp: new Date(),
         };
@@ -33,7 +37,6 @@ function PackageManger(props) {
             call: firebase.firestore.FieldValue.arrayUnion(newCall)
         })
     };
-
     return (
         <Grid xs={12} md={12} lg={12} container className={classes.root} justifyContent= {'space-around'} alignItems={'space-around'} display = 'flex' flexDirection = 'row'>
             <Grid item xs={4} md={4} lg={4}>

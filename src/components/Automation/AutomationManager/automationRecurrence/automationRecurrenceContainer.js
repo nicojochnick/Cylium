@@ -4,6 +4,7 @@ import AutomationRecurrenceHeaderEditor from "./automationRecurrenceHeaderEditor
 import AutomationRecurrenceEditor from "./automationRecurrenceEditor";
 import {generateDates} from "../../../../helpers/dateManagement";
 import moment from 'moment'
+import {sendMessageFS} from "../../../../api/firestore";
 
 import {db} from "../../../../api/firebase";
 
@@ -28,29 +29,12 @@ function AutomationRecurrenceContainer(props) {
     TODO: consider changing scope and/or reduce the number of writes to one by creating a custom ID
     Send Automation could be outside of the automation Recurrence scope, consider a larger refactor
      */
-
     const sendAutomationMessage = async () => {
-        console.log('writing');
-        let sendMessageResponse = await db.collection('messages').add({
-            automationID: props.id,
-            senderID: props.tracker.adminID,
-            messageData: props.tracker.call,
-            recipientIDs: props.tracker.recipientIDs,
-            structuredMessage: true,
-            timeStamp: new Date()
-        }).then(() => {
-            console.log("Message successfully written!");
-        }).catch((error) => {
-            console.error("Error writing document: ", error);
-        });
-
-        // let updateRes = await db.collection('messages').doc().update({
-        //     messageID: sendMessageResponse.id
-        // }).then(() => {
-        //     console.log("Message ID successfully added");
-        // }).catch((error) => {
-        //     console.error("Error adding message ID: ", error);
-        // });
+        try {
+            await sendMessageFS(props.id, props.tracker.adminID, props.tracker.call, props.recipientIDs);
+        } catch (error) {
+            console.log('sending message failed ', error)
+        }
 
     };
 

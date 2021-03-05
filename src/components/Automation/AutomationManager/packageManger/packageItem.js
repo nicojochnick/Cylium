@@ -27,9 +27,6 @@ import Popover from "@material-ui/core/Popover/Popover";
 
 function PackageItem(props) {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [anchorEl_team, setAnchorEl_team] = React.useState(null);
-    const [anchorEl_schedule, setAnchorEl_schedule] = React.useState(null);
     const [anchorEl_edit, setAnchorEl_edit] = React.useState(null);
     const [scheduleValue, setScheduleValue] = React.useState(props.tracker.call[props.item].schedule);
     const [checked, setChecked] = React.useState([1]);
@@ -43,46 +40,6 @@ function PackageItem(props) {
     const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
     const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const open = Boolean(anchorEl_edit);
-
-
-    const handleClick = (event) => {setAnchorEl(event.currentTarget);};
-    const handleClose = () => {setAnchorEl(null);};
-    const handleClick_team = (event) => {setAnchorEl_team(event.currentTarget);};
-    const handleClose_team = () => {setAnchorEl_team(null);};
-    const handleClick_schedule = (event) => {setAnchorEl_schedule(event.currentTarget);};
-    const handleClose_schedule = (event) => {setAnchorEl_schedule(null);};
-
-    const handleToggle = (value, user,) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-        if (currentIndex === -1) {
-            newChecked.push(value);
-            console.log('add');
-            addReceivers(user)
-        } else {
-            newChecked.splice(currentIndex, 1);
-            console.log('delete');
-            removeReceivers(user)
-        }
-        setChecked(newChecked);
-    };
-
-    const changeSchedule = async (event) => {
-        setScheduleValue(event.target.value);
-        let selected = event.target.value;
-        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
-        let trackData = trackRef.data();
-        let calls = trackData.call;
-        for (let i of calls){
-            if (questionItem.id === i.id){
-                i.schedule = selected;
-            }
-        };
-
-        let res = await db.collection('trackers').doc(props.tracker.id).update(
-            {call: calls}
-       )
-    };
 
     const changeQuestion = async () =>{
         let value = label;
@@ -103,7 +60,6 @@ function PackageItem(props) {
     };
 
     const deleteQuestion = async() => {
-
         let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
         let trackData = trackRef.data();
 
@@ -119,82 +75,9 @@ function PackageItem(props) {
             {call: calls}
         )
     };
-
     const handleEditLabel = (event) => {
         if (!isEditing){setIsEditing(true)}
         setLabel(event.target.value)
-    };
-
-
-    const addReceivers = async(user) => {
-
-        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
-        let trackData = trackRef.data();
-        let calls = trackData.call;
-        for (let question of calls){
-            console.log(question)
-            if (questionItem.id === question.id){
-                if (!question.receivers.includes(user.email)){
-                    question.receivers.push(user.email)
-                }
-
-            }
-        };
-
-        let res = await db.collection('trackers').doc(props.tracker.id).update(
-            {call: calls}
-        );
-    };
-
-    const removeReceivers = async (user) => {
-        let value = label;
-        let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
-        let trackData = trackRef.data();
-        let calls = trackData.call;
-        for (let question of calls){
-            console.log(question)
-            if (questionItem.id === question.id){
-                if (question.receivers.includes(user.email)){
-                   let elem =  question.receivers.indexOf(user.email);
-                    question.receivers.splice(elem, 1)
-
-                }
-
-            }
-        };
-
-        let res = await db.collection('trackers').doc(props.tracker.id).update(
-            {call: calls}
-        );
-
-    };
-
-    const createReceiverFriendList = async(friendList) => {
-        let receivers = props.tracker.call[props.item].receivers;
-        if (!receivers){return}
-
-
-        //create list
-        let receiverFriendList = [];
-        let rec
-
-        for (let i of friendList){
-            if (receivers.includes(i.email)){
-                receiverFriendList.push(i)
-            }
-        }
-
-        //addcheckmarks to friendList
-        for (let friend of friendList){
-            if (receivers.includes(friend.email)){
-                friend.checked = true;
-            } else{
-                friend.checked = false;
-            }
-        }
-
-        setFriendList(friendList);
-        setReceiverFriendList(receiverFriendList)
     };
 
     const onChangeSlider = (val) => {
@@ -484,3 +367,128 @@ const useStyles = makeStyles({
 {/*        </p>*/}
 {/*    </Box>*/}
 {/*</Grid>*/}
+
+
+
+
+///Reciever
+
+//
+// const addReceivers = async(user) => {
+//
+//     let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+//     let trackData = trackRef.data();
+//     let calls = trackData.call;
+//     for (let question of calls){
+//         console.log(question)
+//         if (questionItem.id === question.id){
+//             if (!question.receivers.includes(user.email)){
+//                 question.receivers.push(user.email)
+//             }
+//
+//         }
+//     };
+//
+//     let res = await db.collection('trackers').doc(props.tracker.id).update(
+//         {call: calls}
+//     );
+// };
+//
+// const removeReceivers = async (user) => {
+//     let value = label;
+//     let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+//     let trackData = trackRef.data();
+//     let calls = trackData.call;
+//     for (let question of calls){
+//         console.log(question)
+//         if (questionItem.id === question.id){
+//             if (question.receivers.includes(user.email)){
+//                 let elem =  question.receivers.indexOf(user.email);
+//                 question.receivers.splice(elem, 1)
+//
+//             }
+//
+//         }
+//     };
+//
+//     let res = await db.collection('trackers').doc(props.tracker.id).update(
+//         {call: calls}
+//     );
+//
+// };
+//
+// const createReceiverFriendList = async(friendList) => {
+//     let receivers = props.tracker.call[props.item].receivers;
+//     if (!receivers){return}
+//
+//
+//     //create list
+//     let receiverFriendList = [];
+//     let rec
+//
+//     for (let i of friendList){
+//         if (receivers.includes(i.email)){
+//             receiverFriendList.push(i)
+//         }
+//     }
+//
+//     //addcheckmarks to friendList
+//     for (let friend of friendList){
+//         if (receivers.includes(friend.email)){
+//             friend.checked = true;
+//         } else{
+//             friend.checked = false;
+//         }
+//     }
+//
+//     setFriendList(friendList);
+//     setReceiverFriendList(receiverFriendList)
+// };
+
+
+// const changeSchedule = async (event) => {
+//     setScheduleValue(event.target.value);
+//     let selected = event.target.value;
+//     let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
+//     let trackData = trackRef.data();
+//     let calls = trackData.call;
+//     for (let i of calls){
+//         if (questionItem.id === i.id){
+//             i.schedule = selected;
+//         }
+//     };
+//
+//     let res = await db.collection('trackers').doc(props.tracker.id).update(
+//         {call: calls}
+//     )
+// };
+//
+
+
+//
+// const handleToggle = (value, user,) => () => {
+//     const currentIndex = checked.indexOf(value);
+//     const newChecked = [...checked];
+//     if (currentIndex === -1) {
+//         newChecked.push(value);
+//         console.log('add');
+//         addReceivers(user)
+//     } else {
+//         newChecked.splice(currentIndex, 1);
+//         console.log('delete');
+//         removeReceivers(user)
+//     }
+//     setChecked(newChecked);
+// };
+
+
+
+///Pop UP Management
+
+
+// const handleClick = (event) => {setAnchorEl(event.currentTarget);};
+// const handleClose = () => {setAnchorEl(null);};
+// const handleClick_team = (event) => {setAnchorEl_team(event.currentTarget);};
+// const handleClose_team = () => {setAnchorEl_team(null);};
+// const handleClick_schedule = (event) => {setAnchorEl_schedule(event.currentTarget);};
+// const handleClose_schedule = (event) => {setAnchorEl_schedule(null);};

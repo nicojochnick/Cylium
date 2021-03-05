@@ -81,7 +81,11 @@ function AutomationRecipients(props) {
     };
 
     useEffect(() => {
-        getTracker(tracker.id);
+        let mounted = true;
+        if(mounted) {
+            getTracker(tracker.id);
+        }
+        return () => mounted = false;
     }, []);
 
     // console.log(tracker)
