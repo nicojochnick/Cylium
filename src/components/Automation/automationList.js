@@ -49,7 +49,7 @@ function AutomationList(props) {
                 {(trackers.length >0)
                     ?<Grid container direction = 'row' style ={{padding: 10}} spacing={2}>
                         {Object.keys(trackers).map((item) => <AutomationItem setStretch = {props.setStretch} isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={trackers[item]} />)}
-                    </Grid>
+                    </ Grid>
                     : null
                 }
         </div>

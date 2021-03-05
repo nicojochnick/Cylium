@@ -31,7 +31,7 @@ function AutomationRecurrenceContainer(props) {
      */
     const sendAutomationMessage = async () => {
         try {
-            await sendMessageFS(props.id, props.tracker.adminID, props.tracker.call, props.recipientIDs);
+            await sendMessageFS(props.id, props.tracker.adminID, props.tracker.call, props.tracker.recipientIDs);
         } catch (error) {
             console.log('sending message failed ', error)
         }

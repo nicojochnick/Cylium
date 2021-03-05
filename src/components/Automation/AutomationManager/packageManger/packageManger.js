@@ -73,7 +73,6 @@ function PackageManger(props) {
                     Rate
                 </Button>
 
-
                 <Button
                     style = {{margin: 10}}
                     variant="outlined"

@@ -24,75 +24,77 @@ function DashboardContainer(props) {
                 if (user) {
                     setURL(user.url);
                     setUser(user);
-                    getAutomations(user);
                 }
             })
     };
 
-    const getMessages = async(autos) => {
-        console.log(autos);
-        let resRef = db.collection("messages");
-        let messages = [];
-        if (autos.length > 0) {
-            await resRef.where("automationID", "==", autos[0].id).get()
-                .then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        messages.push(doc.data())
-                    });
-
-                    // Probably not necessary
-
-                    // let merged_messages = [];
-                    // if (messages.length > 0) {
-                    //     for (let i = 0; i < messages.length; i++) {
-                    //         if (autos[0].call) {
-                    //             let res = mergeAutomationSchemaandMessages(messages[i].messageData, autos[0].call);
-                    //             let objres = {'merged_packageItems': res, 'user': messages[i].senderID};
-                    //             merged_messages.push(objres)
-                    //         }
-                    //     }
-                    // }
-                    // console.log('merged messages:  ' + merged_messages);
-                    setMessages(messages);
-                })
-                .then(() => {
-                    console.log("Messages successfully pulled");
-                })
-                .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                });
-            // console.log(merged_responses, messages, autos[0].call);
-        }
-    };
-
-    const getAutomations = async(user) => {
-        if (user) {
-            let userAutomations = user.trackers;
-            let automatonRef = db.collection("trackers");
-            let automations = [];
-            await automatonRef.where('id', 'in', userAutomations).get()
-                .then(function (querySnapshot) {
-                    querySnapshot.forEach(function (doc) {
-                        automations.push(doc.data())
-                    });
-                    setAutomations(automations);
-                    getMessages(automations)
-                })
-                .then(() => {
-                    console.log("Automations successfully pulled");
-                })
-
-                .catch(function (error) {
-                    console.log("Error getting documents: ", error);
-                });
-        }
-    };
 
     useEffect(() => {
-        let email = firebase.auth().currentUser.email;
+        let currentUser = firebase.auth().currentUser;
+        let user = null;
+        console.log(user)
+        const email = currentUser.email;
         setEmail(email);
-        getUser(email);
+        function getUser(doc) {
+            console.log("user pulled: ", doc.data());
+            //Fixes bug where doc.data() is undefined on first signin
+            let userPulled = doc.data();
+            if (userPulled) {
+                user = userPulled;
+                setURL(userPulled.url);
+                setUser(userPulled);
+            }
+        }
+
+        const queryUser = db.collection('users').doc(email);
+        const unsubscribeUser =  queryUser.onSnapshot(getUser, error => console.log(error));
+        return () => {
+            unsubscribeUser();
+        }
+
     }, []);
+
+    useEffect(() => {
+        //TODO: We only want to pull trackers that are in the usertracker owner list (make a new list or double filter)
+        function getAutomations(querySnapshot) {
+            let automations = [];
+            querySnapshot.forEach(function (doc) {
+                automations.push(doc.data())
+            });
+            console.log('successfuly setted automation: ', automations)
+            setAutomations(automations)
+        }
+        if (user) {
+            console.log('user is present');
+            const queryAutomations = db.collection('trackers').where('id', 'in', user.trackers);
+            const unsubscribeAutomations = queryAutomations.onSnapshot(getAutomations, error => console.log(error));
+            return () => {
+                unsubscribeAutomations()
+            }
+        }
+    }, [user]);
+
+    useEffect(() => {
+        //TODO: we want to pull only messages that are relevant. The most recent 10 from any tracker in the userTrackerList.
+        function getMessages(querySnapshot) {
+            let messages= [];
+            querySnapshot.forEach(function (doc) {
+                messages.push(doc.data())
+            });
+            console.log('successfuly setted automation: ', messages);
+            setMessages(messages)
+        }
+        if (user) {
+            console.log('user is present')
+            const queryMessages = db.collection('messages').where('automationID', 'in', user.trackers);
+            const unsubscribeMessages = queryMessages.onSnapshot(getMessages, error => console.log(error));
+            return () => {
+                unsubscribeMessages()
+            }
+        }
+    }, [user]);
+
+
 
     return (
         <Dashboard url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
@@ -234,3 +236,81 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default DashboardContainer;
+
+
+// Probably not necessary
+
+// let merged_messages = [];
+// if (messages.length > 0) {
+//     for (let i = 0; i < messages.length; i++) {
+//         if (autos[0].call) {
+//             let res = mergeAutomationSchemaandMessages(messages[i].messageData, autos[0].call);
+//             let objres = {'merged_packageItems': res, 'user': messages[i].senderID};
+//             merged_messages.push(objres)
+//         }
+//     }
+// }
+// console.log('merged messages:  ' + merged_messages);
+
+
+
+
+// const getUser = async(email) => {
+//     await db.collection("users").doc(email)
+//         .onSnapshot(function(doc) {
+//             console.log("user pulled: ", doc.data());
+//             //Fixes bug where doc.data() is undefined on first signin
+//             let user = doc.data();
+//             if (user) {
+//                 setURL(user.url);
+//                 setUser(user);
+//             }
+//         })
+// };
+//
+// const getAutomations = async() => {
+//     if (user) {
+//         let userAutomations = user.trackers;
+//         let automatonRef = db.collection("trackers");
+//         let automations = [];
+//         await automatonRef.where('id', 'in', userAutomations).get()
+//             .then(function (querySnapshot) {
+//                 querySnapshot.forEach(function (doc) {
+//                     automations.push(doc.data())
+//                 });
+//                 setAutomations(automations);
+//                 console.log('refreshed')
+//             })
+//             .then(() => {
+//                 console.log("Automations successfully pulled");
+//             })
+//             .catch(function (error) {
+//                 console.log("Error getting documents: ", error);
+//             });
+//     }
+// };
+//
+//
+// const getMessages = async() => {
+//     let autos = automations
+//     console.log(autos);
+//     let resRef = db.collection("messages");
+//     let messages = [];
+//     if (autos.length > 0) {
+//         await resRef.where("automationID", "==", autos[0].id).get()
+//             .then(function (querySnapshot) {
+//                 querySnapshot.forEach(function (doc) {
+//                     messages.push(doc.data())
+//                 });
+//
+//                 setMessages(messages);
+//             })
+//             .then(() => {
+//                 console.log("Messages successfully pulled");
+//             })
+//             .catch(function (error) {
+//                 console.log("Error getting documents: ", error);
+//             });
+//         // console.log(merged_responses, messages, autos[0].call);
+//     }
+// };

@@ -59,6 +59,8 @@ function PackageItem(props) {
         setIsEditing(false)
     };
 
+    //TODO fix
+
     const deleteQuestion = async() => {
         let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
         let trackData = trackRef.data();
@@ -66,11 +68,10 @@ function PackageItem(props) {
         let calls = trackData.call;
 
         for (let i in calls){
-            if (questionItem.id === calls[i].id){
+            if (questionItem.packageItemID === calls[i].packageItemID){
                 calls.splice(i,1)
             }
         };
-
         let res = await db.collection('trackers').doc(props.tracker.id).update(
             {call: calls}
         )
