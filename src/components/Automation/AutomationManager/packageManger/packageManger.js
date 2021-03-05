@@ -10,11 +10,8 @@ import {db} from "../../../../api/firebase";
 import firebase from "firebase/app";
 import Divider from "@material-ui/core/Divider";
 
-
-
 function PackageManger(props) {
     const classes = useStyles();
-
     //TODO add to firebase function file
     const addPackageItem = async(type) => {
         let id =  nextId();

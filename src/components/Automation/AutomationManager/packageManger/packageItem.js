@@ -41,13 +41,13 @@ function PackageItem(props) {
     const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const open = Boolean(anchorEl_edit);
 
-    const changeQuestion = async () =>{
+    const updatePackageItemLabel = async () =>{
         let value = label;
         let trackRef = await db.collection('trackers').doc(props.tracker.id).get();
         let trackData = trackRef.data();
         let calls = trackData.call;
         for (let i of calls){
-            if (questionItem.id === i.id){
+            if (questionItem.packageItemID === i.packageItemID){
                 i.label = value;
             }
         };
@@ -85,8 +85,7 @@ function PackageItem(props) {
     }
 
     const setIcon = () => {
-        console.log(actionType)
-
+        console.log(actionType);
         if (actionType == 'ask') {
             return <BiChat size = {22} style = {{color: 'grey'}} />
         } else if (actionType =='track') {
@@ -105,9 +104,6 @@ function PackageItem(props) {
             let res = props.user.friendList.filter(friend => friend.pending === false);
             setFriendList(res);
 
-            // if (props.tracker.call[props.item].receivers.length > 0){
-            //     createReceiverFriendList(res)
-            // };
         };
 
         setIcon()
@@ -119,11 +115,11 @@ function PackageItem(props) {
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
                 <Grid item xs={10} md={10} lg={10} direction={'row'}  >
                     <Box className={classes.root} alignItems="center" display="flex" flexDirection="row" >
-                        <Box  display="flex" style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {0} borderColor = "lightgrey">
-                            {
-                                setIcon()
-                            }
-                        </Box>
+                        {/*<Box  display="flex" style = {{height: 25, width: 25, margin: 10}} borderRadius = {100} border = {0} borderColor = "lightgrey">*/}
+                        {/*    {*/}
+                        {/*        setIcon()*/}
+                        {/*    }*/}
+                        {/*</Box>*/}
                         {(actionType == 'ask')
                             ? <Box className={classes.root}  alignItems="center" display="flex" flexDirection="column" >
                                 <TextField
@@ -140,8 +136,6 @@ function PackageItem(props) {
                             </Box>
                             : null
                                 }
-
-
                         {(actionType == 'track')
                             ? <Box className={classes.root}  alignItems="center" justifyContent = 'flex-start' display="flex" flexDirection="row" >
                                 <TextField
@@ -223,7 +217,7 @@ function PackageItem(props) {
                             variant="contained"
                             color = 'primary'
                             className={classes.button}
-                            onClick={()=>changeQuestion()}
+                            onClick={()=>updatePackageItemLabel()}
                         >
                             Save
                         </Button>
