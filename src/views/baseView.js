@@ -13,6 +13,7 @@ import MessagesContainer from "../components/Messages/messagesContainer"
 import {makeStyles} from "@material-ui/core/styles";
 import AutomationItem from "../components/Automation/automationItem";
 import AutomationList from "../components/Automation/automationList";
+import BaseChart from "../components/Flow/baseChart";
 function BaseView(props) {
 
     const classes = useStyles();
@@ -28,10 +29,13 @@ function BaseView(props) {
                 <Grid container spacing={1}>
                     <Grid container direction='row' justify= 'center' alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {6} lg = {6} container>
+                    <Grid xs = {12}  md = {5} lg = {5} container>
                         <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
                     </Grid>
-                    <Grid  xs = {12}  md = {6} lg = {6} container>
+                    <Grid  xs = {12}  md = {7} lg = {7} container>
+                        <Container className={classes.container}>
+                        <BaseChart/>
+                        </Container>
                     </Grid>
                 </Grid>
             </Container>
