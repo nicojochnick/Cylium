@@ -78,16 +78,12 @@ function MessagesContainer(props) {
             <Grid container>
                 <Box className={classes.box}
                      boxShadow = {0}
-                     style ={{padding: 0, margin: 10, boxShadow: "0px 5px 10px #D7D7DA",backgroundColor:'white' , }}
-                     borderRadius={20}>
-                        <Grid >
+                     style ={{padding: 10,}}>
                             {Object.keys(props.messages).map((item) =>
                                 <Message
                                     senderID = {props.messages[item].senderID}
                                     automations={props.automations}
                                     message={props.messages[item]}/>)}
-                        </Grid>
-
                 </Box>
             </Grid>
         </div>
@@ -110,7 +106,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        position: 'relative',
         // margin: 10,
         // marginBottom: 20,
         // backgroundColor: 'white',

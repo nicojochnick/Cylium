@@ -28,10 +28,10 @@ function BaseView(props) {
                 <Grid container spacing={1}>
                     <Grid container direction='row' justify= 'center' alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {7} lg = {7} container>
+                    <Grid xs = {12}  md = {6} lg = {6} container>
                         <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
                     </Grid>
-                    <Grid  xs = {12}  md = {5} lg = {5} container>
+                    <Grid  xs = {12}  md = {6} lg = {6} container>
                     </Grid>
                 </Grid>
             </Container>

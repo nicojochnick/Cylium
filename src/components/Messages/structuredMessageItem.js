@@ -7,10 +7,11 @@ import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
 import {convertFromRaw, RichUtils, Editor, EditorState} from "draft-js";
 import {makeStyles} from "@material-ui/core/styles";
+import TextField from '@material-ui/core/TextField';
+
 
 function StructuredMessageItem(props) {
     const [eState, setEState] = React.useState(EditorState.createEmpty());
-
     useEffect(() => {
         let editorState = null;
         if (props.packageItem.responseData && props.packageItem.type !== 'numeric') {
@@ -20,58 +21,39 @@ function StructuredMessageItem(props) {
             setEState(editorState)
         }
     }, []);
-
     return (
         <div>
             {props.packageItem
                 ?
                 <div>
-                    {(props.packageItem.type === 'numerical')
-                        ?
-                        <div>
+                        <Box style = {{margin: 5}}>
                             <p style={{
-                                color: '#8B8FA0',
+                                color: '#67696F',
+                                fontWeight: 500,
                                 fontSize: 15,
-                                margin: 10,
-                                marginTop: 2,
+                                marginTop: 15,
+                                marginBottom: 6,
                             }}
                             >
-                                {props.packageItem.label} {' '}
+                                {props.packageItem.label} {' '} {props.packageItem.recurringTime}
                             </p>
+                            <div style = {{borderRadius: 20}}>
+                            <TextField
+                                id="outlined-basic"
+                                fullWidth
+                                multiline
+                                rowsMax={8}
 
-                            <p style={{
-                                color: '#1C1B30',
-                                fontSize: 15,
-                                margin: 10,
-                                marginTop: -2,
-                            }}>
-                                {props.packageItem.data} </p>
-                        </div>
-                        :
-                        <div>
-                            <div>
-                                <p style={{
-                                    color: '#2F2C37',
-                                    fontSize: 15,
-                                    margin: 10,
-                                    marginTop: 2,
-                                }}
-                                >
-                                    {props.packageItem.label} {' '} {props.packageItem.recurringTime}
-                                </p>
-                                    <Box borderRadius = {20} border = {2} borderColor = {'#EAEAEA'} style = {{color:'#2F2C37', margin: 10, padding: 15, fontSize: 15}}>
-                                    <Editor customStyleMap={colorStyleMap} editorState={eState}/>
-                                    </Box>
-
-                                </div>
-                        </div>
-                    }
+                                variant="outlined"
+                            />
+                            </div>
+                        </Box>
                 </div>
                 : null
             }
         </div>
     );
-};
+}
 
 const colorStyleMap = {
     red: {
@@ -98,3 +80,17 @@ const colorStyleMap = {
 };
 
 export default StructuredMessageItem;
+
+
+{/*<p style={{*/}
+{/*    color: '#2F2C37',*/}
+{/*    fontSize: 15,*/}
+{/*    margin: 10,*/}
+{/*    marginTop: 2,*/}
+{/*}}*/}
+{/*>*/}
+{/*    {props.packageItem.label} {' '} {props.packageItem.recurringTime}*/}
+{/*</p>*/}
+{/*<Box borderRadius = {20} border = {2} borderColor = {'#EAEAEA'} style = {{color:'#2F2C37', margin: 10, padding: 15, fontSize: 15}}>*/}
+{/*<Editor customStyleMap={colorStyleMap} editorState={eState}/>*/}
+{/*</Box>*/}
