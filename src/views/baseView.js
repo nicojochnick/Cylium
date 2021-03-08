@@ -29,7 +29,16 @@ function BaseView(props) {
                 <Grid container spacing={1}>
                     <Grid container direction='row' justify= 'center' alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {5} lg = {5} container>
+                    <Grid xs = {12}  md = {5} lg = {5} direction = 'column' container>
+                        <Box className={classes.box} >
+                            <Box display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+                                <p style ={{fontSize: 21, fontWeight: 500}}> All Feeds </p>
+                                <Box display = 'flex' justify= 'center' alignItems = 'center' flexDirection = 'row' >
+                                <p style ={{fontSize: 17, fontWeight: 800}}> AutoPilot</p>
+                                <Switch/>
+                                </Box>
+                            </Box>
+                        </Box>
                         <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
                     </Grid>
                     <Grid  xs = {12}  md = {7} lg = {7} container>
@@ -50,12 +59,11 @@ const useStyles = makeStyles((theme) => ({
     box:{
         flexGrow: 1,
         padding: 0,
-        display: 'start',
+        display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
         margin: 10,
-        marginBottom: 20,
-        backgroundColor: 'white',
+        marginBottom: 0,
     },
 
     content: {
@@ -65,8 +73,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
     },
 
 

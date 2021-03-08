@@ -110,12 +110,11 @@ function AutomationItem(props) {
 
     return (
         <div className={classes.root}>
-            <Grid container>
         <Box className={classes.box}
              boxShadow = {0}
              border = {1}
              borderColor = {'#AFADBC'}
-             style ={{padding: 0, margin: 0, boxShadow: "0px 0px 0px #D7D7DA",backgroundColor:'#F7F7F7' , }}
+             style ={{padding: 0, boxShadow: "0px 0px 0px #D7D7DA",backgroundColor:'#F7F7F7' , }}
              borderRadius={20}>
             <AutomationHeader
                 id = {props.tracker.id}
@@ -147,7 +146,7 @@ function AutomationItem(props) {
                                 centered
                             >
                                 <Tab style={{maxWidth:50}}  label="Feed" />
-                                <Tab style={{maxWidth:50}}  label="Recipgi" />
+                                <Tab style={{maxWidth:50}}  label="Recipients" />
                             </Tabs>
                         </Box>
 
@@ -191,7 +190,6 @@ function AutomationItem(props) {
                 </Grid>
         </Box>
 
-            </Grid>
         </div>
     );
 }
@@ -200,7 +198,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
-
+        display: 'flex',
     },
 
     tabs: {
@@ -215,7 +213,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden',
         flexDirection: 'column',
         position: 'relative',
-        overflowY: 'scroll',
+        overflowY: 'hidden',
         backgroundColor: 'white',
 
         // overflowY: 'scroll',

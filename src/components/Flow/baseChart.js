@@ -32,7 +32,7 @@ const elements = [
 
 function BaseChart(props) {
     return (
-        <Box borderRadius = {10} borderColor = {'#9DA0A9'} border = {1} style={{ height: '80vh', overflow: 'hidden'}}>
+        <Box borderRadius = {10} borderColor = {'#9DA0A9'} border = {1} style={{margin: 10, height: '85vh', overflow: 'hidden'}}>
             <ReactFlow style = {{overflow: 'hidden', background: '#F0F0F0'}} elements={elements}>
                 <Background
                     variant="dots"
