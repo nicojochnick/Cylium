@@ -76,9 +76,13 @@ function MessagesContainer(props) {
     return (
         <div className={classes.root}>
             <Grid container>
-                <Box className={classes.box}
+                <Box
+                    borderRadius = {10}
+                    border = {1}
+                    color = {'#A3A0B1'}
+                    className={classes.box}
                      boxShadow = {0}
-                     style ={{padding: 10,}}>
+                     style ={{margin: 15, backgroundColor:'white', padding: 0,height: '85vh'}}>
                             {Object.keys(props.messages).map((item) =>
                                 <Message
                                     senderID = {props.messages[item].senderID}

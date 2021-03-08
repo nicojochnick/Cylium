@@ -37,7 +37,12 @@ function PackageManger(props) {
     return (
         <Grid xs={12} md={12} lg={12} container className={classes.root} justifyContent= {'space-around'} alignItems={'space-around'} display = 'flex' flexDirection = 'row'>
             <Grid item xs={4} md={4} lg={4}>
-            <Box borderRadius = {20} style = {{backgroundColor: 'white',overflow:'hidden', margin: 10, height: 350, boxShadow: "0px 3px 10px #D7D7DA"}} display = 'flex' flexDirection = 'column'>
+            <Box borderRadius = {10}
+                 border = {1}
+                 borderColor = {'#AFADBC'}
+                 style = {{backgroundColor: 'white',overflow:'hidden', margin: 10, height: 350, boxShadow: "0px 0px 0px #D7D7DA"}}
+                 display = 'flex'
+                 flexDirection = 'column'>
                 <p style = {{margin: 10, textAlign: 'center', fontSize: 14,fontWeight: 500, color: '#76777D'}} > ACTIONS </p>
                 <Divider/>
                 <Button

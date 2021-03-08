@@ -30,7 +30,7 @@ import recurrencelogo from "../../assets/images/recurrencelogo.png"
 import logowhite from "../../assets/images/TeamBoxxWhite.png"
 import UserHome from '../../views/Old/userHome'
 import TeamHome from '../../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiCog, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiCog, BiCubeAlt, BiNetworkChart, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
 import {FiInbox} from 'react-icons/fi';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
@@ -219,17 +219,17 @@ export default function Dashboard(props) {
                     <Link to="/feed"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <FiInbox size = {25} style = {{color:'#3C3F48'}}  />
+                                <BiHome size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Inbox" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
                         </ListItem>
                     </Link>
                     <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
                         <ListItem button>
                             <ListItemIcon>
-                                <BiSend size = {25} style = {{color:'#3C3F48'}}  />
+                                <BiNetworkChart size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Automations" />
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Processes" />
                         </ListItem>
                     </Link>
 

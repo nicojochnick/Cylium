@@ -112,7 +112,11 @@ function PackageItem(props) {
 
 
     return (
-        <Box display = 'flex'  flexDirection="row" borderRadius ={10} style ={{padding: 8, paddingLeft: 12, margin: 10, backgroundColor: 'white', boxShadow: "0px 3px 10px #D7D7DA"}} >
+        <Box  border = {1}
+              borderColor = {'#AFADBC'}
+              display = 'flex'  flexDirection="row"
+              borderRadius ={10}
+              style ={{padding: 8, paddingLeft: 12, margin: 10, backgroundColor: 'white', boxShadow: "0px 0px 0px #D7D7DA"}} >
             <Grid container justify={'space-between'} alignItems={'center'} direction = 'row'>
                 <Grid item xs={10} md={10} lg={10} direction={'row'}  >
                     <Box className={classes.root} alignItems="center" display="flex" flexDirection="row" >

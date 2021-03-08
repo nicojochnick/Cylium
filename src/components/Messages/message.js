@@ -30,11 +30,10 @@ function Message(props) {
         <div className={classes.root}>
             {user
                 ? <Box
-                    borderRadius = {20}
-                    color = {'lightgrey'}
+                    color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow={0}
-                    style={{padding: 10, marginBottom: 15, minHeight: 100,boxShadow: "0px 5px 8px #D7D7DA",backgroundColor:'white' , }}
+                    style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:'white' , }}
                 >
                     <Grid justify='flex-start' alignItems='flex-stars' direction="row" container style={{margin: 0,}}>
                         <Grid item >
@@ -70,6 +69,8 @@ function Message(props) {
                 </Box>
                 : null
             }
+            <Divider/>
+
         </div>
     );
 }
@@ -77,13 +78,13 @@ function Message(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+
     },
     box:{
         padding: 0,
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        marginBottom: 20,
     },
 
     content: {
