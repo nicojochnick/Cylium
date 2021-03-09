@@ -77,12 +77,11 @@ function MessagesContainer(props) {
         <div className={classes.root}>
             <Grid container>
                 <Box
-                    borderRadius = {10}
-                    border = {1}
+                    border = {0}
                     color = {'#A3A0B1'}
                     className={classes.box}
                      boxShadow = {0}
-                     style ={{margin: 10, backgroundColor:'white', padding: 0,height: '75vh'}}>
+                     style ={{backgroundColor:'white', padding: 0,height: '85vh'}}>
                             {Object.keys(props.messages).map((item) =>
                                 <Message
                                     senderID = {props.messages[item].senderID}
@@ -102,7 +101,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
-        marginTop: -15,
     },
     box:{
         flexGrow: 1,

@@ -13,19 +13,22 @@ function AutomationView(props) {
 
     return (
         <div className={classes.root} >
-            <Container className={classes.container}>
-                <Grid container spacing={1}>
+            <div className={classes.container}>
+                <Grid container spacing={0}>
                     <Grid container
                           direction='row'
                           justify= 'center'
                           alignItems = 'center' >
                     </Grid>
-                    <Grid xs = {12}  md = {stretch} lg = {stretch} container>
+                    <Grid style = {{backgroundColor: 'white', overflow:'hidden', height: '90vh'}} xs = {12} md={3} lg = {3} item>
+
+                    </Grid>
+                    <Grid xs = {12}  md = {9} lg = {9} item>
                         <AutomationList automations = {props.automations} setStretch = {setStretch} isMe = {true}  user = {props.user} />
                         {/*<TrackerItem/>*/}
                     </Grid>
                 </Grid>
-            </Container>
+            </div>
         </div>
     );
 }
@@ -41,8 +44,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'start',
         overflow: 'auto',
         flexDirection: 'column',
-        margin: 10,
-        marginBottom: 20,
         backgroundColor: 'white',
     },
 
@@ -53,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
+        paddingTop: theme.spacing(0),
+        paddingBottom: theme.spacing(0),
     },
 
 

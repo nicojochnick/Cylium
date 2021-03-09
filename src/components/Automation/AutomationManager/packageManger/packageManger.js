@@ -102,7 +102,7 @@ function PackageManger(props) {
             </Box>
             </Grid>
 
-            <Grid direction = 'column'  item xs={8} md={8} lg={8}>
+            <Grid style = {{overflow:'scroll'}} direction = 'column'  item xs={8} md={8} lg={8}>
                 {Object.keys(props.tracker.call).map((item) =>
                         <PackageItem
                             item = {item}

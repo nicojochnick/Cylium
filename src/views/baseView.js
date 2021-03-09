@@ -8,8 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import MessagesContainer from "../components/Messages/messagesContainer"
-
-
+import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
 import AutomationItem from "../components/Automation/automationItem";
 import AutomationList from "../components/Automation/automationList";
@@ -24,30 +23,26 @@ function BaseView(props) {
     };
 
     return (
-        <div className={classes.root} >
-            <Container className={classes.container}>
-                <Grid container spacing={1}>
-                    <Grid container direction='row' justify= 'center' alignItems = 'center' >
-                    </Grid>
-                    <Grid xs = {12}  md = {5} lg = {5} direction = 'column' container>
-                        <Box className={classes.box} >
-                            <Box display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+        <div className={classes.root}>
+            <Grid className={classes.root} container spacing ={0}>
+                    <Grid xs = {12} md = {5} lg = {5} direction = 'column' container>
+                            <Box style = {{marginLeft: 10, marginRight: 10, height: 75}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
                                 <p style ={{fontSize: 21, fontWeight: 500}}> All Feeds </p>
                                 <Box display = 'flex' justify= 'center' alignItems = 'center' flexDirection = 'row' >
                                 <p style ={{fontSize: 17, fontWeight: 800}}> AutoPilot</p>
                                 <Switch/>
                                 </Box>
                             </Box>
-                        </Box>
+                        <Divider/>
+
                         <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
                     </Grid>
                     <Grid  xs = {12}  md = {7} lg = {7} container>
-                        <Container className={classes.container}>
+                        <div className={classes.container}>
                         <BaseChart/>
-                        </Container>
+                        </div>
                     </Grid>
                 </Grid>
-            </Container>
         </div>
     );
 }
@@ -55,6 +50,7 @@ function BaseView(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        backgroundColor:'white',
     },
     box:{
         flexGrow: 1,
@@ -62,8 +58,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
-        margin: 10,
-        marginBottom: 0,
+        margin: 0,
     },
 
     content: {
@@ -73,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-        paddingTop: theme.spacing(1),
-        paddingBottom: theme.spacing(1),
+        flexGrow: 1,
+
     },
 
 

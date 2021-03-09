@@ -14,6 +14,7 @@ function DashboardContainer(props) {
     const [url, setURL] = React.useState(null);
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
+    const [channels, setChannels] = React.useState([]);
 
     const getUser = async(email) => {
         await db.collection("users").doc(email)
@@ -75,6 +76,25 @@ function DashboardContainer(props) {
     }, [user]);
 
     useEffect(() => {
+        function getChannels(querySnapshot) {
+            let channels = [];
+            querySnapshot.forEach(function (doc) {
+                channels.push(doc.data())
+            });
+            console.log('successful channel pull: ', channels);
+            setChannels(channels)
+        }
+        if (user) {
+            console.log('user is present');
+            const queryChannels = db.collection('trackers').where('id', 'in', user.trackers);
+            const unsubscribeChannels = queryChannels.onSnapshot(getChannels, error => console.log(error));
+            return () => {
+                unsubscribeChannels()
+            }
+        }
+    }, [user]);
+
+    useEffect(() => {
         //TODO: we want to pull only messages that are relevant. The most recent 10 from any tracker in the userTrackerList.
         function getMessages(querySnapshot) {
             let messages= [];
@@ -85,7 +105,7 @@ function DashboardContainer(props) {
             setMessages(messages)
         }
         if (user) {
-            console.log('user is present')
+            console.log('user is present');
             const queryMessages = db.collection('messages').where('automationID', 'in', user.trackers);
             const unsubscribeMessages = queryMessages.onSnapshot(getMessages, error => console.log(error));
             return () => {
@@ -94,8 +114,12 @@ function DashboardContainer(props) {
         }
     }, [user]);
 
+
+
+
+
     return (
-        <Dashboard url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
+        <Dashboard channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
     );
 }
 

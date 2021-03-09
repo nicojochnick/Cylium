@@ -25,6 +25,7 @@ import AutomationRecurrenceEditor from "./AutomationManager/automationRecurrence
 import AutomationRecurrenceContainer from "./AutomationManager/automationRecurrence/automationRecurrenceContainer";
 import buildingbackground from "../../assets/images/buildingbackground.png"
 
+
 function mergeArrayObjects (arr1,arr2){
     console.log(arr1,arr2);
     return arr1.map((item,i) => {
@@ -114,8 +115,9 @@ function AutomationItem(props) {
              boxShadow = {0}
              border = {1}
              borderColor = {'#AFADBC'}
-             style ={{padding: 0, boxShadow: "0px 0px 0px #D7D7DA",backgroundColor:'#F7F7F7' , }}
-             borderRadius={20}>
+             style ={{padding: 0, boxShadow: "0px 0px 0px #D7D7DA",backgroundColor:'#F7F7F7', margin: 10}}
+             borderRadius={10}
+            >
             <AutomationHeader
                 id = {props.tracker.id}
                 tracker = {props.tracker}
@@ -130,64 +132,66 @@ function AutomationItem(props) {
                 handleTitleChange = {handleTitleChange}
             />
                 <Grid style = {{backgroundColor: 'white'}} container xs={12} md={12} lg={12}>
-                    <Grid className={classes.box} style = {{backgroundColor:'white',}} item xs={8} md={8} lg={8}>
-                        <Box border = {1} borderColor = {'#AFADBC'} className={classes.root} display = 'flex' borderRadius = {15} style = {{height: 400,backgroundSize: 'cover',backgroundColor: '#F1F1F1', padding: 5, margin: 15, overflow: 'hidden'}}>
+                    <Grid className={classes.box} style = {{backgroundColor: 'white',}} item xs={12} md={12} lg={12}>
+                        <Box className={classes.root} display = 'flex' style = {{height: 400,backgroundSize: 'cover', padding: 5, }}>
                          <PackageManger user = {props.user} tracker = {props.tracker} />
                         </Box>
                     </Grid>
-                    <Grid className = {classes.inner_box} item xs={4} sm = {4} md={4} lg={4}>
-                        <Box borderRadius = {10} border = {1} borderColor = {'#AFADBC'} style = {{margin: 10, marginBottom: 0, background: 'white', boxShadow: "0px 0px 0px 0px #DDDAEA"}} className={classes.boxSticky}>
-                            <Tabs
-                                value={value}
-                                onChange={handleChange}
-                                indicatorColor="primary"
-                                textColor="primary"
-                                variant="fullWidth"
-                                centered
-                            >
-                                <Tab style={{maxWidth:50}}  label="Feed" />
-                                <Tab style={{maxWidth:50}}  label="Recipients" />
-                            </Tabs>
-                        </Box>
+                {/*    <Grid className = {classes.inner_box} item xs={4} sm = {4} md={4} lg={4}>*/}
+                {/*        <Box borderRadius = {10} border = {1} borderColor = {'#AFADBC'} style = {{margin: 10, marginBottom: 0, background: 'white', boxShadow: "0px 0px 0px 0px #DDDAEA"}} className={classes.boxSticky}>*/}
+                {/*            <Tabs*/}
+                {/*                value={value}*/}
+                {/*                onChange={handleChange}*/}
+                {/*                indicatorColor="primary"*/}
+                {/*                textColor="primary"*/}
+                {/*                variant="fullWidth"*/}
+                {/*                centered*/}
+                {/*            >*/}
+                {/*                <Tab style={{maxWidth:50}}  label="Feed" />*/}
+                {/*                <Tab style={{maxWidth:50}}  label="Recipients" />*/}
+                {/*            </Tabs>*/}
+                {/*        </Box>*/}
 
-                        <Grid style = {{margin:5 }} container xs={12}>
-                            <Grid className={classes.inner_box} item xs={12} md={12} lg={12}>
-                                {(value == 0)
-                                    ?
-                                    <Box style={{height: height}}>
-                                        {Object.keys(responses).map((item) =>
-                                            <Message
-                                                user={props.user}
-                                                tracker={props.tracker}
-                                                response={responses[item]}/>)}
-                                    </Box>
-                                    : null
-                                }
-                                {(value == 1)
-                                    ?
+                {/*        <Grid style = {{margin:5 }} container xs={12}>*/}
+                {/*            <Grid className={classes.inner_box} item xs={12} md={12} lg={12}>*/}
+                {/*                {(value == 0)*/}
+                {/*                    ?*/}
+                {/*                    <Box style={{height: height}}>*/}
+                {/*                        {Object.keys(responses).map((item) =>*/}
+                {/*                            <Message*/}
+                {/*                                user={props.user}*/}
+                {/*                                tracker={props.tracker}*/}
+                {/*                                response={responses[item]}/>)}*/}
+                {/*                    </Box>*/}
+                {/*                    : null*/}
+                {/*                }*/}
+                {/*                {(value == 1)*/}
+                {/*                    ?*/}
 
-                                    <Box style={{height: height, margin: 3}}>
-                                        <AutomationRecipients
-                                            user={props.user}
-                                            tracker={props.tracker}
-                                        />
-                                    </Box>
+                {/*                    <Box style={{height: height, margin: 3}}>*/}
+                {/*                        <AutomationRecipients*/}
+                {/*                            user={props.user}*/}
+                {/*                            tracker={props.tracker}*/}
+                {/*                        />*/}
+                {/*                    </Box>*/}
 
-                                    : null
-                                }
-                                {(value == 2)
-                                    ?
-                                    <Box style={{height: height}}>
-                                        <AutomationRecurrenceContainer/>
-                                    </Box>
+                {/*                    : null*/}
+                {/*                }*/}
+                {/*                {(value == 2)*/}
+                {/*                    ?*/}
+                {/*                    <Box style={{height: height}}>*/}
+                {/*                        <AutomationRecurrenceContainer/>*/}
+                {/*                    </Box>*/}
 
-                                    : null
-                                }
+                {/*                    : null*/}
+                {/*                }*/}
 
-                            </Grid>
-                        </Grid>
+                {/*            </Grid>*/}
+                {/*        </Grid>*/}
+                {/*</Grid>*/}
                 </Grid>
-                </Grid>
+            <Divider/>
+
         </Box>
 
         </div>
