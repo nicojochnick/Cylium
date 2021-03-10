@@ -15,6 +15,7 @@ function DashboardContainer(props) {
     const [email, setEmail] = React.useState(null);
     const [user, setUser] = React.useState(null);
     const [channels, setChannels] = React.useState([]);
+    const [userAutomations, setUserAutomations] = React.useState([]);
 
     const getUser = async(email) => {
         await db.collection("users").doc(email)
@@ -65,28 +66,34 @@ function DashboardContainer(props) {
             console.log('successfuly setted automation: ', automations)
             setAutomations(automations)
         }
-        if (user) {
-            console.log('user is present');
-            const queryAutomations = db.collection('trackers').where('id', 'in', user.trackers);
+        if (userAutomations.length > 0) {
+            console.log('automationIDs pulled and getting Automations');
+            const queryAutomations = db.collection('trackers').where('id', 'in', userAutomations);
             const unsubscribeAutomations = queryAutomations.onSnapshot(getAutomations, error => console.log(error));
             return () => {
                 unsubscribeAutomations()
             }
         }
-    }, [user]);
+    }, [userAutomations]);
 
     useEffect(() => {
         function getChannels(querySnapshot) {
             let channels = [];
+            let automationIDs = [];
             querySnapshot.forEach(function (doc) {
-                channels.push(doc.data())
+                let c = doc.data();
+                console.log(c.automationIDs);
+                channels.push(c);
+                automationIDs = automationIDs.concat(c.automationIDs)
             });
             console.log('successful channel pull: ', channels);
-            setChannels(channels)
+            setChannels(channels);
+            console.log('AUTOMATION IDS', automationIDs)
+            setUserAutomations(automationIDs);
         }
         if (user) {
             console.log('user is present');
-            const queryChannels = db.collection('trackers').where('id', 'in', user.trackers);
+            const queryChannels = db.collection('channels').where('channelID', 'in', user.channelIDs);
             const unsubscribeChannels = queryChannels.onSnapshot(getChannels, error => console.log(error));
             return () => {
                 unsubscribeChannels()
@@ -101,11 +108,11 @@ function DashboardContainer(props) {
             querySnapshot.forEach(function (doc) {
                 messages.push(doc.data())
             });
-            console.log('successfuly setted automation: ', messages);
+            console.log('successfully pulled messages: ', messages);
             setMessages(messages)
         }
         if (user) {
-            console.log('user is present');
+            console.log('user is present, pulling messages');
             const queryMessages = db.collection('messages').where('automationID', 'in', user.trackers);
             const unsubscribeMessages = queryMessages.onSnapshot(getMessages, error => console.log(error));
             return () => {
@@ -113,9 +120,6 @@ function DashboardContainer(props) {
             }
         }
     }, [user]);
-
-
-
 
 
     return (
