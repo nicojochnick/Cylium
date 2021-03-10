@@ -30,7 +30,7 @@ import recurrencelogo from "../../assets/images/recurrencelogo.png"
 import logowhite from "../../assets/images/TeamBoxxWhite.png"
 import UserHome from '../../views/Old/userHome'
 import TeamHome from '../../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiCog, BiCubeAlt, BiNetworkChart, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
+import { BiTransferAlt, BiEdit, BiCog, BiPlus,BiCubeAlt, BiNetworkChart, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
 import {FiInbox} from 'react-icons/fi';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
@@ -231,13 +231,16 @@ export default function Dashboard(props) {
 
                     }
 
-                    {/*<Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>*/}
-                    {/*    <ListItem button>*/}
-                    {/*        <ListItemIcon>*/}
-                    {/*            <BiNetworkChart size = {25} style = {{color:'#3C3F48'}}  />*/}
-                    {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Processes" />*/}
-                    {/*    </ListItem>*/}
-                    {/*</Link>*/}
+
+                    <Divider/>
+
+                    <ListItem button onClick = {()=>console.log('touchtap')} >
+                            <ListItemIcon >
+                                <BiPlus size = {25} style = {{color:'#3C3F48'}}  />
+                            </ListItemIcon>
+                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />
+                    </ListItem>
+
 
                     <Divider/>
 
@@ -514,3 +517,17 @@ const useStyles = makeStyles((theme) => ({
 //     }
 //
 // };
+
+
+
+
+///
+
+
+{/*<Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>*/}
+{/*    <ListItem button>*/}
+{/*        <ListItemIcon>*/}
+{/*            <BiNetworkChart size = {25} style = {{color:'#3C3F48'}}  />*/}
+{/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Processes" />*/}
+{/*    </ListItem>*/}
+{/*</Link>*/}

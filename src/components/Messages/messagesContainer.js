@@ -81,13 +81,15 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                      boxShadow = {0}
-                     style ={{backgroundColor:'white', padding: 0,height: '85vh'}}>
-                            {Object.keys(props.messages).map((item) =>
-                                <Message
-                                    senderID = {props.messages[item].senderID}
-                                    automations={props.automations}
-                                    message={props.messages[item]}/>)}
-                </Box>
+                     style ={{backgroundColor:'white', padding: 0,height: '85vh'}}
+                >
+                        {Object.keys(props.messages).map((item) =>
+                                    <Message
+                                        senderID = {props.messages[item].senderID}
+                                        automations={props.automations}
+                                        message={props.messages[item]}/>
+                                        )}
+                    </Box>
             </Grid>
         </div>
     );

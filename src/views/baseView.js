@@ -28,10 +28,7 @@ function BaseView(props) {
                     <Grid xs = {12} md = {5} lg = {5} direction = 'column' container>
                             <Box style = {{marginLeft: 10, marginRight: 10, height: 75}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
                                 <p style ={{fontSize: 21, fontWeight: 500}}> All Feeds </p>
-                                <Box display = 'flex' justify= 'center' alignItems = 'center' flexDirection = 'row' >
-                                <p style ={{fontSize: 17, fontWeight: 800}}> AutoPilot</p>
-                                <Switch/>
-                                </Box>
+
                             </Box>
                         <Divider/>
 
@@ -90,7 +87,12 @@ const useStyles = makeStyles((theme) => ({
 {/*    <p style={{marginTop:12, color: '#3162F0'}}> Team View </p>*/}
 {/*}*/}
 
-
+//
+//
+// <Box display = 'flex' justify= 'center' alignItems = 'center' flexDirection = 'row' >
+//     <p style ={{fontSize: 17, fontWeight: 800}}> AutoPilot</p>
+//     <Switch/>
+// </Box>
 
 
 
