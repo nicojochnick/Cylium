@@ -48,7 +48,15 @@ function AutomationList(props) {
         <div className={classes.root}>
                 {(trackers.length >0)
                     ?<Grid container direction = 'row' style ={{padding: 10}} spacing={2}>
-                        {Object.keys(props.automations).map((item) => <AutomationItem setStretch = {props.setStretch} isTeamView = {props.isTeamView} team = {props.team} user = {props.user} tracker={props.automations[item]} />)}
+                        {Object.keys(props.automations).map((item) =>
+                            <AutomationItem
+                                setStretch = {props.setStretch}
+                                isTeamView = {props.isTeamView}
+                                team = {props.team}
+                                user = {props.user}
+                                tracker={props.automations[item]}
+                            />)
+                        }
                     </ Grid>
                     : null
                 }

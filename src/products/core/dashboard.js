@@ -216,22 +216,30 @@ export default function Dashboard(props) {
                 </div>
                 <Divider/>
                 <List>
-                    <Link to="/feed"  style={{ color:"white", textDecoration: 'none' }}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <BiHome size = {25} style = {{color:'#3C3F48'}}  />
-                            </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
-                        </ListItem>
-                    </Link>
-                    <Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <BiNetworkChart size = {25} style = {{color:'#3C3F48'}}  />
-                            </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Processes" />
-                        </ListItem>
-                    </Link>
+                    {Object.keys(props.channels).map((item)=>
+                        <div>
+                            <Link to={"/" + props.channels[item].name}   style={{ color:"white", textDecoration: 'none' }}>
+                                <ListItem button>
+                                    <ListItemIcon>
+                                        <BiCubeAlt size = {25} style = {{color:props.channels[item].color}}  />
+                                    </ListItemIcon>
+                                    <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
+                                </ListItem>
+                            </Link>
+                        </div>
+                    )
+
+                    }
+
+                    {/*<Link to="/automations"  style={{ color:"white", textDecoration: 'none' }}>*/}
+                    {/*    <ListItem button>*/}
+                    {/*        <ListItemIcon>*/}
+                    {/*            <BiNetworkChart size = {25} style = {{color:'#3C3F48'}}  />*/}
+                    {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Processes" />*/}
+                    {/*    </ListItem>*/}
+                    {/*</Link>*/}
+
+                    <Divider/>
 
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
@@ -249,6 +257,16 @@ export default function Dashboard(props) {
                 {(props.user) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
+                        {Object.keys(props.channels).map((item)=>
+                            <div>
+                                <Route exact path= {"/" + props.channels[item].name} >
+                                    <BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
+                                </Route>
+
+                            </div>
+                        )
+
+                        }
                         <Switch>
                             <Route exact path="/feed">
                                 <BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
