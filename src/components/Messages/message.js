@@ -64,17 +64,15 @@ function Message(props) {
                             </Grid>
 
                             <Box className={classes.root} style = {{margin: 8}}>
-
                                 {(props.message.structuredMessage)
                                     ? <div> {Object.keys(props.message.messageData).map((item) => <
                                         StructuredMessageItem packageItem={props.message.messageData[item]}/>)
                                     }
                                     </div>
                                     : <div>
-                                        <UnstructuredMessageContent content = {props.message.content}/>
+                                        <UnstructuredMessageContent content = {props.message.messageContent}/>
                                     </div>
                                 }
-
                             </Box>
                         </Grid>
                     </Grid>

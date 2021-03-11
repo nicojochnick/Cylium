@@ -1,6 +1,7 @@
 import {db} from "./firebase";
 
 
+//TODO Schematize this
 export async function sendMessageFS(automationID, adminID, messageData, recipientIDs,) {
     let res = await db.collection('messages').add({
         automationID: automationID,
@@ -15,3 +16,20 @@ export async function sendMessageFS(automationID, adminID, messageData, recipien
         console.error("Error writing document: ", error);
     });
 }
+
+export async function sendPublicChannelMessageFS(channelID, userID, messageData,) {
+    console.log('adding mess')
+    let res = await db.collection('messages').add({
+        channelID: channelID,
+        public:true,
+        senderID: userID,
+        messageContent: messageData,
+        structuredMessage: false,
+        timeStamp: new Date()
+    }).then(() => {
+        console.log("Message successfully written!");
+    }).catch((error) => {
+        console.error("Error writing document: ", error);
+    });
+}
+

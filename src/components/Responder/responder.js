@@ -3,43 +3,46 @@ import {Editor, EditorState,RichUtils,getDefaultKeyBinding} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
+import {db} from "../../api/firebase";
+import {sendPublicChannelMessageFS} from "../../api/firestore";
 
 
 function Responder(props) {
     const classes = useStyles();
-
     const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
     const [contentState, setContentState] = React.useState(() => null);
-
-
     const onChange = (editorState) => {
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
         setContentState(save);
         setEditorState(editorState)
-
     };
 
+    //TODO remove async if its not necessary
+    const sendMessage = async() => {
+        try {
+            await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState,);
+        } catch (error) {
+            console.log('sending message failed ', error)
+        }
+    };
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if(command === 'send-message'){
-            console.log('returned');
+            sendMessage();
             return 'handled'
         }
-
         if (newState) {
             onChange(newState);
             return 'handled';
-        }
-
+        };
         return 'not-handled';
     };
 
 
     const keyBindingFN = (e) => {
         if (e.key === 'Enter') {
-            console.log('gotit')
             return 'send-message'
         }
 

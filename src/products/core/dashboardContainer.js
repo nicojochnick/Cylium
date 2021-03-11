@@ -113,7 +113,7 @@ function DashboardContainer(props) {
         }
         if (user) {
             console.log('user is present, pulling messages');
-            const queryMessages = db.collection('messages').where('automationID', 'in', user.trackers);
+            const queryMessages = db.collection('messages').where('channelID', 'in', user.channelIDs);
             const unsubscribeMessages = queryMessages.onSnapshot(getMessages, error => console.log(error));
             return () => {
                 unsubscribeMessages()

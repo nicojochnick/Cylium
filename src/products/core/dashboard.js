@@ -45,7 +45,6 @@ import Notification from "../../components/Utilities/Notifications/notification"
 import {mergeAutomationIDsandMessages} from "../../helpers/filters";
 
 
-
 export default function Dashboard(props) {
     // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
@@ -53,8 +52,6 @@ export default function Dashboard(props) {
     const [notifications, setNotifications] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
-
-
 
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
@@ -69,11 +66,8 @@ export default function Dashboard(props) {
     const handleCloseNotification = () => {
         setAnchorElNotification(null);
     };
-
     const handleClose = () => {setAnchorEl(null);};
-
     const openNotification = Boolean(anchorElNotification);
-
     const idNotification = openAccount ? 'simple-popover-notification' : undefined;
 
     const handleDrawerOpen = () => {
@@ -82,16 +76,13 @@ export default function Dashboard(props) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
     const signout = () => {
         firebase.auth().signOut().then(function() {
         }).catch(function(error) {
         });
     };
-
     useEffect(() => {
     }, []);
-
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
@@ -218,7 +209,7 @@ export default function Dashboard(props) {
                 <List>
                     {Object.keys(props.channels).map((item)=>
                         <div>
-                            <Link to={"/" + props.channels[item].name}   style={{ color:"white", textDecoration: 'none' }}>
+                            <Link to={"/" + props.channels[item].name.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <BiCubeAlt size = {25} style = {{color:props.channels[item].color}}  />
@@ -228,22 +219,15 @@ export default function Dashboard(props) {
                             </Link>
                         </div>
                     )
-
                     }
-
-
                     <Divider/>
-
                     <ListItem button onClick = {()=>console.log('touchtap')} >
                             <ListItemIcon >
                                 <BiPlus size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>
                             <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />
                     </ListItem>
-
-
                     <Divider/>
-
                         <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
@@ -262,13 +246,18 @@ export default function Dashboard(props) {
                         <div className={classes.appBarSpacer} />
                         {Object.keys(props.channels).map((item)=>
                             <div>
-                                <Route exact path= {"/" + props.channels[item].name} >
-                                    <BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
+                                <Route exact path= {"/" + props.channels[item].name.toLowerCase()} >
+                                    <BaseView
+                                        messages = {props.messages.filter(i => i.channelID === props.channels[item].channelID)}
+                                        channel = {props.channels[item]}
+                                        team = {null}
+                                        automations = {props.automations}
+                                        user = {props.user}
+                                        url = {props.url}
+                                        email = {props.email} />
                                 </Route>
-
                             </div>
                         )
-
                         }
                         <Switch>
                             <Route exact path="/feed">
@@ -286,7 +275,6 @@ export default function Dashboard(props) {
                 }
             </Router>
         </div>
-
     );
 };
 

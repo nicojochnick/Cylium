@@ -3,12 +3,12 @@ import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 
 function UnstructuredMessageContent(props) {
-    const [content, setContent] = React.useState(EditorState.createEmpty())
+    const [content, setContent] = React.useState(EditorState.createEmpty());
 
 
     useEffect(() => {
         if (props.content) {
-            setContent(convertFromRaw(JSON.parse(props.content)));
+            setContent(EditorState.createWithContent(convertFromRaw(JSON.parse(props.content))));
         }
     }, []);
 

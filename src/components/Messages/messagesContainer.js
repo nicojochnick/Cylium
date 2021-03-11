@@ -22,57 +22,22 @@ function MessagesContainer(props) {
     const [height, setHeight] = React.useState(300);
     const [automations, setAutomations] = React.useState([]);
 
+    // const filterMessages = (messages) => {
     //
-    // const getMessages = async(trackers) => {
-    //     let resRef = db.collection("messages");
-    //     let messages = [];
-    //     if (trackers.length > 0) {
-    //         await resRef.where("automationID", "==", trackers[0].id).get()
-    //             .then(function (querySnapshot) {
-    //                 querySnapshot.forEach(function (doc) {
-    //                     messages.push(doc.data())
-    //                 });
-    //                 let merged_messages = [];
-    //                 for (let i = 0; i < messages.length; i++) {
-    //                     if (trackers[0].call) {
-    //                         let res = mergeArrayObjects(messages[i].responseData, trackers[0].call);
-    //                         let objres = {'merged_responses': res, 'user': messages[i].senderID};
-    //                         merged_messages.push(objres)
-    //                     }
-    //                 }
-    //                 setMessages(merged_messages);
-    //             })
-    //             .catch(function (error) {
-    //                 console.log("Error getting documents: ", error);
-    //             });
-    //         // console.log(merged_responses, messages, trackers[0].call);
-    //     }
-    // };
+    //     console.log(messages)
     //
-    // const getAutomations = async() => {
-    //     if (props.user) {
-    //         let userAutomationIDs = props.user.trackers;
-    //         let autoRef = db.collection("trackers");
-    //         let automations = [];
-    //         await autoRef.where('id', 'in', userAutomationIDs).get()
-    //             .then(function (querySnapshot) {
-    //                 querySnapshot.forEach(function (doc) {
-    //                     automations.push(doc.data())
-    //                 });
-    //                 console.log(automations);
-    //                 setAutomations(automations);
-    //                 getMessages(automations)
-    //             })
-    //             .catch(function (error) {
-    //                 console.log("Error getting documents: ", error);
-    //             });
-    //     }
+    //     let res = messages.filter(item => item.channelID === props.channels[item].channelID)
+    //
+    //     console.log('MESSAGES --->', res);
+    //     setMessages(res)
+    //
     // };
 
     useEffect(() => {
-        // getAutomations();
-        console.log('message loaded: ', props.messages, props.automations, props.user)
+        console.log('messages ------> ', props.messages)
     }, []);
+
+    //TODO: move responder up a level, don't want it grouped with messages
 
     return (
         <div className={classes.root}>
@@ -88,21 +53,21 @@ function MessagesContainer(props) {
                     boxShadow = {0}
                     style ={{backgroundColor:'white', padding: 0,maxHeight: '65vh'}}
                 >
-                        {Object.keys(props.messages).map((item) =>
-                                    <Message
-                                        senderID = {props.messages[item].senderID}
-                                        automations={props.automations}
-                                        message={props.messages[item]}/>
-                                        )}
-                    </Box>
+                    {Object.keys(props.messages)
+                        .map((item) =>
+                            <Message
+                                senderID = {props.messages[item].senderID}
+                                automations={props.automations}
+                                message={props.messages[item]}
+                            />
+                            )}
+                </Box>
                 <Box
                     border = {0}
                     color = {'#A3A0B1'}
-                    style = {{minHeight: '19vh', backgroundColor: 'white'}}>
-
-                    <Responder/>
-
-
+                    style = {{minHeight: '19vh', backgroundColor: 'white'}}
+                >
+                    <Responder channel = {props.channel} user = {props.user}/>
                 </Box>
             </Grid>
         </div>
@@ -154,7 +119,6 @@ const useStyles = makeStyles((theme) => ({
             width: '0.4em'
         },
     },
-
     content: {
         flexGrow: 1,
         height: '100vh',
@@ -180,5 +144,55 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default MessagesContainer;
+
+
+
+
+
+//
+// const getMessages = async(trackers) => {
+//     let resRef = db.collection("messages");
+//     let messages = [];
+//     if (trackers.length > 0) {
+//         await resRef.where("automationID", "==", trackers[0].id).get()
+//             .then(function (querySnapshot) {
+//                 querySnapshot.forEach(function (doc) {
+//                     messages.push(doc.data())
+//                 });
+//                 let merged_messages = [];
+//                 for (let i = 0; i < messages.length; i++) {
+//                     if (trackers[0].call) {
+//                         let res = mergeArrayObjects(messages[i].responseData, trackers[0].call);
+//                         let objres = {'merged_responses': res, 'user': messages[i].senderID};
+//                         merged_messages.push(objres)
+//                     }
+//                 }
+//                 setMessages(merged_messages);
+//             })
+//             .catch(function (error) {
+//                 console.log("Error getting documents: ", error);
+//             });
+//         // console.log(merged_responses, messages, trackers[0].call);
+//     }
+// };
+//
+// const getAutomations = async() => {
+//     if (props.user) {
+//         let userAutomationIDs = props.user.trackers;
+//         let autoRef = db.collection("trackers");
+//         let automations = [];
+//         await autoRef.where('id', 'in', userAutomationIDs).get()
+//             .then(function (querySnapshot) {
+//                 querySnapshot.forEach(function (doc) {
+//                     automations.push(doc.data())
+//                 });
+//                 console.log(automations);
+//                 setAutomations(automations);
+//                 getMessages(automations)
+//             })
+//             .catch(function (error) {
+//                 console.log("Error getting documents: ", error);
+//             });
+//     }
+// };
