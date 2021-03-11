@@ -9,9 +9,10 @@ import Container from "@material-ui/core/Container";
 import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-import StructuredMessageItem from "./structuredMessageItem"
+import StructuredMessageItem from "./old/structuredMessageItem"
 import Message from "./message"
 import {db} from "../../api/firebase";
+import Responder from "../Responder/responder";
 
 
 function MessagesContainer(props) {
@@ -75,13 +76,17 @@ function MessagesContainer(props) {
 
     return (
         <div className={classes.root}>
-            <Grid container>
+            <Grid style = {{}} container direction ='column'>
                 <Box
                     border = {0}
+                    display = 'flex'
+                    flexDirection = 'column'
+                    justifyContent={'flex-start '}
+                    // alignItems = 'flex-end'
                     color = {'#A3A0B1'}
                     className={classes.box}
-                     boxShadow = {0}
-                     style ={{backgroundColor:'white', padding: 0,height: '85vh'}}
+                    boxShadow = {0}
+                    style ={{backgroundColor:'white', padding: 0,maxHeight: '65vh'}}
                 >
                         {Object.keys(props.messages).map((item) =>
                                     <Message
@@ -90,6 +95,15 @@ function MessagesContainer(props) {
                                         message={props.messages[item]}/>
                                         )}
                     </Box>
+                <Box
+                    border = {0}
+                    color = {'#A3A0B1'}
+                    style = {{minHeight: '19vh', backgroundColor: 'white'}}>
+
+                    <Responder/>
+
+
+                </Box>
             </Grid>
         </div>
     );

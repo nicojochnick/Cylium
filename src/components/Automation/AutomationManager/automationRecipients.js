@@ -9,7 +9,7 @@ import nextId from "react-id-generator";
 import Menu from '@material-ui/core/Menu';
 import 'emoji-mart/css/emoji-mart.css'
 import {TwitterPicker} from "react-color";
-import TyperTracker from "../../Typers/typerTracker";
+import TyperTracker from "../../Old/Typers/typerTracker";
 import PackageItem from "./packageManger/packageItem";
 import List from '@material-ui/core/List';
 import { BiSend, BiPlus } from "react-icons/bi";

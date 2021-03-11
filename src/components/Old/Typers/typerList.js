@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {db} from "../../api/firebase";
+import {db} from "../../../api/firebase";
 import {makeStyles} from "@material-ui/core/styles";
 import TyperTracker from "./typerTracker";
-import StructuredMessageItem from "../Messages/structuredMessageItem";
+import StructuredMessageItem from "../../Messages/old/structuredMessageItem";
 import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";

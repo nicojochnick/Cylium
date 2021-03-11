@@ -122,6 +122,7 @@ function DashboardContainer(props) {
     }, [user]);
 
 
+
     return (
         <Dashboard channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
     );

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {convertToRaw, Editor, EditorState, RichUtils} from "draft-js";
 import {makeStyles} from "@material-ui/core/styles";
-import firebase from "../../views/Old/feedbox";
-import {db} from "../../api/firebase";
-import {auth} from "../../api/firebase"
+import firebase from "../../../views/Old/feedbox";
+import {db} from "../../../api/firebase";
+import {auth} from "../../../api/firebase"
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";

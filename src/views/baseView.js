@@ -24,17 +24,16 @@ function BaseView(props) {
 
     return (
         <div className={classes.root}>
-            <Grid className={classes.root} container spacing ={0}>
-                    <Grid xs = {12} md = {5} lg = {5} direction = 'column' container>
+            <Grid style = {{height: '92vh'}} className={classes.root} container spacing ={0}>
+                    <Grid  className={classes.root} xs = {12} md = {5} lg = {5} direction = 'column' container>
                             <Box style = {{marginLeft: 10, marginRight: 10, height: 75}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
                                 <p style ={{fontSize: 21, fontWeight: 500}}> All Feeds </p>
 
                             </Box>
                         <Divider/>
-
                         <MessagesContainer messages = {props.messages}  automations = {props.automations} setStretch = {setStretch} isMe = {true} user = {props.user} />
                     </Grid>
-                    <Grid  xs = {12}  md = {7} lg = {7} container>
+                    <Grid  className={classes.root} xs = {12}  md = {7} lg = {7} container>
                         <div className={classes.container}>
                         <BaseChart/>
                         </div>
@@ -48,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor:'white',
+        overflow:'hidden'
     },
     box:{
         flexGrow: 1,

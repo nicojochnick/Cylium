@@ -4,7 +4,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import mscott from "../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
-import StructuredMessageItem from "./structuredMessageItem";
+import StructuredMessageItem from "./old/structuredMessageItem";
 import AutomationItem from "../Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
@@ -56,13 +56,7 @@ function Message(props) {
                             </Grid>
 
                             <Box className={classes.root} style = {{margin: 8}}>
-                            {(props.message.structuredMessage)
-                                ? <div> {Object.keys(props.message.messageData).map((item) => <
-                                    StructuredMessageItem packageItem={props.message.messageData[item]}/>)
-                                }
-                                </div>
-                                : null
-                            }
+
                             </Box>
                         </Grid>
                     </Grid>
@@ -104,3 +98,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default Message;
+
+
+{/*{(props.message.structuredMessage)*/}
+{/*    ? <div> {Object.keys(props.message.messageData).map((item) => <*/}
+{/*        StructuredMessageItem packageItem={props.message.messageData[item]}/>)*/}
+{/*    }*/}
+{/*    </div>*/}
+{/*    : null*/}
+{/*}*/}
