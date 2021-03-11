@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import AutomationAnalytics from "./automationAnalytics";
 import Message from "../Messages/message";
-import StructuredMessageItem from "../Messages/old/structuredMessageItem";
+import StructuredMessageItem from "../Messages/structuredMessageItem";
 import {db} from "../../api/firebase";
 import TyperTracker from "../Old/Typers/typerTracker";
 import TyperList from "../Old/Typers/typerList";

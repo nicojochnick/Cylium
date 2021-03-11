@@ -1,5 +1,5 @@
 import React from 'react';
-import {Editor, EditorState,RichUtils} from 'draft-js';
+import {Editor, EditorState,RichUtils,getDefaultKeyBinding} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
@@ -23,6 +23,10 @@ function Responder(props) {
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
+        if(command === 'send-message'){
+            console.log('returned');
+            return 'handled'
+        }
 
         if (newState) {
             onChange(newState);
@@ -33,7 +37,14 @@ function Responder(props) {
     };
 
 
+    const keyBindingFN = (e) => {
+        if (e.key === 'Enter') {
+            console.log('gotit')
+            return 'send-message'
+        }
 
+        return getDefaultKeyBinding(e)
+    };
 
     return (
         <Box flexDirection = 'column' display = 'flex' justifyContent='flex-end' borderRadius={20} style = {{minHeight: 50, padding: 15, margin: 20, backgroundColor: '#F3F3F3'}}>
@@ -42,10 +53,10 @@ function Responder(props) {
                 handleKeyCommand={handleKeyCommand}
                 editorState={editorState}
                 onChange={onChange}
+                keyBindingFn = {keyBindingFN}
                 // handleBeforeInput={_handleBeforeInput}
                 // handlePastedText={_handlePastedText}
             />
-
         </Box>
     );
 }

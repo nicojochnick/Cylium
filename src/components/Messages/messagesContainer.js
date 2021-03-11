@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container";
 import EditableUserID from "../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
-import StructuredMessageItem from "./old/structuredMessageItem"
+import StructuredMessageItem from "./structuredMessageItem"
 import Message from "./message"
 import {db} from "../../api/firebase";
 import Responder from "../Responder/responder";

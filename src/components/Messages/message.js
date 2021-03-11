@@ -4,14 +4,21 @@ import {makeStyles} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import mscott from "../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
-import StructuredMessageItem from "./old/structuredMessageItem";
+import StructuredMessageItem from "./structuredMessageItem";
 import AutomationItem from "../Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
+import UnstructuredMessageContent from "./unstructuredMessageContent"
+import {Editor, EditorState,RichUtils} from 'draft-js';
+import {convertFromRaw, convertToRaw} from 'draft-js';
+
 
 function Message(props) {
     const classes = useStyles();
     const [user, setUser] = React.useState(null);
+    const [messageContent, setMessageContent] = React.useState();
+
+
     const getUser = async(email) => {
         await db.collection("users").doc(email)
             .onSnapshot(function(doc) {
@@ -25,6 +32,7 @@ function Message(props) {
 
     useEffect(() => {
         getUser(props.senderID);
+
     }, []);
     return (
         <div className={classes.root}>
@@ -56,6 +64,16 @@ function Message(props) {
                             </Grid>
 
                             <Box className={classes.root} style = {{margin: 8}}>
+
+                                {(props.message.structuredMessage)
+                                    ? <div> {Object.keys(props.message.messageData).map((item) => <
+                                        StructuredMessageItem packageItem={props.message.messageData[item]}/>)
+                                    }
+                                    </div>
+                                    : <div>
+                                        <UnstructuredMessageContent content = {props.message.content}/>
+                                    </div>
+                                }
 
                             </Box>
                         </Grid>
