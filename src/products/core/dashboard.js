@@ -88,109 +88,109 @@ export default function Dashboard(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar
-                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}
-                position="absolute"
-                color = '#F7F7F7'
-                className={clsx(classes.appBar, open && classes.appBarShift)}
-            >
-                <Toolbar noWrap className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Grid
-                        container
-                        direction="row"
-                        justify="space-between"
-                        alignItems="center"
-                    >
-                    <Box
-                        borderRadius={16}
-                        style ={{margin: 10}}
-                        className={classes.search}
-                    >
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Box>
-                        <div className={classes.sectionDesktop}>
-                            <IconButton
-                                onClick={handleNotificationClick}
-                                aria-haspopup="true"
-                                style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={1} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                            <Popover
-                                style = {{borderRadius: 10, marginRight: 20}}
-                                id={idNotification}
-                                open={openNotification}
-                                anchorEl={anchorElNotification}
-                                onClose={handleCloseNotification}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                            >
-                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5}
-                                     style ={{margin: 0, minWidth:400, maxHeight: 500}}>
-                                    {notifications.map((item) => <Notification item = {item}/>)}
-                                </Box>
-                            </Popover>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-haspopup="true"
-                            style = {{margin: 5}}
-                            onClick={handleAccountClick}
-                            color="inherit"
-                        >
+            {/*<AppBar*/}
+            {/*    style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}*/}
+            {/*    position="absolute"*/}
+            {/*    color = '#F7F7F7'*/}
+            {/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
+            {/*>*/}
+            {/*    <Toolbar noWrap className={classes.toolbar}>*/}
+            {/*        <IconButton*/}
+            {/*            edge="start"*/}
+            {/*            color="inherit"*/}
+            {/*            aria-label="open drawer"*/}
+            {/*            onClick={handleDrawerOpen}*/}
+            {/*            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}*/}
+            {/*        >*/}
+            {/*            <MenuIcon />*/}
+            {/*        </IconButton>*/}
+            {/*        <Grid*/}
+            {/*            container*/}
+            {/*            direction="row"*/}
+            {/*            justify="space-between"*/}
+            {/*            alignItems="center"*/}
+            {/*        >*/}
+            {/*        <Box*/}
+            {/*            borderRadius={16}*/}
+            {/*            style ={{margin: 10}}*/}
+            {/*            className={classes.search}*/}
+            {/*        >*/}
+            {/*            <div className={classes.searchIcon}>*/}
+            {/*                <SearchIcon />*/}
+            {/*            </div>*/}
+            {/*            <InputBase*/}
+            {/*                placeholder="Search…"*/}
+            {/*                classes={{*/}
+            {/*                    root: classes.inputRoot,*/}
+            {/*                    input: classes.inputInput,*/}
+            {/*                }}*/}
+            {/*                inputProps={{ 'aria-label': 'search' }}*/}
+            {/*            />*/}
+            {/*        </Box>*/}
+            {/*            <div className={classes.sectionDesktop}>*/}
+            {/*                <IconButton*/}
+            {/*                    onClick={handleNotificationClick}*/}
+            {/*                    aria-haspopup="true"*/}
+            {/*                    style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">*/}
+            {/*                    <Badge badgeContent={1} color="secondary">*/}
+            {/*                        <NotificationsIcon />*/}
+            {/*                    </Badge>*/}
+            {/*                </IconButton>*/}
+            {/*                <Popover*/}
+            {/*                    style = {{borderRadius: 10, marginRight: 20}}*/}
+            {/*                    id={idNotification}*/}
+            {/*                    open={openNotification}*/}
+            {/*                    anchorEl={anchorElNotification}*/}
+            {/*                    onClose={handleCloseNotification}*/}
+            {/*                    anchorOrigin={{*/}
+            {/*                        vertical: 'bottom',*/}
+            {/*                        horizontal: 'center',*/}
+            {/*                    }}*/}
+            {/*                    transformOrigin={{*/}
+            {/*                        vertical: 'top',*/}
+            {/*                        horizontal: 'center',*/}
+            {/*                    }}*/}
+            {/*                >*/}
+            {/*                    <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5}*/}
+            {/*                         style ={{margin: 0, minWidth:400, maxHeight: 500}}>*/}
+            {/*                        {notifications.map((item) => <Notification item = {item}/>)}*/}
+            {/*                    </Box>*/}
+            {/*                </Popover>*/}
+            {/*            <IconButton*/}
+            {/*                edge="end"*/}
+            {/*                aria-label="account of current user"*/}
+            {/*                aria-haspopup="true"*/}
+            {/*                style = {{margin: 5}}*/}
+            {/*                onClick={handleAccountClick}*/}
+            {/*                color="inherit"*/}
+            {/*            >*/}
 
-                            <AccountCircle />
+            {/*                <AccountCircle />*/}
 
-                        </IconButton>
-                            <Popover
-                                id={id}
-                                open={openAccount}
-                                anchorEl={anchorEl}
-                                onClose={handleClose}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                            >
-                                <Button style = {{backgroundColor: "#5F7FFF"}}onClick={()=>signout()} variant="contained" color="primary">
-                                  Signout
-                                </Button>
-                            </Popover>
-                        </div>
-                    </Grid>
-                </Toolbar>
-                <Divider/>
-            </AppBar>
+            {/*            </IconButton>*/}
+            {/*                <Popover*/}
+            {/*                    id={id}*/}
+            {/*                    open={openAccount}*/}
+            {/*                    anchorEl={anchorEl}*/}
+            {/*                    onClose={handleClose}*/}
+            {/*                    anchorOrigin={{*/}
+            {/*                        vertical: 'bottom',*/}
+            {/*                        horizontal: 'center',*/}
+            {/*                    }}*/}
+            {/*                    transformOrigin={{*/}
+            {/*                        vertical: 'top',*/}
+            {/*                        horizontal: 'center',*/}
+            {/*                    }}*/}
+            {/*                >*/}
+            {/*                    <Button style = {{backgroundColor: "#5F7FFF"}}onClick={()=>signout()} variant="contained" color="primary">*/}
+            {/*                      Signout*/}
+            {/*                    </Button>*/}
+            {/*                </Popover>*/}
+            {/*            </div>*/}
+            {/*        </Grid>*/}
+            {/*    </Toolbar>*/}
+            {/*    <Divider/>*/}
+            {/*</AppBar>*/}
             <Router>
             <Drawer
                 variant="permanent"
@@ -201,9 +201,9 @@ export default function Dashboard(props) {
             >
                 <div className={classes.toolbarIcon}>
                     <img style = {{height: 35, marginLeft: 10}}/>
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />
-                    </IconButton>
+                    {/*<IconButton onClick={handleDrawerClose}>*/}
+                    {/*    <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*/}
+                    {/*</IconButton>*/}
                 </div>
                 <Divider/>
                 <List>
@@ -243,7 +243,7 @@ export default function Dashboard(props) {
             </Drawer>
                 {(props.user) ?
                     < main className={classes.content}>
-                        <div className={classes.appBarSpacer} />
+                        {/*<div className={classes.appBarSpacer} />*/}
                         {Object.keys(props.channels).map((item)=>
                             <div>
                                 <Route exact path= {"/" + props.channels[item].name.toLowerCase()} >

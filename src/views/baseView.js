@@ -31,7 +31,7 @@ function BaseView(props) {
 
     return (
         <div className={classes.root}>
-            <Grid style = {{height: '92vh'}} className={classes.root} container spacing ={0}>
+            <Grid style = {{height: '100vh'}} className={classes.root} container spacing ={0}>
                     <Grid  className={classes.root} xs = {12} md = {5} lg = {5} direction = 'column' container>
                           <ChannelHeader user = {props.user} />
                         <Divider/>

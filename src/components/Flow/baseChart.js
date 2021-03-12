@@ -50,7 +50,7 @@ function BaseChart(props) {
             {/*</Box>*/}
             {/*<Divider/>*/}
 
-            <Box style={{height: '92vh', overflow: 'hidden'}} >
+            <Box style={{height: '100vh', overflow: 'hidden'}} >
             <ReactFlow style = {{overflow: 'hidden', background: '#F8F8F9'}} elements={elements}>
                 <Background
                     variant="dots"
