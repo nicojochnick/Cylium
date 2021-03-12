@@ -278,7 +278,7 @@ export default function Dashboard(props) {
     );
 };
 
-const drawerWidth = 200;
+const drawerWidth = 190;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',

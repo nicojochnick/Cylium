@@ -45,24 +45,38 @@ const elements = [
 
 function BaseChart(props) {
     return (
-        <Box borderColor = {'#9DA0A9'} border = {1} style={{overflow: 'hidden'}}>
-            {/*<Box  borderColor = {'#9DA0A9'} display = 'flex' style = {{height: 75}}>*/}
-            {/*</Box>*/}
-            {/*<Divider/>*/}
 
-            <Box style={{height: '100vh', overflow: 'hidden'}} >
-            <ReactFlow style = {{overflow: 'hidden', background: '#F8F8F9'}} elements={elements}>
+        <Box border={1} borderColor = {'#9B9B9B'}>
+
+            <Box display = 'flex'flexDirection = 'row' justifyContent = 'center' alignItems='center'>
+                <Box border={1} borderColor = {'#9B9B9B'}  borderRadius = {20} style = {{ height: 100,zIndex: 10, marginTop: 70, marginBottom: -50, position:'absolute', width: 400, backgroundColor:'white', boxShadow: "0px 3px 10px #ECECEC", }}
+                />
+            </Box>
+
+            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: '60vw', overflow: 'hidden'}} >
+                <div style = {{zIndex: 0, height: '100vh',}}>
+                    <ReactFlow style = {{ overflow: 'hidden', background: '#F8F8F9'}} elements={elements}>
                 <Background
                     variant="dots"
                     gap={18}
                     size={1}
                 />
                 <Controls />
-
             </ReactFlow>
+                </div>
             </Box>
         </Box>
+
     );
 }
 
 export default BaseChart;
+
+
+{/*<Box border = {1} display = 'flex' style = {{boxShadow: "0px 0px 10px #ECECEC",width: '10vw'}}>*/}
+{/*</Box>*/}
+
+
+{/*<Box display = 'flex' style = {{boxShadow: "0px 0px 10px #ECECEC",height: '10vh'}}>*/}
+{/*</Box>*/}
+{/*<Divider orientation={'vertical'}/>*/}
