@@ -4,6 +4,9 @@ import ReactFlow, { Background,Controls } from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
 import buildingbackground from "../../assets/images/buildingbackground.png";
 import Divider from "@material-ui/core/Divider";
+import Popover from '@material-ui/core/Popover';
+
+import FlowController from "./flowController";
 
 
 const elements = [
@@ -47,17 +50,24 @@ function BaseChart(props) {
     return (
 
         <Box border={1} borderColor = {'#9B9B9B'}>
+            <Box style = {{marginRight: 40}} display = 'flex'flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+                <Box
+                    border={1}
+                    borderColor = {'#6989FF'}
+                    borderRadius = {100}
+                    style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, marginBottom: -50, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
+                >
+                     <FlowController/>
 
-            <Box display = 'flex'flexDirection = 'row' justifyContent = 'center' alignItems='center'>
-                <Box border={1} borderColor = {'#9B9B9B'}  borderRadius = {20} style = {{ height: 100,zIndex: 10, marginTop: 70, marginBottom: -50, position:'absolute', width: 400, backgroundColor:'white', boxShadow: "0px 3px 10px #ECECEC", }}
-                />
+                </Box>
+
             </Box>
-
-            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: '60vw', overflow: 'hidden'}} >
+            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: '52vw', overflow: 'hidden'}} >
                 <div style = {{zIndex: 0, height: '100vh',}}>
-                    <ReactFlow style = {{ overflow: 'hidden', background: '#F8F8F9'}} elements={elements}>
+                    <ReactFlow style = {{ overflow: 'hidden', background: '#FAFAFA'}} elements={elements}>
                 <Background
                     variant="dots"
+                    color = '#7371FE'
                     gap={18}
                     size={1}
                 />

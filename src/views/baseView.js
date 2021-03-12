@@ -32,12 +32,12 @@ function BaseView(props) {
     return (
         <div className={classes.root}>
             <Grid style = {{height: '100vh'}} className={classes.root} container spacing ={0}>
-                    <Grid  className={classes.root} xs = {12} md = {4} lg = {4} direction = 'column' container>
+                    <Grid  className={classes.root} xs = {12} md = {5} lg = {5} direction = 'column' container>
                           <ChannelHeader user = {props.user} />
                         <Divider/>
                         <MessagesContainer channel = {props.channel} messages = {props.messages}  automations = {props.automations}   user = {props.user} />
                     </Grid>
-                    <Grid  className={classes.root} xs = {12}  md = {8} lg = {8} container>
+                    <Grid  className={classes.root} xs = {12}  md = {7} lg = {7} container>
                         <div className={classes.container}>
                         <BaseChart/>
                         </div>
