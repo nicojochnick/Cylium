@@ -5,7 +5,7 @@ import Avatar from "@material-ui/core/Avatar";
 import mscott from "../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
 import StructuredMessageItem from "./structuredMessageItem";
-import AutomationItem from "../Automation/automationItem";
+import AutomationItem from "../Apps/Automation/automationItem";
 import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
 import UnstructuredMessageContent from "./unstructuredMessageContent"

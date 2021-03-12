@@ -7,15 +7,15 @@ import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import AutomationHeader from "./automationHeader";
-import EditableUserID from "../User/editableUserID";
+import EditableUserID from "../../User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import AutomationAnalytics from "./automationAnalytics";
-import Message from "../Messages/message";
-import StructuredMessageItem from "../Messages/structuredMessageItem";
-import {db} from "../../api/firebase";
-import TyperTracker from "../Old/Typers/typerTracker";
-import TyperList from "../Old/Typers/typerList";
+import Message from "../../Messages/message";
+import StructuredMessageItem from "../../Messages/structuredMessageItem";
+import {db} from "../../../api/firebase";
+import TyperTracker from "../../Old/Typers/typerTracker";
+import TyperList from "../../Old/Typers/typerList";
 import AutomationRecipients from "./AutomationManager/automationRecipients";
 import PackageManger from "./AutomationManager/packageManger/packageManger";
 import Paper from '@material-ui/core/Paper';
@@ -23,7 +23,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AutomationRecurrenceEditor from "./AutomationManager/automationRecurrence/automationRecurrenceEditor";
 import AutomationRecurrenceContainer from "./AutomationManager/automationRecurrence/automationRecurrenceContainer";
-import buildingbackground from "../../assets/images/buildingbackground.png"
+import buildingbackground from "../../../assets/images/buildingbackground.png"
 
 
 function mergeArrayObjects (arr1,arr2){

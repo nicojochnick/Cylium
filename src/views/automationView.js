@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
-import AutomationList from "../components/Automation/automationList";
+import AutomationList from "../components/Apps/Automation/automationList";
 import Container from "@material-ui/core/Container";
 import {makeStyles} from "@material-ui/core/styles";
 

@@ -9,9 +9,9 @@ import {BiPencil,BiUser, BiCog,BiBarChartAlt2,BiMessageAltDetail,BiTime} from "r
 import TextField from '@material-ui/core/TextField';
 import {fade, ThemeProvider,makeStyles,} from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
-import {db} from "../../api/firebase";
+import {db} from "../../../api/firebase";
 import AutomationId from "./automationID"
-import UserId from "../User/userID";
+import UserId from "../../User/userID";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
 

@@ -20,7 +20,7 @@ import { FixedSizeList } from 'react-window';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
-import AutomationList from "../../components/Automation/automationList";
+import AutomationList from "../../components/Apps/Automation/automationList";
 import TeamMemberStats from "../../components/Old/Analytics/teamMemberStats";
 import Response from "../../components/Old/response";
 

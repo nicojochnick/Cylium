@@ -6,7 +6,7 @@ import {fade, makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import {BiStar, BiLink, BiSend,BiPoll, BiPlus,BiSliderAlt,BiCheckSquare, BiChat, BiImport, BiBell, BiMessageSquareDetail,BiMessageSquareDots,BiMessageSquareError,BiMessageSquareCheck } from "react-icons/bi";
 import nextId from "react-id-generator";
-import {db} from "../../../../api/firebase";
+import {db} from "../../../../../api/firebase";
 import firebase from "firebase/app";
 import Divider from "@material-ui/core/Divider";
 

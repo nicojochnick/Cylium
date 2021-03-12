@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import UserProfile from "../../components/User/userProfile";
 import {makeStyles} from "@material-ui/core/styles";
-import TrackerSettings from "../../components/Automation/Old/trackerSettings";
+import TrackerSettings from "../../components/Apps/Automation/Old/trackerSettings";
 import TeamOverallStats from "../../components/Old/Analytics/teamOverallStats";
 
 function TeamHome(props) {

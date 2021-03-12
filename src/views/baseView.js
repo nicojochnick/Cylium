@@ -10,9 +10,11 @@ import Box from "@material-ui/core/Box";
 import MessagesContainer from "../components/Messages/messagesContainer"
 import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
-import AutomationItem from "../components/Automation/automationItem";
-import AutomationList from "../components/Automation/automationList";
+import AutomationItem from "../components/Apps/Automation/automationItem";
+import AutomationList from "../components/Apps/Automation/automationList";
 import BaseChart from "../components/Flow/baseChart";
+import SearchUsers from "../components/Utilities/Search/searchUsers";
+import ChannelHeader from "../components/Channels/ChannelHeader";
 function BaseView(props) {
 
     const classes = useStyles();
@@ -31,9 +33,7 @@ function BaseView(props) {
         <div className={classes.root}>
             <Grid style = {{height: '92vh'}} className={classes.root} container spacing ={0}>
                     <Grid  className={classes.root} xs = {12} md = {5} lg = {5} direction = 'column' container>
-                            <Box style = {{marginLeft: 10, marginRight: 10, height: 75}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
-                                <p style ={{fontSize: 21, fontWeight: 500}}> All Feeds </p>
-                            </Box>
+                          <ChannelHeader user = {props.user} />
                         <Divider/>
                         <MessagesContainer channel = {props.channel} messages = {props.messages}  automations = {props.automations}   user = {props.user} />
                     </Grid>

@@ -14,7 +14,7 @@ import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Slider from '@material-ui/core/Slider';
-import {db} from '../../../../api/firebase'
+import {db} from '../../../../../api/firebase'
 import { makeStyles } from '@material-ui/core';
 import Divider from "@material-ui/core/Divider";
 import {BiDotsVerticalRounded, BiChat,BiCheckSquare,BiStar, BiBell, BiLink} from "react-icons/bi"

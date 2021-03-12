@@ -7,7 +7,7 @@ import TrackerEdit from './trackerEdit'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import AutomationItem from "../automationItem";
-import {db} from "../../../api/firebase";
+import {db} from "../../../../api/firebase";
 
 let rand = function() {
     return Math.random().toString(36).substr(2); // remove `0.`

@@ -41,17 +41,17 @@ function MessagesContainer(props) {
 
     return (
         <div className={classes.root}>
-            <Grid style = {{}} container direction ='column'>
+            <Grid style = {{height: '83vh'}} justify ='space-between' alignItems ='space-between' container direction ='column'>
                 <Box
                     border = {0}
-                    display = 'flex'
+                    // display = 'flex'
                     flexDirection = 'column'
                     justifyContent={'flex-start '}
                     // alignItems = 'flex-end'
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{backgroundColor:'white', padding: 0,maxHeight: '65vh'}}
+                    style ={{backgroundColor:'white', padding: 0,maxHeight: '62vh'}}
                 >
                     {Object.keys(props.messages)
                         .map((item) =>
@@ -62,11 +62,16 @@ function MessagesContainer(props) {
                             />
                             )}
                 </Box>
+                <Divider/>
                 <Box
+                    display = 'flex'
+                    flexDirection = 'column'
                     border = {0}
+                    justifyContent = 'center'
                     color = {'#A3A0B1'}
-                    style = {{minHeight: '19vh', backgroundColor: 'white'}}
+                    style = {{minHeight: '20vh', backgroundColor: 'white',}}
                 >
+
                     <Responder channel = {props.channel} user = {props.user}/>
                 </Box>
             </Grid>

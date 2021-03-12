@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import AutomationList from "../components/Automation/automationList";
+import AutomationList from "../components/Apps/Automation/automationList";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
 import UserProfile from "../components/User/userProfile";

@@ -21,6 +21,7 @@ function Responder(props) {
     //TODO remove async if its not necessary
     const sendMessage = async() => {
         try {
+            console.log(contentState)
             await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState,);
         } catch (error) {
             console.log('sending message failed ', error)
@@ -36,7 +37,7 @@ function Responder(props) {
         if (newState) {
             onChange(newState);
             return 'handled';
-        };
+        }
         return 'not-handled';
     };
 
