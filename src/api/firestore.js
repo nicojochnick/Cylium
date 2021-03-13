@@ -33,3 +33,18 @@ export async function sendPublicChannelMessageFS(channelID, userID, messageData,
         console.error("Error writing document: ", error);
     });
 }
+
+export async function saveFlow (channelID, flow) {
+    console.log('saving flow for: ', channelID, ' with ', flow);
+    let parsedFlow = JSON.stringify(flow)
+    console.log(parsedFlow)
+
+    const channelRef = db.collection('channels').doc(channelID);
+    const res = await channelRef.update({flow: parsedFlow})
+        .then(() => {
+        console.log("flow successfully saved")})
+        .catch((error) => {
+        console.error("Error writing document: ", error);
+    });
+
+};

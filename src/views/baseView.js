@@ -26,6 +26,7 @@ function BaseView(props) {
 
     useEffect(() => {
         console.log('MESSAGES----->', props.messages)
+        console.log(props.channel)
     }, []);
 
 
@@ -39,7 +40,7 @@ function BaseView(props) {
                     </Grid>
                     <Grid  className={classes.root} xs = {12}  md = {7} lg = {7} container>
                         <div className={classes.container}>
-                        <BaseChart/>
+                        <BaseChart channel = {props.channel} user = {props.user} />
                         </div>
                     </Grid>
                 </Grid>

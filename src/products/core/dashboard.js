@@ -261,7 +261,9 @@ export default function Dashboard(props) {
                         }
                         <Switch>
                             <Route exact path="/feed">
-                                <BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
+                                <Settings team = {null}  email = {props.email} url = {props.url}  user = {props.user}/>
+
+                                {/*<BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />*/}
                             </Route>
                             <Route exact path="/automations">
                                 <AutomationView team = {null}  automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />

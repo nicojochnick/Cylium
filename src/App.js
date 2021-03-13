@@ -8,6 +8,7 @@ import login from './products/authentication/login';
 import {auth} from './api/firebase';
 import './styles.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 import DashboardContainer from "./products/core/dashboardContainer";
 
 
@@ -54,7 +55,9 @@ export default class App extends Component {
             <span className="sr-only">Loading...</span>
           </div>
       ) : (
-          <MuiThemeProvider theme={theme}>
+
+
+              <MuiThemeProvider theme={theme}>
 
           <Router>
             <Switch>
@@ -88,7 +91,9 @@ export default class App extends Component {
             </Switch>
           </Router>
           </MuiThemeProvider>
-      );
+
+
+    );
     }
   }
 

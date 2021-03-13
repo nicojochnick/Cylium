@@ -60,7 +60,7 @@ function FlowController(props) {
                         color="primary"
                         aria-label="vertical outlined primary button group"
                     >
-                        <Button>
+                        <Button onClick={()=> props.addNode('text')}>
                             <BiText size = {25}/>
 
                         </Button>

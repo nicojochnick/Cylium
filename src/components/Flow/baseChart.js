@@ -1,54 +1,120 @@
 
-import React from 'react';
-import ReactFlow, { Background,Controls } from 'react-flow-renderer';
+import React, {useCallback, useEffect} from 'react';
+import ReactFlow, { ReactFlowProvider, Background, isEdge, Controls,updateEdge, removeElements, addEdge,useZoomPanHelper,} from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
 import buildingbackground from "../../assets/images/buildingbackground.png";
 import Divider from "@material-ui/core/Divider";
-import Popover from '@material-ui/core/Popover';
+import Popover from '@material-ui/core/Popover'
+import Button from '@material-ui/core/Button';
 
 import FlowController from "./flowController";
-
-
-const elements = [
-    {
-        id: '2',
-        type: 'input', // input node
-        data: { label: 'Input Node' },
-        position: { x: 250, y: 25 },
-    },
-    // default node
-    {
-        id: '1',
-        draggable: false,
-        style: {borderRadius: 100, height: 70, width: 70},
-        // you can also pass a React component as a label
-        data: { label:
-
-                    <Box display = 'flex' flexDirection = 'column'  justifyContent = 'center' alignItems = 'center'>
-                        <p style = {{fontSize: 15}}>Root </p>
-
-                    </Box>
+import TextNode from "./Nodes/textNode";
+import {saveFlow} from "../../api/firestore";
 
 
 
-        },
-        position: { x: 100, y: 125 },
-    },
-    {
-        id: '3',
-        type: 'output', // output node
-        data: { label: 'Output Node' },
-        position: { x: 250, y: 250 },
-    },
-    // animated edge
-    { id: 'e1-2', source: '1', target: '2', animated: true },
-    { id: 'e1-3', source: '1', target: '3',animated: true },
-];
+const elems = [
 
+
+]
+
+
+const nodeTypes = {
+    textNodes: TextNode,
+};
+
+const getNodeId = () => `randomnode_${+new Date()}`;
 
 function BaseChart(props) {
+
+    const [elements,setElements] = React.useState(elems);
+    const [id, setID] = React.useState(500);
+    const [rfInstance, setRfInstance] = React.useState(null);
+
+    const { transform } = useZoomPanHelper();
+
+
+    const onSave = useCallback(() => {
+        if (rfInstance) {
+            console.log(rfInstance)
+            const flow = rfInstance.toObject()
+            console.log(props.channel);
+            saveFlow(props.channel.channelID, flow);
+            console.log(flow)
+        }
+    }, [rfInstance]);
+
+
+
+    const onRestore = useCallback((flow) => {
+        const restoreFlow = async () => {
+            if (flow) {
+                const [x = 0, y = 0] = flow.position;
+                setElements(flow.elements || []);
+                transform({ x, y, zoom: flow.zoom || 0 });
+            }
+        };
+        restoreFlow(flow);
+    }, [setElements, transform]);
+
+
+    const addNode = (type) => {
+
+        let currentElements = elements.slice();
+        let node = null;
+
+        if (type =='text'){
+            node = {
+                id: getNodeId(),
+                draggable:true,
+                type: 'textNodes',
+                data: { text: 'Add Text', onChange: onTextChange },
+                position: { x: 300, y: 300 },
+                style: { border: '1px solid #6685FF', borderRadius:7, padding: 2, backgroundColor:'white', display: 'flex', },
+
+            }
+        }
+
+        let nID = id + 1;
+        setID(nID);
+        console.log(nID)
+
+        currentElements.push(node);
+        setElements(currentElements)
+    };
+
+    //TODO SET NEW ELEMENTS
+
+    const onTextChange = (event) => {
+
+    };
+
+
+    const onElementsRemove = (elementsToRemove) =>
+        setElements((els) => removeElements(elementsToRemove, els));
+
+    const onEdgeUpdate = (oldEdge, newConnection) => setElements((els) => updateEdge(oldEdge, newConnection, els));
+    const fl = JSON.parse(props.channel.flow);
+
+
+    const onConnect = (params) => setElements((els) => addEdge(params, els));
+
+    useEffect(() => {
+       if(props.channel){
+            let f = JSON.parse(props.channel.flow);
+            let e = elems;
+            console.log('ELEMENTS:', f.elements, elems)
+           let ele = f.elements
+           setElements(ele)
+
+        }
+    }, []);
+
+
+
     return (
 
+        <ReactFlowProvider>
         <Box border={1} borderColor = {'#9B9B9B'}>
             <Box style = {{marginRight: 40}} display = 'flex'flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
@@ -57,25 +123,39 @@ function BaseChart(props) {
                     borderRadius = {100}
                     style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, marginBottom: -50, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
-                     <FlowController/>
+                     <FlowController addNode = {addNode} />
+                     <Button onClick = {()=> onSave()}> SAVE </Button>
+                    <Button onClick = {()=> onRestore()}> RESTORE </Button>
 
                 </Box>
-
             </Box>
             <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: '52vw', overflow: 'hidden'}} >
                 <div style = {{zIndex: 0, height: '100vh',}}>
-                    <ReactFlow style = {{ overflow: 'hidden', background: '#FAFAFA'}} elements={elements}>
-                <Background
-                    variant="dots"
-                    color = '#7371FE'
-                    gap={18}
-                    size={1}
-                />
+                    <ReactFlow
+                        nodeTypes={nodeTypes}
+                        style = {{ overflow: 'hidden', background: '#FAFAFA'}}
+                        elements={elements}
+                        onEdgeUpdate={onEdgeUpdate}
+                        onConnect={onConnect}
+                        onElementsRemove={onElementsRemove}
+                        onLoad={setRfInstance}
+
+                    >
+                    <Background
+                        variant="dots"
+                        color = '#7371FE'
+                        gap={18}
+                        size={1}
+                    />
                 <Controls />
             </ReactFlow>
                 </div>
             </Box>
+
         </Box>
+
+        </ReactFlowProvider>
+
 
     );
 }
