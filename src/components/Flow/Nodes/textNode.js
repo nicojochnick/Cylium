@@ -10,7 +10,6 @@ import Box from "@material-ui/core/Box";
 
 
 export default memo(({ data }) => {
-    console.log('DATANODE', data)
 
     const [text, setText] = React.useState(data.text)
 
@@ -28,22 +27,22 @@ export default memo(({ data }) => {
 
             <TextField
                 id="standard-basic"
-                placeholder="add text"
+                placeholder="ADD TEXT"
                 multiline
                 onChange={(event) => saveText(event)}
                 defaultValue={text}
                 style={{fontSize: 10}}
                 fullWidth
-                InputProps={{style: {fontSize: 15, margin: 5,}, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 20, margin: 5,color:'black'}, disableUnderline: true,}}
                 rowsMax={5}
             />
 
-            <Handle
-                type="source"
-                position="top"
-                id="a"
-                style={{  borderRadius: 100, backgroundColor:'red' }}
-            />
+            {/*<Handle*/}
+            {/*    type="source"*/}
+            {/*    position="top"*/}
+            {/*    id="a"*/}
+            {/*    style={{  borderRadius: 100, backgroundColor:'red' }}*/}
+            {/*/>*/}
 
             {/*<Handle*/}
             {/*    type="source"*/}
@@ -53,12 +52,12 @@ export default memo(({ data }) => {
             {/*/>*/}
 
 
-            <Handle
-                type="target"
-                position="bottom"
-                style={{ backgroundColor: 'blue' }}
-                onConnect={(params) => console.log('handle onConnect', params)}
-            />
+            {/*<Handle*/}
+            {/*    type="target"*/}
+            {/*    position="bottom"*/}
+            {/*    style={{ backgroundColor: 'blue' }}*/}
+            {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
+            {/*/>*/}
 
             {/*<Handle*/}
             {/*    type="source"*/}

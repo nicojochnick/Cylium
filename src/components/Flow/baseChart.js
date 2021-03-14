@@ -68,7 +68,7 @@ function BaseChart(props) {
                 type: 'textNodes',
                 data: { text: null, onChange: onTextChange, id: id },
                 position: { x: 300, y: 300 },
-                style: { border: '1px solid #6685FF', borderRadius:7, padding: 2, backgroundColor:'white', display: 'flex', },
+                style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
 
             }
         }

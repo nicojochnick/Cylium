@@ -43,6 +43,7 @@ export default memo(({ data }) => {
                 />
                 <Checkbox
                     checked={done}
+                    style ={{margin:5}}
                     onChange={toggleDone}
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                 />
