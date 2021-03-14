@@ -2,6 +2,8 @@ import React, { memo } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { Handle } from 'react-flow-renderer';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 import Box from "@material-ui/core/Box";
 
 
@@ -9,6 +11,14 @@ import Box from "@material-ui/core/Box";
 
 export default memo(({ data }) => {
     console.log('DATANODE', data)
+
+    const [text, setText] = React.useState(data.text)
+
+    const saveText = (event) => {
+        setText(event.target.value)
+        data.text = event.target.value;
+
+    };
 
     return (
         <>
@@ -18,12 +28,11 @@ export default memo(({ data }) => {
 
             <TextField
                 id="standard-basic"
-                // placeholder="add text"
+                placeholder="add text"
                 multiline
-                onChange={data.onChange}
-                defaultValue={data.text}
+                onChange={(event) => saveText(event)}
+                defaultValue={text}
                 style={{fontSize: 10}}
-                // className={classes.packageInputText}
                 fullWidth
                 InputProps={{style: {fontSize: 15, margin: 5,}, disableUnderline: true,}}
                 rowsMax={5}

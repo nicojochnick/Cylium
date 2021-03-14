@@ -9,25 +9,22 @@ import Button from '@material-ui/core/Button';
 
 import FlowController from "./flowController";
 import TextNode from "./Nodes/textNode";
+import TodoNode from "./Nodes/todoNode";
+
 import {saveFlow} from "../../api/firestore";
 
 
 
-const elems = [
-
-
-]
-
-
 const nodeTypes = {
     textNodes: TextNode,
+    todoNodes: TodoNode,
 };
 
 const getNodeId = () => `randomnode_${+new Date()}`;
 
 function BaseChart(props) {
 
-    const [elements,setElements] = React.useState(elems);
+    const [elements,setElements] = React.useState(props.channel.flow.elements);
     const [id, setID] = React.useState(500);
     const [rfInstance, setRfInstance] = React.useState(null);
 
@@ -62,14 +59,28 @@ function BaseChart(props) {
 
         let currentElements = elements.slice();
         let node = null;
+        let id = getNodeId();
 
         if (type =='text'){
             node = {
-                id: getNodeId(),
+                id:id ,
                 draggable:true,
                 type: 'textNodes',
-                data: { text: 'Add Text', onChange: onTextChange },
+                data: { text: null, onChange: onTextChange, id: id },
                 position: { x: 300, y: 300 },
+                style: { border: '1px solid #6685FF', borderRadius:7, padding: 2, backgroundColor:'white', display: 'flex', },
+
+            }
+        }
+
+        if (type =='todo'){
+            console.log('selected')
+            node = {
+                id:id ,
+                draggable:true,
+                type: 'todoNodes',
+                data: { text: null, done:false, id: id },
+                position: { x: 350, y: 350 },
                 style: { border: '1px solid #6685FF', borderRadius:7, padding: 2, backgroundColor:'white', display: 'flex', },
 
             }
@@ -85,8 +96,17 @@ function BaseChart(props) {
 
     //TODO SET NEW ELEMENTS
 
-    const onTextChange = (event) => {
-
+    const onTextChange = (text, id,) => {
+        console.log('triggered elements', elements, rfInstance, onSave, '')
+        let prevElements = elements.slice();
+        for (let node of prevElements ) {
+            if (node.id === id) {
+                node.data.text = text
+            }
+        }
+        if (prevElements.length > 0) {
+            setElements(prevElements)
+        }
     };
 
 
@@ -102,10 +122,16 @@ function BaseChart(props) {
     useEffect(() => {
        if(props.channel){
             let f = JSON.parse(props.channel.flow);
-            let e = elems;
-            console.log('ELEMENTS:', f.elements, elems)
-           let ele = f.elements
-           setElements(ele)
+            console.log('ELEMENTS:', f.elements,)
+           let dbElements = f.elements;
+
+            for (let node of dbElements){
+                if (node.type === 'textNodes'){
+                    node.data.onChange = onTextChange;
+                }
+            }
+            console.log(dbElements);
+           setElements(dbElements)
 
         }
     }, []);
@@ -125,7 +151,6 @@ function BaseChart(props) {
                 >
                      <FlowController addNode = {addNode} />
                      <Button onClick = {()=> onSave()}> SAVE </Button>
-                    <Button onClick = {()=> onRestore()}> RESTORE </Button>
 
                 </Box>
             </Box>

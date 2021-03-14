@@ -65,7 +65,7 @@ function FlowController(props) {
 
                         </Button>
 
-                        <Button>
+                        <Button onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>
 
                         </Button>
