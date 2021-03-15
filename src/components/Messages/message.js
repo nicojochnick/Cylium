@@ -11,13 +11,49 @@ import Divider from "@material-ui/core/Divider";
 import UnstructuredMessageContent from "./unstructuredMessageContent"
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
+import IconButton from "@material-ui/core/IconButton";
+import Popover from "@material-ui/core/Popover/Popover";
+import Button from "@material-ui/core/Button";
+import { FiMoreVertical } from "react-icons/fi";
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import { BiEdit, BiTrash} from "react-icons/bi";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import {deleteMessage} from "../../api/firestore";
+
+
 
 
 function Message(props) {
     const classes = useStyles();
     const [user, setUser] = React.useState(null);
+    const [isEditing, setIsEditing] = React.useState(false);
+    const [anchorEl_edit, setAnchorEl_edit] = React.useState(null);
+    const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
+    const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const [messageContent, setMessageContent] = React.useState();
+    const [label, setLabel] = React.useState(null);
+    const [messageItem, setQuestionItem] = React.useState([]);
+    const [backGroundColor, setBackGroundColor] = React.useState('white')
 
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handlePopoverOpen = (event) => {
+        event.stopPropagation();
+
+        setAnchorEl(event.currentTarget);
+        setBackGroundColor('#F3F3F3')
+    };
+
+    const handlePopoverClose = () => {
+        setAnchorEl(null);
+        setBackGroundColor('white')
+    };
+
+    const open = Boolean(anchorEl);
 
     const getUser = async(email) => {
         await db.collection("users").doc(email)
@@ -30,20 +66,77 @@ function Message(props) {
             });
     };
 
+    const deleteCurrentMessage = () => {
+        deleteMessage(props.message.messageID)
+    };
+
+
+    const handleEditLabel = (event) => {
+        if (!isEditing){setIsEditing(true)}
+        setLabel(event.target.value)
+    };
+
+
     useEffect(() => {
         getUser(props.senderID);
 
     }, []);
     return (
         <div className={classes.root}>
+
+            <Popover
+                id="mouse-over-popover"
+                className={classes.popover}
+                classes={{
+                    paper: classes.paper,
+                }}
+                style = {{margin: 10}}
+                open={open}
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                    vertical: 'right',
+                    horizontal: 'right',
+                }}
+                transformOrigin={{
+                    vertical: 'right',
+                    horizontal: 'right',
+                }}
+                // PaperProps={{onMouseEnter: handlePopoverOpen, onMouseLeave: handlePopoverClose}}
+                onClose={handlePopoverClose}
+                disableRestoreFocus
+            >
+
+                <ButtonGroup
+                    // style = {{width: 100,}}
+                    orientation="horizontal"
+                    color="default"
+                >
+
+                    {/*<Tooltip title="Edit" arrow  placement={'top'}>*/}
+                    {/*    <Button onClick={()=> console.log('delete')}>*/}
+                    {/*        <BiEdit size = {20}/>*/}
+                    {/*    </Button>*/}
+                    {/*</Tooltip>*/}
+
+                    <Tooltip title="Delete" placement={'top'}  arrow>
+                        <Button  onClick={()=> deleteCurrentMessage()}>
+                            <BiTrash size = {20}/>
+                        </Button>
+                    </Tooltip>
+
+                </ButtonGroup>
+
+            </Popover>
+
+
             {user
                 ? <Box
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow={0}
-                    style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:'white' , }}
+                    style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:backGroundColor , }}
                 >
-                    <Grid justify='flex-start' alignItems='flex-stars' direction="row" container style={{margin: 0,}}>
+                    <Grid justify='flex-start' alignItems='flex-start' direction="row" container style={{margin: 0,}}>
                         <Grid item >
                             <Box style={{margin: 5}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
                                 <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
@@ -75,10 +168,20 @@ function Message(props) {
                                 }
                             </Box>
                         </Grid>
+                        <Grid item>
+                            <IconButton onClick={handlePopoverOpen} style = {{marginLeft: -15}} aria-label="open">
+                                <FiMoreVertical  size = {17}/>
+                            </IconButton>
+
+                        </Grid>
                     </Grid>
                 </Box>
                 : null
             }
+
+
+
+
             <Divider/>
 
         </div>
@@ -110,6 +213,8 @@ const useStyles = makeStyles((theme) => ({
 
     fixedHeight: {
         height: 350,
+    },
+    popover: {
     },
 }));
 

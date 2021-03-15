@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Slider from "@material-ui/core/Slider";
@@ -34,8 +34,27 @@ function MessagesContainer(props) {
     // };
 
     useEffect(() => {
-        console.log('messages ------> ', props.messages)
+        setMessages(props.messages);
     }, []);
+
+
+    const messagesEndRef = useRef(null);
+
+    //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED INSTEAD OF AN ARBITRARY TIME
+
+    const scrollToBottom = () => {
+        setTimeout(() => {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }, 1500);
+
+    };
+
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages]);
+
+
 
     //TODO: move responder up a level, don't want it grouped with messages
 
@@ -46,13 +65,14 @@ function MessagesContainer(props) {
                     border = {0}
                     // display = 'flex'
                     flexDirection = 'column'
-                    justifyContent={'flex-start '}
+                    // justifyContent={'flex-end '}
                     // alignItems = 'flex-end'
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
                     style ={{backgroundColor:'white', padding: 0,maxHeight: '72vh'}}
                 >
+                    <div>
                     {Object.keys(props.messages)
                         .map((item) =>
                             <Message
@@ -60,8 +80,12 @@ function MessagesContainer(props) {
                                 automations={props.automations}
                                 message={props.messages[item]}
                             />
-                            )}
+                            )
+                    }
+                        <div ref={messagesEndRef}></div>
+                    </div>
                 </Box>
+
                 <Box
                     display = 'flex'
                     flexDirection = 'column'

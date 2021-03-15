@@ -1,5 +1,5 @@
 import React from 'react';
-import {Editor, EditorState,RichUtils,getDefaultKeyBinding} from 'draft-js';
+import {Editor, EditorState,RichUtils,getDefaultKeyBinding, Modifier, SelectionState} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
@@ -26,12 +26,30 @@ function Responder(props) {
         } catch (error) {
             console.log('sending message failed ', error)
         }
+
     };
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
         if(command === 'send-message'){
             sendMessage();
+            let contentState = editorState.getCurrentContent();
+            const firstBlock = contentState.getFirstBlock();
+            const lastBlock = contentState.getLastBlock();
+            const allSelected = new SelectionState({
+                anchorKey: firstBlock.getKey(),
+                anchorOffset: 0,
+                focusKey: lastBlock.getKey(),
+                focusOffset: lastBlock.getLength(),
+                hasFocus: true,
+            });
+            contentState = Modifier.removeRange(contentState, allSelected, 'backward');
+            editorState = EditorState.push(editorState, contentState, 'remove-range');
+            editorState = EditorState.forceSelection(
+                editorState,
+                contentState.getSelectionAfter(),
+            );
+            setEditorState(editorState)
             return 'handled'
         }
         if (newState) {

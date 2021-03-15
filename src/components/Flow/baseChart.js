@@ -66,9 +66,11 @@ function BaseChart(props) {
                 id:id ,
                 draggable:true,
                 type: 'textNodes',
+                className:"nowheel",
                 data: { text: null, onChange: onTextChange, id: id },
                 position: { x: 300, y: 300 },
                 style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
+                noWheel: true,
 
             }
         }
@@ -78,6 +80,7 @@ function BaseChart(props) {
             node = {
                 id:id ,
                 draggable:true,
+                className : "nowheel",
                 type: 'todoNodes',
                 data: { text: null, done:false, id: id },
                 position: { x: 350, y: 350 },
@@ -169,8 +172,8 @@ function BaseChart(props) {
                     <Background
                         variant="dots"
                         color = '#7371FE'
-                        gap={18}
-                        size={1}
+                        // gap={18}
+                        // size={1}
                     />
                 <Controls />
             </ReactFlow>

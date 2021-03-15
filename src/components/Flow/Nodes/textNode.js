@@ -22,7 +22,7 @@ export default memo(({ data }) => {
     return (
         <>
 
-        <Box display = 'flex' flexDirection ='column' justifyContent = 'center' alignItems = 'center'>
+        <Box className = {'noWheel'} display = 'flex' flexDirection ='column' justifyContent = 'center' alignItems = 'center'>
 
 
             <TextField
