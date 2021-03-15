@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import InputBase from "@material-ui/core/InputBase/InputBase";
 import Button from "@material-ui/core/Button";
 import {fade, makeStyles} from "@material-ui/core/styles";
-import { BiSend, BiPlus } from "react-icons/bi";
+import { BiSend, BiPlus,BiCheck} from "react-icons/bi";
 import {db} from "../../../api/firebase";
 import UserId from "../../User/userID";
 import Divider from "@material-ui/core/Divider";
@@ -16,18 +16,32 @@ function SearchUsers(props) {
     const [searchEmail, setSearchEmail] = React.useState('');
     const [searchUser, setSearchUser] = React.useState(false);
     const [didSearch, setDidSearch]  = React.useState(false);
+    const [invited, setDidInvite ] = React.useState(false);
 
     const handleSearch = async () => {
         let usersRef = db.collection("users");
-        let query = await usersRef.where("email", "==", searchEmail).get();
-        if (!query.empty) {
-            await query.forEach(doc => {
-                setSearchUser(doc.data())
-            });
+
+        console.log('SEARCH QUERY', searchEmail);
+        let snapshot = await usersRef.where("email", "==", searchEmail).get()
+        if (snapshot.empty) {
+            console.log('No matching documents.');
+            return;
         }
+        snapshot.forEach(doc => {
+            console.log(doc.id, '=>', doc.data());
+            setSearchUser(doc.data())
+        });
         setDidSearch(true);
     };
 
+    const didInvite = () => {
+        setDidInvite(true);
+        setSearchUser(false);
+        setDidSearch(false);
+        const timer = setTimeout(() => {
+            setDidInvite(false)
+        }, 1400);
+    }
 
 
     return (
@@ -47,6 +61,7 @@ function SearchUsers(props) {
                     </div>
                     <InputBase
                         fullWidth
+                        onChange={(e) => setSearchEmail(e.target.value)}
                         placeholder="Search by Email"
                         classes={{
                             root: classes.inputRoot,
@@ -66,30 +81,40 @@ function SearchUsers(props) {
                     Search
                 </Button>
                 </Box>
-                    <Box>
+                {!invited
+                    ?<Box>
                         {didSearch
-                        ?
-                        <div>
-                            {searchUser
-                                ?
+                            ?
+                            <div>
+                                {searchUser
+                                    ?
                                     <div>
-                                        <Divider style = {{margin: 5}} />
+                                        <Divider style={{margin: 5}}/>
                                         <UserId
-                                            viewingUser = {props.user}
-                                            background = {true}
-                                            isAdding = {true}
-                                            goDark = {true}
-                                            user = {searchUser}
+                                            didInvite={didInvite}
+                                            background={true}
+                                            isAdding={true}
+                                            goDark={true}
+                                            user={searchUser}
+                                            viewingUser={props.user}
+                                            channel = {props.channel}
+
                                         />
 
                                     </div>
-                                : <p> no user found</p>
-                            }
-                        </div>
-                            :  null
+                                    : <p> no user found</p>
+                                }
+                            </div>
+                            : null
 
                         }
                     </Box>
+                    :
+                    <Box display = 'flex' flexDirection ='row' alignItems = 'center' justifyContent = 'center'>
+                        <p style = {{fontSize: 17, margin: 5 }}> Invite Sent!</p>
+                        <BiCheck size = {25} />
+                    </Box>
+                }
             </Box>
             </Grid>
             {/*<Box display="flex" flexDirection="row" direction="row" borderRadius={10}*/}

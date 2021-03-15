@@ -30,10 +30,10 @@ function BaseView(props) {
 
     const openChat = () => {
         if (graphMDandLG === 12){
-            setGraphMDandLG(7)
+            setGraphMDandLG(7);
             setWidth('52vw')
         } else {
-            setGraphMDandLG(12)
+            setGraphMDandLG(12);
             setWidth('88vw')
         }
         setIsChat(!isChatOpen);
@@ -45,13 +45,12 @@ function BaseView(props) {
         console.log(props.channel)
     }, []);
 
-
     return (
         <div className={classes.root}>
             <Grid style = {{height: '100vh'}} className={classes.root} container spacing ={0}>
                 {(isChatOpen)
                     ?<Grid className={classes.root} xs={0} md={5} lg={5} direction='column' container>
-                        <ChannelHeader user={props.user}/>
+                        <ChannelHeader channel = {props.channel} user = {props.user}/>
                         <Divider/>
                         <MessagesContainer channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>

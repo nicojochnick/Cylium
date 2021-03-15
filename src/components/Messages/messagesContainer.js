@@ -22,8 +22,6 @@ function MessagesContainer(props) {
     const [height, setHeight] = React.useState(300);
     const [automations, setAutomations] = React.useState([]);
 
-
-
     const messagesEndRef = useRef(null);
 
     //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED, and when new messaged are added, INSTEAD OF AN ARBITRARY TIME
@@ -31,7 +29,8 @@ function MessagesContainer(props) {
     const scrollToBottom = () => {
         'scroll triggered'
         setTimeout(() => {
-            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+
+            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
         }, 1500);
 
     };
@@ -102,7 +101,6 @@ function MessagesContainer(props) {
         </div>
     );
 };
-
 
 
 

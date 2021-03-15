@@ -6,6 +6,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { BiSend, BiPlus } from "react-icons/bi";
 import {db} from '../../api/firebase'
+import {sendFlowInvite} from "../../api/firestore";
 
 
 function UserId(props) {
@@ -53,7 +54,27 @@ function UserId(props) {
         );
         const resAdded = await addedUserRef.update({friendList: addedList});
         const viewingAdded = await viewingUserRef.update({friendList: viewingList});
+
+
     };
+
+
+    const sendChannelInviteToDB = () => {
+        console.log('sending channel invite with the followng, ',props.channel.channelID, props.channel.name, props.viewingUser.email, props.user.email )
+
+        try {
+            sendFlowInvite(props.channel.channelID, props.channel.name, props.viewingUser.email, props.user.email)
+
+        } catch {
+            console.log('error sending channel invite')
+        }
+        if (props.didInvite){
+            props.didInvite()
+        }
+
+    };
+
+
 
     useEffect( () => {
         if (props.goDark){setTextColor('black')}
@@ -68,10 +89,10 @@ function UserId(props) {
     }, []);
 
     return (
-        <Box borderRadius = {20} style = {{backgroundColor: background,}}>
+        <Box borderRadius = {8} border = {1} borderColor = {'#8B8B92'}>
         <Grid container direction={'row'} justify={'space-between'}>
             <Box display = 'flex' flexDirection = 'row'>
-            <Grid item xs={1.5} md={1.5} lg={1.5}>
+            <Grid item xs={0} md={0} lg={0}>
                 <Box style={{margin: 5}} border={2} borderColor={'white'} borderRadius={50}>
                     <Avatar src={profilePicture} className={classes.large}/>
                 </Box>
@@ -89,10 +110,10 @@ function UserId(props) {
                             variant="contained"
                             color = 'primary'
                             className={classes.button}
-                            startIcon={<BiPlus />}
-                            onClick={() => sendFriendRequest()}
+                            startIcon={<BiSend />}
+                            onClick={() => sendChannelInviteToDB()}
                         >
-                            Add to Friend List
+                            Invite
                         </Button>
                     </div>
                     :

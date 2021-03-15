@@ -3,6 +3,9 @@ import {db} from "./firebase";
 
 //TODO Schematize this
 
+
+//MESSAGES
+
 export async function sendMessageFS(automationID, adminID, messageData, recipientIDs,) {
     let res = await db.collection('messages').add({
         automationID: automationID,
@@ -45,6 +48,8 @@ export async function deleteMessage(messageID){
 
 }
 
+//FLOWS
+
 export async function saveFlow (channelID, flow) {
     console.log('saving flow for: ', channelID, ' with ', flow);
     let parsedFlow = JSON.stringify(flow);
@@ -59,3 +64,30 @@ export async function saveFlow (channelID, flow) {
     });
 
 };
+
+
+//NOTIFICATIONS
+
+export async function sendFlowInvite (channelID, channelName, senderID, recipientID){
+
+    const res = await db.collection('notifications').add({
+        channelID: channelID,
+        type: 'channelInvite',
+        senderID: senderID,
+        channelName: channelName,
+        recipientID: recipientID,
+        timeStamp: new Date()
+    });
+
+    db.collection('notifications').doc(res.id).update({
+        notificationID: res.id
+    }).then(() => {
+        console.log(" Channel Invite Notification and ID successfully created");
+    }).catch((error) => {
+        console.error("Error creating notification and/or ID ", error);
+    });
+
+
+}
+
+

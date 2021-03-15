@@ -53,7 +53,7 @@ function ChannelHeader(props) {
                     horizontal: 'center',
                 }}
             >
-                <SearchUsers user = {props.user} />
+                <SearchUsers channel = {props.channel} user = {props.user} />
             </Popover>
         </Box>
     );
