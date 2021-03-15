@@ -19,9 +19,25 @@ function BaseView(props) {
 
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState(false);
+    const [isChatOpen, setIsChat] = React.useState(false);
+    const [graphMDandLG, setGraphMDandLG] = React.useState(12)
+    const [width, setWidth] = React.useState('88vw')
     const [stretch, setStretch] = React.useState(6);
     const handleSwitch = (event) => {
         setSwitch(!switchState);
+    };
+
+
+    const openChat = () => {
+        if (graphMDandLG === 12){
+            setGraphMDandLG(7)
+            setWidth('52vw')
+        } else {
+            setGraphMDandLG(12)
+            setWidth('88vw')
+        }
+        setIsChat(!isChatOpen);
+
     };
 
     useEffect(() => {
@@ -33,14 +49,18 @@ function BaseView(props) {
     return (
         <div className={classes.root}>
             <Grid style = {{height: '100vh'}} className={classes.root} container spacing ={0}>
-                    <Grid  className={classes.root} xs = {12} md = {5} lg = {5} direction = 'column' container>
-                          <ChannelHeader user = {props.user} />
+                {(isChatOpen)
+                    ?<Grid className={classes.root} xs={0} md={5} lg={5} direction='column' container>
+                        <ChannelHeader user={props.user}/>
                         <Divider/>
-                        <MessagesContainer channel = {props.channel} messages = {props.messages}  automations = {props.automations}   user = {props.user} />
+                        <MessagesContainer channel={props.channel} messages={props.messages}
+                                           automations={props.automations} user={props.user}/>
                     </Grid>
-                    <Grid  className={classes.root} xs = {12}  md = {7} lg = {7} container>
+                    :null
+                }
+                    <Grid  className={classes.root} xs = {12}  md = {graphMDandLG} lg = {graphMDandLG} container>
                         <div className={classes.container}>
-                        <BaseChart channel = {props.channel} user = {props.user} />
+                        <BaseChart isChatOpen = {isChatOpen} viewWidth = {width} openChat = {openChat} channel = {props.channel} user = {props.user} />
                         </div>
                     </Grid>
                 </Grid>

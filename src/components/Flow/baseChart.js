@@ -12,6 +12,7 @@ import TextNode from "./Nodes/textNode";
 import TodoNode from "./Nodes/todoNode";
 
 import {saveFlow} from "../../api/firestore";
+import FeedController from "./feedController";
 
 
 
@@ -145,19 +146,21 @@ function BaseChart(props) {
 
         <ReactFlowProvider>
         <Box border={1} borderColor = {'#9B9B9B'}>
-            <Box style = {{marginRight: 40}} display = 'flex'flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+            <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+
                 <Box
                     border={1}
                     borderColor = {'#6989FF'}
                     borderRadius = {100}
-                    style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, marginBottom: -50, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
+                    style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
                      <FlowController addNode = {addNode} />
                      <Button onClick = {()=> onSave()}> SAVE </Button>
 
                 </Box>
+
             </Box>
-            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: '52vw', overflow: 'hidden'}} >
+            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: props.viewWidth, overflow: 'hidden'}} >
                 <div style = {{zIndex: 0, height: '100vh',}}>
                     <ReactFlow
                         nodeTypes={nodeTypes}
@@ -169,6 +172,15 @@ function BaseChart(props) {
                         onLoad={setRfInstance}
 
                     >
+                        <Box
+                            border={1}
+                            borderColor = {'#6989FF'}
+                            borderRadius = {100}
+                            style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, margin: 20, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
+                        >
+                            <FeedController openChat = {props.openChat}/>
+
+                        </Box>
                     <Background
                         variant="dots"
                         color = '#7371FE'
