@@ -22,32 +22,34 @@ function MessagesContainer(props) {
     const [height, setHeight] = React.useState(300);
     const [automations, setAutomations] = React.useState([]);
 
-    // const filterMessages = (messages) => {
-    //
-    //     console.log(messages)
-    //
-    //     let res = messages.filter(item => item.channelID === props.channels[item].channelID)
-    //
-    //     console.log('MESSAGES --->', res);
-    //     setMessages(res)
-    //
-    // };
-
-    useEffect(() => {
-        setMessages(props.messages);
-    }, []);
 
 
     const messagesEndRef = useRef(null);
 
-    //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED INSTEAD OF AN ARBITRARY TIME
+    //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED, and when new messaged are added, INSTEAD OF AN ARBITRARY TIME
 
     const scrollToBottom = () => {
+        'scroll triggered'
         setTimeout(() => {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }, 1500);
 
     };
+
+    const sortAndSetMessages = (messages ) => {
+
+        // let sorted = messages.sort( function(a,b) {return new Date(b.data) - new Date(a.date)});
+        // console.log('SORTED MESSAGES,', sorted);
+        // setMessages(sorted);
+
+    };
+
+
+    useEffect(() => {
+        // sortAndSetMessages(props.messages);
+        scrollToBottom();
+
+    }, []);
 
 
     useEffect(() => {
@@ -55,9 +57,7 @@ function MessagesContainer(props) {
     }, [messages]);
 
 
-
     //TODO: move responder up a level, don't want it grouped with messages
-
     return (
         <div className={classes.root}>
             <Grid style = {{height: '90vh'}} justify ='space-between' alignItems ='space-between' container direction ='column'>
@@ -224,4 +224,18 @@ export default MessagesContainer;
 //                 console.log("Error getting documents: ", error);
 //             });
 //     }
+// };
+
+
+
+
+// const filterMessages = (messages) => {
+//
+//     console.log(messages)
+//
+//     let res = messages.filter(item => item.channelID === props.channels[item].channelID)
+//
+//     console.log('MESSAGES --->', res);
+//     setMessages(res)
+//
 // };

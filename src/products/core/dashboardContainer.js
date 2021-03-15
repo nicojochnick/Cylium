@@ -109,7 +109,8 @@ function DashboardContainer(props) {
                 messages.push(doc.data())
             });
             console.log('successfully pulled messages: ', messages);
-            setMessages(messages)
+            let message_sorted = messages.sort( function(a,b) {return a.timeStamp - b.timeStamp});
+            setMessages(message_sorted)
         }
         if (user) {
             console.log('user is present, pulling messages');
