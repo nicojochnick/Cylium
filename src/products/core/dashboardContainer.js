@@ -122,10 +122,29 @@ function DashboardContainer(props) {
         }
     }, [user]);
 
+    useEffect(() => {
+        function getNotifications(querySnapshot) {
+            let notifications= [];
+            querySnapshot.forEach(function (doc) {
+                notifications.push(doc.data())
+            });
+            console.log('successfully pulled notifications ', notifications);
+            let notifications_sorted =  notifications.sort( function(a,b) {return a.timeStamp - b.timeStamp});
+            setNotifications(notifications_sorted)
+        }
+        if (user) {
+            console.log('user is present, pulling notifications');
+            const queryNotifications= db.collection('notifications').where('recipientID', '==', user.email);
+            const unsubscribeNotifications = queryNotifications.onSnapshot(getNotifications, error => console.log(error));
+            return () => {
+                unsubscribeNotifications()
+            }
+        }
+    }, [user]);
 
 
     return (
-        <Dashboard channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
+        <Dashboard notifications = {notifications} channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
     );
 }
 

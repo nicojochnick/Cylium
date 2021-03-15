@@ -4,6 +4,23 @@ import {db} from "./firebase";
 //TODO Schematize this
 
 
+//USER
+
+export async function addUserToChannel(userChannels, userID) {
+    db.collection('users').doc(userID).update({
+        channelIDs: userChannels
+    }).then(() => {
+        console.log("channel successfully added to user" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+
+
+}
+
+
+
+
 //MESSAGES
 
 export async function sendMessageFS(automationID, adminID, messageData, recipientIDs,) {
@@ -48,7 +65,7 @@ export async function deleteMessage(messageID){
 
 }
 
-//FLOWS
+//FLOWS/Channels
 
 export async function saveFlow (channelID, flow) {
     console.log('saving flow for: ', channelID, ' with ', flow);
@@ -64,6 +81,7 @@ export async function saveFlow (channelID, flow) {
     });
 
 };
+
 
 
 //NOTIFICATIONS
@@ -89,5 +107,17 @@ export async function sendFlowInvite (channelID, channelName, senderID, recipien
 
 
 }
+
+export async function deleteNotification(notificationID){
+    console.log('deleting notification: ', notificationID);
+    const res = await db.collection('notifications').doc(notificationID).delete()
+
+}
+
+
+
+
+
+
 
 

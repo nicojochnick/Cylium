@@ -11,8 +11,7 @@ function Notification(props) {
     return (
         <Grid style = {{width: '100%'}} container justify='center' alignItems = 'center' direction = 'column'>
             <Grid style = {{width: '100%'}} item direction = "row" justify='center' alignItems = 'flex-start'>
-                <RiCoinsLine size = {25} style = {{ margin: 20, color:'#4D6DF1'}}  color = {'#4D6DF1'} />
-                <p style = {{ margin: 20, marginTop: -16,}} > {props.item.sender} sent you {props.item.amount} points for your feedback - {props.item.subject} </p>
+                <p style = {{ margin: 20, marginTop: -16,}} >  </p>
                 <Divider/>
             </Grid>
         </Grid>

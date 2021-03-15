@@ -21,7 +21,6 @@ import {FaEdit} from "react-icons/fa"
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import Settings from "../../views/settings"
 import EditFeedbox from "../../views/Old/editFeedbox"
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
@@ -38,6 +37,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import BaseView from '../../views/baseView'
+import AccountView from "../../views/accountView"
 import AutomationView from '../../views/automationView'
 import {db} from "../../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
@@ -228,12 +228,12 @@ export default function Dashboard(props) {
                             <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />
                     </ListItem>
                     <Divider/>
-                        <Link to="/settings"  style={{ color:"white", textDecoration: 'none' }}>
+                        <Link to="/account"  style={{ color:"white", textDecoration: 'none' }}>
                             <ListItem button>
                                 <ListItemIcon>
-                                    <BiCog size = {25} style = {{color:'#3C3F48'}}  />
+                                    <BiUser size = {25} style = {{color:'#3C3F48'}}  />
                                 </ListItemIcon>
-                                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Settings" />
+                                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Account" />
                             </ListItem>
                         </Link>
                     <div>
@@ -261,15 +261,10 @@ export default function Dashboard(props) {
                         }
                         <Switch>
                             <Route exact path="/feed">
-                                <Settings team = {null}  email = {props.email} url = {props.url}  user = {props.user}/>
-
-                                {/*<BaseView  messages = {props.messages} team = {null} automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />*/}
+                                <AccountView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
-                            <Route exact path="/automations">
-                                <AutomationView team = {null}  automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />
-                            </Route>
-                            <Route path="/settings">
-                                <Settings team = {null}  email = {props.email} url = {props.url}  user = {props.user}/>
+                            <Route path="/account">
+                                <AccountView notifications = {props.notifications} team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
                         </Switch>
                     </main>
@@ -521,3 +516,12 @@ const useStyles = makeStyles((theme) => ({
 {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Processes" />*/}
 {/*    </ListItem>*/}
 {/*</Link>*/}
+
+
+
+
+//
+
+{/*<Route exact path="/automations">*/}
+{/*    <AutomationView team = {null}  automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />*/}
+{/*</Route>*/}
