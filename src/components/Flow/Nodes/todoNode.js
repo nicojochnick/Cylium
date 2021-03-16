@@ -6,9 +6,10 @@ import { Handle } from 'react-flow-renderer';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
+import NodeEditor from "../NodeEditor/nodeEditor"
+import Popover from "@material-ui/core/Popover/Popover";
 
-import {BiEdit} from "react-icons/bi"
+
 
 export default memo(({ data }) => {
 
@@ -26,15 +27,7 @@ export default memo(({ data }) => {
         data.done = !data.done;
     }
 
-    const LightTooltip = withStyles((theme) => ({
-        tooltip: {
-            backgroundColor: theme.palette.common.white,
-            color: '#565559',
-            boxShadow: "0px 0px 4px #C5C5C5",
-            fontSize: 14,
-            borderRadius: 3,
-        },
-    }))(Tooltip);
+
 
 
 
@@ -63,9 +56,9 @@ export default memo(({ data }) => {
 
                 <Box display ='flex' >
 
-                <LightTooltip onClick = {()=>console.log('clicked')}  interactive title = {<IconButton style = {{margin: 0, padding: 0}} onClick = {()=> console.log('click')}> <BiEdit style ={{margin:2}} size = {19} /> </IconButton>} placement={'right'} >
-                    <div style = {{height: 6, width: 6, margin: 2, backgroundColor:'grey', borderRadius: 100}} />
-                </LightTooltip>
+                    <NodeEditor/>
+
+
 
                 </Box>
 
@@ -102,6 +95,7 @@ export default memo(({ data }) => {
                 {/*/>*/}
 
             </Box>
+
         </>
 
 

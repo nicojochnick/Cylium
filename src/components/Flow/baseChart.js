@@ -24,7 +24,7 @@ const nodeTypes = {
     todoNodes: TodoNode,
 };
 
-const getNodeId = () => `randomnode_${+new Date()}`;
+const getNodeId = () => `node_${+new Date()}`;
 
 function BaseChart(props) {
 
