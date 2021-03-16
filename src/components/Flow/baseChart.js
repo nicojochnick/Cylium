@@ -89,7 +89,7 @@ function BaseChart(props) {
                 type: 'todoNodes',
                 data: { text: null, done:false, id: id },
                 position: { x: 350, y: 350 },
-                style: { border: '1px solid #6685FF', borderRadius:7, padding: 2, backgroundColor:'white', display: 'flex', },
+                style: { border: '0px solid #6685FF',boxShadow: "0px 5px 10px #D3D3DA", borderRadius:7, padding: 2, backgroundColor:'white', display: 'flex', },
 
             }
         }
@@ -117,6 +117,8 @@ function BaseChart(props) {
         if (prevElements.length > 0) {
             setElements(prevElements)
         }
+        triggerAutoSave()
+
     };
 
 
@@ -136,6 +138,12 @@ function BaseChart(props) {
         triggerAutoSave()
     };
 
+
+    const onElementClick = () => {
+
+        triggerAutoSave()
+    };
+
     const onConnect = (params) => setElements((els) => addEdge(params, els));
 
     let timerID;
@@ -143,12 +151,12 @@ function BaseChart(props) {
     const triggerAutoSave = async () => {
         console.log("starting/restarting save");
         clearTimeout(timerID);
-        setSaving(true)
+        setSaving(true);
         timerID = setTimeout(() => {
-            onSave()
-            setSaving(false)
+            onSave();
+            setSaving(false);
             console.log("finished")
-        }, 3000)
+        }, 5000)
     }
 
 
@@ -185,7 +193,7 @@ function BaseChart(props) {
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
                     <FlowController addNode = {addNode} />
-                    <Button onClick = {()=> onSave()}> SAVE </Button>
+                    {/*<Button onClick = {()=> onSave()}> SAVE </Button>*/}
 
 
                 </Box>
@@ -202,6 +210,7 @@ function BaseChart(props) {
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
+                        onElementClick={onElementClick}
                     >
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'space-between' alignItems = 'space-between'>
                             <Box
