@@ -47,9 +47,7 @@ function InviteToChannelNotification(props) {
                     Decline
                 </Button>
                 <Divider style = {{marginTop: 10}} />
-
             </Grid>
-
         </Grid>
     );
 }

@@ -6,13 +6,16 @@ import buildingbackground from "../../assets/images/buildingbackground.png";
 import Divider from "@material-ui/core/Divider";
 import Popover from '@material-ui/core/Popover'
 import Button from '@material-ui/core/Button';
+import PuffLoader from "react-spinners/PuffLoader";
+import {BiCheck} from "react-icons/bi"
 
-import FlowController from "./flowController";
+import FlowController from "./flowController"
 import TextNode from "./Nodes/textNode";
 import TodoNode from "./Nodes/todoNode";
 
 import {saveFlow} from "../../api/firestore";
 import FeedController from "./feedController";
+import Grid from "@material-ui/core/Grid";
 
 
 
@@ -28,6 +31,7 @@ function BaseChart(props) {
     const [elements,setElements] = React.useState(props.channel.flow.elements);
     const [id, setID] = React.useState(500);
     const [rfInstance, setRfInstance] = React.useState(null);
+    const [saving, setSaving] = React.useState(false)
 
     const { transform } = useZoomPanHelper();
 
@@ -96,6 +100,8 @@ function BaseChart(props) {
 
         currentElements.push(node);
         setElements(currentElements)
+        triggerAutoSave()
+
     };
 
     //TODO SET NEW ELEMENTS
@@ -114,14 +120,37 @@ function BaseChart(props) {
     };
 
 
-    const onElementsRemove = (elementsToRemove) =>
+    const onElementsRemove = (elementsToRemove) => {
         setElements((els) => removeElements(elementsToRemove, els));
+        triggerAutoSave()
 
-    const onEdgeUpdate = (oldEdge, newConnection) => setElements((els) => updateEdge(oldEdge, newConnection, els));
-    const fl = JSON.parse(props.channel.flow);
+    };
 
+
+    const onEdgeUpdate = (oldEdge, newConnection) => {
+        setElements((els) => updateEdge(oldEdge, newConnection, els));
+        triggerAutoSave()
+    };
+
+    const onNodeDragStop = () => {
+        triggerAutoSave()
+    };
 
     const onConnect = (params) => setElements((els) => addEdge(params, els));
+
+    let timerID;
+
+    const triggerAutoSave = async () => {
+        console.log("starting/restarting save");
+        clearTimeout(timerID);
+        setSaving(true)
+        timerID = setTimeout(() => {
+            onSave()
+            setSaving(false)
+            console.log("finished")
+        }, 3000)
+    }
+
 
     useEffect(() => {
        if(props.channel){
@@ -152,10 +181,12 @@ function BaseChart(props) {
                     border={1}
                     borderColor = {'#6989FF'}
                     borderRadius = {100}
+
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
-                     <FlowController addNode = {addNode} />
-                     <Button onClick = {()=> onSave()}> SAVE </Button>
+                    <FlowController addNode = {addNode} />
+                    <Button onClick = {()=> onSave()}> SAVE </Button>
+
 
                 </Box>
 
@@ -166,21 +197,42 @@ function BaseChart(props) {
                         nodeTypes={nodeTypes}
                         style = {{ overflow: 'hidden', background: '#FAFAFA'}}
                         elements={elements}
-                        onEdgeUpdate={onEdgeUpdate}
-                        onConnect={onConnect}
-                        onElementsRemove={onElementsRemove}
                         onLoad={setRfInstance}
-
+                        onNodeDragStop = {onNodeDragStop}
+                        onElementsRemove={onElementsRemove}
+                        onConnect={onConnect}
+                        onEdgeUpdate={onEdgeUpdate}
                     >
-                        <Box
-                            border={1}
-                            borderColor = {'#6989FF'}
-                            borderRadius = {100}
-                            style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, margin: 20, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
-                        >
-                            <FeedController openChat = {props.openChat}/>
+                        <Box display ='flex' flexDirection ='row' container justifyContent = 'space-between' alignItems = 'space-between'>
+                            <Box
+                                border={1}
+                                borderColor = {'#6989FF'}
+                                borderRadius = {100}
+                                style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, margin: 20,  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
+                            >
+                                <FeedController openChat = {props.openChat}/>
+
+                            </Box>
+                            <Box style = {{marginRight: 130,zIndex: 10,   marginTop: 10,}}>
+                                { saving
+                                    ?
+                                    <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
+                                        <p> Saving </p>
+                                        <PuffLoader color={'black'} loading={true} size={25} />
+                                    </Box>
+                                    :
+                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
+                                         <p> Saved </p>
+                                         <BiCheck size ={15} />
+                                     </Box>
+
+                                }
+                            </Box>
+
 
                         </Box>
+
+
                     <Background
                         variant="dots"
                         color = '#7371FE'
