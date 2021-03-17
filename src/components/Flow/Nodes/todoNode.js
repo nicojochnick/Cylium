@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import React, { memo,} from 'react';
+import React, {memo, useEffect,} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Handle } from 'react-flow-renderer';
@@ -22,8 +22,11 @@ export default memo(({ data,}) => {
 
     const [text, setText] = React.useState(data.text);
     const [done, setDone] = React.useState(data.done)
-    const [textColor, setTextColor] = React.useState(data.textColor)
-    const [fontSize, setFontSize] = React.useState(data.fontSize)
+    const [textColor, setTextColor] = React.useState(data.textColor);
+    const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
+    const[border, setBorder] = React.useState(data.border);
+    const [shadow, setShadow ] =React.useState(8)
+    const [fontSize, setFontSize] = React.useState(data.fontSize);
 
     const saveText = (event) => {
         setText(event.target.value)
@@ -44,16 +47,40 @@ export default memo(({ data,}) => {
 
     };
 
-    const changeColor = (color, type) =>{
-        console.log('settingcolor')
 
+    const changeColor = (color, type) =>{
+        console.log('settingcolor', type)
         if (type === 'text'){
             setTextColor(color)
             data.textColor = color;
+        } else {
+            setBackGroundColor(color)
+            data.backgroundColor = color
         }
-    }
+    };
 
 
+    const changeBorder = (width) => {
+        setBorder(width);
+        data.border = width;
+        console.log('ChangingBorder', width)
+    };
+
+    const switchShadow = () =>{
+        if (shadow ===  8) {
+            setShadow(0);
+            data.shadow = 0;
+        } else if (shadow === 0){
+            setShadow(8);
+            data.shadow = 8
+        }
+    };
+
+    useEffect(() => {
+       if (data.shadow){
+           setShadow(data.shadow)
+       }
+    }, []);
 
 
 
@@ -61,9 +88,10 @@ export default memo(({ data,}) => {
         <>
 
             <Box
-                style = {{border: '0px solid #6685FF', boxShadow: "0px 5px 10px #D3D3DA", padding: 3, borderRadius:7, backgroundColor:'white', }}
+                border = {border}
+                borderColor = {'#5C5C5C'}
+                style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
-
 
                         <TextField
                             id="standard-basic"
@@ -86,7 +114,18 @@ export default memo(({ data,}) => {
 
                 <Box display ='flex' >
 
-                    <NodeEditor changeColor = {changeColor} changeFont = {changeFont} />
+                    <NodeEditor
+                        changeColor = {changeColor}
+                        changeFont = {changeFont}
+                        switchShadow = {switchShadow}
+                        changeBorder = {changeBorder}
+                        fontSize = {fontSize}
+                        border = {data.border}
+                        shadow = {data.shadow}
+                        textColor = {textColor}
+                        backgroundColor = {backgroundColor}
+
+                    />
 
                 </Box>
 

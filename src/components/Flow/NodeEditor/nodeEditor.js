@@ -21,34 +21,19 @@ import Grid from "@material-ui/core/Grid"
 import { CirclePicker } from 'react-color';
 
 
+const colors = ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#FCFCFC", "black"]
+
+
 
 
 function NodeEditor(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [textColor, setTextColor] = React.useState('#2ccce4');
-    const [boxColor, setBoxColor] = React.useState('#2ccce4');
-
-    const [border, setBorder] = React.useState(false);
-    const [openEditor, setOpenEditor] = React.useState(false)
-
+    const [textColor, setTextColor] = React.useState(props.textColor);
+    const [backgroundColor, setbackgroundColor] = React.useState(props.backgroundColor);
+    const [shadow,setShadow] = React.useState(props.shadow);
+    const [openEditor, setOpenEditor] = React.useState(false);
     const [value, setValue] = React.useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
-
-    // const handleOpenEditor = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
-    //
-    // const handleClose = () => {
-    //     setAnchorEl(null);
-    // };
-
-    // const open = Boolean(anchorEl);
-    // const id = open ? 'simple-popover' : undefined;
 
 
     const LightTooltip = withStyles((theme) => ({
@@ -61,18 +46,29 @@ function NodeEditor(props) {
         },
     }))(Tooltip);
 
-    const switchBorder = () => {
-        setBorder(!border)
-    };
 
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
     const handleCloseEditor = () => {
         setOpenEditor(false)
 
     };
-
     const handleOpenEditor = () => {
         setOpenEditor(true)
+    };
 
+
+    const switchShadow = () => {
+        let blur = 0;
+        if (shadow == 8){
+           blur = 0
+        } else {
+           blur = 8;
+        }
+        setShadow(blur);
+        props.switchShadow(blur)
     };
 
     const handleChangeFont = (size) => {
@@ -80,32 +76,41 @@ function NodeEditor(props) {
     };
 
     const handleChangeColor = (color, type) => {
+        console.log(color,type)
         if (type==='text')  {
            setTextColor(color.hex)
+        } else {
+            setbackgroundColor(color.hex)
         }
-
         props.changeColor(color.hex, type)
+    };
 
+    const handleBorderChange = (width) => {
+        props.changeBorder(width)
     };
 
 
     return (
             <LightTooltip
-                open={openEditor} interactive onClose={handleCloseEditor} onOpen={handleOpenEditor}
+                open={openEditor}
+                interactive
+                onClose={handleCloseEditor}
+                onOpen={handleOpenEditor}
+
                 placement={'right'}
                 TransitionComponent={Fade} TransitionProps={{ timeout: 2 }}
                 title = {
                     <div className={classes.root}>
                     <Grid className={classes.root} container style = {{width: 330, display:'flex'}} >
-                        <Grid className={classes.root} container alignItems={'center'} justify={'center'}>
+                        <Grid className={classes.root} style = {{overflow:'hidden'}} container alignItems={'center'} justify={'center'}>
 
-                            <Grid item xs={2}>
-                                <IconButton onClick = {handleCloseEditor}>
-                                <BiChevronLeft size = {35} />
-                                </IconButton>
+                            {/*<Grid item xs={2}>*/}
+                            {/*    <IconButton onClick = {handleCloseEditor}>*/}
+                            {/*    <BiChevronLeft size = {35} />*/}
+                            {/*    </IconButton>*/}
 
-                            </Grid>
-                            <Grid  style ={{width: 290}} item xs={10}>
+                            {/*</Grid>*/}
+                            <Grid  alignItems={'center'} justify={'center'} style ={{width: 290}} container xs={12}>
                                 <Tabs
                                     value={value}
                                     indicatorColor="primary"
@@ -139,11 +144,10 @@ function NodeEditor(props) {
                             <Grid justify={'center'} alignItems = 'center' item xs={7}>
 
                                 <ButtonGroup variant="outline" color="primary" aria-label="contained primary button group">
-                                    <Button onClick = {()=>handleChangeFont(13)}> <p style = {{fontSize: 13}}>S</p></Button>
-                                    <Button onClick = {()=>handleChangeFont(16)}>  <p style = {{fontSize: 16}}>M</p></Button>
-                                    <Button onClick = {()=>handleChangeFont(25)} ><p style = {{fontSize: 25}}>L</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(13)}> <p style = {{fontSize: 13,color: props.fontSize == 13 ? 'black' : 'grey'}}>S</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(16)}>  <p style = {{fontSize: 16, color: props.fontSize == 16 ? 'black' : 'grey'}}>M</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(25)} ><p style = {{fontSize: 25, color: props.fontSize == 25 ? 'black' : 'grey' }}>L</p></Button>
                                 </ButtonGroup>
-
 
 
                             </Grid>
@@ -162,7 +166,7 @@ function NodeEditor(props) {
 
                                 <CirclePicker
                                     color={textColor }
-                                    colors = {["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "black"]
+                                    colors = { colors
                                     }
 
                                     width={160}
@@ -196,8 +200,8 @@ function NodeEditor(props) {
                                     <Grid justify={'center'} alignItems = 'center' item xs={7}>
 
                                         <ButtonGroup variant="outline" color="primary" aria-label="contained primary button group">
-                                            <Button> <p style = {{fontSize: 14}}>0px</p></Button>
-                                            <Button><p style = {{fontSize:14}}>1px</p></Button>
+                                            <Button onClick = {() => handleBorderChange(0)}> <p style = {{fontSize: 14}}>0px</p></Button>
+                                            <Button onClick = {() => handleBorderChange(1)} ><p style = {{fontSize:14}}>1px</p></Button>
                                         </ButtonGroup>
 
                                     </Grid>
@@ -207,41 +211,32 @@ function NodeEditor(props) {
 
                         <Grid style = {{}} container  justify={'center'}>
                             <Grid item xs={2}>
-
                             </Grid>
                             <Grid item xs={3}>
-
                                 <p>Color</p>
-
                             </Grid>
                             <Grid justify={'center'} alignItems = 'center' item xs={7}>
-
                                 <CirclePicker
-                                    color={textColor}
+                                    color={backgroundColor}
                                     width={160}
+                                    colors = {colors}
                                     circleSize={12}
-                                    onChangeComplete={ (color) => handleChangeColor(color, 'box')}
+                                    onChangeComplete={ (color) => handleChangeColor(color, 'background')}
                                 />
-
-
-
                             </Grid>
                         </Grid>
-
                         <Grid style = {{marginTop: 8}}  container  justify={'center'}>
                             <Grid item xs={2}>
-
                             </Grid>
                             <Grid item xs={3}>
-
                                 <p>Shadow</p>
 
                             </Grid>
                             <Grid  justifyContent ='center' justify ='center' alignItems = 'center' container xs={7}>
 
                                 <Switch
-                                    checked={border}
-                                    onChange={switchBorder}
+                                    checked={props.shadow === 8}
+                                    onChange={switchShadow}
                                     name="checkedBorder"
 
                                 />

@@ -88,7 +88,7 @@ function BaseChart(props) {
                 className : "nowheel",
                 type: 'todoNodes',
                 style: {maxHeight: 500},
-                data: { text: null, done:false, id: id, fontSize: 16, textColor: 'black'},
+                data: { text: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
                 position: { x: 350, y: 350 },
 
             }
