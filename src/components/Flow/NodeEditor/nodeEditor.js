@@ -5,11 +5,15 @@ import IconButton from '@material-ui/core/IconButton';
 import { FiMoreVertical } from "react-icons/fi";
 import {withStyles, makeStyles} from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
-import { BiEdit,BiRectangle, BiText,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import { BiEdit,BiRectangle, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Switch from '@material-ui/core/Switch';
+import Tabs from '@material-ui/core/Tabs';
+import Fade from '@material-ui/core/Fade';
+
+import Tab from '@material-ui/core/Tab';
 
 
 import Grid from "@material-ui/core/Grid"
@@ -24,21 +28,30 @@ function NodeEditor(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [color, setColor] = React.useState('#2ccce4');
     const [border, setBorder] = React.useState(false);
+    const [openEditor, setOpenEditor] = React.useState(false)
+
+    const [value, setValue] = React.useState(2);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
 
     const handleChangeComplete = (color) => {
         setColor(color.hex)
     };
 
-    const handleOpenEditor = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    // const handleOpenEditor = (event) => {
+    //     setAnchorEl(event.currentTarget);
+    // };
+    //
+    // const handleClose = () => {
+    //     setAnchorEl(null);
+    // };
 
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    // const open = Boolean(anchorEl);
+    // const id = open ? 'simple-popover' : undefined;
 
 
     const LightTooltip = withStyles((theme) => ({
@@ -55,20 +68,55 @@ function NodeEditor(props) {
         setBorder(!border)
     };
 
+    const handleCloseEditor = () => {
+        setOpenEditor(false)
+
+    };
+
+    const handleOpenEditor = () => {
+        setOpenEditor(true)
+
+    };
 
 
 
     return (
-        <Box>
-
             <LightTooltip
-                interactive
+                open={openEditor} interactive onClose={handleCloseEditor} onOpen={handleOpenEditor}
                 placement={'right'}
+                TransitionComponent={Fade} TransitionProps={{ timeout: 2 }}
                 title = {
+                    <div className={classes.root}>
+                    <Grid className={classes.root} container style = {{width: 330, display:'flex'}} >
+                        <Grid className={classes.root} container alignItems={'center'} justify={'center'}>
 
-                    <Grid container style = {{width: 330, display:'flex'}} >
+                            <Grid item xs={2}>
+                                <IconButton onClick = {handleCloseEditor}>
+                                <BiChevronLeft size = {35} />
+                                </IconButton>
 
-                        <Grid container alignItems={'center'} justify={'center'}>
+                            </Grid>
+                            <Grid  style ={{width: 290}} item xs={10}>
+                                <Tabs
+                                    value={value}
+                                    indicatorColor="primary"
+                                    textColor="primary"
+                                    onChange={handleChange}
+                                    centered
+                                >
+                                    <Tab style = {{width: 50}} label="Text" />
+                                    <Tab style = {{width: 50}} label="Box" />
+                                </Tabs>
+
+                            </Grid>
+
+                        </Grid>
+
+                        {(value==0)
+
+                        ?
+                            <Grid container className={classes.root} style ={{padding: 5}} >
+                            <Grid container alignItems={'center'} justify={'center'}>
 
                             <Grid item xs={2}>
                                 <BiText size = {30} />
@@ -114,6 +162,13 @@ function NodeEditor(props) {
 
                             </Grid>
                         </Grid>
+                            </Grid>
+
+                           :
+
+                            <Grid container className={classes.root} >
+
+
 
                             <Grid style ={{marginTop: 10, border: 1, borderTop:1}} container alignItems={'center'} justify={'center'}>
 
@@ -180,8 +235,13 @@ function NodeEditor(props) {
                                 />
                             </Grid>
                         </Grid>
+                            </Grid>
+                            }
+
 
                     </Grid>
+
+                    </div>
 
                 }
             >
@@ -194,7 +254,6 @@ function NodeEditor(props) {
 
 
 
-        </Box>
     );
 }
 
@@ -202,6 +261,11 @@ const useStyles = makeStyles((theme) => ({
     typography: {
         padding: theme.spacing(2),
     },
+    root: {
+        flexGrow: 1,
+        display:'flex',
+    },
+
 }));
 
 

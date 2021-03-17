@@ -210,7 +210,7 @@ function BaseChart(props) {
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
-                        onElementClick={onElementClick}
+                        // onElementClick={onElementClick}
                     >
 
                         <Background

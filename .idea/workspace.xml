@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Flow/NodeEditor/nodeEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flow/NodeEditor/nodeEditor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Flow/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flow/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/messagesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/messagesContainer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,8 +23,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Flow/feedController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
+            <state relative-caret-position="-11">
               <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Flow/flowController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -39,11 +47,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Flow/baseChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1938">
-              <caret line="212" column="23" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="23" />
+            <state relative-caret-position="464">
+              <caret line="240" column="37" lean-forward="true" selection-start-line="240" selection-start-column="37" selection-end-line="240" selection-end-column="37" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
-                <marker date="1615983062582" expanded="true" signature="6577:6622" ph="..." />
+                <marker date="1615987774517" expanded="true" signature="6580:6625" ph="..." />
               </folding>
             </state>
           </provider>
@@ -52,22 +60,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Flow/NodeEditor/nodeEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+            <state relative-caret-position="208">
+              <caret line="117" column="88" selection-start-line="117" selection-start-column="88" selection-end-line="117" selection-end-column="88" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Flow/Nodes/todoNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1953">
-              <caret line="102" column="6" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -243,8 +239,8 @@
         <option value="$PROJECT_DIR$/src/components/Utilities/Notifications/notificationTypes/inviteToChannelNotification.js" />
         <option value="$PROJECT_DIR$/src/components/Flow/Nodes/textNode.js" />
         <option value="$PROJECT_DIR$/src/components/Flow/Nodes/todoNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Flow/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/messagesContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/Flow/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Flow/NodeEditor/nodeEditor.js" />
       </list>
     </option>
@@ -470,12 +466,12 @@
       <workItem from="1615758079441" duration="1152000" />
       <workItem from="1615775423826" duration="32515000" />
       <workItem from="1615926109552" duration="3059000" />
-      <workItem from="1615981217741" duration="3848000" />
+      <workItem from="1615981217741" duration="6891000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="897946000" />
+    <option name="totallyTimeSpent" value="900989000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -490,7 +486,7 @@
     <frame x="-468" y="-1055" width="1584" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.19078106" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.19078106" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -505,7 +501,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49788433" visible="true" weight="0.34185302" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49788433" visible="true" weight="0.34185302" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50211567" side_tool="true" weight="0.31290743" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -906,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Flow/flowController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Flow/Nodes/todoNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1953">
@@ -963,16 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Flow/feedController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Messages/message.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -990,21 +966,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Flow/feedController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Flow/flowController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Flow/baseChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="212" column="23" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="23" />
+        <state relative-caret-position="464">
+          <caret line="240" column="37" lean-forward="true" selection-start-line="240" selection-start-column="37" selection-end-line="240" selection-end-column="37" />
           <folding>
             <element signature="e#1#53#0" expanded="true" />
-            <marker date="1615983062582" expanded="true" signature="6577:6622" ph="..." />
+            <marker date="1615987774517" expanded="true" signature="6580:6625" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Flow/NodeEditor/nodeEditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+        <state relative-caret-position="208">
+          <caret line="117" column="88" selection-start-line="117" selection-start-column="88" selection-end-line="117" selection-end-column="88" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
