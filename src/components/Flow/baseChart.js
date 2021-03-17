@@ -212,6 +212,15 @@ function BaseChart(props) {
                         onEdgeUpdate={onEdgeUpdate}
                         onElementClick={onElementClick}
                     >
+
+                        <Background
+                            variant = "dots"
+                            color = "#968ab8"
+                            // style = {{backgroundColor:'black'}}
+                            // gap={18}
+                            // size={1}
+                        />
+
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'space-between' alignItems = 'space-between'>
                             <Box
                                 border={1}
@@ -242,12 +251,6 @@ function BaseChart(props) {
                         </Box>
 
 
-                    <Background
-                        variant="dots"
-                        color = '#7371FE'
-                        // gap={18}
-                        // size={1}
-                    />
                 <Controls />
             </ReactFlow>
                 </div>

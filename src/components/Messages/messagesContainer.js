@@ -15,12 +15,14 @@ import {db} from "../../api/firebase";
 import Responder from "../Responder/responder";
 
 
+
 function MessagesContainer(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
     const [messages, setMessages] = React.useState([]);
     const [height, setHeight] = React.useState(300);
     const [automations, setAutomations] = React.useState([]);
+
 
     const messagesEndRef = useRef(null);
 
@@ -72,7 +74,8 @@ function MessagesContainer(props) {
                     style ={{backgroundColor:'white', padding: 0,maxHeight: '72vh'}}
                 >
                     <div>
-                    {Object.keys(props.messages)
+
+                        {Object.keys(props.messages)
                         .map((item) =>
                             <Message
                                 senderID = {props.messages[item].senderID}
