@@ -140,7 +140,7 @@ function NodeEditor(props) {
 
                                 <ButtonGroup variant="outline" color="primary" aria-label="contained primary button group">
                                     <Button onClick = {()=>handleChangeFont(13)}> <p style = {{fontSize: 13}}>S</p></Button>
-                                    <Button onClick = {()=>handleChangeFont(18 )}>  <p style = {{fontSize: 18}}>M</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(16)}>  <p style = {{fontSize: 16}}>M</p></Button>
                                     <Button onClick = {()=>handleChangeFont(25)} ><p style = {{fontSize: 25}}>L</p></Button>
                                 </ButtonGroup>
 
