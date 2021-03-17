@@ -9,6 +9,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import NodeEditor from "../NodeEditor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
 import { Scrollbars } from 'react-custom-scrollbars';
+import { Resizable } from "re-resizable";
+
+
+
+
+
 
 
 
@@ -22,6 +28,7 @@ export default memo(({ data,}) => {
 
     const [text, setText] = React.useState(data.text);
     const [done, setDone] = React.useState(data.done)
+
     const [textColor, setTextColor] = React.useState(data.textColor);
     const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
     const[border, setBorder] = React.useState(data.border);
@@ -87,11 +94,19 @@ export default memo(({ data,}) => {
     return (
         <>
 
-            <Box
+            <Resizable
+              defaultSize={{
+                width:320,
+                height:200,
+              }}
+            >
+                <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
                 style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
+
+
 
                         <TextField
                             id="standard-basic"
@@ -163,6 +178,7 @@ export default memo(({ data,}) => {
                 {/*/>*/}
 
             </Box>
+            </Resizable>
 
         </>
 
