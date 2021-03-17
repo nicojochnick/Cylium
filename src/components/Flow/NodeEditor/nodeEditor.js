@@ -26,19 +26,16 @@ import { CirclePicker } from 'react-color';
 function NodeEditor(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [color, setColor] = React.useState('#2ccce4');
+    const [textColor, setTextColor] = React.useState('#2ccce4');
+    const [boxColor, setBoxColor] = React.useState('#2ccce4');
+
     const [border, setBorder] = React.useState(false);
     const [openEditor, setOpenEditor] = React.useState(false)
 
-    const [value, setValue] = React.useState(2);
+    const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-    };
-
-
-    const handleChangeComplete = (color) => {
-        setColor(color.hex)
     };
 
 
@@ -78,6 +75,18 @@ function NodeEditor(props) {
 
     };
 
+    const handleChangeFont = (size) => {
+        props.changeFont(size)
+    };
+
+    const handleChangeColor = (color, type) => {
+        if (type==='text')  {
+           setTextColor(color.hex)
+        }
+
+        props.changeColor(color.hex, type)
+
+    };
 
 
     return (
@@ -112,10 +121,10 @@ function NodeEditor(props) {
 
                         </Grid>
 
-                        {(value==0)
+                        {(value===0)
 
                         ?
-                            <Grid container className={classes.root} style ={{padding: 5}} >
+                            <Grid container className={classes.root} style ={{paddingBottom: 5}} >
                             <Grid container alignItems={'center'} justify={'center'}>
 
                             <Grid item xs={2}>
@@ -130,9 +139,9 @@ function NodeEditor(props) {
                             <Grid justify={'center'} alignItems = 'center' item xs={7}>
 
                                 <ButtonGroup variant="outline" color="primary" aria-label="contained primary button group">
-                                    <Button> <p style = {{fontSize: 12}}>S</p></Button>
-                                    <Button><p style = {{fontSize: 16}}>M</p></Button>
-                                    <Button><p style = {{fontSize: 20}}>L</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(13)}> <p style = {{fontSize: 13}}>S</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(18 )}>  <p style = {{fontSize: 18}}>M</p></Button>
+                                    <Button onClick = {()=>handleChangeFont(25)} ><p style = {{fontSize: 25}}>L</p></Button>
                                 </ButtonGroup>
 
 
@@ -152,10 +161,13 @@ function NodeEditor(props) {
                             <Grid justify={'center'} alignItems = 'center' item xs={7}>
 
                                 <CirclePicker
-                                    color={color }
+                                    color={textColor }
+                                    colors = {["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "black"]
+                                    }
+
                                     width={160}
                                     circleSize={12}
-                                    onChangeComplete={ handleChangeComplete }
+                                    onChangeComplete={ (color) => handleChangeColor(color, 'text')}
                                 />
 
 
@@ -205,10 +217,10 @@ function NodeEditor(props) {
                             <Grid justify={'center'} alignItems = 'center' item xs={7}>
 
                                 <CirclePicker
-                                    color={color }
+                                    color={textColor}
                                     width={160}
                                     circleSize={12}
-                                    onChangeComplete={ handleChangeComplete }
+                                    onChangeComplete={ (color) => handleChangeColor(color, 'box')}
                                 />
 
 

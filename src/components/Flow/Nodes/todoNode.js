@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import React, { memo } from 'react';
+import React, { memo,} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Handle } from 'react-flow-renderer';
@@ -8,13 +8,22 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
 import NodeEditor from "../NodeEditor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 
-export default memo(({ data }) => {
+
+export default memo(({ data,}) => {
+    const classes = useStyles();
+
+
+    console.log(data, )
+
 
     const [text, setText] = React.useState(data.text);
     const [done, setDone] = React.useState(data.done)
+    const [textColor, setTextColor] = React.useState(data.textColor)
+    const [fontSize, setFontSize] = React.useState(data.fontSize)
 
     const saveText = (event) => {
         setText(event.target.value)
@@ -27,6 +36,23 @@ export default memo(({ data }) => {
         data.done = !data.done;
     }
 
+    const changeFont = (size) => {
+
+        data.fontSize = size
+        console.log('switch!')
+        setFontSize(size)
+
+    };
+
+    const changeColor = (color, type) =>{
+        console.log('settingcolor')
+
+        if (type === 'text'){
+            setTextColor(color)
+            data.textColor = color;
+        }
+    }
+
 
 
 
@@ -34,19 +60,23 @@ export default memo(({ data }) => {
     return (
         <>
 
-            <Box display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
+            <Box
+                style = {{border: '0px solid #6685FF', boxShadow: "0px 5px 10px #D3D3DA", padding: 3, borderRadius:7, backgroundColor:'white', }}
+                display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
-            <TextField
-                    id="standard-basic"
-                    placeholder="add todo"
-                    multiline
-                    onChange={(event) => saveText(event)}
-                    defaultValue={text}
-                    style={{fontSize: 10, margin: 5}}
-                    fullWidth
-                    InputProps={{style: {fontSize: 15, margin: 5,}, disableUnderline: true,}}
-                    rowsMax={5}
-                />
+
+                        <TextField
+                            id="standard-basic"
+                            placeholder="add todo"
+                            multiline
+                            onChange={(event) => saveText(event)}
+                            defaultValue={text}
+                            fullWidth
+                            InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}
+                            rowsMax={200}
+                    />
+
+
                 <Checkbox
                     checked={done}
                     style ={{marginTop:5}}
@@ -56,11 +86,10 @@ export default memo(({ data }) => {
 
                 <Box display ='flex' >
 
-                    <NodeEditor/>
-
-
+                    <NodeEditor changeColor = {changeColor} changeFont = {changeFont} />
 
                 </Box>
+
 
 
 
@@ -102,3 +131,48 @@ export default memo(({ data }) => {
 
     );
 });
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+
+    },
+
+    cont1 : {
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden',
+    },
+
+    cont2 : {
+        height: '100%',
+        width: '100%',
+        overflow: 'auto',
+        paddingRight: 20,
+    },
+    box:{
+        padding: 0,
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+    },
+
+    content: {
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+    },
+
+    container: {
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
+    },
+
+    fixedHeight: {
+        height: 350,
+    },
+    popover: {
+    },
+}));
+

@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 
 
 
-export default memo(({ data }) => {
+export default memo(({ data, style }) => {
 
     const [text, setText] = React.useState(data.text)
 
