@@ -10,17 +10,26 @@ import PuffLoader from "react-spinners/PuffLoader";
 import {BiCheck} from "react-icons/bi"
 
 import FlowController from "./flowController"
-import TextNode from "./Nodes/textNode";
+import LabelNode from "./Nodes/labelNode";
 import TodoNode from "./Nodes/todoNode";
-
 import {saveFlow} from "../../api/firestore";
 import FeedController from "./feedController";
 import Grid from "@material-ui/core/Grid";
+import NoteNode from "./Nodes/noteNode";
+import WebPageNode from "./Nodes/webPageNode";
 
 
+const reset = [
+    { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
+    // you can also pass a React component as a label
+    { id: '2', data: { label: <div>Node 2</div> }, position: { x: 100, y: 100 } },
+    { id: 'e1-2', source: '1', target: '2', animated: true },
+];
 
 const nodeTypes = {
-    textNodes: TextNode,
+    webPageNodes: WebPageNode,
+    labelNodes: LabelNode,
+    noteNodes: NoteNode,
     todoNodes: TodoNode,
 };
 
@@ -31,7 +40,7 @@ function BaseChart(props) {
     const [elements,setElements] = React.useState(props.channel.flow.elements);
     const [id, setID] = React.useState(500);
     const [rfInstance, setRfInstance] = React.useState(null);
-    const [saving, setSaving] = React.useState(false)
+    const [saving, setSaving] = React.useState(false);
 
     const { transform } = useZoomPanHelper();
 
@@ -45,7 +54,6 @@ function BaseChart(props) {
             console.log(flow)
         }
     }, [rfInstance]);
-
 
 
     const onRestore = useCallback((flow) => {
@@ -66,29 +74,74 @@ function BaseChart(props) {
         let node = null;
         let id = getNodeId();
 
-        if (type =='text'){
+
+        if (type =='label'){
             node = {
                 id:id ,
                 draggable:true,
-                type: 'textNodes',
+                type: 'labelNodes',
                 className:"nowheel",
-                data: { text: null, onChange: onTextChange, id: id },
+                // data: { text: null, onChange: onTextChange, id: id }
+                data: { text: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
                 position: { x: 300, y: 300 },
-                style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
-                noWheel: true,
+                // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
+                // noWheel: true,
 
             }
         }
 
-        if (type =='todo'){
-            console.log('selected')
+        if (type =='todo') {
+            console.log('selected');
+            node = {
+                id: id,
+                draggable: true,
+                // className : "nodrag",
+                type: 'todoNodes',
+                data: {
+                    text: null,
+                    done: false,
+                    id: id,
+                    fontSize: 16,
+                    textColor: '#3D3B42',
+                    border: 0,
+                    backgroundColor: 'white',
+                    borderColor: '#3D3B42',
+                    shadow: 8
+                },
+                position: {x: 350, y: 350},
+
+            }
+        }
+
+        if (type =='webs'){
             node = {
                 id:id ,
                 draggable:true,
-                className : "nowheel",
-                type: 'todoNodes',
-                style: {maxHeight: 500},
+                // className : "nodrag",
+                className:"nowheel",
+
+                type: 'webPageNodes',
                 data: { text: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
+                position: { x: 350, y: 350 },
+            }
+        }
+
+        if (type =='notes'){
+            node = {
+                id:id ,
+                draggable:true,
+                // className : "nodrag",
+                type: 'noteNodes',
+                data: { text: null,
+                    done:false,
+                    id: id,
+                    fontSize: 16,
+                    textColor: '#3D3B42',
+                    border: 0,
+                    backgroundColor:'white',
+                    borderColor: '#3D3B42',
+                    shadow: 8
+                },
                 position: { x: 350, y: 350 },
 
             }

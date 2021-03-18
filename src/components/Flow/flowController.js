@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import { BiText,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import { BiText, BiLaptop, BiEdit, BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 
 
 
@@ -59,10 +59,22 @@ function FlowController(props) {
                         color="primary"
                         aria-label="vertical outlined primary button group"
                     >
-                        <Button onClick={()=> props.addNode('text')}>
+                        <Button onClick={()=> props.addNode('label')}>
                             <BiText size = {25}/>
 
                         </Button>
+
+                        <Button onClick={()=> props.addNode('webs')}>
+                            <BiLaptop size = {25}/>
+
+                        </Button>
+
+                        <Button onClick={()=> props.addNode('notes')}>
+                            <BiEdit size = {25}/>
+
+                        </Button>
+
+
 
                         <Button onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>

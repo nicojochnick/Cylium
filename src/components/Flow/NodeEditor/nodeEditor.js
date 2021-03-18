@@ -110,23 +110,26 @@ function NodeEditor(props) {
                             {/*    </IconButton>*/}
 
                             {/*</Grid>*/}
-                            <Grid  alignItems={'center'} justify={'center'} style ={{width: 290}} container xs={12}>
-                                <Tabs
-                                    value={value}
-                                    indicatorColor="primary"
-                                    textColor="primary"
-                                    onChange={handleChange}
-                                    centered
-                                >
-                                    <Tab style = {{width: 50}} label="Text" />
-                                    <Tab style = {{width: 50}} label="Box" />
-                                </Tabs>
+                            { !props.textOnly
+                               ? <Grid alignItems={'center'} justify={'center'} style={{width: 290}} container xs={12}>
+                                    <Tabs
+                                        value={value}
+                                        indicatorColor="primary"
+                                        textColor="primary"
+                                        onChange={handleChange}
+                                        centered
+                                    >
+                                        <Tab style={{width: 50}} label="Text"/>
+                                        <Tab style={{width: 50}} label="Box"/>
+                                    </Tabs>
 
-                            </Grid>
+                                </Grid>
+                                : null
+                            }
 
                         </Grid>
 
-                        {(value===0)
+                        {(value===0 || props.textOnly)
 
                         ?
                             <Grid container className={classes.root} style ={{paddingBottom: 5}} >

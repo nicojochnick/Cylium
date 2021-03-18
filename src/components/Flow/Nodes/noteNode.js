@@ -1,21 +1,15 @@
+import React, {memo, useEffect} from 'react';
+import TodoNode from "./todoNode"
 import Box from "@material-ui/core/Box";
-import React, {memo, useEffect,} from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Handle } from 'react-flow-renderer';
-import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import Tooltip from '@material-ui/core/Tooltip';
-import NodeEditor from "../NodeEditor/nodeEditor"
-import Popover from "@material-ui/core/Popover/Popover";
-import { Scrollbars } from 'react-custom-scrollbars';
-import { Rnd } from "react-rnd";
+import {Handle} from "react-flow-renderer";
+import TextField from "@material-ui/core/TextField/TextField";
+import Checkbox from "@material-ui/core/Checkbox/Checkbox";
+import NodeEditor from "../NodeEditor/nodeEditor";
+import {makeStyles} from "@material-ui/core";
 
-
-export default memo(({ data, props}) => {
+export default memo(({ data,}) => {
     const classes = useStyles();
     const [done, setDone] = React.useState(data.done)
-
 
     const [text, setText] = React.useState(data.text);
     const [textColor, setTextColor] = React.useState(data.textColor);
@@ -67,9 +61,9 @@ export default memo(({ data, props}) => {
     };
 
     useEffect(() => {
-       if (data.shadow){
-           setShadow(data.shadow)
-       }
+        if (data.shadow){
+            setShadow(data.shadow)
+        }
     }, []);
 
 
@@ -89,39 +83,31 @@ export default memo(({ data, props}) => {
             {/*>*/}
 
 
-                <Box
+            <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
                 style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
 
-                    <Handle
-                        type="source"
-                        position="top"
-                        id="a"
-                        style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
-                    />
+                <Handle
+                    type="source"
+                    position="top"
+                    id="a"
+                    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
+                />
 
 
                 <TextField
-                            id="standard-basic"
-                            placeholder="add todo"
-                            multiline
-                            onChange={(event) => saveText(event)}
-                            defaultValue={text}
-                            fullWidth
-                            InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}
-                            rowsMax={200}
-                    />
-
-
-                       <Checkbox
-                            checked={done}
-                            style={{marginLeft: 4}}
-                            onChange={toggleDone}
-                            inputProps={{'aria-label': 'primary checkbox'}}
-                        />
+                    id="standard-basic"
+                    placeholder="add notes"
+                    multiline
+                    onChange={(event) => saveText(event)}
+                    defaultValue={text}
+                    fullWidth
+                    InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}
+                    rowsMax={200}
+                />
 
 
                 <Box display ='flex' >
@@ -163,17 +149,17 @@ export default memo(({ data, props}) => {
                 {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
                 {/*/>*/}
 
-                    <Handle
+                <Handle
 
-                        type="target"
-                        position="bottom"
-                        style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}
-                        onConnect={(params) => console.log('handle onConnect', params)}
-                    />
+                    type="target"
+                    position="bottom"
+                    style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}
+                    onConnect={(params) => console.log('handle onConnect', params)}
+                />
 
 
 
-                </Box>
+            </Box>
 
             {/*</Rnd>*/}
 
@@ -231,4 +217,3 @@ const useStyles = makeStyles((theme) => ({
     popover: {
     },
 }));
-
