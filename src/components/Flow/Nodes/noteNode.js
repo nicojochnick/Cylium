@@ -6,6 +6,16 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import NodeEditor from "../NodeEditor/nodeEditor";
 import {makeStyles} from "@material-ui/core";
+import { EditorState } from 'draft-js';
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
+import { Rnd } from "react-rnd";
+import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+let tinycolor = require("tinycolor2");
+
+
+
+let global_bg_c = 'white';
 
 export default memo(({ data,}) => {
     const classes = useStyles();
@@ -17,6 +27,7 @@ export default memo(({ data,}) => {
     const[border, setBorder] = React.useState(data.border);
     const [shadow, setShadow ] =React.useState(8)
     const [fontSize, setFontSize] = React.useState(data.fontSize);
+    const [editorState, setEditorState] = React.useState(EditorState.createEmpty())
 
     const saveText = (event) => {
         setText(event.target.value)
@@ -64,7 +75,20 @@ export default memo(({ data,}) => {
         if (data.shadow){
             setShadow(data.shadow)
         }
+        global_bg_c = backgroundColor;
     }, []);
+
+
+
+    const getColor = () => {
+        let color = tinycolor(backgroundColor);
+        if (color.isDark()){
+            return 'white'
+        } else {
+            return 'black'
+        }
+
+    }
 
 
 
@@ -75,20 +99,17 @@ export default memo(({ data,}) => {
             {/*    default={{*/}
             {/*        x: 0,*/}
             {/*        y: 0,*/}
-            {/*        width: 300,*/}
-            {/*        height: 50,*/}
+            {/*        // width: 300,*/}
+            {/*        // height: 50,*/}
             {/*    }}*/}
             {/*    style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}*/}
-
             {/*>*/}
-
 
             <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
-                style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
+                style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3,borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
-
 
                 <Handle
                     type="source"
@@ -97,20 +118,61 @@ export default memo(({ data,}) => {
                     style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
                 />
 
+                <Box className = {'nodrag'} style={{margin: 5, padding: 2, }}>
 
-                <TextField
-                    id="standard-basic"
-                    placeholder="add notes"
-                    multiline
-                    onChange={(event) => saveText(event)}
-                    defaultValue={text}
-                    fullWidth
-                    InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}
-                    rowsMax={200}
+                <Editor
+                    editorState={editorState}
+
+                    toolbarClassName="toolbarClassName"
+                    toolbarOnFocus
+                    wrapperClassName="wrapperClassName"
+                    editorClassName="editorClassName"
+                    onEditorStateChange={setEditorState}
+                    editorStyle = {{width: 305}}
+                    toolbarClassName={classes.toolbar}
+                    toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginTop:-70, width: 315, borderColor:backgroundColor, position: 'absolute', }}
+                    toolbar = {{
+
+                        options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
+                        colorPicker: {
+                            className: undefined,
+                            component: undefined,
+                            popupClassName: undefined,
+                            colors: ['#FFFFFF', '#000000', '#6E80EF', '#7948FB',
+                                '#363144', '#828088', '#3CCD94', '#4F89CF', '#E56A51',
+                                '#FA4420', 'rgb(41,105,176)', 'rgb(85,57,130)', 'rgb(40,50,78)', 'rgb(0,0,0)',
+                                'rgb(247,218,100)', 'rgb(251,160,38)', 'rgb(235,107,86)', 'rgb(226,80,65)', 'rgb(163,143,132)']
+                        },
+
+                        inline: { inDropdown: true },
+                        list: { inDropdown: true },
+                        textAlign: { inDropdown: true },
+                        link: { inDropdown: true },
+                        history: { inDropdown: true },
+
+                    }}
                 />
+
+                </Box>
+
+
+
+                {/*<TextField*/}
+                {/*    id="standard-basic"*/}
+                {/*    placeholder="add notes"*/}
+                {/*    multiline*/}
+                {/*    onChange={(event) => saveText(event)}*/}
+                {/*    defaultValue={text}*/}
+                {/*    fullWidth*/}
+                {/*    InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}*/}
+                {/*    rowsMax={200}*/}
+                {/*/>*/}
 
 
                 <Box display ='flex' >
+
+                    <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {20} />
+
 
                     <NodeEditor
                         changeColor = {changeColor}
@@ -163,10 +225,6 @@ export default memo(({ data,}) => {
 
             {/*</Rnd>*/}
 
-
-
-
-
         </>
 
 
@@ -216,4 +274,11 @@ const useStyles = makeStyles((theme) => ({
     },
     popover: {
     },
+
+    toolbar: {
+        fontSize: 12,
+        backgroundColor: global_bg_c,
+
+
+    }
 }));

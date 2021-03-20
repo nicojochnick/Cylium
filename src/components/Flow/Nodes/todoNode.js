@@ -11,6 +11,8 @@ import Popover from "@material-ui/core/Popover/Popover";
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Rnd } from "react-rnd";
 let tinycolor = require("tinycolor2");
+import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+
 
 
 
