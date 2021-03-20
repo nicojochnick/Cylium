@@ -37,7 +37,7 @@ const getNodeId = () => `node_${+new Date()}`;
 
 function BaseChart(props) {
 
-    const [elements,setElements] = React.useState(props.channel.flow.elements);
+    const [elements,setElements] = React.useState([]);
     const [id, setID] = React.useState(500);
     const [rfInstance, setRfInstance] = React.useState(null);
     const [saving, setSaving] = React.useState(false);
@@ -197,7 +197,12 @@ function BaseChart(props) {
         triggerAutoSave()
     };
 
-    const onConnect = (params) => setElements((els) => addEdge(params, els));
+    const onConnect = (params) =>  {
+        params.animated = true;
+        setElements((els) =>
+            addEdge(params, els)
+        );
+    };
 
     let timerID;
 
@@ -206,7 +211,7 @@ function BaseChart(props) {
         clearTimeout(timerID);
         setSaving(true);
         timerID = setTimeout(() => {
-            onSave();
+            // onSave();
             setSaving(false);
             console.log("finished")
         }, 5000)
@@ -214,9 +219,9 @@ function BaseChart(props) {
 
 
     useEffect(() => {
-       if(props.channel){
+       if(props.channel && props.channel.flow!== ''){
             let f = JSON.parse(props.channel.flow);
-            console.log('ELEMENTS:', f.elements,)
+            console.log('ELEMENTS:', f.elements,);
            let dbElements = f.elements;
 
             for (let node of dbElements){
@@ -246,7 +251,7 @@ function BaseChart(props) {
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
                     <FlowController addNode = {addNode} />
-                    {/*<Button onClick = {()=> onSave()}> SAVE </Button>*/}
+                    <Button onClick = {()=> onSave()}> SAVE </Button>
 
 
                 </Box>

@@ -10,6 +10,10 @@ import NodeEditor from "../NodeEditor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Rnd } from "react-rnd";
+let tinycolor = require("tinycolor2");
+
+
+
 
 
 export default memo(({ data, props}) => {
@@ -96,12 +100,7 @@ export default memo(({ data, props}) => {
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
 
-                    <Handle
-                        type="source"
-                        position="top"
-                        id="a"
-                        style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
-                    />
+
 
 
                 <TextField
@@ -118,7 +117,7 @@ export default memo(({ data, props}) => {
 
                        <Checkbox
                             checked={done}
-                            style={{marginLeft: 4}}
+                            style={{marginLeft: 4, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />
@@ -163,13 +162,39 @@ export default memo(({ data, props}) => {
                 {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
                 {/*/>*/}
 
+
+
                     <Handle
 
                         type="target"
+                        id = 'j'
+                        position="left"
+                        style={{ zIndex: 12, backgroundColor: 'grey',boxShadow: "0px 2px 4px #C5C5C5", }}
+                        // onConnect={(params) => console.log('handle onConnect', params)}
+                    />
+                    <Handle
+                        type="source"
+                        position="right"
+                        id="z"
+                        style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
+                    />
+
+                    <Handle
+                        type = 'target'
+                        id="a"
+                        position="top"
+                        style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'grey' }}
+                    />
+                    <Handle
+                        type="source"
+                        id = 'k'
                         position="bottom"
                         style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}
-                        onConnect={(params) => console.log('handle onConnect', params)}
+                        // onConnect={(params) => console.log('handle onConnect', params)}
                     />
+
+
+
 
 
 

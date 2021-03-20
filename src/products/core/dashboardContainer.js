@@ -56,25 +56,25 @@ function DashboardContainer(props) {
 
     }, []);
 
-    useEffect(() => {
-        //TODO: We only want to pull trackers that are in the usertracker owner list (make a new list or double filter)
-        function getAutomations(querySnapshot) {
-            let automations = [];
-            querySnapshot.forEach(function (doc) {
-                automations.push(doc.data())
-            });
-            console.log('successfuly setted automation: ', automations)
-            setAutomations(automations)
-        }
-        if (userAutomations.length > 0) {
-            console.log('automationIDs pulled and getting Automations');
-            const queryAutomations = db.collection('trackers').where('id', 'in', userAutomations);
-            const unsubscribeAutomations = queryAutomations.onSnapshot(getAutomations, error => console.log(error));
-            return () => {
-                unsubscribeAutomations()
-            }
-        }
-    }, [userAutomations]);
+    // useEffect(() => {
+    //     //TODO: We only want to pull trackers that are in the usertracker owner list (make a new list or double filter)
+    //     function getAutomations(querySnapshot) {
+    //         let automations = [];
+    //         querySnapshot.forEach(function (doc) {
+    //             automations.push(doc.data())
+    //         });
+    //         console.log('successfuly setted automation: ', automations)
+    //         setAutomations(automations)
+    //     }
+    //     if (userAutomations.length > 0) {
+    //         console.log('automationIDs pulled and getting Automations');
+    //         const queryAutomations = db.collection('trackers').where('id', 'in', userAutomations);
+    //         const unsubscribeAutomations = queryAutomations.onSnapshot(getAutomations, error => console.log(error));
+    //         return () => {
+    //             unsubscribeAutomations()
+    //         }
+    //     }
+    // }, [userAutomations]);
 
     useEffect(() => {
         function getChannels(querySnapshot) {

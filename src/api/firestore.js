@@ -83,6 +83,35 @@ export async function saveFlow (channelID, flow) {
 };
 
 
+export async function addChannel (userID, channels){
+
+    const res = await db.collection('channels').add({
+        flow: '',
+        name: 'add a name',
+        color: 'black'
+    });
+
+    console.log(res, userID,channels);
+
+
+    db.collection('channels').doc(res.id).update({
+        channelID: res.id
+    }).then(() => {
+        console.log(" Channel Invite Notification and ID successfully created");
+    }).catch((error) => {
+        console.error("Error creating notification and/or ID ", error);
+    });
+
+    let c = channels;
+
+    c.push(res.id);
+
+    const userRes = await db.collection('users').doc(userID).update({
+        channelIDs:c
+    })
+}
+
+
 
 //NOTIFICATIONS
 

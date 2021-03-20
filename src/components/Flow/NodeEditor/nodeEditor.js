@@ -12,21 +12,19 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Switch from '@material-ui/core/Switch';
 import Tabs from '@material-ui/core/Tabs';
 import Fade from '@material-ui/core/Fade';
-
 import Tab from '@material-ui/core/Tab';
-
-
 import Grid from "@material-ui/core/Grid"
-
 import { CirclePicker } from 'react-color';
+
+let tinycolor = require("tinycolor2");
+
 
 
 const colors = ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#FCFCFC", "black"]
 
 
-
-
 function NodeEditor(props) {
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [textColor, setTextColor] = React.useState(props.textColor);
@@ -45,6 +43,17 @@ function NodeEditor(props) {
             borderRadius: 12,
         },
     }))(Tooltip);
+
+
+    const getColor = () => {
+        let color = tinycolor(props.backgroundColor);
+        if (color.isDark()){
+            return 'white'
+        } else {
+            return 'black'
+        }
+
+    }
 
 
 
@@ -96,7 +105,6 @@ function NodeEditor(props) {
                 interactive
                 onClose={handleCloseEditor}
                 onOpen={handleOpenEditor}
-
                 placement={'right'}
                 TransitionComponent={Fade} TransitionProps={{ timeout: 2 }}
                 title = {
@@ -256,7 +264,7 @@ function NodeEditor(props) {
                 }
             >
                 <div style = {{}}>
-                    <FiMoreVertical style = {{margin: 5, marginRight: 2}} size = {15} />
+                    <FiMoreVertical style = {{margin: 5, marginRight: 2, color: getColor()}} size = {15} />
 
                 </div>
 

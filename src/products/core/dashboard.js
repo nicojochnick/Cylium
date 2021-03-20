@@ -43,6 +43,7 @@ import {db} from "../../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
 import Notification from "../../components/Utilities/Notifications/notification";
 import {mergeAutomationIDsandMessages} from "../../helpers/filters";
+import {addChannel} from "../../api/firestore";
 
 
 export default function Dashboard(props) {
@@ -55,6 +56,13 @@ export default function Dashboard(props) {
 
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
+
+    const addChannelDB= () => {
+
+        console.log(props.user.email, props.user.channelIDs)
+        addChannel(props.user.email, props.user.channelIDs)
+
+    };
 
 
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
@@ -221,7 +229,7 @@ export default function Dashboard(props) {
                     )
                     }
                     <Divider/>
-                    <ListItem button onClick = {()=>console.log('touchtap')} >
+                    <ListItem button onClick = {()=>addChannelDB()} >
                             <ListItemIcon >
                                 <BiPlus size = {25} style = {{color:'#3C3F48'}}  />
                             </ListItemIcon>

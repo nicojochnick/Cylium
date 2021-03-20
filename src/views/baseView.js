@@ -21,7 +21,8 @@ function BaseView(props) {
     const [switchState, setSwitch] = React.useState(false);
     const [isChatOpen, setIsChat] = React.useState(false);
     const [graphMDandLG, setGraphMDandLG] = React.useState(12)
-    const [width, setWidth] = React.useState('88vw')
+    const [width, setWidth] = React.useState('88vw');
+    const [users, setUsers] = React.useState([]);
     const [stretch, setStretch] = React.useState(6);
     const handleSwitch = (event) => {
         setSwitch(!switchState);
@@ -40,9 +41,15 @@ function BaseView(props) {
 
     };
 
+    const getUsers = () => {
+
+
+    };
+
     useEffect(() => {
         console.log('MESSAGES----->', props.messages)
         console.log(props.channel)
+        getUsers();
     }, []);
 
     return (
