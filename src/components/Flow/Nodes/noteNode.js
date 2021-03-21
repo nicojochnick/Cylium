@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import NodeEditor from "../NodeEditor/nodeEditor";
 import {makeStyles} from "@material-ui/core";
-import { EditorState } from 'draft-js';
+import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import { Rnd } from "react-rnd";
@@ -27,7 +27,8 @@ export default memo(({ data,}) => {
     const[border, setBorder] = React.useState(data.border);
     const [shadow, setShadow ] =React.useState(8)
     const [fontSize, setFontSize] = React.useState(data.fontSize);
-    const [editorState, setEditorState] = React.useState(EditorState.createEmpty())
+    const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
+
 
     const saveText = (event) => {
         setText(event.target.value)
@@ -40,8 +41,8 @@ export default memo(({ data,}) => {
     };
     const changeFont = (size) => {
 
-        data.fontSize = size
-        console.log('switch!')
+        data.fontSize = size;
+        console.log('switch!');
         setFontSize(size)
 
     };
@@ -71,12 +72,6 @@ export default memo(({ data,}) => {
         }
     };
 
-    useEffect(() => {
-        if (data.shadow){
-            setShadow(data.shadow)
-        }
-        global_bg_c = backgroundColor;
-    }, []);
 
 
 
@@ -88,8 +83,28 @@ export default memo(({ data,}) => {
             return 'black'
         }
 
-    }
+    };
 
+    const handleSetEditorState = (editorState) => {
+        const contentState = editorState.getCurrentContent();
+        let save = JSON.stringify(convertToRaw(contentState));
+        setEditorState(editorState)
+        data.textContent = save;
+    };
+
+
+    useEffect(() => {
+        if (data.shadow){
+            setShadow(data.shadow)
+        }
+        if (data.textContent) {
+            console.log(data.textContent);
+            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
+            console.log(parsed)
+            setEditorState(parsed);
+        }
+        global_bg_c = backgroundColor;
+    }, []);
 
 
     return (
@@ -122,13 +137,12 @@ export default memo(({ data,}) => {
 
                 <Editor
                     editorState={editorState}
-
                     toolbarClassName="toolbarClassName"
                     toolbarOnFocus
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
-                    onEditorStateChange={setEditorState}
-                    editorStyle = {{width: 305}}
+                    onEditorStateChange={handleSetEditorState}
+                    editorStyle = {{width: 250}}
                     toolbarClassName={classes.toolbar}
                     toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginTop:-70, width: 315, borderColor:backgroundColor, position: 'absolute', }}
                     toolbar = {{
@@ -153,7 +167,14 @@ export default memo(({ data,}) => {
                     }}
                 />
 
+
                 </Box>
+
+                <Box display ='flex' flexDirection = 'column ' >
+                    <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
+
+                </Box>
+
 
 
 
@@ -169,25 +190,6 @@ export default memo(({ data,}) => {
                 {/*/>*/}
 
 
-                <Box display ='flex' >
-
-                    <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {20} />
-
-
-                    <NodeEditor
-                        changeColor = {changeColor}
-                        changeFont = {changeFont}
-                        switchShadow = {switchShadow}
-                        changeBorder = {changeBorder}
-                        fontSize = {fontSize}
-                        border = {data.border}
-                        shadow = {data.shadow}
-                        textColor = {textColor}
-                        backgroundColor = {backgroundColor}
-
-                    />
-
-                </Box>
 
 
 
@@ -221,7 +223,11 @@ export default memo(({ data,}) => {
 
 
 
+
+
             </Box>
+
+
 
             {/*</Rnd>*/}
 
@@ -282,3 +288,20 @@ const useStyles = makeStyles((theme) => ({
 
     }
 }));
+
+
+{/*<BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {20} />*/}
+
+
+{/*<NodeEditor*/}
+{/*    changeColor = {changeColor}*/}
+{/*    changeFont = {changeFont}*/}
+{/*    switchShadow = {switchShadow}*/}
+{/*    changeBorder = {changeBorder}*/}
+{/*    fontSize = {fontSize}*/}
+{/*    border = {data.border}*/}
+{/*    shadow = {data.shadow}*/}
+{/*    textColor = {textColor}*/}
+{/*    backgroundColor = {backgroundColor}*/}
+
+{/*/>*/}

@@ -7,6 +7,8 @@ import Divider from "@material-ui/core/Divider";
 import Popover from '@material-ui/core/Popover'
 import Button from '@material-ui/core/Button';
 import PuffLoader from "react-spinners/PuffLoader";
+import {convertToRaw, EditorState} from 'draft-js';
+
 import {BiCheck} from "react-icons/bi"
 
 import FlowController from "./flowController"
@@ -15,6 +17,7 @@ import TodoNode from "./Nodes/todoNode";
 import {saveFlow} from "../../api/firestore";
 import FeedController from "./feedController";
 import Grid from "@material-ui/core/Grid";
+
 import NoteNode from "./Nodes/noteNode";
 import WebPageNode from "./Nodes/webPageNode";
 
@@ -43,6 +46,9 @@ function BaseChart(props) {
     const [saving, setSaving] = React.useState(false);
 
     const { transform } = useZoomPanHelper();
+
+    const onNodeDoubleClick = (node) => console.log('node double click', node);
+
 
 
     const onSave = useCallback(() => {
@@ -132,7 +138,9 @@ function BaseChart(props) {
                 draggable:true,
                 // className : "nodrag",
                 type: 'noteNodes',
-                data: { text: null,
+                data: {
+                    text: null,
+                    textContent: null,
                     done:false,
                     id: id,
                     fontSize: 16,
@@ -269,8 +277,8 @@ function BaseChart(props) {
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
                         // onElementClick={onElementClick}
+                        onNodeDoubleClick={onNodeDoubleClick}
                     >
-
                         <Background
                             variant = "dots"
                             color = "#968ab8"
