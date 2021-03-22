@@ -74,8 +74,6 @@ function FlowController(props) {
 
                         </Button>
 
-
-
                         <Button onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>
 
@@ -84,7 +82,7 @@ function FlowController(props) {
                             <BiListUl size = {25}/>
                         </Button>
                         <Button>
-                            <BiUserCircle size = {25}/>
+                            <BiUserCircle onClick={()=> props.addNode('avatar')} size = {25}/>
                         </Button>
                     <Button>
                         <BiMessageAltDetail size = {25}/>

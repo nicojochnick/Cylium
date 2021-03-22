@@ -14,7 +14,6 @@ import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiLi
 let tinycolor = require("tinycolor2");
 
 
-
 let global_bg_c = 'white';
 
 export default memo(({ data,}) => {
@@ -73,8 +72,6 @@ export default memo(({ data,}) => {
     };
 
 
-
-
     const getColor = () => {
         let color = tinycolor(backgroundColor);
         if (color.isDark()){
@@ -90,6 +87,7 @@ export default memo(({ data,}) => {
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState)
         data.textContent = save;
+        console.log('saving')
     };
 
 
@@ -126,14 +124,14 @@ export default memo(({ data,}) => {
                 style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3,borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
-                <Handle
-                    type="source"
-                    position="top"
-                    id="a"
-                    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
-                />
+                {/*<Handle*/}
+                {/*    type="source"*/}
+                {/*    position="top"*/}
+                {/*    id="a"*/}
+                {/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}*/}
+                {/*/>*/}
 
-                <Box className = {'nodrag'} style={{margin: 5, padding: 2, }}>
+                <Box className = {'nodrag'} style={{marginLeft: 8, }}>
 
                 <Editor
                     editorState={editorState}
@@ -144,7 +142,7 @@ export default memo(({ data,}) => {
                     onEditorStateChange={handleSetEditorState}
                     editorStyle = {{width: 250}}
                     toolbarClassName={classes.toolbar}
-                    toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginTop:-70, width: 315, borderColor:backgroundColor, position: 'absolute', }}
+                    toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginLeft: -30, marginTop:-60, width: 315, borderColor:backgroundColor, position: 'absolute', }}
                     toolbar = {{
 
                         options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
@@ -213,13 +211,15 @@ export default memo(({ data,}) => {
                 {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
                 {/*/>*/}
 
-                <Handle
 
-                    type="target"
-                    position="bottom"
-                    style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}
-                    onConnect={(params) => console.log('handle onConnect', params)}
-                />
+
+                {/*<Handle*/}
+
+                {/*    type="target"*/}
+                {/*    position="bottom"*/}
+                {/*    style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}*/}
+                {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
+                {/*/>*/}
 
 
 

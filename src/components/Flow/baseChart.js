@@ -20,6 +20,8 @@ import Grid from "@material-ui/core/Grid";
 
 import NoteNode from "./Nodes/noteNode";
 import WebPageNode from "./Nodes/webPageNode";
+import CharacterNode from "./Nodes/characterNode";
+import AvatarNode from "./Nodes/avatarNode"
 
 
 const reset = [
@@ -34,6 +36,8 @@ const nodeTypes = {
     labelNodes: LabelNode,
     noteNodes: NoteNode,
     todoNodes: TodoNode,
+    avatarNodes: AvatarNode,
+    characterNode: CharacterNode,
 };
 
 const getNodeId = () => `node_${+new Date()}`;
@@ -44,7 +48,7 @@ function BaseChart(props) {
     const [id, setID] = React.useState(500);
     const [rfInstance, setRfInstance] = React.useState(null);
     const [saving, setSaving] = React.useState(false);
-
+    const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
     const { transform } = useZoomPanHelper();
 
     const onNodeDoubleClick = (node) => console.log('node double click', node);
@@ -80,6 +84,21 @@ function BaseChart(props) {
         let node = null;
         let id = getNodeId();
 
+        if (type == 'avatar') {
+
+            node = {
+                id: id,
+                draggable: true,
+                // className : "nodrag",
+                type: 'avatarNodes',
+                data: {
+                    user: props.user
+                },
+                position: {x: 350, y: 350},
+            }
+
+        }
+
 
         if (type =='label'){
             node = {
@@ -96,14 +115,25 @@ function BaseChart(props) {
             }
         }
 
+        if (type == 'character') {
+            node = {
+                id: id,
+                draggable: true,
+                // className : "nodrag",
+                type: 'characterNode',
+                position: {x: 350, y: 350},
+            }
+
+        }
+
         if (type =='todo') {
-            console.log('selected');
             node = {
                 id: id,
                 draggable: true,
                 // className : "nodrag",
                 type: 'todoNodes',
                 data: {
+                    textContent: null,
                     text: null,
                     done: false,
                     id: id,
@@ -115,7 +145,6 @@ function BaseChart(props) {
                     shadow: 8
                 },
                 position: {x: 350, y: 350},
-
             }
         }
 
@@ -125,6 +154,7 @@ function BaseChart(props) {
                 draggable:true,
                 // className : "nodrag",
                 className:"nowheel",
+
 
                 type: 'webPageNodes',
                 data: { text: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
@@ -253,12 +283,12 @@ function BaseChart(props) {
 
                 <Box
                     border={1}
-                    borderColor = {'#6989FF'}
+                    borderColor = {buttonStyle.borderColor}
                     borderRadius = {100}
 
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
-                    <FlowController addNode = {addNode} />
+                    <FlowController buttonStyle = {buttonStyle} addNode = {addNode} />
                     <Button onClick = {()=> onSave()}> SAVE </Button>
 
 
@@ -290,11 +320,11 @@ function BaseChart(props) {
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'space-between' alignItems = 'space-between'>
                             <Box
                                 border={1}
-                                borderColor = {'#6989FF'}
+                                borderColor = {buttonStyle.borderColor}
                                 borderRadius = {100}
                                 style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, margin: 20,  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                             >
-                                <FeedController openChat = {props.openChat}/>
+                                <FeedController buttonStyle = {buttonStyle} openChat = {props.openChat}/>
 
                             </Box>
                             <Box style = {{marginRight: 130,zIndex: 10,   marginTop: 10,}}>

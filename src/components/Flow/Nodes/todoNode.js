@@ -11,7 +11,7 @@ import Popover from "@material-ui/core/Popover/Popover";
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Rnd } from "react-rnd";
 import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
-import { EditorState, convertToRaw} from 'draft-js';
+import {EditorState, convertToRaw, convertFromRaw} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 
 
@@ -19,7 +19,7 @@ let tinycolor = require("tinycolor2");
 
 
 
-export default memo(({ data, props}) => {
+export default memo(({ data}) => {
     const classes = useStyles();
     const [done, setDone] = React.useState(data.done)
 
@@ -30,7 +30,7 @@ export default memo(({ data, props}) => {
     const[border, setBorder] = React.useState(data.border);
     const [shadow, setShadow ] =React.useState(8)
     const [fontSize, setFontSize] = React.useState(data.fontSize);
-    const [editorState, setEditorState] = React.useState(EditorState.createEmpty())
+    const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
 
 
     const saveText = (event) => {
@@ -87,12 +87,27 @@ export default memo(({ data, props}) => {
 
     }
 
+    const handleSetEditorState = (editorState) => {
+        console.log('saving todo state')
+        const contentState = editorState.getCurrentContent();
+        let save = JSON.stringify(convertToRaw(contentState));
+        setEditorState(editorState)
+        data.textContent = save;
+    };
+
 
 
     useEffect(() => {
        if (data.shadow){
            setShadow(data.shadow)
        }
+
+        if (data.textContent) {
+            console.log(data.textContent);
+            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
+            console.log(parsed)
+            setEditorState(parsed);
+        }
     }, []);
 
 
@@ -119,7 +134,7 @@ export default memo(({ data, props}) => {
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
 
-                    <Box className = {'nodrag'} style={{margin: 5, padding: 2, }}>
+                    <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0, }}>
 
                         <Editor
                             editorState={editorState}
@@ -128,10 +143,10 @@ export default memo(({ data, props}) => {
                             toolbarOnFocus
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
-                            onEditorStateChange={setEditorState}
-                            editorStyle = {{width: 200}}
+                            onEditorStateChange={handleSetEditorState}
+                            editorStyle = {{width: 210}}
                             toolbarClassName={classes.toolbar}
-                            toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginTop:-70, width: 315, borderColor:backgroundColor, position: 'absolute', }}
+                            toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
 
                                 options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
