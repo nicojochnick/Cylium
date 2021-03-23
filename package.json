@@ -35,6 +35,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-spinners": "^0.9.0",
+    "react-timeago": "^5.2.0",
     "react-window": "^1.8.6",
     "recharts": "^1.8.5",
     "tinycolor2": "^1.4.2",

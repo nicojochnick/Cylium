@@ -9,7 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import NodeEditor from "../NodeEditor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
 import Grid from "@material-ui/core/Grid";
-
+import TimeAgo from 'react-timeago'
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Rnd } from "react-rnd";
 import {BiTimeFive, BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
@@ -34,7 +34,8 @@ export default memo(({ data}) => {
     const [showTimer, setShowTimer] = React.useState(data.showTimer);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [deadline, setDeadline] = React.useState(null);
+    const [isEditingDeadline, setIsEditingDeadline] = React.useState(false)
+    const [deadline, setDeadline] = React.useState(data.deadline);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -48,9 +49,8 @@ export default memo(({ data}) => {
     const id = open ? 'simple-popover' : undefined;
 
 
-
     const saveText = (event) => {
-        setText(event.target.value)
+        setText(event.target.value);
         data.text = event.target.value;
 
     };
@@ -60,8 +60,8 @@ export default memo(({ data}) => {
     };
     const changeFont = (size) => {
 
-        data.fontSize = size
-        console.log('switch!')
+        data.fontSize = size;
+        console.log('switch!');
         setFontSize(size)
 
     };
@@ -111,15 +111,26 @@ export default memo(({ data}) => {
         console.log('saving todo state')
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
-        setEditorState(editorState)
+        setEditorState(editorState);
         data.textContent = save;
     };
 
     const saveDeadline = () => {
-        console.log('will save deadline,', deadline)
+        data.deadline = deadline;
+        setIsEditingDeadline(false)
+        handleClose()
+    };
+
+    const handleSetDeadline = (e)=> {
+        setDeadline(e.target.value);
+        setIsEditingDeadline(true)
 
     };
 
+    const clearDeadline = () => {
+        setDeadline('');
+        handleClose()
+    }
 
 
     useEffect(() => {
@@ -134,6 +145,8 @@ export default memo(({ data}) => {
             setEditorState(parsed);
         }
     }, []);
+
+    console.log('DEADLINE', deadline);
 
 
 
@@ -151,17 +164,33 @@ export default memo(({ data}) => {
 
             {/*>*/}
 
-            <Grid container>
+
+
+            <Box display = 'flex' flexDirection ='column'>
+
+
 
 
                 <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
-                style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
+                style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
 
+
                     <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0, }}>
+                        { deadline !== '' && deadline !== undefined
+                            ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 0, marginRight: -20}}>
+                                <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' border = {1} borderColor = {'#7664FF'} borderRadius = {6} style = {{height: 30, paddingLeft: 10, paddingRight: 10,backgroundColor:'#7664FF'}}>
+                                    <BiTimeFive style = {{margin: 5, marginRight: 0, color: 'white'}} size = {14} />
+                                    <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8, marginLeft: 0}} date = {data.deadline} />
+                                </Box>
+                            </Box>
+
+                            : null
+                        }
+
 
                         <Editor
                             editorState={editorState}
@@ -255,24 +284,34 @@ export default memo(({ data}) => {
                     anchorEl={anchorEl}
                     onClose={handleClose}
                 >
-                    <Box display='flex' flexDirection='column' borderRadius={8}  style={{backgroundColor: 'white', color: 'white', padding: 5, margin: 10}}>
+                    <Box display='flex' flexDirection='column' borderRadius={8}  style={{backgroundColor: 'white',  color: 'white', padding: 8, margin: 0}}>
                         <form className={classes.container} noValidate>
                             <TextField
-                                onChange={(e) => setDeadline(e.target.value)}
+                                onChange={(e) => handleSetDeadline(e)}
                                 id="datetime-local"
                                 label="Deadline"
                                 size = 'small'
                                 type="datetime-local"
-                                defaultValue="2021-01-24T00:00"
+                                defaultValue={deadline}
                                 className={classes.textField}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
                             />
                         </form>
-                        <Button onClick={saveDeadline} className={classes.button} style = {{height: 40, margin: 10,backgroundColor:'#6172FF' }}>
-                            <p style = {{color:'white'}}>save </p>
-                        </Button>
+                        {isEditingDeadline
+                            ?
+                            <Button onClick={saveDeadline} className={classes.button} style = {{height: 40, margin: 10,backgroundColor:'#6172FF' }}>
+                                <p style = {{color:'white'}}>save </p>
+                            </Button>
+                            :
+                            <Button size={'small'} onClick={clearDeadline} className={classes.button} style = {{height: 30,margin: 10,backgroundColor:'#72737E' }}>
+                                <p style = {{color:'white',}}>clear </p>
+                            </Button>
+
+
+                        }
+
 
 
                     </Box>
@@ -280,7 +319,7 @@ export default memo(({ data}) => {
 
 
 
-            </Grid>
+            </Box>
 
             {/*</Rnd>*/}
 
@@ -294,6 +333,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
 
+    },
+    textField: {
+        margin: 5
     },
 
     cont1 : {
@@ -322,8 +364,8 @@ const useStyles = makeStyles((theme) => ({
     },
 
     container: {
-        paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2),
+        paddingTop: theme.spacing(0),
+        paddingBottom: theme.spacing(0),
     },
 
     fixedHeight: {

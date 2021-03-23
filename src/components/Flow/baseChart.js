@@ -151,6 +151,7 @@ function BaseChart(props) {
                 data: {
                     textContent: null,
                     text: null,
+                    deadline: '',
                     done: false,
                     id: id,
                     fontSize: 16,
