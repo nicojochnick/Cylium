@@ -22,6 +22,7 @@ import NoteNode from "./Nodes/noteNode";
 import WebPageNode from "./Nodes/webPageNode";
 import CharacterNode from "./Nodes/characterNode";
 import AvatarNode from "./Nodes/avatarNode"
+import ButtonNode from "./Nodes/buttonNode"
 
 
 const reset = [
@@ -37,6 +38,7 @@ const nodeTypes = {
     noteNodes: NoteNode,
     todoNodes: TodoNode,
     avatarNodes: AvatarNode,
+    buttonNodes: ButtonNode,
     characterNode: CharacterNode,
 };
 
@@ -113,6 +115,20 @@ function BaseChart(props) {
                 // noWheel: true,
 
             }
+        }
+
+        if (type === 'button'){
+            node = {
+                id: id,
+                draggable: true,
+                // className : "nodrag",
+                type: 'buttonNodes',
+                data: {link: '', style: {backgroundColor: '#7664FF'}, title: 'add a title'},
+                position: {x: 350, y: 350},
+            }
+
+
+
         }
 
         if (type == 'character') {

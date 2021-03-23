@@ -13,7 +13,7 @@ export default memo(({ data,}) => {
 
     return (
         <Grid item xs={0} md={0} lg={0}>
-            <Box style={{margin: 5,boxShadow: `0px 1px 4px #4A4A4E`, }} border={2} borderColor={'#9688FF'} borderRadius={50}>
+            <Box style={{margin: 5,boxShadow: `0px 1px 4px #4A4A4E`, }} border={3} borderColor={'#7664FF'} borderRadius={50}>
                 <Avatar src={data.user.img_url_Profile.imgUrl} className={classes.large}/>
             </Box>
             <Handle
