@@ -164,19 +164,6 @@ function BaseChart(props) {
             }
         }
 
-        if (type =='webs'){
-            node = {
-                id:id ,
-                draggable:true,
-                // className : "nodrag",
-                className:"nowheel",
-
-
-                type: 'webPageNodes',
-                data: { text: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
-                position: { x: 350, y: 350 },
-            }
-        }
 
         if (type =='notes'){
             node = {
