@@ -8,29 +8,45 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
 import NodeEditor from "../NodeEditor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
+import Grid from "@material-ui/core/Grid";
+
 import { Scrollbars } from 'react-custom-scrollbars';
 import { Rnd } from "react-rnd";
-import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import {BiTimeFive, BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import {EditorState, convertToRaw, convertFromRaw} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
-
+import {colors} from "../../../styles/colors"
+import IconButton from "@material-ui/core/IconButton";
 
 let tinycolor = require("tinycolor2");
 
 
-
 export default memo(({ data}) => {
     const classes = useStyles();
-    const [done, setDone] = React.useState(data.done)
-
-
+    const [done, setDone] = React.useState(data.done);
     const [text, setText] = React.useState(data.text);
     const [textColor, setTextColor] = React.useState(data.textColor);
-    const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
+    const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor);
     const[border, setBorder] = React.useState(data.border);
-    const [shadow, setShadow ] =React.useState(8)
+    const [shadow, setShadow ] =React.useState(8);
     const [fontSize, setFontSize] = React.useState(data.fontSize);
+    const [timerOptionsOpen, setTimerOptionsOpen] = React.useState(false);
+    const [showTimer, setShowTimer] = React.useState(data.showTimer);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [deadline, setDeadline] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
 
 
     const saveText = (event) => {
@@ -85,7 +101,11 @@ export default memo(({ data}) => {
             return 'black'
         }
 
-    }
+    };
+
+    const openTimerOptions = () => {
+        setTimerOptionsOpen(!timerOptionsOpen)
+    };
 
     const handleSetEditorState = (editorState) => {
         console.log('saving todo state')
@@ -93,6 +113,11 @@ export default memo(({ data}) => {
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState)
         data.textContent = save;
+    };
+
+    const saveDeadline = () => {
+        console.log('will save deadline,', deadline)
+
     };
 
 
@@ -105,7 +130,7 @@ export default memo(({ data}) => {
         if (data.textContent) {
             console.log(data.textContent);
             let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
-            console.log(parsed)
+            console.log(parsed);
             setEditorState(parsed);
         }
     }, []);
@@ -125,6 +150,8 @@ export default memo(({ data}) => {
             {/*    style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}*/}
 
             {/*>*/}
+
+            <Grid container>
 
 
                 <Box
@@ -154,12 +181,8 @@ export default memo(({ data}) => {
                                     className: undefined,
                                     component: undefined,
                                     popupClassName: undefined,
-                                    colors: ['#FFFFFF', '#000000', '#6E80EF', '#7948FB',
-                                        '#363144', '#828088', '#3CCD94', '#4F89CF', '#E56A51',
-                                        '#FA4420', 'rgb(41,105,176)', 'rgb(85,57,130)', 'rgb(40,50,78)', 'rgb(0,0,0)',
-                                        'rgb(247,218,100)', 'rgb(251,160,38)', 'rgb(235,107,86)', 'rgb(226,80,65)', 'rgb(163,143,132)']
+                                    colors: colors
                                 },
-
                                 inline: { inDropdown: true },
                                 list: { inDropdown: true },
                                 textAlign: { inDropdown: true },
@@ -170,23 +193,6 @@ export default memo(({ data}) => {
                         />
 
                     </Box>
-
-
-
-
-
-                {/*<TextField*/}
-                {/*            id="standard-basic"*/}
-                {/*            placeholder="add todo"*/}
-                {/*            multiline*/}
-                {/*            onChange={(event) => saveText(event)}*/}
-                {/*            defaultValue={text}*/}
-                {/*            fullWidth*/}
-                {/*            InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}*/}
-                {/*            rowsMax={200}*/}
-                {/*    />*/}
-
-
                        <Checkbox
                             checked={done}
                             style={{marginLeft: 4, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
@@ -194,51 +200,17 @@ export default memo(({ data}) => {
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />
 
-
                     <Box display ='flex' flexDirection = 'column '>
-
                         <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
+                        <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
+                            <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
+                        </IconButton>
 
-                    {/*<NodeEditor*/}
-                    {/*    changeColor = {changeColor}*/}
-                    {/*    changeFont = {changeFont}*/}
-                    {/*    switchShadow = {switchShadow}*/}
-                    {/*    changeBorder = {changeBorder}*/}
-                    {/*    fontSize = {fontSize}*/}
-                    {/*    border = {data.border}*/}
-                    {/*    shadow = {data.shadow}*/}
-                    {/*    textColor = {textColor}*/}
-                    {/*    backgroundColor = {backgroundColor}*/}
-
-                    {/*/>*/}
-
-                </Box>
+                    </Box>
 
 
 
-
-
-                {/*<Handle*/}
-                {/*    type="source"*/}
-                {/*    position="left"*/}
-                {/*    id="d"*/}
-                {/*    style={{  borderRadius: 0, }}*/}
-                {/*/>*/}
-
-
-
-
-                {/*<Handle*/}
-                {/*    type="source"*/}
-                {/*    position="bottom"*/}
-                {/*    id = 'c'*/}
-                {/*    style={{ background: '#555' }}*/}
-                {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
-                {/*/>*/}
-
-
-
-                    <Handle
+                <Handle
 
                         type="target"
                         id = 'j'
@@ -266,23 +238,53 @@ export default memo(({ data}) => {
                         style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}
                         // onConnect={(params) => console.log('handle onConnect', params)}
                     />
-
-
-
-
-
-
                 </Box>
+
+                <Popover
+                    style={{margin: 10, borderRadius: 20}}
+                    anchorOrigin={{
+                        vertical: 'center',
+                        horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                        vertical: 'center',
+                        horizontal: 'left',
+                    }}
+                    d={id}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                >
+                    <Box display='flex' flexDirection='column' borderRadius={8}  style={{backgroundColor: 'white', color: 'white', padding: 5, margin: 10}}>
+                        <form className={classes.container} noValidate>
+                            <TextField
+                                onChange={(e) => setDeadline(e.target.value)}
+                                id="datetime-local"
+                                label="Deadline"
+                                size = 'small'
+                                type="datetime-local"
+                                defaultValue="2021-01-24T00:00"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </form>
+                        <Button onClick={saveDeadline} className={classes.button} style = {{height: 40, margin: 10,backgroundColor:'#6172FF' }}>
+                            <p style = {{color:'white'}}>save </p>
+                        </Button>
+
+
+                    </Box>
+                </Popover>
+
+
+
+            </Grid>
 
             {/*</Rnd>*/}
 
-
-
-
-
         </>
-
-
 
     );
 });
@@ -331,3 +333,33 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+{/*<NodeEditor*/}
+{/*    changeColor = {changeColor}*/}
+{/*    changeFont = {changeFont}*/}
+{/*    switchShadow = {switchShadow}*/}
+{/*    changeBorder = {changeBorder}*/}
+{/*    fontSize = {fontSize}*/}
+{/*    border = {data.border}*/}
+{/*    shadow = {data.shadow}*/}
+{/*    textColor = {textColor}*/}
+{/*    backgroundColor = {backgroundColor}*/}
+
+{/*/>*/}
+
+
+
+
+{/*<Handle*/}
+{/*    type="source"*/}
+{/*    position="left"*/}
+{/*    id="d"*/}
+{/*    style={{  borderRadius: 0, }}*/}
+{/*/>*/}
+
+{/*<Handle*/}
+{/*    type="source"*/}
+{/*    position="bottom"*/}
+{/*    id = 'c'*/}
+{/*    style={{ background: '#555' }}*/}
+{/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
+{/*/>*/}
