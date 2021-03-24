@@ -129,8 +129,11 @@ export default memo(({ data}) => {
 
     const clearDeadline = () => {
         setDeadline('');
-        handleClose()
-    }
+        handleClose();
+        data.deadline = '';
+
+
+    };
 
 
     useEffect(() => {
@@ -180,11 +183,11 @@ export default memo(({ data}) => {
 
 
                     <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0, }}>
-                        { deadline !== '' && deadline !== undefined
-                            ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 0, marginRight: -20}}>
+                        { deadline !== '' && deadline !== undefined && !done
+                            ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -20}}>
                                 <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' border = {1} borderColor = {'#7664FF'} borderRadius = {6} style = {{height: 30, paddingLeft: 10, paddingRight: 10,backgroundColor:'#7664FF'}}>
                                     <BiTimeFive style = {{margin: 5, marginRight: 0, color: 'white'}} size = {14} />
-                                    <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8, marginLeft: 0}} date = {data.deadline} />
+                                    <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8,  marginLeft: 0}} date = {data.deadline} />
                                 </Box>
                             </Box>
 

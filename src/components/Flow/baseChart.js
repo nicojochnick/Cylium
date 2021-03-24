@@ -17,12 +17,14 @@ import TodoNode from "./Nodes/todoNode";
 import {saveFlow} from "../../api/firestore";
 import FeedController from "./feedController";
 import Grid from "@material-ui/core/Grid";
+import BitCoinGifNode from "./Nodes/bitCoinGifNode"
 
 import NoteNode from "./Nodes/noteNode";
 import WebPageNode from "./Nodes/webPageNode";
 import CharacterNode from "./Nodes/characterNode";
 import AvatarNode from "./Nodes/avatarNode"
 import ButtonNode from "./Nodes/buttonNode"
+import CalendarNode from "./Nodes/calendarNode"
 
 
 const reset = [
@@ -39,7 +41,9 @@ const nodeTypes = {
     todoNodes: TodoNode,
     avatarNodes: AvatarNode,
     buttonNodes: ButtonNode,
+    calendarNodes: CalendarNode,
     characterNode: CharacterNode,
+    bitCoinGifNodes: BitCoinGifNode,
 };
 
 const getNodeId = () => `node_${+new Date()}`;
@@ -101,6 +105,24 @@ function BaseChart(props) {
 
         }
 
+        if (type =='calendar') {
+
+            node = {
+                id:id ,
+                draggable:true,
+                type: 'calendarNodes',
+                className:"nowheel",
+                // data: { text: null, onChange: onTextChange, id: id }
+                data: { style:{color:'white'}, calendarID: 'add your calendar ID here - must be in public mode'},
+                position: { x: 300, y: 300 },
+                // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
+                // noWheel: true,
+
+            }
+
+
+
+        }
 
         if (type =='label'){
             node = {
@@ -141,6 +163,18 @@ function BaseChart(props) {
             }
 
         }
+
+        if (type == 'bitcoingif') {
+            node = {
+                id: id,
+                draggable: true,
+                // className : "nodrag",
+                type: 'bitCoinGifNodes',
+                position: {x: 350, y: 350},
+            }
+
+        }
+
 
         if (type =='todo') {
             node = {

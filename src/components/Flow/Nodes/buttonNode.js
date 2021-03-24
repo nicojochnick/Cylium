@@ -62,6 +62,7 @@ export default memo(({ data,}) => {
                 <a className={classes.a} target="_blank" rel="noopener noreferrer" href = {link}>
                 <Button className={classes.button} style = {{color: color}} onClick={()=> console.log('button clicked')}>
                     <TextField
+                        disabled
                         onChange={handleTitleChange}
                         className={classes.button}
                         inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here

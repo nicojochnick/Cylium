@@ -7,7 +7,9 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import { BiText,BiRectangle, BiLaptop, BiEdit, BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import { BiCalendar} from "react-icons/bi";
+
+import { BiText, BiBitcoin, BiRectangle, BiLaptop, BiEdit, BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 
 
 
@@ -81,8 +83,11 @@ function FlowController(props) {
                             <BiUserCircle onClick={()=> props.addNode('avatar')} size = {25}/>
                         </Button>
                     <Button>
-                        <BiMessageAltDetail size = {25}/>
+                        <BiCalendar onClick={()=> props.addNode('calendar')} size = {25}/>
                     </Button>
+                        <Button>
+                            <BiBitcoin onClick={()=> props.addNode('bitcoingif')} size = {25}/>
+                        </Button>
                     </ButtonGroup>
 
 
