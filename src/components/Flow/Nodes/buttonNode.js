@@ -12,6 +12,7 @@ import {colors} from "../../../styles/colors"
 import {makeStyles} from "@material-ui/core";
 import {CirclePicker} from "react-color";
 import IconButton from "@material-ui/core/IconButton";
+import IconSelector from "../../Customization/iconSelector";
 
 export default memo(({ data,}) => {
     const classes = useStyles();
@@ -124,6 +125,7 @@ export default memo(({ data,}) => {
                         onChangeComplete={ (color) => handleChangeColor(color)}
                     />
                     </div>
+                    <IconSelector/>
 
                     <Button onClick={saveOptions} className={classes.button} style = {{height: 40, margin: 10, color: color,backgroundColor:color}}>
                         <p style = {{color:'white'}}>save </p>
