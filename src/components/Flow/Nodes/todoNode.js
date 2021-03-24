@@ -135,21 +135,15 @@ export default memo(({ data}) => {
 
     };
 
-
     useEffect(() => {
        if (data.shadow){
            setShadow(data.shadow)
        }
-
         if (data.textContent) {
-            console.log(data.textContent);
             let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
-            console.log(parsed);
             setEditorState(parsed);
         }
     }, []);
-
-    console.log('DEADLINE', deadline);
 
 
 

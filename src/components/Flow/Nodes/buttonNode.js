@@ -6,13 +6,15 @@ import {Handle} from "react-flow-renderer";
 import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField/TextField";
 import { FiMoreVertical } from "react-icons/fi";
-import {BiLink,BiText} from "react-icons/bi";
+import {BiLink,BiText,BiX} from "react-icons/bi";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import {colors} from "../../../styles/colors"
 import {makeStyles} from "@material-ui/core";
 import {CirclePicker} from "react-color";
 import IconButton from "@material-ui/core/IconButton";
 import IconSelector from "../../Customization/iconSelector";
+import {getIcon} from "../../Customization/iconSelector";
+import Divider from "@material-ui/core/Divider";
 
 export default memo(({ data,}) => {
     const classes = useStyles();
@@ -22,6 +24,7 @@ export default memo(({ data,}) => {
     const [link, setLink] = React.useState(data.link);
     const [editOpen, setEditOpen] = React.useState(false);
     const [color, setColor] = React.useState(data.style.backgroundColor);
+    const [icon, setIcon] = React.useState(data.icon)
 
     const handleEditOpen = () => {
         setEditOpen(!editOpen)
@@ -43,8 +46,13 @@ export default memo(({ data,}) => {
 
     };
 
+    const selectIcon = (icon) => {
+        setIcon(icon)
+    };
+
     const saveOptions = () => {
         data.link = link;
+        data.icon = icon;
         data.style.backgroundColor = color;
         data.title = title;
         handleEditOpen()
@@ -58,21 +66,27 @@ export default memo(({ data,}) => {
     };
     return (
 
-        <Grid container>
+        <Grid  container>
+
             <Box borderRadius = {7} borderColor = {'black'} border= {0} display = 'flex' flexDirection = 'row' style = {{backgroundColor:color, color: color, overflow:'hidden', maxHeight: 45, margin: 10}}>
+
                 <a className={classes.a} target="_blank" rel="noopener noreferrer" href = {link}>
-                <Button className={classes.button} style = {{color: color}} onClick={()=> console.log('button clicked')}>
-                    <TextField
-                        disabled
-                        onChange={handleTitleChange}
-                        className={classes.button}
-                        inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here
-                        defaultValue={title}
-                        value={title}
-                        InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, color:'white', }, input: {fontSize: 16, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
-                    />
-                </Button>
+                    <Box style = {{paddingLeft: 4}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'>
+                    {icon ? getIcon(icon, 'white', 22) : null}
+                    <Button className={classes.button} style = {{color: color}} onClick={()=> console.log('button clicked')}>
+                        <TextField
+                            disabled
+                            onChange={handleTitleChange}
+                            className={classes.button}
+                            inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here
+                            defaultValue={title}
+                            value={title}
+                            InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, color:'white', }, input: {fontSize: 16, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
+                        />
+                    </Button>
+                </Box>
                 </a>
+
                 <Box display={'flex'} flexDirection ='column' alignItems = 'center' justifyContent={'center'}>
                     <IconButton style ={{margin: 0, padding:0}} onClick={handleOpenOptions}>
                         <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
@@ -82,7 +96,15 @@ export default memo(({ data,}) => {
             </Box>
             {editOpen
                 ?
-                <Box display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white',color:'white', padding: 5}} >
+                <Box border = {1} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white',color:'white', padding: 5,boxShadow: '0px 3px 8px #D3D3DA' }} >
+
+                    <Box display = 'flex' flexDirection ='column' justifyContent = 'flex-end' alignItems = 'flex-end' >
+                        <IconButton onClick = {handleEditOpen} >
+                            <BiX style = {{color: 'black'}} />
+                        </IconButton>
+
+                    </Box>
+
                     <TextField
                         style={{padding: 2, margin: 0}}
                         InputProps={{
@@ -125,7 +147,7 @@ export default memo(({ data,}) => {
                         onChangeComplete={ (color) => handleChangeColor(color)}
                     />
                     </div>
-                    <IconSelector/>
+                    <IconSelector selectIcon = {selectIcon} />
 
                     <Button onClick={saveOptions} className={classes.button} style = {{height: 40, margin: 10, color: color,backgroundColor:color}}>
                         <p style = {{color:'white'}}>save </p>

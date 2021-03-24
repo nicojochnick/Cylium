@@ -73,8 +73,8 @@ function UserId(props) {
         }
 
     };
-
-
+    
+    //TODO check this for performance issues:
 
     useEffect( () => {
         if (props.goDark){setTextColor('black')}

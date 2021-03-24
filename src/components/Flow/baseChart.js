@@ -145,7 +145,7 @@ function BaseChart(props) {
                 draggable: true,
                 // className : "nodrag",
                 type: 'buttonNodes',
-                data: {link: '', style: {backgroundColor: '#7664FF'}, title: 'add a title'},
+                data: {link: '', style: {backgroundColor: '#7664FF'}, icon: null, title: 'add a title'},
                 position: {x: 350, y: 350},
             }
 
