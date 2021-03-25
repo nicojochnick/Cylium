@@ -18,6 +18,10 @@ import {saveFlow} from "../../api/firestore";
 import FeedController from "./feedController";
 import Grid from "@material-ui/core/Grid";
 import BitCoinGifNode from "./Nodes/bitCoinGifNode"
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 
 import NoteNode from "./Nodes/noteNode";
 import WebPageNode from "./Nodes/webPageNode";
@@ -26,6 +30,7 @@ import AvatarNode from "./Nodes/avatarNode"
 import ButtonNode from "./Nodes/buttonNode"
 import CalendarNode from "./Nodes/calendarNode"
 
+let timerID = null;
 
 const reset = [
     { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
@@ -55,19 +60,30 @@ function BaseChart(props) {
     const [rfInstance, setRfInstance] = React.useState(null);
     const [saving, setSaving] = React.useState(false);
     const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
+    const [open, setOpen] = React.useState(false);
+    const [elementsToRemove, setElementsToRemove] = React.useState(null)
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const { transform } = useZoomPanHelper();
 
     const onNodeDoubleClick = (node) => console.log('node double click', node);
 
 
-    const onSave = useCallback(() => {
-        if (rfInstance) {
+    const onSave = () => {
+        console.log('saving rfInstance:', rfInstance)
+        if (rfInstance || elements.length > 0) {
             const flow = rfInstance.toObject();
             saveFlow(props.channel.channelID, flow);
             console.log('SAVING FLOW: ', flow)
         }
-    }, [rfInstance]);
+    }
 
 
     const onRestore = useCallback((flow) => {
@@ -180,7 +196,7 @@ function BaseChart(props) {
                     text: null,
                     deadline: '',
                     done: false,
-
+                    isFolded: false,
                     id: id,
                     fontSize: 16,
                     textColor: '#3D3B42',
@@ -203,6 +219,7 @@ function BaseChart(props) {
                 data: {
                     text: null,
                     textContent: null,
+                    isFolded: false,
                     done:false,
                     id: id,
                     fontSize: 16,
@@ -246,11 +263,17 @@ function BaseChart(props) {
 
 
     const onElementsRemove = (elementsToRemove) => {
-        setElements((els) => removeElements(elementsToRemove, els));
-        triggerAutoSave()
+        setElementsToRemove(elementsToRemove)
+        handleClickOpen()
 
     };
 
+    const confirmElementsRemove = ()=>{
+        handleClose()
+        setElements((els) => removeElements(elementsToRemove, els));
+        setElementsToRemove(null);
+        triggerAutoSave();
+    };
 
     const onEdgeUpdate = (oldEdge, newConnection) => {
         setElements((els) => updateEdge(oldEdge, newConnection, els));
@@ -274,19 +297,21 @@ function BaseChart(props) {
         );
     };
 
-    let timerID;
-
 
     const triggerAutoSave = async () => {
-        console.log("starting/restarting save");
-        clearTimeout(timerID);
+        console.log("started saving...");
         setSaving(true);
+        if (timerID) {
+            clearTimeout(timerID);
+            timerID = null;
+        }
+
         timerID = setTimeout(() => {
-            // onSave();
+            onSave();
             setSaving(false);
-            console.log("finished")
+            console.log("finished saving")
         }, 5000)
-    }
+    };
 
 
     useEffect(() => {
@@ -294,6 +319,8 @@ function BaseChart(props) {
             let f = JSON.parse(props.channel.flow);
             console.log('ELEMENTS:', f.elements,);
            let dbElements = f.elements;
+
+           //WONT WORK because nodes have no reference to this component version
             for (let node of dbElements){
 
                 if (node.data) {
@@ -323,8 +350,6 @@ function BaseChart(props) {
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
                     <FlowController buttonStyle = {buttonStyle} addNode = {addNode} />
-                    <Button onClick = {()=> onSave()}> SAVE </Button>
-
 
                 </Box>
 
@@ -340,7 +365,7 @@ function BaseChart(props) {
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
-                        // onElementClick={onElementClick}
+                        onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
                     >
                         <Background
@@ -379,9 +404,29 @@ function BaseChart(props) {
 
 
                         </Box>
-
-
                 <Controls />
+
+                        <Dialog
+                            open={open}
+                            maxWidth={'xs'}
+                            onClose={handleClose}
+                            aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description"
+                        >
+                            <DialogContent>
+                                <DialogContentText style = {{fontSize: 14}} id="alert-dialog-description">
+                                    Are you sure you want to delete this edge or node?
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="secondary">
+                                    Cancel
+                                </Button>
+                                <Button onClick={confirmElementsRemove} color="primary" autoFocus>
+                                    Delete
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
             </ReactFlow>
                 </div>
             </Box>

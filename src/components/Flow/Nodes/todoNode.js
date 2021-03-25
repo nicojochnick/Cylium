@@ -113,6 +113,7 @@ export default memo(({ data}) => {
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState);
         data.textContent = save;
+        data.save();
     };
 
     const saveDeadline = () => {

@@ -10,7 +10,8 @@ import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import { Rnd } from "react-rnd";
-import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import { BiEdit,BiRectangle, BiMove,BiChevronUp, BiChevronDown, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import IconButton from "@material-ui/core/IconButton";
 let tinycolor = require("tinycolor2");
 
 
@@ -27,6 +28,14 @@ export default memo(({ data,}) => {
     const [shadow, setShadow ] =React.useState(8)
     const [fontSize, setFontSize] = React.useState(data.fontSize);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
+    const [isFolded, setIsFolded] = React.useState(data.isFolded)
+
+    const fold = () => {
+        data.isFolded = !isFolded;
+        setIsFolded(!isFolded);
+        console.log('fold to', !isFolded)
+
+    };
 
 
     const saveText = (event) => {
@@ -87,7 +96,8 @@ export default memo(({ data,}) => {
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState)
         data.textContent = save;
-        console.log('saving')
+        // data.save();
+
     };
 
 
@@ -121,7 +131,7 @@ export default memo(({ data,}) => {
             <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
-                style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3,borderRadius:7, backgroundColor: backgroundColor, }}
+                style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3,borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
                 {/*<Handle*/}
@@ -169,7 +179,16 @@ export default memo(({ data,}) => {
                 </Box>
 
                 <Box display ='flex' flexDirection = 'column ' >
-                    <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
+                    <BiMove style = {{margin: 5, color: getColor()}} size = {15} />
+
+                    <IconButton onClick = {fold} style ={{margin:0, padding: 0}} >
+                    {  isFolded
+                        ?<BiChevronUp style = {{margin: 5, color: getColor()}} size = {17} />
+                        : <BiChevronDown  style = {{margin: 5, color: getColor()}} size = {17} />
+
+                    }
+                    </IconButton>
+
 
                 </Box>
 
