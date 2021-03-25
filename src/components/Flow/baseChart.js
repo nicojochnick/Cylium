@@ -55,19 +55,17 @@ function BaseChart(props) {
     const [rfInstance, setRfInstance] = React.useState(null);
     const [saving, setSaving] = React.useState(false);
     const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
+
     const { transform } = useZoomPanHelper();
 
     const onNodeDoubleClick = (node) => console.log('node double click', node);
 
 
-
     const onSave = useCallback(() => {
         if (rfInstance) {
-            console.log(rfInstance)
-            const flow = rfInstance.toObject()
-            console.log(props.channel);
+            const flow = rfInstance.toObject();
             saveFlow(props.channel.channelID, flow);
-            console.log(flow)
+            console.log('SAVING FLOW: ', flow)
         }
     }, [rfInstance]);
 
@@ -120,8 +118,6 @@ function BaseChart(props) {
 
             }
 
-
-
         }
 
         if (type =='label'){
@@ -129,13 +125,10 @@ function BaseChart(props) {
                 id:id ,
                 draggable:true,
                 type: 'labelNodes',
-                className:"nowheel",
-                // data: { text: null, onChange: onTextChange, id: id }
-                data: { text: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
+                data: { textContent: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
                 position: { x: 300, y: 300 },
                 // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
                 // noWheel: true,
-
             }
         }
 
@@ -145,7 +138,7 @@ function BaseChart(props) {
                 draggable: true,
                 // className : "nodrag",
                 type: 'buttonNodes',
-                data: {link: '', style: {backgroundColor: '#7664FF'}, icon: null, title: 'add a title'},
+                data: {isSquare: false, link: 'https://example.com', style: {backgroundColor: '#7664FF'}, icon: null, title: 'add a title'},
                 position: {x: 350, y: 350},
             }
 
@@ -187,6 +180,7 @@ function BaseChart(props) {
                     text: null,
                     deadline: '',
                     done: false,
+
                     id: id,
                     fontSize: 16,
                     textColor: '#3D3B42',
@@ -282,6 +276,7 @@ function BaseChart(props) {
 
     let timerID;
 
+
     const triggerAutoSave = async () => {
         console.log("starting/restarting save");
         clearTimeout(timerID);
@@ -299,11 +294,12 @@ function BaseChart(props) {
             let f = JSON.parse(props.channel.flow);
             console.log('ELEMENTS:', f.elements,);
            let dbElements = f.elements;
-
             for (let node of dbElements){
-                if (node.type === 'textNodes'){
-                    node.data.onChange = onTextChange;
+
+                if (node.data) {
+                    node.data.save = triggerAutoSave
                 }
+
             }
             console.log(dbElements);
            setElements(dbElements)

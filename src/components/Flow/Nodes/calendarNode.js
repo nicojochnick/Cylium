@@ -3,13 +3,13 @@ import Calendar from "@ericz1803/react-google-calendar";
 import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid"
-import {BiPlus, BiImport} from "react-icons/bi";
+import {BiPlus,BiRefresh, BiImport} from "react-icons/bi";
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core";
+import {API_KEY} from "../../../api/googleAPI";
 
 
-const API_KEY = "AIzaSyBkkIlOlM_rjc6Vr4J8LQ8_XZ00DqhKLxg";
 let calendars = [
     {calendarId: ''},
 
@@ -34,6 +34,9 @@ export default memo(({ data,}) => {
 
     const [isEditingID, setIsEditingID] = React.useState(false);
     const [calendarID, setCalendarID] = React.useState(data.calendarID);
+    const [calendars, setCalendars] = React.useState([{calendarId: data.calendarID}]);
+    const [, updateState] = React.useState();
+
 
     const handleEditID = () => {
         setIsEditingID(!isEditingID)
@@ -42,21 +45,66 @@ export default memo(({ data,}) => {
 
     const handleCalendarIDSave = () => {
         data.calendarID = calendarID;
+        setCalendarID(calendarID);
+        setCalendars([{calendarId: calendarID}]);
+
         handleEditID()
 
     };
 
     const getCalendar = () => {
-        let cal = [{calendarId: calendarID}]
+        let cal = [{calendarId: calendarID}];
         console.log(cal)
         return cal;
     };
 
+    const refresh = React.useCallback(() => updateState({}), [])
 
     return (
         <Grid direction ='column' container alignItems={'flex-end'} justify = 'flex-end'>
 
-                <Box display = 'flex' justifyContent = 'center' alignItems = 'center' borderRadius = {100}  borderColor = {'black'} style = {{zIndex: 20, boxShadow: '0px 3px 8px #D3D3DA', backgroundColor:'white', color: 'white', height: 50, minWidth: 50,  marginRight: 20, marginBottom: -25, overflow:'hidden'}} >
+            <Grid direction ='row' container alignItems={'flex-end'} justify = 'flex-end'>
+
+            <Box
+                display = 'flex'
+                justifyContent = 'center'
+                alignItems = 'center'
+                borderRadius = {100}
+                borderColor = {'black'}
+                style = {{zIndex: 20,
+                    boxShadow: '0px 3px 8px #D3D3DA',
+                    backgroundColor:'white',
+                    color: 'white',
+                    height: 50,
+                    minWidth: 50,
+                    marginRight: 20,
+                    marginBottom: -25,
+                    overflow:'hidden'}
+                }
+            >
+                <IconButton onClick = {refresh} variant="contained" color="primary" style={{margin: 0, padding: 0}}>
+                    <BiRefresh style={{color: 'grey'}} size={25}/>
+                </IconButton>
+            </Box>
+
+                <Box
+                    display = 'flex'
+                    justifyContent = 'center'
+                    alignItems = 'center'
+                    borderRadius = {100}
+                    borderColor = {'black'}
+                    style = {{zIndex: 20,
+                        boxShadow: '0px 3px 8px #D3D3DA',
+                        backgroundColor:'white',
+                        color: 'white',
+                        height: 50,
+                        minWidth: 50,
+                        marginRight: 20,
+                        marginBottom: -25,
+                        overflow:'hidden'}
+                    }
+                >
+
                     {isEditingID
                         ?
                         <Box display = 'flex' flexDirection = 'row'>
@@ -83,9 +131,10 @@ export default memo(({ data,}) => {
                         </IconButton>
                     }
                 </Box>
+            </Grid>
             <div style = {{backgroundColor:'white'}}>
 
-            <Calendar styles = {styles} apiKey={API_KEY} calendars={getCalendar()}/>
+            <Calendar styles = {styles} apiKey={API_KEY} calendars={calendars}/>
             </div>
 
 

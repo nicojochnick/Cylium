@@ -117,7 +117,8 @@ export default memo(({ data}) => {
 
     const saveDeadline = () => {
         data.deadline = deadline;
-        setIsEditingDeadline(false)
+        setIsEditingDeadline(false);
+        data.save();
         handleClose()
     };
 
@@ -131,7 +132,6 @@ export default memo(({ data}) => {
         setDeadline('');
         handleClose();
         data.deadline = '';
-
 
     };
 
@@ -149,7 +149,6 @@ export default memo(({ data}) => {
 
     return (
         <>
-
             {/*<Rnd*/}
             {/*    default={{*/}
             {/*        x: 0,*/}
@@ -161,20 +160,12 @@ export default memo(({ data}) => {
 
             {/*>*/}
 
-
-
             <Box display = 'flex' flexDirection ='column'>
-
-
-
-
                 <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
                 style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
-
-
 
                     <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0, }}>
                         { deadline !== '' && deadline !== undefined && !done
@@ -184,14 +175,10 @@ export default memo(({ data}) => {
                                     <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8,  marginLeft: 0}} date = {data.deadline} />
                                 </Box>
                             </Box>
-
                             : null
                         }
-
-
                         <Editor
                             editorState={editorState}
-
                             toolbarClassName="toolbarClassName"
                             toolbarOnFocus
                             wrapperClassName="wrapperClassName"
@@ -214,10 +201,8 @@ export default memo(({ data}) => {
                                 textAlign: { inDropdown: true },
                                 link: { inDropdown: true },
                                 history: { inDropdown: true },
-
                             }}
                         />
-
                     </Box>
                        <Checkbox
                             checked={done}
@@ -231,12 +216,9 @@ export default memo(({ data}) => {
                         <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
                             <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
                         </IconButton>
-
                     </Box>
 
-
-
-                <Handle
+                    <Handle
 
                         type="target"
                         id = 'j'

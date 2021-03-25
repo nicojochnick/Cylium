@@ -15,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import IconSelector from "../../Customization/iconSelector";
 import {getIcon} from "../../Customization/iconSelector";
 import Divider from "@material-ui/core/Divider";
+import Switch from "@material-ui/core/Switch";
 
 export default memo(({ data,}) => {
     const classes = useStyles();
@@ -25,6 +26,7 @@ export default memo(({ data,}) => {
     const [editOpen, setEditOpen] = React.useState(false);
     const [color, setColor] = React.useState(data.style.backgroundColor);
     const [icon, setIcon] = React.useState(data.icon)
+    const [isSquare, setIsSquare] = React.useState(data.isSquare);
 
     const handleEditOpen = () => {
         setEditOpen(!editOpen)
@@ -55,6 +57,7 @@ export default memo(({ data,}) => {
         data.icon = icon;
         data.style.backgroundColor = color;
         data.title = title;
+        data.isSquare = isSquare;
         handleEditOpen()
     };
     const handleChangeColor = (color) => {
@@ -68,27 +71,33 @@ export default memo(({ data,}) => {
 
         <Grid  container>
 
-            <Box borderRadius = {7} borderColor = {'black'} border= {0} display = 'flex' flexDirection = 'row' style = {{backgroundColor:color, color: color, overflow:'hidden', maxHeight: 45, margin: 10}}>
+            <Box borderRadius = {10} borderColor = {'black'} border= {0} display = 'flex' flexDirection = 'row' style = {{backgroundColor:color, color: color, overflow:'hidden', width: isSquare? 85 : 240, height: isSquare ? 85 : 45, margin: 10}}>
 
                 <a className={classes.a} target="_blank" rel="noopener noreferrer" href = {link}>
-                    <Box style = {{paddingLeft: 4}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'>
-                    {icon ? getIcon(icon, 'white', 22) : null}
-                    <Button className={classes.button} style = {{color: color}} onClick={()=> console.log('button clicked')}>
-                        <TextField
-                            disabled
-                            onChange={handleTitleChange}
-                            className={classes.button}
-                            inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here
-                            defaultValue={title}
-                            value={title}
-                            InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, color:'white', }, input: {fontSize: 16, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
-                        />
-                    </Button>
+                    <Box style = {{paddingLeft: 4,marginRight: isSquare ? -8 : 0, marginLeft: isSquare ? 5 : 0, marginTop: isSquare ? 15: 0}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'>
+                    {icon ? getIcon(icon, 'white', isSquare ? 50 : 22) : null}
+                    { isSquare
+
+                        ? null
+                        :<Button className={classes.button} style = {{color: color}} onClick={()=> console.log('button clicked')}>
+                            <TextField
+                                disabled
+                                onChange={handleTitleChange}
+                                className={classes.button}
+                                inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here
+                                defaultValue={title}
+                                value={title}
+                                InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, color:'white', }, input: {fontSize: 16, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
+                            />
+                        </Button>
+
+                    }
+
                 </Box>
                 </a>
 
                 <Box display={'flex'} flexDirection ='column' alignItems = 'center' justifyContent={'center'}>
-                    <IconButton style ={{margin: 0, padding:0}} onClick={handleOpenOptions}>
+                    <IconButton style ={{margin: 0, padding:0, zIndex:20}} onClick={handleOpenOptions}>
                         <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
                     </IconButton>
 
@@ -97,8 +106,11 @@ export default memo(({ data,}) => {
             {editOpen
                 ?
                 <Box border = {1} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white',color:'white', padding: 5,boxShadow: '0px 3px 8px #D3D3DA' }} >
-
-                    <Box display = 'flex' flexDirection ='column' justifyContent = 'flex-end' alignItems = 'flex-end' >
+                    <Box display = 'flex' flexDirection ='row' justifyContent = 'space-between' alignItems = 'center' >
+                        <Box alignItems = 'center' display = 'flex' flexDirection ='row'>
+                            <p style = {{color:'black'}}> Square? </p>
+                            <Switch checked = {isSquare} onChange = {()=>setIsSquare(!isSquare)} />
+                        </Box>
                         <IconButton onClick = {handleEditOpen} >
                             <BiX style = {{color: 'black'}} />
                         </IconButton>
@@ -134,7 +146,7 @@ export default memo(({ data,}) => {
                         }}
                         size = 'small'
                         onChange={handleEditLink}
-                        placeholder={'https://example.com'}
+                        placeholder={link}
                         variant={'outlined'}
                     />
                     <div style = {{margin: 10}} >

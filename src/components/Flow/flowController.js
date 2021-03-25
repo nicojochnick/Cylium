@@ -66,7 +66,6 @@ function FlowController(props) {
 
                         </Button>
 
-
                         <Button onClick={()=> props.addNode('notes')}>
                             <BiEdit size = {25}/>
 

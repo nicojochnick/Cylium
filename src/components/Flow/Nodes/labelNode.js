@@ -6,20 +6,28 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Box from "@material-ui/core/Box";
 import NodeEditor from "../NodeEditor/nodeEditor";
+import {colors} from "../../../styles/colors";
+import {Editor} from "react-draft-wysiwyg";
+import {convertFromRaw, convertToRaw, EditorState} from "draft-js";
+import IconButton from "@material-ui/core/IconButton";
+import {BiMove} from "react-icons/bi";
+
 
 
 
 export default memo(({ data, style }) => {
-
+    const classes = useStyles();
     const [text, setText] = React.useState(data.text);
     const [textColor, setTextColor] = React.useState(data.textColor);
     const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
     const[border, setBorder] = React.useState(data.border);
     const [shadow, setShadow ] =React.useState(8)
     const [fontSize, setFontSize] = React.useState(data.fontSize);
+    const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
+
 
     const saveText = (event) => {
-        setText(event.target.value)
+        setText(event.target.value);
         data.text = event.target.value;
 
     };
@@ -57,9 +65,24 @@ export default memo(({ data, style }) => {
         }
     };
 
+    const handleSetEditorState = (editorState) => {
+        console.log('saving todo state')
+        const contentState = editorState.getCurrentContent();
+        let save = JSON.stringify(convertToRaw(contentState));
+        setEditorState(editorState);
+        data.textContent = save;
+    };
+
+    console.log(editorState);
+
+
     useEffect(() => {
         if (data.shadow){
             setShadow(data.shadow)
+        }
+        if (data.textContent) {
+            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
+            setEditorState(parsed);
         }
     }, []);
 
@@ -67,46 +90,50 @@ export default memo(({ data, style }) => {
         <>
 
         <Box
-            border = {border}
+            border = {editorState.getCurrentContent().hasText()? 0 : 1}
             borderColor = {'#5C5C5C'}
+            style = {{padding: 5}}
             display = 'flex'
             flexDirection ='row'
             justify = 'center'
             alignItems = 'flex-start'>
 
+            <Box className = {'nodrag'} style={{ }}>
 
-            <TextField
-                id="standard-basic"
-                placeholder="Add Label"
-                multiline
-                onChange={(event) => saveText(event)}
-                defaultValue={text}
-                style={{fontSize: 10}}
-                fullWidth
-                InputProps={{style: {fontSize: 20, margin: 5,color:'black'}, disableUnderline: true,}}
-                rowsMax={10}
+
+
+            <Editor
+                editorState={editorState}
+                toolbarClassName="toolbarClassName"
+                toolbarOnFocus
+                wrapperClassName="wrapperClassName"
+                editorClassName="editorClassName"
+                onEditorStateChange={handleSetEditorState}
+                editorStyle = {{minWidth: 210}}
+                toolbarClassName={classes.toolbar}
+                toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
+                toolbar = {{
+                    options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
+                    colorPicker: {
+                        className: undefined,
+                        component: undefined,
+                        popupClassName: undefined,
+                        colors: colors
+                    },
+                    inline: { inDropdown: true },
+                    list: { inDropdown: true },
+                    textAlign: { inDropdown: true },
+                    link: { inDropdown: true },
+                    history: { inDropdown: true },
+                }}
             />
 
+            </Box>
 
-            {/*<Box display ='flex' style ={{marginTop: 8}} >*/}
+            <Box display ='flex' flexDirection = 'column '>
+                <BiMove style = {{margin: 5, marginRight: 0, color: 'black'}} size = {15} />
 
-            {/*    <NodeEditor*/}
-            {/*        changeColor = {changeColor}*/}
-            {/*        changeFont = {changeFont}*/}
-            {/*        switchShadow = {switchShadow}*/}
-            {/*        changeBorder = {changeBorder}*/}
-            {/*        fontSize = {fontSize}*/}
-            {/*        border = {data.border}*/}
-            {/*        shadow = {data.shadow}*/}
-            {/*        textColor = {textColor}*/}
-            {/*        textOnly = {true}*/}
-            {/*        backgroundColor = {backgroundColor}*/}
-
-            {/*    />*/}
-
-            {/*</Box>*/}
-
-
+            </Box>
 
 
 
@@ -118,12 +145,7 @@ export default memo(({ data, style }) => {
 });
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
+
 }));
 
 
@@ -156,4 +178,43 @@ const useStyles = makeStyles((theme) => ({
 {/*    id = 'c'*/}
 {/*    style={{ background: '#555' }}*/}
 {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
+{/*/>*/}
+
+
+
+
+
+{/*<Box display ='flex' style ={{marginTop: 8}} >*/}
+
+{/*    <NodeEditor*/}
+{/*        changeColor = {changeColor}*/}
+{/*        changeFont = {changeFont}*/}
+{/*        switchShadow = {switchShadow}*/}
+{/*        changeBorder = {changeBorder}*/}
+{/*        fontSize = {fontSize}*/}
+{/*        border = {data.border}*/}
+{/*        shadow = {data.shadow}*/}
+{/*        textColor = {textColor}*/}
+{/*        textOnly = {true}*/}
+{/*        backgroundColor = {backgroundColor}*/}
+
+{/*    />*/}
+
+{/*</Box>*/}
+
+
+
+
+
+
+{/*<TextField*/}
+{/*    id="standard-basic"*/}
+{/*    placeholder="Add Label"*/}
+{/*    multiline*/}
+{/*    onChange={(event) => saveText(event)}*/}
+{/*    defaultValue={text}*/}
+{/*    style={{fontSize: 10}}*/}
+{/*    fullWidth*/}
+{/*    InputProps={{style: {fontSize: 20, margin: 5,color:'black'}, disableUnderline: true,}}*/}
+{/*    rowsMax={10}*/}
 {/*/>*/}
