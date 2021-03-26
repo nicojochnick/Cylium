@@ -141,7 +141,10 @@ export default memo(({ data,}) => {
                 {/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}*/}
                 {/*/>*/}
 
-                <Box className = {'nodrag'} style={{marginLeft: 8, }}>
+                <Box
+                    className = {data.className}
+                    style={{marginLeft: 8, }}
+                >
 
                 <Editor
                     editorState={editorState}

@@ -3,6 +3,12 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
 import "firebase/storage";
+require("firebase/functions");
+
+
+
+// Initialize Cloud Functions through Firebase
+
 
 
 const config = {
@@ -20,6 +26,9 @@ let app = firebase.initializeApp(config);
 export const auth = firebase.auth;
 export const db = firebase.firestore(app);
 export const storage = firebase.storage();
+export const functions = firebase.functions();
+
+
 // export const analytics = firebase.analytics();
 
 

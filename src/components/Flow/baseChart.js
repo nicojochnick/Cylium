@@ -73,7 +73,6 @@ function BaseChart(props) {
 
     const { transform } = useZoomPanHelper();
 
-    const onNodeDoubleClick = (node) => console.log('node double click', node);
 
 
     const onSave = () => {
@@ -188,6 +187,7 @@ function BaseChart(props) {
         if (type =='todo') {
             node = {
                 id: id,
+                connectionMode: 'loose',
                 draggable: true,
                 // className : "nodrag",
                 type: 'todoNodes',
@@ -220,6 +220,7 @@ function BaseChart(props) {
                     text: null,
                     textContent: null,
                     isFolded: false,
+                    className: '',
                     done:false,
                     id: id,
                     fontSize: 16,
@@ -263,6 +264,7 @@ function BaseChart(props) {
 
 
     const onElementsRemove = (elementsToRemove) => {
+        console.log(elementsToRemove)
         setElementsToRemove(elementsToRemove)
         handleClickOpen()
 
@@ -286,9 +288,35 @@ function BaseChart(props) {
 
 
     const onElementClick = () => {
-
-        triggerAutoSave()
+        console.log('clicked')
+        // triggerAutoSave()
     };
+
+    const onNodeDoubleClick = (event, node) => {
+        console.log('node double click', node);
+        let e = elements.slice();
+        for (let i = 0; i < e.length;i++){
+            if (node.id === e[i].id){
+                console.log(e[i])
+                e[i].data.className = 'nodrag'
+            }
+        }
+        setElements(e)
+    };
+
+    const onNodeMouseLeave = (event, node) => {
+
+        let e = elements.slice();
+        for (let i = 0; i < e.length;i++){
+            if (node.id === e[i].id){
+                console.log(e[i])
+                e[i].data.className = ''
+            }
+        }
+        setElements(e)
+
+    };
+
 
     const onConnect = (params) =>  {
         params.animated = true;
@@ -365,8 +393,10 @@ function BaseChart(props) {
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
+                        connectionMode={'loose'}
                         onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
+                        onNodeMouseLeave = {onNodeMouseLeave}
                     >
                         <Background
                             variant = "dots"

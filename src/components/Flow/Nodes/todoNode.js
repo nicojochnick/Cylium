@@ -113,13 +113,13 @@ export default memo(({ data}) => {
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState);
         data.textContent = save;
-        data.save();
+        // data.save();
     };
 
     const saveDeadline = () => {
         data.deadline = deadline;
         setIsEditingDeadline(false);
-        data.save();
+        // data.save();
         handleClose()
     };
 
@@ -221,7 +221,7 @@ export default memo(({ data}) => {
 
                     <Handle
 
-                        type="target"
+                        type="source"
                         id = 'j'
                         position="left"
                         style={{ zIndex: 12, backgroundColor: 'grey',boxShadow: "0px 2px 4px #C5C5C5", }}
@@ -235,7 +235,7 @@ export default memo(({ data}) => {
                     />
 
                     <Handle
-                        type = 'target'
+                        type = 'source'
                         id="a"
                         position="top"
                         style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'grey' }}
