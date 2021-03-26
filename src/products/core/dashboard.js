@@ -29,7 +29,8 @@ import recurrencelogo from "../../assets/images/recurrencelogo.png"
 import logowhite from "../../assets/images/TeamBoxxWhite.png"
 import UserHome from '../../views/Old/userHome'
 import TeamHome from '../../views/Old/teamHome'
-import { BiTransferAlt, BiEdit, BiCog, BiPlus,BiCubeAlt, BiNetworkChart, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
+
+import { BiTransferAlt, BiEdit, BiCog, BiPlanet, BiPlus,BiCubeAlt, BiNetworkChart, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
 import {FiInbox} from 'react-icons/fi';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
@@ -44,6 +45,7 @@ import Popover from "@material-ui/core/Popover/Popover";
 import Notification from "../../components/Utilities/Notifications/notification";
 import {mergeAutomationIDsandMessages} from "../../helpers/filters";
 import {addChannel} from "../../api/firestore";
+import HomeView from "../../views/homeView";
 
 
 export default function Dashboard(props) {
@@ -214,18 +216,28 @@ export default function Dashboard(props) {
                     {/*</IconButton>*/}
                 </div>
                 <Divider/>
+                <Link to="/feed" style={{textDecoration: 'none' }} >
+                <ListItem >
+                    <ListItemIcon >
+                        <BiHome size = {25} style = {{color:'#3C3F48'}}  />
+                    </ListItemIcon>
+                    <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
+                </ListItem>
+                </Link>
+                <Divider/>
+
                 <List>
                     {Object.keys(props.channels).map((item)=>
-                        <div>
+
                             <Link to={"/" + props.channels[item].name.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
-                                        <BiCubeAlt size = {25} style = {{color:props.channels[item].color}}  />
+                                        <BiPlanet size = {25} style = {{color:props.channels[item].color}}  />
                                     </ListItemIcon>
                                     <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
                                 </ListItem>
                             </Link>
-                        </div>
+
                     )
                     }
                     <Divider/>
@@ -252,25 +264,26 @@ export default function Dashboard(props) {
                 {(props.user) ?
                     < main className={classes.content}>
                         {/*<div className={classes.appBarSpacer} />*/}
-                        {Object.keys(props.channels).map((item)=>
-                            <div>
-                                <Route exact path= {"/" + props.channels[item].name.toLowerCase()} >
-                                    <BaseView
-                                        messages = {props.messages.filter(i => i.channelID === props.channels[item].channelID)}
-                                        channel = {props.channels[item]}
-                                        team = {null}
-                                        automations = {props.automations}
-                                        user = {props.user}
-                                        url = {props.url}
-                                        email = {props.email} />
-                                </Route>
-                            </div>
-                        )
-                        }
+
                         <Switch>
                             <Route exact path="/feed">
-                                <AccountView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
+                                <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
+                            {Object.keys(props.channels).map((item)=>
+                                    <Route exact path= {"/" + props.channels[item].name.toLowerCase()} >
+                                        <BaseView
+                                            messages = {props.messages.filter(i => i.channelID === props.channels[item].channelID)}
+                                            channel = {props.channels[item]}
+                                            team = {null}
+                                            automations = {props.automations}
+                                            user = {props.user}
+                                            url = {props.url}
+                                            email = {props.email} />
+                                    </Route>
+
+                            )
+                            }
+
                             <Route path="/account">
                                 <AccountView notifications = {props.notifications} team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>

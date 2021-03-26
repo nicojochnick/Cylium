@@ -150,12 +150,13 @@ export default memo(({ data,}) => {
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"
                     toolbarOnFocus
+                    // readOnly = {data.className === 'nodrag' ? false : true}
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={handleSetEditorState}
                     editorStyle = {{width: 250}}
                     toolbarClassName={classes.toolbar}
-                    toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginLeft: -30, marginTop:-60, width: 315, borderColor:backgroundColor, position: 'absolute', }}
+                    toolbarStyle = {{backgroundColor: 'white', zIndex: 20, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginLeft: -30, marginTop:-60, width: 315, borderColor:backgroundColor, position: 'absolute', }}
                     toolbar = {{
 
                         options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],

@@ -309,8 +309,10 @@ function BaseChart(props) {
         let e = elements.slice();
         for (let i = 0; i < e.length;i++){
             if (node.id === e[i].id){
-                console.log(e[i])
-                e[i].data.className = ''
+                console.log(e[i]);
+                if (e[i].data.className === 'nodrag') {
+                    e[i].data.className = '';
+                    triggerAutoSave()}
             }
         }
         setElements(e)
