@@ -23,7 +23,7 @@ let styles = {
         overflow:'hidden',
         display:'flex',
         flexDirection:'column',
-        height: 725,
+        // height: 800,
         boxShadow: '0px 5px 10px #D3D3DA',
     },
 };

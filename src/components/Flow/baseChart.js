@@ -115,7 +115,6 @@ function BaseChart(props) {
                 },
                 position: {x: 350, y: 350},
             }
-
         }
 
         if (type =='calendar') {
@@ -126,7 +125,7 @@ function BaseChart(props) {
                 type: 'calendarNodes',
                 className:"nowheel",
                 // data: { text: null, onChange: onTextChange, id: id }
-                data: { style:{color:'white'}, calendarID: 'add your calendar ID here - must be in public mode'},
+                data: { style:{color:'white'}, calendarID: ''},
                 position: { x: 300, y: 300 },
                 // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
                 // noWheel: true,
