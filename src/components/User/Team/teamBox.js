@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import List from '@material-ui/core/List';
 import EditableUserID from '../editableUserID'
-import Feedback from "../../Old/Feedback/feedback";
+import Feedback from "../../../xdeprecated/Feedback/feedback";
 import {db} from "../../../api/firebase";
 
 function TeamBox(props) {

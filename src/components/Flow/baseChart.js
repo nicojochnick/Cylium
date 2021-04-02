@@ -61,7 +61,7 @@ function BaseChart(props) {
     const [saving, setSaving] = React.useState(false);
     const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
     const [open, setOpen] = React.useState(false);
-    const [elementsToRemove, setElementsToRemove] = React.useState(null)
+    const [elementsToRemove, setElementsToRemove] = React.useState(null);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -155,9 +155,6 @@ function BaseChart(props) {
                 data: {isSquare: false, link: 'https://example.com', style: {backgroundColor: '#7664FF'}, icon: null, title: 'add a title'},
                 position: {x: 350, y: 350},
             }
-
-
-
         }
 
         if (type == 'character') {

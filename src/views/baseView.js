@@ -10,8 +10,8 @@ import Box from "@material-ui/core/Box";
 import MessagesContainer from "../components/Messages/messagesContainer"
 import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
-import AutomationItem from "../components/Apps/Automation/automationItem";
-import AutomationList from "../components/Apps/Automation/automationList";
+import AutomationItem from "../xdeprecated/Automation/automationItem";
+import AutomationList from "../xdeprecated/Automation/automationList";
 import BaseChart from "../components/Flow/baseChart";
 import SearchUsers from "../components/Utilities/Search/searchUsers";
 import ChannelHeader from "../components/Channels/ChannelHeader";
@@ -50,6 +50,7 @@ function BaseView(props) {
         console.log('MESSAGES----->', props.messages)
         console.log(props.channel)
         getUsers();
+        openChat()
     }, []);
 
     return (

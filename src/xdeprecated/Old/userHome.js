@@ -1,0 +1,127 @@
+import React, {useEffect} from 'react';
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import {makeStyles} from "@material-ui/core/styles";
+import clsx from 'clsx';
+import Url from '../Share/URL'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import {db} from "../../api/firebase";
+import Feedback from "../Feedback/feedback"
+import moment from 'moment';
+import RewardTracker from "../Market/rewardTracker";
+import Divider from "@material-ui/core/Divider";
+import FeedbackTracker from "../Feedback/feedbackTracker";
+import TeamManage from "../../components/User/Team/teamManage";
+import ShareBoxx from "../Share/shareBoxx";
+import { FixedSizeList } from 'react-window';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
+import AutomationList from "../Automation/automationList";
+import TeamMemberStats from "../Analytics/teamMemberStats";
+import Response from "../response";
+
+
+function UserHome(props) {
+    const classes = useStyles();
+
+    return (
+        <div className={classes.root} >
+            <Container fixed maxWidth="lg" className={classes.container}>
+                <Grid container spacing={1}>
+                    <Grid direction = 'column' container xs={12} sm={12} md={4} lg={4}>
+                        <Box className={classes.box} boxShadow = {0} style = {{boxShadow: "0px 5px 10px #D7D7DA", maxHeight: 50}} borderRadius={10} >
+                                <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
+                                    QUESTIONS
+                                </h2>
+                        </Box>
+                            <AutomationList survey = {props.survey} user = {props.user} />
+                    </Grid>
+                    <Grid item xs={12} sm ={12} md={8} lg={8}>
+
+                        <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 5px #D7D7DA",}} boxShadow = {0} className={classes.box}>
+                            <Grid justify="space-between" direction = "row" container>
+                                <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
+                                    RESPONSES
+                                </h2>
+                            </Grid>
+                        </Box>
+                        <List  style={{maxHeight: '100%', overflow: 'auto'}}>
+                            <Response item = {{}}/>
+                        </List>
+                    </Grid>
+                </Grid>
+            </Container>
+        </div>
+    );
+}
+
+const drawerWidth = 240;
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    box:{
+        flexGrow: 1,
+        padding: 0,
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+        margin: 10,
+        marginBottom: 20,
+        backgroundColor: 'white',
+    },
+
+    boxSticky:{
+        padding: 0,
+        top: "5rem",
+        position: "sticky",
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+        margin: 10,
+        marginBottom: 20,
+        backgroundColor: 'white',
+    },
+
+    content: {
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+    },
+
+    container: {
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
+    },
+
+    paper: {
+        justify: 'center',
+        padding: theme.spacing(2),
+        display: 'start',
+        overflow: 'auto',
+        flexDirection: 'column',
+        margin: 0,
+    },
+
+
+}));
+
+
+
+export default UserHome;
+
+
+{/*<Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 5px #D7D7DA",}} boxShadow = {0} className={classes.box}>*/}
+{/*    <Grid justify="space-between" direction = "row" container>*/}
+{/*    <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>*/}
+{/*        STATS*/}
+{/*    </h2>*/}
+{/*    </Grid>*/}
+{/*    <Divider style ={{marginTop:0}}/>*/}
+{/*    <TeamMemberStats/>*/}
+
+{/*</Box>*/}
