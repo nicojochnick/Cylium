@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
-function ChannelHeader(props) {
+function ProjectHeader(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -65,4 +65,4 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default ChannelHeader;
+export default ProjectHeader;

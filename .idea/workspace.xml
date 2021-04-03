@@ -5,62 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Headers/menuHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/feedboxx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Cylium.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/automationRecipients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecipients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceHeaderEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/editTeamMemberItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/editTeamMemberItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/packageManger/packageItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/packageManger/packageItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/packageManger/packageManger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/packageManger/packageManger.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/Old/trackerEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/Old/trackerEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/Old/trackerSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/Old/trackerSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/automationAnalytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/automationAnalytics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/automationHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/automationHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/automationID.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/automationID.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/automationItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/automationItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Apps/Automation/automationList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/automationList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Customization/iconSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Styler/iconSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Flow/Nodes/buttonNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flow/Nodes/buttonNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apps/core/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/core/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Channels/ChannelHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Flow/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Flow/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Analytics/teamMemberStats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Analytics/teamMemberStats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Analytics/teamOverallStats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Analytics/teamOverallStats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Feedback/feedback.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Feedback/feedback.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Feedback/feedbackTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Feedback/feedbackTracker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Inbox/inboxContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Inbox/inboxContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Market/rewardTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Market/rewardTracker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Share/URL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Share/URL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Share/shareBoxx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Share/shareBoxx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Topics/allTopics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Topics/allTopics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Topics/myTopics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Topics/myTopics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Topics/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Topics/topic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Typers/typerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Typers/typerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/Typers/typerTracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Typers/typerTracker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Old/response.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/Team/teamBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/Team/teamBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Utilities/Notifications/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notifications/notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Utilities/Notifications/notificationList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notifications/notificationList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Utilities/Notifications/notificationTypes/inviteToChannelNotification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notifications/notificationTypes/inviteToChannelNotification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/products/authentication/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/authentication/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/products/authentication/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/authentication/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/products/core/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/core/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/products/core/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/core/dashboardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/products/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/lander/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Old/editFeedbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/editFeedbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Old/feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Old/feedbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/feedbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Old/teamHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/teamHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Old/transactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/transactions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Old/userHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/userHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/accountView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/accountView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/automationView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/automationView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/baseView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/baseView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/lander.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/lander.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -73,14 +24,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Flow/baseChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="62" column="50" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
+            <state relative-caret-position="199">
+              <caret line="379" column="127" selection-start-line="379" selection-start-column="127" selection-end-line="379" selection-end-column="127" />
               <folding>
                 <element signature="e#1#53#0" expanded="true" />
-                <marker date="1617387200400" expanded="true" signature="12240:12285" ph="..." />
+                <marker date="1617394769629" expanded="true" signature="12235:12280" ph="..." />
               </folding>
             </state>
           </provider>
@@ -89,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/apps/core/dashboardContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-760">
-              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+            <state relative-caret-position="-518">
+              <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -101,10 +52,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/apps/core/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="362" column="19" selection-start-line="362" selection-start-column="19" selection-end-line="362" selection-end-column="19" />
+            <state relative-caret-position="105">
+              <caret line="112" column="20" lean-forward="true" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Headers/menuHeader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-219">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,13 +90,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/baseView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
+            <state relative-caret-position="336">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Headers/projectHeader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -195,8 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/Channels.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/unstructuredMessageContent.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/Apps/Automation/AutomationManager/packageManger/packageItem.js" />
@@ -243,15 +216,17 @@
         <option value="$PROJECT_DIR$/src/components/Flow/Nodes/calendarNode.js" />
         <option value="$PROJECT_DIR$/src/xdeprecated/Old/transactions.js" />
         <option value="$PROJECT_DIR$/src/views/accountView.js" />
+        <option value="$PROJECT_DIR$/src/components/Flow/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/components/Headers/projectHeader.js" />
+        <option value="$PROJECT_DIR$/src/components/Headers/menuHeader.js" />
         <option value="$PROJECT_DIR$/src/apps/core/dashboard.js" />
         <option value="$PROJECT_DIR$/src/views/baseView.js" />
-        <option value="$PROJECT_DIR$/src/components/Flow/baseChart.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="31" />
-    <option name="width" value="806" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="25" />
+    <option name="width" value="720" />
     <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -303,6 +278,13 @@
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
               <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Headers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -332,11 +314,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Headers" />
       <recent name="$PROJECT_DIR$/src/xdeprecated" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/products/lander" />
       <recent name="$PROJECT_DIR$/src/components/xdeprecated" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/saved" />
@@ -469,12 +451,12 @@
       <workItem from="1617020321764" duration="2158000" />
       <workItem from="1617110964060" duration="1065000" />
       <workItem from="1617156751217" duration="950000" />
-      <workItem from="1617288190799" duration="6768000" />
+      <workItem from="1617288190799" duration="11200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1008304000" />
+    <option name="totallyTimeSpent" value="1012736000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -486,10 +468,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="31" width="1440" height="875" extended-state="6" />
+    <frame x="0" y="25" width="1440" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.15373766" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.09802539" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -527,23 +509,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/homeView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Flow/Nodes/calendarNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="25" column="14" selection-start-line="25" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/User/userID.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1848">
@@ -782,16 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/apps/core/dashboardContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-760">
-          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/settings.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -805,20 +760,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/apps/core/dashboard.js">
+    <entry file="file://$PROJECT_DIR$/src/apps/core/dashboardContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="362" column="19" selection-start-line="362" selection-start-column="19" selection-end-line="362" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/baseView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
+        <state relative-caret-position="-518">
+          <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -827,11 +772,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Flow/baseChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="62" column="50" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
+        <state relative-caret-position="199">
+          <caret line="379" column="127" selection-start-line="379" selection-start-column="127" selection-end-line="379" selection-end-column="127" />
           <folding>
             <element signature="e#1#53#0" expanded="true" />
-            <marker date="1617387200400" expanded="true" signature="12240:12285" ph="..." />
+            <marker date="1617394769629" expanded="true" signature="12235:12280" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/apps/core/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="112" column="20" lean-forward="true" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/projectHeader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/menuHeader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-219">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/baseView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

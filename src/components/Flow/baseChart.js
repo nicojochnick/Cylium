@@ -367,21 +367,18 @@ function BaseChart(props) {
         <ReactFlowProvider>
         <Box border={1} borderColor = {'#9B9B9B'}>
             <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
-
                 <Box
                     border={1}
                     borderColor = {buttonStyle.borderColor}
                     borderRadius = {100}
-
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
                     <FlowController buttonStyle = {buttonStyle} addNode = {addNode} />
-
                 </Box>
 
             </Box>
-            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '100vh', width: props.viewWidth, overflow: 'hidden'}} >
-                <div style = {{zIndex: 0, height: '100vh',}}>
+            <Box flexDirection ='row'  justifyContent = 'center' alignItems = 'center' style={{height: '90vh', width: props.viewWidth, overflow: 'hidden'}} >
+                <div style = {{zIndex: 0, height: '90vh',}}>
                     <ReactFlow
                         nodeTypes={nodeTypes}
                         style = {{ overflow: 'hidden', background: '#FAFAFA'}}

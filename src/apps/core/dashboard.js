@@ -46,6 +46,7 @@ import Notification from "../../components/Notifications/notification";
 import {mergeAutomationIDsandMessages} from "../../helpers/filters";
 import {addChannel} from "../../api/firestore";
 import HomeView from "../../views/homeView";
+import ProjectHeader from "../../components/Headers/projectHeader";
 
 
 export default function Dashboard(props) {
@@ -105,99 +106,7 @@ export default function Dashboard(props) {
                 className={clsx(classes.appBar, open && classes.appBarShift)}
             >
                 <Toolbar noWrap className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Grid
-                        container
-                        direction="row"
-                        justify="space-between"
-                        alignItems="center"
-                    >
-                    <Box
-                        borderRadius={16}
-                        style ={{margin: 10}}
-                        className={classes.search}
-                    >
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Box>
-                        <div className={classes.sectionDesktop}>
-                            <IconButton
-                                onClick={handleNotificationClick}
-                                aria-haspopup="true"
-                                style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={1} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                            <Popover
-                                style = {{borderRadius: 10, marginRight: 20}}
-                                id={idNotification}
-                                open={openNotification}
-                                anchorEl={anchorElNotification}
-                                onClose={handleCloseNotification}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                            >
-                                <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5}
-                                     style ={{margin: 0, minWidth:400, maxHeight: 500}}>
-                                    {notifications.map((item) => <Notification item = {item}/>)}
-                                </Box>
-                            </Popover>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-haspopup="true"
-                            style = {{margin: 5}}
-                            onClick={handleAccountClick}
-                            color="inherit"
-                        >
-
-                            <AccountCircle />
-
-                        </IconButton>
-                            <Popover
-                                id={id}
-                                open={openAccount}
-                                anchorEl={anchorEl}
-                                onClose={handleClose}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                            >
-                                <Button style = {{backgroundColor: "#5F7FFF"}}onClick={()=>signout()} variant="contained" color="primary">
-                                  Signout
-                                </Button>
-                            </Popover>
-                        </div>
-                    </Grid>
+                    <ProjectHeader/>
                 </Toolbar>
                 <Divider/>
             </AppBar>
@@ -211,9 +120,9 @@ export default function Dashboard(props) {
             >
                 <div className={classes.toolbarIcon}>
                     <img style = {{height: 35, marginLeft: 10}}/>
-                    {/*<IconButton onClick={handleDrawerClose}>*/}
-                    {/*    <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*/}
-                    {/*</IconButton>*/}
+                    <IconButton onClick={handleDrawerClose}>
+                        <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />
+                    </IconButton>
                 </div>
                 <Divider/>
                 <Link to="/feed" style={{textDecoration: 'none' }} >
