@@ -7,13 +7,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import MessagesContainer from "../components/Messages/messagesContainer"
+import MessagesContainer from "../../components/Messages/messagesContainer"
 import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
-import AutomationItem from "../xdeprecated/Automation/automationItem";
-import AutomationList from "../xdeprecated/Automation/automationList";
-import BaseChart from "../components/Flow/baseChart";
-import SearchUsers from "../components/Utilities/Search/searchUsers";
+import AutomationItem from "../../xdeprecated/Automation/automationItem";
+import AutomationList from "../../xdeprecated/Automation/automationList";
+import BaseChart from "../../components/Board/baseChart";
+import SearchUsers from "../../components/Utilities/Search/searchUsers";
 function BaseView(props) {
 
     const classes = useStyles();
@@ -46,7 +46,7 @@ function BaseView(props) {
     };
 
     useEffect(() => {
-        console.log('MESSAGES----->', props.messages)
+        console.log('MESSAGES----->', props.messages);
         console.log(props.channel);
         getUsers();
         openChat()

@@ -37,15 +37,15 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import BaseView from '../../views/baseView'
-import AccountView from "../../views/accountView"
-import AutomationView from '../../views/automationView'
+import BaseView from '../productViews/baseView'
+import AccountView from "../productViews/accountView"
+import AutomationView from '../../xdeprecated/automationView'
 import {db} from "../../api/firebase";
 import Popover from "@material-ui/core/Popover/Popover";
 import Notification from "../../components/Notifications/notification";
 import {mergeAutomationIDsandMessages} from "../../helpers/filters";
 import {addChannel} from "../../api/firestore";
-import HomeView from "../../views/homeView";
+import HomeView from "../productViews/homeView";
 import ProjectHeader from "../../components/Headers/projectHeader";
 
 

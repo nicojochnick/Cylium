@@ -7,17 +7,17 @@ import {Link} from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField/TextField";
 import {convertToRaw, Editor, EditorState, RichUtils} from "draft-js";
-import {db} from "../api/firebase";
+import {db} from "../../api/firebase";
 import Divider from "@material-ui/core/Divider";
-import mscott from "../assets/images/mscott.png";
-import email_feedboxx from "../assets/images/email_feedboxx.png"
-import boxx from "../assets/images/boxx.png"
+import mscott from "../../assets/images/mscott.png";
+import email_feedboxx from "../../assets/images/email_feedboxx.png"
+import boxx from "../../assets/images/boxx.png"
 import { HiOutlineMail,HiOutlineTrendingUp } from "react-icons/hi";
-import Url from "../xdeprecated/Share/URL"
+import Url from "../../xdeprecated/Share/URL"
 import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
-import pulse from "../assets/images/pulse.gif"
-import profileIllustration from "../assets/images/profileIllustration.png"
+import pulse from "../../assets/images/pulse.gif"
+import profileIllustration from "../../assets/images/profileIllustration.png"
 import Popover from "@material-ui/core/Popover/Popover";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Container from "@material-ui/core/Container";

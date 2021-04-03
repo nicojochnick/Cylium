@@ -12,23 +12,23 @@ import {convertToRaw, EditorState} from 'draft-js';
 import {BiCheck} from "react-icons/bi"
 
 import FlowController from "./flowController"
-import LabelNode from "./Nodes/labelNode";
-import TodoNode from "./Nodes/todoNode";
+import LabelNode from "../Nodes/labelNode";
+import TodoNode from "../Nodes/todoNode";
 import {saveFlow} from "../../api/firestore";
 import FeedController from "./feedController";
 import Grid from "@material-ui/core/Grid";
-import BitCoinGifNode from "./Nodes/bitCoinGifNode"
+import BitCoinGifNode from "../Nodes/bitCoinGifNode"
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-import NoteNode from "./Nodes/noteNode";
-import WebPageNode from "./Nodes/webPageNode";
-import CharacterNode from "./Nodes/characterNode";
-import AvatarNode from "./Nodes/avatarNode"
-import ButtonNode from "./Nodes/buttonNode"
-import CalendarNode from "./Nodes/calendarNode"
+import NoteNode from "../Nodes/noteNode";
+import WebPageNode from "../Nodes/webPageNode";
+import CharacterNode from "../Nodes/characterNode";
+import AvatarNode from "../Nodes/avatarNode"
+import ButtonNode from "../Nodes/buttonNode"
+import CalendarNode from "../Nodes/calendarNode"
 
 let timerID = null;
 

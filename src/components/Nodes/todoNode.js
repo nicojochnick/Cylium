@@ -6,7 +6,7 @@ import { Handle } from 'react-flow-renderer';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
-import NodeEditor from "../NodeEditor/nodeEditor"
+import NodeEditor from "../Editor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
 import Grid from "@material-ui/core/Grid";
 import TimeAgo from 'react-timeago'
@@ -15,7 +15,7 @@ import { Rnd } from "react-rnd";
 import {BiTimeFive, BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import {EditorState, convertToRaw, convertFromRaw} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
-import {colors} from "../../../styles/colors"
+import {colors} from "../../styles/colors"
 import IconButton from "@material-ui/core/IconButton";
 
 let tinycolor = require("tinycolor2");

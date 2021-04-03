@@ -7,7 +7,7 @@ import Paper from "@material-ui/core/Paper/Paper";
 import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
 import {FaBoxOpen} from "react-icons/fa";
-import Lander from "../../views/lander"
+import Lander from "./lander"
 
 class home extends Component {
     render() {

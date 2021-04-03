@@ -3,13 +3,13 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import AutomationList from "../xdeprecated/Automation/automationList";
+import AutomationList from "../../xdeprecated/Automation/automationList";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
-import UserProfile from "../components/User/userProfile";
-import TeamBox from "../components/User/Team/teamBox";
+import UserProfile from "../../components/User/userProfile";
+import TeamBox from "../../components/User/Team/teamBox";
 import {TwitterPicker} from "react-color";
-import NotificationList from "../components/Notifications/notificationList";
+import NotificationList from "../../components/Notifications/notificationList";
 
 function AccountView(props) {
     const classes = useStyles();

@@ -7,7 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Url from "./URL"
 import Switch from '@material-ui/core/Switch';
 import RewardTracker from "../Market/rewardTracker";
-import firebase from "../../apps/core/dashboard";
+import firebase from "../../views/core/dashboard";
 import {db} from "../../api/firebase";
 
 function ShareBoxx(props) {
