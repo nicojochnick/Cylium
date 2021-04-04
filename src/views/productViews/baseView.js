@@ -14,6 +14,12 @@ import AutomationItem from "../../xdeprecated/Automation/automationItem";
 import AutomationList from "../../xdeprecated/Automation/automationList";
 import BaseChart from "../../components/Board/baseChart";
 import SearchUsers from "../../components/Utilities/Search/searchUsers";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import ProjectHeader from "../../components/Headers/projectHeader";
+import clsx from 'clsx';
+import {addChannel} from "../../api/firestore";
+import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 function BaseView(props) {
 
     const classes = useStyles();
@@ -23,9 +29,30 @@ function BaseView(props) {
     const [width, setWidth] = React.useState('88vw');
     const [users, setUsers] = React.useState([]);
     const [stretch, setStretch] = React.useState(7);
+    const [open, setOpen] = React.useState(true);
+    const [notifications, setNotifications] = React.useState([]);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorElNotification, setAnchorElNotification] = React.useState(null);
+
+    const openAccount = Boolean(anchorEl);
+    const id = openAccount ? 'simple-popover' : undefined;
+
     const handleSwitch = (event) => {
         setSwitch(!switchState);
     };
+
+
+    const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
+
+    const handleNotificationClick = (event) => {
+        setAnchorElNotification(event.currentTarget);
+    };
+
+    const handleCloseNotification = () => {
+        setAnchorElNotification(null);
+    };
+    const handleClose = () => {setAnchorEl(null);};
+    const openNotification = Boolean(anchorElNotification);
 
 
     const openChat = () => {
@@ -54,6 +81,18 @@ function BaseView(props) {
 
     return (
         <div className={classes.root}>
+            <CssBaseline />
+            <AppBar
+                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}
+                position="absolute"
+                color = '#F7F7F7'
+                className={clsx(classes.appBar, open && classes.appBarShift)}
+            >
+                <Toolbar noWrap className={classes.toolbar}>
+                    <ProjectHeader channel = {props.channel} />
+                </Toolbar>
+                <Divider/>
+            </AppBar>
             <Grid style = {{height: '90vh'}} className={classes.root} container spacing ={0}>
                 {(isChatOpen)
                     ?<Grid className={classes.root} xs={4} md={4} lg={4} direction='column' container>
@@ -74,11 +113,15 @@ function BaseView(props) {
     );
 }
 
+const drawerWidth = 72;
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor:'white',
-        overflow:'hidden'
+        overflow:'hidden',
+        display: 'flex',
     },
     box:{
         flexGrow: 1,
@@ -99,6 +142,29 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
 
     },
+    appBarSpacer: theme.mixins.toolbar,
+
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+        backgroundColor: '#F8F8F8',
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+
+    toolbar: {
+        paddingRight: 24,
+    },
+
 
 
 }));

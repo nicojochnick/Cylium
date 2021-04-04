@@ -52,7 +52,7 @@ import ProjectHeader from "../../components/Headers/projectHeader";
 export default function Dashboard(props) {
     // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [notifications, setNotifications] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
@@ -61,7 +61,6 @@ export default function Dashboard(props) {
     const id = openAccount ? 'simple-popover' : undefined;
 
     const addChannelDB= () => {
-
         console.log(props.user.email, props.user.channelIDs)
         addChannel(props.user.email, props.user.channelIDs)
 
@@ -99,17 +98,17 @@ export default function Dashboard(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar
-                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}
-                position="absolute"
-                color = '#F7F7F7'
-                className={clsx(classes.appBar, open && classes.appBarShift)}
-            >
-                <Toolbar noWrap className={classes.toolbar}>
-                    <ProjectHeader/>
-                </Toolbar>
-                <Divider/>
-            </AppBar>
+            {/*<AppBar*/}
+            {/*    style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}*/}
+            {/*    position="absolute"*/}
+            {/*    color = '#F7F7F7'*/}
+            {/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
+            {/*>*/}
+            {/*    <Toolbar noWrap className={classes.toolbar}>*/}
+            {/*        <ProjectHeader/>*/}
+            {/*    </Toolbar>*/}
+            {/*    <Divider/>*/}
+            {/*</AppBar>*/}
             <Router>
             <Drawer
                 variant="permanent"

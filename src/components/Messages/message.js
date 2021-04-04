@@ -139,7 +139,7 @@ function Message(props) {
                     <Grid justify='flex-start' alignItems='flex-start' direction="row" container style={{margin: 0,}}>
                         <Grid item >
                             <Box style={{margin: 5}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
-                                <Avatar src={user.img_url_Profile.imgUrl} className={classes.large}/>
+                                <Avatar  src={user.img_url_Profile.imgUrl} className={classes.large}/>
                             </Box>
                         </Grid>
                         <Grid style = {{padding: 5}} justify={'flex-end'} alignItems={'flex-end'} item xs={10} md={10} lg={10}>

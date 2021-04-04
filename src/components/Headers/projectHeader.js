@@ -27,8 +27,8 @@ function ProjectHeader(props) {
 
 
     return (
-        <Box style = {{marginLeft: 10, marginRight: 10, height: 75}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
-            <p style ={{fontSize: 21, fontWeight: 500}}> All Feeds </p>
+        <Box style = {{marginLeft: 10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+            <p style ={{fontSize: 21, fontWeight: 500}}> {props.channel.name}</p>
             <Button aria-describedby={id} onClick={handleClick}>
                 {/*Open Popover*/}
             <AvatarGroup max={4}>
