@@ -75,6 +75,7 @@ function Responder(props) {
                 editorState={editorState}
                 onEditorStateChange={onChange}
                 keyBindingFn = {keyBindingFN}
+                toolbarStyle = {{backgroundColor: 'white', zIndex: 20,  borderRadius: 10, }}
                 toolbar = {{
 
                     options: [ 'link','list', 'emoji',],

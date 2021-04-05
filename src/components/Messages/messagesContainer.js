@@ -61,7 +61,7 @@ function MessagesContainer(props) {
     //TODO: move responder up a level, don't want it grouped with messages
     return (
         <div className={classes.root}>
-            <Grid style = {{height: '90vh'}} justify ='space-between' alignItems ='space-between' container direction ='column'>
+            <Grid noWrap style = {{height: '90vh',noWrap:true,}} justify ='space-between' alignItems ='space-between' container direction ='column'>
                 <Box
                     border = {0}
                     // display = 'flex'
@@ -71,10 +71,8 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{backgroundColor:'white', padding: 0,maxHeight: '72vh'}}
+                    style ={{backgroundColor:'white', padding: 0,height: '50vh',}}
                 >
-                    <div>
-
                         {Object.keys(props.messages)
                         .map((item) =>
                             <Message
@@ -85,7 +83,7 @@ function MessagesContainer(props) {
                             )
                     }
                         <div ref={messagesEndRef}></div>
-                    </div>
+
                 </Box>
 
                 <Box
@@ -95,9 +93,8 @@ function MessagesContainer(props) {
                     borderColor = {'grey'}
                     justifyContent = 'center'
                     color = {'#A3A0B1'}
-                    style = {{minHeight: '16vh', marginTop: 5, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
+                    style = {{marginTop: 5, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
                 >
-
                     <Responder channel = {props.channel} user = {props.user}/>
                 </Box>
             </Grid>
@@ -112,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
+        noWrap:true,
     },
     box:{
         flexGrow: 1,

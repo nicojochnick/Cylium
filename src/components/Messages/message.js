@@ -142,7 +142,7 @@ function Message(props) {
                                 <Avatar  src={user.img_url_Profile.imgUrl} className={classes.large}/>
                             </Box>
                         </Grid>
-                        <Grid style = {{padding: 5}} justify={'flex-end'} alignItems={'flex-end'} item xs={10} md={10} lg={10}>
+                        <Grid style = {{padding: 5}} justify={'flex-end'} alignItems={'flex-end'} item xs={9} md={9} lg={9}>
                             <Grid container>
                             <p style={{
                                 margin: 8,
@@ -168,7 +168,7 @@ function Message(props) {
                                 }
                             </Box>
                         </Grid>
-                        <Grid item>
+                        <Grid item xs={1} md={1} lg={1}>
                             <IconButton onClick={handlePopoverOpen} style = {{marginLeft: -15}} aria-label="open">
                                 <FiMoreVertical  size = {17}/>
                             </IconButton>
@@ -196,7 +196,6 @@ const useStyles = makeStyles((theme) => ({
     box:{
         padding: 0,
         display: 'start',
-        overflow: 'auto',
         flexDirection: 'column',
     },
 
