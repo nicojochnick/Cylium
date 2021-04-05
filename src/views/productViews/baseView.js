@@ -30,29 +30,8 @@ function BaseView(props) {
     const [users, setUsers] = React.useState([]);
     const [stretch, setStretch] = React.useState(7);
     const [open, setOpen] = React.useState(true);
-    const [notifications, setNotifications] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [anchorElNotification, setAnchorElNotification] = React.useState(null);
 
-    const openAccount = Boolean(anchorEl);
-    const id = openAccount ? 'simple-popover' : undefined;
-
-    const handleSwitch = (event) => {
-        setSwitch(!switchState);
-    };
-
-
-    const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
-
-    const handleNotificationClick = (event) => {
-        setAnchorElNotification(event.currentTarget);
-    };
-
-    const handleCloseNotification = () => {
-        setAnchorElNotification(null);
-    };
-    const handleClose = () => {setAnchorEl(null);};
-    const openNotification = Boolean(anchorElNotification);
 
 
     const openChat = () => {

@@ -1,96 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch,} from "react-router-dom";
 import clsx from 'clsx';
-import { makeStyles, fade } from '@material-ui/core/styles';
+import {fade, makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import Button from '@material-ui/core/Button';
-import { IoIosMail } from "react-icons/io";
-import {FaEdit} from "react-icons/fa"
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import EditFeedbox from "../../xdeprecated/Old/editFeedbox"
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import logo from "../../assets/images/logo.png"
-import recurrencelogo from "../../assets/images/recurrencelogo.png"
-import logowhite from "../../assets/images/TeamBoxxWhite.png"
-import UserHome from '../../xdeprecated/Old/userHome'
-import TeamHome from '../../xdeprecated/Old/teamHome'
-
-import { BiTransferAlt, BiEdit, BiCog, BiPlanet, BiPlus,BiCubeAlt, BiNetworkChart, BiHome, BiDonateHeart, BiUser, BiSend, BiStore,BiGitBranch, BiRotateRight} from "react-icons/bi";
-import {FiInbox} from 'react-icons/fi';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import {BiHome, BiPlanet, BiPlus, BiUser} from "react-icons/bi";
 import BaseView from '../productViews/baseView'
 import AccountView from "../productViews/accountView"
-import AutomationView from '../../xdeprecated/automationView'
-import {db} from "../../api/firebase";
-import Popover from "@material-ui/core/Popover/Popover";
-import Notification from "../../components/Notifications/notification";
-import {mergeAutomationIDsandMessages} from "../../helpers/filters";
 import {addChannel} from "../../api/firestore";
 import HomeView from "../productViews/homeView";
-import ProjectHeader from "../../components/Headers/projectHeader";
 
 
 export default function Dashboard(props) {
-    // let email = firebase.auth().currentUser.email;
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const [notifications, setNotifications] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [anchorElNotification, setAnchorElNotification] = React.useState(null);
-
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
-
-    const addChannelDB= () => {
-        console.log(props.user.email, props.user.channelIDs)
-        addChannel(props.user.email, props.user.channelIDs)
-
-    };
-
-
-    const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
-
-    const handleNotificationClick = (event) => {
-        setAnchorElNotification(event.currentTarget);
-    };
-
-    const handleCloseNotification = () => {
-        setAnchorElNotification(null);
-    };
+    const addChannelDB= () => {addChannel(props.user.email, props.user.channelIDs)};
     const handleClose = () => {setAnchorEl(null);};
-    const openNotification = Boolean(anchorElNotification);
-    const idNotification = openAccount ? 'simple-popover-notification' : undefined;
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+    const handleDrawerOpen = () => {setOpen(true);};
+    const handleDrawerClose = () => {setOpen(false);};
     const signout = () => {
         firebase.auth().signOut().then(function() {
         }).catch(function(error) {
         });
     };
+
     useEffect(() => {
     }, []);
 
@@ -98,17 +43,6 @@ export default function Dashboard(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            {/*<AppBar*/}
-            {/*    style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}*/}
-            {/*    position="absolute"*/}
-            {/*    color = '#F7F7F7'*/}
-            {/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
-            {/*>*/}
-            {/*    <Toolbar noWrap className={classes.toolbar}>*/}
-            {/*        <ProjectHeader/>*/}
-            {/*    </Toolbar>*/}
-            {/*    <Divider/>*/}
-            {/*</AppBar>*/}
             <Router>
             <Drawer
                 variant="permanent"
@@ -133,10 +67,8 @@ export default function Dashboard(props) {
                 </ListItem>
                 </Link>
                 <Divider/>
-
                 <List>
                     {Object.keys(props.channels).map((item)=>
-
                             <Link to={"/" + props.channels[item].name.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
@@ -145,9 +77,7 @@ export default function Dashboard(props) {
                                     <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
                                 </ListItem>
                             </Link>
-
-                    )
-                    }
+                    )}
                     <Divider/>
                     <ListItem button onClick = {()=>addChannelDB()} >
                             <ListItemIcon >
@@ -172,7 +102,6 @@ export default function Dashboard(props) {
                 {(props.user) ?
                     < main className={classes.content}>
                         <div className={classes.appBarSpacer} />
-
                         <Switch>
                             <Route exact path="/feed">
                                 <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
@@ -188,16 +117,15 @@ export default function Dashboard(props) {
                                             url = {props.url}
                                             email = {props.email} />
                                     </Route>
-
                             )
                             }
-
                             <Route path="/account">
                                 <AccountView notifications = {props.notifications} team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
                         </Switch>
                     </main>
-                    : <p> LOADING</p>
+                    :
+                    <p> LOADING</p>
                 }
             </Router>
         </div>
@@ -454,3 +382,19 @@ const useStyles = makeStyles((theme) => ({
 {/*<Route exact path="/automations">*/}
 {/*    <AutomationView team = {null}  automations = {props.automations} user = {props.user} url = {props.url} email = {props.email} />*/}
 {/*</Route>*/}
+
+
+
+///appbar
+
+{/*<AppBar*/}
+{/*    style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}*/}
+{/*    position="absolute"*/}
+{/*    color = '#F7F7F7'*/}
+{/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
+{/*>*/}
+{/*    <Toolbar noWrap className={classes.toolbar}>*/}
+{/*        <ProjectHeader/>*/}
+{/*    </Toolbar>*/}
+{/*    <Divider/>*/}
+{/*</AppBar>*/}

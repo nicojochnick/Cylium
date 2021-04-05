@@ -10,8 +10,7 @@ import Notification from "../Notifications/notification";
 import Button from "@material-ui/core/Button";
 import clsx from 'clsx';
 
-import Toolbar from "@material-ui/core/Toolbar";
-import {addChannel} from "../../api/firestore";
+import {AccountCircle} from "@material-ui/icons";
 
 function MenuHeader(props) {
 
@@ -21,10 +20,8 @@ function MenuHeader(props) {
     const [notifications, setNotifications] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
-
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
-
 
 
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
@@ -118,9 +115,7 @@ function MenuHeader(props) {
                         onClick={handleAccountClick}
                         color="inherit"
                     >
-
                         <AccountCircle />
-
                     </IconButton>
                     <Popover
                         id={id}

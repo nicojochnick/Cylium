@@ -1,22 +1,24 @@
-
 import React, {useCallback, useEffect} from 'react';
-import ReactFlow, { ReactFlowProvider, Background, isEdge, Controls,updateEdge, removeElements, addEdge,useZoomPanHelper,} from 'react-flow-renderer';
+import ReactFlow, {
+    addEdge,
+    Background,
+    Controls,
+    ReactFlowProvider,
+    removeElements,
+    updateEdge,
+    useZoomPanHelper,
+} from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
-import buildingbackground from "../../assets/images/buildingbackground.png";
-import Divider from "@material-ui/core/Divider";
-import Popover from '@material-ui/core/Popover'
 import Button from '@material-ui/core/Button';
 import PuffLoader from "react-spinners/PuffLoader";
-import {convertToRaw, EditorState} from 'draft-js';
 
 import {BiCheck} from "react-icons/bi"
 
-import FlowController from "./flowController"
+import FlowController from "./Controllers/flowController"
 import LabelNode from "../Nodes/labelNode";
 import TodoNode from "../Nodes/todoNode";
 import {saveFlow} from "../../api/firestore";
-import FeedController from "./feedController";
-import Grid from "@material-ui/core/Grid";
+import FeedController from "./Controllers/feedController";
 import BitCoinGifNode from "../Nodes/bitCoinGifNode"
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -29,6 +31,7 @@ import CharacterNode from "../Nodes/characterNode";
 import AvatarNode from "../Nodes/avatarNode"
 import ButtonNode from "../Nodes/buttonNode"
 import CalendarNode from "../Nodes/calendarNode"
+import {selectNode} from "./nodeSelector";
 
 let timerID = null;
 
@@ -54,7 +57,6 @@ const nodeTypes = {
 const getNodeId = () => `node_${+new Date()}`;
 
 function BaseChart(props) {
-
     const [elements,setElements] = React.useState([]);
     const [id, setID] = React.useState(500);
     const [rfInstance, setRfInstance] = React.useState(null);
@@ -62,29 +64,16 @@ function BaseChart(props) {
     const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
     const [open, setOpen] = React.useState(false);
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
+    const handleClickOpen = () => {setOpen(true);};
+    const handleClose = () => {setOpen(false);};
     const { transform } = useZoomPanHelper();
 
-
-
     const onSave = () => {
-        console.log('saving rfInstance:', rfInstance)
         if (rfInstance || elements.length > 0) {
             const flow = rfInstance.toObject();
             saveFlow(props.channel.channelID, flow);
-            console.log('SAVING FLOW: ', flow)
         }
-    }
-
-
+    };
     const onRestore = useCallback((flow) => {
         const restoreFlow = async () => {
             if (flow) {
@@ -96,155 +85,21 @@ function BaseChart(props) {
         restoreFlow(flow);
     }, [setElements, transform]);
 
-
     const addNode = (type) => {
-
         let currentElements = elements.slice();
-        let node = null;
         let id = getNodeId();
-
-        if (type == 'avatar') {
-
-            node = {
-                id: id,
-                draggable: true,
-                // className : "nodrag",
-                type: 'avatarNodes',
-                data: {
-                    user: props.user
-                },
-                position: {x: 350, y: 350},
-            }
-        }
-
-        if (type =='calendar') {
-
-            node = {
-                id:id ,
-                draggable:true,
-                type: 'calendarNodes',
-                className:"nowheel",
-                // data: { text: null, onChange: onTextChange, id: id }
-                data: { style:{color:'white'}, calendarID: ''},
-                position: { x: 300, y: 300 },
-                // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
-                // noWheel: true,
-
-            }
-
-        }
-
-        if (type =='label'){
-            node = {
-                id:id ,
-                draggable:true,
-                type: 'labelNodes',
-                data: { textContent: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
-                position: { x: 300, y: 300 },
-                // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
-                // noWheel: true,
-            }
-        }
-
-        if (type === 'button'){
-            node = {
-                id: id,
-                draggable: true,
-                // className : "nodrag",
-                type: 'buttonNodes',
-                data: {isSquare: false, link: 'https://example.com', style: {backgroundColor: '#7664FF'}, icon: null, title: 'add a title'},
-                position: {x: 350, y: 350},
-            }
-        }
-
-        if (type == 'character') {
-            node = {
-                id: id,
-                draggable: true,
-                // className : "nodrag",
-                type: 'characterNode',
-                position: {x: 350, y: 350},
-            }
-
-        }
-
-        if (type == 'bitcoingif') {
-            node = {
-                id: id,
-                draggable: true,
-                // className : "nodrag",
-                type: 'bitCoinGifNodes',
-                position: {x: 350, y: 350},
-            }
-
-        }
-
-
-        if (type =='todo') {
-            node = {
-                id: id,
-                connectionMode: 'loose',
-                draggable: true,
-                // className : "nodrag",
-                type: 'todoNodes',
-                data: {
-                    textContent: null,
-                    text: null,
-                    deadline: '',
-                    done: false,
-                    isFolded: false,
-                    id: id,
-                    fontSize: 16,
-                    textColor: '#3D3B42',
-                    border: 0,
-                    backgroundColor: 'white',
-                    borderColor: '#3D3B42',
-                    shadow: 8
-                },
-                position: {x: 350, y: 350},
-            }
-        }
-
-
-        if (type =='notes'){
-            node = {
-                id:id ,
-                draggable:true,
-                // className : "nodrag",
-                type: 'noteNodes',
-                data: {
-                    text: null,
-                    textContent: null,
-                    isFolded: false,
-                    className: '',
-                    done:false,
-                    id: id,
-                    fontSize: 16,
-                    textColor: '#3D3B42',
-                    border: 0,
-                    backgroundColor:'white',
-                    borderColor: '#3D3B42',
-                    shadow: 8
-                },
-                position: { x: 350, y: 350 },
-
-            }
-        }
-
+        let node = selectNode(type,id,props.user);
         let nID = id + 1;
         setID(nID);
-        console.log(nID)
-
+        console.log(nID);
         currentElements.push(node);
-        setElements(currentElements)
+        setElements(currentElements);
         triggerAutoSave()
-
     };
 
     //TODO SET NEW ELEMENTS
-
     const onTextChange = (text, id,) => {
-        console.log('triggered elements', elements, rfInstance, onSave, '')
+        console.log('triggered elements', elements, rfInstance, onSave, '');
         let prevElements = elements.slice();
         for (let node of prevElements ) {
             if (node.id === id) {
@@ -255,19 +110,16 @@ function BaseChart(props) {
             setElements(prevElements)
         }
         triggerAutoSave()
-
     };
 
-
     const onElementsRemove = (elementsToRemove) => {
-        console.log(elementsToRemove)
-        setElementsToRemove(elementsToRemove)
+        console.log(elementsToRemove);
+        setElementsToRemove(elementsToRemove);
         handleClickOpen()
-
     };
 
     const confirmElementsRemove = ()=>{
-        handleClose()
+        handleClose();
         setElements((els) => removeElements(elementsToRemove, els));
         setElementsToRemove(null);
         triggerAutoSave();
@@ -282,10 +134,8 @@ function BaseChart(props) {
         triggerAutoSave()
     };
 
-
     const onElementClick = () => {
         console.log('clicked')
-        // triggerAutoSave()
     };
 
     const onNodeDoubleClick = (event, node) => {
@@ -293,7 +143,7 @@ function BaseChart(props) {
         let e = elements.slice();
         for (let i = 0; i < e.length;i++){
             if (node.id === e[i].id){
-                console.log(e[i])
+                console.log(e[i]);
                 e[i].data.className = 'nodrag'
             }
         }

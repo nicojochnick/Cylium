@@ -18,6 +18,44 @@ export async function addUserToChannel(userChannels, userID) {
 
 }
 
+const sendFriendRequest = async(senderEmail,viewerEmail, senderName, senderImg, viewerImg ) => {
+    //Add both people to each other friend lists as "pending".
+    let addedUserRef = await db.collection('users').doc(senderEmail);
+    let addedUserGet = await addedUserRef.get();
+    let addedUserData = addedUserGet.data();
+
+    let viewingUserRef =  await db.collection('users').doc(viewerEmail);
+    let viewingUserGet =  await viewingUserRef.get();
+    let viewingUserData = viewingUserGet.data();
+
+    let addedList = addedUserData.friendList;
+    addedList.push(
+        {
+            name: viewerEmail,
+            email: senderEmail,
+            img_url_Profile: {imgUrl: senderImg},
+            pending: true,
+            timeStamp: new Date(),
+        }
+    );
+
+    let viewingList = viewingUserData.friendList;
+    viewingList.push(
+        {
+            name: senderName,
+            email: viewerEmail,
+            img_url_Profile: {imgUrl: viewerImg},
+            pending: true,
+            timeStamp: new Date(),
+        }
+    );
+    const resAdded = await addedUserRef.update({friendList: addedList});
+    const viewingAdded = await viewingUserRef.update({friendList: viewingList});
+
+
+};
+
+
 
 
 
@@ -65,7 +103,7 @@ export async function deleteMessage(messageID){
 
 }
 
-//FLOWS/Channels
+//Projects
 
 export async function saveFlow (channelID, flow) {
     console.log('saving flow for: ', channelID, ' with ', flow);
@@ -80,7 +118,19 @@ export async function saveFlow (channelID, flow) {
         console.error("Error writing document: ", error);
     });
 
-};
+}
+
+export async function editProjectName(name, channelID) {
+    db.collection('channels').doc(channelID).update({
+        name: name
+    }).then(() => {
+        console.log("channel successfully added to user" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+
+
+}
 
 
 export async function addChannel (userID, channels){

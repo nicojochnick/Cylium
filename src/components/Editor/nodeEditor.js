@@ -1,24 +1,17 @@
 import React from 'react';
 import Box from "@material-ui/core/Box"
-import Popover from "@material-ui/core/Popover/Popover";
-import IconButton from '@material-ui/core/IconButton';
 import { FiMoreVertical } from "react-icons/fi";
 import {withStyles, makeStyles} from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 import { BiEdit,BiRectangle, BiMove, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
-import Divider from '@material-ui/core/Divider'
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Switch from '@material-ui/core/Switch';
-import Tabs from '@material-ui/core/Tabs';
 import Fade from '@material-ui/core/Fade';
 import Tab from '@material-ui/core/Tab';
 import Grid from "@material-ui/core/Grid"
 import { CirclePicker } from 'react-color';
-
 let tinycolor = require("tinycolor2");
-
-
 
 const colors = ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#FCFCFC", "black"]
 
@@ -44,7 +37,6 @@ function NodeEditor(props) {
         },
     }))(Tooltip);
 
-
     const getColor = () => {
         let color = tinycolor(props.backgroundColor);
         if (color.isDark()){
@@ -53,8 +45,7 @@ function NodeEditor(props) {
             return 'black'
         }
 
-    }
-
+    };
 
 
     const handleChange = (event, newValue) => {

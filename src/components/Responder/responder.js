@@ -3,9 +3,7 @@ import {Editor, EditorState,RichUtils,getDefaultKeyBinding, Modifier, SelectionS
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
-import {db} from "../../api/firebase";
 import {sendPublicChannelMessageFS} from "../../api/firestore";
-
 
 function Responder(props) {
     const classes = useStyles();
@@ -26,7 +24,6 @@ function Responder(props) {
         } catch (error) {
             console.log('sending message failed ', error)
         }
-
     };
 
     const handleKeyCommand = (command, editorState) => {
@@ -120,7 +117,6 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(6),
         backgroundColor: "#10102F"
     },
-
 
 }));
 
