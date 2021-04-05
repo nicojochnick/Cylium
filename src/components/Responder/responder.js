@@ -1,5 +1,7 @@
 import React from 'react';
-import {Editor, EditorState,RichUtils,getDefaultKeyBinding, Modifier, SelectionState} from 'draft-js';
+import { EditorState,RichUtils,getDefaultKeyBinding, Modifier, SelectionState} from 'draft-js';
+import {Editor} from "react-draft-wysiwyg";
+
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
@@ -28,7 +30,8 @@ function Responder(props) {
 
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
-        if(command === 'send-message'){
+        console.log(editorState,JSON.parse(contentState))
+        if(command === 'send-message' && JSON.parse(contentState).blocks[0].text !== ''){
             sendMessage();
             let contentState = editorState.getCurrentContent();
             const firstBlock = contentState.getFirstBlock();
@@ -61,18 +64,26 @@ function Responder(props) {
         if (e.key === 'Enter') {
             return 'send-message'
         }
-
         return getDefaultKeyBinding(e)
     };
 
     return (
-        <Box flexDirection = 'column' display = 'flex' justifyContent='flex-end' borderRadius={20} style = {{minHeight: 50, padding: 15, margin: 20, backgroundColor: '#F3F3F3'}}>
+        <Box  border = {1} display = 'flex' flexDirection = 'column'  borderRadius={20} style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3'}}>
             <Editor
                 placeholder="message..."
                 handleKeyCommand={handleKeyCommand}
                 editorState={editorState}
-                onChange={onChange}
+                onEditorStateChange={onChange}
                 keyBindingFn = {keyBindingFN}
+                toolbar = {{
+
+                    options: [ 'link','list', 'emoji',],
+
+                    inline: { inDropdown: true },
+                    list: { inDropdown: true },
+                    link: { inDropdown: true },
+
+                }}
                 // handleBeforeInput={_handleBeforeInput}
                 // handlePastedText={_handlePastedText}
             />

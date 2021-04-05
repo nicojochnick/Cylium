@@ -8,15 +8,12 @@ import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import TextField from "@material-ui/core/TextField";
 import {editProjectName} from "../../api/firestore";
-
 let timerID = null;
-
 
 function ProjectHeader(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [projectTitle, setProjectTitle] = React.useState(props.channel.name);
-
     const changeName = (name) => {
         setProjectTitle(name);
         triggerAutoSave(name)
@@ -24,30 +21,21 @@ function ProjectHeader(props) {
     const saveName = (name) => {
         editProjectName(name,props.channel.channelID)
     };
-
     const triggerAutoSave = async (name) => {
         console.log("started saving...");
-
         if (timerID) {
             clearTimeout(timerID);
             timerID = null;
         }
-
         timerID = setTimeout(() => {
             saveName(name);
             console.log("finished saving name")
         }, 3000)
     };
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
+    const handleClick = (event) => {setAnchorEl(event.currentTarget);};
+    const handleClose = () => {setAnchorEl(null);};
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
     return (
         <Box style = {{marginLeft: 10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
             <TextField
@@ -56,10 +44,8 @@ function ProjectHeader(props) {
                 style ={{fontSize: 21, fontWeight: 500}}
                 onChange={(event) => changeName(event.target.value)}
                 defaultValue={projectTitle}
-
                 InputProps={{style: {fontSize: 20, margin: 5,color:'black'}, disableUnderline: true,}}
             />
-
             <Button aria-describedby={id} onClick={handleClick}>
                 {/*Open Popover*/}
             <AvatarGroup max={4}>
@@ -94,6 +80,4 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
     },
 }));
-
-
 export default ProjectHeader;

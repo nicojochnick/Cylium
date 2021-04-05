@@ -1,11 +1,8 @@
 import {db} from "./firebase";
 
-
 //TODO Schematize this
 
-
 //USER
-
 export async function addUserToChannel(userChannels, userID) {
     db.collection('users').doc(userID).update({
         channelIDs: userChannels
@@ -14,8 +11,6 @@ export async function addUserToChannel(userChannels, userID) {
     }).catch((error) => {
         console.error("Error adding user to channel", error);
     });
-
-
 }
 
 const sendFriendRequest = async(senderEmail,viewerEmail, senderName, senderImg, viewerImg ) => {
@@ -51,12 +46,7 @@ const sendFriendRequest = async(senderEmail,viewerEmail, senderName, senderImg, 
     );
     const resAdded = await addedUserRef.update({friendList: addedList});
     const viewingAdded = await viewingUserRef.update({friendList: viewingList});
-
-
 };
-
-
-
 
 
 //MESSAGES
@@ -77,7 +67,7 @@ export async function sendMessageFS(automationID, adminID, messageData, recipien
 }
 
 export async function sendPublicChannelMessageFS(channelID, userID, messageData,) {
-    console.log('adding mess')
+    console.log('adding mess');
     const res = await db.collection('messages').add({
         channelID: channelID,
         public:true,
@@ -96,20 +86,16 @@ export async function sendPublicChannelMessageFS(channelID, userID, messageData,
     });
 }
 
-
 export async function deleteMessage(messageID){
     console.log('deleting message: ', messageID);
     const res = await db.collection('messages').doc(messageID).delete()
-
 }
 
 //Projects
-
 export async function saveFlow (channelID, flow) {
     console.log('saving flow for: ', channelID, ' with ', flow);
     let parsedFlow = JSON.stringify(flow);
     console.log(parsedFlow);
-
     const channelRef = db.collection('channels').doc(channelID);
     const res = await channelRef.update({flow: parsedFlow})
         .then(() => {
@@ -117,7 +103,6 @@ export async function saveFlow (channelID, flow) {
         .catch((error) => {
         console.error("Error writing document: ", error);
     });
-
 }
 
 export async function editProjectName(name, channelID) {
@@ -128,22 +113,15 @@ export async function editProjectName(name, channelID) {
     }).catch((error) => {
         console.error("Error adding user to channel", error);
     });
-
-
 }
 
-
 export async function addChannel (userID, channels){
-
     const res = await db.collection('channels').add({
         flow: '',
         name: 'add a name',
         color: 'black'
     });
-
     console.log(res, userID,channels);
-
-
     db.collection('channels').doc(res.id).update({
         channelID: res.id
     }).then(() => {
@@ -151,22 +129,16 @@ export async function addChannel (userID, channels){
     }).catch((error) => {
         console.error("Error creating notification and/or ID ", error);
     });
-
     let c = channels;
-
     c.push(res.id);
-
     const userRes = await db.collection('users').doc(userID).update({
         channelIDs:c
     })
 }
 
 
-
 //NOTIFICATIONS
-
 export async function sendFlowInvite (channelID, channelName, senderID, recipientID){
-
     const res = await db.collection('notifications').add({
         channelID: channelID,
         type: 'channelInvite',
@@ -175,7 +147,6 @@ export async function sendFlowInvite (channelID, channelName, senderID, recipien
         recipientID: recipientID,
         timeStamp: new Date()
     });
-
     db.collection('notifications').doc(res.id).update({
         notificationID: res.id
     }).then(() => {
@@ -183,8 +154,6 @@ export async function sendFlowInvite (channelID, channelName, senderID, recipien
     }).catch((error) => {
         console.error("Error creating notification and/or ID ", error);
     });
-
-
 }
 
 export async function deleteNotification(notificationID){
