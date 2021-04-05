@@ -252,16 +252,8 @@ function BaseChart(props) {
                         />
 
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'space-between' alignItems = 'space-between'>
-                            <Box
-                                border={1}
-                                borderColor = {buttonStyle.borderColor}
-                                borderRadius = {100}
-                                style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, margin: 20,  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
-                            >
-                                <FeedController buttonStyle = {buttonStyle} openChat = {props.openChat}/>
 
-                            </Box>
-                            <Box style = {{marginRight: 130,zIndex: 10,   marginTop: 10,}}>
+                            <Box style = {{marginRight: 130, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
                                 { saving
                                     ?
                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
@@ -270,8 +262,8 @@ function BaseChart(props) {
                                     </Box>
                                     :
                                      <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
-                                         <p> Saved </p>
-                                         <BiCheck size ={15} />
+                                         {/*<p> Saved </p>*/}
+                                         {/*<BiCheck size ={15} />*/}
                                      </Box>
 
                                 }
@@ -324,3 +316,14 @@ export default BaseChart;
 {/*<Box display = 'flex' style = {{boxShadow: "0px 0px 10px #ECECEC",height: '10vh'}}>*/}
 {/*</Box>*/}
 {/*<Divider orientation={'vertical'}/>*/}
+
+
+{/*<Box*/}
+{/*    border={1}*/}
+{/*    borderColor = {buttonStyle.borderColor}*/}
+{/*    borderRadius = {100}*/}
+{/*    style = {{ height: 70, zIndex: 10, marginTop: 70, width: 70, margin: 20,  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}*/}
+{/*>*/}
+{/*    <FeedController buttonStyle = {buttonStyle} openChat = {props.openChat}/>*/}
+
+{/*</Box>*/}

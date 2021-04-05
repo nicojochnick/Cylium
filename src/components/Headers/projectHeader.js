@@ -38,14 +38,17 @@ function ProjectHeader(props) {
     const id = open ? 'simple-popover' : undefined;
     return (
         <Box style = {{marginLeft: 10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+            <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
+            <Avatar src = {props.channel.img} />
             <TextField
                 id="standard-basic"
                 placeholder="Untitled"
                 style ={{fontSize: 21, fontWeight: 500}}
                 onChange={(event) => changeName(event.target.value)}
                 defaultValue={projectTitle}
-                InputProps={{style: {fontSize: 20, margin: 5,color:'black'}, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 30, margin: 10,fontWeight: 600, color:'#5E5E5E'}, disableUnderline: true,}}
             />
+            </Box>
             <Button aria-describedby={id} onClick={handleClick}>
                 {/*Open Popover*/}
             <AvatarGroup max={4}>
