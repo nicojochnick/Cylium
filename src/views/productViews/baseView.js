@@ -60,9 +60,9 @@ function BaseView(props) {
 
     return (
         <div className={classes.root}>
-            <CssBaseline />
+            {/*<CssBaseline />*/}
             <AppBar
-                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0}}
+                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
                 position="absolute"
                 color = '#F7F7F7'
                 className={clsx(classes.appBar, open && classes.appBarShift)}
@@ -72,20 +72,13 @@ function BaseView(props) {
                 </Toolbar>
                 <Divider/>
             </AppBar>
-            <Grid style = {{height: '90vh'}} className={classes.root} container spacing ={0}>
-                {(isChatOpen)
-                    ?<Grid className={classes.root} xs={4} md={4} lg={4} direction='column' container>
-                        {/*<ChannelHeader channel = {props.channel} user = {props.user}/>*/}
-                        <Divider/>
+            <Grid className={classes.rootView} container spacing ={0}>
+                    <Grid xs={4} md={4} lg={4} direction='column' container>
                         <MessagesContainer channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
                     </Grid>
-                    :null
-                }
-                    <Grid  className={classes.root} xs = {graphMDandLG}  md = {graphMDandLG} lg = {graphMDandLG} container>
-                        <div className={classes.container}>
-                        <BaseChart isChatOpen = {isChatOpen} viewWidth = {width} openChat = {openChat} channel = {props.channel} user = {props.user} />
-                        </div>
+                    <Grid  className={classes.root} xs = {8}  md = {8} lg = {8} container>
+                        <BaseChart channel = {props.channel} user = {props.user} isChatOpen = {isChatOpen} viewWidth = {width} openChat = {openChat}  />
                     </Grid>
                 </Grid>
         </div>
@@ -99,8 +92,13 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor:'white',
-        overflow:'hidden',
         display: 'flex',
+
+    },
+    rootView: {
+        height: '100vh',
+        flexGrow: 1,
+        overflow:'hidden',
     },
     box:{
         flexGrow: 1,
@@ -170,6 +168,7 @@ const useStyles = makeStyles((theme) => ({
 //     <Switch/>
 // </Box>
 
+{/*<ChannelHeader channel = {props.channel} user = {props.user}/>*/}
 
 
 export default BaseView;

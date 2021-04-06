@@ -1,7 +1,6 @@
 import React from 'react';
 import { EditorState,RichUtils,getDefaultKeyBinding, Modifier, SelectionState} from 'draft-js';
 import {Editor} from "react-draft-wysiwyg";
-
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
@@ -21,16 +20,15 @@ function Responder(props) {
     //TODO remove async if its not necessary
     const sendMessage = async() => {
         try {
-            console.log(contentState)
+            console.log(contentState);
             await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState,);
         } catch (error) {
             console.log('sending message failed ', error)
         }
     };
-
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
-        console.log(editorState,JSON.parse(contentState))
+        console.log(editorState,JSON.parse(contentState));
         if(command === 'send-message' && JSON.parse(contentState).blocks[0].text !== ''){
             sendMessage();
             let contentState = editorState.getCurrentContent();
@@ -49,7 +47,7 @@ function Responder(props) {
                 editorState,
                 contentState.getSelectionAfter(),
             );
-            setEditorState(editorState)
+            setEditorState(editorState);
             return 'handled'
         }
         if (newState) {
@@ -59,11 +57,8 @@ function Responder(props) {
         return 'not-handled';
     };
 
-
     const keyBindingFN = (e) => {
-        if (e.key === 'Enter') {
-            return 'send-message'
-        }
+        if (e.key === 'Enter') {return 'send-message'}
         return getDefaultKeyBinding(e)
     };
 
@@ -77,13 +72,10 @@ function Responder(props) {
                 keyBindingFn = {keyBindingFN}
                 toolbarStyle = {{backgroundColor: 'white', zIndex: 20,  borderRadius: 10, }}
                 toolbar = {{
-
                     options: [ 'link','list', 'emoji',],
-
                     inline: { inDropdown: true },
                     list: { inDropdown: true },
                     link: { inDropdown: true },
-
                 }}
                 // handleBeforeInput={_handleBeforeInput}
                 // handlePastedText={_handlePastedText}
@@ -112,18 +104,15 @@ const useStyles = makeStyles((theme) => ({
     formGroup: {
         alignItems: 'center'
     },
-
     draft:{
         overflow: "auto",
         maxHeight: 400,
         padding: 20,
         marginTop: -20,
     },
-
     submitButton: {
         margin: 10,
     },
-
     large: {
         width: theme.spacing(6),
         height: theme.spacing(6),

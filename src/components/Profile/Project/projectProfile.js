@@ -119,14 +119,7 @@ function ProjectProfile(props) {
                     defaultValue={projectTitle}
                     InputProps={{style: {fontSize: 30, margin: 10,fontWeight: 600, color:'#5E5E5E'}, disableUnderline: true,}}
                 />
-                {/*{isEditing*/}
-                {/*    ? <Button*/}
-                {/*        onClick={(event)=>(event)}*/}
-                {/*    >*/}
-                {/*        Save*/}
-                {/*    </Button>*/}
-                {/*    : null*/}
-                {/*}*/}
+
             </Grid>
 
 
@@ -209,3 +202,14 @@ export default ProjectProfile;
 {/*        Update*/}
 {/*    </p>*/}
 {/*</Button>*/}
+
+
+
+{/*{isEditing*/}
+{/*    ? <Button*/}
+{/*        onClick={(event)=>(event)}*/}
+{/*    >*/}
+{/*        Save*/}
+{/*    </Button>*/}
+{/*    : null*/}
+{/*}*/}

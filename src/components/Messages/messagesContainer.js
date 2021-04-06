@@ -61,17 +61,17 @@ function MessagesContainer(props) {
     //TODO: move responder up a level, don't want it grouped with messages
     return (
         <div className={classes.root}>
-            <Grid noWrap style = {{height: '90vh',noWrap:true,}} justify ='space-between' alignItems ='space-between' container direction ='column'>
+            <Grid  wrap = 'nowrap' style = {{height: '95vh', }} container direction ='column'>
                 <Box
                     border = {0}
                     // display = 'flex'
                     flexDirection = 'column'
-                    // justifyContent={'flex-end '}
-                    // alignItems = 'flex-end'
+                    justifyContent={'flex-end '}
+                    alignItems = 'flex-end'
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{backgroundColor:'white', padding: 0,height: '50vh',}}
+                    style ={{backgroundColor:'white', marginBottom: -15, padding: 0,maxHeight: '85vh',overflow: 'scroll'}}
                 >
                         {Object.keys(props.messages)
                         .map((item) =>
@@ -82,7 +82,7 @@ function MessagesContainer(props) {
                             />
                             )
                     }
-                        <div ref={messagesEndRef}></div>
+                        {/*<div ref={messagesEndRef}></div>*/}
 
                 </Box>
 
@@ -91,9 +91,8 @@ function MessagesContainer(props) {
                     flexDirection = 'column'
                     borderTop={1}
                     borderColor = {'grey'}
-                    justifyContent = 'center'
                     color = {'#A3A0B1'}
-                    style = {{marginTop: 5, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
+                    style = {{zIndex: 10, marginBottom: 15, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
                 >
                     <Responder channel = {props.channel} user = {props.user}/>
                 </Box>
@@ -109,14 +108,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: 0,
         margin: 0,
-        noWrap:true,
     },
     box:{
         flexGrow: 1,
         padding: 0,
-        margin: 0,
         display: 'start',
-        overflow: 'auto',
         flexDirection: 'column',
         // margin: 10,
         // marginBottom: 20,
