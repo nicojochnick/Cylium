@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import EditableUserID from "../User/editableUserID";
+import EditableUserID from "../Profile/User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import StructuredMessageItem from "./structuredMessageItem"

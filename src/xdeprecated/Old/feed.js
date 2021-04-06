@@ -17,9 +17,9 @@ import RewardTracker from "../Market/rewardTracker";
 import Divider from "@material-ui/core/Divider";
 import Pulse from "../../assets/images/pulse.gif"
 import FeedbackTracker from "../Feedback/feedbackTracker";
-import TeamManage from "../../components/User/Team/teamManage";
+import TeamManage from "../../components/Profile/Team/teamManage";
 import ShareBoxx from "../Share/shareBoxx";
-import EditableUserID from "../../components/User/editableUserID";
+import EditableUserID from "../../components/Profile/User/editableUserID";
 
 
 function Feed(props) {

@@ -11,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import {makeStyles} from "@material-ui/core/styles";
-import {db} from "../../api/firebase";
+import {db} from "../../../api/firebase";
 
 
 function EditableUserID(props) {

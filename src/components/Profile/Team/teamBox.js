@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import List from '@material-ui/core/List';
-import EditableUserID from '../editableUserID'
+import EditableUserID from '../User/editableUserID'
 import Feedback from "../../../xdeprecated/Feedback/feedback";
 import {db} from "../../../api/firebase";
 

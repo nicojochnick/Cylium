@@ -115,6 +115,17 @@ export async function editProjectName(name, channelID) {
     });
 }
 
+export async function editProjectIMG(img,channelID) {
+    console.log('saving IMG to:', channelID)
+    db.collection('channels').doc(channelID).update({
+        img: img
+    }).then(() => {
+        console.log("channel successfully added to user" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
 export async function addChannel (userID, channels){
     const res = await db.collection('channels').add({
         flow: '',

@@ -6,8 +6,8 @@ import Divider from "@material-ui/core/Divider";
 import AutomationList from "../../xdeprecated/Automation/automationList";
 import List from "@material-ui/core/List";
 import {makeStyles} from "@material-ui/core/styles";
-import UserProfile from "../../components/User/userProfile";
-import TeamBox from "../../components/User/Team/teamBox";
+import UserProfile from "../../components/Profile/User/userProfile";
+import TeamBox from "../../components/Profile/Team/teamBox";
 import {TwitterPicker} from "react-color";
 import NotificationList from "../../components/Notifications/notificationList";
 

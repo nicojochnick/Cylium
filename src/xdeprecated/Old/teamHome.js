@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
-import UserProfile from "../../components/User/userProfile";
+import UserProfile from "../../components/Profile/User/userProfile";
 import {makeStyles} from "@material-ui/core/styles";
 import TrackerSettings from "../Automation/Old/trackerSettings";
 import TeamOverallStats from "../Analytics/teamOverallStats";

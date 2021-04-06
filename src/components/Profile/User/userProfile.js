@@ -1,5 +1,5 @@
 import React from 'react';
-import {db, storage} from "../../api/firebase";
+import {db, storage} from "../../../api/firebase";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";

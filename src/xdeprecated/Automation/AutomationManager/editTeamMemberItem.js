@@ -6,7 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
 import Box from "@material-ui/core/Box";
-import UserId from "../../../components/User/userID";
+import UserId from "../../../components/Profile/User/userID";
 import Button from "@material-ui/core/Button";
 import {fade, makeStyles} from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";

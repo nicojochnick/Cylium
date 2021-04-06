@@ -11,7 +11,7 @@ import {fade, ThemeProvider,makeStyles,} from '@material-ui/core/styles';
 import Avatar from "@material-ui/core/Avatar";
 import {db} from "../../api/firebase";
 import AutomationId from "./automationID"
-import UserId from "../../components/User/userID";
+import UserId from "../../components/Profile/User/userID";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
 

@@ -15,7 +15,7 @@ import List from '@material-ui/core/List';
 import { BiSend, BiPlus } from "react-icons/bi";
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import EditTeamMemberItem from "./editTeamMemberItem";
-import UserProfile from "../../../components/User/userProfile";
+import UserProfile from "../../../components/Profile/User/userProfile";
 import SearchUsers from "../../../components/Utilities/Search/searchUsers";
 import {db} from '../../../api/firebase'
 import firebase from "firebase/app";

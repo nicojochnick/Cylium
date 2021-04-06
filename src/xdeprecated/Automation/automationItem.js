@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import AutomationHeader from "./automationHeader";
-import EditableUserID from "../../components/User/editableUserID";
+import EditableUserID from "../../components/Profile/User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import AutomationAnalytics from "./automationAnalytics";
