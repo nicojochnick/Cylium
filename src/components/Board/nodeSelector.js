@@ -14,22 +14,18 @@ export const selectNode = (type, id, user) => {
         }
     }
 
-    if (type ==='calendar') {
-
+    if (type == 'graph') {
         node = {
-            id:id ,
-            draggable:true,
-            type: 'calendarNodes',
-            className:"nowheel",
-            // data: { text: null, onChange: onTextChange, id: id }
-            data: { style:{color:'white'}, calendarID: ''},
-            position: { x: 300, y: 300 },
-            // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
-            // noWheel: true,
-
+            id: id,
+            draggable: true,
+            // className : "nodrag",
+            type: 'graphNodes',
+            data: {
+            },
+            position: {x: 350, y: 350},
         }
-
     }
+
 
     if (type =='label'){
         node = {
@@ -64,18 +60,6 @@ export const selectNode = (type, id, user) => {
         }
 
     }
-
-    if (type == 'bitcoingif') {
-        node = {
-            id: id,
-            draggable: true,
-            // className : "nodrag",
-            type: 'bitCoinGifNodes',
-            position: {x: 350, y: 350},
-        }
-
-    }
-
 
     if (type =='todo') {
         node = {
@@ -129,3 +113,35 @@ export const selectNode = (type, id, user) => {
     }
     return node;
 };
+
+
+//Bitcoin
+// if (type == 'bitcoingif') {
+//     node = {
+//         id: id,
+//         draggable: true,
+//         // className : "nodrag",
+//         type: 'bitCoinGifNodes',
+//         position: {x: 350, y: 350},
+//     }
+//
+// }
+
+
+// Calendar
+// if (type ==='calendar') {
+//
+//     node = {
+//         id:id ,
+//         draggable:true,
+//         type: 'calendarNodes',
+//         className:"nowheel",
+//         // data: { text: null, onChange: onTextChange, id: id }
+//         data: { style:{color:'white'}, calendarID: ''},
+//         position: { x: 300, y: 300 },
+//         // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
+//         // noWheel: true,
+//
+//     }
+//
+// }

@@ -11,9 +11,6 @@ import ReactFlow, {
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
 import PuffLoader from "react-spinners/PuffLoader";
-
-import {BiCheck} from "react-icons/bi"
-
 import FlowController from "./Controllers/flowController"
 import LabelNode from "../Nodes/labelNode";
 import TodoNode from "../Nodes/todoNode";
@@ -32,6 +29,7 @@ import AvatarNode from "../Nodes/avatarNode"
 import ButtonNode from "../Nodes/buttonNode"
 import CalendarNode from "../Nodes/calendarNode"
 import {selectNode} from "./nodeSelector";
+import GraphNode from "../Nodes/graphNode"
 
 let timerID = null;
 
@@ -50,6 +48,7 @@ const nodeTypes = {
     avatarNodes: AvatarNode,
     buttonNodes: ButtonNode,
     calendarNodes: CalendarNode,
+    graphNodes: GraphNode,
     characterNode: CharacterNode,
     bitCoinGifNodes: BitCoinGifNode,
 };

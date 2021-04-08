@@ -29,12 +29,9 @@ function MessagesContainer(props) {
     //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED, and when new messaged are added, INSTEAD OF AN ARBITRARY TIME
 
     const scrollToBottom = () => {
-        'scroll triggered'
         setTimeout(() => {
-
             messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
         }, 1500);
-
     };
 
     const sortAndSetMessages = (messages ) => {
@@ -83,7 +80,6 @@ function MessagesContainer(props) {
                             )
                     }
                         {/*<div ref={messagesEndRef}></div>*/}
-
                 </Box>
 
                 <Box
@@ -220,8 +216,6 @@ export default MessagesContainer;
 //             });
 //     }
 // };
-
-
 
 
 // const filterMessages = (messages) => {
