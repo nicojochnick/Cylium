@@ -21,6 +21,7 @@ export const selectNode = (type, id, user) => {
             // className : "nodrag",
             type: 'graphNodes',
             data: {
+                graphData: [{name: 'uno', uv: 400, pv: 2400, amt: 2400},{name: 'dos', uv: 500, pv: 2500, amt: 2500},{name: 'tres', uv: 900, pv: 4400, amt: 3500}]
             },
             position: {x: 350, y: 350},
         }

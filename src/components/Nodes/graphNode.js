@@ -1,31 +1,91 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from "recharts";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-const d= [{name: 'uno', uv: 400, pv: 2400, amt: 2400},{name: 'dos', uv: 500, pv: 2500, amt: 2500},{name: 'tres', uv: 900, pv: 4400, amt: 3500}];
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import { FiMoreVertical } from "react-icons/fi";
+import Switch from "@material-ui/core/Switch/Switch";
+import TextField from "@material-ui/core/TextField/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import {CirclePicker} from "react-color";
+import {colors} from "../../styles/colors";
+import IconSelector from "../Editor/iconSelector";
+import Divider from "@material-ui/core/Divider";
+//TODO: uninstall all google api crap + sheets
+
+
 
 export default memo(({ data,  }) => {
+
+    const [editOpen, setEditOpen] = React.useState(false);
+    const [d, setD] = React.useState(null);
+    const [key, setKey] = React.useState('1')
+
     const classes = useStyles();
+
+    const handleEditOpen = () => {
+        setEditOpen(!editOpen)
+    };
+
+    const editData = (axis,y,nx,ny) => {
+        let ds = d;
+
+        for (let i = 0; i < ds.length; i++) {
+            console.log(i)
+                if (ds[i].name === y){
+                    if (axis === 'y') {
+                      ds[i].name = ny
+                    } else {
+                        ds[i].uv = nx
+
+                    }
+                }
+        }
+        console.log(ds)
+
+        setD(ds);
+        data.graphData = ds;
+        setKey(Math.random().toString())
+
+    };
+
+
+
+    const handleOpenOptions = (event) => {
+        handleEditOpen()
+    };
+
+    useEffect(() => {
+       setD(data.graphData)
+    }, []);
     return (
+        <Grid container className={classes.root}>
         <Box
-            display = 'flex'
+            display = "flex"
             justifyContent = 'center'
-            alignItems = 'center'
+            flexDirection = 'column'
+
             borderColor = {'black'}
             style = {{zIndex: 20,
                 boxShadow: '0px 3px 8px #D3D3DA',
                 backgroundColor:'white',
                 color: 'white',
                 overflow:'hidden',
-                padding: 20,}
+                margin: 10,
+                flexGrow: 1,
+                }
             }
         >
-
-        <div style = {{backgroundColor:'white',}}>
+            <Box display="flex" justifyContent = 'flex-end' flexDirection = 'row' style = {{height: 30, backgroundColor:'grey', color: 'black'}}>
+                <IconButton style ={{margin: 0, padding:0, zIndex:20}} onClick={handleOpenOptions}>
+                    <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
+                </IconButton>
+            </Box>
+        <div style = {{backgroundColor:'white', margin: 10}}>
             <Grid>
-
-                <LineChart width={400} height={200} data={d}>
+                <LineChart key = {key} width={400} height={200} data={d}>
                     <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                     <XAxis dataKey="name" />
@@ -33,15 +93,64 @@ export default memo(({ data,  }) => {
                     <Tooltip />
                 </LineChart>
             </Grid>
-
         </div>
         </Box>
-    );
+            {editOpen
+                ?
+                <Box border = {1} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white', padding: 5,boxShadow: '0px 3px 8px #D3D3DA' }} >
+                    <Box display = 'flex' flexDirection = 'row' justifyContent = 'space-around'>
 
+                        <p > y </p>
+
+
+                        <Divider style ={{margin: 5}} orientation="vertical" flexItem />
+
+                        <p> x </p>
+
+                    </Box>
+                    <Divider/>
+
+                    {Object.keys(d).map( (item) =>
+                        <Box style = {{width: 200}} display = 'flex' flexDirection = 'row'>
+
+                            <TextField
+                                defaultValue={d[item].name}
+                                onChange={(e) => editData('y', d[item].name, d[item].uv, e.target.value,)}
+
+                            />
+
+                            <Divider style ={{margin: 5}} orientation="vertical" flexItem />
+
+                            <TextField
+                                defaultValue={d[item].uv}
+                                onChange={(e) => editData('x', d[item].name, e.target.value,d[item].name )}
+
+
+                            />
+
+
+
+                        </Box>
+
+                        )
+
+                    }
+
+                </Box>
+                : null
+
+            }
+        </Grid>
+    );
 });
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+
+
+    },
     box: {
         padding: 0,
         margin: 0,
@@ -96,3 +205,26 @@ const useStyles = makeStyles((theme) => ({
     },
 
 }));
+
+
+
+// import {google} from 'googleapis';
+
+// const oauth2Client = new google.auth.OAuth2(
+//     '269903968002-uqut7heda5r08q8aur5mcc76296fg9co.apps.googleusercontent.com',
+//     '"Quu9UekVSh1KFqxIWSmPxB9N"',
+//     'https://localhost:3001'
+// );
+//
+// // generate a url that asks permissions for Blogger and Google Calendar scopes
+// const scopes = [
+//     'https://www.googleapis.com/auth/sheets',
+// ];
+//
+// const url = oauth2Client.generateAuthUrl({
+//     // 'online' (default) or 'offline' (gets refresh_token)
+//     access_type: 'offline',
+//
+//     // If you only need one scope you can pass it as a string
+//     scope: scopes
+// });
