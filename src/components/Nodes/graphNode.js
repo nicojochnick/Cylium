@@ -29,12 +29,20 @@ export default memo(({ data,  }) => {
         setEditOpen(!editOpen)
     };
 
-    const editData = (axis,y,nx,ny) => {
+    const addRow = () => {
+        let ds = d;
+        ds.push({name: 'x', uv: 0, key: Math.random().toString()});
+        setD(ds);
+        data.graphData = ds;
+        setKey(Math.random().toString())
+    }
+
+    const editData = (axis,y,nx,ny, key) => {
         let ds = d;
 
         for (let i = 0; i < ds.length; i++) {
             console.log(i)
-                if (ds[i].name === y){
+                if (ds[i].key === key){
                     if (axis === 'y') {
                       ds[i].name = ny
                     } else {
@@ -63,8 +71,7 @@ export default memo(({ data,  }) => {
     return (
         <Grid container className={classes.root}>
         <Box
-            display = "flex"
-            justifyContent = 'center'
+            justifyContent = 'flex-start'
             flexDirection = 'column'
 
             borderColor = {'black'}
@@ -73,6 +80,7 @@ export default memo(({ data,  }) => {
                 backgroundColor:'white',
                 color: 'white',
                 overflow:'hidden',
+                height: 300,
                 margin: 10,
                 flexGrow: 1,
                 }
@@ -83,9 +91,9 @@ export default memo(({ data,  }) => {
                     <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
                 </IconButton>
             </Box>
-        <div style = {{backgroundColor:'white', margin: 10}}>
+        <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
             <Grid>
-                <LineChart key = {key} width={400} height={200} data={d}>
+                <LineChart key = {key} width={450} height={250} data={d}>
                     <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                     <XAxis dataKey="name" />
@@ -115,7 +123,7 @@ export default memo(({ data,  }) => {
 
                             <TextField
                                 defaultValue={d[item].name}
-                                onChange={(e) => editData('y', d[item].name, d[item].uv, e.target.value,)}
+                                onChange={(e) => editData('y', d[item].name, d[item].uv, e.target.value,d[item].key)}
 
                             />
 
@@ -123,7 +131,7 @@ export default memo(({ data,  }) => {
 
                             <TextField
                                 defaultValue={d[item].uv}
-                                onChange={(e) => editData('x', d[item].name, e.target.value,d[item].name )}
+                                onChange={(e) => editData('x', d[item].name, e.target.value,d[item].name, d[item].key )}
 
 
                             />
@@ -135,6 +143,8 @@ export default memo(({ data,  }) => {
                         )
 
                     }
+
+                    <Button style = {{margin: 10}} variant={'contained'}  onClick= {()=>addRow()}> Add </Button>
 
                 </Box>
                 : null
