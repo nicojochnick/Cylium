@@ -22,11 +22,19 @@ export default memo(({ data,  }) => {
     const [editOpen, setEditOpen] = React.useState(false);
     const [d, setD] = React.useState(null);
     const [key, setKey] = React.useState('1')
+    const [updated, setUpdated] = React.useState(true)
 
     const classes = useStyles();
 
     const handleEditOpen = () => {
         setEditOpen(!editOpen)
+    };
+
+    const handleEditOpenDeley = () => {
+        setEditOpen(false)
+        setTimeout(() => {
+            setEditOpen(true)
+        }, 20);
     };
 
     const addRow = () => {
@@ -35,8 +43,23 @@ export default memo(({ data,  }) => {
         setD(ds);
         data.graphData = ds;
         setKey(Math.random().toString())
-    }
+    };
 
+
+    const handleDeleteRow = (key) => {
+        setUpdated(false)
+        let ds = d.slice()
+        for (let i = 0; i < ds.length; i++) {
+            if (ds[i].key === key) {
+                ds.splice(i,1)
+            }
+        }
+        data.graphData = ds;
+        setKey(Math.random().toString())
+        setD(ds);
+        setUpdated(true)
+        handleEditOpenDeley()
+    };
     const editData = (axis,y,nx,ny, key) => {
         let ds = d;
 
@@ -110,7 +133,6 @@ export default memo(({ data,  }) => {
 
                         <p > y </p>
 
-
                         <Divider style ={{margin: 5}} orientation="vertical" flexItem />
 
                         <p> x </p>
@@ -118,29 +140,39 @@ export default memo(({ data,  }) => {
                     </Box>
                     <Divider/>
 
-                    {Object.keys(d).map( (item) =>
-                        <Box style = {{width: 200}} display = 'flex' flexDirection = 'row'>
+                    { updated ?
+                       d.map( (item, index) =>
 
-                            <TextField
-                                defaultValue={d[item].name}
-                                onChange={(e) => editData('y', d[item].name, d[item].uv, e.target.value,d[item].key)}
+                                <div key={index}>
+                                    <Box style={{width: 200}} display='flex' flexDirection='row'>
 
-                            />
+                                        <TextField
+                                            defaultValue={item.name}
+                                            onChange={(e) => editData('y', item.name, item.uv, e.target.value, item.key)}
 
-                            <Divider style ={{margin: 5}} orientation="vertical" flexItem />
+                                        />
 
-                            <TextField
-                                defaultValue={d[item].uv}
-                                onChange={(e) => editData('x', d[item].name, e.target.value,d[item].name, d[item].key )}
+                                        <Divider style={{margin: 5}} orientation="vertical" flexItem/>
 
-
-                            />
-
+                                        <TextField
+                                            defaultValue={item.uv}
+                                            onChange={(e) => editData('x', item.name, e.target.value, item.name, item.key)}
 
 
-                        </Box>
+                                        />
+                                        <Divider style={{margin: 5}} orientation="vertical" flexItem/>
+
+                                        <IconButton style={{margin: 0, padding: 0, zIndex: 20}}
+                                                    onClick={() => handleDeleteRow(item.key)}>
+                                            <FiMoreVertical size={18} style={{color: 'black', margin: 8,}}/>
+                                        </IconButton>
+
+                                    </Box>
+                                </div>
 
                         )
+
+                        : null
 
                     }
 
