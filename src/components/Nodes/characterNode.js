@@ -8,7 +8,6 @@ function CharacterNode(props) {
                     className="giphy-embed" allowFullScreen/>
 
 
-
         </div>
     );
 }

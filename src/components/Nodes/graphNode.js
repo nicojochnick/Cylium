@@ -23,7 +23,8 @@ export default memo(({ data,  }) => {
     const [editOpen, setEditOpen] = React.useState(false);
     const [d, setD] = React.useState(null);
     const [key, setKey] = React.useState('1')
-    const [updated, setUpdated] = React.useState(true)
+    const [updated, setUpdated] = React.useState(true);
+    const [title, setTitle] = React.useState(data.title);
 
     const classes = useStyles();
 
@@ -83,6 +84,11 @@ export default memo(({ data,  }) => {
 
     };
 
+    const changeTitle = (title) => {
+        data.title = title;
+        setTitle(title)
+    };
+
 
 
     const handleOpenOptions = (event) => {
@@ -97,7 +103,7 @@ export default memo(({ data,  }) => {
         <Box
             justifyContent = 'flex-start'
             flexDirection = 'column'
-
+            borderRadius = {10}
             borderColor = {'black'}
             style = {{zIndex: 20,
                 boxShadow: '0px 3px 8px #D3D3DA',
@@ -110,7 +116,7 @@ export default memo(({ data,  }) => {
                 }
             }
         >
-            <TitleAndOptions handleOpenOptions = {handleOpenOptions} />
+            <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
         <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
             <Grid>
                 <LineChart key = {key} width={450} height={250} data={d}>

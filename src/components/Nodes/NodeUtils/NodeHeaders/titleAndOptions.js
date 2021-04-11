@@ -3,16 +3,20 @@ import TextField from "@material-ui/core/TextField/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import { FiMoreVertical } from "react-icons/fi";
+import Divider from "@material-ui/core/Divider";
 
 
 function TitleAndOptions(props) {
     return (
-        <Box display="flex" justifyContent = 'space-between' flexDirection = 'row' style = {{height: 30, backgroundColor:'grey', color: 'black'}}>
-
+        <Box display="flex" justifyContent = 'space-between' flexDirection = 'row' style = {{height: 35, backgroundColor:'#7664FF', color: 'black'}}>
             <TextField
-                defaultValue={'title'}
+                defaultValue={props.title}
+                placeholder={'untitled'}
+                InputProps={{style: {fontSize: 15,fontWeight: 600, margin: 5, color:'white'}, disableUnderline: true,}}
+                onChange = {(e)=>props.changeTitle(e.target.value)}
+
             />
-            <IconButton style ={{margin: 0, padding:0, zIndex:20}} onClick={props.handleOpenOptions}>
+            <IconButton style ={{padding:0, zIndex:20}} onClick={props.handleOpenOptions}>
                 <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
             </IconButton>
         </Box>
