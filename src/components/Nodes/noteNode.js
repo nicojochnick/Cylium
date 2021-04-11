@@ -10,7 +10,7 @@ import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import { Rnd } from "react-rnd";
-import { BiEdit,BiRectangle, BiMove,BiChevronUp, BiChevronDown, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
+import { BiEdit,BiRctangle, BiMove,BiChevronUp, BiChevronDown, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
 let tinycolor = require("tinycolor2");
 
@@ -20,7 +20,6 @@ let global_bg_c = 'white';
 export default memo(({ data,}) => {
     const classes = useStyles();
     const [done, setDone] = React.useState(data.done)
-
     const [text, setText] = React.useState(data.text);
     const [textColor, setTextColor] = React.useState(data.textColor);
     const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
@@ -118,15 +117,6 @@ export default memo(({ data,}) => {
     return (
         <>
 
-            {/*<Rnd*/}
-            {/*    default={{*/}
-            {/*        x: 0,*/}
-            {/*        y: 0,*/}
-            {/*        // width: 300,*/}
-            {/*        // height: 50,*/}
-            {/*    }}*/}
-            {/*    style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}*/}
-            {/*>*/}
 
             <Box
                 border = {border}
@@ -134,15 +124,7 @@ export default memo(({ data,}) => {
                 style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3,borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
 
-                {/*<Handle*/}
-                {/*    type="source"*/}
-                {/*    position="top"*/}
-                {/*    id="a"*/}
-                {/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}*/}
-                {/*/>*/}
-
                 <Box
-                    className = {data.className}
                     style={{marginLeft: 8, }}
                 >
 
@@ -196,63 +178,8 @@ export default memo(({ data,}) => {
 
                 </Box>
 
-
-
-
-                {/*<TextField*/}
-                {/*    id="standard-basic"*/}
-                {/*    placeholder="add notes"*/}
-                {/*    multiline*/}
-                {/*    onChange={(event) => saveText(event)}*/}
-                {/*    defaultValue={text}*/}
-                {/*    fullWidth*/}
-                {/*    InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}*/}
-                {/*    rowsMax={200}*/}
-                {/*/>*/}
-
-
-
-
-
-
-
-                {/*<Handle*/}
-                {/*    type="source"*/}
-                {/*    position="left"*/}
-                {/*    id="d"*/}
-                {/*    style={{  borderRadius: 0, }}*/}
-                {/*/>*/}
-
-
-
-
-                {/*<Handle*/}
-                {/*    type="source"*/}
-                {/*    position="bottom"*/}
-                {/*    id = 'c'*/}
-                {/*    style={{ background: '#555' }}*/}
-                {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
-                {/*/>*/}
-
-
-
-                {/*<Handle*/}
-
-                {/*    type="target"*/}
-                {/*    position="bottom"*/}
-                {/*    style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}*/}
-                {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
-                {/*/>*/}
-
-
-
-
-
             </Box>
 
-
-
-            {/*</Rnd>*/}
 
         </>
 
@@ -327,4 +254,59 @@ const useStyles = makeStyles((theme) => ({
 {/*    textColor = {textColor}*/}
 {/*    backgroundColor = {backgroundColor}*/}
 
+{/*/>*/}
+
+
+{/*<Handle*/}
+{/*    type="source"*/}
+{/*    position="top"*/}
+{/*    id="a"*/}
+{/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}*/}
+{/*/>*/}
+
+
+
+{/*<TextField*/}
+{/*    id="standard-basic"*/}
+{/*    placeholder="add notes"*/}
+{/*    multiline*/}
+{/*    onChange={(event) => saveText(event)}*/}
+{/*    defaultValue={text}*/}
+{/*    fullWidth*/}
+{/*    InputProps={{style: {fontSize: fontSize, margin: 5, color:textColor}, input: {fontSize: fontSize, backgroundColor: textColor}, disableUnderline: true,}}*/}
+{/*    rowsMax={200}*/}
+{/*/>*/}
+
+
+
+
+
+
+
+{/*<Handle*/}
+{/*    type="source"*/}
+{/*    position="left"*/}
+{/*    id="d"*/}
+{/*    style={{  borderRadius: 0, }}*/}
+{/*/>*/}
+
+
+
+
+{/*<Handle*/}
+{/*    type="source"*/}
+{/*    position="bottom"*/}
+{/*    id = 'c'*/}
+{/*    style={{ background: '#555' }}*/}
+{/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
+{/*/>*/}
+
+
+
+{/*<Handle*/}
+
+{/*    type="target"*/}
+{/*    position="bottom"*/}
+{/*    style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}*/}
+{/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
 {/*/>*/}

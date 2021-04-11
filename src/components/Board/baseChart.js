@@ -1,12 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import ReactFlow, {
-    addEdge,
-    Background,
-    Controls,
-    ReactFlowProvider,
-    removeElements,
-    updateEdge,
-    useZoomPanHelper,
+import ReactFlow, {addEdge, Background, Controls, ReactFlowProvider, removeElements, updateEdge, useZoomPanHelper,
 } from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
@@ -21,15 +14,15 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-
 import NoteNode from "../Nodes/noteNode";
 import WebPageNode from "../Nodes/webPageNode";
 import CharacterNode from "../Nodes/characterNode";
-import AvatarNode from "../Nodes/avatarNode"
+import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/buttonNode"
 import CalendarNode from "../Nodes/calendarNode"
 import {selectNode} from "./nodeSelector";
-import GraphNode from "../Nodes/graphNode"
+import GraphNode from "../Nodes/NodeList/graphNode"
+import ReportNode from "../Nodes/NodeList/investorReportNode"
 
 let timerID = null;
 
@@ -51,6 +44,7 @@ const nodeTypes = {
     graphNodes: GraphNode,
     characterNode: CharacterNode,
     bitCoinGifNodes: BitCoinGifNode,
+    reportNodes: ReportNode,
 };
 
 const getNodeId = () => `node_${+new Date()}`;

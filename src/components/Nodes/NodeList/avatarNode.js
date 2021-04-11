@@ -8,7 +8,7 @@ import {makeStyles} from "@material-ui/core";
 
 export default memo(({ data,}) => {
     const classes = useStyles();
-    const [shadow, setShadow ] =React.useState(8)
+    const [shadow, setShadow ] = React.useState(8)
 
 
     return (

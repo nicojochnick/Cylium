@@ -28,6 +28,16 @@ export const selectNode = (type, id, user) => {
         }
     }
 
+    if (type === 'report') {
+        node = {
+            id: id,
+            type: 'reportNodes',
+            data: {reports:[]},
+            position: {x: 350, y: 350},
+
+        }
+    }
+
 
     if (type =='label'){
         node = {

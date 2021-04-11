@@ -7,21 +7,18 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import {BiChart, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
+import {BiChart,BiDetail, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
 
 
 function FlowController(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -35,7 +32,6 @@ function FlowController(props) {
                 {/*<Button>Two</Button>*/}
                 {/*<Button>Three</Button>*/}
             </ButtonGroup>
-
             <Popover
                 id={id}
                 style ={{marginTop: 80, marginRight: 20}}
@@ -58,19 +54,14 @@ function FlowController(props) {
                         color="primary"
                         aria-label="vertical outlined primary button group"
                     >
-                        <Button onClick={()=> props.addNode('label')}>
-                            <BiText size = {25}/>
-
+                        <Button>
+                            <BiChart onClick={()=> props.addNode('graph')} size = {25}/>
                         </Button>
-
                         <Button onClick={()=> props.addNode('notes')}>
                             <BiEdit size = {25}/>
-
                         </Button>
-
                         <Button onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>
-
                         </Button>
                         <Button onClick={()=> props.addNode('button')}>
                             <BiRectangle size = {25}/>
@@ -78,13 +69,10 @@ function FlowController(props) {
                         <Button>
                             <BiUserCircle onClick={()=> props.addNode('avatar')} size = {25}/>
                         </Button>
-                    <Button>
-                        <BiChart onClick={()=> props.addNode('graph')} size = {25}/>
-                    </Button>
-
+                        <Button>
+                            <BiDetail onClick={()=> props.addNode('report')} size = {25}/>
+                        </Button>
                     </ButtonGroup>
-
-
                 </Box>
             </Popover>
 

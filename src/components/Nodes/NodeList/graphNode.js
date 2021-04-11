@@ -10,10 +10,10 @@ import Switch from "@material-ui/core/Switch/Switch";
 import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import {CirclePicker} from "react-color";
-import {colors} from "../../styles/colors";
-import IconSelector from "../Editor/iconSelector";
+import {colors} from "../../../styles/colors";
+import IconSelector from "../../Editor/iconSelector";
 import Divider from "@material-ui/core/Divider";
-import TitleAndOptions from "./NodeUtils/NodeHeaders/titleAndOptions";
+import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
 //TODO: uninstall all google api crap + sheets
 
 
