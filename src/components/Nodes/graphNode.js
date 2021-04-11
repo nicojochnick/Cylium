@@ -13,6 +13,7 @@ import {CirclePicker} from "react-color";
 import {colors} from "../../styles/colors";
 import IconSelector from "../Editor/iconSelector";
 import Divider from "@material-ui/core/Divider";
+import TitleAndOptions from "./NodeUtils/NodeHeaders/titleAndOptions";
 //TODO: uninstall all google api crap + sheets
 
 
@@ -109,11 +110,7 @@ export default memo(({ data,  }) => {
                 }
             }
         >
-            <Box display="flex" justifyContent = 'flex-end' flexDirection = 'row' style = {{height: 30, backgroundColor:'grey', color: 'black'}}>
-                <IconButton style ={{margin: 0, padding:0, zIndex:20}} onClick={handleOpenOptions}>
-                    <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
-                </IconButton>
-            </Box>
+            <TitleAndOptions handleOpenOptions = {handleOpenOptions} />
         <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
             <Grid>
                 <LineChart key = {key} width={450} height={250} data={d}>
