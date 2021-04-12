@@ -166,21 +166,22 @@ export default memo(({ data}) => {
                 <Box
                     border = {border}
                     borderColor = {'#5C5C5C'}
-                    style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, overflow:'hidden', borderRadius:7, backgroundColor: backgroundColor, }}
+                    style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, borderRadius:7, backgroundColor: backgroundColor, }}
                     display = 'flex'
                     flexDirection ='row'
                     // alignItems = 'flex-start'
                 >
                     <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0,flex:1 }}>
                         { deadline !== '' && deadline !== undefined && !done
-                            ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -20}}>
-                                <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' border = {1} borderColor = {'#7664FF'} borderRadius = {6} style = {{height: 30, paddingLeft: 10, paddingRight: 10,backgroundColor:'#7664FF'}}>
+                            ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -40,}}>
+                                <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' border = {1} borderColor = {'#7664FF'} borderRadius = {6} style = {{height: 30, paddingLeft: 5, paddingRight: 5,backgroundColor:'#7664FF'}}>
                                     <BiTimeFive style = {{margin: 5, marginRight: 0, color: 'white'}} size = {14} />
                                     <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8,  marginLeft: 0}} date = {data.deadline} />
                                 </Box>
                             </Box>
                             : null
                         }
+
                         <Editor
                             editorState={editorState}
                             toolbarClassName="toolbarClassName"
@@ -221,12 +222,16 @@ export default memo(({ data}) => {
                     </Box>
 
 
-                    <Box display ='flex' flexDirection = 'column ' style = {{backgroundColor:'#7664FF', paddingRight: 5,flex:1}}>
+
+
+
+                    <Box  borderRadius = {5} display ='flex' flexDirection = 'column ' style = {{backgroundColor:'#7664FF', overflow:'hidden', margin: 2, paddingRight: 5,flex:1}}>
                         <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
                         <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
                             <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
                         </IconButton>
                     </Box>
+
 
                     <Handle
 
@@ -256,6 +261,7 @@ export default memo(({ data}) => {
                         style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}
                         // onConnect={(params) => console.log('handle onConnect', params)}
                     />
+
                 </Box>
 
                 <Popover

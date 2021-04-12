@@ -67,7 +67,7 @@ export const selectNode = (type, id, user) => {
             draggable: true,
             // className : "nodrag",
             type: 'buttonNodes',
-            data: {isSquare: false, link: 'https://example.com', style: {backgroundColor: '#7664FF'}, icon: null, title: 'add a title'},
+            data: {isSquare: false, link: 'https://example.com', style: {backgroundColor: '#7664FF'}, icon: null, title: null},
             position: {x: 350, y: 350},
         }
     }
