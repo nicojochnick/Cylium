@@ -31,7 +31,7 @@ export const selectNode = (type, id, user) => {
         node = {
             id: id,
             type: 'metricNodes',
-            data: {name: '', value: 0},
+            data: {title: '', value: 0},
             position: {x: 350, y: 350},
 
         }

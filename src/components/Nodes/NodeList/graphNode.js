@@ -117,17 +117,17 @@ export default memo(({ data,  }) => {
             }
         >
             <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
-        <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
-            <Grid>
-                <LineChart key = {key} width={450} height={250} data={d}>
-                    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                </LineChart>
-            </Grid>
-        </div>
+                <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
+                    <Grid>
+                        <LineChart key = {key} width={450} height={250} data={d}>
+                            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                        </LineChart>
+                    </Grid>
+                </div>
         </Box>
             {editOpen
                 ?
