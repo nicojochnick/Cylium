@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import {Handle} from "react-flow-renderer";
 import TextField from "@material-ui/core/TextField/TextField";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
-import NodeEditor from "../Editor/nodeEditor";
+import NodeEditor from "../../Editor/nodeEditor";
 import {makeStyles} from "@material-ui/core";
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";

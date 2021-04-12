@@ -8,12 +8,12 @@ import TextField from "@material-ui/core/TextField/TextField";
 import { FiMoreVertical } from "react-icons/fi";
 import {BiLink,BiText,BiX} from "react-icons/bi";
 import InputAdornment from '@material-ui/core/InputAdornment';
-import {colors} from "../../styles/colors"
+import {colors} from "../../../styles/colors"
 import {makeStyles} from "@material-ui/core";
 import {CirclePicker} from "react-color";
 import IconButton from "@material-ui/core/IconButton";
-import IconSelector from "../Editor/iconSelector";
-import {getIcon} from "../Editor/iconSelector";
+import IconSelector from "../../Editor/iconSelector";
+import {getIcon} from "../../Editor/iconSelector";
 import Divider from "@material-ui/core/Divider";
 import Switch from "@material-ui/core/Switch";
 

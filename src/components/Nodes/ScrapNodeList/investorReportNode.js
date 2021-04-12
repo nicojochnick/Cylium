@@ -87,25 +87,14 @@ export default memo(({ data,}) => {
                     </Box>
 
                 <Box display = 'flex'  flexDirection = 'column' style = {{overflow:'hidden'}}>
-
                 {reports.map( (item, index) =>
-
                     <Box display = 'flex' flexDirection = 'row'>
                         <TextField
                             defaultValue = {item.name}
                         />
-
-
                         <IconButton style ={{margin:0, padding: 0}} >
-
-
-
                             <BiLink/>
-
                         </IconButton>
-
-
-
                     </Box>
 
                 )

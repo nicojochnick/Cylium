@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import {BiChart,BiDetail, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
+import {BiLineChart,BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
 
 
 function FlowController(props) {
@@ -54,23 +54,24 @@ function FlowController(props) {
                         color="primary"
                         aria-label="vertical outlined primary button group"
                     >
-                        <Button>
-                            <BiChart onClick={()=> props.addNode('graph')} size = {25}/>
-                        </Button>
+
                         <Button onClick={()=> props.addNode('notes')}>
-                            <BiEdit size = {25}/>
+                            <BiMessageAlt size = {25}/>
+                        </Button>
+                        <Button>
+                            <BiLineChart onClick={()=> props.addNode('graph')} size = {25}/>
+                        </Button>
+                        <Button>
+                            <BiRuler onClick={()=> props.addNode('metric')} size = {25}/>
                         </Button>
                         <Button onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>
                         </Button>
                         <Button onClick={()=> props.addNode('button')}>
-                            <BiRectangle size = {25}/>
+                            <BiLink size = {25}/>
                         </Button>
                         <Button>
                             <BiUserCircle onClick={()=> props.addNode('avatar')} size = {25}/>
-                        </Button>
-                        <Button>
-                            <BiDetail onClick={()=> props.addNode('report')} size = {25}/>
                         </Button>
                     </ButtonGroup>
                 </Box>

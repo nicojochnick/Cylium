@@ -27,6 +27,16 @@ export const selectNode = (type, id, user) => {
             position: {x: 350, y: 350},
         }
     }
+    if (type === 'metric') {
+        node = {
+            id: id,
+            type: 'metricNodes',
+            data: {name: '', value: 0},
+            position: {x: 350, y: 350},
+
+        }
+    }
+
 
     if (type === 'report') {
         node = {
