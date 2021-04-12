@@ -9,6 +9,9 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import TextField from "@material-ui/core/TextField";
 import {editProjectName} from "../../api/firestore";
 import ProjectProfile from "../Profile/Project/projectProfile";
+import { BiBell, BiCog } from "react-icons/bi";
+
+import IconButton from "@material-ui/core/IconButton";
 
 function ProjectHeader(props) {
     const classes = useStyles();
@@ -23,6 +26,7 @@ function ProjectHeader(props) {
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
                 <ProjectProfile channel = {props.channel} />
             </Box>
+            <Box display = 'flex' flexDirection = 'row'>
             <Button aria-describedby={id} onClick={handleClick}>
                 {/*Open Popover*/}
             <AvatarGroup max={4}>
@@ -49,6 +53,13 @@ function ProjectHeader(props) {
             >
                 <SearchUsers channel = {props.channel} user = {props.user} />
             </Popover>
+            <IconButton >
+                <BiBell/>
+            </IconButton>
+                <IconButton >
+                    <BiCog/>
+                </IconButton>
+            </Box>
         </Box>
     );
 }
