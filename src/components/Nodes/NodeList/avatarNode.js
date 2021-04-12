@@ -8,19 +8,41 @@ import {makeStyles} from "@material-ui/core";
 
 export default memo(({ data,}) => {
     const classes = useStyles();
-    const [shadow, setShadow ] = React.useState(8)
+    const [shadow, setShadow ] = React.useState(8);
 
 
     return (
         <Grid item xs={0} md={0} lg={0}>
-            <Box style={{margin: 5,boxShadow: `0px 1px 4px #4A4A4E`, }} border={3} borderColor={'#7664FF'} borderRadius={50}>
+            <Box style={{margin: -3, boxShadow: `0px 1px 4px #4A4A4E`, }} border={3} borderColor={'#7664FF'} borderRadius={50}>
                 <Avatar src={data.user.img_url_Profile.imgUrl} className={classes.large}/>
             </Box>
             <Handle
+
                 type="source"
-                position="bottom"
+                id = 'j'
+                position="left"
+                style={{ zIndex: 12, backgroundColor: '#7664FF',boxShadow: "0px 2px 4px #C5C5C5", }}
+                // onConnect={(params) => console.log('handle onConnect', params)}
+            />
+            <Handle
+                type="source"
+                position="right"
+                id="z"
+                style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#7664FF' }}
+            />
+
+            <Handle
+                type = 'source'
                 id="a"
-                style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
+                position="top"
+                style={{  zIndex: 12,  borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#7664FF' }}
+            />
+            <Handle
+                type="source"
+                id = 'k'
+                position="bottom"
+                style={{ zIndex: 12, backgroundColor: '#7664FF',boxShadow: "0px 2px 4px #C5C5C5" }}
+                // onConnect={(params) => console.log('handle onConnect', params)}
             />
         </Grid>
     );

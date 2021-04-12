@@ -81,7 +81,8 @@ export default memo(({ data,}) => {
 
 
     const getColor = () => {
-        let color = tinycolor(backgroundColor);
+        //TODO fix hardcode
+        let color = tinycolor('black');
         if (color.isDark()){
             return 'white'
         } else {
@@ -121,8 +122,11 @@ export default memo(({ data,}) => {
             <Box
                 border = {border}
                 borderColor = {'#5C5C5C'}
-                style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3,borderRadius:7, backgroundColor: backgroundColor, }}
-                display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
+                style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, borderRadius:7, backgroundColor: backgroundColor, }}
+                display = 'flex'
+                flexDirection ='row'
+                justifyContent = 'center'
+            >
 
                 <Box
                     style={{marginLeft: 8, }}
@@ -164,7 +168,7 @@ export default memo(({ data,}) => {
 
                 </Box>
 
-                <Box display ='flex' flexDirection = 'column ' >
+                <Box display ='flex' flexDirection = 'column ' style = {{backgroundColor:'#7664FF',flex:1}}>
                     <BiMove style = {{margin: 5, color: getColor()}} size = {15} />
 
                     <IconButton onClick = {fold} style ={{margin:0, padding: 0}} >
