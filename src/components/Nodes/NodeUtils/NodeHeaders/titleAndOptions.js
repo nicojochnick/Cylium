@@ -16,9 +16,12 @@ function TitleAndOptions(props) {
                 onChange = {(e)=>props.changeTitle(e.target.value)}
 
             />
-            <IconButton style ={{padding:0, zIndex:20}} onClick={props.handleOpenOptions}>
-                <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
-            </IconButton>
+            {props.noOption
+                ?   null
+                :   <IconButton style ={{padding:0, zIndex:20}} onClick={props.handleOpenOptions}>
+                        <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
+                    </IconButton>
+                }
         </Box>
     );
 }

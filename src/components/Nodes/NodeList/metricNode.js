@@ -33,7 +33,7 @@ export default memo(({ data}) => {
                 flexGrow: 1,
             }}
         >
-            <TitleAndOptions title = {title} changeTitle = {changeTitle} />
+            <TitleAndOptions noOption = {true} title = {title} changeTitle = {changeTitle} />
             <Box style = {{padding: 0, width: 100, overflow:'hidden'}}>
             <TextField
                 defaultValue={data.value}

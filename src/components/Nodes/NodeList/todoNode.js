@@ -94,7 +94,8 @@ export default memo(({ data}) => {
 
 
     const getColor = () => {
-        let color = tinycolor(backgroundColor);
+       //TODO fix hardcode
+        let color = tinycolor('black');
         if (color.isDark()){
             return 'white'
         } else {
@@ -161,14 +162,16 @@ export default memo(({ data}) => {
 
             {/*>*/}
 
-            <Box display = 'flex' flexDirection ='column'>
+            <Box display = 'flex' flexDirection ='column' >
                 <Box
-                border = {border}
-                borderColor = {'#5C5C5C'}
-                style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}
-                display = 'flex' flexDirection ='row' justifyContent = 'center' alignItems = 'flex-start'>
-
-                    <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0, }}>
+                    border = {border}
+                    borderColor = {'#5C5C5C'}
+                    style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, overflow:'hidden', borderRadius:7, backgroundColor: backgroundColor, }}
+                    display = 'flex'
+                    flexDirection ='row'
+                    // alignItems = 'flex-start'
+                >
+                    <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0,flex:1 }}>
                         { deadline !== '' && deadline !== undefined && !done
                             ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -20}}>
                                 <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' border = {1} borderColor = {'#7664FF'} borderRadius = {6} style = {{height: 30, paddingLeft: 10, paddingRight: 10,backgroundColor:'#7664FF'}}>
@@ -185,7 +188,7 @@ export default memo(({ data}) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             onEditorStateChange={handleSetEditorState}
-                            editorStyle = {{width: 210}}
+                            editorStyle = {{width: 190}}
                             toolbarClassName={classes.toolbar}
                             toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
@@ -205,14 +208,20 @@ export default memo(({ data}) => {
                             }}
                         />
                     </Box>
-                       <Checkbox
+
+                    <Box display ='flex' flexDirection = 'column ' >
+
+                    <Checkbox
                             checked={done}
                             style={{marginLeft: 4, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />
 
-                    <Box display ='flex' flexDirection = 'column '>
+                    </Box>
+
+
+                    <Box display ='flex' flexDirection = 'column ' style = {{backgroundColor:'#7664FF', paddingRight: 5,flex:1}}>
                         <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
                         <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
                             <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
