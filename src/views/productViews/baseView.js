@@ -20,6 +20,13 @@ import ProjectHeader from "../../components/Headers/projectHeader";
 import clsx from 'clsx';
 import {addChannel} from "../../api/firestore";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
+import { BiLock } from "react-icons/bi";
+
+
+
+
+
+
 function BaseView(props) {
 
     const classes = useStyles();
@@ -51,6 +58,18 @@ function BaseView(props) {
 
     };
 
+    const isFollowing = ( ) =>{
+
+        let projects = props.user.channelIDs;
+        for (let i = 0; i < projects.length; i++){
+            if (props.channel.channelID === projects[i]){
+                return true;
+            }
+        }
+        return false;
+    };
+
+
     useEffect(() => {
         console.log('MESSAGES----->', props.messages);
         console.log(props.channel);
@@ -68,19 +87,30 @@ function BaseView(props) {
                 className={clsx(classes.appBar, open && classes.appBarShift)}
             >
                 <Toolbar noWrap className={classes.toolbar}>
-                    <ProjectHeader channel = {props.channel} />
+                    <ProjectHeader user = {props.user} channel = {props.channel} />
                 </Toolbar>
                 <Divider/>
             </AppBar>
-            <Grid className={classes.rootView} container spacing ={0}>
+            {isFollowing()
+                ? <Grid className={classes.rootView} container spacing={0}>
                     <Grid xs={4} md={4} lg={4} direction='column' container>
                         <MessagesContainer channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
                     </Grid>
-                    <Grid  className={classes.root} xs = {8}  md = {8} lg = {8} container>
-                        <BaseChart channel = {props.channel} user = {props.user} isChatOpen = {isChatOpen} viewWidth = {width} openChat = {openChat}  />
+                    <Grid className={classes.root} xs={8} md={8} lg={8} container>
+                        <BaseChart channel={props.channel} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
+                                   openChat={openChat}/>
                     </Grid>
                 </Grid>
+                :
+                <Grid container justify = 'center' alignItems = 'center' className = {classes.privateBoard}>
+                    <Box flexDirection = 'column' display = 'flex' justifyContent={'center'} alignItems = 'center'>
+                        <BiLock style = {{}} size = {70} />
+                        <p> Board is private, follow to view.</p>
+                    </Box>
+
+                </Grid>
+            }
         </div>
     );
 }
@@ -113,6 +143,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
+    },
+
+    privateBoard: {
+        height: '90vh',
+
     },
 
     container: {

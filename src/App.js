@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
-import home from './views/websiteViews/home';
+import home from './views/landerViews/home';
 import Dashboard from './views/core/dashboard'
 import signup from './views/authentication/signup';
 import Feedbox from './xdeprecated/Old/feedbox'
