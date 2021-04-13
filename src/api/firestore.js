@@ -12,6 +12,19 @@ export async function addUserToChannel(userChannels, userID) {
         console.error("Error adding user to channel", error);
     });
 }
+export async function saveViewPort(projectIDs, userID){
+    console.log('SAVING VIEWPORT');
+
+    db.collection('users').doc(userID).update({
+        projectIDs: projectIDs,
+
+    }).then(() => {
+        console.log("viewport and zoom successfully updated" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
 
 const sendFriendRequest = async(senderEmail,viewerEmail, senderName, senderImg, viewerImg ) => {
     //Add both people to each other friend lists as "pending".

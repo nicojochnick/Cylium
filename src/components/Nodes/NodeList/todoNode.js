@@ -193,7 +193,6 @@ export default memo(({ data}) => {
                             toolbarClassName={classes.toolbar}
                             toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
-
                                 options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
                                 colorPicker: {
                                     className: undefined,

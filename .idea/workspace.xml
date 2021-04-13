@@ -7,8 +7,9 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/firestore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/firestore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/core/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/core/dashboardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.5336357">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -35,15 +36,24 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="240" column="88" selection-start-line="240" selection-start-column="88" selection-end-line="240" selection-end-column="88" />
+                <state relative-caret-position="425">
+                  <caret line="249" column="57" lean-forward="true" selection-start-line="249" selection-start-column="57" selection-end-line="249" selection-end-column="57" />
                   <folding>
                     <element signature="e#0#52#0" expanded="true" />
-                    <marker date="1618316947773" expanded="true" signature="8781:8826" ph="..." />
+                    <marker date="1618321175503" expanded="true" signature="9180:9225" ph="..." />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/api/firestore.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="378">
+                  <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -97,15 +107,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="117">
@@ -145,8 +146,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="477">
-                  <caret line="207" column="24" lean-forward="true" selection-start-line="207" selection-start-column="24" selection-end-line="207" selection-end-column="24" />
+                <state relative-caret-position="534">
+                  <caret line="331" column="17" lean-forward="true" selection-start-line="331" selection-start-column="17" selection-end-line="331" selection-end-column="17" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -258,7 +259,6 @@
         <option value="$PROJECT_DIR$/src/components/Editor/nodeEditor.js" />
         <option value="$PROJECT_DIR$/src/components/User/userID.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/message.js" />
-        <option value="$PROJECT_DIR$/src/api/firestore.js" />
         <option value="$PROJECT_DIR$/src/components/Profile/Project/projectProfile.js" />
         <option value="$PROJECT_DIR$/src/components/Responder/responder.js" />
         <option value="$PROJECT_DIR$/src/views/core/dashboard.js" />
@@ -282,18 +282,19 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" />
         <option value="$PROJECT_DIR$/src/components/Headers/projectHeader.js" />
         <option value="$PROJECT_DIR$/src/views/productViews/baseView.js" />
         <option value="$PROJECT_DIR$/src/views/core/dashboardContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" />
         <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/api/firestore.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-470" />
     <option name="y" value="-1055" />
-    <option name="width" value="2042" />
+    <option name="width" value="1544" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -314,6 +315,12 @@
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
               <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -497,12 +504,12 @@
       <workItem from="1617645019371" duration="3030000" />
       <workItem from="1617658448922" duration="11000" />
       <workItem from="1617709387848" duration="17658000" />
-      <workItem from="1618065396115" duration="32739000" />
+      <workItem from="1618065396115" duration="34880000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1083070000" />
+    <option name="totallyTimeSpent" value="1085211000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -514,10 +521,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-470" y="-1055" width="2042" height="1055" extended-state="0" />
+    <frame x="-470" y="-1055" width="1544" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.098514855" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.13074902" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -532,7 +539,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49727046" visible="true" weight="0.08413205" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49727046" visible="true" weight="0.20021299" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50272954" side_tool="true" weight="0.20234291" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -668,13 +675,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/firestore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2436">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
         </state>
       </provider>
     </entry>
@@ -939,8 +939,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="207" column="24" lean-forward="true" selection-start-line="207" selection-start-column="24" selection-end-line="207" selection-end-column="24" />
+        <state relative-caret-position="534">
+          <caret line="331" column="17" lean-forward="true" selection-start-line="331" selection-start-column="17" selection-end-line="331" selection-end-column="17" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -949,12 +949,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="240" column="88" selection-start-line="240" selection-start-column="88" selection-end-line="240" selection-end-column="88" />
+        <state relative-caret-position="425">
+          <caret line="249" column="57" lean-forward="true" selection-start-line="249" selection-start-column="57" selection-end-line="249" selection-end-column="57" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-            <marker date="1618316947773" expanded="true" signature="8781:8826" ph="..." />
+            <marker date="1618321175503" expanded="true" signature="9180:9225" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/firestore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>

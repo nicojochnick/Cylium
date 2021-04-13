@@ -7,7 +7,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 import FlowController from "./Controllers/flowController"
 import LabelNode from "../Nodes/NodeList/labelNode";
 import TodoNode from "../Nodes/NodeList/todoNode";
-import {saveFlow} from "../../api/firestore";
+import {saveFlow, saveViewPort} from "../../api/firestore";
 import FeedController from "./Controllers/feedController";
 import BitCoinGifNode from "../Nodes/ScrapNodeList/bitCoinGifNode"
 import Dialog from '@material-ui/core/Dialog';
@@ -67,8 +67,16 @@ function BaseChart(props) {
         if (rfInstance || elements.length > 0) {
             const flow = rfInstance.toObject();
             saveFlow(props.channel.channelID, flow);
+            let position = flow.position;
+            let zoom = flow.zoom;
+            let updatedProjectIDs = props.user.projectIDs;
+            updatedProjectIDs[props.channel.channelID].viewPort = position;
+            updatedProjectIDs[props.channel.channelID].zoom = zoom;
+            console.log(updatedProjectIDs)
+            saveViewPort(updatedProjectIDs, props.user.email)
         }
     };
+
     const onRestore = useCallback((flow) => {
         const restoreFlow = async () => {
             if (flow) {
