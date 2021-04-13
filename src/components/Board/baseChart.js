@@ -199,7 +199,7 @@ function BaseChart(props) {
 
     const getPosition = () => {
 
-    }
+    };
 
     useEffect(() => {
        if(props.channel && props.channel.flow!== ''){

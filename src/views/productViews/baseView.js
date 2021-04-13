@@ -18,9 +18,14 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import ProjectHeader from "../../components/Headers/projectHeader";
 import clsx from 'clsx';
-import {addChannel} from "../../api/firestore";
+import { ChromePicker } from 'react-color';
+import {addChannel, updateProjectColor} from "../../api/firestore";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import { BiLock } from "react-icons/bi";
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from "@material-ui/core/DialogContent/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 
 
 
@@ -38,7 +43,23 @@ function BaseView(props) {
     const [stretch, setStretch] = React.useState(7);
     const [open, setOpen] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [color, setColor] = React.useState(props.channel.color);
+    const [savedColor, setSavedColor] =React.useState(props.channel.color)
 
+    const [openSettings, setSettingsOpen] = React.useState(false);
+
+
+    const handleClickOpenSettings = () => {setSettingsOpen(true);};
+    const handleCloseSettings = () => {setSettingsOpen(false);};
+
+    const changeColor = () => {
+        setColor(savedColor);
+        updateProjectColor(savedColor, props.channel.channelID)
+    };
+
+    const saveColor = (color) => {
+        setSavedColor(color.hex)
+    };
 
 
     const openChat = () => {
@@ -87,7 +108,7 @@ function BaseView(props) {
                 className={clsx(classes.appBar, open && classes.appBarShift)}
             >
                 <Toolbar noWrap className={classes.toolbar}>
-                    <ProjectHeader user = {props.user} channel = {props.channel} />
+                    <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />
                 </Toolbar>
                 <Divider/>
             </AppBar>
@@ -108,9 +129,37 @@ function BaseView(props) {
                         <BiLock style = {{}} size = {70} />
                         <p> Board is private, follow to view.</p>
                     </Box>
-
                 </Grid>
             }
+            <Dialog
+                open={openSettings}
+                onClose={handleCloseSettings}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogContent>
+                    <Box display = 'flex' flexDirection = 'column'>
+                        <p style = {{fontSize:21, fontWeight: 600, margin: 0}}> Theme </p>
+                        <p> Color: </p>
+
+                        <ChromePicker
+                            onChangeComplete={(color) => saveColor(color)  }
+                            color = {savedColor}
+                        />
+
+                        <Button onClick={changeColor} variant={'contained'} style = {{backgroundColor: savedColor, margin: 10}}> Save </Button>
+
+
+
+
+                    </Box>
+
+                    <Divider/>
+
+
+                </DialogContent>
+
+            </Dialog>
         </div>
     );
 }

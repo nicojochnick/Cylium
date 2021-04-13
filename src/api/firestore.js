@@ -122,7 +122,17 @@ export async function editProjectName(name, channelID) {
     db.collection('channels').doc(channelID).update({
         name: name
     }).then(() => {
-        console.log("channel successfully added to user" );
+        console.log("project name successfully updated" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
+export async function updateProjectColor(color, channelID) {
+    db.collection('channels').doc(channelID).update({
+        color: color
+    }).then(() => {
+        console.log("project color successfully updated" );
     }).catch((error) => {
         console.error("Error adding user to channel", error);
     });
@@ -142,8 +152,8 @@ export async function editProjectIMG(img,channelID) {
 export async function addChannel (userID, channels){
     const res = await db.collection('channels').add({
         flow: '',
-        name: 'add a name',
-        color: 'black'
+        name: null,
+        color: '#4783FB'
     });
     console.log(res, userID,channels);
     db.collection('channels').doc(res.id).update({

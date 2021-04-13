@@ -73,8 +73,8 @@ function ProjectHeader(props) {
                     <IconButton>
                         <BiBell/>
                     </IconButton>
-                    <IconButton>
-                        <BiCog/>
+                    <IconButton onClick={props.handleClickOpenSettings}>
+                        <BiCog />
                     </IconButton>
                 </Box>
             }
