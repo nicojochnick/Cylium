@@ -56,25 +56,7 @@ function DashboardContainer(props) {
 
     }, []);
 
-    // useEffect(() => {
-    //     //TODO: We only want to pull trackers that are in the usertracker owner list (make a new list or double filter)
-    //     function getAutomations(querySnapshot) {
-    //         let automations = [];
-    //         querySnapshot.forEach(function (doc) {
-    //             automations.push(doc.data())
-    //         });
-    //         console.log('successfuly setted automation: ', automations)
-    //         setAutomations(automations)
-    //     }
-    //     if (userAutomations.length > 0) {
-    //         console.log('automationIDs pulled and getting Automations');
-    //         const queryAutomations = db.collection('trackers').where('id', 'in', userAutomations);
-    //         const unsubscribeAutomations = queryAutomations.onSnapshot(getAutomations, error => console.log(error));
-    //         return () => {
-    //             unsubscribeAutomations()
-    //         }
-    //     }
-    // }, [userAutomations]);
+
 
     useEffect(() => {
         function getChannels(querySnapshot) {
@@ -93,7 +75,9 @@ function DashboardContainer(props) {
         }
         if (user) {
             console.log('user is present');
-            const queryChannels = db.collection('channels').where('channelID', 'in', user.channelIDs);
+            let projectIDs = user.projectIDs;
+
+            const queryChannels = db.collection('channels').where('channelID', 'in', Object.keys(projectIDs));
             const unsubscribeChannels = queryChannels.onSnapshot(getChannels, error => console.log(error));
             return () => {
                 unsubscribeChannels()
@@ -113,8 +97,9 @@ function DashboardContainer(props) {
             setMessages(message_sorted)
         }
         if (user) {
+            let projectIDs = user.projectIDs;
             console.log('user is present, pulling messages');
-            const queryMessages = db.collection('messages').where('channelID', 'in', user.channelIDs);
+            const queryMessages = db.collection('messages').where('channelID', 'in', Object.keys(projectIDs));
             const unsubscribeMessages = queryMessages.onSnapshot(getMessages, error => console.log(error));
             return () => {
                 unsubscribeMessages()
@@ -361,3 +346,25 @@ export default DashboardContainer;
 //         // console.log(merged_responses, messages, autos[0].call);
 //     }
 // };
+
+
+
+// useEffect(() => {
+//     //TODO: We only want to pull trackers that are in the usertracker owner list (make a new list or double filter)
+//     function getAutomations(querySnapshot) {
+//         let automations = [];
+//         querySnapshot.forEach(function (doc) {
+//             automations.push(doc.data())
+//         });
+//         console.log('successfuly setted automation: ', automations)
+//         setAutomations(automations)
+//     }
+//     if (userAutomations.length > 0) {
+//         console.log('automationIDs pulled and getting Automations');
+//         const queryAutomations = db.collection('trackers').where('id', 'in', userAutomations);
+//         const unsubscribeAutomations = queryAutomations.onSnapshot(getAutomations, error => console.log(error));
+//         return () => {
+//             unsubscribeAutomations()
+//         }
+//     }
+// }, [userAutomations]);

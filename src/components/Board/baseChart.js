@@ -184,6 +184,14 @@ function BaseChart(props) {
         }, 5000)
     };
 
+    const onLoad = (reactFlowInstance) => {
+        setRfInstance(reactFlowInstance)
+        console.log(reactFlowInstance.toObject())
+    };
+
+    const getPosition = () => {
+
+    }
 
     useEffect(() => {
        if(props.channel && props.channel.flow!== ''){
@@ -228,7 +236,9 @@ function BaseChart(props) {
                         nodeTypes={nodeTypes}
                         style = {{ overflow: 'hidden', background: '#FAFAFA'}}
                         elements={elements}
-                        onLoad={setRfInstance}
+                        onLoad={onLoad}
+                        defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}
+                        defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {onNodeDragStop}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
