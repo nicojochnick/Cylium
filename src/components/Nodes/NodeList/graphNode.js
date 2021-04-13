@@ -116,11 +116,11 @@ export default memo(({ data,  }) => {
                 }
             }
         >
-            <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
+            <TitleAndOptions color = {data.color} title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
                 <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
                     <Grid>
                         <LineChart key = {key} width={450} height={250} data={d}>
-                            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                            <Line type="monotone" dataKey="uv" stroke={data.color} />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                             <XAxis dataKey="name" />
                             <YAxis />

@@ -107,17 +107,17 @@ function ProjectProfile(props) {
             <Grid display = 'flex'justifyContent = 'center' alignItems = 'center' style = {{padding: 5}} container direction = 'row' >
                 <input className={classes.input} id="contained-button-file" accept="image/*" type ='file' onChange={handleImageAsFile} />
                     <label htmlFor="contained-button-file">
-                        <Box  style = {{margin: 5}} border = {1} borderColor = {'#5E5E5E'} borderRadius = {50}>
+                        <Box  style = {{margin: 5, padding: 3}} border = {2} borderColor = {'#D0D1D3'} borderRadius = {50}>
                             <Avatar src={props.channel.img} className = {classes.large}></Avatar>
                         </Box>
                     </label>
                 <TextField
                     id="standard-basic"
                     placeholder="Untitled"
-                    style ={{fontSize: 21, fontWeight: 500}}
+                    style ={{fontSize: 19, fontWeight: 500}}
                     onChange={(event) => changeName(event.target.value)}
                     defaultValue={projectTitle}
-                    InputProps={{style: {fontSize: 30, margin: 10,fontWeight: 600, color:'#5E5E5E'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: 23, margin: 5, fontWeight: 600, color:'#434343'}, disableUnderline: true,}}
                 />
 
             </Grid>
@@ -176,8 +176,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
     large: {
-        width: theme.spacing(5),
-        height: theme.spacing(5),
+        width: theme.spacing(5.5),
+        height: theme.spacing(5.5),
 
     },
     input: {

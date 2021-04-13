@@ -27,14 +27,14 @@ function FlowController(props) {
             <ButtonGroup
                 variant='text' color="primary" aria-label="contained primary button group">
                 <IconButton  onClick={handleClick} color="secondary" aria-label="">
-                    <AddIcon style = {{color:'6989FF'}} />
+                    <AddIcon style = {{color:props.color, height: 30, width: 30}} />
                 </IconButton>
                 {/*<Button>Two</Button>*/}
                 {/*<Button>Three</Button>*/}
             </ButtonGroup>
             <Popover
                 id={id}
-                style ={{marginTop: 80, marginRight: 20}}
+                style ={{marginTop: 80, marginRight: 15}}
                 open={open}
                 anchorEl={anchorEl}
                 onClose={handleClose}
@@ -47,31 +47,31 @@ function FlowController(props) {
                     horizontal: 'left',
                 }}
             >
-                <Box display = 'flex'>
+                <Box border = {2} borderRadius = {5} borderColor = {props.color} display = 'flex' style = {{padding: -5, overflow:'hidden'}}>
                     <ButtonGroup
-                        style = {{width: 80}}
+                        style = {{width: 80, color: props.color, borderColor: props.color, margin: -2, overflow:'hidden'}}
                         orientation="vertical"
-                        color="primary"
+                        color = {props.color}
                         aria-label="vertical outlined primary button group"
                     >
 
                         <Button onClick={()=> props.addNode('notes')}>
-                            <BiMessageAlt size = {25}/>
+                            <BiMessageAlt style = {{color: props.color}} size = {25}/>
                         </Button>
                         <Button>
-                            <BiLineChart onClick={()=> props.addNode('graph')} size = {25}/>
+                            <BiLineChart  style = {{color: props.color}}  onClick={()=> props.addNode('graph')} size = {25}/>
                         </Button>
                         <Button>
-                            <BiRuler onClick={()=> props.addNode('metric')} size = {25}/>
+                            <BiRuler  style = {{color: props.color}}  onClick={()=> props.addNode('metric')} size = {25}/>
                         </Button>
-                        <Button onClick={()=> props.addNode('todo')}>
+                        <Button  style = {{color: props.color}}  onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>
                         </Button>
-                        <Button onClick={()=> props.addNode('button')}>
+                        <Button  style = {{color: props.color}}  onClick={()=> props.addNode('button')}>
                             <BiLink size = {25}/>
                         </Button>
                         <Button>
-                            <BiUserCircle onClick={()=> props.addNode('avatar')} size = {25}/>
+                            <BiUserCircle  style = {{color: props.color}}  onClick={()=> props.addNode('avatar')} size = {25}/>
                         </Button>
                     </ButtonGroup>
                 </Box>

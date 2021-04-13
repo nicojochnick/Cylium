@@ -168,7 +168,7 @@ export default memo(({ data,}) => {
 
                 </Box>
 
-                <Box display ='flex' flexDirection = 'column ' style = {{backgroundColor:'#7664FF',flex:1}}>
+                <Box display ='flex' flexDirection = 'column ' style = {{backgroundColor:data.color,flex:1}}>
                     <BiMove style = {{margin: 5, color: getColor()}} size = {15} />
 
                     <IconButton onClick = {fold} style ={{margin:0, padding: 0}} >

@@ -22,26 +22,26 @@ export default memo(({ data}) => {
         <Box
             display = 'flex'
             flexDirection = 'column'
-            borderRadius = {10}
+            borderRadius = {8}
             style = {{zIndex: 20,
                 boxShadow: '0px 3px 8px #D3D3DA',
                 backgroundColor:'white',
                 color: 'white',
                 overflow:'hidden',
-                height: 90,
+                height: 80,
                 margin: 10,
                 flexGrow: 1,
             }}
         >
-            <TitleAndOptions noOption = {true} title = {title} changeTitle = {changeTitle} />
-            <Box style = {{padding: 0, width: 100, overflow:'hidden'}}>
+            <TitleAndOptions color = {data.color} noOption = {true} title = {title} changeTitle = {changeTitle} />
+            <Box style = {{padding: 0, width: 80, overflow:'hidden'}}>
             <TextField
                 defaultValue={data.value}
                 placeholder={'0'}
                 onChange={e=> changeValue(e.target.value)}
                 type="number"
                 fullWidth={true}
-                InputProps={{style: {fontSize: 35,fontWeight: 600, marginLeft: 20},width: 100, disableUnderline: true,}}
+                InputProps={{style: {color: '#3C3F43', fontSize: 28,fontWeight: 600, marginLeft: 15},width: 80, disableUnderline: true,}}
 
             />
             </Box>

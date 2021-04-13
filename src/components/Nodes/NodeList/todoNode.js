@@ -171,10 +171,10 @@ export default memo(({ data}) => {
                     flexDirection ='row'
                     // alignItems = 'flex-start'
                 >
-                    <Box className = {'nodrag'} style={{marginLeft: 5, padding: 0,flex:1 }}>
+                    <Box className = {'nodrag'} style={{padding: 0,flex:1 }}>
                         { deadline !== '' && deadline !== undefined && !done
                             ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -40,}}>
-                                <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' border = {1} borderColor = {'#7664FF'} borderRadius = {6} style = {{height: 30, paddingLeft: 5, paddingRight: 5,backgroundColor:'#7664FF'}}>
+                                <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'  borderRadius = {6} style = {{height: 30, paddingLeft: 5, paddingRight: 5,backgroundColor:data.color}}>
                                     <BiTimeFive style = {{margin: 5, marginRight: 0, color: 'white'}} size = {14} />
                                     <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8,  marginLeft: 0}} date = {data.deadline} />
                                 </Box>
@@ -189,9 +189,9 @@ export default memo(({ data}) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             onEditorStateChange={handleSetEditorState}
-                            editorStyle = {{width: 190}}
+                            editorStyle = {{width: 190, margin: 8}}
                             toolbarClassName={classes.toolbar}
-                            toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
+                            toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -15, marginTop:-80, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
                                 options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
                                 colorPicker: {
@@ -213,7 +213,7 @@ export default memo(({ data}) => {
 
                     <Checkbox
                             checked={done}
-                            style={{marginLeft: 4, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
+                            style={{marginLeft: 5, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />
@@ -224,7 +224,7 @@ export default memo(({ data}) => {
 
 
 
-                    <Box  borderRadius = {5} display ='flex' flexDirection = 'column ' style = {{backgroundColor:'#7664FF', overflow:'hidden', margin: 2, paddingRight: 5,flex:1}}>
+                    <Box  borderRadius = {5} display ='flex' flexDirection = 'column ' style = {{backgroundColor:data.color, overflow:'hidden', margin: 2, paddingRight: 5,flex:1}}>
                         <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
                         <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
                             <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
@@ -299,7 +299,7 @@ export default memo(({ data}) => {
                                 <p style = {{color:'white'}}>save </p>
                             </Button>
                             :
-                            <Button size={'small'} onClick={clearDeadline} className={classes.button} style = {{height: 30,margin: 10,backgroundColor:'#72737E' }}>
+                            <Button size={'small'} onClick={clearDeadline} className={classes.button} style = {{height: 30,margin: 10,backgroundColor:data.color}}>
                                 <p style = {{color:'white',}}>clear </p>
                             </Button>
 

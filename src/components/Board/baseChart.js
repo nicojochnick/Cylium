@@ -71,7 +71,7 @@ function BaseChart(props) {
             let zoom = flow.zoom;
             let updatedProjectIDs = props.user.projectIDs;
             updatedProjectIDs[props.channel.channelID].viewPort = position;
-            updatedProjectIDs[props.channel.channelID].zoom = zoom;
+             updatedProjectIDs[props.channel.channelID].zoom = zoom;
             console.log(updatedProjectIDs)
             saveViewPort(updatedProjectIDs, props.user.email)
         }
@@ -207,11 +207,10 @@ function BaseChart(props) {
             console.log('ELEMENTS:', f.elements,);
            let dbElements = f.elements;
 
-           //WONT WORK because nodes have no reference to this component version
             for (let node of dbElements){
 
                 if (node.data) {
-                    node.data.save = triggerAutoSave
+                    node.data.color = props.channel.color
                 }
 
             }
@@ -219,7 +218,7 @@ function BaseChart(props) {
            setElements(dbElements)
 
         }
-    }, []);
+    }, [props.channel.color]);
 
 
 
@@ -229,12 +228,12 @@ function BaseChart(props) {
         <Box style = {{zIndex: 0, height: '93vh',}} border={1} borderColor = {'#9B9B9B'}>
             <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
-                    border={1}
-                    borderColor = {buttonStyle.borderColor}
+                    border={2}
+                    borderColor = {props.channel.color}
                     borderRadius = {100}
                     style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
-                    <FlowController buttonStyle = {buttonStyle} addNode = {addNode} />
+                    <FlowController color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
                 </Box>
 
             </Box>

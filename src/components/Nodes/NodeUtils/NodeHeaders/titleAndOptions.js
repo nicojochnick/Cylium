@@ -8,11 +8,11 @@ import Divider from "@material-ui/core/Divider";
 
 function TitleAndOptions(props) {
     return (
-        <Box display="flex" justifyContent = 'space-between' flexDirection = 'row' style = {{height: 35, backgroundColor:'#7664FF', color: 'black'}}>
+        <Box display="flex" justifyContent = 'space-between' flexDirection = 'row' style = {{height: 37, backgroundColor:props.color, color: 'black'}}>
             <TextField
                 defaultValue={props.title}
                 placeholder={'untitled'}
-                InputProps={{style: {fontSize: 15,fontWeight: 600, margin: 5, color:'white'}, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 16,fontWeight: 500, margin: 5, color:'white'}, disableUnderline: true,}}
                 onChange = {(e)=>props.changeTitle(e.target.value)}
 
             />
