@@ -127,27 +127,25 @@ function Message(props) {
                 </ButtonGroup>
 
             </Popover>
-
-
             {user
-                ? <Box
+                ?
+                <Box
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow={0}
                     style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:backGroundColor , }}
                 >
-                    <Grid justify='flex-start' alignItems='flex-start' direction="row" container style={{margin: 0,}}>
-                        <Grid item >
-                            <Box style={{margin: 5}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
+                    <Box display = 'flex'  flexDirection = 'row' style={{margin: 0}}>
+                        <Box style={{margin: 5, height: 44}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
                                 <Avatar  src={user.img_url_Profile.imgUrl} className={classes.large}/>
-                            </Box>
-                        </Grid>
-                        <Grid style = {{padding: 5}} justify={'flex-end'} alignItems={'flex-end'} item xs={9} md={9} lg={9}>
-                            <Grid container>
+                        </Box>
+
+                        <Box flexDirection = 'column' style = {{width: 350}}>
+                            <Grid container style = {{margin: 0}}>
                             <p style={{
                                 margin: 8,
                                 marginTop: 2,
-                                marginLeft: 13,
+                                marginLeft: 5,
                                 marginBottom: 0,
                                 fontSize: 16,
                                 color: '#2F2C37',
@@ -156,7 +154,7 @@ function Message(props) {
                             <p style={{color: '#2F2C37', fontSize: 12, margin: 8, marginTop: 5, marginLeft: 5}}>Monday, May 2020 </p>
                             </Grid>
 
-                            <Box className={classes.root} style = {{margin: 8}}>
+                            <Box className={classes.root} style = {{margin: 2, }}>
                                 {(props.message.structuredMessage)
                                     ? <div> {Object.keys(props.message.messageData).map((item) => <
                                         StructuredMessageItem packageItem={props.message.messageData[item]}/>)
@@ -167,14 +165,13 @@ function Message(props) {
                                     </div>
                                 }
                             </Box>
-                        </Grid>
-                        <Grid item xs={1} md={1} lg={1}>
-                            <IconButton onClick={handlePopoverOpen} style = {{marginLeft: -15}} aria-label="open">
+                        </Box>
+                        <Box style = {{}}>
+                            <IconButton onClick={handlePopoverOpen}  aria-label="open">
                                 <FiMoreVertical  size = {17}/>
                             </IconButton>
-
-                        </Grid>
-                    </Grid>
+                        </Box>
+                    </Box>
                 </Box>
                 : null
             }

@@ -228,10 +228,10 @@ function BaseChart(props) {
         <Box style = {{zIndex: 0, height: '93vh',}} border={1} borderColor = {'#9B9B9B'}>
             <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
-                    border={2}
+                    border={1}
                     borderColor = {props.channel.color}
                     borderRadius = {100}
-                    style = {{ height: 70, zIndex: 10, marginTop: 65, width: 70, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
+                    style = {{ height: 60, zIndex: 10, marginTop: 65, width: 60, marginBottom: -40, position:'absolute',  backgroundColor:'white', boxShadow: "0px 0px 20px #EBEFFF", }}
                 >
                     <FlowController color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
                 </Box>

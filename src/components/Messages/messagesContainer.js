@@ -57,7 +57,6 @@ function MessagesContainer(props) {
 
     //TODO: move responder up a level, don't want it grouped with messages
     return (
-        <div className={classes.root}>
             <Grid  wrap = 'nowrap' style = {{height: '95vh', }} container direction ='column'>
                 <Box
                     border = {0}
@@ -68,7 +67,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{backgroundColor:'white', marginBottom: -15, padding: 0,maxHeight: '85vh',overflow: 'scroll'}}
+                    style ={{backgroundColor:'white', marginBottom: -15, padding: 0,maxHeight: '70vh',overflowY: 'scroll'}}
                 >
                         {Object.keys(props.messages)
                         .map((item) =>
@@ -84,16 +83,16 @@ function MessagesContainer(props) {
 
                 <Box
                     display = 'flex'
+                    justifyContent = 'flex-end'
                     flexDirection = 'column'
                     borderTop={1}
                     borderColor = {'grey'}
                     color = {'#A3A0B1'}
-                    style = {{zIndex: 10, marginBottom: 15, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
+                    style = {{zIndex: 0, marginBottom: 15, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
                 >
                     <Responder channel = {props.channel} user = {props.user}/>
                 </Box>
             </Grid>
-        </div>
     );
 };
 

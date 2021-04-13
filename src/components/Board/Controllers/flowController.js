@@ -23,11 +23,11 @@ function FlowController(props) {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Grid style = {{height: 70,}} container justify ='center' alignItems = 'center' >
+        <Grid style = {{height: 60,}} container justify ='center' alignItems = 'center' >
             <ButtonGroup
                 variant='text' color="primary" aria-label="contained primary button group">
                 <IconButton  onClick={handleClick} color="secondary" aria-label="">
-                    <AddIcon style = {{color:props.color, height: 30, width: 30}} />
+                    <AddIcon style = {{color:props.color, height: 24, width: 24}} />
                 </IconButton>
                 {/*<Button>Two</Button>*/}
                 {/*<Button>Three</Button>*/}

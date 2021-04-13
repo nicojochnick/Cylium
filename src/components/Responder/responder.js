@@ -63,23 +63,29 @@ function Responder(props) {
     };
 
     return (
-        <Box  border = {1} display = 'flex' flexDirection = 'column'  borderRadius={20} style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3'}}>
-            <Editor
-                placeholder="message..."
-                handleKeyCommand={handleKeyCommand}
-                editorState={editorState}
-                onEditorStateChange={onChange}
-                keyBindingFn = {keyBindingFN}
-                toolbarStyle = {{backgroundColor: 'white', zIndex: 20,  borderRadius: 10, }}
-                toolbar = {{
-                    options: [ 'link','list', 'emoji',],
-                    inline: { inDropdown: true },
-                    list: { inDropdown: true },
-                    link: { inDropdown: true },
-                }}
-                // handleBeforeInput={_handleBeforeInput}
-                // handlePastedText={_handlePastedText}
-            />
+
+        <Box
+            border = {1}
+            display = 'flex'
+            flexDirection = 'column'
+            borderRadius={20}
+            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 400}}>
+                <Editor
+                    placeholder="message..."
+                    handleKeyCommand={handleKeyCommand}
+                    editorState={editorState}
+                    onEditorStateChange={onChange}
+                    keyBindingFn = {keyBindingFN}
+                    toolbarStyle = {{backgroundColor: 'white', zIndex: 20,  borderRadius: 10, }}
+                    toolbar = {{
+                        options: [ 'link','list', 'emoji',],
+                        inline: { inDropdown: true },
+                        list: { inDropdown: true },
+                        link: { inDropdown: true },
+                    }}
+                    // handleBeforeInput={_handleBeforeInput}
+                    // handlePastedText={=_handlePastedText}
+                />
         </Box>
     );
 }
@@ -95,8 +101,8 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
     },
     box: {
-        // display: 'start',
-        // overflow: 'auto',
+        display: 'start',
+        overflow: 'auto',
         // flexDirection: 'row',
         marginBottom: 20,
         backgroundColor: '#FFFFFF'
