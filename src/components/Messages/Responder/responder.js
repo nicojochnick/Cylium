@@ -4,7 +4,7 @@ import {Editor} from "react-draft-wysiwyg";
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import Box from "@material-ui/core/Box"
 import {makeStyles} from "@material-ui/core/styles";
-import {sendPublicChannelMessageFS} from "../../api/firestore";
+import {sendPublicChannelMessageFS} from "../../../api/firestore";
 
 function Responder(props) {
     const classes = useStyles();
@@ -67,9 +67,10 @@ function Responder(props) {
         <Box
             border = {1}
             display = 'flex'
+            borderColor = {'#BABCBE'}
             flexDirection = 'column'
             borderRadius={20}
-            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 400}}>
+            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 400, color: '#555555'}}>
                 <Editor
                     placeholder="message..."
                     handleKeyCommand={handleKeyCommand}

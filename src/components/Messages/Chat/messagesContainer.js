@@ -6,12 +6,12 @@ import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import EditableUserID from "../Profile/User/editableUserID";
+import EditableUserID from "../../Profile/User/editableUserID";
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
 import StructuredMessageItem from "./structuredMessageItem"
 import Message from "./message"
-import {db} from "../../api/firebase";
+import {db} from "../../../api/firebase";
 import Responder from "../Responder/responder";
 
 
@@ -22,7 +22,6 @@ function MessagesContainer(props) {
     const [messages, setMessages] = React.useState([]);
     const [height, setHeight] = React.useState(300);
     const [automations, setAutomations] = React.useState([]);
-
 
     const messagesEndRef = useRef(null);
 
@@ -67,7 +66,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{backgroundColor:'white', marginBottom: -15, padding: 0,maxHeight: '70vh',overflowY: 'scroll'}}
+                    style ={{backgroundColor:'white', marginBottom: -15, marginRight: 0, padding: 0,maxHeight: '65vh',overflowY: 'scroll'}}
                 >
                         {Object.keys(props.messages)
                         .map((item) =>
@@ -85,10 +84,9 @@ function MessagesContainer(props) {
                     display = 'flex'
                     justifyContent = 'flex-end'
                     flexDirection = 'column'
-                    borderTop={1}
                     borderColor = {'grey'}
                     color = {'#A3A0B1'}
-                    style = {{zIndex: 0, marginBottom: 15, backgroundColor: 'white',boxShadow: "0px -2px 10px #ECECEC",}}
+                    style = {{zIndex: 0, margin: 0, marginBottom: 15, backgroundColor: 'white',boxShadow: "0px -2px 8px #ECECEC",}}
                 >
                     <Responder channel = {props.channel} user = {props.user}/>
                 </Box>

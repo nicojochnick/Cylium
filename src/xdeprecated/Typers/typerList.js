@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {db} from "../../api/firebase";
 import {makeStyles} from "@material-ui/core/styles";
 import TyperTracker from "./typerTracker";
-import StructuredMessageItem from "../../components/Messages/structuredMessageItem";
+import StructuredMessageItem from "../../components/Messages/Chat/structuredMessageItem";
 import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";

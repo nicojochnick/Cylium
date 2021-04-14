@@ -1,6 +1,6 @@
 import React from 'react';
 import InviteToChannelNotification from "./notificationTypes/inviteToChannelNotification";
-import Message from "../Messages/message";
+import Message from "../Messages/Chat/message";
 
 function NotificationList(props) {
     console.log('NOTIFICATIONS', props.notifications);

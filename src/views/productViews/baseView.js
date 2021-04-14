@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import MessagesContainer from "../../components/Messages/messagesContainer"
+import MessagesContainer from "../../components/Messages/Chat/messagesContainer"
 import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
 import AutomationItem from "../../xdeprecated/Automation/automationItem";
@@ -26,6 +26,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import Rooms from "../../components/Messages/Rooms/rooms";
 
 
 
@@ -115,7 +116,7 @@ function BaseView(props) {
             {isFollowing()
                 ? <Grid className={classes.rootView} container spacing={0}>
                     <Grid xs={4} md={4} lg={4} direction='column' container>
-                        <MessagesContainer channel={props.channel} messages={props.messages}
+                        <Rooms channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
                     </Grid>
                     <Grid className={classes.root} xs={8} md={8} lg={8} container>

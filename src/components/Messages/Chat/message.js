@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
-import mscott from "../../assets/images/mscott.png";
+import mscott from "../../../assets/images/mscott.png";
 import Grid from "@material-ui/core/Grid";
 import StructuredMessageItem from "./structuredMessageItem";
-import AutomationItem from "../../xdeprecated/Automation/automationItem";
-import {db} from "../../api/firebase";
+import AutomationItem from "../../../xdeprecated/Automation/automationItem";
+import {db} from "../../../api/firebase";
 import Divider from "@material-ui/core/Divider";
 import UnstructuredMessageContent from "./unstructuredMessageContent"
 import {Editor, EditorState,RichUtils} from 'draft-js';
@@ -21,7 +21,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { BiEdit, BiTrash} from "react-icons/bi";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import {deleteMessage} from "../../api/firestore";
+import {deleteMessage} from "../../../api/firestore";
 
 
 
@@ -31,29 +31,47 @@ function Message(props) {
     const [user, setUser] = React.useState(null);
     const [isEditing, setIsEditing] = React.useState(false);
     const [anchorEl_edit, setAnchorEl_edit] = React.useState(null);
-    const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
-    const handleClose_Edit = () => {setAnchorEl_edit(null);};
     const [messageContent, setMessageContent] = React.useState();
     const [label, setLabel] = React.useState(null);
     const [messageItem, setQuestionItem] = React.useState([]);
-    const [backGroundColor, setBackGroundColor] = React.useState('white')
+    const [backGroundColor, setBackGroundColor] = React.useState('white');
 
+    const handleClick_Edit = (event) => {setAnchorEl_edit(event.currentTarget);};
+    const handleClose_Edit = () => {setAnchorEl_edit(null);};
+
+    // const open = Boolean(anchorEl);
+    const [open, setOpen] = React.useState(false)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handlePopoverOpen = (event) => {
         event.stopPropagation();
+        console.log('mousein');
 
         setAnchorEl(event.currentTarget);
+        setOpen(true)
         setBackGroundColor('#F3F3F3')
     };
 
     const handlePopoverClose = () => {
+        console.log('mouseout');
+
         setAnchorEl(null);
+        setOpen(false)
         setBackGroundColor('white')
     };
 
-    const open = Boolean(anchorEl);
+    const handleMouseOverOpen = (e) => {
+        console.log('mousein');
+        handlePopoverOpen(e);
+        setBackGroundColor('#F4F4F4');
+    };
+    const handleMouseLeave= (e) => {
+        console.log('mouseout');
+        handlePopoverClose(e);
+        setBackGroundColor('white');
+    };
+
 
     const getUser = async(email) => {
         await db.collection("users").doc(email)
@@ -133,6 +151,8 @@ function Message(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow={0}
+                    onMouseEnter={(e)=> setBackGroundColor('#F4F4F4')}
+                    onMouseLeave={(e)=>setBackGroundColor('white')}
                     style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:backGroundColor , }}
                 >
                     <Box display = 'flex'  flexDirection = 'row' style={{margin: 0}}>
@@ -154,7 +174,7 @@ function Message(props) {
                             <p style={{color: '#2F2C37', fontSize: 12, margin: 8, marginTop: 5, marginLeft: 5}}>Monday, May 2020 </p>
                             </Grid>
 
-                            <Box className={classes.root} style = {{margin: 2, }}>
+                            <Box className={classes.root} style = {{margin: 2, width:330, color :'#555555', }}>
                                 {(props.message.structuredMessage)
                                     ? <div> {Object.keys(props.message.messageData).map((item) => <
                                         StructuredMessageItem packageItem={props.message.messageData[item]}/>)
@@ -166,7 +186,7 @@ function Message(props) {
                                 }
                             </Box>
                         </Box>
-                        <Box style = {{}}>
+                        <Box>
                             <IconButton onClick={handlePopoverOpen}  aria-label="open">
                                 <FiMoreVertical  size = {17}/>
                             </IconButton>
