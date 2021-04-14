@@ -79,11 +79,12 @@ export async function sendMessageFS(automationID, adminID, messageData, recipien
     });
 }
 
-export async function sendPublicChannelMessageFS(channelID, userID, messageData,) {
+export async function sendPublicChannelMessageFS(channelID, userID, messageData,roomID) {
     console.log('adding mess');
     const res = await db.collection('messages').add({
         channelID: channelID,
         public:true,
+        roomID: roomID,
         senderID: userID,
         messageContent: messageData,
         structuredMessage: false,

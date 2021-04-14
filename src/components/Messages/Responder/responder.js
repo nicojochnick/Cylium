@@ -21,7 +21,7 @@ function Responder(props) {
     const sendMessage = async() => {
         try {
             console.log(contentState);
-            await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState,);
+            await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState,props.room.id);
         } catch (error) {
             console.log('sending message failed ', error)
         }

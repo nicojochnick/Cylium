@@ -88,7 +88,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     style = {{zIndex: 0, margin: 0, marginBottom: 15, backgroundColor: 'white',boxShadow: "0px -2px 8px #ECECEC",}}
                 >
-                    <Responder channel = {props.channel} user = {props.user}/>
+                    <Responder room = {props.room} channel = {props.channel} user = {props.user}/>
                 </Box>
             </Grid>
     );
