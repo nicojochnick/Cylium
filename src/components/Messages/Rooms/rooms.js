@@ -7,6 +7,9 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import MessagesContainer from "../Chat/messagesContainer";
+import {BiPlus} from "react-icons/bi";
+import IconButton from "@material-ui/core/IconButton";
+import {addRoomDB} from "../../../api/firestore";
 
 
 export default function Rooms(props) {
@@ -16,10 +19,27 @@ export default function Rooms(props) {
         setValue(newValue);
     };
 
+    const addRoom = () => {
+        let index = props.channel.rooms.length + 1;
+        let newRoom = {name: 'untitled', id: Math.random().toString(), index: index};
+        let updatedRooms = props.channel.rooms.slice();
+        updatedRooms.push(newRoom);
+        addRoomDB(props.channel.channelID, updatedRooms)
+    };
+
     return (
         <div className={classes.root}>
-            <AppBar style = {{backgroundColor:props.channel.color}} position="static">
-                <Tabs  variant={'fullWidth'} indicatorColor={'secondary'} value={value} onChange={handleChange}>
+            <Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>
+
+                <Box borderRadius = {100} style = {{ boxShadow: '0px 2px 5px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: 6, marginTop: 6, position: 'absolute', zIndex: 20}}>
+
+                <IconButton style = {{margin: 0,padding: 5, }} onClick = {addRoom}>
+                 <BiPlus/>
+                </IconButton>
+                </Box>
+            </Box>
+            <AppBar style = {{backgroundColor:props.channel.color,}} position="static">
+                <Tabs  indicatorColor={'secondary'} value={value} onChange={handleChange}>
                     {props.channel.rooms.map((room)=>{
                         return <Tab label = {room.name} />
                     })

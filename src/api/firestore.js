@@ -129,6 +129,16 @@ export async function editProjectName(name, channelID) {
     });
 }
 
+export async function addRoomDB(channelID, rooms) {
+    db.collection('channels').doc(channelID).update({
+        rooms: rooms
+    }).then(() => {
+        console.log("room added to project");
+    }).catch((error) => {
+        console.error("Error adding room", error);
+    });
+}
+
 export async function updateProjectColor(color, channelID) {
     db.collection('channels').doc(channelID).update({
         color: color
