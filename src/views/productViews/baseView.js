@@ -39,7 +39,7 @@ function BaseView(props) {
     const [switchState, setSwitch] = React.useState(false);
     const [isChatOpen, setIsChat] = React.useState(false);
     const [graphMDandLG, setGraphMDandLG] = React.useState(12)
-    const [width, setWidth] = React.useState('88vw');
+    const [width, setWidth] = React.useState('100vw');
     const [users, setUsers] = React.useState([]);
     const [stretch, setStretch] = React.useState(7);
     const [open, setOpen] = React.useState(true);
@@ -66,7 +66,7 @@ function BaseView(props) {
     const openChat = () => {
         if (graphMDandLG === 12){
             setGraphMDandLG(8);
-            setWidth('65vw')
+            setWidth('60vw')
         } else {
             setGraphMDandLG(12);
             setWidth('90vw')
@@ -115,7 +115,7 @@ function BaseView(props) {
             </AppBar>
             {isFollowing()
                 ? <Grid className={classes.rootView} container spacing={0}>
-                    <Grid xs={4} md={4} lg={4} direction='column' container>
+                    <Grid style = {{boxShadow: '0px 3px 8px #616161', zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>
                         <Rooms channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
                     </Grid>

@@ -31,7 +31,7 @@ export default function Rooms(props) {
         <div className={classes.root}>
             <Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>
 
-                <Box borderRadius = {100} style = {{ boxShadow: '0px 2px 5px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: 6, marginTop: 6, position: 'absolute', zIndex: 20}}>
+                <Box borderRadius = {100} style = {{ boxShadow: '0px 1px 4px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: -15, marginTop: 6, position: 'absolute', zIndex: 20}}>
 
                 <IconButton style = {{margin: 0,padding: 5, }} onClick = {addRoom}>
                  <BiPlus/>
@@ -80,5 +80,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         marginTop:10,
+        boxShadow: '0px 3px 5px #D3D3DA',
     },
 }));
