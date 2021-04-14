@@ -47,7 +47,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index
-                ? <MessagesContainer room = {props.room} automation = {props.automation} messages={props.messages} channel = {props.channel}  user = {props.user} />
+                ? <MessagesContainer room = {props.room} automation = {props.automation} messages={props.messages.filter(item => item.roomID === props.room.id)} channel = {props.channel}  user = {props.user} />
                 : null
             }
         </div>
