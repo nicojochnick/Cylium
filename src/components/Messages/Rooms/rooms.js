@@ -9,15 +9,12 @@ import Box from '@material-ui/core/Box';
 import MessagesContainer from "../Chat/messagesContainer";
 
 
-
 export default function Rooms(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
 
     return (
         <div className={classes.root}>
@@ -29,12 +26,30 @@ export default function Rooms(props) {
                     }
                 </Tabs>
             </AppBar>
+            {props.channel.rooms.map((room)=>{
+                    return <TabPanel room = {room}  messages = {props.messages} value = {value} user = {props.user} channel = {props.channel} index = {room.index} />
+            }
+            )
+            }
+        </div>
+    );
+}
 
-            <MessagesContainer automation = {props.automation} messages={props.messages} channel = {props.channel}  user = {props.user} />
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
 
-
-
-
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index
+                ? <MessagesContainer room = {props.room} automation = {props.automation} messages={props.messages} channel = {props.channel}  user = {props.user} />
+                : null
+            }
         </div>
     );
 }
