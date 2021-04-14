@@ -1,5 +1,5 @@
 
-export const selectNode = (type, id, user) => {
+export const selectNode = (type, id, user, color) => {
     let node = null;
     if (type == 'avatar') {
         node = {
@@ -21,6 +21,7 @@ export const selectNode = (type, id, user) => {
             // className : "nodrag",
             type: 'graphNodes',
             data: {
+                color: color,
                 title: null,
                 graphData: [{name: '1', uv: 400, pv: 2400, amt: 2400, key: '1'},{name: '2', uv: 500, pv: 2500, amt: 2500,key: '2'},{key: '3', name: '3', uv: 900, pv: 4400, amt: 3500}]
             },
@@ -91,6 +92,7 @@ export const selectNode = (type, id, user) => {
             // className : "nodrag",
             type: 'todoNodes',
             data: {
+                color: color,
                 textContent: null,
                 text: null,
                 deadline: '',
@@ -117,6 +119,7 @@ export const selectNode = (type, id, user) => {
             type: 'noteNodes',
             data: {
                 text: null,
+                color: color,
                 textContent: null,
                 isFolded: false,
                 className: '',

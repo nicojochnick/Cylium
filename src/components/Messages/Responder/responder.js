@@ -69,15 +69,15 @@ function Responder(props) {
             display = 'flex'
             borderColor = {'#BABCBE'}
             flexDirection = 'column'
-            borderRadius={20}
-            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 400, color: '#555555'}}>
+            borderRadius={10}
+            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 430, color: '#555555'}}>
                 <Editor
                     placeholder="message..."
                     handleKeyCommand={handleKeyCommand}
                     editorState={editorState}
                     onEditorStateChange={onChange}
                     keyBindingFn = {keyBindingFN}
-                    toolbarStyle = {{backgroundColor: 'white', zIndex: 20,  borderRadius: 10, }}
+                    toolbarStyle = {{border:1, backgroundColor: 'white', zIndex: 20,  borderRadius: 8, }}
                     toolbar = {{
                         options: [ 'link','list', 'emoji',],
                         inline: { inDropdown: true },

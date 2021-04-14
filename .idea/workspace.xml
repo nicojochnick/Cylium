@@ -7,7 +7,9 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/productViews/baseView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/productViews/baseView.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,14 +22,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.61403507">
+    <splitter split-orientation="horizontal" split-proportion="0.48744893">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/message.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="521">
-                  <caret line="170" column="49" lean-forward="true" selection-start-line="170" selection-start-column="49" selection-end-line="170" selection-end-column="49" />
+                <state relative-caret-position="-453">
+                  <caret line="157" column="85" lean-forward="true" selection-start-line="157" selection-start-column="85" selection-end-line="157" selection-end-column="85" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                     <marker date="1618401635634" expanded="true" signature="5147:5214" ph="..." />
@@ -39,8 +41,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+                <state relative-caret-position="283">
+                  <caret line="113" column="26" lean-forward="true" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -51,8 +53,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Messages/Responder/responder.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="284">
-                  <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+                <state relative-caret-position="624">
+                  <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -69,11 +71,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="606">
-                  <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+                <state relative-caret-position="249">
+                  <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -105,13 +107,13 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/xdeprecated/Automation/automationItem.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-296">
-                  <caret line="132" column="14" lean-forward="true" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
+                <state relative-caret-position="267">
+                  <caret line="132" column="45" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
                   <folding>
-                    <element signature="e#0#39#0" expanded="true" />
+                    <element signature="e#0#45#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -120,8 +122,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="90" column="51" selection-start-line="90" selection-start-column="51" selection-end-line="90" selection-end-column="51" />
+                <state relative-caret-position="684">
+                  <caret line="94" column="2" lean-forward="true" selection-start-line="94" selection-start-column="2" selection-end-line="94" selection-end-column="2" />
                   <folding>
                     <element signature="e#0#47#0" expanded="true" />
                   </folding>
@@ -130,10 +132,14 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/unstructuredMessageContent.js">
+            <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                <state relative-caret-position="403">
+                  <caret line="209" column="28" selection-start-line="209" selection-start-column="28" selection-end-line="209" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#0#52#0" expanded="true" />
+                    <marker date="1618413781554" expanded="true" signature="9226:9271" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -142,15 +148,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="316">
-                  <caret line="224" column="12" lean-forward="true" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#0#52#0" expanded="true" />
-                    <marker date="1618412000846" expanded="true" signature="9206:9251" ph="..." />
-                  </folding>
+                <state relative-caret-position="382">
+                  <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
@@ -188,11 +190,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/metricNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="294">
-                  <caret line="26" column="49" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="49" />
+                <state relative-caret-position="378">
+                  <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#34#0" expanded="true" />
                   </folding>
@@ -286,12 +288,10 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/ScrapNodeList.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/bitCoinGifNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/investorReportNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js" />
         <option value="$PROJECT_DIR$/src/views/core/dashboardContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Headers/projectHeader.js" />
         <option value="$PROJECT_DIR$/src/components/Profile/Project/projectProfile.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/avatarNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/metricNode.js" />
@@ -304,11 +304,13 @@
         <option value="$PROJECT_DIR$/src/components/Messages/Chat/message.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" />
         <option value="$PROJECT_DIR$/src/api/firestore.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
-        <option value="$PROJECT_DIR$/src/views/productViews/baseView.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" />
+        <option value="$PROJECT_DIR$/src/views/productViews/baseView.js" />
+        <option value="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
       </list>
     </option>
   </component>
@@ -368,7 +370,38 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Messages" type="462c0819:PsiDirectoryNode" />
+              <item name="Chat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Messages" type="462c0819:PsiDirectoryNode" />
+              <item name="Responder" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Messages" type="462c0819:PsiDirectoryNode" />
               <item name="Rooms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
+              <item name="NodeList" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -567,12 +600,12 @@
       <workItem from="1617658448922" duration="11000" />
       <workItem from="1617709387848" duration="17658000" />
       <workItem from="1618065396115" duration="48792000" />
-      <workItem from="1618397772783" duration="8705000" />
+      <workItem from="1618397772783" duration="10535000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1107828000" />
+    <option name="totallyTimeSpent" value="1109658000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -587,7 +620,7 @@
     <frame x="-470" y="-1055" width="2113" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.18077475" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.18077475" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -602,7 +635,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49727046" visible="true" weight="0.20021299" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49727046" visible="true" weight="0.20021299" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50272954" side_tool="true" weight="0.20234291" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -775,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="597">
@@ -858,16 +884,6 @@
           <caret line="29" column="79" selection-start-line="29" selection-start-column="79" selection-end-line="29" selection-end-column="79" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3234">
-          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,37 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="90" column="51" selection-start-line="90" selection-start-column="51" selection-end-line="90" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="170" column="49" lean-forward="true" selection-start-line="170" selection-start-column="49" selection-end-line="170" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <marker date="1618401635634" expanded="true" signature="5147:5214" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Messages/Responder/responder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/firestore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
@@ -1013,27 +998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="224" column="12" lean-forward="true" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <marker date="1618412000846" expanded="true" signature="9206:9251" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -1043,8 +1007,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/metricNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="26" column="49" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="49" />
+        <state relative-caret-position="378">
+          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
@@ -1053,10 +1017,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+        <state relative-caret-position="249">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="94" column="2" lean-forward="true" selection-start-line="94" selection-start-column="2" selection-end-line="94" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-453">
+          <caret line="157" column="85" lean-forward="true" selection-start-line="157" selection-start-column="85" selection-end-line="157" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1618401635634" expanded="true" signature="5147:5214" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="113" column="26" lean-forward="true" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Messages/Responder/responder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="209" column="28" selection-start-line="209" selection-start-column="28" selection-end-line="209" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <marker date="1618413781554" expanded="true" signature="9226:9271" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="132" column="45" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>

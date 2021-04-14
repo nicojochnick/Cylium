@@ -91,7 +91,7 @@ function BaseChart(props) {
     const addNode = (type) => {
         let currentElements = elements.slice();
         let id = getNodeId();
-        let node = selectNode(type,id,props.user);
+        let node = selectNode(type,id,props.user,props.channel.color);
         let nID = id + 1;
         setID(nID);
         console.log(nID);

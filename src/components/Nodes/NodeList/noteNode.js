@@ -130,6 +130,7 @@ export default memo(({ data,}) => {
 
                 <Box
                     style={{marginLeft: 8, }}
+                    className={data.className}
                 >
 
                 <Editor

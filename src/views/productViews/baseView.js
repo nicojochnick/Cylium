@@ -108,7 +108,7 @@ function BaseView(props) {
                 color = '#F7F7F7'
                 className={clsx(classes.appBar, open && classes.appBarShift)}
             >
-                <Toolbar noWrap className={classes.toolbar}>
+                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}}noWrap className={classes.toolbar}>
                     <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />
                 </Toolbar>
                 <Divider/>
@@ -224,7 +224,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     toolbar: {
-        paddingRight: 24,
+        paddingRight: 25,
     },
 
 
