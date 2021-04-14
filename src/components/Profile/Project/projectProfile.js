@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField/TextField";
-import {editProjectIMG, editProjectName} from "../../../api/firestore";
+import {editProjectBio, editProjectIMG, editProjectName} from "../../../api/firestore";
 
 let timerID = null;
 
@@ -21,14 +21,25 @@ function ProjectProfile(props) {
     const [error, setError] = React.useState('');
     const [isEditing, setEditing] = React.useState(false);
     const [projectTitle, setProjectTitle] = React.useState(props.channel.name);
+    const [projectBio, setProjectBio] = React.useState(props.channel.bio);
+
 
     const changeName = (name) => {
         setProjectTitle(name);
-        triggerAutoSave(name)
+        triggerAutoSave(name, 'name')
     };
 
     const saveName = (name) => {
         editProjectName(name,props.channel.channelID)
+    };
+
+    const changeBio = (bio) => {
+        setProjectBio(bio);
+        triggerAutoSave(bio, 'bio')
+    };
+
+    const saveBio = (bio) => {
+        editProjectBio(bio,props.channel.channelID)
     };
 
     const saveIMG = (img) => {
@@ -36,14 +47,19 @@ function ProjectProfile(props) {
 
     };
 
-    const triggerAutoSave = async (name) => {
+    const triggerAutoSave = async (data,type) => {
         console.log("started saving...");
         if (timerID) {
             clearTimeout(timerID);
             timerID = null;
         }
         timerID = setTimeout(() => {
-            saveName(name);
+            if (type === 'name') {
+                saveName(data);
+            } else {
+                saveBio(data)
+            }
+
             console.log("finished saving name")
         }, 3000)
     };
@@ -111,14 +127,25 @@ function ProjectProfile(props) {
                             <Avatar src={props.channel.img} className = {classes.large}></Avatar>
                         </Box>
                     </label>
+
+                <Box display = 'flex ' flexDirection={'column'}>
                 <TextField
                     id="standard-basic"
                     placeholder="Untitled"
                     style ={{fontSize: 19, fontWeight: 500}}
                     onChange={(event) => changeName(event.target.value)}
                     defaultValue={projectTitle}
-                    InputProps={{style: {fontSize: 23, margin: 5, fontWeight: 600, color:'#434343'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: 23, margin: 5, marginBottom:-1g, fontWeight: 600, color:'#434343'}, disableUnderline: true,}}
                 />
+                <TextField
+                    fullWidth={true}
+                    id="standard-basic"
+                    placeholder='add a short bio'
+                    onChange={(event) => changeBio(event.target.value)}
+                    defaultValue={projectBio}
+                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343', width: 500}, disableUnderline: true,}}/>
+
+                </Box>
 
             </Grid>
 

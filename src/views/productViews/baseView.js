@@ -27,6 +27,9 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Rooms from "../../components/Messages/Rooms/rooms";
+import IconButton from "@material-ui/core/IconButton";
+import { BiCircle} from "react-icons/bi";
+import ProjectProfile from "../../components/Profile/Project/projectProfile";
 
 
 
@@ -45,17 +48,21 @@ function BaseView(props) {
     const [open, setOpen] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [color, setColor] = React.useState(props.channel.color);
-    const [savedColor, setSavedColor] =React.useState(props.channel.color)
+    const [savedColor, setSavedColor] =React.useState(props.channel.color);
+    const [colorPickerOpen, setColorPickerOpen] = React.useState(false);
 
     const [openSettings, setSettingsOpen] = React.useState(false);
 
+    const openColorPicker = () => {setColorPickerOpen(true)};
 
-    const handleClickOpenSettings = () => {setSettingsOpen(true);};
+
+    const handleClickOpenSettings = () => {setSettingsOpen(!colorPickerOpen);};
     const handleCloseSettings = () => {setSettingsOpen(false);};
 
     const changeColor = () => {
         setColor(savedColor);
         updateProjectColor(savedColor, props.channel.channelID)
+        setColorPickerOpen(false)
     };
 
     const saveColor = (color) => {
@@ -108,7 +115,7 @@ function BaseView(props) {
                 color = '#F7F7F7'
                 className={clsx(classes.appBar, open && classes.appBarShift)}
             >
-                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}}noWrap className={classes.toolbar}>
+                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
                     <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />
                 </Toolbar>
                 <Divider/>
@@ -134,21 +141,37 @@ function BaseView(props) {
             }
             <Dialog
                 open={openSettings}
+                fullWidth={true}
+                // maxWidth={maxWidth}
                 onClose={handleCloseSettings}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
                 <DialogContent>
                     <Box display = 'flex' flexDirection = 'column'>
-                        <p style = {{fontSize:21, fontWeight: 600, margin: 0}}> Theme </p>
-                        <p> Color: </p>
+                        <p style = {{fontSize:15, fontWeight: 400, marginTop: 10}}> PROFILE </p>
+                        <ProjectProfile channel = {props.channel} user = {props.user}/>
+                        <Divider/>
+                        <p style = {{fontSize:15, fontWeight: 400, marginTop: 10}}> THEME</p>
+                        <Box display = 'flex' flexDirection = 'row' justifyContent = 'flex-start' alignItems = 'flex-start'>
+                        <p style = {{fontWeight: 600}}> Color </p>
 
-                        <ChromePicker
-                            onChangeComplete={(color) => saveColor(color)  }
-                            color = {savedColor}
-                        />
+                            <IconButton>
+                                <BiCircle onClick = {openColorPicker} size = {25} style = {{color:'white',backgroundColor: savedColor, borderRadius:100}}/>
+                            </IconButton>
 
-                        <Button onClick={changeColor} variant={'contained'} style = {{backgroundColor: savedColor, margin: 10}}> Save </Button>
+                            {colorPickerOpen
+
+                                ? <ChromePicker
+                                    onChangeComplete={(color) => saveColor(color)}
+                                    color={savedColor}
+                                />
+                                :null
+                            }
+                        </Box>
+
+
+                        <Button onClick={changeColor} variant={'contained'} style = {{backgroundColor: savedColor, marginTop: 10, marginBottom: 10, width: 180, borderRadius: 10}}> <p style = {{color:'white', margin: 0}}> Save Color </p></Button>
 
 
 
@@ -225,6 +248,7 @@ const useStyles = makeStyles((theme) => ({
 
     toolbar: {
         paddingRight: 25,
+        backgroundColor:'white',
     },
 
 

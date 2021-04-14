@@ -129,6 +129,16 @@ export async function editProjectName(name, channelID) {
     });
 }
 
+export async function editProjectBio(bio, channelID) {
+    db.collection('channels').doc(channelID).update({
+        bio: bio
+    }).then(() => {
+        console.log("project bio successfully updated" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
 export async function addRoomDB(channelID, rooms) {
     db.collection('channels').doc(channelID).update({
         rooms: rooms
