@@ -54,7 +54,7 @@ export default function ProjectGroup(props) {
         <Box display='flex' flexDirection='row'>
             <Button aria-describedby={id} onClick={handleClick}>
                 {/*Open Popover*/}
-                <AvatarGroup max={8}>
+                <AvatarGroup max = {7}>
                     { group.map((item) => {
                         return   <Box component="span" borderRadius = {100} border= {2} style ={{ padding: 1, margin: 5}} borderColor = {'#B9B9B9'} >
                             <Avatar  src = {item.img_url_Profile.imgUrl}/>

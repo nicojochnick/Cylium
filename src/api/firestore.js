@@ -1,4 +1,5 @@
 import {db} from "./firebase";
+import firebase from "firebase/app";
 
 //TODO Schematize this
 
@@ -24,6 +25,19 @@ export async function saveViewPort(projectIDs, userID){
         console.error("Error adding user to channel", error);
     });
 }
+
+
+export async function followProject(userID, projectID) {
+    db.collection('users').doc(userID).update({
+        projects: firebase.firestore.FieldValue.arrayUnion(projectID)
+    }).then(() => {
+        console.log("project name successfully updated" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
+
 
 
 const sendFriendRequest = async(senderEmail,viewerEmail, senderName, senderImg, viewerImg ) => {
@@ -118,6 +132,10 @@ export async function saveFlow (channelID, flow) {
         console.error("Error writing document: ", error);
     });
 }
+
+
+
+
 
 export async function editProjectName(name, channelID) {
     db.collection('channels').doc(channelID).update({

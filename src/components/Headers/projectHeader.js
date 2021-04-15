@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import TextField from "@material-ui/core/TextField";
-import {editProjectName} from "../../api/firestore";
+import {editProjectName, followProject} from "../../api/firestore";
 import ProjectProfile from "../Profile/Project/projectProfile";
 import { BiBell, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
 
@@ -17,7 +17,6 @@ import ProjectGroup from "../Groups/projectGroup";
 function ProjectHeader(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
     const open = Boolean(anchorEl);
@@ -34,6 +33,15 @@ function ProjectHeader(props) {
         return false;
     };
 
+    const handleFollow = () => {
+        followProject(props.user.email, props.channel.channelID)
+
+
+    };
+
+    const handleUnfollow = () => {
+
+    };
 
     return (
         <Box style = {{marginLeft: -10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
@@ -41,9 +49,10 @@ function ProjectHeader(props) {
                 <ProjectProfile channel = {props.channel} />
             </Box>
 
-            {!isFollowing()
-                ? <Button style = {{backgroundColor: '#7664FF'}} variant={'contained'} > Join </Button>
-                :
+            {isFollowing()
+                ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>
+                : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>
+            }
                 <div>
                 <Box display='flex' flexDirection='row'>
                     <ProjectGroup channel = {props.channel} />
@@ -80,10 +89,9 @@ function ProjectHeader(props) {
 
 
 
-
                 </div>
 
-            }
+
         </Box>
     );
 }

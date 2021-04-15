@@ -108,7 +108,6 @@ function UserProfile(props) {
             alignItems="flex-start"
         >
             <Grid style = {{padding: 5}} container direction = 'row' >
-
                 {/*<label htmlFor="contained-button-file">*/}
                 {/*    <Button style ={{backgroundColor: '#4D6DF1, marginTop: 10}} variant="contained" color="primary" component="span">*/}
                 {/*        Upload*/}
