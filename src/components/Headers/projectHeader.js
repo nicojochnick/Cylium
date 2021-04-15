@@ -46,7 +46,7 @@ function ProjectHeader(props) {
                 :
                 <div>
                 <Box display='flex' flexDirection='row'>
-                    <ProjectGroup />
+                    <ProjectGroup channel = {props.channel} />
                     <IconButton onClick = {handleClick}>
                         <BiUserPlus />
                     </IconButton>

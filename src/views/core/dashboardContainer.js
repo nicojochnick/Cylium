@@ -76,7 +76,6 @@ function DashboardContainer(props) {
         if (user) {
             console.log('user is present');
             let projectIDs = user.projectIDs;
-
             const queryChannels = db.collection('channels').where('channelID', 'in', Object.keys(projectIDs));
             const unsubscribeChannels = queryChannels.onSnapshot(getChannels, error => console.log(error));
             return () => {
