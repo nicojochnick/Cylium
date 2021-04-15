@@ -9,9 +9,10 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import TextField from "@material-ui/core/TextField";
 import {editProjectName} from "../../api/firestore";
 import ProjectProfile from "../Profile/Project/projectProfile";
-import { BiBell, BiCog } from "react-icons/bi";
+import { BiBell, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
 
 import IconButton from "@material-ui/core/IconButton";
+import ProjectGroup from "../Groups/projectGroup";
 
 function ProjectHeader(props) {
     const classes = useStyles();
@@ -43,17 +44,12 @@ function ProjectHeader(props) {
             {!isFollowing()
                 ? <Button style = {{backgroundColor: '#7664FF'}} variant={'contained'} > Join </Button>
                 :
+                <div>
                 <Box display='flex' flexDirection='row'>
-                    <Button aria-describedby={id} onClick={handleClick}>
-                        {/*Open Popover*/}
-                        <AvatarGroup max={4}>
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg"/>
-                            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg"/>
-                            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"/>
-                            <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg"/>
-                            <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg"/>
-                        </AvatarGroup>
-                    </Button>
+                    <ProjectGroup />
+                    <IconButton onClick = {handleClick}>
+                        <BiUserPlus />
+                    </IconButton>
                     <Popover
                         id={id}
                         open={open}
@@ -68,8 +64,12 @@ function ProjectHeader(props) {
                             horizontal: 'center',
                         }}
                     >
-                        <SearchUsers channel={props.channel} user={props.user}/>
+                        <Box display = 'flex' >
+                            <BiLink/>
+                            <p> add link </p>
+                        </Box>
                     </Popover>
+
                     <IconButton>
                         <BiBell/>
                     </IconButton>
@@ -77,6 +77,12 @@ function ProjectHeader(props) {
                         <BiCog />
                     </IconButton>
                 </Box>
+
+
+
+
+                </div>
+
             }
         </Box>
     );
@@ -87,3 +93,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default ProjectHeader;
+
+
+{/*<SearchUsers channel={props.channel} user={props.user}/>*/}

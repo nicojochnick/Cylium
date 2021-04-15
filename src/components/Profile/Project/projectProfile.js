@@ -120,7 +120,7 @@ function ProjectProfile(props) {
             justify="flex-start"
             alignItems="flex-start"
         >
-            <Grid display = 'flex'justifyContent = 'center' alignItems = 'center' style = {{padding: 5}} container direction = 'row' >
+            <Grid display = 'flex'justifyContent = 'center' alignItems = 'center' style = {{padding: 5, overflow:'hidden'}} container direction = 'row' >
                 <input className={classes.input} id="contained-button-file" accept="image/*" type ='file' onChange={handleImageAsFile} />
                     <label htmlFor="contained-button-file">
                         <Box  style = {{margin: 5, padding: 3}} border = {2} borderColor = {'#D0D1D3'} borderRadius = {50}>
@@ -135,15 +135,17 @@ function ProjectProfile(props) {
                     style ={{fontSize: 19, fontWeight: 500}}
                     onChange={(event) => changeName(event.target.value)}
                     defaultValue={projectTitle}
-                    InputProps={{style: {fontSize: 23, margin: 5, marginBottom:-1g, fontWeight: 600, color:'#434343'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: 23, margin: 5, marginBottom:-1, fontWeight: 600, color:'#434343'}, disableUnderline: true,}}
                 />
                 <TextField
                     fullWidth={true}
                     id="standard-basic"
                     placeholder='add a short bio'
+                    multiline={true}
+                    rowsMax={2}
                     onChange={(event) => changeBio(event.target.value)}
                     defaultValue={projectBio}
-                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343', width: 500}, disableUnderline: true,}}/>
+                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343', width: 600}, disableUnderline: true,}}/>
 
                 </Box>
 
