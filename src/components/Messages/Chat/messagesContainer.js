@@ -27,10 +27,17 @@ function MessagesContainer(props) {
 
     //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED, and when new messaged are added, INSTEAD OF AN ARBITRARY TIME
 
-    const scrollToBottom = () => {
+    const scrollToBottom = (type) => {
         setTimeout(() => {
-            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth',block: 'nearest', inline: 'start'  });
-        }, 1500);
+            if (type === 'set') {
+                messagesEndRef.current?.scrollIntoView({ behavior: 'auto',block: 'end', inline: 'end'  });
+
+            } else {
+                messagesEndRef.current?.scrollIntoView({ behavior: 'smooth',block: 'end', inline: 'end'  });
+
+
+            }
+        }, 500);
     };
 
     const sortAndSetMessages = (messages ) => {
@@ -44,7 +51,7 @@ function MessagesContainer(props) {
 
     useEffect(() => {
         // sortAndSetMessages(props.messages);
-        scrollToBottom();
+        scrollToBottom('set');
 
     }, []);
 
@@ -88,7 +95,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     style = {{zIndex: 0, margin: 0, marginBottom:40, backgroundColor: 'white',boxShadow: "0px -2px 8px #ECECEC",}}
                 >
-                    <Responder room = {props.room} channel = {props.channel} user = {props.user}/>
+                    <Responder scrollToBottom = {scrollToBottom} room = {props.room} channel = {props.channel} user = {props.user}/>
                 </Box>
             </Grid>
     );
