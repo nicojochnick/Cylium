@@ -10,6 +10,8 @@ import Box from "@material-ui/core/Box";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {db} from "../../api/firebase";
 import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
+import { BiPlus } from "react-icons/bi";
 
 
 
@@ -39,15 +41,11 @@ function HomeView(props) {
                 className={clsx(classes.appBar, true && classes.appBarShift)}
             >
                 <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
-                </Toolbar>
-                <Divider/>
-            </AppBar>
-            <Grid className = {classes.rootGrid} spacing={0}>
-                    <Box className = {classes.rootGrid}  display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
+                    <Box  display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
                         <Autocomplete
                             id="free-solo-demo"
                             freeSolo
-                            style = {{ margin:30}}
+                            style = {{ }}
                             options={channels.map((option) => option.name)}
                             renderInput={(params) => (
                                 <TextField {...params}  defaultValue={''} style = {{width: 300}} label="search for a project.." margin="normal" variant="outlined" />
@@ -55,6 +53,23 @@ function HomeView(props) {
                         />
 
                     </Box>
+                </Toolbar>
+                <Divider/>
+            </AppBar>
+            <Grid className = {classes.rootGrid} spacing={0}>
+                <Box className = {classes.rootGrid} display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
+
+                    <Box border ={2} borderColor = {'white'} borderRadius = {20} style = {{backgroundColor:'#8D7DFF', boxShadow: "0px 5px 10px #D7D7DA"}}>
+                <IconButton>
+
+                    <BiPlus style = {{color:'white'}} size = {100} />
+
+                </IconButton>
+                    </Box>
+                <p style = {{fontWeight: 500, fontSize: 15}}> start a view </p>
+
+                </Box>
+
             </Grid>
 
         </div>
