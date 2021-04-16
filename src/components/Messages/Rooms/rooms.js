@@ -38,8 +38,8 @@ export default function Rooms(props) {
                 </IconButton>
                 </Box>
             </Box>
-            <AppBar style = {{backgroundColor:props.channel.color,}} position="static">
-                <Tabs variant={'fullWidth'} indicatorColor={'secondary'} value={value} onChange={handleChange}>
+            <AppBar style = {{backgroundColor:'#E5E5ED',boxShadow: "0px 2px 8px #ECECEC",}} position="static">
+                <Tabs  variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>
                     {props.channel.rooms.map((room)=>{
                         return <Tab label = {room.name} />
                     })

@@ -58,15 +58,17 @@ function HomeView(props) {
             </AppBar>
             <Grid className = {classes.rootGrid} spacing={0}>
                 <Box className = {classes.rootGrid} display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
+                    <Box
+                        border ={2}
+                        borderColor = {'white'}
+                        borderRadius = {20}
+                        style = {{backgroundColor:'#8D7DFF', boxShadow: "0px 5px 10px #D7D7DA"}}>
+                        <IconButton>
 
-                    <Box border ={2} borderColor = {'white'} borderRadius = {20} style = {{backgroundColor:'#8D7DFF', boxShadow: "0px 5px 10px #D7D7DA"}}>
-                <IconButton>
-
-                    <BiPlus style = {{color:'white'}} size = {100} />
-
-                </IconButton>
+                            <BiPlus style = {{color:'white'}} size = {100} />
+                        </IconButton>
                     </Box>
-                <p style = {{fontWeight: 500, fontSize: 15}}> start a view </p>
+                <p style = {{fontWeight: 500, fontSize: 15, color:'#2A2646'}}> start a view </p>
 
                 </Box>
 

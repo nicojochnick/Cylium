@@ -15,7 +15,7 @@ import DashboardContainer from "./views/core/dashboardContainer";
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#4D6DF1'
+            main: '#6871FF'
         },
         secondary:{
             main:'#EBEBEB'
