@@ -12,6 +12,7 @@ import {db} from "../../api/firebase";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import { BiPlus } from "react-icons/bi";
+import ovl from "../../assets/images/ovl.png"
 
 
 
@@ -41,7 +42,7 @@ function HomeView(props) {
                 className={clsx(classes.appBar, true && classes.appBarShift)}
             >
                 <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
-                    <Box  display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
+                    <Box  display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
                         <Autocomplete
                             id="free-solo-demo"
                             freeSolo

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/ovl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/core/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/core/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/productViews/homeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/productViews/homeView.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,18 +24,6 @@
     <splitter split-orientation="horizontal" split-proportion="0.7895451">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Messages/Responder/responder.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -72,8 +61,20 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/views/productViews/homeView.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="129">
-                  <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+                <state relative-caret-position="271">
+                  <caret line="45" selection-start-line="45" selection-end-line="45" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="316">
+                  <caret line="58" column="92" selection-start-line="58" selection-start-column="92" selection-end-line="58" selection-end-column="92" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -93,7 +94,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="265">
@@ -106,24 +107,17 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/assets/images/ovl.png">
+              <provider selected="true" editor-type-id="images" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="84">
                   <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/views/core/dashboardContainer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-4186">
-                  <caret line="90" column="50" lean-forward="true" selection-start-line="90" selection-start-column="50" selection-end-line="90" selection-end-column="50" />
-                  <folding>
-                    <element signature="e#0#39#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -282,7 +276,6 @@
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" />
         <option value="$PROJECT_DIR$/src/components/Editor/nodeEditor.js" />
         <option value="$PROJECT_DIR$/src/components/User/userID.js" />
-        <option value="$PROJECT_DIR$/src/views/core/dashboard.js" />
         <option value="$USER_HOME$/Downloads/client_secret_269903968002-uqut7heda5r08q8aur5mcc76296fg9co.apps.googleusercontent.com.json" />
         <option value="$PROJECT_DIR$/src/components/Nodes/buttonNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeUtils/titleAndOptions.js" />
@@ -317,9 +310,10 @@
         <option value="$PROJECT_DIR$/src/components/Messages/Chat/message.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" />
-        <option value="$PROJECT_DIR$/src/views/productViews/homeView.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" />
+        <option value="$PROJECT_DIR$/src/views/productViews/homeView.js" />
+        <option value="$PROJECT_DIR$/src/views/core/dashboard.js" />
       </list>
     </option>
   </component>
@@ -352,6 +346,12 @@
               <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -465,11 +465,11 @@
       <recent name="$PROJECT_DIR$/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components/Messages/Chat" />
       <recent name="$PROJECT_DIR$/src/components/Messages" />
       <recent name="$PROJECT_DIR$/src/components/Nodes/ScrapNodeList" />
       <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList" />
-      <recent name="$PROJECT_DIR$/src/components/Nodes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -602,12 +602,12 @@
       <workItem from="1617658448922" duration="11000" />
       <workItem from="1617709387848" duration="17658000" />
       <workItem from="1618065396115" duration="48792000" />
-      <workItem from="1618397772783" duration="34637000" />
+      <workItem from="1618397772783" duration="35185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1133760000" />
+    <option name="totallyTimeSpent" value="1134308000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -683,16 +683,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/xdeprecated/Analytics/teamMemberStats.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="15" selection-start-line="7" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/client_secret_269903968002-uqut7heda5r08q8aur5mcc76296fg9co.apps.googleusercontent.com.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -989,16 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2233">
-          <caret line="122" column="150" selection-start-line="122" selection-start-column="150" selection-end-line="122" selection-end-column="150" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Groups/projectGroup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -1076,16 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/productViews/homeView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1112,6 +1082,29 @@
           <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/images/ovl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/productViews/homeView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="58" column="92" selection-start-line="58" selection-start-column="92" selection-end-line="58" selection-end-column="92" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -18,6 +18,8 @@ import BaseView from '../productViews/baseView'
 import AccountView from "../productViews/accountView"
 import {addChannel} from "../../api/firestore";
 import HomeView from "../productViews/homeView";
+import ovl from "../../assets/images/ovl.png";
+import Box from "@material-ui/core/Box";
 
 
 export default function Dashboard(props) {
@@ -54,7 +56,9 @@ export default function Dashboard(props) {
                 <div className={classes.toolbarIcon}>
                     <img style = {{height: 35, marginLeft: 10}}/>
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />
+                        <img style = {{height: 43, width: 46, marginLeft: 5, marginRight: -5}} src = {ovl} />
+
+                        {/*<ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*/}
                     </IconButton>
                 </div>
                 <Divider/>
