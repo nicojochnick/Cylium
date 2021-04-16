@@ -49,12 +49,16 @@ function ProjectHeader(props) {
                 <ProjectProfile channel = {props.channel} />
             </Box>
 
-            {isFollowing()
-                ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>
-                : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>
-            }
+
                 <div>
-                <Box display='flex' flexDirection='row'>
+                <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>
+                    <div style ={{margin: 15}}>
+                    {!isFollowing()
+                        ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>
+                        : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>
+                    }
+                    </div>
+
                     <ProjectGroup channel = {props.channel} />
                     <IconButton onClick = {handleClick}>
                         <BiUserPlus />

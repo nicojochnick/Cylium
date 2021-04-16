@@ -120,8 +120,7 @@ function BaseView(props) {
                 </Toolbar>
                 <Divider/>
             </AppBar>
-            {true
-                ? <Grid className={classes.rootView} container spacing={0}>
+                <Grid className={classes.rootView} container spacing={0}>
                     <Grid style = {{boxShadow: '0px 3px 8px #616161', zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>
                         <Rooms channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
@@ -131,16 +130,7 @@ function BaseView(props) {
                                    openChat={openChat}/>
                     </Grid>
                 </Grid>
-                :
-                <Grid container justify = 'center' alignItems = 'center' className = {classes.privateBoard}>
-                    <Box flexDirection = 'column' display = 'flex' justifyContent={'center'} alignItems = 'center'>
-                        <BiLock style = {{}} size = {70} />
-                        <p> {props.channel.name} is private.</p>
 
-                        <Button variant={'contained'} style = {{backgroundColor: props.channel.color}}> <p style = {{color:'white', margin:0}}> Follow </p> </Button>
-                    </Box>
-                </Grid>
-            }
             <Dialog
                 open={openSettings}
                 fullWidth={true}
@@ -281,5 +271,14 @@ const useStyles = makeStyles((theme) => ({
 
 {/*<ChannelHeader channel = {props.channel} user = {props.user}/>*/}
 
+
+{/*<Grid container justify = 'center' alignItems = 'center' className = {classes.privateBoard}>*/}
+{/*    <Box flexDirection = 'column' display = 'flex' justifyContent={'center'} alignItems = 'center'>*/}
+{/*        <BiLock style = {{}} size = {70} />*/}
+{/*        <p> {props.channel.name} is private.</p>*/}
+
+{/*        <Button variant={'contained'} style = {{backgroundColor: props.channel.color}}> <p style = {{color:'white', margin:0}}> Follow </p> </Button>*/}
+{/*    </Box>*/}
+{/*</Grid>*/}
 
 export default BaseView;

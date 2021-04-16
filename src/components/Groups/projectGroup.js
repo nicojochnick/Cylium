@@ -29,26 +29,26 @@ export default function ProjectGroup(props) {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const getProjectGroup = () => {
-        let users = [];
+
+
+    useEffect(() => {
 
         db.collection('users').where('projects', 'array-contains', props.channel.channelID)
             .onSnapshot( (querySnapshot) => {
+                    let users = [];
+
                     querySnapshot.forEach(function (doc) {
-                        console.log(doc.data())
+                        console.log(doc.data());
                         let c = doc.data();
                         users.push(c);
                     });
                     setGroup(users);
                 },
                 error => console.log(error));
-    };
 
-    useEffect(() => {
-        getProjectGroup()
+
     }, []);
 
-    console.log(group)
 
     return (
         <Box display='flex' flexDirection='row'>
