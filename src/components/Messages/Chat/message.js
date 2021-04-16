@@ -171,7 +171,7 @@ function Message(props) {
                                 color: '#2F2C37',
                                 fontWeight: 500,
                             }}>{user.name} </p>
-                            <p style={{color: '#2F2C37', fontSize: 12, margin: 8, marginTop: 5, marginLeft: 5}}>Monday, May 2020 </p>
+                            <p style={{color: '#2F2C37', fontSize: 12, margin: 8, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
                             </Grid>
 
                             <Box className={classes.root} style = {{margin: 2, width:330, color :'#555555', }}>

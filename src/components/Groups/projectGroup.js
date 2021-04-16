@@ -19,20 +19,15 @@ export default function ProjectGroup(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [group,setGroup] = React.useState([]);
     const [role, setRole] = React.useState(10);
-
     const handleChange = (event) => {
         setRole(event.target.value);
     };
-
     const handleClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-
-
     useEffect(() => {
-
         db.collection('users').where('projects', 'array-contains', props.channel.channelID)
             .onSnapshot( (querySnapshot) => {
                     let users = [];

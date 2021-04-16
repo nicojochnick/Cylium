@@ -29,7 +29,7 @@ function MessagesContainer(props) {
 
     const scrollToBottom = () => {
         setTimeout(() => {
-            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth',block: 'nearest', inline: 'start'  });
         }, 1500);
     };
 
@@ -77,7 +77,7 @@ function MessagesContainer(props) {
                             />
                             )
                     }
-                        {/*<div ref={messagesEndRef}></div>*/}
+                        <div ref={messagesEndRef}></div>
                 </Box>
 
                 <Box
