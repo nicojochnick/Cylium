@@ -56,7 +56,6 @@ export default class App extends Component {
           </div>
       ) : (
 
-
               <MuiThemeProvider theme={theme}>
 
           <Router>
@@ -68,11 +67,6 @@ export default class App extends Component {
                   component={DashboardContainer}
               />
 
-                <PrivateRoute
-                    path="/feedboxx-edit"
-                    authenticated={this.state.authenticated}
-                    component={Dashboard}
-                />
               <PublicRoute
                   path="/signup"
                   authenticated={this.state.authenticated}
@@ -83,6 +77,12 @@ export default class App extends Component {
                     path="/feedboxx/:id"
                     render={(props) => <Feedbox {...props} />}
               />
+                <PrivateRoute
+                    path="/:id"
+                    authenticated={this.state.authenticated}
+                    render={(props) => <DashboardContainer {...props} />}
+                    component={DashboardContainer}
+                />
               <PublicRoute
                   path="/login"
                   authenticated={this.state.authenticated}

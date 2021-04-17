@@ -13,7 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import {BiHome, BiPlanet, BiPlus, BiUser} from "react-icons/bi";
+import {BiHome, BiWorld,  BiPlanet, BiPlus, BiUser} from "react-icons/bi";
 import BaseView from '../productViews/baseView'
 import AccountView from "../productViews/accountView"
 import {addChannel} from "../../api/firestore";
@@ -64,7 +64,7 @@ export default function Dashboard(props) {
                 <Divider/>
                 <Link to="/feed" style={{textDecoration: 'none' }} >
                 <ListItem >
-                    <ListItemIcon >
+                    <ListItemIcon>
                         <BiHome size = {25} style = {{color:'#3C3F48'}}  />
                     </ListItemIcon>
                     <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
@@ -73,10 +73,10 @@ export default function Dashboard(props) {
                 <Divider/>
                 <List>
                     {Object.keys(props.channels).map((item)=>
-                            <Link to={"/" + props.channels[item].name.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
+                            <Link to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
-                                        <BiPlanet size = {25} style = {{color:props.channels[item].color}}  />
+                                        <BiWorld size = {25} style = {{color:props.channels[item].color}}  />
                                     </ListItemIcon>
                                     <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
                                 </ListItem>
@@ -111,7 +111,7 @@ export default function Dashboard(props) {
                                 <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
                             {Object.keys(props.channels).map((item)=>
-                                    <Route exact path= {"/" + props.channels[item].name.toLowerCase()} >
+                                    <Route exact path= {"/" + props.channels[item].channelID.toLowerCase()} >
                                         <BaseView
                                             messages = {props.messages.filter(i => i.channelID === props.channels[item].channelID)}
                                             channel = {props.channels[item]}

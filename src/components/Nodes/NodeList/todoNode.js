@@ -189,7 +189,7 @@ export default memo(({ data}) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             onEditorStateChange={handleSetEditorState}
-                            editorStyle = {{width: 190, margin: 8}}
+                            editorStyle = {{width: 190, marginLeft: 8, marginTop:-1}}
                             toolbarClassName={classes.toolbar}
                             toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -15, marginTop:-80, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
@@ -224,10 +224,10 @@ export default memo(({ data}) => {
 
 
 
-                    <Box  borderRadius = {5} display ='flex' flexDirection = 'column ' style = {{backgroundColor:data.color, overflow:'hidden', margin: 2, paddingRight: 5,flex:1}}>
-                        <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
+                    <Box  borderRadius = {5} display ='flex' flexDirection = 'column ' style = {{backgroundColor:data.color, overflow:'hidden', margin: 1, paddingRight: 5,flex:1}}>
+                        <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {14} />
                         <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
-                            <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {15} />
+                            <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {14} />
                         </IconButton>
                     </Box>
 
