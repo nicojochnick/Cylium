@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Grid from "@material-ui/core/Grid";
@@ -9,8 +9,10 @@ import Popover from "@material-ui/core/Popover/Popover";
 import Notification from "../Notifications/notification";
 import Button from "@material-ui/core/Button";
 import clsx from 'clsx';
-
 import {AccountCircle} from "@material-ui/icons";
+import {makeStyles} from "@material-ui/core";
+import firebase from 'firebase/app';
+
 
 function MenuHeader(props) {
 
@@ -22,6 +24,12 @@ function MenuHeader(props) {
     const [anchorElNotification, setAnchorElNotification] = React.useState(null);
     const openAccount = Boolean(anchorEl);
     const id = openAccount ? 'simple-popover' : undefined;
+
+    const signout = () => {
+        firebase.auth().signOut().then(function() {
+        }).catch(function(error) {
+        });
+    };
 
 
     const handleAccountClick = (event) => {setAnchorEl(event.currentTarget);};
@@ -45,8 +53,9 @@ function MenuHeader(props) {
     };
 
     return (
-        <div>
-            <IconButton
+        <Box style = {{marginLeft: -10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+
+        <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
@@ -67,7 +76,7 @@ function MenuHeader(props) {
                     className={classes.search}
                 >
                     <div className={classes.searchIcon}>
-                        <SearchIcon />
+                        {/*<SearchIcon />*/}
                     </div>
                     <InputBase
                         placeholder="Search…"
@@ -84,7 +93,7 @@ function MenuHeader(props) {
                         aria-haspopup="true"
                         style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">
                         <Badge badgeContent={1} color="secondary">
-                            <NotificationsIcon />
+                            {/*<NotificationsIcon />*/}
                         </Badge>
                     </IconButton>
                     <Popover
@@ -138,8 +147,13 @@ function MenuHeader(props) {
                 </div>
             </Grid>
 
-        </div>
+        </Box>
     );
 }
+const useStyles = makeStyles((theme) => ({
+    typography: {
+        padding: theme.spacing(2),
+    },
+}));
 
 export default MenuHeader;

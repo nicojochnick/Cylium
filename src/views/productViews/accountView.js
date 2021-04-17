@@ -10,10 +10,15 @@ import UserProfile from "../../components/Profile/User/userProfile";
 import TeamBox from "../../components/Profile/Team/teamBox";
 import {TwitterPicker} from "react-color";
 import NotificationList from "../../components/Notifications/notificationList";
+import MenuHeader from "../../components/Headers/menuHeader";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import ProjectHeader from "../../components/Headers/projectHeader";
+import clsx from 'clsx';
+
 
 function AccountView(props) {
     const classes = useStyles();
-
 
     const [backgroundColor, setBackgroundColor] = React.useState('white');
     const handleChangeComplete = (color) => {setBackgroundColor(color.hex )};
@@ -23,6 +28,18 @@ function AccountView(props) {
 
     return (
         <div className={classes.root} >
+            <AppBar
+                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
+                position="absolute"
+                color = '#F7F7F7'
+                className={clsx(classes.appBar,true && classes.appBarShift)}
+            >
+                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
+                    <MenuHeader/>
+                </Toolbar>
+                <Divider/>
+            </AppBar>
+
             <Container fixed maxWidth="lg" className={classes.container}>
                 <Grid container spacing={1}>
                     <Grid item xs={12} sm ={12} md={6} lg={6}>

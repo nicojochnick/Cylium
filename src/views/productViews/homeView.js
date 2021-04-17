@@ -42,14 +42,14 @@ function HomeView(props) {
                 className={clsx(classes.appBar, true && classes.appBarShift)}
             >
                 <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
-                    <Box  display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
+                    <Box  style = {{width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems = 'center'>
                         <Autocomplete
                             id="free-solo-demo"
                             freeSolo
                             style = {{ }}
                             options={channels.map((option) => option.name)}
                             renderInput={(params) => (
-                                <TextField {...params}  defaultValue={''} style = {{width: 300}} label="search for a project.." margin="normal" variant="outlined" />
+                                <TextField {...params}  defaultValue={''} style = {{width: 400}} label="search for a community" margin="normal" variant="outlined" />
                             )}
                         />
 

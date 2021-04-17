@@ -55,13 +55,24 @@ export default class App extends Component {
             <span className="sr-only">Loading...</span>
           </div>
       ) : (
-
               <MuiThemeProvider theme={theme}>
 
           <Router>
             <Switch>
               <Route exact path="/" component={home} />
-              <PrivateRoute
+                <PublicRoute
+                    path="/login"
+                    authenticated={this.state.authenticated}
+                    component={login}
+                />
+                <PrivateRoute
+                    path="/:id"
+                    authenticated={this.state.authenticated}
+                    render={(props) => <DashboardContainer {...props} />}
+                    component={DashboardContainer}
+                />
+
+                <PrivateRoute
                   path="/feed"
                   authenticated={this.state.authenticated}
                   component={DashboardContainer}
@@ -73,21 +84,7 @@ export default class App extends Component {
                   component={signup}
               />
 
-              <Route
-                    path="/feedboxx/:id"
-                    render={(props) => <Feedbox {...props} />}
-              />
-                <PrivateRoute
-                    path="/:id"
-                    authenticated={this.state.authenticated}
-                    render={(props) => <DashboardContainer {...props} />}
-                    component={DashboardContainer}
-                />
-              <PublicRoute
-                  path="/login"
-                  authenticated={this.state.authenticated}
-                  component={login}
-              />
+
             </Switch>
           </Router>
           </MuiThemeProvider>
