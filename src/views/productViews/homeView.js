@@ -69,7 +69,7 @@ function HomeView(props) {
                             <BiPlus style = {{color:'white'}} size = {100} />
                         </IconButton>
                     </Box>
-                <p style = {{fontWeight: 500, fontSize: 15, color:'#2A2646'}}> start a view </p>
+                <p style = {{fontWeight: 500, fontSize: 15, color:'#2A2646'}}> start a community</p>
 
                 </Box>
 

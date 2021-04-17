@@ -18,7 +18,7 @@ import BaseView from '../productViews/baseView'
 import AccountView from "../productViews/accountView"
 import {addChannel} from "../../api/firestore";
 import HomeView from "../productViews/homeView";
-import ovl from "../../assets/images/ovl.png";
+import cylogo from "../../assets/images/cylogo.png";
 import Box from "@material-ui/core/Box";
 
 
@@ -54,12 +54,12 @@ export default function Dashboard(props) {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
-                    <img style = {{height: 35, marginLeft: 10}}/>
-                    <IconButton onClick={handleDrawerClose}>
-                        <img style = {{height: 43, width: 46, marginLeft: 5, marginRight: -5}} src = {ovl} />
+                    {/*<img style = {{height: 35, marginLeft: 10}}/>*/}
+                    {/*<IconButton onClick={handleDrawerClose}>*/}
+                        <img style = {{height: 43, width: 46, marginLeft:-3}} src = {cylogo} />
 
                         {/*<ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*/}
-                    </IconButton>
+                    {/*</IconButton>*/}
                 </div>
                 <Divider/>
                 <Link to="/feed" style={{textDecoration: 'none' }} >
