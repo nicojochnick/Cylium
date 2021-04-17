@@ -27,8 +27,9 @@ export default function Dashboard(props) {
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const openAccount = Boolean(anchorEl);
+    const [key, setKey] = React.useState(Math.random())
     const id = openAccount ? 'simple-popover' : undefined;
-    const addChannelDB= () => {addChannel(props.user.email, props.user.channelIDs)};
+
     const handleClose = () => {setAnchorEl(null);};
     const handleDrawerOpen = () => {setOpen(true);};
     const handleDrawerClose = () => {setOpen(false);};
@@ -37,6 +38,12 @@ export default function Dashboard(props) {
         }).catch(function(error) {
         });
     };
+
+
+    const addChannelDB= () => {
+        addChannel(props.user.email, props.user.channelIDs, props.user.projectIDs)
+    };
+
 
     useEffect(() => {
     }, []);
@@ -73,7 +80,7 @@ export default function Dashboard(props) {
                 <Divider/>
                 <List>
                     {Object.keys(props.channels).map((item)=>
-                            <Link to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
+                            <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
                                         <BiWorld size = {25} style = {{color:props.channels[item].color}}  />
@@ -111,11 +118,10 @@ export default function Dashboard(props) {
                                 <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
                             {Object.keys(props.channels).map((item)=>
-                                    <Route exact path= {"/" + props.channels[item].channelID.toLowerCase()} >
+                                    <Route key = {key} exact path= {"/" + props.channels[item].channelID.toLowerCase()} >
                                         <BaseView
                                             messages = {props.messages.filter(i => i.channelID === props.channels[item].channelID)}
                                             channel = {props.channels[item]}
-                                            team = {null}
                                             automations = {props.automations}
                                             user = {props.user}
                                             url = {props.url}

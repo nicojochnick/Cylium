@@ -188,11 +188,15 @@ export async function editProjectIMG(img,channelID) {
     });
 }
 
-export async function addChannel (userID, channels){
+export async function addChannel (userID, channels, projectIDs){
     const res = await db.collection('channels').add({
         flow: '',
         name: null,
-        color: '#4783FB'
+        color: '#393939',
+        bio: null,
+        rooms: [
+            {id: Math.random(),index:1, name: 'updates' }, {index: 0, id: Math.random(), name: 'general'}
+        ]
     });
     console.log(res, userID,channels);
     db.collection('channels').doc(res.id).update({
@@ -203,10 +207,23 @@ export async function addChannel (userID, channels){
         console.error("Error creating notification and/or ID ", error);
     });
     let c = channels;
+    let projects = projectIDs;
+
     c.push(res.id);
-    const userRes = await db.collection('users').doc(userID).update({
+    projects[res.id] = {viewPort: [0,0], zoom: 0.5};
+
+    const userResProjectChannel = await db.collection('users').doc(userID).update({
         channelIDs:c
+    });
+
+    const userResProjectList = await db.collection('users').doc(userID).update({
+        projects:c
+    });
+
+    const userResProjectSettings = await db.collection('users').doc(userID).update({
+        projectIDs: projects
     })
+
 }
 
 
