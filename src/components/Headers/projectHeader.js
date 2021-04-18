@@ -10,7 +10,6 @@ import TextField from "@material-ui/core/TextField";
 import {editProjectName, followProject, unfollowProject} from "../../api/firestore";
 import ProjectProfile from "../Profile/Project/projectProfile";
 import { BiBell, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
-
 import IconButton from "@material-ui/core/IconButton";
 import ProjectGroup from "../Groups/projectGroup";
 
@@ -23,7 +22,6 @@ function ProjectHeader(props) {
     const id = open ? 'simple-popover' : undefined;
 
     const isFollowing = ( ) =>{
-
         let projects = props.user.channelIDs;
         for (let i = 0; i < projects.length; i++){
             if (props.channel.channelID === projects[i]){
@@ -51,8 +49,6 @@ function ProjectHeader(props) {
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
                 <ProjectProfile channel = {props.channel} />
             </Box>
-
-
                 <div>
                 <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>
                     <div style ={{margin: 15}}>
@@ -61,43 +57,38 @@ function ProjectHeader(props) {
                         : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>
                     }
                     </div>
-
                     <ProjectGroup channel = {props.channel} />
                     <IconButton onClick = {handleClick}>
                         <BiUserPlus />
                     </IconButton>
-                    <Popover
-                        id={id}
-                        open={open}
-                        anchorEl={anchorEl}
-                        onClose={handleClose}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'center',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'center',
-                        }}
-                    >
-                        <Box display = 'flex' >
-                            <BiLink/>
-                            <p> add link </p>
-                        </Box>
-                    </Popover>
-
-                    <IconButton>
-                        <BiBell/>
-                    </IconButton>
-                    <IconButton onClick={props.handleClickOpenSettings}>
-                        <BiCog />
-                    </IconButton>
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                        >
+                            <Box display = 'flex' >
+                                <BiLink/>
+                                <p> add link </p>
+                            </Box>
+                        </Popover>
+                        <IconButton>
+                            <BiBell/>
+                        </IconButton>
+                        <IconButton onClick={props.handleClickOpenSettings}>
+                            <BiCog />
+                        </IconButton>
                 </Box>
 
-
-
                 </div>
-
 
         </Box>
     );

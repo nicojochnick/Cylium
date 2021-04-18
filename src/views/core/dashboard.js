@@ -83,7 +83,7 @@ export default function Dashboard(props) {
                             <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
-                                        <BiWorld size = {25} style = {{color:props.channels[item].color}}  />
+                                        <BiPlanet size = {25} style = {{color:props.channels[item].color}}  />
                                     </ListItemIcon>
                                     <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
                                 </ListItem>

@@ -11,7 +11,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import {db} from "../../api/firebase";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
-import { BiPlus } from "react-icons/bi";
+import { BiWorld, BiPlanet} from "react-icons/bi";
 import ovl from "../../assets/images/ovl.png"
 
 
@@ -20,15 +20,16 @@ import ovl from "../../assets/images/ovl.png"
 function HomeView(props) {
     const classes = useStyles();
     const [channels,setChannels] = React.useState([]);
+    const [buttonBackGround, setButtonBackGround] = React.useState('#202020');
+
 
     const getChannels = () =>{
         let filtered =  channels.filter(function(item) { return item.name !== null});
         return filtered
 
-    }
+    };
 
     useEffect(async () => {
-
         const projectRef = db.collection('channels');
         const snapshot = await projectRef.get();
         let channels = [];
@@ -55,7 +56,7 @@ function HomeView(props) {
                             style = {{ }}
                             options={getChannels().map((option) => option.name)}
                             renderInput={(params) => (
-                                <TextField {...params}  defaultValue={''} style = {{width: 400}} label="search for a community" margin="normal" variant="outlined" />
+                                <TextField {...params}  defaultValue={''} style = {{width: 400}} label="search for a 🪐..." margin="normal" variant="outlined" />
                             )}
                         />
 
@@ -68,14 +69,17 @@ function HomeView(props) {
                     <Box
                         border ={2}
                         borderColor = {'white'}
+                        display = 'flex' flexDirection = 'column' justifyContent = 'center'
+                        alignItems = 'center'
                         borderRadius = {20}
-                        style = {{backgroundColor:'#8D7DFF', boxShadow: "0px 5px 10px #D7D7DA"}}>
-                        <IconButton>
+                        onMouseEnter={()=>setButtonBackGround('#000000')}
+                        onMouseLeave={()=>setButtonBackGround('#202020') }
+                        style = {{backgroundColor:buttonBackGround, width: 150, height: 150, boxShadow: "0px 4px 15px #D7D7DA"}}>
 
-                            <BiPlus style = {{color:'white', margin:20}} size = {70} />
-                        </IconButton>
+                        <p style = {{fontSize: 80}}> 🪐 </p>
+
                     </Box>
-                <p style = {{fontWeight: 500, fontSize: 15, color:'#2A2646'}}> start a community</p>
+                <p style = {{fontWeight: 500, fontSize: 15, color:buttonBackGround}}> start a world</p>
 
                 </Box>
 
