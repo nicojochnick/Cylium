@@ -189,7 +189,7 @@ export default memo(({ data}) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             onEditorStateChange={handleSetEditorState}
-                            editorStyle = {{width: 190, marginLeft: 8, marginTop:-1}}
+                            editorStyle = {{width: 190, marginLeft: 8, marginRight:-5, marginTop:-1}}
                             toolbarClassName={classes.toolbar}
                             toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -15, marginTop:-80, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
@@ -213,7 +213,7 @@ export default memo(({ data}) => {
 
                     <Checkbox
                             checked={done}
-                            style={{marginLeft: 5, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
+                            style={{marginLeft: 0, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />

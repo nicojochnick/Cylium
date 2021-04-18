@@ -140,7 +140,7 @@ function MenuHeader(props) {
                             horizontal: 'center',
                         }}
                     >
-                        <Button style = {{backgroundColor: "#5F7FFF"}}onClick={()=>signout()} variant="contained" color="primary">
+                        <Button style = {{backgroundColor: "#5F7FFF"}} onClick={()=>signout()} variant="contained" color="primary">
                             Signout
                         </Button>
                     </Popover>

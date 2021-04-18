@@ -32,7 +32,7 @@ export const selectNode = (type, id, user, color) => {
         node = {
             id: id,
             type: 'metricNodes',
-            data: {title: '', value: 0},
+            data: {title: '', value: 0,color: color,},
             position: {x: 350, y: 350},
 
         }

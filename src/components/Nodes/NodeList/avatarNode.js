@@ -13,7 +13,7 @@ export default memo(({ data,}) => {
 
     return (
         <Grid item xs={0} md={0} lg={0}>
-            <Box style={{margin: -3, boxShadow: `0px 1px 3px #7F7E80`, }} border={3} borderColor={data.color} borderRadius={50}>
+            <Box style={{margin: -3, boxShadow: `0px 1px 3px #7F7E80`, }} border={2} borderColor={data.color} borderRadius={50}>
                 <Avatar src={data.user.img_url_Profile.imgUrl} className={classes.large}/>
             </Box>
             <Handle
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white"
     },
     large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
+        width: theme.spacing(6),
+        height: theme.spacing(6),
     },
 }));

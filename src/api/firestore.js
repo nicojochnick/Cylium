@@ -37,6 +37,29 @@ export async function followProject(userID, projectID) {
     });
 }
 
+export async function unfollowProject(userID, projectID, projectIDs) {
+
+    const userResProjectChannel = await db.collection('users').doc(userID).update({
+        channelIDs: firebase.firestore.FieldValue.arrayRemove(projectID)
+    });
+
+    const userResProjectSettings = await db.collection('users').doc(userID).update({
+        projectIDs: projectIDs,
+    }).then(() => {
+        console.log("project sucessfully unfolloed" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+
+    db.collection('users').doc(userID).update({
+        projects: firebase.firestore.FieldValue.arrayRemove(projectID)
+    }).then(() => {
+        console.log("project successfully unfollowed" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
 
 
 
@@ -132,9 +155,6 @@ export async function saveFlow (channelID, flow) {
         console.error("Error writing document: ", error);
     });
 }
-
-
-
 
 
 export async function editProjectName(name, channelID) {

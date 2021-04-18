@@ -19,7 +19,13 @@ import ovl from "../../assets/images/ovl.png"
 
 function HomeView(props) {
     const classes = useStyles();
-    const [channels,setChannels] = React.useState([])
+    const [channels,setChannels] = React.useState([]);
+
+    const getChannels = () =>{
+        let filtered =  channels.filter(function(item) { return item.name !== null});
+        return filtered
+
+    }
 
     useEffect(async () => {
 
@@ -47,7 +53,7 @@ function HomeView(props) {
                             id="free-solo-demo"
                             freeSolo
                             style = {{ }}
-                            options={channels.map((option) => option.name)}
+                            options={getChannels().map((option) => option.name)}
                             renderInput={(params) => (
                                 <TextField {...params}  defaultValue={''} style = {{width: 400}} label="search for a community" margin="normal" variant="outlined" />
                             )}
@@ -66,7 +72,7 @@ function HomeView(props) {
                         style = {{backgroundColor:'#8D7DFF', boxShadow: "0px 5px 10px #D7D7DA"}}>
                         <IconButton>
 
-                            <BiPlus style = {{color:'white'}} size = {100} />
+                            <BiPlus style = {{color:'white', margin:20}} size = {70} />
                         </IconButton>
                     </Box>
                 <p style = {{fontWeight: 500, fontSize: 15, color:'#2A2646'}}> start a community</p>

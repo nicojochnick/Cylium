@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import TextField from "@material-ui/core/TextField";
-import {editProjectName, followProject} from "../../api/firestore";
+import {editProjectName, followProject, unfollowProject} from "../../api/firestore";
 import ProjectProfile from "../Profile/Project/projectProfile";
 import { BiBell, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
 
@@ -34,12 +34,15 @@ function ProjectHeader(props) {
     };
 
     const handleFollow = () => {
-        followProject(props.user.email, props.channel.channelID)
-
-
+        let pIds = props.user.projectIDs;
+        pIds[props.channel.channelID] =  {viewPort: [0,0], zoom: 0.5};
+        followProject(props.user.email, props.channel.channelID, pIds)
     };
 
     const handleUnfollow = () => {
+        let pIds = props.user.projectIDs;
+        delete pIds[props.channel.channelID];
+        unfollowProject(props.user.email, props.channel.channelID, pIds)
 
     };
 
