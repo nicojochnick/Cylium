@@ -117,11 +117,11 @@ export default function Dashboard(props) {
                             <Route exact path="/feed">
                                 <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
-                            {Object.keys(props.channels).map((item)=>
-                                    <Route key = {key} exact path= {"/" + props.channels[item].channelID.toLowerCase()} >
+                            {Object.keys(props.allChannels).map((item)=>
+                                    <Route key = {key} exact path= {"/" + props.allChannels[item].channelID.toLowerCase()} >
                                         <BaseView
-                                            messages = {props.messages.filter(i => i.channelID === props.channels[item].channelID)}
-                                            channel = {props.channels[item]}
+                                            messages = {props.messages.filter(i => i.channelID === props.allChannels[item].channelID)}
+                                            channel = {props.allChannels[item]}
                                             automations = {props.automations}
                                             user = {props.user}
                                             url = {props.url}

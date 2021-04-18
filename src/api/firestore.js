@@ -27,7 +27,21 @@ export async function saveViewPort(projectIDs, userID){
 }
 
 
-export async function followProject(userID, projectID) {
+export async function followProject(userID, projectID, projectIDs) {
+
+
+    const userResProjectChannel = await db.collection('users').doc(userID).update({
+        channelIDs: firebase.firestore.FieldValue.arrayUnion(projectID)
+    });
+
+    const userResProjectSettings = await db.collection('users').doc(userID).update({
+        projectIDs: projectIDs,
+    }).then(() => {
+        console.log("project sucessfully followed" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+
     db.collection('users').doc(userID).update({
         projects: firebase.firestore.FieldValue.arrayUnion(projectID)
     }).then(() => {
@@ -46,7 +60,7 @@ export async function unfollowProject(userID, projectID, projectIDs) {
     const userResProjectSettings = await db.collection('users').doc(userID).update({
         projectIDs: projectIDs,
     }).then(() => {
-        console.log("project sucessfully unfolloed" );
+        console.log("project sucessfully unfollowed" );
     }).catch((error) => {
         console.error("Error adding user to channel", error);
     });

@@ -16,6 +16,14 @@ function DashboardContainer(props) {
     const [user, setUser] = React.useState(null);
     const [channels, setChannels] = React.useState([]);
     const [userAutomations, setUserAutomations] = React.useState([]);
+    const [allchannels,setAllChannels] = React.useState([]);
+
+    const getAllChannels = () =>{
+        let filtered =  allchannels.filter(function(item) { return item.name !== null});
+        console.log('all channels filtered')
+        return filtered
+
+    };
 
     const getUser = async(email) => {
         await db.collection("users").doc(email)
@@ -53,6 +61,20 @@ function DashboardContainer(props) {
         return () => {
             unsubscribeUser();
         }
+
+    }, []);
+
+
+
+    useEffect(async () => {
+
+        const projectRef = db.collection('channels');
+        const snapshot = await projectRef.get();
+        let channels = [];
+        snapshot.forEach(doc => {
+            channels.push(doc.data());
+        });
+        setAllChannels(channels)
 
     }, []);
 
@@ -128,7 +150,7 @@ function DashboardContainer(props) {
 
 
     return (
-        <Dashboard notifications = {notifications} channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
+        <Dashboard notifications = {notifications} allChannels = {getAllChannels()} channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
     );
 }
 

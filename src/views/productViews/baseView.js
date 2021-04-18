@@ -19,7 +19,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import ProjectHeader from "../../components/Headers/projectHeader";
 import clsx from 'clsx';
 import { ChromePicker } from 'react-color';
-import {addChannel, updateProjectColor} from "../../api/firestore";
+import {addChannel, followProject, updateProjectColor} from "../../api/firestore";
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import { BiLock } from "react-icons/bi";
 import Dialog from '@material-ui/core/Dialog';
@@ -30,6 +30,7 @@ import Rooms from "../../components/Messages/Rooms/rooms";
 import IconButton from "@material-ui/core/IconButton";
 import { BiCircle} from "react-icons/bi";
 import ProjectProfile from "../../components/Profile/Project/projectProfile";
+import Avatar from "@material-ui/core/Avatar";
 
 
 
@@ -84,20 +85,18 @@ function BaseView(props) {
 
     const getUsers = () => {
 
-
     };
 
-    const isFollowing = ( ) =>{
-
-        let projects = props.user.channelIDs;
-        for (let i = 0; i < projects.length; i++){
-            if (props.channel.channelID === projects[i]){
-                return true;
-            }
-        }
-        return false;
+    const handleFollow = () => {
+        let pIds = props.user.projectIDs;
+        pIds[props.channel.channelID] =  {viewPort: [0,0], zoom: 0.5};
+        followProject(props.user.email, props.channel.channelID, pIds)
     };
 
+    const isFollowing = ( ) => {
+        console.log(props.channel.channelID)
+        return props.user.projects.includes(props.channel.channelID);
+    };
 
     useEffect(() => {
         console.log('MESSAGES----->', props.messages);
@@ -109,27 +108,67 @@ function BaseView(props) {
     return (
         <div className={classes.root}>
             {/*<CssBaseline />*/}
-            <AppBar
-                style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
-                position="absolute"
-                color = '#F7F7F7'
-                className={clsx(classes.appBar, open && classes.appBarShift)}
-            >
-                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
-                    <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-                </Toolbar>
-                <Divider/>
-            </AppBar>
+
+            {isFollowing()
+                ?
+
+                <div className={classes.root}>
+                    <AppBar
+                        style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
+                        position="absolute"
+                        color = '#F7F7F7'
+                        className={clsx(classes.appBar, open && classes.appBarShift)}
+                    >
+                        <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
+                            <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />
+                        </Toolbar>
+                        <Divider/>
+                    </AppBar>
                 <Grid className={classes.rootView} container spacing={0}>
                     <Grid style = {{boxShadow: '0px 3px 8px #616161', zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>
                         <Rooms channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
                     </Grid>
-                    <Grid className={classes.root} xs={8} md={8} lg={8} container>
-                        <BaseChart channel={props.channel} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
-                                   openChat={openChat}/>
-                    </Grid>
+
+                        <Grid className={classes.root} xs={8} md={8} lg={8} container>
+
+                            <BaseChart channel={props.channel} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
+                                       openChat={openChat}/>
+
+                        </Grid>
+
                 </Grid>
+                </div>
+
+                :
+
+                <div className={classes.root}>
+                    <AppBar
+                        style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
+                        position="absolute"
+                        color = '#F7F7F7'
+                        className={clsx(classes.appBar, open && classes.appBarShift)}
+                    >
+                        <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
+                        </Toolbar>
+                        <Divider/>
+                    </AppBar>
+
+                <Grid container justify = 'center' alignItems = 'center' className = {classes.privateBoard}>
+                    <Box flexDirection = 'column' display = 'flex' justifyContent={'center'} alignItems = 'center'>
+                        <Box  style = {{margin: 5, padding: 3, marginTop: -40}} border = {2} borderColor = {'#D0D1D3'} borderRadius = {50}>
+
+                        <Avatar className = {classes.large} src = {props.channel.img}/>
+                        </Box>
+                        <p style = {{fontSize: 26, margin:5, fontWeight: 600}}> {props.channel.name}</p>
+                        <p style = {{fontSize: 16, margin: 5, }}> {props.channel.bio} </p>
+
+                        <Button onClick={handleFollow} variant={'contained'} style = {{backgroundColor: props.channel.color, margin: 10}}> <p style = {{color:'white', margin:0}}> Follow </p> </Button>
+                    </Box>
+                </Grid>
+                </div>
+
+            }
 
             <Dialog
                 open={openSettings}
@@ -241,6 +280,12 @@ const useStyles = makeStyles((theme) => ({
     toolbar: {
         paddingRight: 25,
         backgroundColor:'white',
+    },
+
+    large: {
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+
     },
 
 

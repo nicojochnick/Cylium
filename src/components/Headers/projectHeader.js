@@ -35,7 +35,7 @@ function ProjectHeader(props) {
 
     const handleFollow = () => {
         let pIds = props.user.projectIDs;
-        pIds[props.channel.channelID] =  {viewPort: [0,0], zoom: 0.5};
+        pIds[props.channel.channelID] =  {viewPort: [200,200], zoom: 0.01};
         followProject(props.user.email, props.channel.channelID, pIds)
     };
 
