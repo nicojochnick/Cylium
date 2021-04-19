@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
-import ReactFlow, {addEdge, Background, Controls, ReactFlowProvider, removeElements, updateEdge, useZoomPanHelper,
- } from 'react-flow-renderer';
+import ReactFlow, {
+    addEdge, Background, Controls, MiniMap, ReactFlowProvider, removeElements, updateEdge, useZoomPanHelper,
+} from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
 import PuffLoader from "react-spinners/PuffLoader";
@@ -251,7 +252,8 @@ function BaseChart(props) {
                  alignItems = 'center'
                  style={{
                      width: '64vw',
-                     overflow: 'hidden'}}
+                     overflow: 'hidden'
+                 }}
             >
                 <div style = {{zIndex: 0, height: '92vh',}}>
                     <ReactFlow
@@ -270,6 +272,11 @@ function BaseChart(props) {
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
                     >
+                        {/*<MiniMap*/}
+                        {/*    style = {{margin: 10, marginRight: 20, border:2, borderRadius: 5, borderColor: 'black', boxShadow: `0px 1px 5px 0.5px #BBBBBB`,*/}
+                        {/*    }}*/}
+
+                        {/*/>*/}
                         <Background
                             variant = "dots"
                             color = "#968ab8"
@@ -295,11 +302,8 @@ function BaseChart(props) {
 
                                 }
                             </Box>
-
-
                         </Box>
                 <Controls />
-
                         <Dialog
                             open={open}
                             maxWidth={'xs'}

@@ -29,16 +29,16 @@ export default function Rooms(props) {
 
     return (
         <div className={classes.root}>
-            <Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>
+            {/*<Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>*/}
 
-                <Box borderRadius = {100} style = {{ boxShadow: '0px 1px 4px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: -15, marginTop: 6, position: 'absolute', zIndex: 20}}>
+            {/*    <Box borderRadius = {100} style = {{ boxShadow: '0px 1px 4px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: -15, marginTop: 6, position: 'absolute', zIndex: 20}}>*/}
 
-                <IconButton style = {{margin: 0,padding: 5, }} onClick = {addRoom}>
-                 <BiPlus/>
-                </IconButton>
-                </Box>
-            </Box>
-            <AppBar style = {{backgroundColor:'#E5E5ED',boxShadow: "0px 2px 8px #ECECEC",}} position="static">
+            {/*    <IconButton style = {{margin: 0,padding: 5, }} onClick = {addRoom}>*/}
+            {/*     <BiPlus/>*/}
+            {/*    </IconButton>*/}
+            {/*    </Box>*/}
+            {/*</Box>*/}
+            <AppBar style = {{backgroundColor:'#F9F9F9',boxShadow: "0px 2px 8px #ECECEC",}} position="static">
                 <Tabs  variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>
                     {props.channel.rooms.map((room)=>{
                         return <Tab label = {room.name} />

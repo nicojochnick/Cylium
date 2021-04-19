@@ -156,8 +156,8 @@ function Message(props) {
                     style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:backGroundColor , }}
                 >
                     <Box display = 'flex'  flexDirection = 'row' style={{margin: 0}}>
-                        <Box style={{margin: 5, height: 44}} border={2} borderColor={'#4D6DF1'} borderRadius={50}>
-                                <Avatar  src={user.img_url_Profile.imgUrl} className={classes.large}/>
+                        <Box  display = 'flex' justifyContent = 'center' alignItems ='center' style={{margin: 5, width: 45, height: 46,}} border={2} borderColor={'#E7E7E7'} borderRadius={50}>
+                                <Avatar  src={user.img_url_Profile.imgUrl} style ={{margin:2}} className={classes.large}/>
                         </Box>
 
                         <Box flexDirection = 'column' style = {{width: 350}}>
@@ -171,10 +171,10 @@ function Message(props) {
                                 color: '#2F2C37',
                                 fontWeight: 500,
                             }}>{user.name} </p>
-                            <p style={{color: '#2F2C37', fontSize: 12, margin: 8, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
+                            <p style={{color: '#2F2C37', fontSize: 12, margin: 5, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
                             </Grid>
 
-                            <Box className={classes.root} style = {{margin: 2, width:330, color :'#555555', }}>
+                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:330, color :'#555555', }}>
                                 {(props.message.structuredMessage)
                                     ? <div> {Object.keys(props.message.messageData).map((item) => <
                                         StructuredMessageItem packageItem={props.message.messageData[item]}/>)

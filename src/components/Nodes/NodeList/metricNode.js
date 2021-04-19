@@ -2,6 +2,8 @@ import React, {memo} from 'react';
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
+import {Handle} from "react-flow-renderer";
+import Grid from "@material-ui/core/Grid";
 
 export default memo(({ data}) => {
         const [title, setTitle] = React.useState(data.title);
@@ -29,8 +31,8 @@ export default memo(({ data}) => {
                 color: 'white',
                 overflow:'hidden',
                 height: 80,
-                margin: 10,
                 flexGrow: 1,
+
             }}
         >
             <TitleAndOptions color = {data.color} noOption = {true} title = {title} changeTitle = {changeTitle} />
@@ -41,10 +43,18 @@ export default memo(({ data}) => {
                 onChange={e=> changeValue(e.target.value)}
                 type="number"
                 fullWidth={true}
-                InputProps={{style: {color: '#3C3F43', fontSize: 28,fontWeight: 600, marginLeft: 15},width: 80, disableUnderline: true,}}
+                InputProps={{style: {color: data.color, fontSize: 28,fontWeight: 600, marginLeft: 15},width: 80, disableUnderline: true,}}
 
             />
+                <Handle
+                    type="source"
+                    id = 'k'
+                    position="bottom"
+                    style={{ zIndex: 12, backgroundColor: data.color,boxShadow: "0px 2px 4px #C5C5C5" }}
+                    // onConnect={(params) => console.log('handle onConnect', params)}
+                />
             </Box>
+
 
 
         </Box>

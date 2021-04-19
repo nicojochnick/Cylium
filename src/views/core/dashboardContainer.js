@@ -69,12 +69,19 @@ function DashboardContainer(props) {
     useEffect(async () => {
 
         const projectRef = db.collection('channels');
-        const snapshot = await projectRef.get();
-        let channels = [];
-        snapshot.forEach(doc => {
-            channels.push(doc.data());
+        // const snapshot = await projectRef.get();
+
+
+        const snap =  projectRef.onSnapshot(querySnapshot => {
+            let channels = [];
+            querySnapshot.forEach(doc => {
+                channels.push(doc.data());
+            });
+            setAllChannels(channels)
+            // ...
+        }, err => {
+            console.log(`Encountered error: ${err}`);
         });
-        setAllChannels(channels)
 
     }, []);
 

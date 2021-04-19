@@ -14,6 +14,7 @@ import {colors} from "../../../styles/colors";
 import IconSelector from "../../Editor/iconSelector";
 import Divider from "@material-ui/core/Divider";
 import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
+import {Handle} from "react-flow-renderer";
 //TODO: uninstall all google api crap + sheets
 
 
@@ -100,6 +101,7 @@ export default memo(({ data,  }) => {
     }, []);
     return (
         <Grid container className={classes.root}>
+
         <Box
             justifyContent = 'flex-start'
             flexDirection = 'column'
@@ -111,11 +113,12 @@ export default memo(({ data,  }) => {
                 color: 'white',
                 overflow:'hidden',
                 height: 300,
-                margin: 10,
                 flexGrow: 1,
+                marginRight: 10,
                 }
             }
         >
+
             <TitleAndOptions color = {data.color} title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
                 <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
                     <Grid>
@@ -185,6 +188,14 @@ export default memo(({ data,  }) => {
                 : null
 
             }
+            <Handle
+                type="source"
+                id = 'k'
+                position="bottom"
+                style={{ zIndex: 30, backgroundColor: data.color,boxShadow: "0px 2px 4px #C5C5C5" }}
+                // onConnect={(params) => console.log('handle onConnect', params)}
+            />
+
         </Grid>
     );
 });

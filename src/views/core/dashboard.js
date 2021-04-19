@@ -13,7 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
-import {BiHome, BiWorld,  BiPlanet, BiPlus, BiUser} from "react-icons/bi";
+import {BiHome,BiCircle, BiWorld,  BiPlanet, BiPlus, BiUser} from "react-icons/bi";
 import BaseView from '../productViews/baseView'
 import AccountView from "../productViews/accountView"
 import {addChannel} from "../../api/firestore";
@@ -83,7 +83,7 @@ export default function Dashboard(props) {
                             <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
                                 <ListItem button>
                                     <ListItemIcon>
-                                        <BiPlanet size = {25} style = {{color:props.channels[item].color}}  />
+                                        <BiCircle size = {25} style = {{color:props.channels[item].color}}  />
                                     </ListItemIcon>
                                     <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
                                 </ListItem>

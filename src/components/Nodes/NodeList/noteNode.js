@@ -169,19 +169,26 @@ export default memo(({ data,}) => {
 
                 </Box>
 
-                <Box display ='flex' flexDirection = 'column ' style = {{backgroundColor:data.color,flex:1}}>
-                    <BiMove style = {{margin: 5, color: getColor()}} size = {15} />
+                <Box borderLeft = {1} borderColor = {data.color} display ='flex' flexDirection = 'column ' style = {{flex:1}}>
+                    <BiMove style = {{margin: 5, color: data.color}} size = {15} />
 
                     <IconButton onClick = {fold} style ={{margin:0, padding: 0}} >
                     {  isFolded
-                        ?<BiChevronUp style = {{margin: 5, color: getColor()}} size = {17} />
-                        : <BiChevronDown  style = {{margin: 5, color: getColor()}} size = {17} />
+                        ?<BiChevronUp style = {{margin: 5, color: data.color}} size = {17} />
+                        : <BiChevronDown  style = {{margin: 5, color: data.color}} size = {17} />
 
                     }
                     </IconButton>
 
 
                 </Box>
+                <Handle
+                    type="source"
+                    id = 'k'
+                    position="bottom"
+                    style={{ zIndex: 12, backgroundColor: data.color,boxShadow: "0px 2px 4px #C5C5C5" }}
+                    // onConnect={(params) => console.log('handle onConnect', params)}
+                />
 
             </Box>
 

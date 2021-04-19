@@ -11,8 +11,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import {db} from "../../api/firebase";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
-import { BiWorld, BiPlanet} from "react-icons/bi";
+import { BiWorld, BiPlanet, BiCircle} from "react-icons/bi";
 import ovl from "../../assets/images/ovl.png"
+import Avatar from "@material-ui/core/Avatar";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Redirect from "react-router/modules/Redirect";
 
 
 
@@ -21,12 +24,27 @@ function HomeView(props) {
     const classes = useStyles();
     const [channels,setChannels] = React.useState([]);
     const [buttonBackGround, setButtonBackGround] = React.useState('#202020');
+    const [inputValue, setInputValue] = React.useState('');
+    const [value, setValue] = React.useState(0);
+    const [redirect,setRedirect] = React.useState(false);
+    const [redirectLink, setRedirectLink] = React.useState('');
+
+
+    const handleInputSelected = (val) => {
+        setInputValue(val);
+        let channel = null;
+        for (let i =0; i < channels.length; i++){
+            if (val === channels[i].name) {
+                channel = channels[i]
+            }
+        }
+        console.log(channel)
+    };
 
 
     const getChannels = () =>{
         let filtered =  channels.filter(function(item) { return item.name !== null});
         return filtered
-
     };
 
     useEffect(async () => {
@@ -52,11 +70,20 @@ function HomeView(props) {
                     <Box  style = {{width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems = 'center'>
                         <Autocomplete
                             id="free-solo-demo"
-                            freeSolo
-                            style = {{ }}
+                            // freeSolo
+                            onChange={(event, newValue) => {
+                                setValue(newValue);
+                            }}
+                            onInputChange={(event, newInputValue) => {
+                                handleInputSelected(newInputValue)
+                            }}
                             options={getChannels().map((option) => option.name)}
                             renderInput={(params) => (
-                                <TextField {...params}  defaultValue={''} style = {{width: 400}} label="search for a 🪐..." margin="normal" variant="outlined" />
+                                <TextField
+                                    {...params}
+                                    defaultValue={''}
+                                    style = {{width: 400, }}
+                                    label="search for a project.." margin="normal" variant="outlined" />
                             )}
                         />
 
@@ -64,6 +91,11 @@ function HomeView(props) {
                 </Toolbar>
                 <Divider/>
             </AppBar>
+            {redirect
+                ? <Redirect to="/" />
+                : null
+
+            }
             <Grid className = {classes.rootGrid} spacing={0}>
                 <Box className = {classes.rootGrid} display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
                     <Box
@@ -76,10 +108,10 @@ function HomeView(props) {
                         onMouseLeave={()=>setButtonBackGround('#202020') }
                         style = {{backgroundColor:buttonBackGround, width: 150, height: 150, boxShadow: "0px 4px 15px #D7D7DA"}}>
 
-                        <p style = {{fontSize: 80}}> 🪐 </p>
+                        <p style = {{fontSize: 80}}> 🪴 </p>
 
                     </Box>
-                <p style = {{fontWeight: 500, fontSize: 15, color:buttonBackGround}}> start a world</p>
+                <p style = {{fontWeight: 500, fontSize: 15, color:buttonBackGround}}> initialize a project</p>
 
                 </Box>
 

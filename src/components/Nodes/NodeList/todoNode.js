@@ -213,7 +213,7 @@ export default memo(({ data}) => {
 
                     <Checkbox
                             checked={done}
-                            style={{marginLeft: 0, color: tinycolor(backgroundColor).isDark() ? 'white' : 'black'}}
+                            style={{marginLeft: 0, color: data.color}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />
@@ -224,35 +224,35 @@ export default memo(({ data}) => {
 
 
 
-                    <Box  borderRadius = {5} display ='flex' flexDirection = 'column ' style = {{backgroundColor:data.color, overflow:'hidden', margin: 1, paddingRight: 5,flex:1}}>
-                        <BiMove style = {{margin: 5, marginRight: 0, color: getColor()}} size = {14} />
+                    <Box borderLeft = {1} borderColor = {data.color}  display ='flex' flexDirection = 'column ' style = {{ overflow:'hidden', margin: 1, paddingRight: 5,flex:1}}>
+                        <BiMove style = {{margin: 5, marginRight: 0, color: data.color}} size = {14} />
                         <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
-                            <BiTimeFive style = {{margin: 5, marginRight: 0, color: getColor()}} size = {14} />
+                            <BiTimeFive style = {{margin: 5, marginRight: 0, color:data.color}} size = {14} />
                         </IconButton>
                     </Box>
 
 
-                    <Handle
+                    {/*<Handle*/}
 
-                        type="source"
-                        id = 'j'
-                        position="left"
-                        style={{ zIndex: 12, backgroundColor: 'grey',boxShadow: "0px 2px 4px #C5C5C5", }}
-                        // onConnect={(params) => console.log('handle onConnect', params)}
-                    />
-                    <Handle
-                        type="source"
-                        position="right"
-                        id="z"
-                        style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}
-                    />
+                    {/*    type="source"*/}
+                    {/*    id = 'j'*/}
+                    {/*    position="left"*/}
+                    {/*    style={{ zIndex: 12, backgroundColor: 'grey',boxShadow: "0px 2px 4px #C5C5C5", }}*/}
+                    {/*    // onConnect={(params) => console.log('handle onConnect', params)}*/}
+                    {/*/>*/}
+                    {/*<Handle*/}
+                    {/*    type="source"*/}
+                    {/*    position="right"*/}
+                    {/*    id="z"*/}
+                    {/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'#5D596B' }}*/}
+                    {/*/>*/}
 
-                    <Handle
-                        type = 'source'
-                        id="a"
-                        position="top"
-                        style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'grey' }}
-                    />
+                    {/*<Handle*/}
+                    {/*    type = 'source'*/}
+                    {/*    id="a"*/}
+                    {/*    position="top"*/}
+                    {/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'grey' }}*/}
+                    {/*/>*/}
                     <Handle
                         type="source"
                         id = 'k'
