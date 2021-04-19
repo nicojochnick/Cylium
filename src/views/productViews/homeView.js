@@ -15,7 +15,7 @@ import { BiWorld, BiPlanet, BiCircle} from "react-icons/bi";
 import ovl from "../../assets/images/ovl.png"
 import Avatar from "@material-ui/core/Avatar";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Redirect from "react-router/modules/Redirect";
+import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
 
 
 
@@ -38,7 +38,11 @@ function HomeView(props) {
                 channel = channels[i]
             }
         }
-        console.log(channel)
+        console.log(channel);
+        if (channel){
+            setRedirect(true);
+            setRedirectLink(channel.channelID)
+        }
     };
 
 
@@ -92,7 +96,8 @@ function HomeView(props) {
                 <Divider/>
             </AppBar>
             {redirect
-                ? <Redirect to="/" />
+                ?
+                <Redirect to= {`/${redirectLink}`} />
                 : null
 
             }
