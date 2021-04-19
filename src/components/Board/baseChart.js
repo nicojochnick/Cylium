@@ -279,8 +279,8 @@ function BaseChart(props) {
                         {/*/>*/}
                         <Background
                             variant = "dots"
-                            color = "#968ab8"
-                            // style = {{backgroundColor:'black'}}
+                            color = "#686E77"
+                            // style = {{backgroundColor:'#404040'}}
                             // gap={18}
                             // size={1}
                         />

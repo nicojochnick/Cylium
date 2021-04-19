@@ -12,10 +12,15 @@ import ProjectProfile from "../Profile/Project/projectProfile";
 import { BiBell, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
 import ProjectGroup from "../Groups/projectGroup";
+import {Redirect} from "react-router";
 
 function ProjectHeader(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [redirect,setRedirect] = React.useState(false);
+
+
+
     const handleClick = (event) => {setAnchorEl(event.currentTarget);};
     const handleClose = () => {setAnchorEl(null);};
     const open = Boolean(anchorEl);
@@ -38,6 +43,8 @@ function ProjectHeader(props) {
     };
 
     const handleUnfollow = () => {
+        setRedirect(true)
+
         let pIds = props.user.projectIDs;
         delete pIds[props.channel.channelID];
         unfollowProject(props.user.email, props.channel.channelID, pIds)
@@ -46,6 +53,12 @@ function ProjectHeader(props) {
 
     return (
         <Box style = {{marginLeft: -10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+            {redirect
+                ?
+                <Redirect to= {`/feed`} />
+                : null
+
+            }
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
                 <ProjectProfile channel = {props.channel} />
             </Box>
@@ -89,6 +102,7 @@ function ProjectHeader(props) {
                 </Box>
 
                 </div>
+
 
         </Box>
     );

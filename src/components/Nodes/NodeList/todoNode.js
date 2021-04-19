@@ -164,8 +164,9 @@ export default memo(({ data}) => {
 
             <Box display = 'flex' flexDirection ='column' >
                 <Box
-                    border = {border}
-                    borderColor = {'#5C5C5C'}
+                    border = {1}
+                    borderColor = {data.color}
+
                     style = {{ zIndex: 10, boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, borderRadius:7, backgroundColor: backgroundColor, }}
                     display = 'flex'
                     flexDirection ='row'

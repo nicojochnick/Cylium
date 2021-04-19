@@ -222,10 +222,15 @@ export async function editProjectIMG(img,channelID) {
     });
 }
 
-export async function addChannel (userID, channels, projectIDs){
+export async function addChannel (userID, channels, projectIDs, name){
+    let projectName = null;
+    if (name) {
+        projectName = name;
+    }
+
     const res = await db.collection('channels').add({
         flow: '',
-        name: null,
+        name: projectName,
         color: '#393939',
         bio: null,
         rooms: [

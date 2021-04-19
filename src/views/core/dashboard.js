@@ -45,6 +45,16 @@ export default function Dashboard(props) {
     };
 
 
+    const getDirection = (present)=>{
+        let str = '/'
+        if (typeof present === 'string') {
+            str = "/" + present.toLowerCase()
+        }
+        console.log(str)
+      return str
+    };
+
+
     useEffect(() => {
     }, []);
 
@@ -118,15 +128,16 @@ export default function Dashboard(props) {
                                 <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
                             </Route>
                             {Object.keys(props.allChannels).map((item)=>
-                                    <Route key = {key} exact path= {"/" + props.allChannels[item].channelID.toLowerCase()} >
+                                    <Route key={key} exact path={getDirection(props.allChannels[item].channelID)}>
                                         <BaseView
-                                            messages = {props.messages.filter(i => i.channelID === props.allChannels[item].channelID)}
-                                            channel = {props.allChannels[item]}
-                                            automations = {props.automations}
-                                            user = {props.user}
-                                            url = {props.url}
-                                            email = {props.email} />
-                                    </Route>
+                                            messages={props.messages.filter(i => i.channelID === props.allChannels[item].channelID)}
+                                            channel={props.allChannels[item]}
+                                            automations={props.automations}
+                                            user={props.user}
+                                            url={props.url}
+                                            email={props.email}/>
+                                     </Route>
+
                             )
                             }
                             <Route path="/account">

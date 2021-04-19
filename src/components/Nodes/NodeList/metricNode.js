@@ -22,6 +22,8 @@ export default memo(({ data}) => {
 
         return (
         <Box
+            border = {1}
+            borderColor = {data.color}
             display = 'flex'
             flexDirection = 'column'
             borderRadius = {8}

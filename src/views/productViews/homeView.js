@@ -16,6 +16,8 @@ import ovl from "../../assets/images/ovl.png"
 import Avatar from "@material-ui/core/Avatar";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import {BrowserRouter as Router, HashRouter, Switch, Route, Link, Redirect,useParams} from "react-router-dom";
+import {addChannel} from "../../api/firestore";
+import Button from "@material-ui/core/Button";
 
 
 
@@ -27,7 +29,9 @@ function HomeView(props) {
     const [inputValue, setInputValue] = React.useState('');
     const [value, setValue] = React.useState(0);
     const [redirect,setRedirect] = React.useState(false);
+    const [init, setInit] = React.useState(false)
     const [redirectLink, setRedirectLink] = React.useState('');
+    const [projectName, setProjectName] = React.useState('');
 
 
     const handleInputSelected = (val) => {
@@ -43,6 +47,20 @@ function HomeView(props) {
             setRedirect(true);
             setRedirectLink(channel.channelID)
         }
+    };
+
+    const handleCreateProject = () => {
+
+        addChannel(props.user.email, props.user.channelIDs, props.user.projectIDs, projectName);
+        setInit(false)
+
+    };
+
+    const handleAddProjectName = () => {
+    };
+
+    const handleStartInit = () => {
+        setInit(true)
     };
 
 
@@ -103,21 +121,47 @@ function HomeView(props) {
             }
             <Grid className = {classes.rootGrid} spacing={0}>
                 <Box className = {classes.rootGrid} display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
-                    <Box
-                        border ={2}
-                        borderColor = {'white'}
-                        display = 'flex' flexDirection = 'column' justifyContent = 'center'
-                        alignItems = 'center'
-                        borderRadius = {20}
-                        onMouseEnter={()=>setButtonBackGround('#000000')}
-                        onMouseLeave={()=>setButtonBackGround('#202020') }
-                        style = {{backgroundColor:buttonBackGround, width: 150, height: 150, boxShadow: "0px 4px 15px #D7D7DA"}}>
 
-                        <p style = {{fontSize: 80}}> 🪴 </p>
+                    { !init
+                        ?
+                        <Box display = 'flex' flexDirection='column' alignItems = 'center' justifyContent='center'>
+                        <Box
+                            border={2}
+                            borderColor={'white'}
+                            display='flex' flexDirection='column' justifyContent='center'
+                            alignItems='center'
+                            borderRadius={20}
+                            onMouseEnter={() => setButtonBackGround('#000000')}
+                            onMouseLeave={() => setButtonBackGround('#202020')}
+                            onClick={() => handleStartInit()}
+                            style={{
+                                backgroundColor: buttonBackGround,
+                                width: 150,
+                                height: 150,
+                                boxShadow: "0px 4px 15px #D7D7DA"
+                            }}>
 
-                    </Box>
-                <p style = {{fontWeight: 500, fontSize: 15, color:buttonBackGround}}> initialize a project</p>
+                            <p style={{fontSize: 80}}> 🪴 </p>
 
+                        </Box>
+                        < p style = {{fontWeight: 500, fontSize: 15, color:buttonBackGround}}> initialize a project</p>
+                        </Box>
+
+
+                        :
+                        <Box display = 'flex' flexDirection = 'column' justifyContent = 'center' alignItems = 'center'>
+                        <TextField
+                            style = {{width: 400}}
+                            onChange={(val) => setProjectName(val.target.value)}
+                            label = 'Name Your Project...'
+                        />
+                        <Button style = {{margin: 15, backgroundColor: '#202020'}} variant={'contained'} onClick={handleCreateProject}>
+                            <p style = {{margin: 2, color: 'white'}}> Start Project </p>
+                        </Button>
+
+                        </Box>
+
+                        }
                 </Box>
 
             </Grid>

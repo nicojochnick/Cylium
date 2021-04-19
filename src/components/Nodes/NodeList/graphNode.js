@@ -106,7 +106,8 @@ export default memo(({ data,  }) => {
             justifyContent = 'flex-start'
             flexDirection = 'column'
             borderRadius = {10}
-            borderColor = {'black'}
+            border = {1}
+            borderColor = {data.color}
             style = {{zIndex: 20,
                 boxShadow: '0px 3px 8px #D3D3DA',
                 backgroundColor:'white',
