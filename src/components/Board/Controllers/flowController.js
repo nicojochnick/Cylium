@@ -21,6 +21,10 @@ function FlowController(props) {
     };
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+    const onDragStart = (event, nodeType) => {
+        event.dataTransfer.setData('application/reactflow', nodeType);
+        event.dataTransfer.effectAllowed = 'move';
+    };
 
     return (
         <Grid style = {{height: 60,}} container justify ='center' alignItems = 'center' >
@@ -55,7 +59,9 @@ function FlowController(props) {
                         aria-label="vertical outlined primary button group"
                     >
 
-                        <Button onClick={()=> props.addNode('notes')}>
+                        <Button
+                            onClick={()=> props.addNode('notes')}
+                        >
                             <BiMessageAlt style = {{color: props.color}} size = {25}/>
                         </Button>
                         <Button>

@@ -67,7 +67,6 @@ function DashboardContainer(props) {
 
 
     useEffect(async () => {
-
         const projectRef = db.collection('channels');
         // const snapshot = await projectRef.get();
         const snap =  projectRef.onSnapshot(querySnapshot => {
@@ -81,8 +80,7 @@ function DashboardContainer(props) {
             console.log(`Encountered error: ${err}`);
         });
 
-    }, []);
-
+    }, [user]);
 
 
     useEffect(() => {
@@ -91,14 +89,10 @@ function DashboardContainer(props) {
             let automationIDs = [];
             querySnapshot.forEach(function (doc) {
                 let c = doc.data();
-                console.log(c.automationIDs);
                 channels.push(c);
-                automationIDs = automationIDs.concat(c.automationIDs)
             });
             console.log('successful channel pull: ', channels);
             setChannels(channels);
-            console.log('AUTOMATION IDS', automationIDs)
-            setUserAutomations(automationIDs);
         }
         if (user && Object.keys(user.projectIDs).length > 0) {
             console.log('user is present');

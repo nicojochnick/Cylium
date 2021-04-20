@@ -41,7 +41,7 @@ export default memo(({ data,}) => {
                 type="source"
                 id = 'k'
                 position="bottom"
-                style={{ zIndex: 12, backgroundColor: data.color,boxShadow: "0px 2px 4px #C5C5C5" }}
+                style={{ zIndex: 12, backgroundColor: data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}
                 // onConnect={(params) => console.log('handle onConnect', params)}
             />
         </Grid>

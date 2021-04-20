@@ -1,5 +1,5 @@
 
-export const selectNode = (type, id, user, color) => {
+export const selectNode = (type, id, user, color, position) => {
     let node = null;
     if (type == 'avatar') {
         node = {

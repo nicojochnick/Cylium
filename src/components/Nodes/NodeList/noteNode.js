@@ -122,7 +122,7 @@ export default memo(({ data,}) => {
             <Box
                 border = {1}
                 borderColor = {data.color}
-                style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, borderRadius:7, backgroundColor: backgroundColor, }}
+                style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, borderRadius:7, backgroundColor: backgroundColor, }}
                 display = 'flex'
                 flexDirection ='row'
                 justifyContent = 'center'
@@ -186,7 +186,7 @@ export default memo(({ data,}) => {
                     type="source"
                     id = 'k'
                     position="bottom"
-                    style={{ zIndex: 12, backgroundColor: data.color,boxShadow: "0px 2px 4px #C5C5C5" }}
+                    style={{ zIndex: 12, backgroundColor: data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
                     // onConnect={(params) => console.log('handle onConnect', params)}
                 />
 
@@ -322,3 +322,6 @@ const useStyles = makeStyles((theme) => ({
 {/*    style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: "0px 2px 4px #C5C5C5" }}*/}
 {/*    onConnect={(params) => console.log('handle onConnect', params)}*/}
 {/*/>*/}
+
+
+// `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px rbg(205, 205, 205, 0.1)`

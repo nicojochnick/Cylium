@@ -5,6 +5,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import {BiX} from "react-icons/bi";
 import { FiMoreVertical } from "react-icons/fi";
 import Switch from "@material-ui/core/Switch/Switch";
 import TextField from "@material-ui/core/TextField/TextField";
@@ -109,7 +110,7 @@ export default memo(({ data,  }) => {
             border = {1}
             borderColor = {data.color}
             style = {{zIndex: 20,
-                boxShadow: '0px 3px 8px #D3D3DA',
+                boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                 backgroundColor:'white',
                 color: 'white',
                 overflow:'hidden',
@@ -135,7 +136,7 @@ export default memo(({ data,  }) => {
         </Box>
             {editOpen
                 ?
-                <Box border = {1} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white', padding: 5,boxShadow: '0px 3px 8px #D3D3DA' }} >
+                <Box border = {1} borderColor = {data.color} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white', padding: 5,boxShadow: '0px 3px 8px #D3D3DA' }} >
                     <Box display = 'flex' flexDirection = 'row' justifyContent = 'space-around'>
 
                         <p > y </p>
@@ -171,7 +172,7 @@ export default memo(({ data,  }) => {
 
                                         <IconButton style={{margin: 0, padding: 0, zIndex: 20}}
                                                     onClick={() => handleDeleteRow(item.key)}>
-                                            <FiMoreVertical size={18} style={{color: 'black', margin: 8,}}/>
+                                            <BiX size={18} style={{color: 'black', margin: 8,}}/>
                                         </IconButton>
 
                                     </Box>
@@ -183,7 +184,9 @@ export default memo(({ data,  }) => {
 
                     }
 
-                    <Button style = {{margin: 10}} variant={'contained'}  onClick= {()=>addRow()}> Add </Button>
+                    <Button style = {{margin: 10, backgroundColor:data.color}} variant={'contained'}  onClick= {()=>addRow()}> <p style = {{color:'#E7E7E7', margin: 2}}> Add </p> </Button>
+                    <Button style = {{margin: 10, backgroundColor:'#373638'}} variant={'contained'}  onClick= {()=>handleEditOpen()}> <p style = {{color:'#E7E7E7', margin: 2}}> Close </p> </Button>
+
 
                 </Box>
                 : null
@@ -193,13 +196,13 @@ export default memo(({ data,  }) => {
                 type="source"
                 id = 'k'
                 position="bottom"
-                style={{ zIndex: 30, backgroundColor: data.color,boxShadow: "0px 2px 4px #C5C5C5" }}
+                style={{ zIndex: 30, backgroundColor: data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}
                 // onConnect={(params) => console.log('handle onConnect', params)}
             />
 
         </Grid>
     );
-});
+});git
 
 
 const useStyles = makeStyles((theme) => ({

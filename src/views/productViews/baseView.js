@@ -114,7 +114,7 @@ function BaseView(props) {
 
                 <div className={classes.root}>
                     <AppBar
-                        style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
+                        style={{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, marginTop:0,}}
                         position="absolute"
                         color = '#F7F7F7'
                         className={clsx(classes.appBar, open && classes.appBarShift)}
@@ -125,7 +125,7 @@ function BaseView(props) {
                         <Divider/>
                     </AppBar>
                 <Grid className={classes.rootView} container spacing={0}>
-                    <Grid style = {{boxShadow: '0px 3px 8px #616161', zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>
+                    <Grid style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>
                         <Rooms channel={props.channel} messages={props.messages}
                                            automations={props.automations} user={props.user}/>
                     </Grid>

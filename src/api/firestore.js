@@ -160,7 +160,6 @@ export async function deleteMessage(messageID){
 export async function saveFlow (channelID, flow) {
     console.log('saving flow for: ', channelID, ' with ', flow);
     let parsedFlow = JSON.stringify(flow);
-    console.log(parsedFlow);
     const channelRef = db.collection('channels').doc(channelID);
     const res = await channelRef.update({flow: parsedFlow})
         .then(() => {

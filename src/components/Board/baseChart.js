@@ -70,6 +70,7 @@ function BaseChart(props) {
             saveFlow(props.channel.channelID, flow);
             let position = flow.position;
             let zoom = flow.zoom;
+            console.log(zoom, position)
             let updatedProjectIDs = props.user.projectIDs;
             updatedProjectIDs[props.channel.channelID].viewPort = position;
              updatedProjectIDs[props.channel.channelID].zoom = zoom;
@@ -92,10 +93,17 @@ function BaseChart(props) {
     const addNode = (type) => {
         let currentElements = elements.slice();
         let id = getNodeId();
-        let node = selectNode(type,id,props.user,props.channel.color);
+
+        let view = rfInstance.toObject().position;
+        let zoom =  rfInstance.toObject().zoom
+
+        let cord = {x: view[1], y:view[0]};
+
+
+        let node = selectNode(type,id,props.user,props.channel.color,);
         let nID = id + 1;
+
         setID(nID);
-        console.log(nID);
         currentElements.push(node);
         setElements(currentElements);
         triggerAutoSave()
@@ -240,7 +248,7 @@ function BaseChart(props) {
                         marginBottom: -40,
                         position:'absolute',
                         backgroundColor:'white',
-                        boxShadow: "0px 0px 20px #EBEFFF",
+                        boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                     }}
                 >
                     <FlowController color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
@@ -272,15 +280,20 @@ function BaseChart(props) {
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
                     >
-                        {/*<MiniMap*/}
-                        {/*    style = {{margin: 10, marginRight: 20, border:2, borderRadius: 5, borderColor: 'black', boxShadow: `0px 1px 5px 0.5px #BBBBBB`,*/}
-                        {/*    }}*/}
+                        <MiniMap
+                            nodeColor={props.channel.color}
+                            nodeStrokeColor={'#CDCDCD'}
+                            nodeStrokeWidth={3}
+                            nodeBorderRadius={5}
+                            style = {{margin: 10, marginRight: 20, border:2, borderColor: 'black', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
+                            }}
 
-                        {/*/>*/}
+                        />
+
                         <Background
                             variant = "dots"
-                            color = "#686E77"
-                            // style = {{backgroundColor:'#404040'}}
+                            color = "#46444E"
+                            style = {{backgroundColor:'#F9F9F9'}}
                             // gap={18}
                             // size={1}
                         />
