@@ -18,8 +18,8 @@ function DashboardContainer(props) {
     const [userAutomations, setUserAutomations] = React.useState([]);
     const [allchannels,setAllChannels] = React.useState([]);
 
-    const getAllChannels = () =>{
-        let filtered =  allchannels.filter(function(item) { return item.name !== null});
+    const getAllChannels = (achannels) =>{
+        let filtered =  achannels.filter(function(item) { return item.name !== null});
         console.log('all channels filtered')
         return filtered
 
@@ -74,7 +74,7 @@ function DashboardContainer(props) {
             querySnapshot.forEach(doc => {
                 channels.push(doc.data());
             });
-            setAllChannels(channels)
+            setAllChannels(getAllChannels(channels))
             // ...
         }, err => {
             console.log(`Encountered error: ${err}`);
@@ -86,7 +86,6 @@ function DashboardContainer(props) {
     useEffect(() => {
         function getChannels(querySnapshot) {
             let channels = [];
-            let automationIDs = [];
             querySnapshot.forEach(function (doc) {
                 let c = doc.data();
                 channels.push(c);
@@ -151,7 +150,7 @@ function DashboardContainer(props) {
 
 
     return (
-        <Dashboard notifications = {notifications} allChannels = {getAllChannels()} channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
+        <Dashboard notifications = {notifications} allChannels = {allchannels} channels = {channels} url = {url} user = {user} email = {email} automations = {automations} messages = {messages} />
     );
 }
 

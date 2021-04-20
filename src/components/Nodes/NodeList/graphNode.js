@@ -202,7 +202,7 @@ export default memo(({ data,  }) => {
 
         </Grid>
     );
-});git
+});
 
 
 const useStyles = makeStyles((theme) => ({

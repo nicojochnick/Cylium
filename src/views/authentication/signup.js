@@ -49,40 +49,19 @@ class signup extends Component {
             await Signup(this.state.email, this.state.password);
             await db.collection("users").doc(this.state.email).set({
                 email: this.state.email,
-                url: url,
                 img_url_Profile: {imgUrl: null},
-                welcome: "feel free to leave any kind of feedback",
-                name: "name | title",
-                points: 25,
+                name: null,
+                channelIDs: [],
+                projects: [],
+                projectIDs: {}
 
             }).then(function() {
                 console.log("Document successfully written!");
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });
-            const res = await db.collection('feedback').add({
-                email: "help@feedboxx.io",
-                url: url.toString(),
-                subject: "Welcome to FeedBoxx! 🗳️🤗",
-                feedback: intro,
-                name: "The FeedBoxx Team",
-                timeStamp: new Date(),
-                anon: false,
 
-            }).then(function() {
-                console.log("Feedback written successfully!");
-            }).catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
 
-            db.collection('feedback').doc(res.id).update({
-                id: res.id
-
-            }).then(function() {
-                console.log("Feedback ID added successfully!");
-            }).catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
 
             // analytics.logEvent('user signed up');
 

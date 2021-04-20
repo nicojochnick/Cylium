@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/firestore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/firestore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/avatarNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/avatarNode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/metricNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/metricNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/authentication/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/authentication/signup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/core/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/core/dashboardContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/productViews/baseView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/productViews/baseView.js" afterDir="false" />
     </list>
@@ -31,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="187" column="131" selection-start-line="187" selection-start-column="131" selection-end-line="187" selection-end-column="131" />
+            <state relative-caret-position="435">
+              <caret line="195" column="29" lean-forward="true" selection-start-line="195" selection-start-column="29" selection-end-line="195" selection-end-column="29" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -44,10 +38,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="83" column="40" lean-forward="true" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+            <state relative-caret-position="385">
+              <caret line="77" column="18" lean-forward="true" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/authentication/signup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/core/dashboardContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2620">
+              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1391">
+              <caret line="58" column="11" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
+            <state relative-caret-position="373">
+              <caret line="135" column="56" lean-forward="true" selection-start-line="135" selection-start-column="56" selection-end-line="135" selection-end-column="56" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -76,35 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/avatarNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="43" column="110" selection-start-line="43" selection-start-column="110" selection-end-line="43" selection-end-column="110" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="95" column="139" selection-start-line="95" selection-start-column="139" selection-end-line="95" selection-end-column="139" />
+            <state relative-caret-position="242">
+              <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -113,25 +122,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="295" column="55" selection-start-line="295" selection-start-column="55" selection-end-line="295" selection-end-column="55" />
+            <state relative-caret-position="306">
+              <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
-                <marker date="1618926173106" expanded="true" signature="10147:10192" ph="..." />
+                <marker date="1618932381212" expanded="true" signature="10142:10187" ph="..." />
               </folding>
             </state>
           </provider>
@@ -205,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/products/core/dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/Flow/Nodes/calendarNode.js" />
         <option value="$PROJECT_DIR$/src/xdeprecated/Old/transactions.js" />
         <option value="$PROJECT_DIR$/src/views/accountView.js" />
@@ -233,7 +229,6 @@
         <option value="$PROJECT_DIR$/src/components/Profile/Project/projectProfile.js" />
         <option value="$PROJECT_DIR$/src/components/Groups/projectGroup.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeUtils/NodeHeaders/titleAndOptions.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Chat/message.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js" />
@@ -241,29 +236,30 @@
         <option value="$PROJECT_DIR$/src/views/productViews/homeView.js" />
         <option value="$PROJECT_DIR$/src/components/Headers/menuHeader.js" />
         <option value="$PROJECT_DIR$/src/views/productViews/accountView.js" />
-        <option value="$PROJECT_DIR$/src/views/core/dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/Profile/User/userProfile.js" />
         <option value="$PROJECT_DIR$/src/api/firestore.js" />
-        <option value="$PROJECT_DIR$/src/views/core/dashboardContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/metricNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/avatarNode.js" />
-        <option value="$PROJECT_DIR$/src/views/productViews/baseView.js" />
         <option value="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" />
-        <option value="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/views/authentication/signup.js" />
+        <option value="$PROJECT_DIR$/src/views/core/dashboardContainer.js" />
+        <option value="$PROJECT_DIR$/src/views/core/dashboard.js" />
+        <option value="$PROJECT_DIR$/src/views/productViews/baseView.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-470" />
-    <option name="y" value="-1055" />
+    <option name="y" value="25" />
     <option name="width" value="1661" />
-    <option name="height" value="1055" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -382,6 +378,13 @@
               <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="authentication" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -568,12 +571,12 @@
       <workItem from="1617658448922" duration="11000" />
       <workItem from="1617709387848" duration="17658000" />
       <workItem from="1618065396115" duration="48792000" />
-      <workItem from="1618397772783" duration="76928000" />
+      <workItem from="1618397772783" duration="80589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1176051000" />
+    <option name="totallyTimeSpent" value="1179712000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -585,7 +588,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-470" y="-1055" width="1661" height="1055" extended-state="0" />
+    <frame x="0" y="25" width="1661" height="875" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.23062843" />
@@ -603,7 +606,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.20021299" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.24769433" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50405186" side_tool="true" weight="0.20021299" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -649,9 +652,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/formNode.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/bitCoinGifNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -841,16 +841,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/@babel/core/src/config/files/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="65" column="37" lean-forward="true" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/message.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -915,32 +905,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="126" column="54" lean-forward="true" selection-start-line="126" selection-start-column="54" selection-end-line="126" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/firestore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="162" selection-start-line="162" selection-end-line="162" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/core/dashboardContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1019,32 +989,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="138" lean-forward="true" selection-start-line="138" selection-end-line="138" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
           <caret line="40" column="101" selection-start-line="40" selection-start-column="101" selection-end-line="40" selection-end-column="101" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="95" column="139" selection-start-line="95" selection-start-column="139" selection-end-line="95" selection-end-column="139" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1059,23 +1009,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="295" column="55" selection-start-line="295" selection-start-column="55" selection-end-line="295" selection-end-column="55" />
+        <state relative-caret-position="435">
+          <caret line="195" column="29" lean-forward="true" selection-start-line="195" selection-start-column="29" selection-end-line="195" selection-end-column="29" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <marker date="1618926173106" expanded="true" signature="10147:10192" ph="..." />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js">
+    <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="187" column="131" selection-start-line="187" selection-start-column="131" selection-end-line="187" selection-end-column="131" />
+        <state relative-caret-position="385">
+          <caret line="77" column="18" lean-forward="true" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/authentication/signup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="50" column="40" lean-forward="true" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/core/dashboardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2620">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/core/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1391">
+          <caret line="58" column="11" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/productViews/baseView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="135" column="56" lean-forward="true" selection-start-line="135" selection-start-column="56" selection-end-line="135" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <marker date="1618932381212" expanded="true" signature="10142:10187" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="80" column="52" selection-start-line="80" selection-start-column="52" selection-end-line="80" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>

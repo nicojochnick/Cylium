@@ -94,8 +94,9 @@ function BaseView(props) {
     };
 
     const isFollowing = ( ) => {
-        console.log(props.channel.channelID)
-        return props.user.projects.includes(props.channel.channelID);
+        let val = props.user.projects.includes(props.channel.channelID);
+        console.log(val)
+        return val;
     };
 
     useEffect(() => {

@@ -78,6 +78,7 @@ function MessagesContainer(props) {
                         {Object.keys(props.messages)
                         .map((item) =>
                             <Message
+                                key = {props.messages[item].messageID}
                                 senderID = {props.messages[item].senderID}
                                 automations={props.automations}
                                 message={props.messages[item]}

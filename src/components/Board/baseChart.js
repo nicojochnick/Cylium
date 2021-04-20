@@ -227,7 +227,8 @@ function BaseChart(props) {
            setElements(dbElements)
 
         }
-    }, [props.channel.color]);
+    }, [props.channel]);
+
 
 
 

@@ -61,6 +61,11 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={home} />
                 <PublicRoute
+                    path="/signup"
+                    authenticated={this.state.authenticated}
+                    component={signup}
+                />
+                <PublicRoute
                     path="/login"
                     authenticated={this.state.authenticated}
                     component={login}
@@ -78,11 +83,7 @@ export default class App extends Component {
                   component={DashboardContainer}
               />
 
-              <PublicRoute
-                  path="/signup"
-                  authenticated={this.state.authenticated}
-                  component={signup}
-              />
+
 
 
             </Switch>
