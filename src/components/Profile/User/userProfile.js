@@ -73,11 +73,9 @@ function UserProfile(props) {
             // await handleFireBaseUpload(event, imageAsFile);
         }
         try {
-            await db.collection('users').doc(props.user.email).set({
+            await db.collection('users').doc(props.user.email).update({
                 name: name,
-                // url: props.user.url,
                 img_url_Profile: imageAsUrl,
-                email: props.user.email,
             });
             setSuccess(true);
             setEditing(false)
