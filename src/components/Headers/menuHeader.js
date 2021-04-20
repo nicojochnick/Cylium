@@ -67,55 +67,12 @@ function MenuHeader(props) {
             <Grid
                 container
                 direction="row"
-                justify="space-between"
-                alignItems="center"
+                justify={'flex-end'}
+
             >
-                <Box
-                    borderRadius={16}
-                    style ={{margin: 10}}
-                    className={classes.search}
-                >
-                    <div className={classes.searchIcon}>
-                        {/*<SearchIcon />*/}
-                    </div>
-                    <InputBase
-                        placeholder="Search…"
-                        classes={{
-                            root: classes.inputRoot,
-                            input: classes.inputInput,
-                        }}
-                        inputProps={{ 'aria-label': 'search' }}
-                    />
-                </Box>
-                <div className={classes.sectionDesktop}>
-                    <IconButton
-                        onClick={handleNotificationClick}
-                        aria-haspopup="true"
-                        style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">
-                        <Badge badgeContent={1} color="secondary">
-                            {/*<NotificationsIcon />*/}
-                        </Badge>
-                    </IconButton>
-                    <Popover
-                        style = {{borderRadius: 10, marginRight: 20}}
-                        id={idNotification}
-                        open={openNotification}
-                        anchorEl={anchorElNotification}
-                        onClose={handleCloseNotification}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'center',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'center',
-                        }}
-                    >
-                        <Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5}
-                             style ={{margin: 0, minWidth:400, maxHeight: 500}}>
-                            {notifications.map((item) => <Notification item = {item}/>)}
-                        </Box>
-                    </Popover>
+
+                <Box display={'flex'} alignItems = 'flex-end' justifyContent = 'flex-end'>
+
                     <IconButton
                         edge="end"
                         aria-label="account of current user"
@@ -144,7 +101,7 @@ function MenuHeader(props) {
                             Signout
                         </Button>
                     </Popover>
-                </div>
+                </Box>
             </Grid>
 
         </Box>
@@ -157,3 +114,55 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default MenuHeader;
+
+
+{/*<IconButton*/}
+{/*    onClick={handleNotificationClick}*/}
+{/*    aria-haspopup="true"*/}
+{/*    style = {{margin: 5}} aria-label="show 17 new notifications" color="inherit">*/}
+{/*    <Badge badgeContent={1} color="secondary">*/}
+{/*        /!*<NotificationsIcon />*!/*/}
+{/*    </Badge>*/}
+{/*</IconButton>*/}
+{/*<Popover*/}
+{/*style = {{borderRadius: 10, marginRight: 20}}*/}
+{/*id={idNotification}*/}
+{/*open={openNotification}*/}
+{/*anchorEl={anchorElNotification}*/}
+{/*onClose={handleCloseNotification}*/}
+{/*anchorOrigin={{*/}
+{/*    vertical: 'bottom',*/}
+{/*        horizontal: 'center',*/}
+{/*}}*/}
+{/*transformOrigin={{*/}
+{/*    vertical: 'top',*/}
+{/*        horizontal: 'center',*/}
+{/*}}*/}
+{/*>*/}
+{/*<Box border = {1} borderColor = {"#4D6DF1"}  borderRadius = {5}*/}
+{/*style ={{margin: 0, minWidth:400, maxHeight: 500}}>*/}
+{/*{notifications.map((item) => <Notification item = {item}/>)}*/}
+{/*</Box>*/}
+{/*</Popover>*/}
+
+
+
+
+
+{/*<Box*/}
+{/*    borderRadius={16}*/}
+{/*    style ={{margin: 10}}*/}
+{/*    className={classes.search}*/}
+{/*>*/}
+{/*    <div className={classes.searchIcon}>*/}
+{/*        /!*<SearchIcon />*!/*/}
+{/*    </div>*/}
+{/*    <InputBase*/}
+{/*        placeholder="Search…"*/}
+{/*        classes={{*/}
+{/*            root: classes.inputRoot,*/}
+{/*            input: classes.inputInput,*/}
+{/*        }}*/}
+{/*        inputProps={{ 'aria-label': 'search' }}*/}
+{/*    />*/}
+{/*</Box>*/}

@@ -78,8 +78,6 @@ function UserProfile(props) {
                 // url: props.user.url,
                 img_url_Profile: imageAsUrl,
                 email: props.user.email,
-                trackers: props.user.trackers,
-                friendList: props.user.friendList
             });
             setSuccess(true);
             setEditing(false)
@@ -127,7 +125,7 @@ function UserProfile(props) {
                     value = {name}
                 />
                 {isEditing
-                    ? <Button
+                    ? <Button variant={'contained'}
                         onClick={(event)=>handleSave(event)}
                     >
                         Save

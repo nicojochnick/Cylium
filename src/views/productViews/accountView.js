@@ -32,31 +32,16 @@ function AccountView(props) {
                 style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
                 position="absolute"
                 color = '#F7F7F7'
-                className={clsx(classes.appBar,true && classes.appBarShift)}
             >
-                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
+                <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}}>
                     <MenuHeader/>
                 </Toolbar>
                 <Divider/>
             </AppBar>
 
-            <Container fixed maxWidth="lg" className={classes.container}>
-                <Grid container spacing={1}>
-                    <Grid item xs={12} sm ={12} md={6} lg={6}>
-                        <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>
-                            <Grid justify="space-between" direction = "row" container>
-                                <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
-                                    NOTIFICATIONS
-                                </h2>
-                            </Grid>
-                            <Divider style ={{marginTop:0}}/>
-
-                            <NotificationList user = {props.user} notifications = {props.notifications} />
-
-                        </Box>
-                    </Grid>
-                    <Grid direction = 'column' container xs={12} sm={12} md={6} lg={6}>
-                        <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA"}} borderRadius={10} >
+            <Container className={classes.container}>
+                    <Grid direction = 'column' container xs={12} sm={12} md={6} lg={6} >
+                        <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA", marginLeft: -40}} borderRadius={10} >
                             <h2 style ={{margin: 15, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                PROFILE
                             </h2>
@@ -74,15 +59,11 @@ function AccountView(props) {
                                             </Grid>
                                         </Box>
                                     </Grid>
-
-                                    <Grid spacing={3} item xs={6} >
-                                    </Grid>
                                 </Grid>
                             </Box>
                         </Box>
                     </Grid>
 
-                </Grid>
             </Container>
         </div>
     );
@@ -161,5 +142,20 @@ export default AccountView;
 {/*            color={ backgroundColor}*/}
 {/*            onChangeComplete={ handleChangeComplete }*/}
 {/*        />*/}
+{/*    </Box>*/}
+{/*</Grid>*/}
+
+
+{/*<Grid item xs={12} sm ={12} md={6} lg={6}>*/}
+{/*    <Box borderRadius={10}  flexWrap="wrap" style = {{boxShadow: "0px 5px 10px #D7D7DA",}} boxShadow = {0} className={classes.box}>*/}
+{/*        <Grid justify="space-between" direction = "row" container>*/}
+{/*            <h2 style ={{margin: 15, marginRight: -10, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>*/}
+{/*                NOTIFICATIONS*/}
+{/*            </h2>*/}
+{/*        </Grid>*/}
+{/*        <Divider style ={{marginTop:0}}/>*/}
+
+{/*        <NotificationList user = {props.user} notifications = {props.notifications} />*/}
+
 {/*    </Box>*/}
 {/*</Grid>*/}

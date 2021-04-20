@@ -238,6 +238,7 @@ export async function addChannel (userID, channels, projectIDs, name){
         ]
     });
     console.log(res, userID,channels);
+
     db.collection('channels').doc(res.id).update({
         channelID: res.id
     }).then(() => {

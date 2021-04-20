@@ -70,8 +70,6 @@ function DashboardContainer(props) {
 
         const projectRef = db.collection('channels');
         // const snapshot = await projectRef.get();
-
-
         const snap =  projectRef.onSnapshot(querySnapshot => {
             let channels = [];
             querySnapshot.forEach(doc => {
@@ -102,11 +100,13 @@ function DashboardContainer(props) {
             console.log('AUTOMATION IDS', automationIDs)
             setUserAutomations(automationIDs);
         }
-        if (user) {
+        if (user && Object.keys(user.projectIDs).length > 0) {
             console.log('user is present');
             let projectIDs = user.projectIDs;
+
             const queryChannels = db.collection('channels').where('channelID', 'in', Object.keys(projectIDs));
             const unsubscribeChannels = queryChannels.onSnapshot(getChannels, error => console.log(error));
+
             return () => {
                 unsubscribeChannels()
             }
@@ -124,7 +124,7 @@ function DashboardContainer(props) {
             let message_sorted = messages.sort( function(a,b) {return a.timeStamp - b.timeStamp});
             setMessages(message_sorted)
         }
-        if (user) {
+        if (user && Object.keys(user.projectIDs).length > 0 ) {
             let projectIDs = user.projectIDs;
             console.log('user is present, pulling messages');
             const queryMessages = db.collection('messages').where('channelID', 'in', Object.keys(projectIDs));
