@@ -63,66 +63,67 @@ export default function Dashboard(props) {
         <div className={classes.root}>
             <CssBaseline />
             <Router>
-            <Drawer
-                variant="permanent"
-                classes={{
-                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                }}
-                open={open}
-            >
-                <div className={classes.toolbarIcon}>
-                    {/*<img style = {{height: 35, marginLeft: 10}}/>*/}
-                    {/*<IconButton onClick={handleDrawerClose}>*/}
-                        <img style = {{height: 43, width: 46, marginLeft:-3}} src = {cylogo} />
+            {/*<Drawer*/}
+            {/*    variant="permanent"*/}
+            {/*    classes={{*/}
+            {/*        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),*/}
+            {/*    }}*/}
+            {/*    open={open}*/}
+            {/*>*/}
+            {/*    <div className={classes.toolbarIcon}>*/}
+            {/*        /!*<img style = {{height: 35, marginLeft: 10}}/>*!/*/}
+            {/*        /!*<IconButton onClick={handleDrawerClose}>*!/*/}
+            {/*            <img style = {{height: 43, width: 46, marginLeft:-3}} src = {cylogo} />*/}
 
-                        {/*<ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*/}
-                    {/*</IconButton>*/}
-                </div>
-                <Divider/>
-                <Link to="/feed" style={{textDecoration: 'none' }} >
-                <ListItem >
-                    <ListItemIcon>
-                        <BiHome size = {25} style = {{color:'#3C3F48'}}  />
-                    </ListItemIcon>
-                    <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />
-                </ListItem>
-                </Link>
-                <Divider/>
-                <List>
-                    {Object.keys(props.channels).map((item)=>
-                            <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>
-                                <ListItem button>
-                                    <ListItemIcon>
-                                        <BiCircle size = {25} style = {{color:props.channels[item].color}}  />
-                                    </ListItemIcon>
-                                    <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />
-                                </ListItem>
-                            </Link>
-                    )}
-                    <Divider/>
-                    <ListItem button onClick = {()=>addChannelDB()} >
-                            <ListItemIcon >
-                                <BiPlus size = {25} style = {{color:'#3C3F48'}}  />
-                            </ListItemIcon>
-                            <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />
-                    </ListItem>
-                    <Divider/>
-                        <Link to="/account"  style={{ color:"white", textDecoration: 'none' }}>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <BiUser size = {25} style = {{color:'#3C3F48'}}  />
-                                </ListItemIcon>
-                                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Account" />
-                            </ListItem>
-                        </Link>
-                    <div>
-                    </div>
-                </List>
-                <Divider />
-            </Drawer>
+            {/*            /!*<ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*!/*/}
+            {/*        /!*</IconButton>*!/*/}
+            {/*    </div>*/}
+            {/*    <Divider/>*/}
+            {/*    <Link to="/feed" style={{textDecoration: 'none' }} >*/}
+            {/*    <ListItem >*/}
+            {/*        <ListItemIcon>*/}
+            {/*            <BiWorld size = {25} style = {{color:'#3C3F48'}}  />*/}
+            {/*        </ListItemIcon>*/}
+            {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />*/}
+            {/*    </ListItem>*/}
+            {/*    </Link>*/}
+            {/*    <Divider/>*/}
+            {/*    <List>*/}
+            {/*        {Object.keys(props.channels).map((item)=>*/}
+            {/*                <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>*/}
+            {/*                    <ListItem button>*/}
+            {/*                        <ListItemIcon>*/}
+            {/*                            <BiCircle size = {25} style = {{color:props.channels[item].color}}  />*/}
+            {/*                        </ListItemIcon>*/}
+            {/*                        <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />*/}
+            {/*                    </ListItem>*/}
+            {/*                </Link>*/}
+            {/*        )}*/}
+            {/*        <Divider/>*/}
+            {/*        <ListItem button onClick = {()=>addChannelDB()} >*/}
+            {/*                <ListItemIcon >*/}
+            {/*                    <BiPlus size = {25} style = {{color:'#3C3F48'}}  />*/}
+            {/*                </ListItemIcon>*/}
+            {/*                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />*/}
+            {/*        </ListItem>*/}
+            {/*        <Divider/>*/}
+            {/*            <Link to="/account"  style={{ color:"white", textDecoration: 'none' }}>*/}
+            {/*                <ListItem button>*/}
+            {/*                    <ListItemIcon>*/}
+            {/*                        <BiUser size = {25} style = {{color:'#3C3F48'}}  />*/}
+            {/*                    </ListItemIcon>*/}
+            {/*                    <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Account" />*/}
+            {/*                </ListItem>*/}
+            {/*            </Link>*/}
+            {/*        <div>*/}
+            {/*        </div>*/}
+            {/*    </List>*/}
+            {/*    <Divider />*/}
+            {/*</Drawer>*/}
                 {(props.user) ?
                     < main className={classes.content}>
-                        <div className={classes.appBarSpacer} />
+                        {/*<div className={classes.appBarSpacer} />*/}
+
                         <Switch>
                             <Route exact path="/feed">
                                 <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>

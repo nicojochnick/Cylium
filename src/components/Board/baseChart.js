@@ -25,6 +25,15 @@ import {selectNode} from "./nodeSelector";
 import GraphNode from "../Nodes/NodeList/graphNode"
 import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../Nodes/NodeList/metricNode";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import ProjectHeader from "../Headers/projectHeader";
+import clsx from 'clsx';
+
+import Divider from "@material-ui/core/Divider";
+import {makeStyles} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Rooms from "../Messages/Rooms/rooms";
 
 let timerID = null;
 
@@ -63,6 +72,8 @@ function BaseChart(props) {
     const handleClickOpen = () => {setOpen(true);};
     const handleClose = () => {setOpen(false);};
     const { transform } = useZoomPanHelper();
+    const classes = useStyles();
+
 
     const onSave = () => {
         if (rfInstance || elements.length > 0) {
@@ -235,7 +246,7 @@ function BaseChart(props) {
     return (
 
         <ReactFlowProvider>
-        <Box style = {{zIndex: 0, height: '93vh',marginLeft:10}} border={1} borderColor = {'#9B9B9B'}>
+        <Box style = {{zIndex: 0, height: '100vh'}} border={1} borderColor = {'#9B9B9B'}>
             <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
                     border={1}
@@ -246,7 +257,7 @@ function BaseChart(props) {
                         zIndex: 10,
                         marginTop: 65,
                         width: 60,
-                        marginBottom: -40,
+                        marginBottom: -200,
                         position:'absolute',
                         backgroundColor:'white',
                         boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
@@ -256,15 +267,47 @@ function BaseChart(props) {
                 </Box>
 
             </Box>
-            <Box flexDirection ='row'
-                 justifyContent = 'center'
-                 alignItems = 'center'
-                 style={{
-                     width: '64vw',
-                     overflow: 'hidden'
-                 }}
+
+
+            <Box
+                flexDirection ='row'
+                justifyContent = 'center'
+                alignItems = 'center'
+                style={{
+                    width: '100vw',
+                    height: '100vh',
+                    overflow: 'hidden'
+                }}
             >
-                <div style = {{zIndex: 0, height: '92vh',}}>
+
+
+
+
+                <AppBar
+                    style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}
+                    color = '#F7F7F7'
+                    // position={'static'}
+                >
+                    <Box
+                        display = 'flex'
+                        flexDirection ='row'
+                        justifyContent = 'flex-start'
+                        alignItems = 'center'
+                    >
+                    <Toolbar style = {{margin: 10}}>
+                        <ProjectHeader handleClickOpenSettings = { ()=>console.log('')} user = {props.user} channel = {props.channel} />
+                    </Toolbar>
+
+                    </Box>
+                </AppBar>
+
+
+                    <Box borderRadius = {10} style = {{marginLeft: 40, marginTop: 100, width: '28vw', zIndex: 50, position:'absolute'}}>
+                        <Rooms channel={props.channel} messages={props.messages}
+                               automations={props.automations} user={props.user}/>
+                    </Box>
+
+
                     <ReactFlow
                         nodeTypes={nodeTypes}
                         style = {{ overflow: 'hidden', background: '#FAFAFA'}}
@@ -281,6 +324,8 @@ function BaseChart(props) {
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
                     >
+
+
                         <MiniMap
                             nodeColor={props.channel.color}
                             nodeStrokeColor={'#CDCDCD'}
@@ -299,9 +344,11 @@ function BaseChart(props) {
                             // size={1}
                         />
 
-                        <Box display ='flex' flexDirection ='row' container justifyContent = 'space-between' alignItems = 'space-between'>
 
-                            <Box style = {{marginRight: 130, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
+
+                        <Box display ='flex' flexDirection ='row' container justifyContent = 'flex-end' alignItems = 'space-between'>
+
+                            <Box style = {{marginRight: 20, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
                                 { saving
                                     ?
                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
@@ -309,7 +356,7 @@ function BaseChart(props) {
                                         <PuffLoader color={'black'} loading={true} size={25} />
                                     </Box>
                                     :
-                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
+                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'centerg' flexDirection = {'row'}>
                                          {/*<p> Saved </p>*/}
                                          {/*<BiCheck size ={15} />*/}
                                      </Box>
@@ -318,29 +365,29 @@ function BaseChart(props) {
                             </Box>
                         </Box>
                 <Controls />
-                        <Dialog
-                            open={open}
-                            maxWidth={'xs'}
-                            onClose={handleClose}
-                            aria-labelledby="alert-dialog-title"
-                            aria-describedby="alert-dialog-description"
-                        >
-                            <DialogContent>
-                                <DialogContentText style = {{fontSize: 14}} id="alert-dialog-description">
-                                    Are you sure you want to delete this edge or node?
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={handleClose} color="secondary">
-                                    Cancel
-                                </Button>
-                                <Button onClick={confirmElementsRemove} color="primary" autoFocus>
-                                    Delete
-                                </Button>
-                            </DialogActions>
-                        </Dialog>
+
             </ReactFlow>
-                </div>
+                <Dialog
+                    open={open}
+                    maxWidth={'xs'}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogContent>
+                        <DialogContentText style = {{fontSize: 14}} id="alert-dialog-description">
+                            Are you sure you want to delete this edge or node?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} color="secondary">
+                            Cancel
+                        </Button>
+                        <Button onClick={confirmElementsRemove} color="primary" autoFocus>
+                            Delete
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Box>
 
         </Box>
@@ -350,6 +397,79 @@ function BaseChart(props) {
 
     );
 }
+
+const drawerWidth = 72;
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor:'white',
+        display: 'flex',
+
+    },
+    rootView: {
+        height: '100vh',
+        flexGrow: 1,
+        overflow:'hidden',
+    },
+    box:{
+        flexGrow: 1,
+        padding: 0,
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
+        margin: 0,
+    },
+
+    content: {
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+    },
+
+    privateBoard: {
+        height: '90vh',
+
+    },
+
+    container: {
+        flexGrow: 1,
+
+    },
+    appBarSpacer: theme.mixins.toolbar,
+
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+        backgroundColor: '#F8F8F8',
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+
+    toolbar: {
+        paddingRight: 25,
+        backgroundColor:'white',
+    },
+
+    large: {
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+
+    },
+
+
+
+}));
 
 export default BaseChart;
 

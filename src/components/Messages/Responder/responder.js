@@ -71,7 +71,7 @@ function Responder(props) {
             borderColor = {'#BABCBE'}
             flexDirection = 'column'
             borderRadius={10}
-            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 430, color: '#555555'}}>
+            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', width: 360, color: '#555555'}}>
                 <Editor
                     placeholder="message..."
                     handleKeyCommand={handleKeyCommand}

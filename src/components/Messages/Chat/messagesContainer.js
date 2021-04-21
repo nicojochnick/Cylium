@@ -63,7 +63,7 @@ function MessagesContainer(props) {
 
     //TODO: move responder up a level, don't want it grouped with messages
     return (
-            <Grid  wrap = 'nowrap' style = {{height: '90vh', }} container direction ='column'>
+            <Grid  wrap = 'nowrap' style = {{height: '70vh',}} container direction ='column'>
                 <Box
                     border = {0}
                     // display = 'flex'
@@ -94,7 +94,7 @@ function MessagesContainer(props) {
                     flexDirection = 'column'
                     borderColor = {'grey'}
                     color = {'#A3A0B1'}
-                    style = {{zIndex: 0, margin: 0, marginBottom:40, backgroundColor: 'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,}}
+                    style = {{zIndex: 0, margin: 0, backgroundColor: 'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,}}
                 >
                     <Responder scrollToBottom = {scrollToBottom} room = {props.room} channel = {props.channel} user = {props.user}/>
                 </Box>

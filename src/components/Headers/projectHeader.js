@@ -52,7 +52,7 @@ function ProjectHeader(props) {
     };
 
     return (
-        <Box style = {{marginLeft: -10, marginRight: 10, height: 75, width: '100vw'}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
+        <Box borderRadius = {20} style = {{ height: 75,backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'center' >
             {redirect
                 ?
                 <Redirect to= {`/feed`} />
@@ -65,10 +65,10 @@ function ProjectHeader(props) {
                 <div>
                 <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>
                     <div style ={{margin: 15}}>
-                    {!isFollowing()
-                        ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>
-                        : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>
-                    }
+                    {/*{!isFollowing()*/}
+                    {/*    ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>*/}
+                    {/*    : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>*/}
+                    {/*}*/}
                     </div>
                     <ProjectGroup channel = {props.channel} />
                     <IconButton onClick = {handleClick}>

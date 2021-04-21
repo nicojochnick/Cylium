@@ -28,7 +28,7 @@ export default function Rooms(props) {
     };
 
     return (
-        <div className={classes.root}>
+        <Box borderRadius = {20} style = {{overflow:'hidden'}} className={classes.root}>
             {/*<Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>*/}
 
             {/*    <Box borderRadius = {100} style = {{ boxShadow: '0px 1px 4px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: -15, marginTop: 6, position: 'absolute', zIndex: 20}}>*/}
@@ -38,20 +38,24 @@ export default function Rooms(props) {
             {/*    </IconButton>*/}
             {/*    </Box>*/}
             {/*</Box>*/}
-            <AppBar style = {{backgroundColor:'#F9F9F9',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,}} position="static">
-                <Tabs  variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>
-                    {props.channel.rooms.map((room)=>{
-                        return <Tab label = {room.name} />
-                    })
-                    }
-                </Tabs>
-            </AppBar>
+            {/*<AppBar style = {{backgroundColor:'#F9F9F9',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.2)`,}} position="static">*/}
+            {/*    <Tabs  variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>*/}
+            {/*        {props.channel.rooms.map((room)=>{*/}
+            {/*            return <Tab label = {room.name} />*/}
+            {/*        })*/}
+            {/*        }*/}
+            {/*    </Tabs>*/}
+            {/*</AppBar>*/}
+            <Box borderBottom = {1} borderColor = {'lightgrey' } display = 'flex' style = {{height: 50, backgroundColor: 'white'}}>
+
+            </Box>
+
             {props.channel.rooms.map((room)=>{
                     return <TabPanel room = {room}  messages = {props.messages} value = {value} user = {props.user} channel = {props.channel} index = {room.index} />
             }
             )
             }
-        </div>
+        </Box>
     );
 }
 

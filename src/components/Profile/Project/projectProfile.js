@@ -145,7 +145,7 @@ function ProjectProfile(props) {
                     rowsMax={2}
                     onChange={(event) => changeBio(event.target.value)}
                     defaultValue={projectBio}
-                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343', width: 600}, disableUnderline: true,}}/>
+                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343',}, disableUnderline: true,}}/>
 
                 </Box>
 

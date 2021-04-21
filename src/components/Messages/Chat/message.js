@@ -160,7 +160,7 @@ function Message(props) {
                                 <Avatar  src={user.img_url_Profile.imgUrl} style ={{margin:2}} className={classes.large}/>
                         </Box>
 
-                        <Box flexDirection = 'column' style = {{width: 350}}>
+                        <Box flexDirection = 'column' style = {{width: 300}}>
                             <Grid container style = {{margin: 0}}>
                             <p style={{
                                 margin: 8,

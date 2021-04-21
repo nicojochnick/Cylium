@@ -114,26 +114,22 @@ function BaseView(props) {
                 ?
 
                 <div className={classes.root}>
-                    <AppBar
-                        style={{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, marginTop:0,}}
-                        position="absolute"
-                        color = '#F7F7F7'
-                        className={clsx(classes.appBar, open && classes.appBarShift)}
-                    >
-                        <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
-                            <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-                        </Toolbar>
-                        <Divider/>
-                    </AppBar>
+                    {/*<AppBar*/}
+                    {/*    style={{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, marginTop:0,}}*/}
+                    {/*    position="absolute"*/}
+                    {/*    color = '#F7F7F7'*/}
+                    {/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
+                    {/*>*/}
+                    {/*    <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>*/}
+                    {/*        <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />*/}
+                    {/*    </Toolbar>*/}
+                    {/*    <Divider/>*/}
+                    {/*</AppBar>*/}
                 <Grid className={classes.rootView} container spacing={0}>
-                    <Grid style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>
-                        <Rooms channel={props.channel} messages={props.messages}
-                                           automations={props.automations} user={props.user}/>
-                    </Grid>
 
-                        <Grid className={classes.root} xs={8} md={8} lg={8} container>
+                        <Grid className={classes.root} xs={12} md={12} lg={12} container>
 
-                            <BaseChart channel={props.channel} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
+                            <BaseChart channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
                                        openChat={openChat}/>
 
                         </Grid>
@@ -325,6 +321,12 @@ const useStyles = makeStyles((theme) => ({
 
 {/*        <Button variant={'contained'} style = {{backgroundColor: props.channel.color}}> <p style = {{color:'white', margin:0}}> Follow </p> </Button>*/}
 {/*    </Box>*/}
+{/*</Grid>*/}
+
+
+{/*<Grid style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, zIndex: 5, border:1}} xs={4} sm={4} md={4} lg={4} direction='column' container>*/}
+{/*    <Rooms channel={props.channel} messages={props.messages}*/}
+{/*                       automations={props.automations} user={props.user}/>*/}
 {/*</Grid>*/}
 
 export default BaseView;
