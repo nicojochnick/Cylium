@@ -41,7 +41,7 @@ function AccountView(props) {
 
             <Container className={classes.container}>
                     <Grid direction = 'column' container xs={12} sm={12} md={6} lg={6} >
-                        <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA", marginLeft: -40}} borderRadius={10} >
+                        <Box className={classes.box} boxShadow = {0} style = {{maxHeight: 500, boxShadow: "0px 5px 10px #D7D7DA",}} borderRadius={10} >
                             <h2 style ={{margin: 15, color:"#9FA5B1", fontSize: 15, fontWeight: 600}}>
                                PROFILE
                             </h2>
