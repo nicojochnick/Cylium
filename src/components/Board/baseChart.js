@@ -69,6 +69,10 @@ function BaseChart(props) {
     const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
     const [open, setOpen] = React.useState(false);
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
+    const [isChatOpen,openChat] = React.useState(true);
+
+
+
     const handleClickOpen = () => {setOpen(true);};
     const handleClose = () => {setOpen(false);};
     const { transform } = useZoomPanHelper();
@@ -246,7 +250,7 @@ function BaseChart(props) {
     return (
 
         <ReactFlowProvider>
-        <Box style = {{zIndex: 0, height: '100vh'}} border={1} borderColor = {'#9B9B9B'}>
+        <Box style = {{zIndex: 0, height: '100vh'}} borderColor = {'#9B9B9B'}>
             <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
                     border={1}
@@ -281,8 +285,6 @@ function BaseChart(props) {
             >
 
 
-
-
                 <AppBar
                     style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}
                     color = '#F7F7F7'
@@ -294,18 +296,24 @@ function BaseChart(props) {
                         justifyContent = 'flex-start'
                         alignItems = 'center'
                     >
-                    <Toolbar style = {{margin: 10}}>
-                        <ProjectHeader handleClickOpenSettings = { ()=>console.log('')} user = {props.user} channel = {props.channel} />
+                    <Toolbar style = {{margin: 15}}>
+                        <ProjectHeader openChat = {openChat} isChatOpen = {isChatOpen} handleClickOpenSettings = { ()=>console.log('')} user = {props.user} channel = {props.channel} />
                     </Toolbar>
 
                     </Box>
                 </AppBar>
+
+                {isChatOpen
+                    ?
 
 
                     <Box borderRadius = {10} style = {{marginLeft: 40, marginTop: 100, width: '28vw', zIndex: 50, position:'absolute'}}>
                         <Rooms channel={props.channel} messages={props.messages}
                                automations={props.automations} user={props.user}/>
                     </Box>
+
+                    : null
+                }
 
 
                     <ReactFlow
@@ -356,7 +364,7 @@ function BaseChart(props) {
                                         <PuffLoader color={'black'} loading={true} size={25} />
                                     </Box>
                                     :
-                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'centerg' flexDirection = {'row'}>
+                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
                                          {/*<p> Saved </p>*/}
                                          {/*<BiCheck size ={15} />*/}
                                      </Box>

@@ -105,7 +105,7 @@ function HomeView(props) {
                                     {...params}
                                     defaultValue={''}
                                     style = {{width: 400, }}
-                                    label="search for a project.." margin="normal" variant="outlined" />
+                                    label="search spaces" margin="normal" variant="outlined" />
                             )}
                         />
 

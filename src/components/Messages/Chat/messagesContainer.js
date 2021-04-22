@@ -63,7 +63,7 @@ function MessagesContainer(props) {
 
     //TODO: move responder up a level, don't want it grouped with messages
     return (
-            <Grid  wrap = 'nowrap' style = {{height: '70vh',}} container direction ='column'>
+            <Grid  wrap = 'nowrap' style = {{height: '76vh',}} container direction ='column'>
                 <Box
                     border = {0}
                     // display = 'flex'

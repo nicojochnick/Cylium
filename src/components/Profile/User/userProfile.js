@@ -110,7 +110,7 @@ function UserProfile(props) {
                 {/*    </Button>*/}
                 {/*</label>*/}
                 <input className={classes.input} id="contained-button-file" accept="image/*" type ='file' onChange={handleImageAsFile} />
-                <Box component="span" style = {{margin: 5}} border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
+                <Box component="span" style = {{margin: 5, padding: 2}} border = {2} borderColor = {'lightgrey'} borderRadius = {50}>
                     <label htmlFor="contained-button-file">
                 <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
                     </label>
@@ -123,9 +123,10 @@ function UserProfile(props) {
                     value = {name}
                 />
                 {isEditing
-                    ? <Button variant={'contained'}
+                    ? <Button  style = {{height: 30, margin: 5}} variant={'contained'}
                         onClick={(event)=>handleSave(event)}
                     >
+
                         Save
                     </Button>
                     : null

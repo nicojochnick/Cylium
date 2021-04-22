@@ -142,7 +142,7 @@ function ProjectProfile(props) {
                     id="standard-basic"
                     placeholder='add a short bio'
                     multiline={true}
-                    rowsMax={2}
+                    rowsMax={1}
                     onChange={(event) => changeBio(event.target.value)}
                     defaultValue={projectBio}
                     InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343',}, disableUnderline: true,}}/>
