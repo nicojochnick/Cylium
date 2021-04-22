@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useRef} from 'react';
 import ReactFlow, {
     addEdge, Background, Controls, MiniMap, ReactFlowProvider, removeElements, updateEdge, useZoomPanHelper,
 } from 'react-flow-renderer';
@@ -70,7 +70,9 @@ function BaseChart(props) {
     const [open, setOpen] = React.useState(false);
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
     const [isChatOpen,openChat] = React.useState(true);
+    const reactFlowWrapper = useRef(null);
 
+    const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
 
 
     const handleClickOpen = () => {setOpen(true);};
@@ -105,17 +107,12 @@ function BaseChart(props) {
         restoreFlow(flow);
     }, [setElements, transform]);
 
-    const addNode = (type) => {
+    const addNode = (type, position) => {
         let currentElements = elements.slice();
         let id = getNodeId();
+        console.log(id)
 
-        let view = rfInstance.toObject().position;
-        let zoom =  rfInstance.toObject().zoom
-
-        let cord = {x: view[1], y:view[0]};
-
-
-        let node = selectNode(type,id,props.user,props.channel.color,);
+        let node = selectNode(type,id,props.user,props.channel.color,position);
         let nID = id + 1;
 
         setID(nID);
@@ -221,8 +218,29 @@ function BaseChart(props) {
         console.log(reactFlowInstance.toObject())
     };
 
-    const getPosition = () => {
+    const onDragOver = (event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    };
 
+
+    const onDrop = async (event) => {
+        event.preventDefault();
+
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+        const type = event.dataTransfer.getData('application/reactflow');
+        const position = rfInstance.project({
+            x: event.clientX - reactFlowBounds.left,
+            y: event.clientY - reactFlowBounds.top,
+        });
+        console.log(type,position)
+        let id = getNodeId();
+        console.log(id);
+        console.log(type,id,position)
+        const newNode = await selectNode(type,id,props.user,props.channel.color,position);
+        console.log(newNode);
+
+        setElements((es) => es.concat(newNode));
     };
 
     useEffect(() => {
@@ -251,20 +269,12 @@ function BaseChart(props) {
 
         <ReactFlowProvider>
         <Box style = {{zIndex: 0, height: '100vh'}} borderColor = {'#9B9B9B'}>
-            <Box style = {{marginRight: 40}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+            <Box style = {{height: '70vh', width: '100vw', position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
-                    border={1}
-                    borderColor = {props.channel.color}
-                    borderRadius = {100}
+                    display = 'flex' flexDirection ='column' justifyContent = 'center' alignItems = 'center'
                     style = {{
-                        height: 60,
                         zIndex: 10,
-                        marginTop: 65,
-                        width: 60,
-                        marginBottom: -200,
-                        position:'absolute',
-                        backgroundColor:'white',
-                        boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
+                        marginRight: 20,
                     }}
                 >
                     <FlowController color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
@@ -307,7 +317,7 @@ function BaseChart(props) {
                     ?
 
 
-                    <Box borderRadius = {10} style = {{marginLeft: 40, marginTop: 100, width: '28vw', zIndex: 50, position:'absolute'}}>
+                    <Box borderRadius = {10} style = {{marginLeft: 42, marginTop: 100, width: '30vw', zIndex: 50, position:'absolute'}}>
                         <Rooms channel={props.channel} messages={props.messages}
                                automations={props.automations} user={props.user}/>
                     </Box>
@@ -315,8 +325,11 @@ function BaseChart(props) {
                     : null
                 }
 
+                    <div style = {{  width: '100vw', height: '100vh', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
 
-                    <ReactFlow
+
+
+                <ReactFlow
                         nodeTypes={nodeTypes}
                         style = {{ overflow: 'hidden', background: '#FAFAFA'}}
                         elements={elements}
@@ -331,6 +344,8 @@ function BaseChart(props) {
                         onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
+                        onDrop={onDrop}
+                        onDragOver={onDragOver}
                     >
 
 
@@ -375,6 +390,7 @@ function BaseChart(props) {
                 <Controls />
 
             </ReactFlow>
+                </div>
                 <Dialog
                     open={open}
                     maxWidth={'xs'}

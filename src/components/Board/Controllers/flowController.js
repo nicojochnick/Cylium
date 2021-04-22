@@ -9,7 +9,6 @@ import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
 import {BiLineChart,BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
 
-
 function FlowController(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,48 +27,16 @@ function FlowController(props) {
 
     return (
         <Grid style = {{height: 60,}} container justify ='center' alignItems = 'center' >
-            <ButtonGroup
-                variant='text' color="primary" aria-label="contained primary button group">
-                <IconButton  onClick={handleClick} color="secondary" aria-label="">
-                    <AddIcon style = {{color:props.color, height: 24, width: 24}} />
-                </IconButton>
-                {/*<Button>Two</Button>*/}
-                {/*<Button>Three</Button>*/}
-            </ButtonGroup>
-            <Popover
-                id={id}
-                style ={{marginTop: 80, marginRight: 15}}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'left',
-                    horizontal: 'left',
-                }}
-                transformOrigin={{
-                    vertical: 'left',
-                    horizontal: 'left',
-                }}
-            >
-                <Box border = {2} borderRadius = {5} borderColor = {props.color} display = 'flex' style = {{padding: -5, overflow:'hidden'}}>
-                    <ButtonGroup
-                        style = {{width: 80, color: props.color, borderColor: props.color, margin: -2, overflow:'hidden'}}
-                        orientation="vertical"
-                        color = {props.color}
-                        aria-label="vertical outlined primary button group"
-                    >
-
-                        <Button
-                            onClick={()=> props.addNode('notes')}
-                        >
-                            <BiMessageAlt style = {{color: props.color}} size = {25}/>
-                        </Button>
-                        <Button>
-                            <BiLineChart  style = {{color: props.color}}  onClick={()=> props.addNode('graph')} size = {25}/>
-                        </Button>
-                        <Button>
+                <Box borderRadius = {20} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, paddingTop: 10, overflow:'hidden', backgroundColor: 'white'}}>
+                        <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'notes')} draggable   >
+                            <BiMessageAlt size = {25}/>
+                        </Box>
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'input')} draggable   >
+                        <BiLineChart   size = {25}/>
+                        </Box>
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'input')} draggable   >
                             <BiRuler  style = {{color: props.color}}  onClick={()=> props.addNode('metric')} size = {25}/>
-                        </Button>
+                        </Box>
                         <Button  style = {{color: props.color}}  onClick={()=> props.addNode('todo')}>
                             <BiCheckboxChecked size = {27}/>
                         </Button>
@@ -79,9 +46,9 @@ function FlowController(props) {
                         <Button>
                             <BiUserCircle  style = {{color: props.color}}  onClick={()=> props.addNode('avatar')} size = {25}/>
                         </Button>
-                    </ButtonGroup>
+
+
                 </Box>
-            </Popover>
 
         </Grid>
     );
@@ -97,3 +64,30 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default FlowController;
+
+
+{/*<Popover*/}
+{/*    id={id}*/}
+{/*    style ={{marginTop: 80, marginRight: 15}}*/}
+{/*    open={open}*/}
+{/*    anchorEl={anchorEl}*/}
+{/*    onClose={handleClose}*/}
+{/*    anchorOrigin={{*/}
+{/*        vertical: 'left',*/}
+{/*        horizontal: 'left',*/}
+{/*    }}*/}
+{/*    transformOrigin={{*/}
+{/*        vertical: 'left',*/}
+{/*        horizontal: 'left',*/}
+{/*    }}*/}
+{/*>*/}
+
+//
+// <ButtonGroup
+//     variant='text' color="primary" aria-label="contained primary button group">
+//     <IconButton  onClick={handleClick} color="secondary" aria-label="">
+//         <AddIcon style = {{color:props.color, height: 24, width: 24}} />
+//     </IconButton>
+//     {/*<Button>Two</Button>*/}
+//     {/*<Button>Three</Button>*/}
+// </ButtonGroup>

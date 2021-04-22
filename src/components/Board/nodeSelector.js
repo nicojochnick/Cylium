@@ -132,7 +132,7 @@ export const selectNode = (type, id, user, color, position) => {
                 borderColor: '#3D3B42',
                 shadow: 8
             },
-            position: { x: 350, y: 350 },
+            position: position,
 
         }
     }
