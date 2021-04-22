@@ -307,7 +307,7 @@ function BaseChart(props) {
                         alignItems = 'center'
                     >
                     <Toolbar style = {{margin: 15}}>
-                        <ProjectHeader openChat = {openChat} isChatOpen = {isChatOpen} handleClickOpenSettings = { ()=>console.log('')} user = {props.user} channel = {props.channel} />
+                        <ProjectHeader openChat = {openChat} isChatOpen = {isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
                     </Toolbar>
 
                     </Box>
@@ -331,6 +331,7 @@ function BaseChart(props) {
 
                 <ReactFlow
                         nodeTypes={nodeTypes}
+                        minZoom={0.05}
                         style = {{ overflow: 'hidden', background: '#FAFAFA'}}
                         elements={elements}
                         onLoad={onLoad}

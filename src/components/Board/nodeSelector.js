@@ -10,7 +10,7 @@ export const selectNode = (type, id, user, color, position) => {
             data: {
                 user: user
             },
-            position: {x: 350, y: 350},
+            position: position,
         }
     }
 
@@ -25,7 +25,7 @@ export const selectNode = (type, id, user, color, position) => {
                 title: null,
                 graphData: [{name: '1', uv: 400, pv: 2400, amt: 2400, key: '1'},{name: '2', uv: 500, pv: 2500, amt: 2500,key: '2'},{key: '3', name: '3', uv: 900, pv: 4400, amt: 3500}]
             },
-            position: {x: 350, y: 350},
+            position: position,
         }
     }
     if (type === 'metric') {
@@ -33,7 +33,7 @@ export const selectNode = (type, id, user, color, position) => {
             id: id,
             type: 'metricNodes',
             data: {title: '', value: 0,color: color,},
-            position: {x: 350, y: 350},
+            position: position,
 
         }
     }
@@ -44,7 +44,7 @@ export const selectNode = (type, id, user, color, position) => {
             id: id,
             type: 'reportNodes',
             data: {reports:[]},
-            position: {x: 350, y: 350},
+            position: position,
 
         }
     }
@@ -56,7 +56,7 @@ export const selectNode = (type, id, user, color, position) => {
             draggable:true,
             type: 'labelNodes',
             data: { textContent: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
-            position: { x: 300, y: 300 },
+            position: position,
             // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
             // noWheel: true,
         }
@@ -69,7 +69,7 @@ export const selectNode = (type, id, user, color, position) => {
             // className : "nodrag",
             type: 'buttonNodes',
             data: {isSquare: false, link: 'https://example.com', style: {backgroundColor: '#7664FF'}, icon: null, title: null},
-            position: {x: 350, y: 350},
+            position: position,
         }
     }
 
@@ -79,7 +79,7 @@ export const selectNode = (type, id, user, color, position) => {
             draggable: true,
             // className : "nodrag",
             type: 'characterNode',
-            position: {x: 350, y: 350},
+            position: position,
         }
 
     }
@@ -106,12 +106,12 @@ export const selectNode = (type, id, user, color, position) => {
                 borderColor: '#3D3B42',
                 shadow: 8
             },
-            position: {x: 350, y: 350},
+            position: position,
         }
     }
 
 
-    if (type =='notes'){
+    if (type =='note'){
         node = {
             id:id ,
             draggable:true,

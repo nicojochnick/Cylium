@@ -129,7 +129,7 @@ function BaseView(props) {
 
                         <Grid className={classes.root} xs={12} md={12} lg={12} container>
 
-                            <BaseChart channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
+                            <BaseChart handleClickOpenSettings = { handleClickOpenSettings} channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
                                        openChat={openChat}/>
 
                         </Grid>

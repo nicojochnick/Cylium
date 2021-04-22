@@ -26,26 +26,26 @@ function FlowController(props) {
     };
 
     return (
-        <Grid style = {{height: 60,}} container justify ='center' alignItems = 'center' >
-                <Box borderRadius = {20} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, paddingTop: 10, overflow:'hidden', backgroundColor: 'white'}}>
-                        <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'notes')} draggable   >
+        <Grid style = {{height: 60}} container justify ='center' alignItems = 'center' >
+                <Box borderRadius = {30} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, padding: 10, overflow:'hidden', backgroundColor: 'white'}}>
+                        <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
                             <BiMessageAlt size = {25}/>
                         </Box>
-                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'input')} draggable   >
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'graph')} draggable   >
                         <BiLineChart   size = {25}/>
                         </Box>
-                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'input')} draggable   >
-                            <BiRuler  style = {{color: props.color}}  onClick={()=> props.addNode('metric')} size = {25}/>
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'metric')} draggable   >
+                            <BiRuler size = {25}/>
                         </Box>
-                        <Button  style = {{color: props.color}}  onClick={()=> props.addNode('todo')}>
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'todo')} draggable   >
                             <BiCheckboxChecked size = {27}/>
-                        </Button>
-                        <Button  style = {{color: props.color}}  onClick={()=> props.addNode('button')}>
+                        </Box>
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'button')} draggable   >
                             <BiLink size = {25}/>
-                        </Button>
-                        <Button>
-                            <BiUserCircle  style = {{color: props.color}}  onClick={()=> props.addNode('avatar')} size = {25}/>
-                        </Button>
+                        </Box>
+                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'avatar')} draggable   >
+                            <BiUserCircle   size = {25}/>
+                        </Box>
 
 
                 </Box>
