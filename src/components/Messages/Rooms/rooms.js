@@ -38,17 +38,17 @@ export default function Rooms(props) {
             {/*    </IconButton>*/}
             {/*    </Box>*/}
             {/*</Box>*/}
-            {/*<AppBar style = {{backgroundColor:'#F9F9F9',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.2)`,}} position="static">*/}
-            {/*    <Tabs  variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>*/}
-            {/*        {props.channel.rooms.map((room)=>{*/}
-            {/*            return <Tab label = {room.name} />*/}
-            {/*        })*/}
-            {/*        }*/}
-            {/*    </Tabs>*/}
-            {/*</AppBar>*/}
-            <Box borderBottom = {1} borderColor = {'lightgrey' } display = 'flex' style = {{height: 50, backgroundColor: 'white'}}>
+            <AppBar style = {{backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.2)`,}} position="static">
+                <Tabs variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>
+                    {props.channel.rooms.map((room)=>{
+                        return <Tab label = {room.name} />
+                    })
+                    }
+                </Tabs>
+            </AppBar>
+            {/*<Box borderBottom = {1} borderColor = {'lightgrey' } display = 'flex' style = {{height: 50, backgroundColor: 'white'}}>*/}
 
-            </Box>
+            {/*</Box>*/}
 
             {props.channel.rooms.map((room)=>{
                     return <TabPanel room = {room}  messages = {props.messages} value = {value} user = {props.user} channel = {props.channel} index = {room.index} />

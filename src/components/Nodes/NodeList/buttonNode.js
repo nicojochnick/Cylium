@@ -71,11 +71,11 @@ export default memo(({ data,}) => {
 
         <Grid  style = {{zIndex: 30}} container>
 
-            <Box borderRadius = {10} borderColor = {'black'} border= {0} display = 'flex' flexDirection = 'row' style = {{zIndex: 50, backgroundColor:color, color: color, overflow:'hidden', width: isSquare? 60 : 160, height: isSquare ? 60 : 45, margin: 10}}>
+            <Box borderRadius = {10} borderColor = {data.color} border= {1} display = 'flex' flexDirection = 'row' style = {{zIndex: 50,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, backgroundColor:'white', overflow:'hidden', width: isSquare? 60 : 160, height: isSquare ? 60 : 45, margin: 10}}>
 
                 <a className={classes.a} target="_blank" rel="noopener noreferrer" href = {link}>
                     <Box style = {{paddingLeft: 2,marginRight: isSquare ? -8 : 0, marginLeft: isSquare ? 5 : 0, marginTop: isSquare ? 15: 0}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'>
-                    {icon ? getIcon(icon, 'white', isSquare ? 25 : 25) : null}
+                    {icon ? getIcon(icon, data.color, isSquare ? 25 : 25) : null}
                     { isSquare
 
                         ? null
@@ -88,7 +88,7 @@ export default memo(({ data,}) => {
                                 inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here
                                 defaultValue={title}
                                 value={title}
-                                InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, color:'white', fontWeight: 800,}, input: {fontSize: 17, fontWeight: 800, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
+                                InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, color:data.color, fontWeight: 800,}, input: {fontSize: 17, fontWeight: 800, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
                             />
                         </Button>
 
@@ -99,7 +99,7 @@ export default memo(({ data,}) => {
 
                 <Box display={'flex'} flexDirection ='column' alignItems = 'center' justifyContent={'center'}>
                     <IconButton style ={{margin: 0, padding:0, zIndex:20}} onClick={handleOpenOptions}>
-                        <FiMoreVertical  size = {18} style = {{color:'white', margin: 8,}}/>
+                        <FiMoreVertical  size = {18} style = {{color:data.color, margin: 8,}}/>
                     </IconButton>
 
                 </Box>
@@ -150,16 +150,18 @@ export default memo(({ data,}) => {
                         placeholder={link}
                         variant={'outlined'}
                     />
-                    <div style = {{margin: 10}} >
 
-                    <CirclePicker
-                        color={color}
-                        width={200}
-                        colors = {colors}
-                        circleSize={12}
-                        onChangeComplete={ (color) => handleChangeColor(color)}
-                    />
-                    </div>
+                    {/*<div style = {{margin: 10}} >*/}
+
+                    {/*<CirclePicker*/}
+                    {/*    color={color}*/}
+                    {/*    width={200}*/}
+                    {/*    colors = {colors}*/}
+                    {/*    circleSize={12}*/}
+                    {/*    onChangeComplete={ (color) => handleChangeColor(color)}*/}
+                    {/*/>*/}
+                    {/*</div>*/}
+
                     <IconSelector selectIcon = {selectIcon} />
 
                     <Button onClick={saveOptions} className={classes.button} style = {{height: 40, margin: 10, color: color,backgroundColor:color}}>
