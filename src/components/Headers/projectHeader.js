@@ -167,18 +167,10 @@ function ProjectHeader(props) {
                         : null
                     }
 
-
-
-
-
-
-
-
-
                 </Box>
                 </div>
         </Box>
-            <Box borderRadius = {100} style = {{marginRight: 80, height: 70,width: 70, backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
+            <Box borderRadius = {100} style = {{marginRight: 50, height: 70,width: 70, backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
                 <Box component="span" style = {{padding: 0}} border = {2} borderColor = {'lightgrey'} borderRadius = {50}>
 
                 <Avatar onClick = {handleCloseDiag} src = {props.user.img_url_Profile.imgUrl} className = {classes.large} />

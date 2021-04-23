@@ -317,7 +317,7 @@ function BaseChart(props) {
                     ?
 
 
-                    <Box borderRadius = {10} style = {{marginLeft: 42, marginTop: 100, width: '30vw', zIndex: 50, position:'absolute'}}>
+                    <Box borderRadius = {10} style = {{marginLeft: 42, marginTop: 100, width: '30vw', minWidth: 300, zIndex: 50, position:'absolute'}}>
                         <Rooms channel={props.channel} messages={props.messages}
                                automations={props.automations} user={props.user}/>
                     </Box>

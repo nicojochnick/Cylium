@@ -9,9 +9,9 @@ function UnstructuredMessageContent(props) {
 
     }, []);
     return (
-        <div>
+
             <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(props.content)))} readOnly={true}/>
-        </div>
+
     );
 }
 

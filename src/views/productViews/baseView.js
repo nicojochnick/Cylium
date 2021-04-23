@@ -126,12 +126,8 @@ function BaseView(props) {
                     {/*    <Divider/>*/}
                     {/*</AppBar>*/}
                 <Grid className={classes.rootView} container spacing={0}>
-
                         <Grid className={classes.root} xs={12} md={12} lg={12} container>
-
-                            <BaseChart handleClickOpenSettings = { handleClickOpenSettings} channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width}
-                                       openChat={openChat}/>
-
+                            <BaseChart handleClickOpenSettings = { handleClickOpenSettings} channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width} openChat={openChat}/>
                         </Grid>
 
                 </Grid>

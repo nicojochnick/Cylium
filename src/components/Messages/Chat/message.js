@@ -160,7 +160,7 @@ function Message(props) {
                                 <Avatar  src={user.img_url_Profile.imgUrl} style ={{margin:2}} className={classes.large}/>
                         </Box>
 
-                        <Box flexDirection = 'column' style = {{width: 300}}>
+                        <Box flexDirection = 'column' style = {{ width:'23vw'}}>
                             <Grid container style = {{margin: 0}}>
                             <p style={{
                                 margin: 8,
@@ -174,7 +174,7 @@ function Message(props) {
                             <p style={{color: '#2F2C37', fontSize: 12, margin: 5, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
                             </Grid>
 
-                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:330, color :'#555555', }}>
+                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:'23vw', color :'#555555', }}>
                                 {(props.message.structuredMessage)
                                     ? <div> {Object.keys(props.message.messageData).map((item) => <
                                         StructuredMessageItem packageItem={props.message.messageData[item]}/>)
@@ -186,7 +186,7 @@ function Message(props) {
                                 }
                             </Box>
                         </Box>
-                        <Box>
+                        <Box display = 'flex' >
                             <IconButton onClick={handlePopoverOpen}  aria-label="open">
                                 <FiMoreVertical  size = {17}/>
                             </IconButton>
