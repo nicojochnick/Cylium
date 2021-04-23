@@ -10,8 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from "@material-ui/core/styles";
 import Container from '@material-ui/core/Container';
-import boxx from "../../assets/images/boxx.png"
-import Header from "../../components/Utilities/Header";
+import mmlogo from "../../assets/images/mmlogo.png"
+import LanderHeader from "../../components/Headers/Header";
 import { FaBoxOpen } from "react-icons/fa";
 
 
@@ -48,15 +48,15 @@ class login extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <Header/>
+                <LanderHeader/>
             <Container component="main" maxWidth="xs">
                 <CssBaseline>
                     <div className={classes.paper}>
-                        <img style ={{height: 50}}src = {boxx} />
+                        <img style ={{height: 80}}src = {mmlogo} />
 
-                        <p style = {{fontSize: 50, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Login</p>
+                        <p style = {{fontSize: 30, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Login</p>
 
-                        <p>Fill in the form below to create an account.</p>
+                        {/*<p>Fill in the form below to create an account.</p>*/}
 
                         <form onSubmit={this.handleSubmit} className={classes.form} noValidate>
                             <TextField
@@ -88,10 +88,10 @@ class login extends Component {
                                 value={this.state.password}
                                 type="password"
                             />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            />
+                            {/*<FormControlLabel*/}
+                            {/*    control={<Checkbox value="remember" color="primary" />}*/}
+                            {/*    label="Remember me"*/}
+                            {/*/>*/}
 
                             {this.state.error ? (
                                 <p>{this.state.error}</p>

@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Header() {
+function LanderHeader() {
     const classes = useStyles();
 
     return (
@@ -70,4 +70,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default LanderHeader;

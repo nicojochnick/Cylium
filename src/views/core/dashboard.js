@@ -125,9 +125,7 @@ export default function Dashboard(props) {
                         {/*<div className={classes.appBarSpacer} />*/}
 
                         <Switch>
-                            <Route exact path="/feed">
-                                <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>
-                            </Route>
+
                             {Object.keys(props.allChannels).map((item)=>
                                     <Route key={key} exact path={getDirection(props.allChannels[item].channelID)}>
                                         <BaseView
@@ -141,9 +139,7 @@ export default function Dashboard(props) {
 
                             )
                             }
-                            <Route path="/account">
-                                <AccountView notifications = {props.notifications} team = {null} email = {props.email} url = {props.url} user = {props.user}/>
-                            </Route>
+
                         </Switch>
                     </main>
                     :
@@ -420,3 +416,13 @@ const useStyles = makeStyles((theme) => ({
 {/*    </Toolbar>*/}
 {/*    <Divider/>*/}
 {/*</AppBar>*/}
+
+
+{/*<Route path="/account">*/}
+{/*    <AccountView notifications = {props.notifications} team = {null} email = {props.email} url = {props.url} user = {props.user}/>*/}
+{/*</Route>*/}
+
+
+{/*<Route exact path="/feed">*/}
+{/*    <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>*/}
+{/*</Route>*/}

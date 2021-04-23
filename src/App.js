@@ -8,8 +8,13 @@ import login from './views/authentication/login';
 import {auth} from './api/firebase';
 import './styles.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {db} from "./api/firebase";
+import firebase from 'firebase/app';
+
+
 
 import DashboardContainer from "./views/core/dashboardContainer";
+
 
 
 const theme = createMuiTheme({
@@ -27,17 +32,18 @@ export default class App extends Component {
     constructor() {
         super();
         this.state = {
-        authenticated: false,
-        loading: true
+            authenticated: false,
+            loading: true,
       };
     }
     componentDidMount() {
       auth().onAuthStateChanged(user => {
           console.log(this);
         if (user) {
-          this.setState({
-            authenticated: true,
-            loading: false
+            this.setState({
+                authenticated: true,
+                loading: false,
+
           });
         } else {
             console.log(this);
@@ -62,11 +68,13 @@ export default class App extends Component {
               <Route exact path="/" component={home} />
                 <PublicRoute
                     path="/signup"
+                    root = {this.state.root}
                     authenticated={this.state.authenticated}
                     component={signup}
                 />
                 <PublicRoute
                     path="/login"
+                    root = {this.state.root}
                     authenticated={this.state.authenticated}
                     component={login}
                 />
@@ -106,7 +114,7 @@ function PrivateRoute({ component: Component, authenticated, ...rest }) {
     )
 }
 
-function PublicRoute({ component: Component, authenticated, ...rest }) {
+function PublicRoute({ component: Component,authenticated, ...rest }) {
     return (
         <Route
             {...rest}
@@ -114,7 +122,7 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
                 authenticated === false ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to="/feed" />
+                    <Redirect to= {`/dHoxRObIGeKrbQSLbcnj`} />
                 )
             }
         />

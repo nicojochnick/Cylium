@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from '../../components/Utilities/Header';
+import LanderHeader from '../../components/Headers/Header';
 import {Link} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
@@ -9,13 +9,45 @@ import {withStyles} from "@material-ui/core";
 import {FaBoxOpen} from "react-icons/fa";
 import Lander from "./lander"
 
+import mmlogo from "../../assets/images/mmlogo.png"
+import Button from "@material-ui/core/Button";
+
+
 class home extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Grid style = {{backgroundColor: "white",height: '100vh',}}>
-                <Header/>
-                <Lander/>
+            <Grid container style = {{backgroundColor: "white", height: '100vh', width: '100vw'}}>
+
+                <Box  style = {{backgroundColor: "white", height: '100vh', width: '100vw'}} display = 'flex' flexDirection = 'column' alignItems = 'center' justifyContent = 'center'>
+                    <img style ={{height: 80}}src = {mmlogo} />
+                    <Link to={`/signup`} style={{ textDecoration: 'none' }}>
+                        <Button  variant="contained" noWrap style={{
+                            borderRadius: 5,
+                            margin: 10,
+                            backgroundColor: '#4D6DF1',
+                        }}>
+                            <p style = {{color: 'white', margin: 2, marginRight: 20, marginLeft: 20,fontWeight: 500}}>
+                                signup
+                            </p>
+                        </Button>
+                    </Link>
+                    <Link to={`/login`} style={{ textDecoration: 'none' }}>
+                    <Button  variant="contained" noWrap style={{
+                            borderRadius: 5,
+                            margin: 10,
+                            backgroundColor: '#3B3C50',
+                        }}>
+                            <p style = {{color: 'white', margin: 2, marginRight: 20, marginLeft: 20,fontWeight: 500}}>
+                                Login
+                            </p>
+                        </Button>
+                    </Link>
+
+
+
+                </Box>
+
             </Grid>
         )
     }

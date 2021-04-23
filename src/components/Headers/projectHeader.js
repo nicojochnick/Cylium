@@ -24,6 +24,7 @@ import Dialog from "@material-ui/core/Dialog/Dialog";
 import UserProfile from "../Profile/User/userProfile";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import {RiRocket2Line} from "react-icons/ri"
+import firebase from 'firebase/app';
 
 
 function ProjectHeader(props) {
@@ -38,6 +39,14 @@ function ProjectHeader(props) {
     const [projectName, setProjectName] = React.useState('');
     const [openDiag, setOpenDiag] = React.useState(false);
     const [isSearchOpen, setIsSearchOpen] = React.useState(false)
+
+
+
+    const signout = () => {
+        firebase.auth().signOut().then(function() {
+        }).catch(function(error) {
+        });
+    };
 
 
     const handleCloseDiag = () => {
@@ -193,6 +202,13 @@ function ProjectHeader(props) {
                     <Divider style = {{marginBottom: 5}} />
 
                     <UserProfile user = {props.user} />
+
+                    <Divider style = {{marginBottom: 5}} />
+
+
+                    <Button style = {{backgroundColor: "#5F7FFF", margin:10}} onClick={()=>signout()} variant="contained" color="primary">
+                        Signout
+                    </Button>
                 </DialogContent>
 
             </Dialog>
