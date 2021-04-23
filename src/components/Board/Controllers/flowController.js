@@ -31,15 +31,19 @@ function FlowController(props) {
                         <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
                             <BiMessageAlt size = {25}/>
                         </Box>
+                    <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'label')} draggable   >
+                        <BiText size = {25}/>
+                    </Box>
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'todo')} draggable   >
+                        <BiCheckboxChecked size = {27}/>
+                    </Box>
                         <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'graph')} draggable   >
                         <BiLineChart   size = {25}/>
                         </Box>
                         <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'metric')} draggable   >
                             <BiRuler size = {25}/>
                         </Box>
-                        <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'todo')} draggable   >
-                            <BiCheckboxChecked size = {27}/>
-                        </Box>
+
                         <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'button')} draggable   >
                             <BiLink size = {25}/>
                         </Box>

@@ -121,6 +121,8 @@ function ProjectHeader(props) {
                 : null
             }
         <Box borderRadius = {20} style = {{ height: 75,backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
+
+
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
                 <ProjectProfile channel = {props.channel} />
             </Box>

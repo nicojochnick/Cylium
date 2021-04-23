@@ -87,11 +87,9 @@ function BaseChart(props) {
             saveFlow(props.channel.channelID, flow);
             let position = flow.position;
             let zoom = flow.zoom;
-            console.log(zoom, position)
             let updatedProjectIDs = props.user.projectIDs;
             updatedProjectIDs[props.channel.channelID].viewPort = position;
              updatedProjectIDs[props.channel.channelID].zoom = zoom;
-            console.log(updatedProjectIDs)
             saveViewPort(updatedProjectIDs, props.user.email)
         }
     };
@@ -110,7 +108,6 @@ function BaseChart(props) {
     const addNode = (type, position) => {
         let currentElements = elements.slice();
         let id = getNodeId();
-        console.log(id)
 
         let node = selectNode(type,id,props.user,props.channel.color,position);
         let nID = id + 1;
@@ -123,7 +120,7 @@ function BaseChart(props) {
 
     //TODO SET NEW ELEMENTS
     const onTextChange = (text, id,) => {
-        console.log('triggered elements', elements, rfInstance, onSave, '');
+        // console.log('triggered elements', elements, rfInstance, onSave, '');
         let prevElements = elements.slice();
         for (let node of prevElements ) {
             if (node.id === id) {
@@ -137,7 +134,7 @@ function BaseChart(props) {
     };
 
     const onElementsRemove = (elementsToRemove) => {
-        console.log(elementsToRemove);
+        // console.log(elementsToRemove);
         setElementsToRemove(elementsToRemove);
         handleClickOpen()
     };
@@ -159,11 +156,12 @@ function BaseChart(props) {
     };
 
     const onElementClick = () => {
-        console.log('clicked')
+        triggerAutoSave()
+
     };
 
     const onNodeDoubleClick = (event, node) => {
-        console.log('node double click', node);
+        // console.log('node double click', node);
         let e = elements.slice();
         for (let i = 0; i < e.length;i++){
             if (node.id === e[i].id){
@@ -175,11 +173,9 @@ function BaseChart(props) {
     };
 
     const onNodeMouseLeave = (event, node) => {
-
         let e = elements.slice();
         for (let i = 0; i < e.length;i++){
             if (node.id === e[i].id){
-                console.log(e[i]);
                 if (e[i].data.className === 'nodrag') {
                     e[i].data.className = '';
                     triggerAutoSave()}
@@ -210,12 +206,11 @@ function BaseChart(props) {
             onSave();
             setSaving(false);
             console.log("finished saving")
-        }, 5000)
+        }, 2500)
     };
 
     const onLoad = (reactFlowInstance) => {
         setRfInstance(reactFlowInstance)
-        console.log(reactFlowInstance.toObject())
     };
 
     const onDragOver = (event) => {
@@ -233,20 +228,14 @@ function BaseChart(props) {
             x: event.clientX - reactFlowBounds.left,
             y: event.clientY - reactFlowBounds.top,
         });
-        console.log(type,position)
         let id = getNodeId();
-        console.log(id);
-        console.log(type,id,position)
         const newNode = await selectNode(type,id,props.user,props.channel.color,position);
-        console.log(newNode);
-
         setElements((es) => es.concat(newNode));
     };
 
     useEffect(() => {
        if(props.channel && props.channel.flow!== ''){
             let f = JSON.parse(props.channel.flow);
-            console.log('ELEMENTS:', f.elements,);
            let dbElements = f.elements;
 
             for (let node of dbElements){
@@ -256,7 +245,6 @@ function BaseChart(props) {
                 }
 
             }
-            console.log(dbElements);
            setElements(dbElements)
 
         }
@@ -372,7 +360,7 @@ function BaseChart(props) {
 
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'flex-end' alignItems = 'space-between'>
 
-                            <Box style = {{marginRight: 20, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
+                            <Box style = {{marginRight: 150, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
                                 { saving
                                     ?
                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
