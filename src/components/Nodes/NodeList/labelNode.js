@@ -20,7 +20,7 @@ export default memo(({ data, style }) => {
     const [text, setText] = React.useState(data.text);
     const [textColor, setTextColor] = React.useState(data.textColor);
     const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
-    const[border, setBorder] = React.useState(data.border);
+    const[border, setBorder] = React.useState(0);
     const [shadow, setShadow ] =React.useState(8)
     const [fontSize, setFontSize] = React.useState(data.fontSize);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
@@ -75,6 +75,21 @@ export default memo(({ data, style }) => {
 
     console.log(editorState);
 
+    const mouseEnter = () => {
+        console.log(border)
+        setBorder(1)
+
+
+    };
+
+    const mouseLeave = () => {
+
+        setBorder(0)
+
+
+    };
+
+
 
     useEffect(() => {
         if (data.shadow){
@@ -90,19 +105,20 @@ export default memo(({ data, style }) => {
         <>
 
         <Box
-            border = {editorState.getCurrentContent().hasText()? 0 : 1}
-            borderColor = {'#5C5C5C'}
-            style = {{padding: 5}}
+            border = {border}
+            borderRadius = {5}
+            borderColor = {'#7D83FC'}
+            // border = {editorState.getCurrentContent().hasText()? 0 : 1}
+            onMouseEnter={()=> mouseEnter()}
+            onMouseLeave={()=> mouseLeave()}
+            style = {{padding: 10}}
             display = 'flex'
             flexDirection ='row'
             justify = 'center'
             alignItems = 'flex-start'>
-
             <Box className = {'nodrag'} style={{ }}>
-
-
-
             <Editor
+
                 editorState={editorState}
                 toolbarClassName="toolbarClassName"
                 toolbarOnFocus
@@ -130,10 +146,10 @@ export default memo(({ data, style }) => {
 
             </Box>
 
-            <Box display ='flex' flexDirection = 'column '>
-                <BiMove style = {{margin: 5, marginRight: 0, color: 'black'}} size = {15} />
+            {/*<Box display ='flex' flexDirection = 'column '>*/}
+            {/*    <BiMove style = {{margin: 5, marginRight: 0, color: 'black'}} size = {15} />*/}
 
-            </Box>
+            {/*</Box>*/}
 
 
 

@@ -120,7 +120,8 @@ function ProjectHeader(props) {
                 <Redirect to= {`/feed`} />
                 : null
             }
-        <Box borderRadius = {20} style = {{ height: 75,backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
+            <div/>
+        <Box borderRadius = {20} style = {{ height: 75, marginLeft: 30, backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
 
 
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
@@ -128,7 +129,7 @@ function ProjectHeader(props) {
             </Box>
                 <div>
                 <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>
-                    <div style ={{margin: 15}}>
+                    <div style ={{margin: 15,}}>
                     {/*{!isFollowing()*/}
                     {/*    ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>*/}
                     {/*    : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>*/}
