@@ -36,6 +36,14 @@ export default memo(({ data}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [isEditingDeadline, setIsEditingDeadline] = React.useState(false)
     const [deadline, setDeadline] = React.useState(data.deadline);
+    const [size, setSize] = React.useState(data.size);
+
+    const onResizeStop = (delta) => {
+        let newSize = [size[0] + delta.width, size[1] + delta.height]
+        setSize(newSize);
+        data.size = newSize;
+
+    };
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -151,37 +159,39 @@ export default memo(({ data}) => {
 
     return (
         <>
-            {/*<Rnd*/}
-            {/*    default={{*/}
-            {/*        x: 0,*/}
-            {/*        y: 0,*/}
-            {/*        width: 300,*/}
-            {/*        height: 50,*/}
-            {/*    }}*/}
-            {/*    style = {{ boxShadow: `0px ${shadow == 8 ? '5' : '0'}px ${shadow.toString()}px #D3D3DA`, padding: 3, borderRadius:7, backgroundColor: backgroundColor, }}*/}
+            <div style = {{ padding: 20}}>
+                <Rnd
+                    size={{
+                        width: size[0],
+                        height: size[1],
+                    }}
+                    disableDragging={true}
+                    onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
+                    // className={draggable ? null : 'nodrag'}
+                    style={{
+                        borderRadius: 10,
+                        boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
+                        backgroundColor: 'white'
+                    }}
 
-            {/*>*/}
+                >
 
-            <Box display = 'flex' flexDirection ='column' >
+            <Box display = 'flex' flexDirection ='column' flexDirection ='row' justifyContent = 'flex-start' >
                 <Box
-                    border = {1}
-                    borderColor = {data.color}
-
-                    style = {{ zIndex: 10, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, borderRadius:7, backgroundColor: backgroundColor, }}
                     display = 'flex'
                     flexDirection ='row'
                     // alignItems = 'flex-start'
                 >
-                    <Box className = {'nodrag'} style={{padding: 0,flex:1 }}>
-                        { deadline !== '' && deadline !== undefined && !done
-                            ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -40,}}>
-                                <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'  borderRadius = {6} style = {{height: 30, paddingLeft: 5, paddingRight: 5,backgroundColor:data.color}}>
-                                    <BiTimeFive style = {{margin: 5, marginRight: 0, color: 'white'}} size = {14} />
-                                    <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8,  marginLeft: 0}} date = {data.deadline} />
-                                </Box>
-                            </Box>
-                            : null
-                        }
+                    <Box   className={data.className} style={{flex:1 }}>
+                        {/*{ deadline !== '' && deadline !== undefined && !done*/}
+                        {/*    ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -40,}}>*/}
+                        {/*        <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'  borderRadius = {6} style = {{height: 30, paddingLeft: 5, paddingRight: 5,backgroundColor:data.color}}>*/}
+                        {/*            <BiTimeFive style = {{margin: 5, marginRight: 0, color: 'white'}} size = {14} />*/}
+                        {/*            <p style = {{color:'white', fontSize: 14, margin: 5}}> Due: </p><TimeAgo style = {{color:'white', fontSize: 14, margin: 5, marginRight: 8,  marginLeft: 0}} date = {data.deadline} />*/}
+                        {/*        </Box>*/}
+                        {/*    </Box>*/}
+                        {/*    : null*/}
+                        {/*}*/}
 
                         <Editor
                             editorState={editorState}
@@ -190,9 +200,9 @@ export default memo(({ data}) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             onEditorStateChange={handleSetEditorState}
-                            editorStyle = {{width: 190, marginLeft: 8, marginRight:-5, marginTop:-1}}
+                            editorStyle = {{width: size[0]-60, height: size[1]-5, margin: 10}}
                             toolbarClassName={classes.toolbar}
-                            toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -15, marginTop:-80, width: 312, borderColor:backgroundColor, position: 'absolute', }}
+                            toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -15, marginTop:-60, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
                                 options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
                                 colorPicker: {
@@ -214,7 +224,7 @@ export default memo(({ data}) => {
 
                     <Checkbox
                             checked={done}
-                            style={{marginLeft: 0, color: data.color}}
+                            style={{marginLeft: 0,}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />
@@ -225,12 +235,12 @@ export default memo(({ data}) => {
 
 
 
-                    <Box borderLeft = {1} borderColor = {data.color}  display ='flex' flexDirection = 'column ' style = {{ overflow:'hidden', margin: 1, paddingRight: 5,flex:1}}>
-                        <BiMove style = {{margin: 5, marginRight: 0, color: data.color}} size = {14} />
-                        <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >
-                            <BiTimeFive style = {{margin: 5, marginRight: 0, color:data.color}} size = {14} />
-                        </IconButton>
-                    </Box>
+                    {/*<Box borderLeft = {1} borderColor = {data.color}  display ='flex' flexDirection = 'column ' style = {{ overflow:'hidden', margin: 1, paddingRight: 5,flex:1}}>*/}
+                    {/*    <BiMove style = {{margin: 5, marginRight: 0, color: data.color}} size = {14} />*/}
+                    {/*    <IconButton aria-describedby={id} variant="contained" color="primary" onClick={handleClick} style ={{margin: 0, padding:0}} >*/}
+                    {/*        <BiTimeFive style = {{margin: 5, marginRight: 0, color:data.color}} size = {14} />*/}
+                    {/*    </IconButton>*/}
+                    {/*</Box>*/}
 
 
                     {/*<Handle*/}
@@ -254,13 +264,7 @@ export default memo(({ data}) => {
                     {/*    position="top"*/}
                     {/*    style={{  zIndex: 12, borderRadius: 100,boxShadow: "0px 0px 4px #C5C5C5",backgroundColor:'grey' }}*/}
                     {/*/>*/}
-                    <Handle
-                        type="source"
-                        id = 'k'
-                        position="bottom"
-                        style={{ zIndex: 12, backgroundColor: '#5D596B',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
-                        // onConnect={(params) => console.log('handle onConnect', params)}
-                    />
+
 
                 </Box>
 
@@ -312,11 +316,18 @@ export default memo(({ data}) => {
                     </Box>
                 </Popover>
 
-
+                <Handle
+                    type="source"
+                    id = 'k'
+                    position="bottom"
+                    style={{ zIndex: 12, marginTop: 10, backgroundColor: '#5D596B',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
+                    // onConnect={(params) => console.log('handle onConnect', params)}
+                />
 
             </Box>
 
-            {/*</Rnd>*/}
+            </Rnd>
+            </div>
 
         </>
 

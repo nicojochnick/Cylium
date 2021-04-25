@@ -28,6 +28,14 @@ export default memo(({ data,}) => {
     const [fontSize, setFontSize] = React.useState(data.fontSize);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
     const [isFolded, setIsFolded] = React.useState(data.isFolded)
+    const [size, setSize] = React.useState(data.size);
+
+    const onResizeStop = (delta) => {
+        let newSize = [size[0] + delta.width, size[1] + delta.height]
+        setSize(newSize);
+        data.size = newSize;
+
+    };
 
     const fold = () => {
         data.isFolded = !isFolded;
@@ -117,19 +125,36 @@ export default memo(({ data,}) => {
 
     return (
         <>
+            <div style = {{ padding: 20}}>
+
+            <Rnd
+                size={{
+                    width: size[0],
+                    height: size[1],
+                }}
+                disableDragging={true}
+                onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
+                // className={draggable ? null : 'nodrag'}
+                style={{
+                    borderRadius: 10,
+                    boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
+                    backgroundColor: 'white'
+                }}
+
+            >
 
 
             <Box
-                border = {1}
-                borderColor = {data.color}
-                style = {{ overflow: 'hidden', height: isFolded ? 55: '100%', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, borderRadius:7, backgroundColor: backgroundColor, }}
+                // border = {1}
+                // borderColor = {data.color}
                 display = 'flex'
                 flexDirection ='row'
-                justifyContent = 'center'
+                justifyContent = 'flex-start'
+
             >
 
                 <Box
-                    style={{marginLeft: 8, }}
+                    style={{margin: 5 }}
                     className={data.className}
                 >
 
@@ -141,9 +166,9 @@ export default memo(({ data,}) => {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={handleSetEditorState}
-                    editorStyle = {{width: 250, margin: 3}}
+                    editorStyle = {{ margin: 5, width: size[0]-10, height: size[1]-5}}
                     toolbarClassName={classes.toolbar}
-                    toolbarStyle = {{backgroundColor: 'white', zIndex: 20, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginLeft: -30, marginTop:-60, width: 315, borderColor:backgroundColor, position: 'absolute', }}
+                    toolbarStyle = {{backgroundColor: 'white', zIndex: 30, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginTop:-70, width: 320, borderColor:backgroundColor, position: 'absolute', }}
                     toolbar = {{
 
                         options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
@@ -169,19 +194,19 @@ export default memo(({ data,}) => {
 
                 </Box>
 
-                <Box borderLeft = {1} borderColor = {data.color} display ='flex' flexDirection = 'column ' style = {{flex:1}}>
-                    <BiMove style = {{margin: 5, color: data.color}} size = {15} />
+                {/*<Box borderLeft = {1} borderColor = {data.color} display ='flex' flexDirection = 'column ' style = {{flex:1}}>*/}
+                {/*    <BiMove style = {{margin: 5, color: data.color}} size = {15} />*/}
 
-                    <IconButton onClick = {fold} style ={{margin:0, padding: 0}} >
-                    {  isFolded
-                        ?<BiChevronUp style = {{margin: 5, color: data.color}} size = {17} />
-                        : <BiChevronDown  style = {{margin: 5, color: data.color}} size = {17} />
+                {/*    <IconButton onClick = {fold} style ={{margin:0, padding: 0}} >*/}
+                {/*    {  isFolded*/}
+                {/*        ?<BiChevronUp style = {{margin: 5, color: data.color}} size = {17} />*/}
+                {/*        : <BiChevronDown  style = {{margin: 5, color: data.color}} size = {17} />*/}
 
-                    }
-                    </IconButton>
+                {/*    }*/}
+                {/*    </IconButton>*/}
 
 
-                </Box>
+                {/*</Box>*/}
                 <Handle
                     type="source"
                     id = 'k'
@@ -191,6 +216,10 @@ export default memo(({ data,}) => {
                 />
 
             </Box>
+
+            </Rnd>
+
+            </div>
 
 
         </>

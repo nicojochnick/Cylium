@@ -21,6 +21,7 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'graphNodes',
             data: {
                 color: color,
+                size: [400,400],
                 title: null,
                 graphData: [{name: '1', uv: 400, pv: 2400, amt: 2400, key: '1'},{name: '2', uv: 500, pv: 2500, amt: 2500,key: '2'},{key: '3', name: '3', uv: 900, pv: 4400, amt: 3500}]
             },
@@ -31,7 +32,7 @@ export const selectNode = (type, id, user, color, position) => {
         node = {
             id: id,
             type: 'metricNodes',
-            data: {title: '', value: 0,color: color,},
+            data: {title: '', size: [300,100], value: 0,color: color,},
             position: position,
 
         }
@@ -54,7 +55,7 @@ export const selectNode = (type, id, user, color, position) => {
             id:id ,
             draggable:true,
             type: 'labelNodes',
-            data: { textContent: null, done:false, id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
+            data: { textContent: null, done:false,size: [100,30], id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
             position: position,
             // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
             // noWheel: true,
@@ -70,6 +71,7 @@ export const selectNode = (type, id, user, color, position) => {
             data: {
                 isSquare: false,
                 link: 'https://example.com',
+                size: [100,30],
                 style: {backgroundColor: '#7664FF'},
                 icon: null,
                 title: null,
@@ -114,6 +116,7 @@ export const selectNode = (type, id, user, color, position) => {
             // className : "nodrag",
             type: 'todoNodes',
             data: {
+                size: [300,50],
                 color: color,
                 textContent: null,
                 text: null,
@@ -141,6 +144,8 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'noteNodes',
             data: {
                 text: null,
+                size: [300,300],
+
                 color: color,
                 textContent: null,
                 isFolded: false,

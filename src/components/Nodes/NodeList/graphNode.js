@@ -16,6 +16,7 @@ import IconSelector from "../../Editor/iconSelector";
 import Divider from "@material-ui/core/Divider";
 import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
 import {Handle} from "react-flow-renderer";
+import {Rnd} from "react-rnd";
 //TODO: uninstall all google api crap + sheets
 
 
@@ -24,9 +25,17 @@ export default memo(({ data,  }) => {
 
     const [editOpen, setEditOpen] = React.useState(false);
     const [d, setD] = React.useState(null);
-    const [key, setKey] = React.useState('1')
+    const [key, setKey] = React.useState('1');
     const [updated, setUpdated] = React.useState(true);
     const [title, setTitle] = React.useState(data.title);
+    const [size, setSize] = React.useState(data.size);
+
+    const onResizeStop = (delta) => {
+        let newSize = [size[0] + delta.width, size[1] + delta.height]
+        setSize(newSize);
+        data.size = newSize;
+
+    };
 
     const classes = useStyles();
 
@@ -101,43 +110,61 @@ export default memo(({ data,  }) => {
        setD(data.graphData)
     }, []);
     return (
+
+        <div style = {{ padding: 20}}>
+
+            <Rnd
+                size={{
+                    width: size[0],
+                    height: size[1]+40,
+                }}
+                disableDragging={true}
+                onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
+                // className={draggable ? null : 'nodrag'}
+                style={{
+                    borderRadius: 10,
+                    boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
+                    backgroundColor: 'white',
+                    padding: 5,
+                }}
+
+            >
         <Grid container className={classes.root}>
+            <Box
+                display = 'flex'
+                justifyContent = 'flex-start'
+                flexDirection = 'row'
+                >
 
         <Box
+            display = 'flex'
             justifyContent = 'flex-start'
             flexDirection = 'column'
-            borderRadius = {10}
             border = {1}
-            borderColor = {data.color}
             style = {{
                 zIndex: 20,
-                boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                 backgroundColor:'white',
-                color: 'white',
                 overflow:'hidden',
-                height: 300,
+                color: 'white',
                 flexGrow: 1,
-                marginRight: 10,
                 }
             }
         >
 
-            <TitleAndOptions color = {data.color} title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
-                <div style = {{backgroundColor:'white', margin: 10, marginLeft: -10,}}>
-                    <Grid>
-                        <LineChart key = {key} width={450} height={250} data={d}>
-                            <Line type="monotone" dataKey="uv" stroke={data.color} />
+            <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
+
+                        <LineChart key = {key} width={data.size[0]-10} height={data.size[1]-20} data={d}>
+                            <Line type="monotone" dataKey="uv"  />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                             <XAxis dataKey="name" />
                             <YAxis />
                             <Tooltip />
                         </LineChart>
-                    </Grid>
-                </div>
+
         </Box>
             {editOpen
                 ?
-                <Box border = {1} borderColor = {data.color} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white', padding: 5,boxShadow: '0px 3px 8px #D3D3DA' }} >
+                <Box border = {1} display = 'flex' flexDirection ='column' borderRadius = {8} style = {{backgroundColor: 'white', padding: 5,  margin: 10, boxShadow: '0px 3px 8px #D3D3DA' }} >
                     <Box display = 'flex' flexDirection = 'row' justifyContent = 'space-around'>
 
                         <p > y </p>
@@ -153,7 +180,7 @@ export default memo(({ data,  }) => {
                        d.map( (item, index) =>
 
                                 <div key={index}>
-                                    <Box style={{width: 200}} display='flex' flexDirection='row'>
+                                    <Box style={{width: 200,}} display='flex' flexDirection='row'>
 
                                         <TextField
                                             defaultValue={item.name}
@@ -193,6 +220,7 @@ export default memo(({ data,  }) => {
                 : null
 
             }
+            </Box>
             <Handle
                 type="source"
                 id = 'k'
@@ -202,6 +230,8 @@ export default memo(({ data,  }) => {
             />
 
         </Grid>
+            </Rnd>
+        </div>
     );
 });
 

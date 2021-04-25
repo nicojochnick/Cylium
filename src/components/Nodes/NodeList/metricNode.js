@@ -22,8 +22,6 @@ export default memo(({ data}) => {
 
         return (
         <Box
-            border = {1}
-            borderColor = {data.color}
             display = 'flex'
             flexDirection = 'column'
             borderRadius = {8}
@@ -37,7 +35,7 @@ export default memo(({ data}) => {
 
             }}
         >
-            <TitleAndOptions color = {data.color} noOption = {true} title = {title} changeTitle = {changeTitle} />
+            <TitleAndOptions  noOption = {true} title = {title} changeTitle = {changeTitle} />
             <Box style = {{padding: 0, width: 80, overflow:'hidden'}}>
             <TextField
                 defaultValue={data.value}
@@ -45,7 +43,7 @@ export default memo(({ data}) => {
                 onChange={e=> changeValue(e.target.value)}
                 type="number"
                 fullWidth={true}
-                InputProps={{style: {color: data.color, fontSize: 28,fontWeight: 600, marginLeft: 15},width: 80, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 28,fontWeight: 600, marginLeft: 15},width: 80, disableUnderline: true,}}
 
             />
                 <Handle

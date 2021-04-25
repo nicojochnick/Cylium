@@ -243,16 +243,15 @@ function BaseChart(props) {
 
     useEffect(() => {
        if(props.channel && props.channel.flow!== ''){
-            let f = JSON.parse(props.channel.flow);
+           let f = JSON.parse(props.channel.flow);
            let dbElements = f.elements;
-
-            for (let node of dbElements){
-                if (node.data) {
-                    node.data.color = props.channel.color
-                }
-
-
-            }
+            // for (let node of dbElements){
+            //     if (node.data) {
+            //         node.data.color = props.channel.color
+            //     }
+            //
+            //
+            // }
            setElements(dbElements)
 
         }

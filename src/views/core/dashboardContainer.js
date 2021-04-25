@@ -74,14 +74,14 @@ function DashboardContainer(props) {
             querySnapshot.forEach(doc => {
                 channels.push(doc.data());
             });
-            setAllChannels(getAllChannels(channels))
+            let c = getAllChannels(channels);
+            setAllChannels(c)
             // ...
         }, err => {
             console.log(`Encountered error: ${err}`);
         });
 
-    }, [user]);
-
+    }, []);
 
     useEffect(() => {
         function getChannels(querySnapshot) {
@@ -104,7 +104,7 @@ function DashboardContainer(props) {
                 unsubscribeChannels()
             }
         }
-    }, [user]);
+    }, []);
 
     useEffect(() => {
         //TODO: we want to pull only messages that are relevant. The most recent 10 from any tracker in the userTrackerList.
