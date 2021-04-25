@@ -89,6 +89,7 @@ export const selectNode = (type, id, user, color, position) => {
             draggable: true,
             type: 'boxNodes',
             data : {
+                locked: false,
                 size: [300,300]
 
             },
@@ -145,7 +146,7 @@ export const selectNode = (type, id, user, color, position) => {
             data: {
                 text: null,
                 size: [300,300],
-
+                title: null,
                 color: color,
                 textContent: null,
                 isFolded: false,

@@ -12,6 +12,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import { Rnd } from "react-rnd";
 import { BiEdit,BiRctangle, BiMove,BiChevronUp, BiChevronDown, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
+import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
 let tinycolor = require("tinycolor2");
 
 
@@ -29,6 +30,18 @@ export default memo(({ data,}) => {
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
     const [isFolded, setIsFolded] = React.useState(data.isFolded)
     const [size, setSize] = React.useState(data.size);
+    const [title, setTitle] = React.useState(data.title);
+    const [editOpen, setEditOpen] = React.useState(false);
+
+
+
+    const handleOpenOptions = (event) => {
+        handleEditOpen()
+    };
+    const handleEditOpen = () => {
+        setEditOpen(!editOpen)
+    };
+
 
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height]
@@ -108,6 +121,11 @@ export default memo(({ data,}) => {
 
     };
 
+    const changeTitle = (title) => {
+        data.title = title;
+        setTitle(title)
+    };
+
 
     useEffect(() => {
         if (data.shadow){
@@ -138,7 +156,8 @@ export default memo(({ data,}) => {
                 style={{
                     borderRadius: 10,
                     boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
-                    backgroundColor: 'white'
+                    backgroundColor: 'white',
+                    textOverflow: 'hidden'
                 }}
 
             >
@@ -148,17 +167,23 @@ export default memo(({ data,}) => {
                 // border = {1}
                 // borderColor = {data.color}
                 display = 'flex'
-                flexDirection ='row'
+                flexDirection ='column'
                 justifyContent = 'flex-start'
 
             >
 
+                <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
+
+
+
                 <Box
-                    style={{margin: 5 }}
+                    style={{margin: 5, overflow:'hidden'}}
                     className={data.className}
                 >
 
-                <Editor
+
+
+                    <Editor
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"
                     toolbarOnFocus
@@ -166,7 +191,7 @@ export default memo(({ data,}) => {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={handleSetEditorState}
-                    editorStyle = {{ margin: 5, width: size[0]-10, height: size[1]-5}}
+                    editorStyle = {{ margin: 5, width: size[0]-10, height: size[1]-50, overflow:'hidden'}}
                     toolbarClassName={classes.toolbar}
                     toolbarStyle = {{backgroundColor: 'white', zIndex: 30, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginTop:-70, width: 320, borderColor:backgroundColor, position: 'absolute', }}
                     toolbar = {{

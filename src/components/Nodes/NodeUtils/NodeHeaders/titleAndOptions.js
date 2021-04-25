@@ -9,7 +9,7 @@ import Divider from "@material-ui/core/Divider";
 function TitleAndOptions(props) {
     return (
         <div>
-        <Box borderColor = {props.color} borderBottom = {1}  display="flex" justifyContent = 'space-between' flexDirection = 'row' style = {{height: 37, }}>
+        <Box   display="flex" justifyContent = 'space-between' flexDirection = 'row' style = {{height: 37, }}>
             <TextField
                 defaultValue={props.title}
                 placeholder={'untitled'}
@@ -24,7 +24,7 @@ function TitleAndOptions(props) {
                     </IconButton>
                 }
         </Box>
-            <Divider/>
+            <Divider style = {{color:'grey' }} />
         </div>
 
     );
