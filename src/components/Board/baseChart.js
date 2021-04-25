@@ -23,6 +23,7 @@ import ButtonNode from "../Nodes/NodeList/buttonNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
 import {selectNode} from "./nodeSelector";
 import GraphNode from "../Nodes/NodeList/graphNode"
+import BoxNode from "../Nodes/NodeList/boxNode"
 import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../Nodes/NodeList/metricNode";
 import AppBar from "@material-ui/core/AppBar/AppBar";
@@ -53,6 +54,7 @@ const nodeTypes = {
     buttonNodes: ButtonNode,
     calendarNodes: CalendarNode,
     graphNodes: GraphNode,
+    boxNodes: BoxNode,
     characterNode: CharacterNode,
     bitCoinGifNodes: BitCoinGifNode,
     metricNodes: MetricNode,
@@ -230,7 +232,13 @@ function BaseChart(props) {
         });
         let id = getNodeId();
         const newNode = await selectNode(type,id,props.user,props.channel.color,position);
-        setElements((es) => es.concat(newNode));
+        if (type === 'box'){
+            let elems = elements.slice();
+            elems.unshift(newNode);
+            setElements(elems);
+        } else {
+            setElements((es) => es.concat(newNode));
+        }
     };
 
     useEffect(() => {
@@ -239,10 +247,10 @@ function BaseChart(props) {
            let dbElements = f.elements;
 
             for (let node of dbElements){
-
                 if (node.data) {
                     node.data.color = props.channel.color
                 }
+
 
             }
            setElements(dbElements)

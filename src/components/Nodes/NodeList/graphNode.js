@@ -109,7 +109,8 @@ export default memo(({ data,  }) => {
             borderRadius = {10}
             border = {1}
             borderColor = {data.color}
-            style = {{zIndex: 20,
+            style = {{
+                zIndex: 20,
                 boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                 backgroundColor:'white',
                 color: 'white',

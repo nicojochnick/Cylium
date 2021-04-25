@@ -71,7 +71,7 @@ export default memo(({ data,}) => {
 
         <Grid  style = {{zIndex: 30}} container>
 
-            <Box borderRadius = {10} borderColor = {data.color} border= {1} display = 'flex' flexDirection = 'row' style = {{zIndex: 50,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, backgroundColor:'white', overflow:'hidden', width: isSquare? 60 : 160, height: isSquare ? 60 : 45, margin: 10}}>
+            <Box borderRadius = {7} borderColor = {data.color} border= {1} display = 'flex' flexDirection = 'row' style = {{zIndex: 50,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, backgroundColor:'white', overflow:'hidden', width: isSquare? 60 : 160, height: isSquare ? 60 : 45, margin: 10}}>
 
                 <a className={classes.a} target="_blank" rel="noopener noreferrer" href = {link}>
                     <Box style = {{paddingLeft: 2,marginRight: isSquare ? -8 : 0, marginLeft: isSquare ? 5 : 0, marginTop: isSquare ? 15: 0}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'>

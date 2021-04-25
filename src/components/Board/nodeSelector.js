@@ -13,7 +13,6 @@ export const selectNode = (type, id, user, color, position) => {
             position: position,
         }
     }
-
     if (type == 'graph') {
         node = {
             id: id,
@@ -79,6 +78,21 @@ export const selectNode = (type, id, user, color, position) => {
             },
             position: position,
         }
+    }
+
+    if (type === 'box'){
+        // className : "nodrag",
+        node = {
+            id: id,
+            draggable: true,
+            type: 'boxNodes',
+            data : {
+                size: [300,300]
+
+            },
+            position: position,
+        }
+
     }
 
     if (type == 'character') {

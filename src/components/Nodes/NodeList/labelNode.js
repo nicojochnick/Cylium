@@ -73,23 +73,13 @@ export default memo(({ data, style }) => {
         data.textContent = save;
     };
 
-    console.log(editorState);
-
     const mouseEnter = () => {
-        console.log(border)
         setBorder(1)
-
-
     };
 
     const mouseLeave = () => {
-
         setBorder(0)
-
-
     };
-
-
 
     useEffect(() => {
         if (data.shadow){
@@ -105,17 +95,17 @@ export default memo(({ data, style }) => {
         <>
 
         <Box
-            border = {border}
             borderRadius = {5}
-            borderColor = {'#7D83FC'}
-            // border = {editorState.getCurrentContent().hasText()? 0 : 1}
+            border = {editorState.getCurrentContent().hasText()? border : 1}
             onMouseEnter={()=> mouseEnter()}
             onMouseLeave={()=> mouseLeave()}
             style = {{padding: 10}}
             display = 'flex'
             flexDirection ='row'
             justify = 'center'
-            alignItems = 'flex-start'>
+            alignItems = 'flex-start'
+            borderColor = {'#6B9AFF'}
+        >
             <Box className = {'nodrag'} style={{ }}>
             <Editor
 

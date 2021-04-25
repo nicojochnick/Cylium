@@ -51,6 +51,10 @@ function FlowController(props) {
                             <BiUserCircle   size = {25}/>
                         </Box>
 
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >
+                        <BiRectangle   size = {25}/>
+                    </Box>
+
 
                 </Box>
 
