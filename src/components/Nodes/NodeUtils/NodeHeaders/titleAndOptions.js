@@ -13,7 +13,7 @@ function TitleAndOptions(props) {
             <TextField
                 defaultValue={props.title}
                 placeholder={'untitled'}
-                InputProps={{style: {fontSize: 16,fontWeight: 500, margin: 5,}, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 17,fontWeight: 500, margin: 5,}, disableUnderline: true,}}
                 onChange = {(e)=>props.changeTitle(e.target.value)}
 
             />

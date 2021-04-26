@@ -150,7 +150,7 @@ export default memo(({ data}) => {
            setShadow(data.shadow)
        }
         if (data.textContent) {
-            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
+            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)));
             setEditorState(parsed);
         }
     }, []);
@@ -176,13 +176,14 @@ export default memo(({ data}) => {
 
                 >
 
-            <Box display = 'flex' flexDirection ='column' flexDirection ='row' justifyContent = 'flex-start' >
+            <Box display = 'flex' flexDirection ='column' flexDirection ='row' alignItems = 'center' justifyContent = 'flex-start' >
                 <Box
                     display = 'flex'
                     flexDirection ='row'
                     // alignItems = 'flex-start'
+                    alignItems = 'flex-start' justifyContent = 'center'
                 >
-                    <Box   className={data.className} style={{flex:1 }}>
+                    <Box    display = 'flex'  alignItems = 'flex-start' justifyContent = 'center' className={data.className} style={{overflow:'hidden'}}>
                         {/*{ deadline !== '' && deadline !== undefined && !done*/}
                         {/*    ? <Box display = 'flex' flexDirection ='row' justifyContent = 'flex-end' alignItems = 'flex-start' style = {{marginTop: -40, marginBottom: 10, marginRight: -40,}}>*/}
                         {/*        <Box display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center'  borderRadius = {6} style = {{height: 30, paddingLeft: 5, paddingRight: 5,backgroundColor:data.color}}>*/}
@@ -200,7 +201,7 @@ export default memo(({ data}) => {
                             wrapperClassName="wrapperClassName"
                             editorClassName="editorClassName"
                             onEditorStateChange={handleSetEditorState}
-                            editorStyle = {{width: size[0]-60, height: size[1]-10, margin: 10}}
+                            editorStyle = {{width: size[0]-60, height: size[1]-10, marginBottom: 3, marginTop: 3, marginLeft: 10, overflow:'hidden'}}
                             toolbarClassName={classes.toolbar}
                             toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -15, marginTop:-60, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                             toolbar = {{
@@ -224,7 +225,7 @@ export default memo(({ data}) => {
 
                     <Checkbox
                             checked={done}
-                            style={{marginLeft: 0,}}
+                            style={{marginLeft: 0, color: '#6B97F7'}}
                             onChange={toggleDone}
                             inputProps={{'aria-label': 'primary checkbox'}}
                         />

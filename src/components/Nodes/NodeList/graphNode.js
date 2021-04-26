@@ -153,6 +153,7 @@ export default memo(({ data,  }) => {
 
             <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
 
+
                         <LineChart key = {key} width={data.size[0]-10} height={data.size[1]-20} data={d}>
                             <Line type="monotone" dataKey="uv"  />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />

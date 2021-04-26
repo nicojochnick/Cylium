@@ -21,7 +21,7 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'graphNodes',
             data: {
                 color: color,
-                size: [400,400],
+                size: [700,400],
                 title: null,
                 graphData: [{name: '1', uv: 400, pv: 2400, amt: 2400, key: '1'},{name: '2', uv: 500, pv: 2500, amt: 2500,key: '2'},{key: '3', name: '3', uv: 900, pv: 4400, amt: 3500}]
             },
@@ -71,7 +71,7 @@ export const selectNode = (type, id, user, color, position) => {
             data: {
                 isSquare: false,
                 link: 'https://example.com',
-                size: [100,30],
+                size: [95,25],
                 style: {backgroundColor: '#7664FF'},
                 icon: null,
                 title: null,
@@ -82,11 +82,44 @@ export const selectNode = (type, id, user, color, position) => {
         }
     }
 
-    if (type === 'box'){
+    if (type === 'divider'){
         // className : "nodrag",
         node = {
             id: id,
             draggable: true,
+            type: 'dividerNodes',
+            data : {
+                locked: false,
+                size: [5,300]
+
+            },
+            position: position,
+        }
+
+    }
+
+    if (type === 'boxback'){
+        // className : "nodrag",
+        node = {
+            id: id,
+            draggable: true,
+            layer: 0,
+            type: 'boxNodes',
+            data : {
+                locked: false,
+                size: [300,300]
+
+            },
+            position: position,
+        }
+
+    }
+    if (type === 'boxfront'){
+        // className : "nodrag",
+        node = {
+            id: id,
+            draggable: true,
+            layer: 1,
             type: 'boxNodes',
             data : {
                 locked: false,
@@ -109,6 +142,48 @@ export const selectNode = (type, id, user, color, position) => {
 
     }
 
+    if (type =='kanban') {
+
+        node = {
+            type: 'kanbanNodes',
+            id: id,
+            position: position,
+            data: {
+                board: {
+                    lanes: [
+                        {
+                            id: 'lane1',
+                            title: 'Planned Tasks',
+                            label: '2/2',
+                            cards: [
+                                {
+                                    id: 'Card1',
+                                    title: 'Write Blog',
+                                    description: 'Can AI make memes',
+                                    label: '30 mins',
+                                    draggable: false
+                                },
+                                {
+                                    id: 'Card2',
+                                    title: 'Pay Rent',
+                                    description: 'Transfer via NEFT',
+                                    label: '5 mins',
+                                    metadata: {sha: 'be312a1'}
+                                }
+                            ]
+                        },
+                        {
+                            id: 'lane2',
+                            title: 'Completed',
+                            label: '0/0',
+                            cards: []
+                        }
+                    ]
+                }
+            }
+        }
+    }
+
     if (type =='todo') {
         node = {
             id: id,
@@ -117,7 +192,7 @@ export const selectNode = (type, id, user, color, position) => {
             // className : "nodrag",
             type: 'todoNodes',
             data: {
-                size: [300,50],
+                size: [220,45],
                 color: color,
                 textContent: null,
                 text: null,

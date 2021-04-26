@@ -85,10 +85,10 @@ export default memo(({ data,}) => {
                                 placeholder={'untitled'}
                                 onChange={handleTitleChange}
                                 className={classes.button}
-                                inputProps={{min: 0, style: { textAlign: 'center' }}} // the change is here
+                                inputProps={{min: 0, style: { color: '#6B9AFF', textAlign: 'center' }}} // the change is here
                                 defaultValue={title}
                                 value={title}
-                                InputProps={{min: 0, style: { alignItems:'center', textAlign:'center', margin: 0, fontWeight: 800,}, input: {fontSize: 17, fontWeight: 800, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
+                                InputProps={{min: 0, style: { color: '#6B9AFF', alignItems:'center', textAlign:'center', margin: 0, fontWeight: 800,}, input: {fontSize: 17, fontWeight: 800, backgroundColor: 'white', textAlign:'center'}, disableUnderline: true,}}
                             />
                         </Button>
 

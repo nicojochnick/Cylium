@@ -42,7 +42,7 @@ export default memo(({ data,}) => {
             }}
             onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
             style={{
-                borderRadius: 10,
+                borderRadius: 15,
                 overflow: 'hidden',
                 boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                 backgroundColor: 'white'

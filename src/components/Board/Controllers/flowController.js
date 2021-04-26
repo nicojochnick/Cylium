@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import {BiLineChart,BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
+import {BiLineChart, BiMinus, BiTable, BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
 
 function FlowController(props) {
     const classes = useStyles();
@@ -26,7 +26,7 @@ function FlowController(props) {
     };
 
     return (
-        <Grid style = {{height: 60}} container justify ='center' alignItems = 'center' >
+        <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
                 <Box borderRadius = {30} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, padding: 10, overflow:'hidden', backgroundColor: 'white'}}>
                         <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
                             <BiMessageAlt size = {25}/>
@@ -51,9 +51,18 @@ function FlowController(props) {
                             <BiUserCircle   size = {25}/>
                         </Box>
 
-                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >
-                        <BiRectangle   size = {25}/>
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'boxback')} draggable   >
+                        <BiRectangle  size = {25}/>
                     </Box>
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'boxfront')} draggable   >
+                        <BiRectangle style = {{backgroundColor:'black', borderRadius: 5}} size = {22}/>
+                    </Box>
+
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'divider')} draggable   >
+                        <BiMinus   size = {25}/>
+                    </Box>
+
+
 
 
                 </Box>

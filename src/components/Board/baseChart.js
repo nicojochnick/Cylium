@@ -21,6 +21,7 @@ import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
 import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
+import KanBanNode from "../Nodes/NodeList/kanbanNode"
 import {selectNode} from "./nodeSelector";
 import GraphNode from "../Nodes/NodeList/graphNode"
 import BoxNode from "../Nodes/NodeList/boxNode"
@@ -28,6 +29,7 @@ import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../Nodes/NodeList/metricNode";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import DividerNode from "../Nodes/NodeList/dividerNode"
 import ProjectHeader from "../Headers/projectHeader";
 import clsx from 'clsx';
 
@@ -59,6 +61,8 @@ const nodeTypes = {
     bitCoinGifNodes: BitCoinGifNode,
     metricNodes: MetricNode,
     reportNodes: ReportNode,
+    kanbanNodes: KanBanNode,
+    dividerNodes: DividerNode,
 };
 
 const getNodeId = () => `node_${+new Date()}`;
@@ -216,6 +220,7 @@ function BaseChart(props) {
     };
 
     const onDragOver = (event) => {
+        console.log('drag')
         event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
     };
@@ -231,12 +236,24 @@ function BaseChart(props) {
             y: event.clientY - reactFlowBounds.top,
         });
         let id = getNodeId();
+        console.log(type)
         const newNode = await selectNode(type,id,props.user,props.channel.color,position);
-        if (type === 'box'){
+        if (type === 'boxfront' || type ==='boxback'){
+            console.log('addedbox')
             let elems = elements.slice();
-            elems.unshift(newNode);
+            if (newNode.layer === 0) {
+                elems.unshift(newNode);
+            } else {
+                for (let i = 0; i < elems.length; i++){
+                    console.log(elems)
+                    if (elems[i].type !== 'box'){
+                        elems.splice(i,0,newNode);
+                        break;
+                    }
+                }
+            }
             setElements(elems);
-        } else {
+        } else  {
             setElements((es) => es.concat(newNode));
         }
     };
@@ -337,6 +354,8 @@ function BaseChart(props) {
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
+                        onlyRenderVisibleElements={false}
+
                         onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}

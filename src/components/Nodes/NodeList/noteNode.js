@@ -157,7 +157,7 @@ export default memo(({ data,}) => {
                     borderRadius: 10,
                     boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                     backgroundColor: 'white',
-                    textOverflow: 'hidden'
+                    // textOverflow: 'hidden'
                 }}
 
             >
@@ -177,7 +177,7 @@ export default memo(({ data,}) => {
 
 
                 <Box
-                    style={{margin: 5, overflow:'hidden'}}
+                    style={{margin: 5, }}
                     className={data.className}
                 >
 
@@ -191,8 +191,8 @@ export default memo(({ data,}) => {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={handleSetEditorState}
-                    editorStyle = {{ margin: 5, width: size[0]-10, height: size[1]-50, overflow:'hidden'}}
-                    toolbarClassName={classes.toolbar}
+                    editorStyle = {{ margin: 5, width: size[0]-10, height: size[1]-50,}}
+                    // toolbarClassName={classes.toolbar}
                     toolbarStyle = {{backgroundColor: 'white', zIndex: 30, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginTop:-70, width: 320, borderColor:backgroundColor, position: 'absolute', }}
                     toolbar = {{
 
