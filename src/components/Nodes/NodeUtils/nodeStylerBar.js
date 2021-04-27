@@ -32,28 +32,24 @@ function NodeStylerBar(props) {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const onBackGroundColorChange = () =>{
+    const onBackGroundColorChange = (color) =>{
+        props.style.bgColor = color.hex
 
     };
 
     const onLockChange = () => {
 
-
     };
-
     function valuetext(value) {
         return `${value}`;
     }
-
     const renderSelect = (option ) => {
-
         switch (option) {
-
-
             case  'radius':
                 return <TextField
                     id="standard-number"
                     type="number"
+                    placeholder={'1-100'}
                     InputProps={{style: {fontSize: 15, margin: 5, color:'white'}, disableUnderline: true,}}
                     InputLabelProps={{
                         shrink: true,
@@ -61,40 +57,36 @@ function NodeStylerBar(props) {
                     }}
                 />;
             case 'shadow':
-                return <ButtonGroup size="small" >
+                return <ButtonGroup color = 'secondary' style = {{color:'white'}} size="small" >
                     <Button>None</Button>
                     <Button>Light</Button>
                     <Button>Heavy</Button>
                 </ButtonGroup>;
-
             case 'border':
-                return <ButtonGroup size="small" >
+                return <ButtonGroup color = 'secondary'  size="small" >
                     <Button>0px</Button>
                     <Button>1px</Button>
                     <Button>3px</Button>
                 </ButtonGroup>;
-
             case 'color':
-                return<Box display={'flex'} flexDirection = 'column'>
-                        <Button>Fill</Button>
-                        <CirclePicker/>
+                return<Box display = 'flex'  flexDirection={'column'} style = {{margin:0, padding: 5,}} >
+                        <Button variant={'outlined'} style = {{margin: 5}} color = 'secondary'> Fill </Button>
+                        <CirclePicker         onChangeComplete={ onBackGroundColorChange }
+                                               circleSize = {20} circleSpacing={12} style ={{margin: 8}} colors = {["#FFFFFF", "#56565C","#212121","#9569ED","#5A7EFA","#3180FF", "8F36FC","#F17E5E","#FF2525","#77D46D","#E14D4D","#F3EFDC","#E4EBED","#FEC6EB"]}/>
                 </Box>;
             default:
                 return <div/>
         }
-
-
     };
-
 
     return (
 
-        <Box display = ' flex' alignItems = 'center' justifyContent = 'center' border = {3} borderColor = {'white'}  style = {{backgroundColor: '#343434', height: 70, width: 450, boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`}} borderRadius = {10} flexDirection = 'row'>
+        <Box display = ' flex' alignItems = 'center' justifyContent = 'center' border = {3} borderColor = {'white'}  style = {{backgroundColor: '#343434', height: 70, width: 450, boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`, zIndex:100}} borderRadius = {10} flexDirection = 'row'>
             <Popover
                 id={id}
                 style={
                     {
-                        marginTop: -75,
+                        marginTop: -70, padding: 0,
                     }
                 }
                 open={open}
@@ -110,7 +102,7 @@ function NodeStylerBar(props) {
                 }}
             >
 
-                <Box style = {{minWidth: 80, backgroundColor: '#343434',minHeight: 30, padding: 4}} display = ' flex' alignItems = 'center' justifyContent = 'center'  flexDirection = 'row'>
+                <Box style = {{minWidth: 80, backgroundColor: '#343434',minHeight: 30,overflow:'hidden'}} display = ' flex' flexDirection = 'column'>
                     {renderSelect(option)}
                 </Box>
 

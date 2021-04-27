@@ -245,8 +245,8 @@ function BaseChart(props) {
                 elems.unshift(newNode);
             } else {
                 for (let i = 0; i < elems.length; i++){
-                    console.log(elems)
-                    if (elems[i].type !== 'box'){
+                    console.log(elems);
+                    if (elems[i].type !== 'boxNodes'){
                         elems.splice(i,0,newNode);
                         break;
                     }

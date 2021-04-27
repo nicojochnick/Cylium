@@ -123,9 +123,7 @@ export default function Dashboard(props) {
                 {(props.user) ?
                     < main className={classes.content}>
                         {/*<div className={classes.appBarSpacer} />*/}
-
                         <Switch>
-
                             {Object.keys(props.allChannels).map((item)=>
                                     <Route key={key} exact path={getDirection(props.allChannels[item].channelID)}>
                                         <BaseView

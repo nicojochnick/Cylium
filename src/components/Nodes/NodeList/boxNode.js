@@ -54,7 +54,7 @@ export default memo(({ data,}) => {
                 {barOpen
                 ?
                 <div style = {{marginTop: -90}}>
-                    <NodeStylerBar style = {{bgColor: 'blue'}} />
+                    <NodeStylerBar locked = {data.locked} style = {data.style} />
                 </div>
                 : null
 
@@ -71,19 +71,18 @@ export default memo(({ data,}) => {
             onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
             style={{
                 margin: 4,
-
-                borderRadius: 15,
+                borderRadius: data.style.borderRadius,
                 // overflow: 'hidden',
-                boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
-                backgroundColor: 'white'
+                boxShadow: data.style.shadow,
+                backgroundColor: data.style.bgColor,
             }}
             disableDragging={true}
 
         >
             <Box
-                border =  {barOpen ? 2: 0}
                 borderColor = {'#629AFC'}
-                style = {{ width: size[0]+10, height: size[1]+10,}}
+                border =  {barOpen ? 2: 0}
+                style = {{ width: size[0], height: size[1],}}
 
                 display='flex'
                 flexDirection='row'

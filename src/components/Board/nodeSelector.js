@@ -107,6 +107,7 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'boxNodes',
             data : {
                 locked: false,
+                style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 size: [300,300]
 
             },
@@ -123,7 +124,9 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'boxNodes',
             data : {
                 locked: false,
-                size: [300,300]
+                size: [300,300],
+                style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+
 
             },
             position: position,
