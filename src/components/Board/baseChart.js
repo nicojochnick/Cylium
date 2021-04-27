@@ -364,15 +364,15 @@ function BaseChart(props) {
                     >
 
 
-                        <MiniMap
-                            nodeColor={props.channel.color}
-                            nodeStrokeColor={'#CDCDCD'}
-                            nodeStrokeWidth={3}
-                            nodeBorderRadius={5}
-                            style = {{margin: 10, marginRight: 20, border:2, borderColor: 'black', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
-                            }}
+                        {/*<MiniMap*/}
+                        {/*    nodeColor={props.channel.color}*/}
+                        {/*    nodeStrokeColor={'#CDCDCD'}*/}
+                        {/*    nodeStrokeWidth={3}*/}
+                        {/*    nodeBorderRadius={5}*/}
+                        {/*    style = {{margin: 10, marginRight: 20, border:2, borderColor: 'black', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,*/}
+                        {/*    }}*/}
 
-                        />
+                        {/*/>*/}
 
                         <Background
                             variant = "dots"

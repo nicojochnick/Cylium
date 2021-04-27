@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,6 +24,19 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2400">
+                  <caret line="374" column="29" lean-forward="true" selection-start-line="366" selection-start-column="23" selection-end-line="374" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#60#0" expanded="true" />
+                    <marker date="1619482184843" expanded="true" signature="13206:13251" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="185">
@@ -35,23 +48,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="157">
-                  <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-                  <folding>
-                    <marker date="1619459066480" expanded="true" signature="13158:13203" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="332">
-                  <caret line="72" column="61" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="61" />
+                <state relative-caret-position="479">
+                  <caret line="84" column="41" lean-forward="true" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -59,11 +60,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="231">
-                  <caret line="11" column="121" selection-start-line="11" selection-start-column="121" selection-end-line="11" selection-end-column="121" />
+                <state relative-caret-position="435">
+                  <caret line="37" selection-start-line="37" selection-end-line="37" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -137,8 +138,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
-                  <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+                <state relative-caret-position="292">
+                  <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -249,13 +250,13 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/kanbanNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/dividerNode.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
       </list>
     </option>
   </component>
@@ -303,6 +304,13 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Board" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Headers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -393,8 +401,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.typerList.js">
+  <component name="RunManager" selected="Node.js.boxNode.js">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="boxNode.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="boxNode.js" working-dir="$PROJECT_DIR$/src/components/Nodes/NodeList">
       <method v="2" />
     </configuration>
     <configuration name="dashboard.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/views/core/dashboard.js" working-dir="$PROJECT_DIR$/src/apps">
@@ -415,6 +426,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.boxNode.js" />
         <item itemvalue="Node.js.typerList.js" />
         <item itemvalue="Node.js.dashboard.js" />
       </list>
@@ -513,12 +525,12 @@
       <workItem from="1618065396115" duration="48792000" />
       <workItem from="1618397772783" duration="81601000" />
       <workItem from="1619005543571" duration="20100000" />
-      <workItem from="1619126809540" duration="45411000" />
+      <workItem from="1619126809540" duration="47808000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1246235000" />
+    <option name="totallyTimeSpent" value="1248632000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,14 +545,14 @@
     <frame x="-470" y="-1055" width="1949" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.11001557" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.11001557" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32055378" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32938075" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39789197" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3972311" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.03952569" />
@@ -548,7 +560,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.21512248" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.21512248" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50405186" side_tool="true" weight="0.20021299" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -827,16 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Headers/projectHeader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="123" column="72" selection-start-line="123" selection-start-column="72" selection-end-line="123" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/core/dashboardContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -926,16 +928,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-          <folding>
-            <marker date="1619459066480" expanded="true" signature="13158:13203" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -962,9 +954,6 @@
           <caret column="23" lean-forward="true" selection-end-line="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/formNode.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/calendarNode.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -993,20 +982,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/projectHeader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+        <state relative-caret-position="295">
+          <caret line="149" column="84" selection-start-line="149" selection-start-column="52" selection-end-line="149" selection-end-column="84" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/ScrapNodeList/formNode.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="72" column="61" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="61" />
+        <state relative-caret-position="292">
+          <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -1015,8 +1007,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="121" selection-start-line="11" selection-start-column="121" selection-end-line="11" selection-end-column="121" />
+        <state relative-caret-position="435">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="374" column="29" lean-forward="true" selection-start-line="366" selection-start-column="23" selection-end-line="374" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+            <marker date="1619482184843" expanded="true" signature="13206:13251" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="84" column="41" lean-forward="true" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>

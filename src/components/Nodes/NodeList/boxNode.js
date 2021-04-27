@@ -20,6 +20,9 @@ export default memo(({ data,}) => {
         data.size = newSize;
 
     };
+    const nodeSelected = () =>{
+        openBar();
+    }
     const openBar = ()=>{
         setBarOpen(true)
     };
@@ -41,9 +44,8 @@ export default memo(({ data,}) => {
         <div
             onMouseEnter = {()=> setOptions(true)}
             onMouseLeave={()=> closeAll()}
-            onClick = {()=>openBar()}
-
-            style = {{ padding: 10}}
+            onClick = {()=>nodeSelected()}
+            style = {{ padding: 10, width: size[0]+10, height: size[1]+10,}}
             className={data.locked ? 'nodrag' : null}
         >
 
@@ -68,8 +70,10 @@ export default memo(({ data,}) => {
             }}
             onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
             style={{
+                margin: 4,
+
                 borderRadius: 15,
-                overflow: 'hidden',
+                // overflow: 'hidden',
                 boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
                 backgroundColor: 'white'
             }}
@@ -77,6 +81,10 @@ export default memo(({ data,}) => {
 
         >
             <Box
+                border =  {barOpen ? 2: 0}
+                borderColor = {'#629AFC'}
+                style = {{ width: size[0]+10, height: size[1]+10,}}
+
                 display='flex'
                 flexDirection='row'
                 justifyContent='flex-end'
