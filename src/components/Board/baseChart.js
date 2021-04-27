@@ -220,8 +220,8 @@ function BaseChart(props) {
     };
 
     const onDragOver = (event) => {
-        console.log('drag')
         event.preventDefault();
+        console.log('drag')
         event.dataTransfer.dropEffect = 'move';
     };
 

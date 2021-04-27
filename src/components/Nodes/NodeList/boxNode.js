@@ -53,7 +53,7 @@ export default memo(({ data,}) => {
 
                 {barOpen
                 ?
-                <div style = {{marginTop: -80}}>
+                <div style = {{marginTop: -90}}>
                     <NodeStylerBar style = {{bgColor: 'blue'}} />
                 </div>
                 : null
