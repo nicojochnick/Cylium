@@ -81,7 +81,21 @@ function NodeStylerBar(props) {
 
     return (
 
-        <Box display = ' flex' alignItems = 'center' justifyContent = 'center' border = {3} borderColor = {'white'}  style = {{backgroundColor: '#343434', height: 70, width: 450, boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`, zIndex:100}} borderRadius = {10} flexDirection = 'row'>
+        <Box
+            display = ' flex'
+            alignItems = 'center'
+            justifyContent = 'center'
+            border = {3}
+            borderColor = {'white'}
+             style =
+                 {{
+                     backgroundColor: '#343434',
+                     height: 70,
+                     width: 450,
+                     boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`,
+                     zIndex:100}}
+             borderRadius = {10}
+             flexDirection = 'row'>
             <Popover
                 id={id}
                 style={

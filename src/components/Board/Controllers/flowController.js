@@ -58,8 +58,13 @@ function FlowController(props) {
                         <BiRectangle style = {{backgroundColor:'black', borderRadius: 5}} size = {22}/>
                     </Box>
 
+
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'divider')} draggable   >
                         <BiMinus   size = {25}/>
+                    </Box>
+
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >
+                        <BiTable  size = {25}/>
                     </Box>
 
 

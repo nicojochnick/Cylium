@@ -21,7 +21,7 @@ import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
 import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
-import KanBanNode from "../Nodes/NodeList/kanbanNode"
+import KanBanNode from "../Nodes/NodeList/KanBan/kanbanNode"
 import {selectNode} from "./nodeSelector";
 import GraphNode from "../Nodes/NodeList/graphNode"
 import BoxNode from "../Nodes/NodeList/boxNode"
@@ -312,6 +312,7 @@ function BaseChart(props) {
                     color = '#F7F7F7'
                     // position={'static'}
                 >
+
                     <Box
                         display = 'flex'
                         flexDirection ='row'
@@ -337,9 +338,7 @@ function BaseChart(props) {
                     : null
                 }
 
-                    <div style = {{  width: '100vw', height: '100vh', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
-
-
+                        <div style = {{  width: '100vw', height: '100vh', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
 
                 <ReactFlow
                         nodeTypes={nodeTypes}
@@ -355,7 +354,6 @@ function BaseChart(props) {
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
                         onlyRenderVisibleElements={false}
-
                         onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}

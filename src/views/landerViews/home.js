@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
 import {FaBoxOpen} from "react-icons/fa";
 import Lander from "./lander"
+import KanbanNode from "../../components/Nodes/NodeList/KanBan/kanbanNode"
 
 import mmlogo from "../../assets/images/mmlogo.png"
 import Button from "@material-ui/core/Button";
@@ -18,6 +19,7 @@ class home extends Component {
         const { classes } = this.props;
         return (
             <Grid container style = {{backgroundColor: "white", height: '100vh', width: '100vw'}}>
+
 
                 <Box  style = {{backgroundColor: "white", height: '100vh', width: '100vw'}} display = 'flex' flexDirection = 'column' alignItems = 'center' justifyContent = 'center'>
                     <img style ={{height: 80}}src = {mmlogo} />
