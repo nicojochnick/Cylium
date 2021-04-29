@@ -338,12 +338,13 @@ function BaseChart(props) {
                     : null
                 }
 
-                        <div style = {{  width: '100vw', height: '100vh', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
+                        <div style = {{  width: '100vw', height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
 
                 <ReactFlow
                         nodeTypes={nodeTypes}
                         minZoom={0.05}
-                        style = {{ overflow: 'hidden', background: '#FAFAFA'}}
+                        maxZoom={1}
+                        style = {{ overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
                         elements={elements}
                         onLoad={onLoad}
                         defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}

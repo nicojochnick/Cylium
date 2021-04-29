@@ -151,6 +151,7 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'kanbanNodes',
             id: id,
             position: position,
+
             data: {
 
             }
