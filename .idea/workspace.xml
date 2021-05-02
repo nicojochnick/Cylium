@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/StandardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,14 +18,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5406452">
+    <splitter split-orientation="horizontal" split-proportion="0.27537212">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="422">
-                  <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+                <state relative-caret-position="380">
+                  <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
                   <folding>
                     <element signature="e#0#34#0" expanded="true" />
                   </folding>
@@ -105,11 +100,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-675">
-                  <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+                <state relative-caret-position="312">
+                  <caret line="101" column="259" selection-start-line="101" selection-start-column="259" selection-end-line="101" selection-end-column="259" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -129,7 +124,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-94">
@@ -257,12 +252,12 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/modalContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Profile/nodeProfile.js" />
         <option value="$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" />
       </list>
     </option>
   </component>
@@ -516,12 +511,12 @@
       <workItem from="1619613213754" duration="8393000" />
       <workItem from="1619717793645" duration="321000" />
       <workItem from="1619808895826" duration="3818000" />
-      <workItem from="1619910582372" duration="12201000" />
+      <workItem from="1619910582372" duration="12797000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1294560000" />
+    <option name="totallyTimeSpent" value="1295156000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -975,16 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-675">
-          <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-211">
@@ -1029,6 +1014,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-94">
@@ -1039,12 +1034,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+        <state relative-caret-position="312">
+          <caret line="101" column="259" selection-start-line="101" selection-start-column="259" selection-end-line="101" selection-end-column="259" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>

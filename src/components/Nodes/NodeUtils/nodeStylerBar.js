@@ -99,7 +99,7 @@ function NodeStylerBar(props) {
                 return<Box display = 'flex'  flexDirection={'column'} style = {{margin:0, padding: 5,}} >
                         <Button variant={'outlined'} style = {{margin: 5}} color = 'secondary'> Fill </Button>
                         <CirclePicker         onChangeComplete={ onBackGroundColorChange }
-                                               circleSize = {20} circleSpacing={12} style ={{margin: 8}} colors = {["#FFFFFF", "#56565C","#212121","#9569ED","#5A7EFA","#3180FF", "8F36FC","#F17E5E","#FF2525","#77D46D","#E14D4D","#F3EFDC","#E4EBED","#FEC6EB"]}/>
+                                               circleSize = {20} circleSpacing={12} style ={{margin: 8}} colors = {["#FFFFFF","#F4F4F4", "#56565C","#2A2A2A","#212121","#EEC98D","#EEEC8D", "#5A7EFA","#3180FF", "#8F36FC","#F17E5E","#FF2525","#9569ED","#77D46D",]}/>
                 </Box>;
             default:
                 return <div/>
