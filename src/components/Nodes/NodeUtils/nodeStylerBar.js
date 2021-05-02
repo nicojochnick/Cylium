@@ -37,10 +37,30 @@ function NodeStylerBar(props) {
 
     };
 
-    const onBorderChange = (width) => {
+    const handleBorderChange = (width) => {
 
-        props.border = width;
-    }
+        props.style.border = width;
+    };
+
+    const handleRadiusChange = (radius) => {
+        console.log(radius);
+        props.style.borderRadius = parseInt(radius);
+    };
+
+    const handleShadowChange= (strength) => {
+        let shadow = null;
+
+        if (strength === 0){
+            shadow = `0px 3px 10px rgba(0, 0, 0, 0.0)`
+        } else if (strength === 1) {
+            shadow = `0px 3px 10px rgba(0, 0, 0, 0.15)`
+        } else {
+            shadow = `0px 8px 20px rgba(0, 0, 0, 0.25)`
+        }
+
+        props.style.shadow = shadow;
+    };
+
 
     const onLockChange = () => {
 
@@ -54,7 +74,9 @@ function NodeStylerBar(props) {
                 return <TextField
                     id="standard-number"
                     type="number"
-                    placeholder={'1-100'}
+                    // value = {props.style.borderRadius}
+                    placeholder={props.style.borderRadius}
+                    onChange={(e)=>handleRadiusChange(e.target.value)}
                     InputProps={{style: {fontSize: 15, margin: 5, color:'white'}, disableUnderline: true,}}
                     InputLabelProps={{
                         shrink: true,
@@ -63,15 +85,15 @@ function NodeStylerBar(props) {
                 />;
             case 'shadow':
                 return <ButtonGroup color = 'secondary' style = {{color:'white'}} size="small" >
-                    <Button>None</Button>
-                    <Button>Light</Button>
-                    <Button>Heavy</Button>
+                    <Button onClick = {()=>handleShadowChange(0)}  variant={props.style.shadow === `0px 3px 10px rgba(0, 0, 0, 0.0)` ? 'contained' : 'outlined'} >None</Button>
+                    <Button onClick = {()=>handleShadowChange(1)} variant={props.style.shadow === `0px 3px 10px rgba(0, 0, 0, 0.15)` ? 'contained' : 'outlined'} >Light</Button>
+                    <Button onClick = {()=>handleShadowChange(2)} variant={props.style.shadow === `0px 8px 20px rgba(0, 0, 0, 0.25)` ? 'contained' : 'outlined'} >Heavy</Button>
                 </ButtonGroup>;
             case 'border':
                 return <ButtonGroup color = 'secondary'  size="small" >
-                    <Button variant={props.style.border == 0 ? 'contained' : 'text'} >0px</Button>
-                    <Button variant={props.style.border == 0 ? 'contained' : 'text'} >1px</Button>
-                    <Button variant={props.style.border == 0 ? 'contained' : 'text'} >3px</Button>
+                    <Button onClick = {()=>handleBorderChange(0)} variant={props.style.border === 0 ? 'contained' : 'outlined'} >0px</Button>
+                    <Button onClick  = {()=>handleBorderChange(1)} variant={props.style.border === 1 ? 'contained' : 'outlined'} >1px</Button>
+                    <Button onClick  = {()=>handleBorderChange(3)} variant={props.style.border === 3 ? 'contained' : 'outlined'} >3px</Button>
                 </ButtonGroup>;
             case 'color':
                 return<Box display = 'flex'  flexDirection={'column'} style = {{margin:0, padding: 5,}} >

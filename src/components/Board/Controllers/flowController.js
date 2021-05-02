@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import {BiLineChart, BiCubeAlt, BiTable, BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
+import {BiLineChart, BiNote, BiCubeAlt, BiTable, BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
 
 function FlowController(props) {
     const classes = useStyles();
@@ -29,7 +29,7 @@ function FlowController(props) {
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
                 <Box borderRadius = {30} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, padding: 10, overflow:'hidden', backgroundColor: 'white'}}>
                     <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
-                        <BiMessageAlt size = {25}/>
+                        <BiNote size = {25}/>
                     </Box>
                     <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'label')} draggable   >
                         <BiText size = {25}/>

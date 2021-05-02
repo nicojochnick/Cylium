@@ -24,14 +24,14 @@ export default memo(({ data,}) => {
     };
     const nodeSelected = () =>{
         openBar();
-    }
+    };
     const openBar = ()=>{
         setBarOpen(true)
     };
     const closeAll = () => {
         setBarOpen(false)
         setBarOpen(false)
-    }
+    };
 
     const lock = () => {
         data.locked = !data.locked
@@ -86,14 +86,14 @@ export default memo(({ data,}) => {
 
         >
             <Box
-                border =  {barOpen ? 2: 1}
+                border =  {barOpen ? 2: data.style.border}
                 borderRadius = {data.style.borderRadius}
-                borderColor = {barOpen ? '#268CFF': 'white'}
+                borderColor = {barOpen ? '#268CFF': '#6E6E6E'}
                 style = {{ width: size[0], height: size[1], padding: 40}}
-
                 display='flex'
                 flexDirection='row'
-                justifyContent='space-between'
+                alignItems = 'space-between'
+                justifyContent = 'space-between'
 
             >
                 <Box display = 'flex' flexDirection = 'row'>
@@ -122,6 +122,7 @@ export default memo(({ data,}) => {
                 />
 
             </Box>
+
 
         </Rnd>
     </div>
