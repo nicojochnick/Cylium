@@ -27,6 +27,7 @@ import GraphNode from "../Nodes/NodeList/graphNode"
 import BoxNode from "../Nodes/NodeList/boxNode"
 import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../Nodes/NodeList/metricNode";
+import StandardNode from "../Nodes/NodeContainers/standardContainer";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import DividerNode from "../Nodes/NodeList/dividerNode"
@@ -61,6 +62,7 @@ const nodeTypes = {
     bitCoinGifNodes: BitCoinGifNode,
     metricNodes: MetricNode,
     reportNodes: ReportNode,
+    standardNodes: StandardNode,
     kanbanNodes: KanBanNode,
     dividerNodes: DividerNode,
 };
@@ -75,7 +77,7 @@ function BaseChart(props) {
     const [buttonStyle, setButtonStyle] = React.useState({borderColor: '#545359'});
     const [open, setOpen] = React.useState(false);
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
-    const [isChatOpen,openChat] = React.useState(true);
+    const [isChatOpen,openChat] = React.useState(false);
     const reactFlowWrapper = useRef(null);
 
     const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
@@ -236,9 +238,9 @@ function BaseChart(props) {
             y: event.clientY - reactFlowBounds.top,
         });
         let id = getNodeId();
-        console.log(type)
+        console.log(type);
         const newNode = await selectNode(type,id,props.user,props.channel.color,position);
-        if (type === 'boxfront' || type ==='boxback'){
+        if (type === 'boxfront' || type ==='box'){
             console.log('addedbox')
             let elems = elements.slice();
             if (newNode.layer === 0) {

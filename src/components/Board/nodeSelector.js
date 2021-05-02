@@ -98,6 +98,26 @@ export const selectNode = (type, id, user, color, position) => {
 
     }
 
+    if (type === 'box'){
+        // className : "nodrag",
+        node = {
+            id: id,
+            draggable: true,
+            layer: 0,
+            type: 'standardNodes',
+            data : {
+                type: 'box',
+                title: null,
+                locked: false,
+                style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+                size: [2000,1000]
+
+            },
+            position: position,
+        }
+
+    }
+
     if (type === 'boxback'){
         // className : "nodrag",
         node = {

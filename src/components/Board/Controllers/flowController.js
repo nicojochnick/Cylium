@@ -30,7 +30,7 @@ function FlowController(props) {
     return (
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
                 <Box borderRadius = {30} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, padding: 10, overflow:'hidden', backgroundColor: 'white'}}>
-                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'boxback')} draggable   >
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >
                         <BiCubeAlt  size = {25}/>
                     </Box>
                     <Divider/>
