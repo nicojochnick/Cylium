@@ -37,6 +37,11 @@ function NodeStylerBar(props) {
 
     };
 
+    const onBorderChange = (width) => {
+
+        props.border = width;
+    }
+
     const onLockChange = () => {
 
     };
@@ -64,9 +69,9 @@ function NodeStylerBar(props) {
                 </ButtonGroup>;
             case 'border':
                 return <ButtonGroup color = 'secondary'  size="small" >
-                    <Button>0px</Button>
-                    <Button>1px</Button>
-                    <Button>3px</Button>
+                    <Button variant={props.style.border == 0 ? 'contained' : 'text'} >0px</Button>
+                    <Button variant={props.style.border == 0 ? 'contained' : 'text'} >1px</Button>
+                    <Button variant={props.style.border == 0 ? 'contained' : 'text'} >3px</Button>
                 </ButtonGroup>;
             case 'color':
                 return<Box display = 'flex'  flexDirection={'column'} style = {{margin:0, padding: 5,}} >
@@ -100,7 +105,7 @@ function NodeStylerBar(props) {
                 id={id}
                 style={
                     {
-                        marginTop: -70, padding: 0,
+                        marginTop: -50, padding: 0,
                     }
                 }
                 open={open}
@@ -115,13 +120,9 @@ function NodeStylerBar(props) {
                     horizontal: 'center',
                 }}
             >
-
                 <Box style = {{minWidth: 80, backgroundColor: '#343434',minHeight: 30,overflow:'hidden'}} display = ' flex' flexDirection = 'column'>
                     {renderSelect(option)}
                 </Box>
-
-
-
             </Popover>
             <Tooltip title="Color" arrow placement={'top'} >
 

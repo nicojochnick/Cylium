@@ -4,6 +4,8 @@ import { Rnd } from "react-rnd";
 import { BiLock,BiLockOpenAlt, BiPaint} from "react-icons/bi";
 import {Handle} from "react-flow-renderer";
 import NodeStylerBar from "../NodeUtils/nodeStylerBar";
+import Avatar from "@material-ui/core/Avatar";
+import NodeProfile from "../../Profile/Node/nodeProfile";
 
 
 
@@ -34,6 +36,10 @@ export default memo(({ data,}) => {
     const lock = () => {
         data.locked = !data.locked
         setLocked(!locked)
+    };
+
+    const changeTitle = (text) => {
+        data.title = text
     };
 
     console.log(isOptionOpen)
@@ -80,27 +86,32 @@ export default memo(({ data,}) => {
 
         >
             <Box
-                borderColor = {'#629AFC'}
-                border =  {barOpen ? 2: 0}
-                style = {{ width: size[0], height: size[1],}}
+                border =  {barOpen ? 2: 1}
+                borderRadius = {data.style.borderRadius}
+                borderColor = {barOpen ? '#268CFF': 'white'}
+                style = {{ width: size[0], height: size[1], padding: 40}}
 
                 display='flex'
                 flexDirection='row'
-                justifyContent='flex-end'
+                justifyContent='space-between'
 
             >
-                {isOptionOpen
+                <Box display = 'flex' flexDirection = 'row'>
+                    <NodeProfile changeTitle = {changeTitle} title = {data.title} />
+                </Box>
+
+                {barOpen
                     ?
                     <div>
                     {data.locked
                       ? <BiLock onClick = {() => lock()} style={{margin: 10, color: 'grey '}} size={30}/>
                       :  <BiLockOpenAlt onClick = {() => lock()} style={{margin: 10, color: 'grey '}} size={30}/>
                     }
-                    <BiPaint style={{margin: 10, color: 'grey '}} size={30} />
-
                     </div>
                     : null
                 }
+
+
 
                 <Handle
                     type="source"
