@@ -345,6 +345,7 @@ function BaseChart(props) {
                 <ReactFlow
                         nodeTypes={nodeTypes}
                         minZoom={0.05}
+                        panOnScroll={true}
                         maxZoom={1}
                         style = {{ overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
                         elements={elements}

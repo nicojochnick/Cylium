@@ -54,8 +54,13 @@ export const selectNode = (type, id, user, color, position) => {
         node = {
             id:id ,
             draggable:true,
-            type: 'labelNodes',
-            data: { textContent: null, done:false,size: [100,30], id: id, fontSize: 16, textColor: '#3D3B42', border: 0, backgroundColor:'white', borderColor: '#3D3B42', shadow: 8 },
+            type: 'standardNodes',
+            data: {
+                style: {bgColor:'rgba(0,0,0,0.0)', border: 0, borderRadius: 0, shadow: null},
+                size: [120,60],
+                type: 'label',
+                id: id,
+            },
             position: position,
             // style: { border: '0px solid #6685FF', borderRadius:7, padding: 2, display: 'flex', },
             // noWheel: true,

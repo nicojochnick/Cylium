@@ -117,7 +117,7 @@ function NodeStylerBar(props) {
              style =
                  {{
                      backgroundColor: '#343434',
-                     height: 70,
+                     height: 60,
                      width: 450,
                      boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`,
                      zIndex:100}}
@@ -158,7 +158,7 @@ function NodeStylerBar(props) {
             <Tooltip title="Border" arrow placement={'top'} >
 
             <Button onClick = {(e)=>handleOpenOption(e,'border')}>
-               <BiFilter style = {{color: 'white'}} size = {30} />
+               <BiFilter style = {{color: 'white'}} size = {25} />
             </Button>
 
             </Tooltip>
@@ -166,7 +166,7 @@ function NodeStylerBar(props) {
             <Tooltip title="Shadow" arrow placement={'top'} >
 
             <Button onClick = {(e)=>handleOpenOption(e,'shadow')} >
-                <BiSquareRounded  style = {{color: 'white'}} size = {30}  />
+                <BiSquareRounded  style = {{color: 'white'}} size = {25}  />
 
             </Button>
 
@@ -175,7 +175,7 @@ function NodeStylerBar(props) {
 
             <Tooltip title="Radius" arrow placement={'top'} >
                 <Button onClick = {(e)=>handleOpenOption(e,'radius')}>
-                <MdRoundedCorner  style = {{color: 'white'}} size = {30}  />
+                <MdRoundedCorner  style = {{color: 'white'}} size = {25}  />
                 </Button>
             </Tooltip>
 
@@ -185,7 +185,7 @@ function NodeStylerBar(props) {
             <Tooltip title="Lock " arrow placement={'top'} >
 
             <Button>
-                <BiLock  style = {{color: 'white'}} size = {30}  />
+                <BiLock  style = {{color: 'white'}} size = {25}  />
             </Button>
 
             </Tooltip>

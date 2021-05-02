@@ -4,6 +4,8 @@ import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import {Rnd} from "react-rnd";
 import BoxNode from "../NodeList/boxNode"
 import NoteNode from "../NodeList/noteNode"
+import LabelNode from "../NodeList/labelNode"
+
 
 
 export default memo(({ data,}) => {
@@ -31,9 +33,11 @@ export default memo(({ data,}) => {
     const renderNode = (type ) => {
         switch (type) {
             case 'box':
-                return <BoxNode data = {data}/>
+                return <BoxNode data = {data}/>;
             case 'note':
-                return <NoteNode data = {data}/>
+                return <NoteNode data = {data}/>;
+            case 'label':
+                return <LabelNode data = {data}/>;
             default:
                 return null;
         }

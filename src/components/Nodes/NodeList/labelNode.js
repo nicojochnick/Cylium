@@ -21,7 +21,9 @@ export default memo(({ data, style }) => {
     const [textColor, setTextColor] = React.useState(data.textColor);
     const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
     const[border, setBorder] = React.useState(0);
-    const [shadow, setShadow ] =React.useState(8)
+    const [shadow, setShadow ] =React.useState(8);
+    const [size, setSize] = React.useState(data.size);
+
     const [fontSize, setFontSize] = React.useState(data.fontSize);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
 
@@ -94,30 +96,20 @@ export default memo(({ data, style }) => {
     return (
         <>
 
-        <Box
-            borderRadius = {5}
-            border = {editorState.getCurrentContent().hasText()? border : 1}
-            onMouseEnter={()=> mouseEnter()}
-            onMouseLeave={()=> mouseLeave()}
-            style = {{padding: 10}}
-            display = 'flex'
-            flexDirection ='row'
-            justify = 'center'
-            alignItems = 'flex-start'
-            borderColor = {'#6B9AFF'}
-        >
-            <Box className = {'nodrag'} style={{ }}>
+            <Box   className={data.className}   style={{ overflow:'hidden', margin: 3, fontSize: 18}}>
             <Editor
 
                 editorState={editorState}
                 toolbarClassName="toolbarClassName"
+                placeholder = {'add text'}
                 toolbarOnFocus
+                toolbarHidden
                 wrapperClassName="wrapperClassName"
                 editorClassName="editorClassName"
                 onEditorStateChange={handleSetEditorState}
-                editorStyle = {{minWidth: 20}}
+                editorStyle = {{width: size[0]-10, }}
                 toolbarClassName={classes.toolbar}
-                toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
+                // toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                 toolbar = {{
                     options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
                     colorPicker: {
@@ -143,7 +135,6 @@ export default memo(({ data, style }) => {
 
 
 
-        </Box>
             </>
 
 

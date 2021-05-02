@@ -143,8 +143,6 @@ export default memo(({ data,}) => {
 
     return (
         <>
-
-
             <Box
                 style = {{margin: 5}}
                 // border = {1}
@@ -154,10 +152,7 @@ export default memo(({ data,}) => {
                 justifyContent = 'flex-start'
 
             >
-
                 {/*<TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />*/}
-
-
 
                 <Box
                     className={data.className}
