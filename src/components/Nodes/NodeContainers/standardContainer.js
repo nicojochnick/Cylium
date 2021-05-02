@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import {Rnd} from "react-rnd";
 import BoxNode from "../NodeList/boxNode"
+import NoteNode from "../NodeList/noteNode"
 
 
 export default memo(({ data,}) => {
@@ -31,6 +32,8 @@ export default memo(({ data,}) => {
         switch (type) {
             case 'box':
                 return <BoxNode data = {data}/>
+            case 'note':
+                return <NoteNode data = {data}/>
             default:
                 return null;
         }
@@ -85,7 +88,7 @@ export default memo(({ data,}) => {
                     border =  {barOpen ? 2: data.style.border}
                     borderRadius = {data.style.borderRadius}
                     borderColor = {barOpen ? '#268CFF': '#6E6E6E'}
-                    style = {{ width: size[0], height: size[1], padding: 40}}
+                    style = {{ width: size[0], height: size[1]}}
                     display='flex'
                     flexDirection='row'
                     alignItems = 'space-between'

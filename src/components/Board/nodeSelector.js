@@ -212,23 +212,15 @@ export const selectNode = (type, id, user, color, position) => {
             id:id ,
             draggable:true,
             // className : "nodrag",
-            type: 'noteNodes',
+            type: 'standardNodes',
             data: {
+                type: 'note',
                 text: null,
                 size: [300,300],
                 title: null,
-                color: color,
-                textContent: null,
-                isFolded: false,
-                className: '',
-                done:false,
-                id: id,
-                fontSize: 16,
-                textColor: '#3D3B42',
-                border: 0,
-                backgroundColor:'white',
-                borderColor: '#3D3B42',
-                shadow: 8
+                style: {bgColor: '#F3EC77', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+
+
             },
             position: position,
 

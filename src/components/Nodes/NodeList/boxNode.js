@@ -48,6 +48,7 @@ export default memo(({ data,}) => {
     return (
         <>
             <Box
+                style = {{margin: 40}}
                 display='flex'
                 flexDirection='row'
                 alignItems = 'space-between'

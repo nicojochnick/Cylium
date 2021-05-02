@@ -25,7 +25,7 @@ function NodeProfile(props) {
     };
 
     return (
-        <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' >
+        <Box style = {{height: 100}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' >
             <Avatar className = {classes.small}>
                 { getIcon()
                 }
@@ -37,7 +37,7 @@ function NodeProfile(props) {
                     id="standard-basic"
                     placeholder="Untitled"
                     value={title}
-                    InputProps={{style: {fontSize: 30, margin: 10, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: 28, margin: 10, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
                 />
 
 
@@ -48,8 +48,8 @@ function NodeProfile(props) {
 const useStyles = makeStyles((theme) => ({
     small :{
 
-        width: theme.spacing(6),
-        height: theme.spacing(6),
+        width: theme.spacing(7),
+        height: theme.spacing(7),
         margin: 10,
         border: 1,
         backgroundColor: '#EEEEEE'

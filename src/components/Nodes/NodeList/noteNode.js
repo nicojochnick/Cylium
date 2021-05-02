@@ -143,27 +143,10 @@ export default memo(({ data,}) => {
 
     return (
         <>
-            <div style = {{ padding: 20}}>
-
-            <Rnd
-                size={{
-                    width: size[0],
-                    height: size[1],
-                }}
-                disableDragging={true}
-                onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
-                // className={draggable ? null : 'nodrag'}
-                style={{
-                    borderRadius: 10,
-                    boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,
-                    backgroundColor: 'white',
-                    // textOverflow: 'hidden'
-                }}
-
-            >
 
 
             <Box
+                style = {{margin: 5}}
                 // border = {1}
                 // borderColor = {data.color}
                 display = 'flex'
@@ -172,48 +155,45 @@ export default memo(({ data,}) => {
 
             >
 
-                <TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />
+                {/*<TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />*/}
 
 
 
                 <Box
-                    style={{margin: 5, }}
                     className={data.className}
+                    style = {{overflow:'hidden', fontSize: 18}}
                 >
-
-
-
                     <Editor
                     editorState={editorState}
                     toolbarClassName="toolbarClassName"
                     toolbarOnFocus
+                    toolbarHidden
                     // readOnly = {data.className === 'nodrag' ? false : true}
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={handleSetEditorState}
-                    editorStyle = {{ margin: 5, width: size[0]-10, height: size[1]-50,}}
-                    // toolbarClassName={classes.toolbar}
+                    editorStyle = {{width: size[0]-10, margin: 10}}
                     toolbarStyle = {{backgroundColor: 'white', zIndex: 30, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginTop:-70, width: 320, borderColor:backgroundColor, position: 'absolute', }}
-                    toolbar = {{
-
-                        options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
-                        colorPicker: {
-                            className: undefined,
-                            component: undefined,
-                            popupClassName: undefined,
-                            colors: ['#FFFFFF', '#000000', '#6E80EF', '#7948FB',
-                                '#363144', '#828088', '#3CCD94', '#4F89CF', '#E56A51',
-                                '#FA4420', 'rgb(41,105,176)', 'rgb(85,57,130)', 'rgb(40,50,78)', 'rgb(0,0,0)',
-                                'rgb(247,218,100)', 'rgb(251,160,38)', 'rgb(235,107,86)', 'rgb(226,80,65)', 'rgb(163,143,132)']
-                        },
-
-                        inline: { inDropdown: true },
-                        list: { inDropdown: true },
-                        textAlign: { inDropdown: true },
-                        link: { inDropdown: true },
-                        history: { inDropdown: true },
-
-                    }}
+                    // toolbar = {{
+                    //
+                    //     options: [ 'fontSize', 'list', 'colorPicker', 'link', 'emoji','history'],
+                    //     colorPicker: {
+                    //         className: undefined,
+                    //         component: undefined,
+                    //         popupClassName: undefined,
+                    //         colors: ['#FFFFFF', '#000000', '#6E80EF', '#7948FB',
+                    //             '#363144', '#828088', '#3CCD94', '#4F89CF', '#E56A51',
+                    //             '#FA4420', 'rgb(41,105,176)', 'rgb(85,57,130)', 'rgb(40,50,78)', 'rgb(0,0,0)',
+                    //             'rgb(247,218,100)', 'rgb(251,160,38)', 'rgb(235,107,86)', 'rgb(226,80,65)', 'rgb(163,143,132)']
+                    //     },
+                    //
+                    //     inline: { inDropdown: true },
+                    //     list: { inDropdown: true },
+                    //     textAlign: { inDropdown: true },
+                    //     link: { inDropdown: true },
+                    //     history: { inDropdown: true },
+                    //
+                    // }}
                 />
 
 
@@ -242,9 +222,7 @@ export default memo(({ data,}) => {
 
             </Box>
 
-            </Rnd>
 
-            </div>
 
 
         </>
