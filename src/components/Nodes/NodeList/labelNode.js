@@ -15,28 +15,27 @@ import {BiMove} from "react-icons/bi";
 
 
 
-export default memo(({ data, style }) => {
+export default function LabelNode(props) {
     const classes = useStyles();
-    const [text, setText] = React.useState(data.text);
-    const [textColor, setTextColor] = React.useState(data.textColor);
-    const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
+    const [text, setText] = React.useState(props.data.text);
+    const [textColor, setTextColor] = React.useState(props.data.textColor);
+    const [backgroundColor, setBackGroundColor] = React.useState(props.data.backgroundColor)
     const[border, setBorder] = React.useState(0);
     const [shadow, setShadow ] =React.useState(8);
-    const [size, setSize] = React.useState(data.size);
 
-    const [fontSize, setFontSize] = React.useState(data.fontSize);
+    const [fontSize, setFontSize] = React.useState(props.data.fontSize);
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
 
 
     const saveText = (event) => {
         setText(event.target.value);
-        data.text = event.target.value;
+        props.data.text = event.target.value;
 
     };
 
     const changeFont = (size) => {
 
-        data.fontSize = size
+        props.data.fontSize = size
         console.log('switch!')
         setFontSize(size)
 
@@ -45,25 +44,25 @@ export default memo(({ data, style }) => {
         console.log('settingcolor', type)
         if (type === 'text'){
             setTextColor(color)
-            data.textColor = color;
+            props.data.textColor = color;
         } else {
             setBackGroundColor(color)
-            data.backgroundColor = color
+            props.data.backgroundColor = color
         }
     };
     const changeBorder = (width) => {
         setBorder(width);
-        data.border = width;
+        props.data.border = width;
         console.log('ChangingBorder', width)
     };
 
     const switchShadow = () =>{
         if (shadow ===  8) {
             setShadow(0);
-            data.shadow = 0;
+            props.data.shadow = 0;
         } else if (shadow === 0){
             setShadow(8);
-            data.shadow = 8
+            props.data.shadow = 8
         }
     };
 
@@ -72,7 +71,7 @@ export default memo(({ data, style }) => {
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState);
-        data.textContent = save;
+        props.data.textContent = save;
     };
 
     const mouseEnter = () => {
@@ -84,11 +83,9 @@ export default memo(({ data, style }) => {
     };
 
     useEffect(() => {
-        if (data.shadow){
-            setShadow(data.shadow)
-        }
-        if (data.textContent) {
-            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
+
+        if (props.data.textContent) {
+            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(props.data.textContent)))
             setEditorState(parsed);
         }
     }, []);
@@ -96,7 +93,17 @@ export default memo(({ data, style }) => {
     return (
         <>
 
-            <Box   className={data.className}   style={{ overflow:'hidden', margin: 3, fontSize: 18}}>
+            <Box
+                style = {{margin: 5}}
+                // border = {1}
+                // borderColor = {data.color}
+                display = 'flex'
+                flexDirection ='column'
+                justifyContent = 'flex-start'
+
+            >
+
+            <Box   className={props.data.className}   style={{ overflow:'hidden',  margin: 3, fontSize: 18}}>
             <Editor
 
                 editorState={editorState}
@@ -107,7 +114,7 @@ export default memo(({ data, style }) => {
                 wrapperClassName="wrapperClassName"
                 editorClassName="editorClassName"
                 onEditorStateChange={handleSetEditorState}
-                editorStyle = {{width: size[0]-10, }}
+                editorStyle = {{width: props.size[0]-22, overflowY:'hidden', overflowX: 'hidden', margin:5 , marginRight: 10}}
                 toolbarClassName={classes.toolbar}
                 // toolbarStyle = {{backgroundColor: 'white', zIndex: 1000, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10,  marginLeft: -22, marginTop:-70, width: 312, borderColor:backgroundColor, position: 'absolute', }}
                 toolbar = {{
@@ -127,6 +134,7 @@ export default memo(({ data, style }) => {
             />
 
             </Box>
+            </Box>
 
             {/*<Box display ='flex' flexDirection = 'column '>*/}
             {/*    <BiMove style = {{margin: 5, marginRight: 0, color: 'black'}} size = {15} />*/}
@@ -139,7 +147,7 @@ export default memo(({ data, style }) => {
 
 
     );
-});
+};
 
 const useStyles = makeStyles((theme) => ({
 

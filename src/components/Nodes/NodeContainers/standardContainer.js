@@ -12,8 +12,9 @@ export default memo(({ data,}) => {
 
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
-    const [locked, setLocked] = React.useState(data.locked)
-    const [barOpen, setBarOpen] = React.useState(false)
+    const [locked, setLocked] = React.useState(data.locked);
+    const [barOpen, setBarOpen] = React.useState(false);
+    const [contextData,setData] = React.useState(data)
 
     const lock = () => {
         data.locked = !data.locked;
@@ -30,14 +31,15 @@ export default memo(({ data,}) => {
         setBarOpen(false)
     };
 
-    const renderNode = (type ) => {
+    const renderNode = (type, size) => {
+        console.log(size)
         switch (type) {
             case 'box':
-                return <BoxNode data = {data}/>;
+                return <BoxNode size = {size} data = {contextData}/>;
             case 'note':
-                return <NoteNode data = {data}/>;
+                return <NoteNode size = {size} data = {contextData}/>;
             case 'label':
-                return <LabelNode data = {data}/>;
+                return <LabelNode size = {size} data = {contextData}/>;
             default:
                 return null;
         }
@@ -47,8 +49,9 @@ export default memo(({ data,}) => {
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height]
         setSize(newSize);
+        contextData.size = newSize;
         data.size = newSize;
-
+        setData(data)
     };
 
 
@@ -100,7 +103,7 @@ export default memo(({ data,}) => {
 
                 >
 
-                {renderNode(data.type)}
+                {renderNode(data.type, size)}
 
                 </Box>
 

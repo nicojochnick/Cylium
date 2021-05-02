@@ -7,12 +7,9 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,20 +24,23 @@
     <splitter split-orientation="horizontal" split-proportion="0.55209744">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1394">
-                  <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+                <state relative-caret-position="21">
+                  <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#0#34#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="617">
-                  <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+                <state relative-caret-position="126">
+                  <caret line="6" column="85" lean-forward="true" selection-start-line="6" selection-start-column="85" selection-end-line="6" selection-end-column="85" />
                 </state>
               </provider>
             </entry>
@@ -60,8 +60,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
-                  <caret line="25" column="70" lean-forward="true" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+                <state relative-caret-position="387">
+                  <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -72,8 +72,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="158">
-                  <caret line="157" column="44" lean-forward="true" selection-start-line="157" selection-end-line="158" />
+                <state relative-caret-position="210">
+                  <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -121,8 +121,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="261">
-                  <caret line="98" column="99" selection-start-line="98" selection-start-column="99" selection-end-line="98" selection-end-column="99" />
+                <state relative-caret-position="684">
+                  <caret line="116" column="55" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -271,12 +271,12 @@
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
         <option value="$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js" />
         <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
       </list>
     </option>
   </component>
@@ -514,12 +514,12 @@
       <workItem from="1619613213754" duration="8393000" />
       <workItem from="1619717793645" duration="321000" />
       <workItem from="1619808895826" duration="3818000" />
-      <workItem from="1619910582372" duration="16292000" />
+      <workItem from="1619910582372" duration="19164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1298651000" />
+    <option name="totallyTimeSpent" value="1301523000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1006,45 +1006,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="25" column="70" lean-forward="true" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+        <state relative-caret-position="387">
+          <caret line="31" column="80" selection-start-line="31" selection-start-column="80" selection-end-line="31" selection-end-column="80" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1394">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="157" column="44" lean-forward="true" selection-start-line="157" selection-end-line="158" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="126">
+          <caret line="6" column="85" lean-forward="true" selection-start-line="6" selection-start-column="85" selection-end-line="6" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="98" column="99" selection-start-line="98" selection-start-column="99" selection-end-line="98" selection-end-column="99" />
+        <state relative-caret-position="684">
+          <caret line="116" column="55" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+        <state relative-caret-position="210">
+          <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

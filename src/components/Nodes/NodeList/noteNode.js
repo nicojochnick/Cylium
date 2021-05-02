@@ -18,87 +18,14 @@ let tinycolor = require("tinycolor2");
 
 let global_bg_c = 'white';
 
-export default memo(({ data,}) => {
+export default function NoteNode(props) {
     const classes = useStyles();
-    const [done, setDone] = React.useState(data.done)
-    const [text, setText] = React.useState(data.text);
-    const [textColor, setTextColor] = React.useState(data.textColor);
-    const [backgroundColor, setBackGroundColor] = React.useState(data.backgroundColor)
-    const[border, setBorder] = React.useState(data.border);
-    const [shadow, setShadow ] =React.useState(8)
-    const [fontSize, setFontSize] = React.useState(data.fontSize);
+    const [done, setDone] = React.useState(props.data.done)
+    const [text, setText] = React.useState(props.data.text);
+    const [textColor, setTextColor] = React.useState(props.data.textColor);
+    const [backgroundColor, setBackGroundColor] = React.useState(props.data.backgroundColor)
     const [editorState, setEditorState] = React.useState(EditorState.createEmpty());
-    const [isFolded, setIsFolded] = React.useState(data.isFolded)
-    const [size, setSize] = React.useState(data.size);
-    const [title, setTitle] = React.useState(data.title);
-    const [editOpen, setEditOpen] = React.useState(false);
-
-
-
-    const handleOpenOptions = (event) => {
-        handleEditOpen()
-    };
-    const handleEditOpen = () => {
-        setEditOpen(!editOpen)
-    };
-
-
-    const onResizeStop = (delta) => {
-        let newSize = [size[0] + delta.width, size[1] + delta.height]
-        setSize(newSize);
-        data.size = newSize;
-
-    };
-
-    const fold = () => {
-        data.isFolded = !isFolded;
-        setIsFolded(!isFolded);
-        console.log('fold to', !isFolded)
-
-    };
-
-
-    const saveText = (event) => {
-        setText(event.target.value)
-        data.text = event.target.value;
-
-    };
-    const toggleDone = () => {
-        setDone(!done);
-        data.done = !data.done;
-    };
-    const changeFont = (size) => {
-
-        data.fontSize = size;
-        console.log('switch!');
-        setFontSize(size)
-
-    };
-    const changeColor = (color, type) =>{
-        console.log('settingcolor', type)
-        if (type === 'text'){
-            setTextColor(color)
-            data.textColor = color;
-        } else {
-            setBackGroundColor(color)
-            data.backgroundColor = color
-        }
-    };
-    const changeBorder = (width) => {
-        setBorder(width);
-        data.border = width;
-        console.log('ChangingBorder', width)
-    };
-
-    const switchShadow = () =>{
-        if (shadow ===  8) {
-            setShadow(0);
-            data.shadow = 0;
-        } else if (shadow === 0){
-            setShadow(8);
-            data.shadow = 8
-        }
-    };
+    const [size, setSize] = React.useState(props.data.size);
 
 
     const getColor = () => {
@@ -116,25 +43,16 @@ export default memo(({ data,}) => {
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState)
-        data.textContent = save;
+        props.data.textContent = save;
         // data.save();
 
     };
 
-    const changeTitle = (title) => {
-        data.title = title;
-        setTitle(title)
-    };
-
 
     useEffect(() => {
-        if (data.shadow){
-            setShadow(data.shadow)
-        }
-        if (data.textContent) {
-            console.log(data.textContent);
-            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.textContent)))
-            console.log(parsed)
+
+        if (props.data.textContent) {
+            let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(props.data.textContent)))
             setEditorState(parsed);
         }
         global_bg_c = backgroundColor;
@@ -155,7 +73,7 @@ export default memo(({ data,}) => {
                 {/*<TitleAndOptions title = {title} changeTitle = {changeTitle} handleOpenOptions = {handleOpenOptions} />*/}
 
                 <Box
-                    className={data.className}
+                    className={props.data.className}
                     style = {{overflow:'hidden', fontSize: 18}}
                 >
                     <Editor
@@ -167,7 +85,7 @@ export default memo(({ data,}) => {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={handleSetEditorState}
-                    editorStyle = {{width: size[0]-10, margin: 10}}
+                    editorStyle = {{width: props.size[0]-20, margin: 10}}
                     toolbarStyle = {{backgroundColor: 'white', zIndex: 30, boxShadow: "0px 0px 4px #C5C5C5", borderRadius: 10, marginTop:-70, width: 320, borderColor:backgroundColor, position: 'absolute', }}
                     // toolbar = {{
                     //
@@ -211,7 +129,7 @@ export default memo(({ data,}) => {
                     type="source"
                     id = 'k'
                     position="bottom"
-                    style={{ zIndex: 12, backgroundColor: data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
+                    style={{ zIndex: 12, backgroundColor: props.data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
                     // onConnect={(params) => console.log('handle onConnect', params)}
                 />
 
@@ -225,7 +143,7 @@ export default memo(({ data,}) => {
 
 
     );
-});
+};
 
 
 const useStyles = makeStyles((theme) => ({
