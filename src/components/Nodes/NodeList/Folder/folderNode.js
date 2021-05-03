@@ -9,13 +9,35 @@ import folder from "../../../../assets/images/folder.png"
 
 
 
-export default memo(({ data,}) => {
 
+
+export default memo(({ data,}) => {
+    const [border, setBorder] = React.useState(0);
+
+    const handleDragLeave = event => {
+        event.preventDefault()
+        console.log('stopped')
+
+        event.stopPropagation();
+        setBorder(0)
+    };
+    const handleDragOver = event => {
+        event.preventDefault()
+        event.stopPropagation();
+    };
+    const handleDragEnter = event => {
+        event.preventDefault()
+
+        event.stopPropagation();
+
+        setBorder(1);
+        console.log('draggedover')
+    };
 
     return (
-            <div>
+            <Box onMouseLeave={handleDragLeave} onMouseEnter={handleDragOver} onMouseOver = {handleDragEnter} onDragOver={handleDragEnter} onDragEnter={handleDragEnter}  border = {border} style = {{padding: 100}}>
                 <img style = {{height: 100,pointerEvents:'none' }} src = {folder}/>
-            </div>
+            </Box>
 
 
     )}

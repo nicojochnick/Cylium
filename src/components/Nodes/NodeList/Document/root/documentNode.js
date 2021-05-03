@@ -71,7 +71,7 @@ export default memo(({ data,}) => {
 
     return (
 
-        <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {2} borderRadius = {5} style = {{width: 150, height: 200,backgroundColor: background,}}>
+        <Box onDragStart={()=>console.log('dragged')} onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {2} borderRadius = {5} style = {{width: 150, height: 200,backgroundColor: background,}}>
         <Box borderRadius = {data.style.borderRadius} display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
             <TextField
                 onChange={(e)=> changeTitle(e.target.value)}

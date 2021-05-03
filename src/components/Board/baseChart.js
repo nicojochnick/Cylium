@@ -354,9 +354,12 @@ function BaseChart(props) {
                         style = {{ overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
                         elements={elements}
                         onLoad={onLoad}
+                        selectNodesOnDrag = {false}
+                        onNodeMouseEnter = {()=> console.log('entered')}
                         defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {onNodeDragStop}
+                        // onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
