@@ -5,7 +5,7 @@ import {Rnd} from "react-rnd";
 import BoxNode from "../NodeList/boxNode"
 import NoteNode from "../NodeList/noteNode"
 import LabelNode from "../NodeList/labelNode"
-import DocumentNode from "../NodeList/documentNode"
+import DocumentNode from "../NodeList/Document/documentNode"
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);

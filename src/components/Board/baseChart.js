@@ -20,7 +20,7 @@ import WebPageNode from "../Nodes/ScrapNodeList/webPageNode";
 import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
 import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
-import DocumentNode from "../Nodes/NodeList/documentNode"
+import DocumentNode from "../Nodes/NodeList/Document/documentNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
 import KanBanNode from "../Nodes/NodeList/KanBan/kanbanNode"
 import {selectNode} from "./nodeSelector";

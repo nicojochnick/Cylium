@@ -3,24 +3,27 @@ import Box from "@material-ui/core/Box";
 import { Rnd } from "react-rnd";
 import { BiLock,BiLockOpenAlt, BiPaint} from "react-icons/bi";
 import {Handle} from "react-flow-renderer";
-import NodeStylerBar from "../NodeUtils/nodeStylerBar";
+import NodeStylerBar from "../../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
-import NodeProfile from "../../Profile/Node/nodeProfile";
+import NodeProfile from "../../../Profile/Node/nodeProfile";
 import {BiDetail} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField/TextField";
 import Popover from "@material-ui/core/Popover/Popover";
 import {DragDropContext} from "react-beautiful-dnd";
-import Column from "./KanBan/column";
+import Column from "../KanBan/column";
 import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import DocumentApp from "./documentApp";
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
-    const [locked, setLocked] = React.useState(data.locked)
-    const [barOpen, setBarOpen] = React.useState(false)
+    const [locked, setLocked] = React.useState(data.locked);
+    const [barOpen, setBarOpen] = React.useState(false);
+    const [background,setBackGround] = React.useState('white');
+    const [title,setTitle] = React.useState(data.title);
 
     const classes = useStyles();
 
@@ -28,6 +31,7 @@ export default memo(({ data,}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
+        setBackGround('white')
         setAnchorEl(event.currentTarget);
     };
 
@@ -37,8 +41,6 @@ export default memo(({ data,}) => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-
 
 
 
@@ -63,21 +65,22 @@ export default memo(({ data,}) => {
         setLocked(!locked)
     };
     const changeTitle = (text) => {
+        setTitle(text)
         data.title = text
     };
 
     return (
 
-        <Box border = {2} borderRadius = {5} style = {{width: 150, height: 200,backgroundColor:'white'}}>
+        <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {2} borderRadius = {5} style = {{width: 150, height: 200,backgroundColor: background,}}>
         <Box borderRadius = {data.style.borderRadius} display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
             <TextField
                 onChange={(e)=> changeTitle(e.target.value)}
                 id="standard-basic"
                 placeholder="Untitled"
-                value={data.title}
+                value={title}
                 InputProps={{style: {fontSize: 20, textTransform: 'capitalized', margin: 10, color:'#4B494D'}, disableUnderline: true,}}
             />
-            <Box onClick={handleClick} display = 'flex' style = {{backgroundColor: 'lightblue', height: 130, width: 150}}>
+            <Box onClick={handleClick} display = 'flex' style = {{ height: 130, width: 150}}>
 
             </Box>
             {/*<Divider/>*/}
@@ -112,20 +115,10 @@ export default memo(({ data,}) => {
             >
 
                 <DialogContent>
-
-                    <Box bordeRadius = {20} style = {{width: '80vw', height: '80vh', backgroundColor:'white'}}>
-
-
+                    <Box borderRadius = {20} style = {{ backgroundColor:'white', height: '80vh'}}>
+                        <DocumentApp title = {title} changeTitle = {changeTitle} />
                     </Box>
-
-
                 </DialogContent>
-
-
-
-
-
-
 
             </Dialog>
 
