@@ -17,6 +17,7 @@ export default memo(({ data,}) => {
                 <img style = {{height: 100,pointerEvents:'none' }} src = {folder}/>
             </div>
 
+
     )}
 )
 
