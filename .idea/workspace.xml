@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/documentNode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/documentNode.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,8 +24,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="248">
-                  <caret line="89" column="38" lean-forward="true" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
+                <state relative-caret-position="308">
+                  <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
                   <folding>
                     <element signature="e#0#34#0" expanded="true" />
                   </folding>
@@ -52,8 +45,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/documentNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="355">
-                  <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+                <state relative-caret-position="153">
+                  <caret line="41" column="102" selection-start-line="41" selection-start-column="102" selection-end-line="41" selection-end-column="102" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -66,18 +59,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="84">
                   <caret line="4" column="19" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="80" column="33" lean-forward="true" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -152,6 +133,15 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="399">
+                  <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -177,11 +167,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="437">
-                  <caret line="38" column="6" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="38" selection-end-column="6" />
+                <state relative-caret-position="25">
+                  <caret line="41" column="16" lean-forward="true" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -390,6 +380,21 @@
               <item name="Nodes" type="462c0819:PsiDirectoryNode" />
               <item name="NodeTypes" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Profile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Profile" type="462c0819:PsiDirectoryNode" />
+              <item name="Node" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -572,12 +577,12 @@
       <workItem from="1619613213754" duration="8393000" />
       <workItem from="1619717793645" duration="321000" />
       <workItem from="1619808895826" duration="3818000" />
-      <workItem from="1619910582372" duration="23115000" />
+      <workItem from="1619910582372" duration="26113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1305474000" />
+    <option name="totallyTimeSpent" value="1308472000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1052,32 +1057,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="89" column="38" lean-forward="true" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="72" column="27" lean-forward="true" selection-start-line="71" selection-start-column="8" selection-end-line="72" selection-end-column="27" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="80" column="33" lean-forward="true" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1089,20 +1074,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="38" column="6" lean-forward="true" selection-start-line="36" selection-start-column="3" selection-end-line="38" selection-end-column="6" />
+        <state relative-caret-position="25">
+          <caret line="41" column="16" lean-forward="true" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Profile/Node/nodeProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="25" column="6" lean-forward="true" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/documentNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+        <state relative-caret-position="153">
+          <caret line="41" column="102" selection-start-line="41" selection-start-column="102" selection-end-line="41" selection-end-column="102" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
