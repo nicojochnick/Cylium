@@ -60,16 +60,41 @@ export const selectNode = (type, id, user, color, position) => {
 
     }
 
+    if (type === 'folder'){
+        // className : "nodrag",
+        node = {
+            id: id,
+            draggable: true,
+            type: 'folderNodes',
+            data : {
+                type: 'folder',
+                title: null,
+                locked: false,
+                size: [50, 50]
+
+            },
+            position: position,
+        }
+
+    }
+
     if (type === 'document'){
         // className : "nodrag",
         node = {
             id: id,
             draggable: true,
-            layer: 0,
             type: 'documentNodes',
             data : {
                 type: 'document',
                 title: null,
+                content: [
+                    {
+                        _id: "5f54d75b114c6d176d7e9765",
+                        html: "...",
+                        tag: "p",
+                        imageUrl: ""
+                    }
+                ],
                 locked: false,
                 style: {bgColor: 'white', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 size: [240,340]

@@ -20,11 +20,12 @@ import WebPageNode from "../Nodes/ScrapNodeList/webPageNode";
 import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
 import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
-import DocumentNode from "../Nodes/NodeList/Document/documentNode"
+import DocumentNode from "../Nodes/NodeList/Document/root/documentNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
 import KanBanNode from "../Nodes/NodeList/KanBan/kanbanNode"
 import {selectNode} from "./nodeSelector";
 import GraphNode from "../Nodes/NodeList/graphNode"
+import FolderNode from "../Nodes/NodeList/Folder/folderNode"
 import BoxNode from "../Nodes/NodeList/boxNode"
 import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../Nodes/NodeList/metricNode";
@@ -59,6 +60,7 @@ const nodeTypes = {
     calendarNodes: CalendarNode,
     graphNodes: GraphNode,
     boxNodes: BoxNode,
+    folderNodes: FolderNode,
     characterNode: CharacterNode,
     bitCoinGifNodes: BitCoinGifNode,
     documentNodes: DocumentNode,

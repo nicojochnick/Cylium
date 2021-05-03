@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
+import EditablePage from "../components/editablePage";
 
 
 function DocumentApp(props) {
@@ -27,6 +28,9 @@ function DocumentApp(props) {
                     value={props.title}
                     InputProps={{style: {fontSize: 50, fontWeight: 600, margin: 10, color:'#4B494D'}, disableUnderline: true,}}
                 />
+
+
+                <EditablePage data = {props.data} />
 
                 </Box>
 

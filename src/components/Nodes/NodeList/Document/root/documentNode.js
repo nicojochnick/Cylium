@@ -3,15 +3,15 @@ import Box from "@material-ui/core/Box";
 import { Rnd } from "react-rnd";
 import { BiLock,BiLockOpenAlt, BiPaint} from "react-icons/bi";
 import {Handle} from "react-flow-renderer";
-import NodeStylerBar from "../../NodeUtils/nodeStylerBar";
+import NodeStylerBar from "../../../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
-import NodeProfile from "../../../Profile/Node/nodeProfile";
+import NodeProfile from "../../../../Profile/Node/nodeProfile";
 import {BiDetail} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField/TextField";
 import Popover from "@material-ui/core/Popover/Popover";
 import {DragDropContext} from "react-beautiful-dnd";
-import Column from "../KanBan/column";
+import Column from "../../KanBan/column";
 import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -116,7 +116,7 @@ export default memo(({ data,}) => {
 
                 <DialogContent>
                     <Box borderRadius = {20} style = {{ backgroundColor:'white', height: '80vh'}}>
-                        <DocumentApp title = {title} changeTitle = {changeTitle} />
+                        <DocumentApp data = {data} title = {title} changeTitle = {changeTitle} />
                     </Box>
                 </DialogContent>
 

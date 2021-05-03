@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
 import {BsCardText,BsFileSpreadsheet,BsFileText} from "react-icons/bs"
-import {BiLineChart,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
+import {BiLineChart,BiFile, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 
 function FlowController(props) {
@@ -43,12 +43,15 @@ function FlowController(props) {
                     </Box>
                     <Divider/>
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'document')} draggable   >
-                        <BiDetail  size = {23}/>
+                        <BiFile  size = {23}/>
+                    </Box>
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'folder')} draggable   >
+                        <BiFolder size = {23}/>
                     </Box>
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >
                         <BiSpreadsheet size = {25}/>
                     </Box>
-                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >
+                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'table')} draggable   >
                         <BiTable  size = {23}/>
                     </Box>
                 </Box>
