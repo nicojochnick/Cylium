@@ -37,8 +37,6 @@ export default memo(({ data,}) => {
                 return <NoteNode size = {size} data = {contextData}/>;
             case 'label':
                 return <LabelNode size = {size} data = {contextData}/>;
-            case 'document':
-                return <DocumentNode size = {size} data = {contextData}/>;
             default:
                 return null;
         }

@@ -66,7 +66,7 @@ export const selectNode = (type, id, user, color, position) => {
             id: id,
             draggable: true,
             layer: 0,
-            type: 'standardNodes',
+            type: 'documentNodes',
             data : {
                 type: 'document',
                 title: null,
