@@ -1,0 +1,64 @@
+import React, {memo, useEffect} from 'react';
+import Box from "@material-ui/core/Box";
+import { Rnd } from "react-rnd";
+import { BiLock,BiLockOpenAlt, BiPaint} from "react-icons/bi";
+import {Handle} from "react-flow-renderer";
+import NodeStylerBar from "../NodeUtils/nodeStylerBar";
+import Avatar from "@material-ui/core/Avatar";
+import NodeProfile from "../../Profile/Node/nodeProfile";
+
+export default memo(({ data,}) => {
+    const [size, setSize] = React.useState(data.size);
+    const [isOptionOpen, setOptions] = React.useState(false);
+    const [locked, setLocked] = React.useState(data.locked)
+    const [barOpen, setBarOpen] = React.useState(false)
+    const onResizeStop = (delta) => {
+        let newSize = [size[0] + delta.width, size[1] + delta.height]
+        setSize(newSize);
+        data.size = newSize;
+    };
+    const nodeSelected = () =>{
+        openBar();
+    };
+    const openBar = ()=>{
+        setBarOpen(true)
+    };
+    const closeAll = () => {
+        setBarOpen(false);
+        setBarOpen(false)
+    };
+
+    const lock = () => {
+        data.locked = !data.locked;
+        setLocked(!locked)
+    };
+
+    const changeTitle = (text) => {
+        data.title = text
+    };
+
+
+    return (
+        <>
+            <Box
+                style = {{marginLeft: 15}}
+                display='flex'
+                flexDirection='row'
+            >
+                <Box display = 'flex' flexDirection = 'row'   >
+                    <NodeProfile changeTitle = {changeTitle}  size = 'small'  type = {data.type} title = {data.title} />
+                </Box>
+                {/*{barOpen*/}
+                {/*    ?*/}
+                {/*    <div>*/}
+                {/*        {data.locked*/}
+                {/*            ? <BiLock onClick = {() => lock()} style={{margin: 10, color: 'grey '}} size={30}/>*/}
+                {/*            :  <BiLockOpenAlt onClick = {() => lock()} style={{margin: 10, color: 'grey '}} size={30}/>*/}
+                {/*        }*/}
+                {/*    </div>*/}
+                {/*    : null*/}
+                {/*}*/}
+            </Box>
+        </>
+    );
+});

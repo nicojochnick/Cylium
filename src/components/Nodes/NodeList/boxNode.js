@@ -12,12 +12,10 @@ import NodeProfile from "../../Profile/Node/nodeProfile";
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
-    const [locked, setLocked] = React.useState(data.locked)
-    const [barOpen, setBarOpen] = React.useState(false)
-
-
+    const [locked, setLocked] = React.useState(data.locked);
+    const [barOpen, setBarOpen] = React.useState(false);
     const onResizeStop = (delta) => {
-        let newSize = [size[0] + delta.width, size[1] + delta.height]
+        let newSize = [size[0] + delta.width, size[1] + delta.height];
         setSize(newSize);
         data.size = newSize;
 
@@ -29,22 +27,16 @@ export default memo(({ data,}) => {
         setBarOpen(true)
     };
     const closeAll = () => {
-        setBarOpen(false)
+        setBarOpen(false);
         setBarOpen(false)
     };
-
     const lock = () => {
-        data.locked = !data.locked
+        data.locked = !data.locked;
         setLocked(!locked)
     };
-
     const changeTitle = (text) => {
         data.title = text
     };
-
-    console.log(isOptionOpen)
-
-
     return (
         <>
             <Box
@@ -56,8 +48,8 @@ export default memo(({ data,}) => {
 
             >
 
-                <Box display = 'flex' flexDirection = 'row'>
-                    <NodeProfile changeTitle = {changeTitle} title = {data.title} />
+                <Box display = 'flex' flexDirection = 'row'  >
+                    <NodeProfile type = {data.type} changeTitle = {changeTitle} title = {data.title} />
                 </Box>
 
                 {barOpen

@@ -1,54 +1,6 @@
 
 export const selectNode = (type, id, user, color, position) => {
     let node = null;
-    if (type == 'avatar') {
-        node = {
-            id: id,
-            draggable: true,
-            // className : "nodrag",
-            type: 'avatarNodes',
-            data: {
-                user: user
-            },
-            position: position,
-        }
-    }
-    if (type == 'graph') {
-        node = {
-            id: id,
-            draggable: true,
-            // className : "nodrag",
-            type: 'graphNodes',
-            data: {
-                color: color,
-                size: [700,400],
-                title: null,
-                graphData: [{name: '1', uv: 400, pv: 2400, amt: 2400, key: '1'},{name: '2', uv: 500, pv: 2500, amt: 2500,key: '2'},{key: '3', name: '3', uv: 900, pv: 4400, amt: 3500}]
-            },
-            position: position,
-        }
-    }
-    if (type === 'metric') {
-        node = {
-            id: id,
-            type: 'metricNodes',
-            data: {title: '', size: [300,100], value: 0,color: color,},
-            position: position,
-
-        }
-    }
-
-
-    if (type === 'report') {
-        node = {
-            id: id,
-            type: 'reportNodes',
-            data: {reports:[]},
-            position: position,
-
-        }
-    }
-
 
     if (type =='label'){
         node = {
@@ -87,21 +39,6 @@ export const selectNode = (type, id, user, color, position) => {
         }
     }
 
-    if (type === 'divider'){
-        // className : "nodrag",
-        node = {
-            id: id,
-            draggable: true,
-            type: 'dividerNodes',
-            data : {
-                locked: false,
-                size: [5,300]
-
-            },
-            position: position,
-        }
-
-    }
 
     if (type === 'box'){
         // className : "nodrag",
@@ -123,42 +60,27 @@ export const selectNode = (type, id, user, color, position) => {
 
     }
 
-    if (type === 'boxback'){
+    if (type === 'document'){
         // className : "nodrag",
         node = {
             id: id,
             draggable: true,
             layer: 0,
-            type: 'boxNodes',
+            type: 'standardNodes',
             data : {
+                type: 'document',
                 title: null,
                 locked: false,
-                style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
-                size: [2000,1000]
+                style: {bgColor: 'white', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+                size: [240,340]
 
             },
             position: position,
         }
 
     }
-    if (type === 'boxfront'){
-        // className : "nodrag",
-        node = {
-            id: id,
-            draggable: true,
-            layer: 1,
-            type: 'boxNodes',
-            data : {
-                locked: false,
-                size: [300,300],
-                style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
 
 
-            },
-            position: position,
-        }
-
-    }
 
     if (type == 'character') {
         node = {
@@ -184,6 +106,26 @@ export const selectNode = (type, id, user, color, position) => {
         }
     }
 
+
+
+
+    if (type =='note'){
+        node = {
+            id:id ,
+            draggable:true,
+            // className : "nodrag",
+            type: 'standardNodes',
+            data: {
+                type: 'note',
+                text: null,
+                size: [300,300],
+                title: null,
+                style: {bgColor: '#F3EC77', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+            },
+            position: position,
+
+        }
+    }
     if (type =='todo') {
         node = {
             id: id,
@@ -210,27 +152,43 @@ export const selectNode = (type, id, user, color, position) => {
             position: position,
         }
     }
-
-
-    if (type =='note'){
+    if (type == 'avatar') {
         node = {
-            id:id ,
-            draggable:true,
+            id: id,
+            draggable: true,
             // className : "nodrag",
-            type: 'standardNodes',
+            type: 'avatarNodes',
             data: {
-                type: 'note',
-                text: null,
-                size: [300,300],
-                title: null,
-                style: {bgColor: '#F3EC77', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
-
-
+                user: user
             },
+            position: position,
+        }
+    }
+    if (type == 'graph') {
+        node = {
+            id: id,
+            draggable: true,
+            // className : "nodrag",
+            type: 'graphNodes',
+            data: {
+                color: color,
+                size: [700,400],
+                title: null,
+                graphData: [{name: '1', uv: 400, pv: 2400, amt: 2400, key: '1'},{name: '2', uv: 500, pv: 2500, amt: 2500,key: '2'},{key: '3', name: '3', uv: 900, pv: 4400, amt: 3500}]
+            },
+            position: position,
+        }
+    }
+    if (type === 'metric') {
+        node = {
+            id: id,
+            type: 'metricNodes',
+            data: {title: '', size: [300,100], value: 0,color: color,},
             position: position,
 
         }
     }
+
     return node;
 };
 
@@ -264,4 +222,76 @@ export const selectNode = (type, id, user, color, position) => {
 //
 //     }
 //
+// }
+
+
+//boxes
+
+// if (type === 'boxback'){
+//     // className : "nodrag",
+//     node = {
+//         id: id,
+//         draggable: true,
+//         layer: 0,
+//         type: 'boxNodes',
+//         data : {
+//             title: null,
+//             locked: false,
+//             style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+//             size: [2000,1000]
+//
+//         },
+//         position: position,
+//     }
+//
+// }
+// if (type === 'boxfront'){
+//     // className : "nodrag",
+//     node = {
+//         id: id,
+//         draggable: true,
+//         layer: 1,
+//         type: 'boxNodes',
+//         data : {
+//             locked: false,
+//             size: [300,300],
+//             style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+//
+//
+//         },
+//         position: position,
+//     }
+//
+// }
+
+
+//divider
+
+
+// if (type === 'divider'){
+//     // className : "nodrag",
+//     node = {
+//         id: id,
+//         draggable: true,
+//         type: 'dividerNodes',
+//         data : {
+//             locked: false,
+//             size: [5,300]
+//
+//         },
+//         position: position,
+//     }
+//
+// }
+
+
+//
+// if (type === 'report') {
+//     node = {
+//         id: id,
+//         type: 'reportNodes',
+//         data: {reports:[]},
+//         position: position,
+//
+//     }
 // }

@@ -5,11 +5,9 @@ import {Rnd} from "react-rnd";
 import BoxNode from "../NodeList/boxNode"
 import NoteNode from "../NodeList/noteNode"
 import LabelNode from "../NodeList/labelNode"
-
-
+import DocumentNode from "../NodeList/documentNode"
 
 export default memo(({ data,}) => {
-
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
@@ -32,7 +30,6 @@ export default memo(({ data,}) => {
     };
 
     const renderNode = (type, size) => {
-        console.log(size)
         switch (type) {
             case 'box':
                 return <BoxNode size = {size} data = {contextData}/>;
@@ -40,6 +37,8 @@ export default memo(({ data,}) => {
                 return <NoteNode size = {size} data = {contextData}/>;
             case 'label':
                 return <LabelNode size = {size} data = {contextData}/>;
+            case 'document':
+                return <DocumentNode size = {size} data = {contextData}/>;
             default:
                 return null;
         }
@@ -61,7 +60,7 @@ export default memo(({ data,}) => {
             onMouseEnter = {()=> setOptions(true)}
             onMouseLeave={()=> closeAll()}
             onClick = {()=>nodeSelected()}
-            style = {{ padding: 10, width: size[0]+10, height: size[1]+10,}}
+            style = {{ padding: 5, width: size[0]+10, height: size[1]+10,}}
             className={data.locked ? 'nodrag' : null}
         >
             <Box style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
@@ -82,7 +81,7 @@ export default memo(({ data,}) => {
                 }}
                 onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
                 style={{
-                    margin: 4,
+                    margin: 0,
                     borderRadius: data.style.borderRadius,
                     // overflow: 'hidden',
                     boxShadow: data.style.shadow,
@@ -100,7 +99,6 @@ export default memo(({ data,}) => {
                     flexDirection='row'
                     alignItems = 'space-between'
                     justifyContent = 'space-between'
-
                 >
 
                 {renderNode(data.type, size)}

@@ -1,20 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import TextField from "@material-ui/core/TextField/TextField";
 import Grid from "@material-ui/core/Grid";
-import {BiCubeAlt} from "react-icons/bi";
+import {BiCubeAlt, BiDetail} from "react-icons/bi";
 import {makeStyles} from "@material-ui/core";
 
 function NodeProfile(props) {
-    const [title,setTitle] = React.useState(props.title)
+    const [title,setTitle] = React.useState(props.title);
+    const [avatarClass, setAvatarClass] = React.useState('large');
+    const [textStyle, setTextStyle] = React.useState({fontSize: 28, margin: 10});
+
 
     const classes = useStyles();
 
-    const getIcon = () => {
-        console.log('get')
+    const getIcon = (type) => {
 
-        return <BiCubeAlt size = {25} style = {{color:'#4B494D'}} />
+        switch (type) {
+            case  'box':
+                return <BiCubeAlt size={25} style={{color: '#4B494D'}}/>
+            case  'document':
+                return <BiDetail size={15} style={{color: '#4B494D'}}/>
+        }
 
     };
 
@@ -24,10 +31,21 @@ function NodeProfile(props) {
 
     };
 
+    useEffect(() => {
+        if (props.size === 'small'){
+            setAvatarClass('small');
+            setTextStyle({fontSize: 18,margin: 5})
+        }
+
+    }, []);
+
+
+
+
     return (
         <Box style = {{height: 100}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' >
-            <Avatar className = {classes.small}>
-                { getIcon()
+            <Avatar className = {avatarClass === 'small' ? classes.small : classes.large}>
+                { getIcon(props.type)
                 }
 
             </Avatar>
@@ -37,7 +55,7 @@ function NodeProfile(props) {
                     id="standard-basic"
                     placeholder="Untitled"
                     value={title}
-                    InputProps={{style: {fontSize: 28, margin: 10, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: textStyle.fontSize, margin: textStyle.margin, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
                 />
 
 
@@ -47,6 +65,17 @@ function NodeProfile(props) {
 
 const useStyles = makeStyles((theme) => ({
     small :{
+
+        width: theme.spacing(4),
+        height: theme.spacing(4),
+        margin: 5,
+        border: 1,
+        backgroundColor: '#EEEEEE'
+
+
+    },
+
+    large :{
 
         width: theme.spacing(7),
         height: theme.spacing(7),

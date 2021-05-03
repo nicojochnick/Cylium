@@ -20,6 +20,7 @@ import WebPageNode from "../Nodes/ScrapNodeList/webPageNode";
 import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
 import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
+import DocumentNode from "../Nodes/NodeList/documentNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
 import KanBanNode from "../Nodes/NodeList/KanBan/kanbanNode"
 import {selectNode} from "./nodeSelector";
@@ -60,6 +61,7 @@ const nodeTypes = {
     boxNodes: BoxNode,
     characterNode: CharacterNode,
     bitCoinGifNodes: BitCoinGifNode,
+    documentNodes: DocumentNode,
     metricNodes: MetricNode,
     reportNodes: ReportNode,
     standardNodes: StandardNode,
