@@ -126,6 +126,23 @@ export const selectNode = (type, id, user, color, position) => {
             position: position,
 
             data: {
+                listData: {
+
+                    tasks: {
+                        'task-1': {id: 'task-1', content: 'type something..'},
+
+                    },
+
+                    columns: {
+                        'column-1': {
+                            id: 'column-1',
+                            title: 'List',
+                            taskIds: ['task-1', ],
+                        },
+                    },
+                    // Facilitate reordering of the columns
+                    columnOrder: ['column-1'],
+                }
 
             }
         }
