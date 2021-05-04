@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 import Portal from "@material-ui/core/Portal";
+import {BiX} from "react-icons/bi";
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -26,6 +27,8 @@ function Task(props) {
                     isDragging = {snapshot.isDragging}
                 >
                     {props.task.content}
+
+                    <BiX onClick = {()=>props.deleteTask(props.column, props.task)}/>
                 </Container>
 
             )}

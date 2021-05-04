@@ -16,12 +16,26 @@ export default memo(({ data,}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [initData, setInitData] = React.useState(data.listData);
     const [contextKey, setContextKey] = React.useState('');
+    const [dragging,setDragging] =React.useState(false);
+    const [border, setBorder] = React.useState(0);
+
+
+
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+
+        if (!dragging) {
+            setAnchorEl(event.currentTarget);
+            setBorder(0)
+
+        }
+
     };
 
+
     const handleClose = () => {
+        setBorder(0);
         setAnchorEl(null);
+
     };
 
     const open = Boolean(anchorEl);
@@ -29,17 +43,25 @@ export default memo(({ data,}) => {
 
 
     const addTask = (col) => {
-        console.log(col);
-        let list = initData
-        console.log(list);
-        let newTaskID = `task - ` + Math.random().toString();
+        let list = initData;
+        let newTaskID = `task - `+ Math.random().toString();
         let newTask = {id: newTaskID, content: 'type something...'};
         list.columns[col.id].taskIds.push(newTaskID);
         list.tasks[newTaskID] = newTask;
         setInitData(list);
         data.listData = list;
-        setContextKey('_'+ Math.random().toString())
-        console.log(list)
+        setContextKey('_'+ Math.random().toString());
+    };
+
+
+    const deleteTask = (col, task) => {
+        let list = initData;
+        let taskIndex = list.columns[col.id].taskIds.indexOf(task.id);
+        list.columns[col.id].taskIds.splice(taskIndex, 1);
+        delete list.tasks[task.id];
+        data.listData = list;
+        setInitData(list)
+        setContextKey('_'+ Math.random().toString());
     };
 
 
@@ -82,14 +104,32 @@ export default memo(({ data,}) => {
 
     }
 
+    const handleDragLeave = event => {
+        event.preventDefault()
+        console.log('')
+        event.stopPropagation();
+        setBorder(0)
+    };
+    const handleDragOver = event => {
+        event.preventDefault()
+        event.stopPropagation();
+    };
+    const handleDragEnter = event => {
+        // event.preventDefault()
+        // event.stopPropagation();
+
+        setBorder(1);
+        console.log('draggedover')
+    };
+
 
     return (
 
 
 
-        <div onMouseEnter={()=>console.log('mouseover')} onDragOver={()=>console.log('draggedover')}  onDragEnter ={()=>console.log('DRAGENTER')} style={{ padding: 50, transform:'none',right: 0, }}>
+        <Box border = {border} onMouseLeave={handleDragLeave} onMouseEnter = {handleDragEnter} style={{ transform:'none', padding: 10, right: 0, }}>
 
-            <div onClick={handleClick}  style={{ padding: 50, transform:'none',right: 0, }}>
+            <div  onClick={handleClick}  style={{ padding: 0, transform:'none',right: 0, }}>
 
                 <DragDropContext
                     // onDragUpdat
@@ -142,18 +182,16 @@ export default memo(({ data,}) => {
                    {initData.columnOrder.map(columnID => {
                        const column = initData.columns[columnID];
                        const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                       return <Column addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                       return <Column deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
                    })
                    }
 
                </Box>
                 </DragDropContext>
-
-
             </Popover>
 
-        </div>
+        </Box>
     );
 })
 

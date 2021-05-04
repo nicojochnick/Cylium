@@ -40,7 +40,7 @@ function Column(props) {
 
                         ref={provided.innerRef}  innerRef={provided.innerRef} {...provided.droppableProps}>
                         {props.tasks.map((task, index) => (
-                            <Task disabled = {props.disabled} key={task.id} task={task} index={index} />
+                            <Task deleteTask = {props.deleteTask} column = {props.column} disabled = {props.disabled} key={task.id} task={task} index={index} />
                         ))}
                         {provided.placeholder}
                     </TaskList>
