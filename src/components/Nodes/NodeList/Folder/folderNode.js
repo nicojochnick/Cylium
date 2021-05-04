@@ -35,7 +35,7 @@ export default memo(({ data,}) => {
     };
 
     return (
-            <Box onMouseLeave={handleDragLeave} onMouseEnter={handleDragOver} onMouseOver = {handleDragEnter} onDragOver={handleDragEnter} onDragEnter={handleDragEnter}  border = {border} style = {{padding: 100}}>
+            <Box onMouseLeave={handleDragLeave} onMouseEnter={handleDragOver} onMouseOver = {handleDragEnter} onDragOver={handleDragEnter} onDragEnter={handleDragEnter}  border = {border} style = {{padding: 10}}>
                 <img style = {{height: 100,pointerEvents:'none' }} src = {folder}/>
             </Box>
 

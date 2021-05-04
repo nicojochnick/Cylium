@@ -45,9 +45,9 @@ function FlowController(props) {
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'document')} draggable   >
                         <BiFile  size = {23}/>
                     </Box>
-                    <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'folder')} draggable   >
-                        <BiFolder size = {23}/>
-                    </Box>
+                    {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'folder')} draggable   >*/}
+                    {/*    <BiFolder size = {23}/>*/}
+                    {/*</Box>*/}
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >
                         <BiSpreadsheet size = {25}/>
                     </Box>

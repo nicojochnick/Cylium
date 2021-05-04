@@ -47,6 +47,19 @@ export default memo(({ data,}) => {
     const id = open ? 'simple-popover' : undefined;
 
 
+    const addTask = (col) => {
+        console.log(col);
+        let list = initData
+        console.log(list);
+        let newTaskID = `task - ` + Math.random().toString();
+        let newTask = {id: newTaskID, content: 'type something...'};
+        list.columns[col.id].taskIds.push(newTaskID);
+        list.tasks[newTaskID] = newTask;
+        setInitData(list)
+        console.log(list)
+    };
+
+
     function onDragEnd(result) {
 
         const { destination, source, draggableId } = result;
@@ -91,11 +104,9 @@ export default memo(({ data,}) => {
 
 
 
-        <div  className={'nodrag'} style={{ padding: 50, transform:'none',right: 0, }}>
+        <div onMouseEnter={()=>console.log('mouseover')} onDragOver={()=>console.log('draggedover')}  onDragEnter ={()=>console.log('DRAGENTER')} style={{ padding: 50, transform:'none',right: 0, }}>
 
             <div onClick={handleClick}  style={{ padding: 50, transform:'none',right: 0, }}>
-
-
 
                 <DragDropContext
                     // onDragUpdat
@@ -108,7 +119,7 @@ export default memo(({ data,}) => {
                         {initData.columnOrder.map(columnID => {
                             const column = initData.columns[columnID];
                             const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                            return <Column  column = {column} key = {columnID} tasks = {tasks} />
+                            return <Column  column = {column} key = {columnID} tasks = {tasks} addTask = {addTask} />
 
                         })
                         }
@@ -149,7 +160,7 @@ export default memo(({ data,}) => {
                    {initData.columnOrder.map(columnID => {
                        const column = initData.columns[columnID];
                        const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                       return <Column  column = {column} key = {columnID} tasks = {tasks} />
+                       return <Column addTask = {addTask} column = {column} key = {columnID} tasks = {tasks} />
 
                    })
                    }

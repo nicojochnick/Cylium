@@ -4,6 +4,7 @@ import Task from "./task";
 import {Droppable} from "react-beautiful-dnd";
 import styled from "styled-components"
 import Portal from "@material-ui/core/Portal";
+import {BiPlus} from "react-icons/bi";
 
 const Container = styled.div`margin: 8px;
   border: 1px solid lightgrey;
@@ -26,7 +27,10 @@ const TaskList = styled.div`
 function Column(props) {
     return (
         <Container >
+            <Box display = 'flex' justifyContent = 'space-between'  style ={{padding: 5}} flexDirection = 'row' alignItems = 'center'>
             <Title> {props.column.title} </Title>
+                <BiPlus onClick = {()=>props.addTask(props.column)} />
+            </Box>
 
             <Droppable droppableId={props.column.id}>
                 {(provided,snapshot) => (
