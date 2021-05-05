@@ -1,6 +1,14 @@
 import React, {useCallback, useEffect, useRef} from 'react';
 import ReactFlow, {
-    addEdge, Background, Controls, MiniMap, ReactFlowProvider, removeElements, updateEdge, useZoomPanHelper,
+    addEdge,
+    Background,
+    Controls,
+    MiniMap,
+    ReactFlowProvider,
+    removeElements,
+    updateEdge,
+    useStoreState,
+    useZoomPanHelper,
 } from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
@@ -20,7 +28,7 @@ import WebPageNode from "../Nodes/ScrapNodeList/webPageNode";
 import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
 import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
-import DocumentNode from "../Nodes/NodeList/Document/root/documentNode"
+import DocumentNode from "../Nodes/NodeList/Document/documentNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
 import KanBanNode from "../Nodes/NodeList/KanBan/kanbanNode"
 import {selectNode} from "./nodeSelector";
@@ -163,7 +171,40 @@ function BaseChart(props) {
         triggerAutoSave()
     };
 
-    const onNodeDragStop = () => {
+
+
+    const onNodeDragStop = (event, node) => {
+
+        console.log(elements);
+        if (node.type === 'documentNodes') {
+            for (let i = 0; i < elements.length; i++) {
+                if (elements[i].type === 'kanbanNodes') {
+                    let r1 = {
+                        left: node.position.x,
+                        right: node.position.x + node.data.size[0],
+                        bottom: -node.position.y,
+                        top: -node.position.y + node.data.size[1]
+
+                    };
+                    let node2 = elements[i];
+                    let r2 = {
+                        left: node2.position.x,
+                        right: node2.position.x + node2.data.size[0],
+                        bottom: -node2.position.y,
+                        top: -node2.position.y + node2.data.size[1]
+
+                    };
+                    console.log(r1,r2)
+                    console.log('checking')
+                    if ((r1.left > r2.left &&
+                        r1.right < r2.right &&
+                        r1.top < r2.top &&
+                        r1.bottom < r2.bottom)) {
+                        console.log('intersect!')
+                    }
+                }
+            }
+        }
         triggerAutoSave()
     };
 
@@ -233,8 +274,8 @@ function BaseChart(props) {
 
 
     const onDrop = async (event) => {
+        console.log("DROPPED")
         event.preventDefault();
-
         const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
         const type = event.dataTransfer.getData('application/reactflow');
         const position = rfInstance.project({
@@ -355,10 +396,9 @@ function BaseChart(props) {
                         elements={elements}
                         onLoad={onLoad}
                         selectNodesOnDrag = {false}
-                        onNodeMouseEnter = {()=> console.log('entered')}
                         defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
-                        onNodeDragStop = {onNodeDragStop}
+                        onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}
                         elementsSelectable={true}
                         // onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
@@ -367,6 +407,7 @@ function BaseChart(props) {
                         connectionMode={'loose'}
                         onlyRenderVisibleElements={false}
                         onElementClick={onElementClick}
+
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
                         onDrop={onDrop}

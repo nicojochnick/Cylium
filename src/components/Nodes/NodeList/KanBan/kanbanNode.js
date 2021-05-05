@@ -138,7 +138,7 @@ export default memo(({ data,}) => {
                     onDragEnd={onDragEnd}
                 >
 
-                    <Box  display = 'flex' style = {{  minHeight: 100, minWidth: 300, margin: 10,translate: 'none',backgroundColor: 'white', }}>
+                    <Box  display = 'flex' style = {{  height: data.size[1], minWidth: data.size[0], margin: 10,translate: 'none',backgroundColor: 'white', }}>
                         {initData.columnOrder.map(columnID => {
                             const column = initData.columns[columnID];
                             const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);

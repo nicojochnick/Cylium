@@ -126,8 +126,8 @@ export const selectNode = (type, id, user, color, position) => {
             position: position,
 
             data: {
+                size: [600,600],
                 listData: {
-
                     tasks: {
                         'task-1': {id: 'task-1', content: 'type something..'},
 

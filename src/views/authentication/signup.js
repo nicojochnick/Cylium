@@ -56,7 +56,7 @@ class signup extends Component {
                 projectIDs: {}
 
             }).then(function() {
-                console.log("Document successfully written!");
+                console.log("DocumentApp successfully written!");
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });

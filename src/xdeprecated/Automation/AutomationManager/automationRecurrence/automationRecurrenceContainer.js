@@ -60,7 +60,7 @@ function AutomationRecurrenceContainer(props) {
                 nextDateTime: dbdates[0]
             })
                 .then(() => {
-                    console.log("Document successfully updated!");
+                    console.log("DocumentApp successfully updated!");
                 })
                 .catch(e => {
                     console.log('error' + e)

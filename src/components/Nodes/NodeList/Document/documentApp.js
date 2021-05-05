@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField/TextField";
 import Box from "@material-ui/core/Box";
-import EditablePage from "../components/editablePage";
+import EditablePage from "./DocumentApp/components/editablePage";
 
 
 function DocumentApp(props) {

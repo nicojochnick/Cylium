@@ -3,15 +3,15 @@ import Box from "@material-ui/core/Box";
 import { Rnd } from "react-rnd";
 import { BiLock,BiLockOpenAlt, BiPaint} from "react-icons/bi";
 import {Handle} from "react-flow-renderer";
-import NodeStylerBar from "../../../NodeUtils/nodeStylerBar";
+import NodeStylerBar from "../../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
-import NodeProfile from "../../../../Profile/Node/nodeProfile";
+import NodeProfile from "../../../Profile/Node/nodeProfile";
 import {BiDetail} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField/TextField";
 import Popover from "@material-ui/core/Popover/Popover";
 import {DragDropContext} from "react-beautiful-dnd";
-import Column from "../../KanBan/column";
+import Column from "../KanBan/column";
 import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -71,7 +71,7 @@ export default memo(({ data,}) => {
 
     return (
 
-        <Box onDragStart={()=>console.log('dragged')} onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {2} borderRadius = {5} style = {{width: 150, height: 200,backgroundColor: background,}}>
+        <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {2} borderRadius = {5} style = {{width: data.size[0], height: data.size[1],backgroundColor: background,}}>
         <Box borderRadius = {data.style.borderRadius} display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
             <TextField
                 onChange={(e)=> changeTitle(e.target.value)}
