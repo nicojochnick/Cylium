@@ -36,11 +36,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="282">
-                  <caret line="210" column="52" selection-start-line="210" selection-start-column="52" selection-end-line="210" selection-end-column="52" />
+                <state relative-caret-position="395">
+                  <caret line="223" column="13" lean-forward="true" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
                   <folding>
                     <element signature="e#0#60#0" expanded="true" />
-                    <marker date="1620248323853" expanded="true" signature="15347:15392" ph="..." />
+                    <marker date="1620249864467" expanded="true" signature="16067:16112" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -125,11 +125,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="137" column="41" lean-forward="true" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
+                <state relative-caret-position="133">
+                  <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-end-line="53" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -137,7 +137,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="215">
@@ -532,12 +532,12 @@
       <workItem from="1619613213754" duration="8393000" />
       <workItem from="1619717793645" duration="321000" />
       <workItem from="1619808895826" duration="3818000" />
-      <workItem from="1619910582372" duration="57644000" />
+      <workItem from="1619910582372" duration="58799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1340003000" />
+    <option name="totallyTimeSpent" value="1341158000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -889,10 +889,10 @@
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/login.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="389">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -909,22 +909,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+        <state relative-caret-position="411">
+          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="137" column="41" lean-forward="true" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -936,13 +926,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-end-line="53" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="210" column="52" selection-start-line="210" selection-start-column="52" selection-end-line="210" selection-end-column="52" />
+        <state relative-caret-position="395">
+          <caret line="223" column="13" lean-forward="true" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
-            <marker date="1620248323853" expanded="true" signature="15347:15392" ph="..." />
+            <marker date="1620249864467" expanded="true" signature="16067:16112" ph="..." />
           </folding>
         </state>
       </provider>

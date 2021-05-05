@@ -91,6 +91,7 @@ function BaseChart(props) {
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
     const [isChatOpen,openChat] = React.useState(false);
     const reactFlowWrapper = useRef(null);
+    const [refreshKey, setRefreshKey] = React.useState(' ');
 
     const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
 
@@ -209,11 +210,27 @@ function BaseChart(props) {
     };
 
     const addDocumentToList = (docNode, listNode) => {
+
+        let e = elements.slice();
+        for (let i = 0; i < e.length;i++){
+            if (listNode.id === e[i].id){
+                console.log('FOUND', e[i])
+                let list = e[i].data.listData;
+                let newTaskID = `task - `+ Math.random().toString();
+                let newTask = {id: newTaskID, content: docNode.data.title};
+                list.columns[list.columnOrder[0]].taskIds.push(newTaskID);
+                list.tasks[newTaskID] = newTask;
+
+            }
+        }
+        setElements(e);
+        setElementsToRemove(null);
+        setRefreshKey('_'+ Math.random().toString());
+
         let rem = [docNode]
         setElements((els) => removeElements(rem, els));
         setElementsToRemove(null);
         triggerAutoSave();
-
 
     };
 
@@ -398,6 +415,7 @@ function BaseChart(props) {
                         <div style = {{  width: '100vw', height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
 
                 <ReactFlow
+                        key={ refreshKey}
                         nodeTypes={nodeTypes}
                         minZoom={0.05}
                         panOnScroll={true}
