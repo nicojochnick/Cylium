@@ -160,6 +160,7 @@ function BaseChart(props) {
     };
 
     const confirmElementsRemove = ()=>{
+        console.log(elementsToRemove)
         handleClose();
         setElements((els) => removeElements(elementsToRemove, els));
         setElementsToRemove(null);
@@ -194,19 +195,28 @@ function BaseChart(props) {
                         top: -node2.position.y + node2.data.size[1]
 
                     };
-                    console.log(r1,r2)
-                    console.log('checking')
                     if ((r1.left > r2.left &&
                         r1.right < r2.right &&
                         r1.top < r2.top &&
                         r1.bottom < r2.bottom)) {
                         console.log('intersect!')
+                        addDocumentToList(node, elements[i])
                     }
                 }
             }
         }
         triggerAutoSave()
     };
+
+    const addDocumentToList = (docNode, listNode) => {
+        let rem = [docNode]
+        setElements((els) => removeElements(rem, els));
+        setElementsToRemove(null);
+        triggerAutoSave();
+
+
+    };
+
 
     const onElementClick = () => {
         triggerAutoSave()
@@ -407,7 +417,6 @@ function BaseChart(props) {
                         connectionMode={'loose'}
                         onlyRenderVisibleElements={false}
                         onElementClick={onElementClick}
-
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
                         onDrop={onDrop}

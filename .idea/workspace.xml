@@ -6,65 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/actionMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/actionMenu/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/actionMenu/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/actionMenu/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/button/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/button/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/button/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/card/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/card/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/card/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/contextMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/contextMenu/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/contextMenu/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/contextMenu/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/editableBlock/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/editableBlock/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/editablePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editablePage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/input/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/input/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/input/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/input/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/layout/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/layout/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/layout/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/notice/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/notice/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/notice/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/notice/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/tagSelectorMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/tagSelectorMenu/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/tagSelectorMenu/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/tagSelectorMenu/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/context/UserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/context/UserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/hooks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/hooks/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/hooks/useOnClickOutside.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/hooks/useOnClickOutside.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/hooks/usePrevious.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/hooks/usePrevious.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/images/close.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/images/close.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/images/draggable.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/images/draggable.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/images/github.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/images/github.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/images/more.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/images/more.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/images/trash.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/images/trash.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/images/user.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/images/user.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/404.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/activateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/activateAccount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/forgotPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/forgotPassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/p/[pid].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/p/[pid].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/pages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/pages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/resetPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/resetPassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/pages/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/pages/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/root/documentApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/root/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/shared/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/shared/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/shared/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/shared/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/utils/getCaretCoordinates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/utils/getCaretCoordinates.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/utils/getSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/utils/getSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/utils/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/utils/objectId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/utils/objectId.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/utils/setCaretToEnd.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/utils/setCaretToEnd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/authentication/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/authentication/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xdeprecated/Share/URL.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Share/URL.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -94,11 +36,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="447">
-                  <caret line="200" column="43" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
+                <state relative-caret-position="282">
+                  <caret line="210" column="52" selection-start-line="210" selection-start-column="52" selection-end-line="210" selection-end-column="52" />
                   <folding>
                     <element signature="e#0#60#0" expanded="true" />
-                    <marker date="1620244924977" expanded="true" signature="15121:15166" ph="..." />
+                    <marker date="1620248323853" expanded="true" signature="15347:15392" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -230,7 +172,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>my boxx</find>
       <find>width</find>
       <find>item</find>
       <find>font</find>
@@ -260,6 +201,7 @@
       <find>router</find>
       <find>id</find>
       <find>onNode</find>
+      <find>confirmElementsRemove</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -590,12 +532,12 @@
       <workItem from="1619613213754" duration="8393000" />
       <workItem from="1619717793645" duration="321000" />
       <workItem from="1619808895826" duration="3818000" />
-      <workItem from="1619910582372" duration="55951000" />
+      <workItem from="1619910582372" duration="57644000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1338310000" />
+    <option name="totallyTimeSpent" value="1340003000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -610,7 +552,7 @@
     <frame x="-470" y="-1055" width="1711" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.12492599" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.12492599" />
       <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -625,7 +567,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
       <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.21512248" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.21512248" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50405186" side_tool="true" weight="0.20021299" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -996,11 +938,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="200" column="43" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
+        <state relative-caret-position="282">
+          <caret line="210" column="52" selection-start-line="210" selection-start-column="52" selection-end-line="210" selection-end-column="52" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
-            <marker date="1620244924977" expanded="true" signature="15121:15166" ph="..." />
+            <marker date="1620248323853" expanded="true" signature="15347:15392" ph="..." />
           </folding>
         </state>
       </provider>
