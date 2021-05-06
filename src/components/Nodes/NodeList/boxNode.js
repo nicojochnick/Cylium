@@ -6,6 +6,7 @@ import {Handle} from "react-flow-renderer";
 import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
 import NodeProfile from "../../Profile/Node/nodeProfile";
+import TextField from "@material-ui/core/TextField/TextField";
 
 
 
@@ -14,6 +15,8 @@ export default memo(({ data,}) => {
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
+    const  [title, setTitle] =React.useState(data.title)
+
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height];
         setSize(newSize);
@@ -35,7 +38,9 @@ export default memo(({ data,}) => {
         setLocked(!locked)
     };
     const changeTitle = (text) => {
+        setTitle(text);
         data.title = text
+
     };
     return (
         <>
@@ -49,7 +54,14 @@ export default memo(({ data,}) => {
             >
 
                 <Box display = 'flex' flexDirection = 'row'  >
-                    <NodeProfile type = {data.type} changeTitle = {changeTitle} title = {data.title} />
+                    <TextField
+                        onChange={(e)=> changeTitle(e.target.value)}
+                        id="standard-basic"
+                        placeholder="Untitled"
+                        value={title}
+                        InputProps={{style: {fontSize: 30, margin: 10, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
+                    />
+
                 </Box>
 
                 {barOpen
