@@ -22,7 +22,6 @@ export default memo(({ data,}) => {
 
 
     const handleClick = (event) => {
-
         if (!dragging) {
             setAnchorEl(event.currentTarget);
             setBorder(0)
@@ -45,7 +44,15 @@ export default memo(({ data,}) => {
     const addTask = (col) => {
         let list = initData;
         let newTaskID = `task - `+ Math.random().toString();
-        let newTask = {id: newTaskID, content: 'type something...'};
+        let newTask = {id: newTaskID, title: 'type something',
+            content:[
+                    {
+                        _id: 'doc_' + Math.random().toString(),
+                        html: " ",
+                        tag: "p",
+                        imageUrl: ""
+                    }],
+        };
         list.columns[col.id].taskIds.push(newTaskID);
         list.tasks[newTaskID] = newTask;
         setInitData(list);
@@ -99,7 +106,7 @@ export default memo(({ data,}) => {
         };
 
         setInitData(newState);
-
+        data.listData = newState;
 
 
     }
@@ -126,7 +133,6 @@ export default memo(({ data,}) => {
     return (
 
 
-
         <Box border = {border} onMouseLeave={handleDragLeave} onMouseEnter = {handleDragEnter} style={{ transform:'none', padding: 10, right: 0, }}>
 
             <div  onClick={handleClick}  style={{ padding: 0, transform:'none',right: 0, }}>
@@ -139,7 +145,7 @@ export default memo(({ data,}) => {
                 >
 
                     <Box  display = 'flex' style = {{  height: data.size[1], minWidth: data.size[0], margin: 10,translate: 'none',backgroundColor: 'white', }}>
-                        {initData.columnOrder.map(columnID => {
+                        {data.listData.columnOrder.map(columnID => {
                             const column = initData.columns[columnID];
                             const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
                             return <Column  column = {column} key = {columnID} tasks = {tasks} addTask = {addTask} />
@@ -179,7 +185,7 @@ export default memo(({ data,}) => {
                 >
 
                <Box  display = 'flex' style = {{  minHeight: 100, minWidth: 300, margin: 10,translate: 'none',backgroundColor: 'white', }}>
-                   {initData.columnOrder.map(columnID => {
+                   {data.listData.columnOrder.map(columnID => {
                        const column = initData.columns[columnID];
                        const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
                        return <Column deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />

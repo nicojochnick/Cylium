@@ -89,8 +89,8 @@ export const selectNode = (type, id, user, color, position) => {
                 title: null,
                 content: [
                     {
-                        _id: "5f54d75b114c6d176d7e9765",
-                        html: "...",
+                        _id: 'doc_' + Math.random().toString(),
+                        html: " ",
                         tag: "p",
                         imageUrl: ""
                     }

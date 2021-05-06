@@ -217,7 +217,7 @@ function BaseChart(props) {
                 console.log('FOUND', e[i])
                 let list = e[i].data.listData;
                 let newTaskID = `task - `+ Math.random().toString();
-                let newTask = {id: newTaskID, content: docNode.data.title};
+                let newTask = {id: newTaskID, title:docNode.data.title,  content: docNode.data.content};
                 list.columns[list.columnOrder[0]].taskIds.push(newTaskID);
                 list.tasks[newTaskID] = newTask;
 

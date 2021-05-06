@@ -30,7 +30,7 @@ function DocumentApp(props) {
                 />
 
 
-                <EditablePage data = {props.data} />
+                <EditablePage data = {props.data} originList = {props.originList} changeContent = {props.changeContent}  />
 
                 </Box>
 
