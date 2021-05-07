@@ -4,7 +4,7 @@ import Task from "./task";
 import {Droppable} from "react-beautiful-dnd";
 import styled from "styled-components"
 import Portal from "@material-ui/core/Portal";
-import {BiPlus} from "react-icons/bi";
+import {BiPlus,BiDotsHorizontalRounded} from "react-icons/bi";
 import TextField from "@material-ui/core/TextField";
 
 const Container = styled.div
@@ -32,19 +32,28 @@ const TaskList = styled.div`
 
 
 function Column(props) {
+
+    const [title, setTitle] = React.useState(props.column.title);
+
+    const handleChangeTitle = (text) =>  {
+        setTitle(text);
+        props.changeColumnTitle(text, props.column)
+    };
+
     return (
         <Container >
             <Box display = 'flex' justifyContent = 'space-between'  style ={{padding: 5}} flexDirection = 'row' alignItems = 'center'>
             {/*<Title> {props.column.title} </Title>*/}
                 <TextField
-                    value={props.column.title}
-
+                    value={title}
+                    onChange={(e)=> handleChangeTitle(e.target.value)}
                     placeholder="Untitled"
-
                     InputProps={{style: {fontSize: 18, margin: 10, fontWeight: 500, color:'#4B494D'}, disableUnderline: true,}}
 
                 />
-                <BiPlus onClick = {()=>props.addTask(props.column)} />
+
+                <BiDotsHorizontalRounded size = {18}  style = {{margin: 5}} onClick = {()=>props.deleteColumn(props.column)} />
+                <BiPlus size = {18} style = {{margin: 5}} onClick = {()=>props.addTask(props.column)} />
             </Box>
             <Droppable droppableId={props.column.id}>
                 {(provided,snapshot) => (

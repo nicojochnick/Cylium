@@ -55,12 +55,35 @@ export default memo(({ data,}) => {
         list.columnOrder.push(newColumnID)
         setInitData(list);
         data.listData = list;
+        setContextKey('_'+ Math.random().toString());
+
+
+    };
+    //TODO: DELETE ALL TASKS AS WELL!
+    const deleteColumn = (col) => {
+
+        let list = initData;
+        delete list.columns[col.id];
+        list.columnOrder.splice(list.columnOrder.indexOf(col.id), 1,);
+
+        data.listData = list;
+        setInitData(list);
+        setContextKey('_'+ Math.random().toString());
 
     };
 
-    const deleteColumn = () => {
+    const changeColumnTitle = (title, col) => {
 
+        let list = initData;
+        list.columns[col.id].title = title;
+        setTimeout(() => {
+            data.listData = list;
+            setInitData(list);
+            setContextKey('_'+ Math.random().toString());
+        }, 3000);
     };
+
+
 
     const addTask = (col) => {
         let list = initData;
@@ -110,29 +133,66 @@ export default memo(({ data,}) => {
             return;
         }
 
-        const column = initData.columns[source.droppableId];
-        const newTaskIds = Array.from(column.taskIds);
-        newTaskIds.splice(source.index, 1);
-        newTaskIds.splice(destination.index, 0, draggableId);
+        const start = initData.columns[source.droppableId];
+        const finish = initData.columns[destination.droppableId];
 
-        const newColumn = {
-            ...column,
-            taskIds: newTaskIds,
-        };
+        if (start === finish){
 
-        const newState = {
-            ...initData,
-            columns: {
-                ...initData.columns,
-                [newColumn.id]: newColumn,
-            },
-        };
+            const newTaskIds = Array.from(start.taskIds);
+            newTaskIds.splice(source.index, 1);
+            newTaskIds.splice(destination.index, 0, draggableId);
 
-        setInitData(newState);
-        data.listData = newState;
+            const newColumn = {
+                ...start,
+                taskIds: newTaskIds,
+            };
+
+            const newState = {
+                ...initData,
+                columns: {
+                    ...initData.columns,
+                    [newColumn.id]: newColumn,
+                },
+            };
+
+            setInitData(newState);
+            data.listData = newState;
+        }
+
+            /// moving one list to another
+
+            const startTaskIds = Array.from(start.taskIds)
+            startTaskIds.splice(source.index, 1);
+            const newStart = {
+                ...start,
+                taskIds: startTaskIds,
+            };
+
+            const finishTaskIds = Array.from(finish.taskIds);
+            finishTaskIds.splice(destination.index, 0, draggableId);
+            const newFinish = {
+                ...finish,
+                taskIds: finishTaskIds,
+            };
+
+            const newState = {
+                ...initData,
+                columns: {
+                    ...initData.columns,
+                    [newStart.id]: newStart,
+                    [newFinish.id]: newFinish
+
+                },
+            };
+
+            setInitData(newState);
+            data.listData = newState;
 
 
-    }
+
+
+
+    };
 
     const handleDragLeave = event => {
         event.preventDefault()
@@ -167,6 +227,8 @@ export default memo(({ data,}) => {
                     // onClick={handleClick}
                     // onDragStart = {handleClick}
                     onDragEnd={onDragEnd}
+                    key = {contextKey}
+
                 >
 
                     <Box  display = 'flex' style = {{  height: data.size[1], minWidth: data.size[0], margin: 10,translate: 'none',backgroundColor: 'white', }}>
@@ -215,7 +277,7 @@ export default memo(({ data,}) => {
                    {data.listData.columnOrder.map(columnID => {
                        const column = initData.columns[columnID];
                        const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                       return <Column deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                       return <Column deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
                    })
                    }
