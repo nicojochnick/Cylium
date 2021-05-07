@@ -4,10 +4,16 @@ import {makeStyles} from "@material-ui/core";
 import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd';
 import Column from "./column";
+import styled from 'styled-components'
 import * as ReactDOM from "react-dom";
 import Portal from "@material-ui/core/Portal";
 import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
+
+
+const Container = styled.div ` 
+    display:flex;
+`;
 
 
 export default memo(({ data,}) => {
@@ -41,6 +47,21 @@ export default memo(({ data,}) => {
     const id = open ? 'simple-popover' : undefined;
 
 
+    const addColumn = () => {
+        let list = initData;
+        let newColumnID = `column - ` + Math.random().toString();
+        let newColumn = {id: newColumnID, title: null, taskIds: []};
+        list.columns[newColumnID] = newColumn;
+        list.columnOrder.push(newColumnID)
+        setInitData(list);
+        data.listData = list;
+
+    };
+
+    const deleteColumn = () => {
+
+    };
+
     const addTask = (col) => {
         let list = initData;
         let newTaskID = `task - `+ Math.random().toString();
@@ -59,6 +80,8 @@ export default memo(({ data,}) => {
         data.listData = list;
         setContextKey('_'+ Math.random().toString());
     };
+
+
 
 
     const deleteTask = (col, task) => {
@@ -129,6 +152,8 @@ export default memo(({ data,}) => {
         console.log('draggedover')
     };
 
+    console.log(initData)
+
 
     return (
 
@@ -136,7 +161,7 @@ export default memo(({ data,}) => {
         <Box border = {border} onMouseLeave={handleDragLeave} onMouseEnter = {handleDragEnter} style={{ transform:'none', padding: 10, right: 0, }}>
 
             <div  onClick={handleClick}  style={{ padding: 0, transform:'none',right: 0, }}>
-
+        <Container>
                 <DragDropContext
                     // onDragUpdat
                     // onClick={handleClick}
@@ -155,6 +180,7 @@ export default memo(({ data,}) => {
 
                     </Box>
                 </DragDropContext>
+            </Container>
             </div>
 
             <Popover
@@ -175,6 +201,7 @@ export default memo(({ data,}) => {
                     horizontal: 'center',
                 }}
             >
+                <Container>
 
 
                 <DragDropContext
@@ -195,6 +222,11 @@ export default memo(({ data,}) => {
 
                </Box>
                 </DragDropContext>
+                    <div style={{height: 30, margin: 10}}>
+                    <Button onClick={addColumn} variant={'outlined'}> Add a List </Button>
+                    </div>
+
+                </Container>
             </Popover>
 
         </Box>
