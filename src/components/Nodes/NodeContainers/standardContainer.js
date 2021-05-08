@@ -5,6 +5,8 @@ import {Rnd} from "react-rnd";
 import BoxNode from "../NodeList/boxNode"
 import NoteNode from "../NodeList/noteNode"
 import LabelNode from "../NodeList/labelNode"
+import TableNode from "../NodeList/Table/tableNode"
+
 import DocumentNode from "../NodeList/Document/documentNode"
 
 export default memo(({ data,}) => {
@@ -37,6 +39,9 @@ export default memo(({ data,}) => {
                 return <NoteNode size = {size} data = {contextData}/>;
             case 'label':
                 return <LabelNode size = {size} data = {contextData}/>;
+            case 'table':
+                return <TableNode size = {size} data = {contextData}/>;
+
             default:
                 return null;
         }

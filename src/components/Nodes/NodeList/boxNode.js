@@ -15,7 +15,7 @@ export default memo(({ data,}) => {
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
-    const  [title, setTitle] =React.useState(data.title)
+    const  [title, setTitle] =React.useState(data.title);
 
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height];

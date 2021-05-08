@@ -24,13 +24,11 @@ function NodeProfile(props) {
         }
 
     };
-
     const changeTitle = (text) => {
         setTitle(text)
       props.changeTitle(text)
 
     };
-
     useEffect(() => {
         if (props.size === 'small'){
             setAvatarClass('small');
@@ -38,9 +36,6 @@ function NodeProfile(props) {
         }
 
     }, []);
-
-
-
 
     return (
         <Box style = {{height: 100}} display = 'flex' flexDirection = 'row' alignItems = 'center' justifyContent = 'center' >

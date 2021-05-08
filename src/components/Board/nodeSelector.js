@@ -148,7 +148,22 @@ export const selectNode = (type, id, user, color, position) => {
         }
     }
 
+    if (type === 'table') {
 
+        node = {
+            type: 'standardNodes',
+            id: id,
+            position: position,
+            data: {
+                title: null,
+                type: 'table',
+                size: [1000, 600],
+                tableData: {},
+                style: {bgColor: '#F3EC77', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+
+            }
+        }
+    };
 
 
     if (type ==='note'){
@@ -162,13 +177,14 @@ export const selectNode = (type, id, user, color, position) => {
                 text: null,
                 size: [300,300],
                 title: null,
-                style: {bgColor: '#F3EC77', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+                style: {bgColor: 'white', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
             },
             position: position,
 
         }
     }
-    if (type =='todo') {
+
+    if (type === 'todo') {
         node = {
             id: id,
             connectionMode: 'loose',
