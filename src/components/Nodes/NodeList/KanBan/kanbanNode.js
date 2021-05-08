@@ -64,9 +64,25 @@ export default memo(({ data,}) => {
     //TODO: DELETE ALL TASKS AS WELL!
     const deleteColumn = (col) => {
 
+        console.log(col)
+
         let list = initData;
-        delete list.columns[col.id];
+        console.log(initData);
+
         list.columnOrder.splice(list.columnOrder.indexOf(col.id), 1,);
+        delete list.columns[col.id];
+        console.log(list);
+
+        console.log(list)
+        let keys = Object.keys(list.tasks);
+        for (let i = 0; i < keys.length; i++){
+            if (col.taskIds.includes(keys[i])){
+                delete list.tasks[keys[i]]
+            }
+        }
+
+        console.log(list)
+
 
         data.listData = list;
         setInitData(list);
@@ -89,11 +105,11 @@ export default memo(({ data,}) => {
 
     const addTask = (col) => {
         let list = initData;
-        let newTaskID = `task - `+ Math.random().toString();
+        let newTaskID = `task - `+ Math.random().toString() * Math.random().toString();
         let newTask = {id: newTaskID, title: 'type something',
             content:[
                     {
-                        _id: 'doc_' + Math.random().toString(),
+                        _id: 'doc_' + Math.random().toString() * Math.random().toString() ,
                         html: " ",
                         tag: "p",
                         imageUrl: ""
@@ -110,13 +126,26 @@ export default memo(({ data,}) => {
 
 
     const deleteTask = (col, task) => {
-        let list = initData;
-        let taskIndex = list.columns[col.id].taskIds.indexOf(task.id);
-        list.columns[col.id].taskIds.splice(taskIndex, 1);
-        delete list.tasks[task.id];
-        data.listData = list;
-        setInitData(list)
-        setContextKey('_'+ Math.random().toString());
+        if (task && col) {
+
+            let list = initData;
+
+            console.log(list, col, task)
+
+            let taskIndex = list.columns[col.id].taskIds.indexOf(task.id);
+            list.columns[col.id].taskIds.splice(taskIndex, 1);
+
+            delete list.tasks[task.id];
+
+            data.listData = list;
+            setInitData(list);
+            console.log(list)
+            setContextKey('_' + Math.random().toString());
+
+
+        } else {
+            console.log('CANT DELETE TASK: no column or task args ')
+        }
     };
 
 
@@ -209,10 +238,6 @@ export default memo(({ data,}) => {
             setInitData(newState);
             data.listData = newState;
 
-
-
-
-
     };
 
     const handleDragLeave = event => {
@@ -233,7 +258,7 @@ export default memo(({ data,}) => {
         console.log('draggedover')
     };
 
-    console.log(initData)
+
 
 
     return (
@@ -261,7 +286,7 @@ export default memo(({ data,}) => {
                             ref={provided.innerRef}
                         >
                             <Box  display = 'flex' style = {{  minHeight: 100, minWidth: 300, margin: 10,translate: 'none',backgroundColor: 'white', }}>
-                                {data.listData.columnOrder.map((columnID,index) => {
+                                {initData.columnOrder.map((columnID,index) => {
                                     const column = initData.columns[columnID];
                                     const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
                                     return <Column index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
@@ -311,7 +336,7 @@ export default memo(({ data,}) => {
                                 ref={provided.innerRef}
                             >
                                 <Box  display = 'flex' style = {{  minHeight: 100, minWidth: 300, margin: 10,translate: 'none',backgroundColor: 'white', }}>
-                                    {data.listData.columnOrder.map((columnID,index) => {
+                                    {initData.columnOrder.map((columnID,index) => {
                                         const column = initData.columns[columnID];
                                         const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
                                         return <Column index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />

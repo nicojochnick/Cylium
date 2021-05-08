@@ -41,7 +41,7 @@ function Column(props) {
         props.changeColumnTitle(text, props.column)
     };
     return (
-        <Draggable index = {props.index} draggableId = {props.column.id}>
+        <Draggable isDragDisabled = {props.disabled} index = {props.index} draggableId = {props.column.id}>
             { provided => (
                 <Container  {...provided.draggableProps} ref={provided.innerRef}  >
                     <Box  {...provided.dragHandleProps}  ref={provided.innerRef}  display = 'flex' justifyContent = 'space-between'  style ={{padding: 5}} flexDirection = 'row' alignItems = 'center'>
@@ -51,9 +51,7 @@ function Column(props) {
                             onChange={(e)=> handleChangeTitle(e.target.value)}
                             placeholder="Untitled"
                             InputProps={{style: {fontSize: 18, margin: 10, fontWeight: 500, color:'#4B494D'}, disableUnderline: true,}}
-
                         />
-
                         <BiDotsHorizontalRounded size = {18}  style = {{margin: 5}} onClick = {()=>props.deleteColumn(props.column)} />
                         <BiPlus size = {18} style = {{margin: 5}} onClick = {()=>props.addTask(props.column)} />
                     </Box>

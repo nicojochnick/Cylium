@@ -137,7 +137,7 @@ export const selectNode = (type, id, user, color, position) => {
                         'column-1': {
                             id: 'column-1',
                             title: 'List',
-                            taskIds: ['task-1', ],
+                            taskIds: ['task-1'],
                         },
                     },
                     // Facilitate reordering of the columns
@@ -151,7 +151,7 @@ export const selectNode = (type, id, user, color, position) => {
 
 
 
-    if (type =='note'){
+    if (type ==='note'){
         node = {
             id:id ,
             draggable:true,
