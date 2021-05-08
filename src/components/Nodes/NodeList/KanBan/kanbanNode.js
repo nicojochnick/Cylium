@@ -61,37 +61,23 @@ export default memo(({ data,}) => {
 
 
     };
-    //TODO: DELETE ALL TASKS AS WELL!
     const deleteColumn = (col) => {
-
-        console.log(col)
-
         let list = initData;
-        console.log(initData);
-
         list.columnOrder.splice(list.columnOrder.indexOf(col.id), 1,);
         delete list.columns[col.id];
-        console.log(list);
 
-        console.log(list)
         let keys = Object.keys(list.tasks);
         for (let i = 0; i < keys.length; i++){
             if (col.taskIds.includes(keys[i])){
                 delete list.tasks[keys[i]]
             }
         }
-
-        console.log(list)
-
-
         data.listData = list;
         setInitData(list);
         setContextKey('_'+ Math.random().toString());
-
     };
 
     const changeColumnTitle = (title, col) => {
-
         let list = initData;
         list.columns[col.id].title = title;
         setTimeout(() => {
@@ -127,16 +113,10 @@ export default memo(({ data,}) => {
 
     const deleteTask = (col, task) => {
         if (task && col) {
-
             let list = initData;
-
-            console.log(list, col, task)
-
             let taskIndex = list.columns[col.id].taskIds.indexOf(task.id);
             list.columns[col.id].taskIds.splice(taskIndex, 1);
-
             delete list.tasks[task.id];
-
             data.listData = list;
             setInitData(list);
             console.log(list)
