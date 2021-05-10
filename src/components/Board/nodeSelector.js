@@ -2,7 +2,7 @@
 export const selectNode = (type, id, user, color, position) => {
     let node = null;
 
-    if (type =='label'){
+    if (type ==='label'){
         node = {
             id:id ,
             draggable:true,
@@ -163,8 +163,7 @@ export const selectNode = (type, id, user, color, position) => {
 
             }
         }
-    };
-
+    }
 
     if (type ==='note'){
         node = {
@@ -210,7 +209,7 @@ export const selectNode = (type, id, user, color, position) => {
             position: position,
         }
     }
-    if (type == 'avatar') {
+    if (type === 'avatar') {
         node = {
             id: id,
             draggable: true,
@@ -222,7 +221,7 @@ export const selectNode = (type, id, user, color, position) => {
             position: position,
         }
     }
-    if (type == 'graph') {
+    if (type === 'graph') {
         node = {
             id: id,
             draggable: true,

@@ -7,14 +7,19 @@ import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
 import NodeProfile from "../../Profile/Node/nodeProfile";
 import TextField from "@material-ui/core/TextField/TextField";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
+
 
 
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
+    const [hasHeader, setHasHeader] = React.useState(false)
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
+    const [buttonsHidden, setButtonsHidden] = React.useState(true);
     const  [title, setTitle] =React.useState(data.title);
 
     const onResizeStop = (delta) => {
@@ -45,13 +50,37 @@ export default memo(({ data,}) => {
     return (
         <>
             <Box
-                style = {{margin: 40}}
+                style = {{margin: 100}}
                 display='flex'
-                flexDirection='row'
-                alignItems = 'space-between'
-                justifyContent = 'space-between'
+                flexDirection='column'
+                // alignItems = 'space-between'
+                // justifyContent = 'space-between'
 
             >
+                {hasHeader
+
+                    ?
+                    <Box>
+
+
+                    </Box>
+
+                    : null
+
+
+                }
+
+                <Box display='flex' flexDirection='row' onMouseLeave={()=>setButtonsHidden(true)} onMouseEnter={()=>setButtonsHidden(false)} style = {{height: 40}}>
+                    {!buttonsHidden
+
+                        ? <Box display='flex' flexDirection='row'>
+                            <Button>Add Icon</Button>
+                            <Button>Add Cover</Button>
+                        </Box>
+                        : null
+
+                    }
+                </Box>
 
                 <Box display = 'flex' flexDirection = 'row'  >
                     <TextField
@@ -59,7 +88,7 @@ export default memo(({ data,}) => {
                         id="standard-basic"
                         placeholder="Untitled"
                         value={title}
-                        InputProps={{style: {fontSize: 30, margin: 10, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
+                        InputProps={{style: {fontSize: 60, margin: 10, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
                     />
 
                 </Box>
