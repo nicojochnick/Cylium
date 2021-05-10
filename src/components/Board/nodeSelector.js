@@ -51,6 +51,8 @@ export const selectNode = (type, id, user, color, position) => {
                 type: 'box',
                 title: null,
                 locked: false,
+                icon: null,
+                cover: null,
                 style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 size: [2000,1000]
 
