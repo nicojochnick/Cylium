@@ -7,8 +7,8 @@ import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
-import {BsCardText,BsFileSpreadsheet,BsFileText} from "react-icons/bs"
-import {BiLineChart,BiFile, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiPulse, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiRectangle, BiText, BiUserCircle} from "react-icons/bi";
+import {BsCardText,BsFileSpreadsheet,BsFileText, BsKanban} from "react-icons/bs"
+import {BiLineChart,BiFile, BiData, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiListPlus, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiMenu, BiText, BiUserCircle} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 
 function FlowController(props) {
@@ -29,7 +29,7 @@ function FlowController(props) {
 
     return (
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
-                <Box borderRadius = {30} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`, padding: 10, overflow:'hidden', backgroundColor: 'white'}}>
+                <Box borderRadius = {30} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`, padding: 10, overflow:'hidden', color: props.user.theme === 'dark' ? 'white' : '#363638', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}>
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >
                         <BiCubeAlt  size = {25}/>
                     </Box>
@@ -49,10 +49,10 @@ function FlowController(props) {
                     {/*    <BiFolder size = {23}/>*/}
                     {/*</Box>*/}
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >
-                        <BiSpreadsheet size = {25}/>
+                        <BiMenu size = {25}/>
                     </Box>
                     <Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'table')} draggable   >
-                        <BiTable  size = {23}/>
+                        <BiData  size = {23}/>
                     </Box>
                 </Box>
 

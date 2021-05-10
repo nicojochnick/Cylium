@@ -115,13 +115,16 @@ function UserProfile(props) {
                 <Avatar src={imageAsUrl.imgUrl} className = {classes.large}></Avatar>
                     </label>
                 </Box>
+                <div style = {{color: props.user.theme === 'light' ? 'white' : 'black'}}>
                 <TextField
                     onChange={e => handleNameChange(e.target.value)}
                     id="filled-basic"
                     label="Name"
+
                     placeholder='John Doe'
                     value = {name}
                 />
+                </div>
                 {isEditing
                     ? <Button  style = {{height: 30, margin: 5}} variant={'contained'}
                         onClick={(event)=>handleSave(event)}

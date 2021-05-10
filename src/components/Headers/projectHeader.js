@@ -7,9 +7,9 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import TextField from "@material-ui/core/TextField";
-import {editProjectName, followProject, unfollowProject} from "../../api/firestore";
+import {editProjectName, followProject, switchUserTheme, unfollowProject} from "../../api/firestore";
 import ProjectProfile from "../Profile/Project/projectProfile";
-import { BiBell, BiSearch, BiWorld, BiStar, BiMessage, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
+import { BiBell, BiSearch, BiWorld, BiStar,BiMoon, BiMessage, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
 import ProjectGroup from "../Groups/projectGroup";
 import {Redirect} from "react-router";
@@ -102,6 +102,14 @@ function ProjectHeader(props) {
         return filtered
     };
 
+    const switchTheme = () => {
+        let theme = 'light';
+        if (props.user.theme === 'light'){
+            theme = 'dark'
+        }
+        switchUserTheme(props.user.email, theme)
+    }
+
     useEffect(async () => {
         const projectRef = db.collection('channels');
         const snapshot = await projectRef.get();
@@ -121,11 +129,11 @@ function ProjectHeader(props) {
                 : null
             }
             <div/>
-        <Box borderRadius = {20} style = {{ height: 75, marginLeft: 30, backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
+        <Box borderRadius = {20} style = {{ height: 75, marginLeft: 30, backgroundColor:props.user.theme === 'light' ? 'white' : '#363638', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
 
 
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
-                <ProjectProfile channel = {props.channel} />
+                <ProjectProfile user = {props.user} channel = {props.channel} />
             </Box>
                 <div>
                 <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>
@@ -182,7 +190,7 @@ function ProjectHeader(props) {
                 </Box>
                 </div>
         </Box>
-            <Box borderRadius = {100} style = {{marginRight: 50, height: 70,width: 70, backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
+            <Box borderRadius = {100} style = {{marginRight: 50, height: 70,width: 70, backgroundColor:props.user.theme === 'light' ? 'white' : '#363638',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
                 <Box component="span" style = {{padding: 0}} border = {2} borderColor = {'lightgrey'} borderRadius = {50}>
 
                 <Avatar onClick = {handleCloseDiag} src = {props.user.img_url_Profile.imgUrl} className = {classes.large} />
@@ -192,21 +200,45 @@ function ProjectHeader(props) {
             <Dialog
                 open={openDiag}
                 maxWidth={'xs'}
+                PaperProps={{
+
+                    style: {
+                        backgroundColor: props.user.theme === 'light' ? 'white' : 'black',
+                    },
+
+
+                }}
+                style = {{}}
                 onClose={handleCloseDiag}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle>
-                    Profile
-                </DialogTitle>
+
+                <p style = {{color:props.user.theme === 'light' ? 'black' : 'white', fontSize: 25, margin: 20}}> Account </p>
 
                 <DialogContent>
 
-                    <Divider style = {{marginBottom: 5}} />
+                    <Divider style = {{marginBottom: 5,backgroundColor:props.user.theme === 'light' ? 'black' : 'white'}} />
 
                     <UserProfile user = {props.user} />
 
-                    <Divider style = {{marginBottom: 5}} />
+
+
+                    <Box  style = {{marginTop: 5}} display = 'flex' flexDirection = 'row'  alignItems = 'center'>
+
+                        <p style = {{color: props.user.theme === 'light' ? 'black' : 'white'}}> Theme: </p>
+
+                        <IconButton>
+                            {
+                                <BiMoon onClick = {switchTheme} style = {{color: props.user.theme === 'light' ? 'black' : 'white'}} />
+                            }
+                        </IconButton>
+
+
+                    </Box>
+
+
+                    <Divider style = {{marginBottom: 5,backgroundColor:props.user.theme === 'light' ? 'black' : 'white'}} />
 
 
                     <Button style = {{backgroundColor: "#5F7FFF", margin:10}} onClick={()=>signout()} variant="contained" color="primary">

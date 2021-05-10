@@ -135,7 +135,7 @@ function ProjectProfile(props) {
                     style ={{fontSize: 19, fontWeight: 500}}
                     onChange={(event) => changeName(event.target.value)}
                     defaultValue={projectTitle}
-                    InputProps={{style: {fontSize: 23, margin: 5, marginBottom:-1, fontWeight: 600, color:'#434343'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: 23, margin: 5, marginBottom:-1, fontWeight: 600, color:props.user.theme === 'dark' ? 'white' : '#363638'}, disableUnderline: true,}}
                 />
                 <TextField
                     fullWidth={true}
@@ -145,7 +145,7 @@ function ProjectProfile(props) {
                     rowsMax={1}
                     onChange={(event) => changeBio(event.target.value)}
                     defaultValue={projectBio}
-                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:'#434343',}, disableUnderline: true,}}/>
+                    InputProps={{style: {fontSize: 15, margin: 5, marginTop: -5, fontWeight: 300, color:props.user.theme === 'dark' ? 'white' : '#363638'}, disableUnderline: true,}}/>
 
                 </Box>
 

@@ -50,7 +50,7 @@ function NodeProfile(props) {
                     id="standard-basic"
                     placeholder="Untitled"
                     value={title}
-                    InputProps={{style: {fontSize: textStyle.fontSize, margin: textStyle.margin, fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
+                    InputProps={{style: {fontSize: textStyle.fontSize, margin: textStyle.margin, fontWeight: 600, color:props.user.theme === 'dark' ? 'white' : '#363638'}, disableUnderline: true,}}
                 />
 
 

@@ -27,6 +27,19 @@ export async function saveViewPort(projectIDs, userID){
 }
 
 
+export async function switchUserTheme( userID, theme){
+
+    db.collection('users').doc(userID).update({
+        theme: theme
+    }).then(() => {
+        console.log("theme updated" );
+    }).catch((error) => {
+        console.error("Error adding user to channel", error);
+    });
+}
+
+
+
 export async function followProject(userID, projectID, projectIDs) {
 
 

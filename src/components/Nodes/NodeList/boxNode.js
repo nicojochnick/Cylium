@@ -150,7 +150,7 @@ export default memo(({ data,}) => {
                         id="standard-basic"
                         placeholder="Untitled"
                         value={title}
-                        InputProps={{style: {fontSize: 60, margin: 10,  marginTop: -10,fontWeight: 600, color:'#4B494D'}, disableUnderline: true,}}
+                        InputProps={{style: {fontSize: 60, margin: 10,  marginTop: -10,fontWeight: 600, color:'white'}, disableUnderline: true,}}
                     />
 
                 </Box>

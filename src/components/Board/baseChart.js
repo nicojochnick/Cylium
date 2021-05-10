@@ -363,7 +363,7 @@ function BaseChart(props) {
                         marginRight: 20,
                     }}
                 >
-                    <FlowController color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
+                    <FlowController user = {props.user} color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
                 </Box>
 
             </Box>
@@ -441,6 +441,11 @@ function BaseChart(props) {
                         onDragOver={onDragOver}
                     >
 
+                    {/*<Controls*/}
+
+                    {/*    style = {{backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}*/}
+                    {/*    />*/}
+
 
                         {/*<MiniMap*/}
                         {/*    nodeColor={props.channel.color}*/}
@@ -454,8 +459,8 @@ function BaseChart(props) {
 
                         <Background
                             variant = "dots"
-                            color = "#3B3C50"
-                            // style = {{backgroundColor:'#F9F9F9'}}
+                            color = {props.user.theme  === 'light' ? "#3B3C50" : 'lightgrey'}
+                            style = {{backgroundColor:props.user.theme === 'light' ? 'white' : '#29292A'}}
                             // gap={18}
                             // size={1}
                         />
@@ -480,7 +485,6 @@ function BaseChart(props) {
                                 }
                             </Box>
                         </Box>
-                <Controls />
 
             </ReactFlow>
                 </div>
