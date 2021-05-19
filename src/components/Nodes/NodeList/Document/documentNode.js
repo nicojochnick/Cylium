@@ -72,9 +72,7 @@ export default memo(({ data,}) => {
         setTitle(text);
         data.title = text
     };
-
     return (
-
         <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: data.style.bgColor,}}>
         <Box  display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
             <TextField
@@ -85,7 +83,6 @@ export default memo(({ data,}) => {
                 InputProps={{style: {fontSize: 20, textTransform: 'capitalized', margin: 10, color:backgroundColor.isDark() ? 'white' : 'black'}, disableUnderline: true,}}
             />
             <Box onClick={handleClick} display = 'flex' style = {{}}>
-
             </Box>
             {/*<Divider/>*/}
             {/*<Box*/}
@@ -93,7 +90,6 @@ export default memo(({ data,}) => {
             {/*    display='flex'*/}
             {/*    flexDirection='row'*/}
             {/*>*/}
-
             {/*</Box>*/}
         </Box>
 

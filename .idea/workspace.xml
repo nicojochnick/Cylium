@@ -7,11 +7,8 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,119 +21,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="100" column="146" selection-start-line="100" selection-start-column="146" selection-end-line="100" selection-end-column="146" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2080">
-              <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3019">
-              <caret line="12" column="24" selection-start-line="12" selection-end-line="13" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="51" column="99" lean-forward="true" selection-start-line="51" selection-start-column="99" selection-end-line="51" selection-end-column="143" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
-              <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="101" column="158" selection-start-line="101" selection-start-column="158" selection-end-line="101" selection-end-column="165" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1432">
-              <caret line="312" column="59" selection-start-line="312" selection-start-column="55" selection-end-line="312" selection-end-column="59" />
+            <state relative-caret-position="276">
+              <caret line="472" column="107" selection-start-line="472" selection-start-column="107" selection-end-line="472" selection-end-column="107" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
-                <marker date="1621385589866" expanded="true" signature="16292:16328" ph="..." />
+                <marker date="1621432392121" expanded="true" signature="16292:16328" ph="..." />
               </folding>
             </state>
           </provider>
@@ -243,13 +135,13 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
       </list>
     </option>
   </component>
@@ -527,12 +419,12 @@
       <workItem from="1620741807715" duration="1488000" />
       <workItem from="1620835598771" duration="3515000" />
       <workItem from="1621023226057" duration="1442000" />
-      <workItem from="1621369131454" duration="7139000" />
+      <workItem from="1621369131454" duration="7979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1389217000" />
+    <option name="totallyTimeSpent" value="1390057000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -569,29 +461,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77581865" visible="true" weight="0.11001557" />
-      <window_info id="Structure" order="1" sideWeight="0.22418135" side_tool="true" weight="0.13094603" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32055378" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32938075" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39789197" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.03952569" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32938075" />
-      <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32946146" />
-      <window_info anchor="bottom" id="RNConsole" order="10" weight="0.3290735" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49594814" visible="true" weight="0.17678382" />
-      <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50405186" side_tool="true" weight="0.20021299" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -883,81 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1432">
-          <caret line="312" column="59" selection-start-line="312" selection-start-column="55" selection-end-line="312" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-            <marker date="1621385589866" expanded="true" signature="16292:16328" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="101" column="158" selection-start-line="101" selection-start-column="158" selection-end-line="101" selection-end-column="165" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3019">
-          <caret line="12" column="24" selection-start-line="12" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="51" column="99" lean-forward="true" selection-start-line="51" selection-start-column="99" selection-end-line="51" selection-end-column="143" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -973,10 +771,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
+        <state relative-caret-position="1289">
+          <caret line="84" column="69" selection-start-line="84" selection-start-column="69" selection-end-line="84" selection-end-column="69" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2080">
+          <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3019">
+          <caret line="12" column="24" selection-start-line="12" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="51" column="99" lean-forward="true" selection-start-line="51" selection-start-column="99" selection-end-line="51" selection-end-column="143" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-264">
+          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="101" column="158" selection-start-line="101" selection-start-column="158" selection-end-line="101" selection-end-column="165" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="472" column="107" selection-start-line="472" selection-start-column="107" selection-end-line="472" selection-end-column="107" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+            <marker date="1621432392121" expanded="true" signature="16292:16328" ph="..." />
           </folding>
         </state>
       </provider>

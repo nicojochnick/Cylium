@@ -469,8 +469,8 @@ function BaseChart(props) {
                                 { saving
                                     ?
                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
-                                        <p> Saving </p>
-                                        <PuffLoader color={'black'} loading={true} size={25} />
+                                        <p style = {{color: props.user.theme === 'dark' ? 'white ' : 'black'}}> Saving </p>
+                                        <PuffLoader color={props.user.theme === 'dark' ? 'white ' : 'black'} loading={true} size={25} />
                                     </Box>
                                     :
                                      <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>

@@ -21,7 +21,6 @@ const Container = styled.div `
 
 export default memo(({ data,}) => {
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [initData, setInitData] = React.useState(data.listData);
     const [contextKey, setContextKey] = React.useState('');
@@ -29,18 +28,15 @@ export default memo(({ data,}) => {
     const [border, setBorder] = React.useState(0);
     const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor))
 
-
     const handleClick = (event) => {
         if (!dragging) {
             setAnchorEl(event.currentTarget);
             setBorder(0)}
-
     };
 
     const handleClose = () => {
         setBorder(0);
         setAnchorEl(null);
-
     };
 
     const open = Boolean(anchorEl);
