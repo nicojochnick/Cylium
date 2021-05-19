@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,12 +33,12 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="506">
-                  <caret line="77" selection-start-line="77" selection-end-line="77" />
+                <state relative-caret-position="310">
+                  <caret line="430" column="30" selection-start-line="430" selection-start-column="30" selection-end-line="430" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#60#0" expanded="true" />
                     <element signature="e#1472#1514#0" expanded="true" />
-                    <marker date="1621433164855" expanded="true" signature="16264:16300" ph="..." />
+                    <marker date="1621439398280" expanded="true" signature="16264:16300" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -57,14 +56,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="259">
-                  <caret line="84" column="69" selection-start-line="84" selection-start-column="69" selection-end-line="84" selection-end-column="69" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="168">
+                  <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
@@ -93,11 +89,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="112">
-                  <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+                  <caret line="105" selection-start-line="105" selection-end-line="105" />
                   <folding>
                     <element signature="e#0#45#0" expanded="true" />
                   </folding>
@@ -163,8 +159,8 @@
       <find>onNode</find>
       <find>confirmElementsRemove</find>
       <find>user</find>
-      <find>data</find>
       <find>initData</find>
+      <find>data</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -223,14 +219,14 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" />
         <option value="$PROJECT_DIR$/src/views/landerViews/home.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
       </list>
     </option>
   </component>
@@ -539,12 +535,12 @@
       <workItem from="1620741807715" duration="1488000" />
       <workItem from="1620835598771" duration="3515000" />
       <workItem from="1621023226057" duration="1442000" />
-      <workItem from="1621369131454" duration="11158000" />
+      <workItem from="1621369131454" duration="13056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1393236000" />
+    <option name="totallyTimeSpent" value="1395134000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -559,7 +555,7 @@
     <frame x="0" y="25" width="1440" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7747626" visible="true" weight="0.10719323" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7747626" visible="true" weight="0.10719323" />
       <window_info id="Structure" order="1" sideWeight="0.22523744" side_tool="true" weight="0.13571961" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -569,7 +565,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3972311" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="6" sideWeight="0.49594814" visible="true" weight="0.21475627" />
+      <window_info anchor="bottom" id="Terminal" order="6" sideWeight="0.49594814" visible="true" weight="0.21475627" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.03952569" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32938075" />
@@ -903,16 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="84" column="69" selection-start-line="84" selection-start-column="69" selection-end-line="84" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/landerViews/lander.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -959,18 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-            <element signature="e#1472#1514#0" expanded="true" />
-            <marker date="1621433164855" expanded="true" signature="16264:16300" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
@@ -984,10 +958,29 @@
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="430" column="30" selection-start-line="430" selection-start-column="30" selection-end-line="430" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+            <element signature="e#1472#1514#0" expanded="true" />
+            <marker date="1621439398280" expanded="true" signature="16264:16300" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
         </state>
       </provider>
     </entry>

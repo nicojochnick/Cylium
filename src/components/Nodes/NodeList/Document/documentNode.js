@@ -6,7 +6,7 @@ import {Handle} from "react-flow-renderer";
 import NodeStylerBar from "../../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
 import NodeProfile from "../../../Profile/Node/nodeProfile";
-import {BiDetail} from "react-icons/bi";
+import {BiDotsVerticalRounded, BiGridVertical} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField/TextField";
 import Popover from "@material-ui/core/Popover/Popover";
@@ -24,6 +24,7 @@ export default memo(({ data,}) => {
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
+    const [isHovering, setIsHovering] = React.useState(false);
     const [background,setBackGround] = React.useState(data.style.bgColor);
     const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor))
 
@@ -72,9 +73,24 @@ export default memo(({ data,}) => {
         setTitle(text);
         data.title = text
     };
+
+    const onHoverEnter = () =>{
+        setIsHovering(true)
+
+    };
+
+    const onHoverLeave = () =>{
+        setIsHovering(false)
+
+
+    }
     return (
-        <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: data.style.bgColor,}}>
-        <Box  display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
+        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: data.style.bgColor,}}>
+        <Box  display={'flex'} flexDirection ='row' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
+            {isHovering
+                ? <BiGridVertical size={25} style={{color: 'white'}}/>
+                : null
+            }
             <TextField
                 onChange={(e)=> changeTitle(e.target.value)}
                 id="standard-basic"
@@ -91,6 +107,10 @@ export default memo(({ data,}) => {
             {/*    flexDirection='row'*/}
             {/*>*/}
             {/*</Box>*/}
+            {isHovering
+                ? <BiDotsVerticalRounded size={25} style={{color: 'white'}}/>
+                : null
+            }
         </Box>
 
             <Dialog
