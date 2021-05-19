@@ -123,15 +123,28 @@ export const selectNode = (type, id, user, color, position) => {
     if (type =='kanban') {
 
         node = {
-            type: 'kanbanNodes',
+            type: 'standardNodes',
             id: id,
             position: position,
 
             data: {
-                size: [600,600],
+                size: [600,300],
+                type: 'list',
+                style: {bgColor: 'white', borderRadius: 10, border: 3, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 listData: {
                     tasks: {
-                        'task-1': {id: 'task-1', content: 'type something..'},
+                        'task-1': {
+                            id: 'task-1',
+                            title: 'type something..',
+                            content:[
+                                    {
+                                    _id: 'doc_' + Math.random().toString() * Math.random().toString() ,
+                                    html: " ",
+                                    tag: "p",
+                                    imageUrl: ""
+                                }
+                                ],
+                        },
 
                     },
 

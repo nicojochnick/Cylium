@@ -234,7 +234,6 @@ function BaseChart(props) {
 
     };
 
-
     const onElementClick = () => {
         triggerAutoSave()
 
@@ -347,9 +346,6 @@ function BaseChart(props) {
 
         }
     }, [props.channel]);
-
-
-
 
     return (
 

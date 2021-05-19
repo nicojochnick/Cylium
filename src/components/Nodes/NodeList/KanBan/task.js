@@ -12,10 +12,14 @@ import {makeStyles} from "@material-ui/core";
 
 const Container = styled.div`
   border: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   border-radius: 2px;
   padding: 8px;
   margin-bottom: 8px;
-  background-color: ${props => (props.isDragging ? 'lightgreen': 'white')}
+  background-color: ${props => (props.backgroundColor.lighten(0.5))}
   
 `;
 
@@ -53,16 +57,23 @@ function Task(props) {
             {(provided, snapshot) => (
 
                 <Container
+                    backgroundColor={props.backgroundColor}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                     innerRef={provided.innerRef}
                     isDragging = {snapshot.isDragging}
                 >
+                    <p style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', fontWeight: 600}}>
                     {props.task.title}
+                    </p>
 
-                    <BiX onClick = {()=>props.deleteTask(props.column, props.task)}/>
-                    <BiExpand onClick={handleClick} />
+                    <Box display = 'flex' flexDirection = 'row'>
+
+                    <BiX style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick = {()=>props.deleteTask(props.column, props.task)}/>
+                    <BiExpand style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick={handleClick} />
+
+                    </Box>
                 </Container>
 
             )}

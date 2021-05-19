@@ -13,7 +13,6 @@ function FeedController(props) {
     const handleClose = () => {setAnchorEl(null);};
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
     return (
         <Grid style={{height: 70,}} container justify='center' alignItems='center'>
             <ButtonGroup

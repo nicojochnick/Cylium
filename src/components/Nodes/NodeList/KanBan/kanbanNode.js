@@ -10,6 +10,7 @@ import Portal from "@material-ui/core/Portal";
 import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
 import {Droppable} from "react-beautiful-dnd";
+const Color = require('color');
 
 
 
@@ -27,17 +28,12 @@ export default memo(({ data,}) => {
     const [dragging,setDragging] =React.useState(false);
     const [border, setBorder] = React.useState(0);
 
-
-
     const handleClick = (event) => {
         if (!dragging) {
             setAnchorEl(event.currentTarget);
-            setBorder(0)
-
-        }
+            setBorder(0)}
 
     };
-
 
     const handleClose = () => {
         setBorder(0);
@@ -48,24 +44,21 @@ export default memo(({ data,}) => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-
     const addColumn = () => {
         let list = initData;
         let newColumnID = `column - ` + Math.random().toString();
         let newColumn = {id: newColumnID, title: null, taskIds: []};
         list.columns[newColumnID] = newColumn;
-        list.columnOrder.push(newColumnID)
+        list.columnOrder.push(newColumnID);
         setInitData(list);
         data.listData = list;
         setContextKey('_'+ Math.random().toString());
-
 
     };
     const deleteColumn = (col) => {
         let list = initData;
         list.columnOrder.splice(list.columnOrder.indexOf(col.id), 1,);
         delete list.columns[col.id];
-
         let keys = Object.keys(list.tasks);
         for (let i = 0; i < keys.length; i++){
             if (col.taskIds.includes(keys[i])){
@@ -108,9 +101,6 @@ export default memo(({ data,}) => {
         setContextKey('_'+ Math.random().toString());
     };
 
-
-
-
     const deleteTask = (col, task) => {
         if (task && col) {
             let list = initData;
@@ -119,24 +109,19 @@ export default memo(({ data,}) => {
             delete list.tasks[task.id];
             data.listData = list;
             setInitData(list);
-            console.log(list)
+            console.log(list);
             setContextKey('_' + Math.random().toString());
-
 
         } else {
             console.log('CANT DELETE TASK: no column or task args ')
         }
     };
 
-
     function onDragEnd(result) {
-
         const { destination, source, draggableId, type } = result;
-
         if (!destination) {
             return;
         }
-
         if (
             destination.droppableId === source.droppableId &&
             destination.index === source.index
@@ -148,30 +133,23 @@ export default memo(({ data,}) => {
             const newColumnOrder = Array.from(initData.columnOrder);
             newColumnOrder.splice(source.index, 1);
             newColumnOrder.splice(destination.index, 0, draggableId);
-
             const newState = {
                 ...initData,
                 columnOrder:  newColumnOrder,
 
             };
-
             setInitData(newState);
             data.listData = newState;
             return;
-
-
-
         }
 
         const start = initData.columns[source.droppableId];
         const finish = initData.columns[destination.droppableId];
 
         if (start === finish){
-
             const newTaskIds = Array.from(start.taskIds);
             newTaskIds.splice(source.index, 1);
             newTaskIds.splice(destination.index, 0, draggableId);
-
             const newColumn = {
                 ...start,
                 taskIds: newTaskIds,
@@ -188,10 +166,8 @@ export default memo(({ data,}) => {
             setInitData(newState);
             data.listData = newState;
         }
-
             /// moving one list to another
-
-            const startTaskIds = Array.from(start.taskIds)
+            const startTaskIds = Array.from(start.taskIds);
             startTaskIds.splice(source.index, 1);
             const newStart = {
                 ...start,
@@ -218,43 +194,32 @@ export default memo(({ data,}) => {
             setInitData(newState);
             data.listData = newState;
 
-    };
-
+    }
     const handleDragLeave = event => {
-        event.preventDefault()
-        console.log('')
+        event.preventDefault();
         event.stopPropagation();
         setBorder(0)
     };
     const handleDragOver = event => {
-        event.preventDefault()
+        event.preventDefault();
         event.stopPropagation();
     };
     const handleDragEnter = event => {
-        // event.preventDefault()
-        // event.stopPropagation();
-
+        event.preventDefault()
+        event.stopPropagation();
         setBorder(1);
         console.log('draggedover')
     };
-
-
-
-
     return (
-
-
         <Box border = {border} onMouseLeave={handleDragLeave} onMouseEnter = {handleDragEnter} style={{ transform:'none', padding: 10, right: 0, }}>
-
             <div  onClick={handleClick}  style={{ padding: 0, transform:'none',right: 0, }}>
-        <Container>
-
-            <DragDropContext
-                // onDragStart
-                // onDragUpdate
-                onDragEnd={onDragEnd}
-                key = {contextKey}
-            >
+                <Container>
+                    <DragDropContext
+                        // onDragStart
+                        // onDragUpdate
+                        onDragEnd={onDragEnd}
+                        key = {contextKey}
+                    >
                 <Droppable
                     droppableId="all-columns"
                     direction="horizontal"
@@ -265,15 +230,14 @@ export default memo(({ data,}) => {
                             {...provided.droppableProps}
                             ref={provided.innerRef}
                         >
-                            <Box  display = 'flex' style = {{  minHeight: 100, minWidth: 300, margin: 10,translate: 'none',backgroundColor: 'white', }}>
+                            <Box  display = 'flex' style = {{  height: data.size[1]-20, width: data.size[0]-20,translate: 'none'}}>
                                 {initData.columnOrder.map((columnID,index) => {
                                     const column = initData.columns[columnID];
                                     const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                                    return <Column index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                                    return <Column data = {data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
                                 })
                                 }
-
                             </Box>
                         </Container>
                     )}
@@ -281,13 +245,12 @@ export default memo(({ data,}) => {
             </DragDropContext>
             </Container>
             </div>
-
             <Popover
                 id={id}
                 open={open}
                 className={'nodrag'}
                 classes  = {{
-                    paper: classes.pop
+                    paper: {backgroundColor: data.style.bgColor}
                 }}
                 anchorEl={anchorEl}
                 onClose={handleClose}
@@ -300,9 +263,7 @@ export default memo(({ data,}) => {
                     horizontal: 'center',
                 }}
             >
-                <Container>
-
-
+                <Container style = {{backgroundColor:data.style.bgColor }}>
                 <DragDropContext
                     // onDragStart
                     // onDragUpdate
@@ -315,15 +276,14 @@ export default memo(({ data,}) => {
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
                             >
-                                <Box  display = 'flex' style = {{  minHeight: 100, minWidth: 300, margin: 10,translate: 'none',backgroundColor: 'white', }}>
+                                <Box  display = 'flex' style = {{ height: data.size[1]-20, width: data.size[0]-20,translate: 'none',}}>
                                     {initData.columnOrder.map((columnID,index) => {
                                         const column = initData.columns[columnID];
                                         const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                                        return <Column index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                                        return <Column data = {data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
                                     })
                                     }
-
                                 </Box>
                             </Container>
                         )}
@@ -332,22 +292,17 @@ export default memo(({ data,}) => {
                     <div style={{height: 30, margin: 10}}>
                     <Button onClick={addColumn} variant={'outlined'}> Add a List </Button>
                     </div>
-
                 </Container>
             </Popover>
-
         </Box>
     );
 })
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
 
     },
-
-
     pop: {
         boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`,
         // width: '80vw',
@@ -355,9 +310,6 @@ const useStyles = makeStyles((theme) => ({
         // marginTop: -30,
 
     },
-
-
-
 }));
 
 
