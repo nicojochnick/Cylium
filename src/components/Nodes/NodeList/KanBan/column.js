@@ -6,17 +6,15 @@ import styled from "styled-components"
 import Portal from "@material-ui/core/Portal";
 import {BiPlus,BiDotsHorizontalRounded} from "react-icons/bi";
 import TextField from "@material-ui/core/TextField";
+import Divider from "@material-ui/core/Divider";
 const Color = require('color');
 
 const Container = styled.div
     `margin: 8px;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
     display: flex;
     flex-direction: column;
     width: 250px;
     background-color: ${props => (props.data.style.bgColor)};
-    border-radius: 2px;
     display: flex;
     flex-direction: column;
 `;
@@ -45,7 +43,7 @@ function Column(props) {
         <Draggable isDragDisabled = {props.disabled} index = {props.index} draggableId = {props.column.id}>
             { provided => (
                 <Container  data = {props.data} {...provided.draggableProps} ref={provided.innerRef}  >
-                    <Box  {...provided.dragHandleProps}  ref={provided.innerRef}  display = 'flex' justifyContent = 'space-between'  style ={{padding: 5}} flexDirection = 'row' alignItems = 'center'>
+                    <Box  {...provided.dragHandleProps}  ref={provided.innerRef} display = 'flex' justifyContent = 'space-between'  style ={{padding: 5}} flexDirection = 'row' alignItems = 'center'>
                         {/*<Title> {props.column.title} </Title>*/}
                         <TextField
                             value={title}
@@ -56,6 +54,7 @@ function Column(props) {
                         <BiDotsHorizontalRounded size = {18}  style = {{margin: 5, color: backgroundColor.isDark() ? 'white' : 'black'}} onClick = {()=>props.deleteColumn(props.column)} />
                         <BiPlus size = {18} style = {{margin: 5,color: backgroundColor.isDark() ? 'white' : 'black'}} onClick = {()=>props.addTask(props.column)} />
                     </Box>
+                    <Divider style = {{backgroundColor: backgroundColor.isDark() ? 'white' : 'black', margin: 5, marginTop: -10}}/>
                     <Droppable droppableId={props.column.id}>
                         {(provided,snapshot) => (
                             <TaskList

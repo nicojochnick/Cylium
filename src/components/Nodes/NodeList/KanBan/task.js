@@ -64,7 +64,7 @@ function Task(props) {
                     innerRef={provided.innerRef}
                     isDragging = {snapshot.isDragging}
                 >
-                    <p style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', fontWeight: 600}}>
+                    <p style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', fontWeight: 500}}>
                     {props.task.title}
                     </p>
 

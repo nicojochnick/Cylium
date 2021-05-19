@@ -27,6 +27,8 @@ export default memo(({ data,}) => {
     const [contextKey, setContextKey] = React.useState('');
     const [dragging,setDragging] =React.useState(false);
     const [border, setBorder] = React.useState(0);
+    const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor))
+
 
     const handleClick = (event) => {
         if (!dragging) {
@@ -250,7 +252,7 @@ export default memo(({ data,}) => {
                 open={open}
                 className={'nodrag'}
                 classes  = {{
-                    paper: {backgroundColor: data.style.bgColor}
+                    paper: classes.pop
                 }}
                 anchorEl={anchorEl}
                 onClose={handleClose}
@@ -289,8 +291,8 @@ export default memo(({ data,}) => {
                         )}
                     </Droppable>
                 </DragDropContext>
-                    <div style={{height: 30, margin: 10}}>
-                    <Button onClick={addColumn} variant={'outlined'}> Add a List </Button>
+                    <div style={{height: 30, margin: 10, color: backgroundColor.isDark() ? 'white' : 'black'}}>
+                        <Button onClick={addColumn} variant={'outlined'}> <p style = {{color: backgroundColor.isDark()? 'white' : 'black' }}> Add a List </p> </Button>
                     </div>
                 </Container>
             </Popover>
@@ -305,6 +307,7 @@ const useStyles = makeStyles((theme) => ({
     },
     pop: {
         boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`,
+        borderRadius: 10,
         // width: '80vw',
         // height: '80vh',
         // marginTop: -30,

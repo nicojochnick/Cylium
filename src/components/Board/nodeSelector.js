@@ -53,7 +53,7 @@ export const selectNode = (type, id, user, color, position) => {
                 locked: false,
                 icon: null,
                 cover: null,
-                style: {bgColor: 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 size: [2000,1000]
 
             },
@@ -98,8 +98,8 @@ export const selectNode = (type, id, user, color, position) => {
                     }
                 ],
                 locked: false,
-                style: {bgColor: 'white', borderRadius: 0, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
-                size: [240,340]
+                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 10, border: 2, shadow: `0px 3px 10px rgba(0, 0, 0, 0.25)`},
+                size: [250,75]
 
             },
             position: position,
@@ -130,7 +130,7 @@ export const selectNode = (type, id, user, color, position) => {
             data: {
                 size: [600,300],
                 type: 'list',
-                style: {bgColor: 'white', borderRadius: 10, border: 3, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 10, border: 3, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 listData: {
                     tasks: {
                         'task-1': {

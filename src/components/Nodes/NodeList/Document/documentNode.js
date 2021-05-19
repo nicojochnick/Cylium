@@ -16,14 +16,19 @@ import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DocumentApp from "./documentApp";
+const Color = require('color');
+
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
-    const [background,setBackGround] = React.useState('white');
+    const [background,setBackGround] = React.useState(data.style.bgColor);
+    const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor))
+
     const [title,setTitle] = React.useState(data.title);
+
 
     const classes = useStyles();
 
@@ -64,22 +69,22 @@ export default memo(({ data,}) => {
         setLocked(!locked)
     };
     const changeTitle = (text) => {
-        setTitle(text)
+        setTitle(text);
         data.title = text
     };
 
     return (
 
-        <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {2} borderRadius = {5} style = {{width: data.size[0], height: data.size[1],backgroundColor: background,}}>
-        <Box borderRadius = {data.style.borderRadius} display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
+        <Box onMouseEnter={()=>setBackGround('lightgrey')}  onMouseLeave={()=>setBackGround('white')}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: data.style.bgColor,}}>
+        <Box  display={'flex'} flexDirection ='column' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
             <TextField
                 onChange={(e)=> changeTitle(e.target.value)}
                 id="standard-basic"
                 placeholder="Untitled"
                 value={title}
-                InputProps={{style: {fontSize: 20, textTransform: 'capitalized', margin: 10, color:'#4B494D'}, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 20, textTransform: 'capitalized', margin: 10, color:backgroundColor.isDark() ? 'white' : 'black'}, disableUnderline: true,}}
             />
-            <Box onClick={handleClick} display = 'flex' style = {{ height: 130, width: 150}}>
+            <Box onClick={handleClick} display = 'flex' style = {{}}>
 
             </Box>
             {/*<Divider/>*/}

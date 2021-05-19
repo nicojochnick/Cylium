@@ -7,12 +7,8 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" afterDir="false" />
@@ -31,17 +27,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-873">
-              <caret line="130" column="28" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
+            <state relative-caret-position="390">
+              <caret line="100" column="146" selection-start-line="100" selection-start-column="146" selection-end-line="100" selection-end-column="146" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="97" />
+            <state relative-caret-position="202">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2080">
+              <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -52,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3445">
-              <caret line="265" column="71" selection-start-line="265" selection-start-column="71" selection-end-line="265" selection-end-column="71" />
+            <state relative-caret-position="-3019">
+              <caret line="12" column="24" selection-start-line="12" selection-end-line="13" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -61,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+            <state relative-caret-position="516">
+              <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -74,10 +94,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="51" column="99" lean-forward="true" selection-start-line="51" selection-start-column="99" selection-end-line="51" selection-end-column="143" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-264">
+              <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="101" column="158" selection-start-line="101" selection-start-column="158" selection-end-line="101" selection-end-column="165" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2308">
-              <caret line="141" column="27" lean-forward="true" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
+            <state relative-caret-position="-1432">
+              <caret line="312" column="59" selection-start-line="312" selection-start-column="55" selection-end-line="312" selection-end-column="59" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
                 <marker date="1621385589866" expanded="true" signature="16292:16328" ph="..." />
@@ -108,7 +164,6 @@
       <find>setEnd</find>
       <find>divider</find>
       <find>box</find>
-      <find>user</find>
       <find>color</find>
       <find>onConnect</find>
       <find>zIndex</find>
@@ -128,6 +183,7 @@
       <find>onNode</find>
       <find>confirmElementsRemove</find>
       <find>data</find>
+      <find>user</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -173,9 +229,7 @@
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/components/editablePage/index.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Folder/folderNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/root/documentNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editablePage/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Table/tableNode.js" />
         <option value="$PROJECT_DIR$/src/components/Menus/BoxMenu/iconMenu.js" />
         <option value="$PROJECT_DIR$/src/components/Menus/BoxMenu/coverMenu.js" />
@@ -187,13 +241,15 @@
         <option value="$PROJECT_DIR$/src/components/Headers/projectHeader.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" />
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" />
         <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
       </list>
     </option>
   </component>
@@ -239,7 +295,23 @@
               <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Board" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Nodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
+              <item name="NodeContainers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -256,7 +328,15 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Nodes" type="462c0819:PsiDirectoryNode" />
               <item name="NodeList" type="462c0819:PsiDirectoryNode" />
-              <item name="KanBan" type="462c0819:PsiDirectoryNode" />
+              <item name="Document" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
+              <item name="NodeUtils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -447,12 +527,12 @@
       <workItem from="1620741807715" duration="1488000" />
       <workItem from="1620835598771" duration="3515000" />
       <workItem from="1621023226057" duration="1442000" />
-      <workItem from="1621369131454" duration="3891000" />
+      <workItem from="1621369131454" duration="7139000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1385969000" />
+    <option name="totallyTimeSpent" value="1389217000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -648,16 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/hooks/usePrevious.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -678,16 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2331">
-          <caret line="128" selection-start-line="128" selection-end-line="146" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -730,16 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="101" column="158" selection-start-line="101" selection-start-column="158" selection-end-line="101" selection-end-column="165" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Headers/projectHeader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -763,16 +813,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/Editor/nodeEditor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -803,30 +843,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Profile/User/userProfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="117" column="31" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="86" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -853,17 +873,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-873">
-          <caret line="130" column="28" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
+        <state relative-caret-position="120">
+          <caret line="66" column="105" selection-start-line="66" selection-start-column="105" selection-end-line="66" selection-end-column="105" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2308">
-          <caret line="141" column="27" lean-forward="true" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
+        <state relative-caret-position="-1432">
+          <caret line="312" column="59" selection-start-line="312" selection-start-column="55" selection-end-line="312" selection-end-column="59" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
             <marker date="1621385589866" expanded="true" signature="16292:16328" ph="..." />
@@ -871,32 +894,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3445">
-          <caret line="265" column="71" selection-start-line="265" selection-start-column="71" selection-end-line="265" selection-end-column="71" />
+        <state relative-caret-position="516">
+          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="101" column="158" selection-start-line="101" selection-start-column="158" selection-end-line="101" selection-end-column="165" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="97" />
+        <state relative-caret-position="-3019">
+          <caret line="12" column="24" selection-start-line="12" selection-end-line="13" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-264">
+          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+        <state relative-caret-position="310">
+          <caret line="51" column="99" lean-forward="true" selection-start-line="51" selection-start-column="99" selection-end-line="51" selection-end-column="143" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2080">
+          <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="100" column="146" selection-start-line="100" selection-start-column="146" selection-end-line="100" selection-end-column="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="86" column="66" selection-start-line="86" selection-start-column="66" selection-end-line="86" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
