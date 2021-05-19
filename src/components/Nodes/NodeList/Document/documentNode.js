@@ -11,7 +11,7 @@ import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField/TextField";
 import Popover from "@material-ui/core/Popover/Popover";
 import {DragDropContext} from "react-beautiful-dnd";
-import Column from "../KanBan/column";
+import Column from "../List/column";
 import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";

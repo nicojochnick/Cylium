@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
 import {FaBoxOpen} from "react-icons/fa";
 import Lander from "./lander"
-import KanbanNode from "../../components/Nodes/NodeList/KanBan/kanbanNode"
+// import KanbanNode from "../../components/Nodes/NodeList/List/kanbanNode"
 
 import mmlogo from "../../assets/images/mmlogo.png"
 import Button from "@material-ui/core/Button";

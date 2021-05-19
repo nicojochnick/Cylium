@@ -30,7 +30,7 @@ import AvatarNode from "../Nodes/NodeList/avatarNode"
 import ButtonNode from "../Nodes/NodeList/buttonNode"
 import DocumentNode from "../Nodes/NodeList/Document/documentNode"
 import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
-import KanBanNode from "../Nodes/NodeList/KanBan/kanbanNode"
+// import KanBanNode from "../Nodes/NodeList/List/kanbanNode"
 import {selectNode} from "./nodeSelector";
 import GraphNode from "../Nodes/NodeList/graphNode"
 import FolderNode from "../Nodes/NodeList/Folder/folderNode"
@@ -75,7 +75,6 @@ const nodeTypes = {
     metricNodes: MetricNode,
     reportNodes: ReportNode,
     standardNodes: StandardNode,
-    kanbanNodes: KanBanNode,
     dividerNodes: DividerNode,
 };
 

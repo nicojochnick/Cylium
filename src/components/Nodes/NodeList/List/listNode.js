@@ -10,23 +10,22 @@ import Portal from "@material-ui/core/Portal";
 import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
 import {Droppable} from "react-beautiful-dnd";
+import {convertFromRaw, EditorState} from "draft-js";
 const Color = require('color');
-
-
 
 const Container = styled.div ` 
     display:flex;
 `;
 
 
-export default memo(({ data,}) => {
+export default function ListNode (props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [initData, setInitData] = React.useState(data.listData);
+    const [initData, setInitData] = React.useState(null);
     const [contextKey, setContextKey] = React.useState('');
     const [dragging,setDragging] =React.useState(false);
     const [border, setBorder] = React.useState(0);
-    const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor))
+    const [backgroundColor, setBackgroundColor] = React.useState(Color(props.data.style.bgColor))
 
     const handleClick = (event) => {
         if (!dragging) {
@@ -49,7 +48,7 @@ export default memo(({ data,}) => {
         list.columns[newColumnID] = newColumn;
         list.columnOrder.push(newColumnID);
         setInitData(list);
-        data.listData = list;
+        props.data.listData = list;
         setContextKey('_'+ Math.random().toString());
 
     };
@@ -63,7 +62,7 @@ export default memo(({ data,}) => {
                 delete list.tasks[keys[i]]
             }
         }
-        data.listData = list;
+        props.data.listData = list;
         setInitData(list);
         setContextKey('_'+ Math.random().toString());
     };
@@ -72,7 +71,7 @@ export default memo(({ data,}) => {
         let list = initData;
         list.columns[col.id].title = title;
         setTimeout(() => {
-            data.listData = list;
+            props.data.listData = list;
             setInitData(list);
             setContextKey('_'+ Math.random().toString());
         }, 3000);
@@ -94,8 +93,8 @@ export default memo(({ data,}) => {
         };
         list.columns[col.id].taskIds.push(newTaskID);
         list.tasks[newTaskID] = newTask;
+        props.data.listData = list;
         setInitData(list);
-        data.listData = list;
         setContextKey('_'+ Math.random().toString());
     };
 
@@ -105,9 +104,8 @@ export default memo(({ data,}) => {
             let taskIndex = list.columns[col.id].taskIds.indexOf(task.id);
             list.columns[col.id].taskIds.splice(taskIndex, 1);
             delete list.tasks[task.id];
-            data.listData = list;
+            props.data.listData = list;
             setInitData(list);
-            console.log(list);
             setContextKey('_' + Math.random().toString());
 
         } else {
@@ -136,8 +134,8 @@ export default memo(({ data,}) => {
                 columnOrder:  newColumnOrder,
 
             };
+            props.data.listData = newState;
             setInitData(newState);
-            data.listData = newState;
             return;
         }
 
@@ -161,8 +159,9 @@ export default memo(({ data,}) => {
                 },
             };
 
+            props.data.listData = newState;
             setInitData(newState);
-            data.listData = newState;
+
         }
             /// moving one list to another
             const startTaskIds = Array.from(start.taskIds);
@@ -189,8 +188,9 @@ export default memo(({ data,}) => {
                 },
             };
 
+            props.data.listData = newState;
             setInitData(newState);
-            data.listData = newState;
+
 
     }
     const handleDragLeave = event => {
@@ -208,93 +208,109 @@ export default memo(({ data,}) => {
         setBorder(1);
         console.log('draggedover')
     };
+
+    useEffect(() => {
+        if (props.data.listData) {
+            setInitData(props.data.listData)
+        }
+    }, []);
     return (
-        <Box border = {border} onMouseLeave={handleDragLeave} onMouseEnter = {handleDragEnter} style={{ transform:'none', padding: 10, right: 0, }}>
-            <div  onClick={handleClick}  style={{ padding: 0, transform:'none',right: 0, }}>
-                <Container>
-                    <DragDropContext
-                        // onDragStart
-                        // onDragUpdate
-                        onDragEnd={onDragEnd}
-                        key = {contextKey}
-                    >
-                <Droppable
-                    droppableId="all-columns"
-                    direction="horizontal"
-                    type="column"
-                    >
-                    { provided => (
-                        <Container
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                        >
-                            <Box  display = 'flex' style = {{  height: data.size[1]-20, width: data.size[0]-20,translate: 'none'}}>
-                                {initData.columnOrder.map((columnID,index) => {
-                                    const column = initData.columns[columnID];
-                                    const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                                    return <Column data = {data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
-
-                                })
-                                }
-                            </Box>
-                        </Container>
-                    )}
-                </Droppable>
-            </DragDropContext>
-            </Container>
-            </div>
-            <Popover
-                id={id}
-                open={open}
-                className={'nodrag'}
-                classes  = {{
-                    paper: classes.pop
-                }}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'center',
-                    horizontal: 'center',
-                }}
-                transformOrigin={{
-                    vertical: 'center',
-                    horizontal: 'center',
-                }}
-            >
-                <Container style = {{backgroundColor:data.style.bgColor }}>
-                <DragDropContext
-                    // onDragStart
-                    // onDragUpdate
-                    onDragEnd={onDragEnd}
-                    key = {contextKey}
-                >
-                    <Droppable  droppableId="all-columns" direction = 'horizontal' type = 'column'>
-                        { provided => (
-                            <Container
-                                {...provided.droppableProps}
-                                ref={provided.innerRef}
+        <>
+        {initData
+            ?
+                <Box border = {border} onMouseLeave={handleDragLeave} onMouseEnter = {handleDragEnter} style={{ transform:'none', padding: 10, right: 0, }}>
+                    <div  onClick={handleClick}  style={{ padding: 0, transform:'none',right: 0, }}>
+                        <Container>
+                            <DragDropContext
+                                // onDragStart
+                                // onDragUpdate
+                                onDragEnd={onDragEnd}
+                                key = {contextKey}
                             >
-                                <Box  display = 'flex' style = {{ height: data.size[1]-20, width: data.size[0]-20,translate: 'none',}}>
-                                    {initData.columnOrder.map((columnID,index) => {
-                                        const column = initData.columns[columnID];
-                                        const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                                        return <Column data = {data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                                <Droppable
+                                    droppableId="all-columns"
+                                    direction="horizontal"
+                                    type="column"
+                                >
+                                    { provided => (
+                                        <Container
+                                            {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                        >
+                                            <Box  display = 'flex' style = {{  height: props.data.size[1]-20, width: props.data.size[0]-20,translate: 'none'}}>
+                                                {initData.columnOrder.map((columnID,index) => {
+                                                    const column = initData.columns[columnID];
+                                                    const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
+                                                    return <Column data = {props.data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
-                                    })
-                                    }
-                                </Box>
-                            </Container>
-                        )}
-                    </Droppable>
-                </DragDropContext>
-                    <div style={{height: 30, margin: 10, color: backgroundColor.isDark() ? 'white' : 'black'}}>
-                        <Button onClick={addColumn} variant={'outlined'}> <p style = {{color: backgroundColor.isDark()? 'white' : 'black' }}> Add a List </p> </Button>
+                                                })
+                                                }
+                                            </Box>
+                                        </Container>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
+                        </Container>
                     </div>
-                </Container>
-            </Popover>
-        </Box>
+                    <Popover
+                        id={id}
+                        open={open}
+                        className={'nodrag'}
+                        classes  = {{
+                            paper: classes.pop
+                        }}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'center',
+                            horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                            vertical: 'center',
+                            horizontal: 'center',
+                        }}
+                    >
+                        <Container style = {{backgroundColor:props.data.style.bgColor }}>
+                            <DragDropContext
+                                // onDragStart
+                                // onDragUpdate
+                                onDragEnd={onDragEnd}
+                                key = {contextKey}
+                            >
+                                <Droppable  droppableId="all-columns" direction = 'horizontal' type = 'column'>
+                                    { provided => (
+                                        <Container
+                                            {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                        >
+                                            <Box  display = 'flex' style = {{  height: props.data.size[1]-20, width: props.data.size[0]-20,translate: 'none'}}>
+                                                {initData.columnOrder.map((columnID,index) => {
+                                                    const column = initData.columns[columnID];
+                                                    const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
+                                                    return <Column data = {props.data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+
+                                                })
+                                                }
+                                            </Box>
+                                        </Container>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
+                            <div style={{height: 30, margin: 10, color: backgroundColor.isDark() ? 'white' : 'black'}}>
+                                <Button onClick={addColumn} variant={'outlined'}> <p style = {{color: backgroundColor.isDark()? 'white' : 'black' }}> Add a List </p> </Button>
+                            </div>
+                        </Container>
+                    </Popover>
+                </Box>
+
+                :null
+
+        }
+
+        </>
+
     );
-})
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {

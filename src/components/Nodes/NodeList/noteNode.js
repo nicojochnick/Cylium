@@ -45,9 +45,7 @@ export default function NoteNode(props) {
         setEditorState(editorState)
         props.data.textContent = save;
         // data.save();
-
     };
-
 
     useEffect(() => {
 
