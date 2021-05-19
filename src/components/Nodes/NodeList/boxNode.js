@@ -11,6 +11,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 
 
+const Color = require('color');
 
 
 export default function BoxNode(props){
@@ -20,7 +21,8 @@ export default function BoxNode(props){
     const [locked, setLocked] = React.useState(props.data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
     const [buttonsHidden, setButtonsHidden] = React.useState(true);
-    const  [title, setTitle] =React.useState(props.data.title);
+    const [backgroundColor, setBackgroundColor] = React.useState(Color(props.data.style.bgColor));
+    const [title, setTitle] =React.useState(props.data.title);
     const [cover, setCover] = React.useState(props.data.cover);
     const [icon, setIcon] = React.useState(props.data.icon);
     const [iconBackgroundColor, setIconBackgroundColor] = React.useState(null)
@@ -136,8 +138,8 @@ export default function BoxNode(props){
                     {!buttonsHidden
 
                         ? <Box display='flex' flexDirection='row'>
-                            <Button onClick={addIcon}>Add Icon</Button>
-                            <Button onClick={addCover} >Add Cover</Button>
+                            <Button style = {{color:backgroundColor.isDark()? 'white' : 'black'}} variant={'outlined'} color = {backgroundColor.isDark()? 'white' : 'black'} onClick={addIcon}>Add Icon</Button>
+                            <Button style = {{color:backgroundColor.isDark()? 'white' : 'black'}} variant={'outlined'} onClick={addCover} >Add Cover</Button>
                         </Box>
                         : null
 
@@ -150,7 +152,7 @@ export default function BoxNode(props){
                         id="standard-basic"
                         placeholder="Untitled"
                         value={title}
-                        InputProps={{style: {fontSize: 60, margin: 10,  marginTop: -10,fontWeight: 600, color:'white'}, disableUnderline: true,}}
+                        InputProps={{style: {fontSize: 60, margin: 10,  marginTop: -10,fontWeight: 600, color:backgroundColor.isDark()? 'white' : 'black'}, disableUnderline: true,}}
                     />
 
                 </Box>

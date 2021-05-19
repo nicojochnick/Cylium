@@ -196,7 +196,8 @@ export default function ListNode (props) {
     const handleDragLeave = event => {
         event.preventDefault();
         event.stopPropagation();
-        setBorder(0)
+        setBackgroundColor(Color(props.data.style.bgColor))
+
     };
     const handleDragOver = event => {
         event.preventDefault();
@@ -205,7 +206,7 @@ export default function ListNode (props) {
     const handleDragEnter = event => {
         event.preventDefault()
         event.stopPropagation();
-        setBorder(1);
+        setBackgroundColor(backgroundColor.lighten(0.25))
         console.log('draggedover')
     };
 

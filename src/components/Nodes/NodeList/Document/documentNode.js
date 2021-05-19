@@ -16,6 +16,9 @@ import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DocumentApp from "./documentApp";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 const Color = require('color');
 
 
@@ -26,9 +29,12 @@ export default memo(({ data,}) => {
     const [barOpen, setBarOpen] = React.useState(false);
     const [isHovering, setIsHovering] = React.useState(false);
     const [background,setBackGround] = React.useState(data.style.bgColor);
-    const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor))
+    const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor));
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const [title,setTitle] = React.useState(data.title);
+    const [anchorElMenu, setAnchorElMenu] = React.useState(null);
+
 
 
     const classes = useStyles();
@@ -76,21 +82,34 @@ export default memo(({ data,}) => {
 
     const onHoverEnter = () =>{
         setIsHovering(true)
+        setBackgroundColor(backgroundColor.lighten(0.25))
 
     };
 
     const onHoverLeave = () =>{
         setIsHovering(false)
+        setBackgroundColor(Color(data.style.bgColor))
 
+    };
 
-    }
+    const openMenu = (event) => {
+        setIsMenuOpen(true)
+        setAnchorElMenu(event.currentTarget);
+
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false)
+        setAnchorElMenu(null);
+
+    };
     return (
-        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: data.style.bgColor,}}>
+        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: backgroundColor,}}>
         <Box  display={'flex'} flexDirection ='row' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
-            {isHovering
-                ? <BiGridVertical size={25} style={{color: 'white'}}/>
-                : null
-            }
+            {/*{isHovering*/}
+            {/*    ? <BiGridVertical size={25} style={{color: 'white'}}/>*/}
+            {/*    : null*/}
+            {/*}*/}
             <TextField
                 onChange={(e)=> changeTitle(e.target.value)}
                 id="standard-basic"
@@ -108,9 +127,23 @@ export default memo(({ data,}) => {
             {/*>*/}
             {/*</Box>*/}
             {isHovering
-                ? <BiDotsVerticalRounded size={25} style={{color: 'white'}}/>
+                ?
+                <IconButton onClick={openMenu}>
+                <BiDotsVerticalRounded size={25} style={{color: 'white'}}/>
+                </IconButton>
                 : null
             }
+
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorElMenu}
+                keepMounted
+                open={Boolean(anchorElMenu)}
+                onClose={closeMenu}
+            >
+                <MenuItem onClick={closeMenu}>Delete</MenuItem>
+                <MenuItem onClick={closeMenu}>Rename</MenuItem>
+            </Menu>
         </Box>
 
             <Dialog

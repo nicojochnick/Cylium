@@ -35,7 +35,7 @@ export default memo(({ data,}) => {
     const renderNode = (type, size) => {
         switch (type) {
             case 'box':
-                return <BoxNode size = {size} data = {contextData}/>;
+                return <BoxNode size = {size} data = {data}/>;
             case 'note':
                 return <NoteNode size = {size} data = {contextData}/>;
             case 'label':
