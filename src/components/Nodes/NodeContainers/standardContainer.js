@@ -76,7 +76,7 @@ export default memo(({ data,}) => {
                     </div>
                     : null
 
-                }git ad
+                }
 
             </Box>
             <Rnd

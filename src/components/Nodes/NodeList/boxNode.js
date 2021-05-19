@@ -13,22 +13,22 @@ import Button from "@material-ui/core/Button";
 
 
 
-export default memo(({ data,}) => {
-    const [size, setSize] = React.useState(data.size);
+export default function BoxNode(props){
+    const [size, setSize] = React.useState(props.data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
     const [hasCover, setHasCover] = React.useState(false);
-    const [locked, setLocked] = React.useState(data.locked);
+    const [locked, setLocked] = React.useState(props.data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
     const [buttonsHidden, setButtonsHidden] = React.useState(true);
-    const  [title, setTitle] =React.useState(data.title);
-    const [cover, setCover] = React.useState(data.cover);
-    const [icon, setIcon] = React.useState(data.icon);
+    const  [title, setTitle] =React.useState(props.data.title);
+    const [cover, setCover] = React.useState(props.data.cover);
+    const [icon, setIcon] = React.useState(props.data.icon);
     const [iconBackgroundColor, setIconBackgroundColor] = React.useState(null)
 
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height];
         setSize(newSize);
-        data.size = newSize;
+        props.data.size = newSize;
 
     };
     const nodeSelected = () =>{
@@ -42,7 +42,7 @@ export default memo(({ data,}) => {
         setBarOpen(false)
     };
     const lock = () => {
-        data.locked = !data.locked;
+        props.data.locked = !props.data.locked;
         setLocked(!locked)
     };
 
@@ -52,7 +52,7 @@ export default memo(({ data,}) => {
         let index = getRandomInt(0, allEmojis.length)
         let randomEmoji = allEmojis[index];
         setIcon(randomEmoji);
-        data.icon = randomEmoji;
+        props.data.icon = randomEmoji;
 
     };
 
@@ -73,7 +73,7 @@ export default memo(({ data,}) => {
         let current = allCovers[index]
 
         setCover(current);
-        data.cover = current;
+        props.data.cover = current;
 
     };
 
@@ -85,7 +85,7 @@ export default memo(({ data,}) => {
 
     const changeTitle = (text) => {
         setTitle(text);
-        data.title = text
+        props.data.title = text
 
     };
     return (
@@ -98,11 +98,11 @@ export default memo(({ data,}) => {
                 // justifyContent = 'space-between'
 
             >
-                {data.cover
+                {props.data.cover
 
                     ?
                     <div
-                        style = {{width: data.size[0], height: 300, backgroundColor:data.cover, borderRadius: `${data.style.borderRadius}px ${data.style.borderRadius}px 0px 0px `, overflow:'hidden'}}>
+                        style = {{width: props.data.size[0], height: 300, backgroundColor:props.data.cover, borderRadius: `${props.data.style.borderRadius}px ${props.data.style.borderRadius}px 0px 0px `, overflow:'hidden'}}>
 
 
                     </div>
@@ -111,7 +111,7 @@ export default memo(({ data,}) => {
 
 
                 }
-                <Box style = {{margin:100, marginTop: data.cover ? -100 : 100}}>
+                <Box style = {{margin:100, marginTop: props.data.cover ? -100 : 100}}>
 
                 { icon
                     ?
@@ -158,7 +158,7 @@ export default memo(({ data,}) => {
                 {barOpen
                     ?
                     <div>
-                    {data.locked
+                    {props.data.locked
                       ? <BiLock onClick = {() => lock()} style={{margin: 10, color: 'grey '}} size={30}/>
                       :  <BiLockOpenAlt onClick = {() => lock()} style={{margin: 10, color: 'grey '}} size={30}/>
                     }
@@ -174,7 +174,7 @@ export default memo(({ data,}) => {
                     type="source"
                     id = 'k'
                     position="bottom"
-                    style={{ zIndex: 40, backgroundColor: data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
+                    style={{ zIndex: 40, backgroundColor: props.data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
                     // onConnect={(params) => console.log('handle onConnect', params)}
                 />
 
@@ -186,5 +186,5 @@ export default memo(({ data,}) => {
 
 
     );
-});
+};
 
