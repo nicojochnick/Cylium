@@ -107,8 +107,8 @@ export default memo(({ data,}) => {
 
     };
     return (
-        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {data.style.border} borderColor = {'lightgrey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: backgroundColor,}}>
-        <Box  display={'flex'} flexDirection ='row' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
+        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {1} borderColor = {'lightgrey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: backgroundColor,}}>
+        <Box  display={'flex'} flexDirection ='row' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', margin: 5, }}>
             {/*{isHovering*/}
             {/*    ? <BiGridVertical size={25} style={{color: 'white'}}/>*/}
             {/*    : null*/}
@@ -120,7 +120,7 @@ export default memo(({ data,}) => {
                 id="standard-basic"
                 placeholder="Untitled"
                 value={title}
-                InputProps={{style: {fontSize: 20, textTransform: 'capitalized', margin: 10, color:backgroundColor.isDark() ? 'white' : 'black'}, disableUnderline: true,}}
+                InputProps={{style: {fontSize: 18, textTransform: 'capitalized', margin: 5, color:backgroundColor.isDark() ? 'white' : 'black'}, disableUnderline: true,}}
             />
             <Box onClick={handleClick} display = 'flex' style = {{}}>
             </Box>

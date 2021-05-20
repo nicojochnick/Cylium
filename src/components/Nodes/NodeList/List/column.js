@@ -28,13 +28,9 @@ const TaskList = styled.div`
   min-height: 100px; 
   background-color: ${props => (props.data.style.bgColor)}
 `;
-
-
 function Column(props) {
-
     const [title, setTitle] = React.useState(props.column.title);
-    const [backgroundColor, setBackgroundColor] = React.useState(Color(props.data.style.bgColor))
-
+    const [backgroundColor, setBackgroundColor] = React.useState(Color(props.data.style.bgColor));
     const handleChangeTitle = (text) =>  {
         setTitle(text);
         props.changeColumnTitle(text, props.column)
@@ -70,7 +66,6 @@ function Column(props) {
                     </Droppable>
                 </Container>
             )}
-
         </Draggable>
     );
 }

@@ -8,6 +8,13 @@ import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DocumentApp from "../Document/documentApp";
 import {makeStyles} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import {BiDotsVerticalRounded, BiGridVertical} from "react-icons/bi";
+
+const Color = require('color');
+
 
 
 const Container = styled.div`
@@ -16,16 +23,22 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  border-radius: 2px;
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: ${props => (props.backgroundColor.lighten(0.20))}
+  border-radius: 5px;
+  padding: 10px;
+  height: 60px;
+  margin-bottom: 12px;
+  background-color: ${props => (props.backgroundColor.lighten(0.05))}
   
 `;
 
 function Task(props) {
     const [title, setTitle] = React.useState(props.task.title);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorElMenu, setAnchorElMenu] = React.useState(null);
+    // const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor));
+    const [isHovering, setIsHovering] = React.useState(false);
+
+
     const classes = useStyles();
 
 
@@ -51,12 +64,36 @@ function Task(props) {
         props.task.title = content
     };
 
+    const onHoverEnter = () =>{
+        setIsHovering(true)
+        // setBackgroundColor(backgroundColor.lighten(0.25))
+
+    };
+
+    const onHoverLeave = () =>{
+        setIsHovering(false)
+        // setBackgroundColor(Color(data.style.bgColor))
+
+    };
+
+    const openMenu = (event) => {
+        setAnchorElMenu(event.currentTarget);
+
+    };
+
+    const closeMenu = () => {
+        setAnchorElMenu(null);
+        onHoverLeave()
+
+    };
+
     return (
         <div>
         <Draggable isDragDisabled = {props.disabled} draggableId={props.task.id} index={props.index}>
             {(provided, snapshot) => (
 
                 <Container
+                    onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}
                     backgroundColor={props.backgroundColor}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -64,14 +101,32 @@ function Task(props) {
                     innerRef={provided.innerRef}
                     isDragging = {snapshot.isDragging}
                 >
-                    <p style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', fontWeight: 500}}>
+                    <p onClick={handleClick} style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', fontWeight: 500, fontSize:18}}>
                     {props.task.title}
                     </p>
 
                     <Box display = 'flex' flexDirection = 'row'>
+                        {isHovering
+                            ?
+                            <IconButton onClick={openMenu}>
+                                <BiDotsVerticalRounded size={25} style={{color: 'white'}}/>
+                            </IconButton>
+                            : null
+                        }
 
-                    <BiX style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick = {()=>props.deleteTask(props.column, props.task)}/>
-                    <BiExpand style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick={handleClick} />
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorElMenu}
+                            keepMounted
+                            open={Boolean(anchorElMenu)}
+                            onClose={closeMenu}
+                        >
+                            <MenuItem onClick={()=>props.deleteTask(props.column, props.task)}>Delete</MenuItem>
+                            <MenuItem onClick={closeMenu}>Rename</MenuItem>
+                        </Menu>
+
+                    {/*<BiX style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick = {()=>props.deleteTask(props.column, props.task)}/>*/}
+                    {/*<BiExpand style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick={handleClick} />*/}
 
                     </Box>
                 </Container>

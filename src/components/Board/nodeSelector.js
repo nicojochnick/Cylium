@@ -98,16 +98,14 @@ export const selectNode = (type, id, user, color, position) => {
                     }
                 ],
                 locked: false,
-                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 10, border: 2, shadow: `0px 3px 10px rgba(0, 0, 0, 0.25)`},
-                size: [250,75]
+                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 5, border: 1, shadow: `0px 3px 10px rgba(0, 0, 0, 0.25)`},
+                size: [250,60]
 
             },
             position: position,
         }
 
     }
-
-
 
     if (type == 'character') {
         node = {
