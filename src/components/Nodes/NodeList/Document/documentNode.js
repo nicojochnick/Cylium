@@ -9,6 +9,7 @@ import NodeProfile from "../../../Profile/Node/nodeProfile";
 import {BiDotsVerticalRounded, BiGridVertical} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField/TextField";
+import Button from "@material-ui/core/Button"
 import Popover from "@material-ui/core/Popover/Popover";
 import {DragDropContext} from "react-beautiful-dnd";
 import Column from "../List/column";
@@ -48,6 +49,7 @@ export default memo(({ data,}) => {
 
     const handleClose = () => {
         setAnchorEl(null);
+        onHoverLeave()
     };
 
     const open = Boolean(anchorEl);
@@ -99,18 +101,21 @@ export default memo(({ data,}) => {
     };
 
     const closeMenu = () => {
-        setIsMenuOpen(false)
+        setIsMenuOpen(false);
         setAnchorElMenu(null);
+        onHoverLeave()
 
     };
     return (
-        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {data.style.border} borderColor = {'grey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: backgroundColor,}}>
+        <Box onMouseEnter={()=>onHoverEnter()}  onMouseLeave={()=>onHoverLeave()}  border = {data.style.border} borderColor = {'lightgrey'} borderRadius = {data.style.borderRadius} style = {{width: data.size[0], height: data.size[1], shadow: data.style.shadow, backgroundColor: backgroundColor,}}>
         <Box  display={'flex'} flexDirection ='row' alignItems = 'center' justifyContet = 'flex-end' style={ {overflowX: 'hidden', padding: 5, margin:3, }}>
             {/*{isHovering*/}
             {/*    ? <BiGridVertical size={25} style={{color: 'white'}}/>*/}
             {/*    : null*/}
             {/*}*/}
             <TextField
+                disabled={true}
+                onClick = {handleClick}
                 onChange={(e)=> changeTitle(e.target.value)}
                 id="standard-basic"
                 placeholder="Untitled"
