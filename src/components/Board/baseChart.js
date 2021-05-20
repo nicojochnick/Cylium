@@ -156,20 +156,29 @@ function BaseChart(props) {
 
 
     const confirmElementsRemove = (id, )=>{
-        console.log(id, elements);
-        handleClose();
-        let elementToRemove = null
 
-        for (let node of elements){
-            if (node.id === id) {
-               elementToRemove = node;
+        if (id) {
+            console.log(id, elements);
+            handleClose();
+            let elementToRemove = null;
+
+            for (let node of elements) {
+                if (node.id && node.id === id ) {
+                    elementToRemove = node;
+                }
             }
-        }
-        console.log(elementToRemove)
-        setElements((els) => removeElements([elementToRemove], els));
+            console.log(elementToRemove)
 
-        setElementsToRemove(null);
-        triggerAutoSave();
+            if (elementToRemove!==null) {
+
+                setElements((els) => removeElements([elementToRemove], els));
+            }
+
+            setElementsToRemove(null);
+            triggerAutoSave();
+        }  else {
+            console.log('NOID')
+        }
     };
 
     const onEdgeUpdate = (oldEdge, newConnection) => {
@@ -308,6 +317,8 @@ function BaseChart(props) {
         let id = getNodeId();
         console.log(type);
         const newNode = await selectNode(type,id,props.user,props.channel.color,position);
+        newNode.data.delete = confirmElementsRemove;
+        newNode.data.user = props.user;
         if (type === 'boxfront' || type ==='box'){
             console.log('addedbox');
             let elems = elements.slice();
@@ -327,6 +338,18 @@ function BaseChart(props) {
             setElements((es) => es.concat(newNode));
         }
     };
+
+    const reset = () => {
+        let f = JSON.parse(props.channel.flow);
+        let dbElements = f.elements;
+        for (let node of dbElements){
+            if (node.data) {
+                node.data.delete = confirmElementsRemove;
+                node.data.user = props.user;
+            }
+        }
+        setElements(dbElements)
+    }
 
     useEffect(() => {
         console.log('RESET')
@@ -408,7 +431,7 @@ function BaseChart(props) {
                         defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}
-                        elementsSelectable={true}
+                        elementsSelectable={false}
                         // onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
