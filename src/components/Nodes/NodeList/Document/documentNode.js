@@ -172,9 +172,9 @@ export default memo(({ data,}) => {
                 }}
             >
 
-                <DialogContent>
-                    <Box borderRadius = {20} style = {{ backgroundColor:'white', height: '80vh'}}>
-                        <DocumentApp data = {data} title = {title} changeTitle = {changeTitle} />
+                <DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' }}>
+                    <Box borderRadius = {20} style = {{ backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' , height: '80vh'}}>
+                        <DocumentApp user = {data.user} data = {data} title = {title} changeTitle = {changeTitle} />
                     </Box>
                 </DialogContent>
 

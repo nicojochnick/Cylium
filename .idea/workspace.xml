@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/column.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/column.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,132 +22,127 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6319115">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2058">
-                  <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="121" column="47" lean-forward="true" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="310">
-                  <caret line="430" column="30" selection-start-line="430" selection-start-column="30" selection-end-line="430" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#0#60#0" expanded="true" />
-                    <element signature="e#1472#1514#0" expanded="true" />
-                    <marker date="1621439398280" expanded="true" signature="16264:16300" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-172">
-                  <caret line="198" column="57" selection-start-line="198" selection-start-column="57" selection-end-line="198" selection-end-column="57" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="621">
-                  <caret line="150" column="19" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="150" selection-end-column="19" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-107">
-                  <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="756">
-                  <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-                  <folding>
-                    <element signature="e#0#34#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
-                  <folding>
-                    <element signature="e#0#45#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/column.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="111">
-                  <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-end-line="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1701">
+              <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="22" column="136" selection-start-line="22" selection-start-column="136" selection-end-line="22" selection-end-column="136" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="31" column="219" selection-start-line="31" selection-start-column="219" selection-end-line="31" selection-end-column="226" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="127" column="141" selection-start-line="127" selection-start-column="141" selection-end-line="127" selection-end-column="141" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2226">
+              <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+                <element signature="e#1472#1514#0" expanded="true" />
+                <marker date="1621514777491" expanded="true" signature="16165:16201" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-172">
+              <caret line="198" column="57" selection-start-line="198" selection-start-column="57" selection-end-line="198" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="122" column="92" selection-start-line="122" selection-start-column="92" selection-end-line="122" selection-end-column="142" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/column.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -158,7 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>font</find>
       <find>img</find>
       <find>firebase</find>
       <find>time</find>
@@ -188,6 +183,7 @@
       <find>user</find>
       <find>initData</find>
       <find>data</find>
+      <find>delete</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -242,18 +238,18 @@
         <option value="$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/task.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/column.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/KanBan/kanbanNode.js" />
         <option value="$PROJECT_DIR$/src/views/landerViews/home.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" />
-        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/List/column.js" />
-        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
         <option value="$PROJECT_DIR$/src/components/Board/nodeSelector.js" />
         <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js" />
+        <option value="$PROJECT_DIR$/src/components/Board/baseChart.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" />
+        <option value="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" />
       </list>
     </option>
   </component>
@@ -301,64 +297,6 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Board" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeContainers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeList" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeList" type="462c0819:PsiDirectoryNode" />
-              <item name="Document" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeList" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeList" type="462c0819:PsiDirectoryNode" />
-              <item name="Table" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedboxx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Nodes" type="462c0819:PsiDirectoryNode" />
-              <item name="NodeUtils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cylium" type="b2602c69:ProjectViewProjectNode" />
@@ -562,12 +500,12 @@
       <workItem from="1620741807715" duration="1488000" />
       <workItem from="1620835598771" duration="3515000" />
       <workItem from="1621023226057" duration="1442000" />
-      <workItem from="1621369131454" duration="19810000" />
+      <workItem from="1621369131454" duration="22728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1401888000" />
+    <option name="totallyTimeSpent" value="1404806000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -866,36 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="122" column="140" selection-start-line="122" selection-start-column="140" selection-end-line="122" selection-end-column="140" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeUtils/nodeStylerBar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -955,18 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="430" column="30" selection-start-line="430" selection-start-column="30" selection-end-line="430" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-            <element signature="e#1472#1514#0" expanded="true" />
-            <marker date="1621439398280" expanded="true" signature="16264:16300" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/column.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -977,10 +873,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2058">
-          <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
+        <state relative-caret-position="551">
+          <caret line="127" column="141" selection-start-line="127" selection-start-column="141" selection-end-line="127" selection-end-column="141" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -994,20 +893,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/nodeSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1701">
+          <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/baseChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2226">
+          <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+            <element signature="e#1472#1514#0" expanded="true" />
+            <marker date="1621514777491" expanded="true" signature="16165:16201" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="150" column="19" lean-forward="true" selection-start-line="133" selection-start-column="12" selection-end-line="150" selection-end-column="19" />
+        <state relative-caret-position="181">
+          <caret line="122" column="92" selection-start-line="122" selection-start-column="92" selection-end-line="122" selection-end-column="142" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="121" column="47" lean-forward="true" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
+        <state relative-caret-position="188">
+          <caret line="31" column="219" selection-start-line="31" selection-start-column="219" selection-end-line="31" selection-end-column="226" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="22" column="136" selection-start-line="22" selection-start-column="136" selection-end-line="22" selection-end-column="136" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

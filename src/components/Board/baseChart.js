@@ -1,15 +1,5 @@
 import React, {useCallback, useEffect, useRef} from 'react';
-import ReactFlow, {
-    addEdge,
-    Background,
-    Controls,
-    MiniMap,
-    ReactFlowProvider,
-    removeElements,
-    updateEdge,
-    useStoreState,
-    useZoomPanHelper,
-} from 'react-flow-renderer';
+import ReactFlow, {addEdge, Background, Controls, MiniMap, ReactFlowProvider, removeElements, updateEdge, useStoreState, useZoomPanHelper,} from 'react-flow-renderer';
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
 import PuffLoader from "react-spinners/PuffLoader";
@@ -91,15 +81,11 @@ function BaseChart(props) {
     const [isChatOpen,openChat] = React.useState(false);
     const reactFlowWrapper = useRef(null);
     const [refreshKey, setRefreshKey] = React.useState(' ');
-
     const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
-
-
     const handleClickOpen = () => {setOpen(true);};
     const handleClose = () => {setOpen(false);};
     const { transform } = useZoomPanHelper();
     const classes = useStyles();
-
 
     const onSave = () => {
         if (rfInstance || elements.length > 0) {
@@ -152,7 +138,6 @@ function BaseChart(props) {
         }
         triggerAutoSave()
     };
-
     const onElementsRemove = (elementsToRemove) => {
         // console.log(elementsToRemove);
         setElementsToRemove(elementsToRemove);
@@ -160,7 +145,7 @@ function BaseChart(props) {
     };
 
     const confirmElementsRemove = ()=>{
-        console.log(elementsToRemove)
+        console.log(elementsToRemove);
         handleClose();
         setElements((els) => removeElements(elementsToRemove, els));
         setElementsToRemove(null);
@@ -172,10 +157,7 @@ function BaseChart(props) {
         triggerAutoSave()
     };
 
-
-
     const onNodeDragStop = (event, node) => {
-
         console.log(elements);
         if (node.type === 'documentNodes') {
             for (let i = 0; i < elements.length; i++) {
@@ -209,23 +191,20 @@ function BaseChart(props) {
     };
 
     const addDocumentToList = (docNode, listNode) => {
-
         let e = elements.slice();
         for (let i = 0; i < e.length;i++){
             if (listNode.id === e[i].id){
-                console.log('FOUND', e[i])
+                console.log('FOUND', e[i]);
                 let list = e[i].data.listData;
                 let newTaskID = `task - `+ Math.random().toString();
                 let newTask = {id: newTaskID, title:docNode.data.title,  content: docNode.data.content};
                 list.columns[list.columnOrder[0]].taskIds.push(newTaskID);
                 list.tasks[newTaskID] = newTask;
-
             }
         }
         setElements(e);
         setElementsToRemove(null);
         setRefreshKey('_'+ Math.random().toString());
-
         let rem = [docNode]
         setElements((els) => removeElements(rem, els));
         setElementsToRemove(null);
@@ -297,7 +276,6 @@ function BaseChart(props) {
         event.dataTransfer.dropEffect = 'move';
     };
 
-
     const onDrop = async (event) => {
         console.log("DROPPED")
         event.preventDefault();
@@ -311,7 +289,7 @@ function BaseChart(props) {
         console.log(type);
         const newNode = await selectNode(type,id,props.user,props.channel.color,position);
         if (type === 'boxfront' || type ==='box'){
-            console.log('addedbox')
+            console.log('addedbox');
             let elems = elements.slice();
             if (newNode.layer === 0) {
                 elems.unshift(newNode);
@@ -334,15 +312,13 @@ function BaseChart(props) {
        if(props.channel && props.channel.flow!== ''){
            let f = JSON.parse(props.channel.flow);
            let dbElements = f.elements;
-            // for (let node of dbElements){
-            //     if (node.data) {
-            //         node.data.color = props.channel.color
-            //     }
-            //
-            //
-            // }
+            for (let node of dbElements){
+                if (node.data) {
+                    node.data.delete = elementsToRemove;
+                    node.data.user = props.user;
+                }
+            }
            setElements(dbElements)
-
         }
     }, [props.channel]);
 
@@ -360,10 +336,7 @@ function BaseChart(props) {
                 >
                     <FlowController user = {props.user} color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
                 </Box>
-
             </Box>
-
-
             <Box
                 flexDirection ='row'
                 justifyContent = 'center'
@@ -374,8 +347,6 @@ function BaseChart(props) {
                     overflow: 'hidden'
                 }}
             >
-
-
                 <AppBar
                     style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}
                     color = '#F7F7F7'
@@ -394,21 +365,15 @@ function BaseChart(props) {
 
                     </Box>
                 </AppBar>
-
                 {isChatOpen
                     ?
-
-
                     <Box borderRadius = {10} style = {{marginLeft: 38, marginTop: 100, width: '28vw', minWidth: 300, zIndex: 50, position:'absolute'}}>
-                        <Rooms channel={props.channel} messages={props.messages}
-                               automations={props.automations} user={props.user}/>
+                        <Rooms channel={props.channel} messages={props.messages} automations={props.automations} user={props.user}/>
                     </Box>
-
                     : null
                 }
 
-                        <div style = {{  width: '100vw', height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
-
+                <div style = {{  width: '100vw', height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
                         key={ refreshKey}
                         nodeTypes={nodeTypes}
@@ -437,11 +402,8 @@ function BaseChart(props) {
                     >
 
                     {/*<Controls*/}
-
                     {/*    style = {{backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}*/}
                     {/*    />*/}
-
-
                         {/*<MiniMap*/}
                         {/*    nodeColor={props.channel.color}*/}
                         {/*    nodeStrokeColor={'#CDCDCD'}*/}
@@ -449,9 +411,7 @@ function BaseChart(props) {
                         {/*    nodeBorderRadius={5}*/}
                         {/*    style = {{margin: 10, marginRight: 20, border:2, borderColor: 'black', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,*/}
                         {/*    }}*/}
-
                         {/*/>*/}
-
                         <Background
                             variant = "dots"
                             color = {props.user.theme  === 'light' ? "#3B3C50" : 'lightgrey'}
@@ -459,11 +419,7 @@ function BaseChart(props) {
                             gap={30}
                             // size={1}
                         />
-
-
-
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'flex-end' alignItems = 'space-between'>
-
                             <Box style = {{marginRight: 150, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
                                 { saving
                                     ?
@@ -476,7 +432,6 @@ function BaseChart(props) {
                                          {/*<p> Saved </p>*/}
                                          {/*<BiCheck size ={15} />*/}
                                      </Box>
-
                                 }
                             </Box>
                         </Box>
@@ -505,12 +460,8 @@ function BaseChart(props) {
                     </DialogActions>
                 </Dialog>
             </Box>
-
         </Box>
-
         </ReactFlowProvider>
-
-
     );
 }
 

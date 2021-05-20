@@ -124,10 +124,8 @@ function Task(props) {
                             <MenuItem onClick={()=>props.deleteTask(props.column, props.task)}>Delete</MenuItem>
                             <MenuItem onClick={closeMenu}>Rename</MenuItem>
                         </Menu>
-
                     {/*<BiX style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick = {()=>props.deleteTask(props.column, props.task)}/>*/}
                     {/*<BiExpand style = {{color: props.backgroundColor.isDark() ? 'white' : 'black', margin: 5}} onClick={handleClick} />*/}
-
                     </Box>
                 </Container>
 
