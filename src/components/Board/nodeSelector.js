@@ -87,6 +87,7 @@ export const selectNode = (type, id, user, color, position) => {
             draggable: true,
             type: 'documentNodes',
             data : {
+                id: id,
                 type: 'document',
                 title: null,
                 content: [
@@ -98,6 +99,7 @@ export const selectNode = (type, id, user, color, position) => {
                     }
                 ],
                 locked: false,
+                user: user,
                 style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 5, border: 1, shadow: `0px 3px 10px rgba(0, 0, 0, 0.25)`},
                 size: [250,60]
 

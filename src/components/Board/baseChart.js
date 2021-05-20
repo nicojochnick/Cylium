@@ -144,10 +144,30 @@ function BaseChart(props) {
         handleClickOpen()
     };
 
-    const confirmElementsRemove = ()=>{
-        console.log(elementsToRemove);
+
+    const confirmElementsRemoveBase = (id, )=>{
+        console.log(id, elements);
         handleClose();
         setElements((els) => removeElements(elementsToRemove, els));
+        setElementsToRemove(null);
+        triggerAutoSave();
+
+    };
+
+
+    const confirmElementsRemove = (id, )=>{
+        console.log(id, elements);
+        handleClose();
+        let elementToRemove = null
+
+        for (let node of elements){
+            if (node.id === id) {
+               elementToRemove = node;
+            }
+        }
+        console.log(elementToRemove)
+        setElements((els) => removeElements([elementToRemove], els));
+
         setElementsToRemove(null);
         triggerAutoSave();
     };
@@ -309,12 +329,13 @@ function BaseChart(props) {
     };
 
     useEffect(() => {
+        console.log('RESET')
        if(props.channel && props.channel.flow!== ''){
            let f = JSON.parse(props.channel.flow);
            let dbElements = f.elements;
             for (let node of dbElements){
                 if (node.data) {
-                    node.data.delete = elementsToRemove;
+                    node.data.delete = confirmElementsRemove
                     node.data.user = props.user;
                 }
             }
@@ -454,7 +475,7 @@ function BaseChart(props) {
                         <Button onClick={handleClose} color="secondary">
                             Cancel
                         </Button>
-                        <Button onClick={confirmElementsRemove} color="primary" autoFocus>
+                        <Button onClick={confirmElementsRemoveBase} color="primary" autoFocus>
                             Delete
                         </Button>
                     </DialogActions>

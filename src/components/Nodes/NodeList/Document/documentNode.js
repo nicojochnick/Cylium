@@ -146,7 +146,7 @@ export default memo(({ data,}) => {
                 open={Boolean(anchorElMenu)}
                 onClose={closeMenu}
             >
-                <MenuItem onClick={closeMenu}>Delete</MenuItem>
+                <MenuItem onClick={()=>data.delete(data.id)}>Delete</MenuItem>
                 <MenuItem onClick={closeMenu}>Rename</MenuItem>
             </Menu>
         </Box>
@@ -172,11 +172,22 @@ export default memo(({ data,}) => {
                 }}
             >
 
-                <DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' }}>
-                    <Box borderRadius = {20} style = {{ backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' , height: '80vh'}}>
-                        <DocumentApp user = {data.user} data = {data} title = {title} changeTitle = {changeTitle} />
-                    </Box>
-                </DialogContent>
+                { data.user
+
+                ?
+                    <DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' }}>
+                        <Box borderRadius = {20} style = {{ backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' , height: '80vh'}}>
+
+                            <DocumentApp user = {data.user} data = {data} title = {title} changeTitle = {changeTitle} />
+                        </Box>
+                    </DialogContent>
+
+
+                : null
+
+                }
+
+
 
             </Dialog>
 
