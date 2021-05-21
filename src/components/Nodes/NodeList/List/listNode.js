@@ -83,15 +83,13 @@ export default function ListNode (props) {
 
     }
 
-
-
     const addTask = async (col) => {
         let list = initData;
         let newTaskID = `task - `+ await createID()
         let newTask = {id: newTaskID, title: 'type something',
             content:[
                     {
-                        _id: 'doc_' + Math.random().toString() * Math.random().toString() ,
+                        _id: 'doc_' + await createID() ,
                         html: " ",
                         tag: "p",
                         imageUrl: ""
@@ -249,7 +247,7 @@ export default function ListNode (props) {
                                                 {initData.columnOrder.map((columnID,index) => {
                                                     const column = initData.columns[columnID];
                                                     const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                                                    return <Column data = {props.data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                                                    return <Column user = {props.data.user} data = {props.data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
                                                 })
                                                 }
@@ -295,7 +293,7 @@ export default function ListNode (props) {
                                                 {initData.columnOrder.map((columnID,index) => {
                                                     const column = initData.columns[columnID];
                                                     const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
-                                                    return <Column data = {props.data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
+                                                    return <Column user = {props.data.user} data = {props.data} index = {index} deleteColumn = {deleteColumn} changeColumnTitle = {changeColumnTitle}  deleteTask = {deleteTask} addTask = {addTask}  column = {column} key = {columnID} tasks = {tasks} />
 
                                                 })
                                                 }

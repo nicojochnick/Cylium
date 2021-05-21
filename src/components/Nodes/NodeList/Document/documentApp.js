@@ -10,25 +10,38 @@ import EditablePage from "./DocumentApp/components/editablePage";
 function DocumentApp(props) {
     const classes = useStyles();
     return (
-        <div style = {{backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white' }} className={classes.root}>
-        <Grid style = {{backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white' }} container>
-            <Grid item xs={0} sm={2}></Grid>
-            <Grid item xs={12} sm={8}>
-                <Box style = {{margin: 50}}>
-                <TextField
-                    onChange={(e)=> props.changeTitle(e.target.value)}
-                    id="standard-basic"
-                    placeholder="Untitled"
-                    value={props.title}
-                    InputProps={{style: {fontSize: 50, fontWeight: 600, margin: 10, color:props.user.theme === 'dark' ? 'white' : 'black' }, disableUnderline: true,}}
-                />
-                <EditablePage data = {props.data} originList = {props.originList} changeContent = {props.changeContent}  />
-                </Box>
-            </Grid>
-            <Grid item xs={0} sm={2}>
-            </Grid>
-        </Grid>
-        </div>
+
+        <>
+        {props.user
+            ? <div style={{backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white'}} className={classes.root}>
+                <Grid style={{backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white'}} container>
+                    <Grid item xs={0} sm={2}></Grid>
+                    <Grid item xs={12} sm={8}>
+                        <Box style={{margin: 50}}>
+                            <TextField
+                                onChange={(e) => props.changeTitle(e.target.value)}
+                                id="standard-basic"
+                                placeholder="Untitled"
+                                value={props.title}
+                                InputProps={{
+                                    style: {
+                                        fontSize: 50,
+                                        fontWeight: 600,
+                                        margin: 10,
+                                        color: props.user.theme === 'dark' ? 'white' : 'black'
+                                    }, disableUnderline: true,
+                                }}
+                            />
+                            <EditablePage data={props.data} originList={props.originList} changeContent={props.changeContent}/>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={0} sm={2}>
+                    </Grid>
+                </Grid>
+            </div>
+            : null
+        }
+        </>
     );
 }
 

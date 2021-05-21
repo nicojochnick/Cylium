@@ -56,7 +56,7 @@ function Column(props) {
                                 isDraggingOver = {snapshot.isDraggingOver}
                                 ref={provided.innerRef}  innerRef={provided.innerRef} {...provided.droppableProps}>
                                 {props.tasks.map((task, index) => (
-                                    task ? <Task backgroundColor = {backgroundColor} deleteTask = {props.deleteTask} column = {props.column} disabled = {props.disabled} key={task.id} task={task} index={index}/> : null
+                                    task ? <Task user = {props.user} backgroundColor = {backgroundColor} deleteTask = {props.deleteTask} column = {props.column} disabled = {props.disabled} key={task.id} task={task} index={index}/> : null
 
                                 ))}
                                 {provided.placeholder}

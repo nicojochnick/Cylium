@@ -154,17 +154,13 @@ function Task(props) {
                 }}
             >
 
-                <DialogContent>
-                    <Box borderRadius = {20} style = {{ backgroundColor:'white', height: '80vh'}}>
-                        <DocumentApp originList = {true} changeContent = {changeContent} data = {props.task} title = {title} changeTitle = {changeTitle} />
+                <DialogContent style = {{backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white' }}>
+                    <Box borderRadius = {20} style = {{ backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white', height: '80vh',}}>
+                        <DocumentApp user = {props.user} originList = {true} changeContent = {changeContent} data = {props.task} title = {title} changeTitle = {changeTitle} />
                     </Box>
                 </DialogContent>
-
             </Dialog>
-
         </div>
-
-
     );
 }
 
