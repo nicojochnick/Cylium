@@ -77,11 +77,17 @@ export default function ListNode (props) {
         }, 3000);
     };
 
+    const createID = async () => {
+
+        return Math.random().toString() + Date.now().toString()
+
+    }
 
 
-    const addTask = (col) => {
+
+    const addTask = async (col) => {
         let list = initData;
-        let newTaskID = `task - `+ Math.random().toString() * Math.random().toString();
+        let newTaskID = `task - `+ await createID()
         let newTask = {id: newTaskID, title: 'type something',
             content:[
                     {
@@ -232,8 +238,9 @@ export default function ListNode (props) {
                                     droppableId="all-columns"
                                     direction="horizontal"
                                     type="column"
+                                    key = {contextKey}
                                 >
-                                    { provided => (
+                                    {provided=>(
                                         <Container
                                             {...provided.droppableProps}
                                             ref={provided.innerRef}

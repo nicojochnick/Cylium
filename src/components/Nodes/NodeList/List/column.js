@@ -15,8 +15,6 @@ const Container = styled.div
     flex-direction: column;
     width: 250px;
     background-color: ${props => (props.data.style.bgColor)};
-    display: flex;
-    flex-direction: column;
 `;
 const Title = styled.h3`
   padding: 8px;
@@ -24,7 +22,7 @@ const Title = styled.h3`
 const TaskList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
-  flex-grow 1;
+  flex-grow: 1;
   min-height: 100px; 
   background-color: ${props => (props.data.style.bgColor)}
 `;
@@ -58,7 +56,8 @@ function Column(props) {
                                 isDraggingOver = {snapshot.isDraggingOver}
                                 ref={provided.innerRef}  innerRef={provided.innerRef} {...provided.droppableProps}>
                                 {props.tasks.map((task, index) => (
-                                    <Task backgroundColor = {backgroundColor} deleteTask = {props.deleteTask} column = {props.column} disabled = {props.disabled} key={task.id} task={task} index={index} />
+                                    task ? <Task backgroundColor = {backgroundColor} deleteTask = {props.deleteTask} column = {props.column} disabled = {props.disabled} key={task.id} task={task} index={index}/> : null
+
                                 ))}
                                 {provided.placeholder}
                             </TaskList>
