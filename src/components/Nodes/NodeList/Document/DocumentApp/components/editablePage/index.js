@@ -174,30 +174,38 @@ const EditablePage = ({  data, fetchedBlocks, err }) => {
     setBlocks(updatedBlocks);
   };
 
+  console.log(data.user)
+
   return (
     <>
-      <DragDropContext onDragEnd={onDragEndHandler}>
+      <DragDropContext style = {{backgroundColor:'blue'}} onDragEnd={onDragEndHandler}>
         <Droppable droppableId={id}>
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
-              {blocks.map((block) => {
-                const position =
-                  blocks.map((b) => b._id).indexOf(block._id) + 1;
-                return (
-                  <EditableBlock
-                    key={block._id}
-                    position={position}
-                    id={block._id}
-                    tag={block.tag}
-                    html={block.html}
-                    imageUrl={block.imageUrl}
-                    pageId={id}
-                    addBlock={addBlockHandler}
-                    deleteBlock={deleteBlockHandler}
-                    updateBlock={updateBlockHandler}
-                  />
-                );
-              })}
+              {blocks
+                  ? blocks.map((block) => {
+                      const position =
+                          blocks.map((b) => b._id).indexOf(block._id) + 1;
+                      return (
+                          <EditableBlock
+                              key={block._id}
+                              position={position}
+                              id={block._id}
+                              tag={block.tag}
+                              html={block.html}
+                              imageUrl={block.imageUrl}
+                              pageId={id}
+                              addBlock={addBlockHandler}
+                              deleteBlock={deleteBlockHandler}
+                              user ={data.user}
+                              updateBlock={updateBlockHandler}
+                          />
+                      );
+                    })
+
+                  : null
+              }
+
               {provided.placeholder}
             </div>
           )}

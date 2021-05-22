@@ -48,6 +48,7 @@ class EditableBlock extends React.Component {
         x: null,
         y: null,
       },
+      theme: props.user.theme,
       actionMenuOpen: false,
       actionMenuPosition: {
         x: null,
@@ -377,12 +378,15 @@ class EditableBlock extends React.Component {
                   onChange={this.handleChange}
                   onFocus={this.handleFocus}
                   onBlur={this.handleBlur}
+                  theme = {this.state.theme}
                   onKeyDown={this.handleKeyDown}
                   onKeyUp={this.handleKeyUp}
                   onMouseUp={this.handleMouseUp}
                   tagName={this.state.tag}
                   className={[
-                    styles.block,
+                    this.state.theme === 'dark'
+                        ? styles.block
+                        : styles.dblock,
                     this.state.isTyping ||
                     this.state.actionMenuOpen ||
                     this.state.tagSelectorMenuOpen

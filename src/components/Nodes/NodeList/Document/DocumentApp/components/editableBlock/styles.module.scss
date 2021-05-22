@@ -1,17 +1,31 @@
 @import "../../shared/variables";
 
-.block {
+.dblock {
   padding: 0.25rem;
+  outline: 0px solid transparent;
   // Better support for safari
   -webkit-user-select: text;
   user-select: text;
+  color: black;
 }
 
+.block {
+  padding: 0.25rem;
+  outline: 0px solid transparent;
+  // Better support for safari
+  -webkit-user-select: text;
+  user-select: text;
+  color: white;
+}
+
+
 .block:focus,
+.dblock:focus,
 .isDragging,
 .blockSelected {
   background: $tertiary;
   outline-color: $tertiary;
+
   & ~ .dragHandle {
     opacity: 1;
   }
@@ -26,9 +40,15 @@
   width: calc(100% - 1rem);
 }
 
+.draggable .dblock {
+  display: inline-block;
+  width: calc(100% - 1rem);
+}
+
+
 .draggable:hover {
   .block {
-    background: #fafafa;
+    background: rgba(147, 150, 159, 0);
     outline-color: $tertiary;
   }
   .dragHandle {
@@ -64,8 +84,7 @@
 
 .fileInputLabel {
   display: block;
-  padding: 0.5rem 0.25rem;
-  color: #888888;
+  color: rgba(136, 136, 136, 0.13);
   font-size: 0.875rem;
   letter-spacing: 0.5px;
 }

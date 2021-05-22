@@ -153,7 +153,6 @@ function Task(props) {
                     horizontal: 'center',
                 }}
             >
-
                 <DialogContent style = {{backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white' }}>
                     <Box borderRadius = {20} style = {{ backgroundColor: props.user.theme === 'dark' ? '#363638' : 'white', height: '80vh',}}>
                         <DocumentApp user = {props.user} originList = {true} changeContent = {changeContent} data = {props.task} title = {title} changeTitle = {changeTitle} />

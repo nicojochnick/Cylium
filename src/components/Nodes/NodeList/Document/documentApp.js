@@ -9,6 +9,11 @@ import EditablePage from "./DocumentApp/components/editablePage";
 
 function DocumentApp(props) {
     const classes = useStyles();
+    const getData = () => {
+        let d = props.data;
+        d.user = props.user;
+        return d
+    }
     return (
 
         <>
@@ -32,7 +37,7 @@ function DocumentApp(props) {
                                     }, disableUnderline: true,
                                 }}
                             />
-                            <EditablePage data={props.data} originList={props.originList} changeContent={props.changeContent}/>
+                            <EditablePage data={getData()} originList={props.originList} changeContent={props.changeContent}/>
                         </Box>
                     </Grid>
                     <Grid item xs={0} sm={2}>
