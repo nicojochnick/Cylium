@@ -32,7 +32,7 @@ function DocumentApp(props) {
                                     style: {
                                         fontSize: 50,
                                         fontWeight: 600,
-                                        margin: 10,
+                                        margin: 5,
                                         color: props.user.theme === 'dark' ? 'white' : 'black'
                                     }, disableUnderline: true,
                                 }}

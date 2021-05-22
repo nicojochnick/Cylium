@@ -9,6 +9,7 @@ import TableNode from "../NodeList/Table/tableNode"
 import ListNode from "../NodeList/List/listNode"
 
 import DocumentNode from "../NodeList/Document/documentNode"
+import {getBarPosition} from "recharts/lib/util/ChartUtils";
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
@@ -16,7 +17,7 @@ export default memo(({ data,}) => {
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
     const [contextData,setData] = React.useState(data)
-
+    const [barKey, setBarKey] = React.useState('');
     const lock = () => {
         data.locked = !data.locked;
         setLocked(!locked)
@@ -29,7 +30,7 @@ export default memo(({ data,}) => {
     };
     const closeAll = () => {
         setBarOpen(false);
-        setBarOpen(false)
+        console.log(barOpen)
     };
 
     const renderNode = (type, size) => {
@@ -43,12 +44,21 @@ export default memo(({ data,}) => {
             case 'table':
                 return <TableNode size = {size} data = {contextData}/>;
             case 'list':
-                return <ListNode size = {size} data = {data}/>;
+                return <ListNode closeModal = {closeModal} size = {size} data = {data}/>;
             default:
                 return null;
         }
 
     };
+
+    const closeModal = () => {
+        console.log('closing modal')
+        setBarOpen(false);
+        setBarKey(Math.random)
+
+
+
+    }
 
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height]
@@ -68,10 +78,10 @@ export default memo(({ data,}) => {
             style = {{ padding: 5, width: size[0]+10, height: size[1]+10,}}
             className={data.locked ? 'nodrag' : null}
         >
-            <Box style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
+            <Box key = {barKey} style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
                 {barOpen
                     ?
-                    <div style = {{marginTop: -90}}>
+                    <div barOpen = {barOpen} style = {{marginTop: -90}}>
                         <NodeStylerBar locked = {data.locked} style = {data.style} />
                     </div>
                     : null

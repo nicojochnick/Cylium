@@ -7,15 +7,12 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/card/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/card/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/modalContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editablePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editablePage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/input/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/input/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/shared/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/shared/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/tagSelectorMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/tagSelectorMenu/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +382,7 @@
       <workItem from="1621623405035" duration="40000" />
       <workItem from="1621623455716" duration="590000" />
       <workItem from="1621624062292" duration="21000" />
-      <workItem from="1621624093255" duration="16702000" />
+      <workItem from="1621624093255" duration="21476000" />
     </task>
     <servers />
   </component>
@@ -429,6 +426,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

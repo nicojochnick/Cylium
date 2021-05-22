@@ -5,11 +5,11 @@ import styles from "./styles.module.scss";
 
 const MENU_HEIGHT = 150;
 const allowedTags = [
-  {
-    id: "page-title",
-    tag: "h1",
-    label: "Page Title",
-  },
+  // {
+  //   id: "page-title",
+  //   tag: "h1",
+  //   label: "Page Title",
+  // },
   {
     id: "heading",
     tag: "h2",
@@ -25,11 +25,11 @@ const allowedTags = [
     tag: "p",
     label: "Paragraph",
   },
-  {
-    id: "image",
-    tag: "img",
-    label: "Image",
-  },
+  // {
+  //   id: "image",
+  //   tag: "img",
+  //   label: "Image",
+  // },
 ];
 
 const TagSelectorMenu = ({ position, closeMenu, handleSelection }) => {

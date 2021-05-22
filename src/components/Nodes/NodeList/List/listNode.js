@@ -1,6 +1,6 @@
 import React, {memo, useEffect} from 'react';
 import Box from "@material-ui/core/Box";
-import {makeStyles} from "@material-ui/core";
+import {Dialog, makeStyles} from "@material-ui/core";
 import '@atlaskit/css-reset'
 import { DragDropContext } from 'react-beautiful-dnd';
 import Column from "./column";
@@ -28,14 +28,18 @@ export default function ListNode (props) {
     const [backgroundColor, setBackgroundColor] = React.useState(Color(props.data.style.bgColor))
 
     const handleClick = (event) => {
+
         if (!dragging) {
             setAnchorEl(event.currentTarget);
+            props.closeModal()
             setBorder(0)}
+
     };
 
     const handleClose = () => {
         setBorder(0);
         setAnchorEl(null);
+        props.closeModal()
     };
 
     const open = Boolean(anchorEl);
@@ -258,9 +262,12 @@ export default function ListNode (props) {
                             </DragDropContext>
                         </Container>
                     </div>
-                    <Popover
+                    <Dialog
                         id={id}
                         open={open}
+                        fullWidth={true}
+                        maxWidth={'lg'}
+
                         className={'nodrag'}
                         classes  = {{
                             paper: classes.pop
@@ -289,7 +296,7 @@ export default function ListNode (props) {
                                             {...provided.droppableProps}
                                             ref={provided.innerRef}
                                         >
-                                            <Box  display = 'flex' style = {{  height: props.data.size[1]-20, width: props.data.size[0]-20,translate: 'none'}}>
+                                            <Box  display = 'flex' style = {{translate: 'none', height: '80vh', width: '78vw'}}>
                                                 {initData.columnOrder.map((columnID,index) => {
                                                     const column = initData.columns[columnID];
                                                     const tasks = column.taskIds.map(taskId => initData.tasks[taskId]);
@@ -306,7 +313,7 @@ export default function ListNode (props) {
                                 <Button onClick={addColumn} variant={'outlined'}> <p style = {{color: backgroundColor.isDark()? 'white' : 'black' }}> Add a List </p> </Button>
                             </div>
                         </Container>
-                    </Popover>
+                    </Dialog>
                 </Box>
 
                 :null

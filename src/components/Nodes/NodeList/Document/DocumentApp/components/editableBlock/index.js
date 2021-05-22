@@ -353,14 +353,14 @@ class EditableBlock extends React.Component {
             handleSelection={this.handleTagSelection}
           />
         )}
-        {this.state.actionMenuOpen && (
-          <ActionMenu
-            position={this.state.actionMenuPosition}
-            actions={{
-              deleteBlock: () => this.props.deleteBlock({ id: this.props.id }),
-              turnInto: () => this.openTagSelectorMenu("ACTION_MENU"),
-            }}
-          />
+        {this.state.actionMenuOpen && ( true
+          // <ActionMenu
+          //   position={this.state.actionMenuPosition}
+          //   actions={{
+          //     deleteBlock: () => this.props.deleteBlock({ id: this.props.id }),
+          //     turnInto: () => this.openTagSelectorMenu("ACTION_MENU"),
+          //   }}
+          // />
         )}
         <Draggable draggableId={this.props.id} index={this.props.position}>
           {(provided, snapshot) => (
@@ -386,7 +386,7 @@ class EditableBlock extends React.Component {
                   className={[
                     this.state.theme === 'dark'
                         ? styles.block
-                        : styles.dblock,
+                        : styles.dbock,
                     this.state.isTyping ||
                     this.state.actionMenuOpen ||
                     this.state.tagSelectorMenuOpen
