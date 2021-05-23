@@ -35,6 +35,10 @@ export default memo(({ data,}) => {
         console.log(barOpen)
     };
 
+    const closeAppMenu = ()=> {
+        setAppMenuOpen(false)
+    }
+
     const renderNode = (type, size) => {
         switch (type) {
             case 'box':
@@ -54,6 +58,21 @@ export default memo(({ data,}) => {
         setBarOpen(false);
         setBarKey(Math.random)
     }
+
+    console.log('loading')
+
+    const setTimeAppMenuOpen = () => {
+        setAppMenuOpen(true)
+
+        setTimeout(function(){
+            setAppMenuOpen(false)
+            }, 3000);
+
+
+
+    }
+
+
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height]
         setSize(newSize);
@@ -62,32 +81,41 @@ export default memo(({ data,}) => {
         setData(data)
     };
 
+    const leaveBox = () => {
+        setAppMenuOpen(false);
+        setBarOpen(false)
+    }
+
     return (
-        <Box onMouseEnter = {()=> setAppMenuOpen(true)}
-             onMouseLeave={()=> setAppMenuOpen(false)}
+        <Box display = 'flex' onMouseEnter = {()=> setTimeAppMenuOpen(true)}
+             onMouseLeave={()=> leaveBox()}
         >
 
-                <Box flexDirection='column' style={{marginLeft: -50,  }}>
-                    {appMenuOpen
+                <Box display = 'flex'
+                    flexDirection='column' style={{marginLeft: -70,  }}>
 
-                        ?
                         <Box display = 'flex' flexDirection={'column'} style={{margin: 10, marginRight: 20,}}>
-                            <BiGridVertical size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
-                            <BiCog onClick={()=>setBarOpen(!barOpen)} size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
-                            <BiMessage size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
-                            <BiTrash onClick={()=>data.delete(data.id)} size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            {appMenuOpen
 
+                                ?
+                                <>
+                            <BiGridVertical size={40} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
+                            <BiCog onClick={()=>setBarOpen(!barOpen)} size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            <BiMessage size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            <BiTrash onClick={()=>data.delete(data.id)} size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            </>
+                                : null
+
+                            }
                         </Box>
 
-                        : null
-                    }
+
 
                 </Box>
 
 
         <Box
             display='flex' flexDirection={'column'}
-            onClick = {()=>console.log('click')}
             className={'nodrag'}
         >
             <Box key = {barKey} style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
@@ -101,13 +129,13 @@ export default memo(({ data,}) => {
             </Box>
             <Rnd
                 size={{
-                    width: size[0]-10, height: size[1]-10,
+                    width: size[0], height: size[1],
                 }}
                 onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
                 style={{
                     margin: 0,
                     borderRadius: data.style.borderRadius,
-                    overflow: 'hidden',
+                    // overflow: 'hidden',
                     boxShadow: data.style.shadow,
                     backgroundColor: data.style.bgColor,
                 }}

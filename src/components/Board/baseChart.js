@@ -440,6 +440,7 @@ function BaseChart(props) {
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
                         onlyRenderVisibleElements={false}
+
                         onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}
