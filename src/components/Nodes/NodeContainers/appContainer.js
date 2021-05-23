@@ -7,10 +7,10 @@ import NoteNode from "../NodeList/noteNode"
 import LabelNode from "../NodeList/labelNode"
 import TableNode from "../NodeList/Table/tableNode"
 import ListNode from "../NodeList/List/listNode"
-
+import {IconButton} from "@material-ui/core";
 import DocumentNode from "../NodeList/Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
-import {BiGridVertical, BiCog, BiMessage} from "react-icons/bi";
+import {BiGridVertical, BiCog, BiMessage, BiTrash} from "react-icons/bi";
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
@@ -71,9 +71,11 @@ export default memo(({ data,}) => {
 
                         ?
                         <div>
-                    <BiGridVertical size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
-                    <BiCog size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
-                    <BiMessage size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            <BiGridVertical size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
+                            <BiCog onClick={()=>setBarOpen(!barOpen)} size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            <BiMessage size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                            <BiTrash onClick={()=>data.delete(data.id)} size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+
                         </div>
 
                         : null

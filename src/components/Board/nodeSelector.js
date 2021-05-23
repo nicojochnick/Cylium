@@ -126,9 +126,9 @@ export const selectNode = (type, id, user, color, position) => {
             type: 'appNodes',
             id: id,
             position: position,
-
             data: {
                 size: [600,300],
+                id: id,
                 type: 'list',
                 user: user,
                 style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 10, border: 3, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},

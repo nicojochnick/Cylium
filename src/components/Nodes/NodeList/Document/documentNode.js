@@ -32,14 +32,11 @@ export default memo(({ data,}) => {
     const [background,setBackGround] = React.useState(data.style.bgColor);
     const [backgroundColor, setBackgroundColor] = React.useState(Color(data.style.bgColor));
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
     const [title,setTitle] = React.useState(data.title);
     const [anchorElMenu, setAnchorElMenu] = React.useState(null);
 
 
-
     const classes = useStyles();
-
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -54,8 +51,6 @@ export default memo(({ data,}) => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-
 
 
     const onResizeStop = (delta) => {
