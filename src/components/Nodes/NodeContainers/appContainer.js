@@ -80,29 +80,31 @@ export default memo(({ data,}) => {
         data.size = newSize;
         setData(data)
     };
-
     const leaveBox = () => {
         setAppMenuOpen(false);
         setBarOpen(false)
     }
-
     return (
         <Box display = 'flex' onMouseEnter = {()=> setTimeAppMenuOpen(true)}
              onMouseLeave={()=> leaveBox()}
         >
-
                 <Box display = 'flex'
-                    flexDirection='column' style={{marginLeft: -70,  }}>
-
+                    flexDirection='column' style={{marginLeft: -75,  }}>
                         <Box display = 'flex' flexDirection={'column'} style={{margin: 10, marginRight: 20,}}>
                             {appMenuOpen
-
                                 ?
                                 <>
-                            <BiGridVertical size={40} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
-                            <BiCog onClick={()=>setBarOpen(!barOpen)} size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
-                            <BiMessage size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
-                            <BiTrash onClick={()=>data.delete(data.id)} size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                                    <BiGridVertical size={40} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
+                                    <BiCog onClick={()=>setBarOpen(!barOpen)} size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                                            {data.type === 'box'
+                                                ? <BiMessage size={30} style={{
+                                                    color: data.user.theme === 'dark' ? 'white' : 'black',
+                                                    margin: 5
+                                                }}/>
+
+                                                : null
+                                            }
+                                    <BiTrash onClick={()=>data.delete(data.id)} size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
                             </>
                                 : null
 
@@ -129,13 +131,13 @@ export default memo(({ data,}) => {
             </Box>
             <Rnd
                 size={{
-                    width: size[0], height: size[1],
+                    width: size[0]-10, height: size[1]-10,
                 }}
                 onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
                 style={{
                     margin: 0,
                     borderRadius: data.style.borderRadius,
-                    // overflow: 'hidden',
+                    overflow: 'hidden',
                     boxShadow: data.style.shadow,
                     backgroundColor: data.style.bgColor,
                 }}
