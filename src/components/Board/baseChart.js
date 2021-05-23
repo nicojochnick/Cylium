@@ -28,6 +28,7 @@ import BoxNode from "../Nodes/NodeList/boxNode"
 import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../Nodes/NodeList/metricNode";
 import StandardNode from "../Nodes/NodeContainers/standardContainer";
+import AppNode from "../Nodes/NodeContainers/appContainer";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import DividerNode from "../Nodes/NodeList/dividerNode"
@@ -65,6 +66,7 @@ const nodeTypes = {
     metricNodes: MetricNode,
     reportNodes: ReportNode,
     standardNodes: StandardNode,
+    appNodes: AppNode,
     dividerNodes: DividerNode,
 };
 

@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/appContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/modalContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/baseChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/editableBlock/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/tagSelectorMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/DocumentApp/components/tagSelectorMenu/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Document/documentApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/List/listNode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,7 +380,7 @@
       <workItem from="1621623405035" duration="40000" />
       <workItem from="1621623455716" duration="590000" />
       <workItem from="1621624062292" duration="21000" />
-      <workItem from="1621624093255" duration="21476000" />
+      <workItem from="1621624093255" duration="26228000" />
     </task>
     <servers />
   </component>

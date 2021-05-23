@@ -37,10 +37,6 @@ export default memo(({ data,}) => {
         switch (type) {
             case 'box':
                 return <BoxNode size = {size} data = {data}/>;
-            case 'note':
-                return <NoteNode size = {size} data = {contextData}/>;
-            case 'label':
-                return <LabelNode size = {size} data = {contextData}/>;
             case 'table':
                 return <TableNode size = {size} data = {contextData}/>;
             case 'list':
@@ -52,11 +48,10 @@ export default memo(({ data,}) => {
     };
 
     const closeModal = () => {
-        console.log('closing modal');
+        console.log('closing modal')
         setBarOpen(false);
-        setBarKey(Math.random);
+        setBarKey(Math.random)
     }
-
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height]
         setSize(newSize);
@@ -80,9 +75,7 @@ export default memo(({ data,}) => {
                         <NodeStylerBar locked = {data.locked} style = {data.style} />
                     </div>
                     : null
-
                 }
-
             </Box>
             <Rnd
                 size={{
@@ -109,7 +102,7 @@ export default memo(({ data,}) => {
                     alignItems = 'space-between'
                     justifyContent = 'space-between'
                 >
-                {renderNode(data.type, size)}
+                    {renderNode(data.type, size)}
                 </Box>
             </Rnd>
         </div>

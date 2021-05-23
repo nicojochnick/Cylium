@@ -123,7 +123,7 @@ export const selectNode = (type, id, user, color, position) => {
     if (type =='kanban') {
 
         node = {
-            type: 'standardNodes',
+            type: 'appNodes',
             id: id,
             position: position,
 
