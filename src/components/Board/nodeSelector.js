@@ -46,8 +46,9 @@ export const selectNode = (type, id, user, color, position) => {
             id: id,
             draggable: true,
             layer: 0,
-            type: 'standardNodes',
+            type: 'appNodes',
             data : {
+                id: id,
                 type: 'box',
                 title: null,
                 locked: false,

@@ -433,7 +433,7 @@ function BaseChart(props) {
                         defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}
-                        elementsSelectable={true}
+                        elementsSelectable={false}
                         // onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}

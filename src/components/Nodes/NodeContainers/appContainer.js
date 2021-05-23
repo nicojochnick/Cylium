@@ -64,19 +64,20 @@ export default memo(({ data,}) => {
 
     return (
         <Box onMouseEnter = {()=> setAppMenuOpen(true)}
-             onMouseLeave={()=> setAppMenuOpen(false)} display = 'flex' flexDirection = 'row'>
+             onMouseLeave={()=> setAppMenuOpen(false)}
+        >
 
-                <Box display='flex' flexDirection={'column'} style={{marginTop: 10, marginRight: 5, width: 20}}>
+                <Box flexDirection='column' style={{marginLeft: -50,  }}>
                     {appMenuOpen
 
                         ?
-                        <div>
+                        <Box display = 'flex' flexDirection={'column'} style={{margin: 10, marginRight: 20,}}>
                             <BiGridVertical size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
                             <BiCog onClick={()=>setBarOpen(!barOpen)} size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
                             <BiMessage size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
                             <BiTrash onClick={()=>data.delete(data.id)} size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
 
-                        </div>
+                        </Box>
 
                         : null
                     }
@@ -84,9 +85,9 @@ export default memo(({ data,}) => {
                 </Box>
 
 
-        <div
+        <Box
+            display='flex' flexDirection={'column'}
             onClick = {()=>console.log('click')}
-            style = {{ padding: 5, width: size[0]+10, height: size[1]+10, display: 'flex', marginLeft: 10}}
             className={'nodrag'}
         >
             <Box key = {barKey} style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
@@ -100,14 +101,13 @@ export default memo(({ data,}) => {
             </Box>
             <Rnd
                 size={{
-                    width: size[0],
-                    height: size[1],
+                    width: size[0]-10, height: size[1]-10,
                 }}
                 onResizeStop={(event, direction, elementRef, delta) => onResizeStop(delta)}
                 style={{
                     margin: 0,
                     borderRadius: data.style.borderRadius,
-                    // overflow: 'hidden',
+                    overflow: 'hidden',
                     boxShadow: data.style.shadow,
                     backgroundColor: data.style.bgColor,
                 }}
@@ -117,7 +117,7 @@ export default memo(({ data,}) => {
                     border =  {barOpen ? 2: data.style.border}
                     borderRadius = {data.style.borderRadius}
                     borderColor = {barOpen ? '#268CFF': '#6E6E6E'}
-                    style = {{ width: size[0], height: size[1]}}
+                    style = {{ width: size[0]-10, height: size[1]-10}}
                     display='flex'
                     flexDirection='row'
                     alignItems = 'space-between'
@@ -126,7 +126,7 @@ export default memo(({ data,}) => {
                     {renderNode(data.type, size)}
                 </Box>
             </Rnd>
-        </div>
+        </Box>
         </Box>
     );
 });
