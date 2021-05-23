@@ -10,12 +10,14 @@ import ListNode from "../NodeList/List/listNode"
 
 import DocumentNode from "../NodeList/Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
+import {BiGridVertical, BiCog, BiMessage} from "react-icons/bi";
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
+    const [appMenuOpen, setAppMenuOpen] = React.useState(false);
     const [contextData,setData] = React.useState(data)
     const [barKey, setBarKey] = React.useState('');
     const lock = () => {
@@ -61,12 +63,29 @@ export default memo(({ data,}) => {
     };
 
     return (
+        <Box onMouseEnter = {()=> setAppMenuOpen(true)}
+             onMouseLeave={()=> setAppMenuOpen(false)} display = 'flex' flexDirection = 'row'>
+
+                <Box display='flex' flexDirection={'column'} style={{marginTop: 10, marginRight: 5, width: 20}}>
+                    {appMenuOpen
+
+                        ?
+                        <div>
+                    <BiGridVertical size={30} style={{color: data.user.theme === 'dark' ? 'white' : 'black'}}/>
+                    <BiCog size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                    <BiMessage size={20} style={{color: data.user.theme === 'dark' ? 'white' : 'black', margin: 5}}/>
+                        </div>
+
+                        : null
+                    }
+
+                </Box>
+
+
         <div
-            onMouseEnter = {()=> setOptions(true)}
-            onMouseLeave={()=> closeAll()}
-            onClick = {()=>nodeSelected()}
-            style = {{ padding: 5, width: size[0]+10, height: size[1]+10,}}
-            className={data.locked ? 'nodrag' : null}
+            onClick = {()=>console.log('click')}
+            style = {{ padding: 5, width: size[0]+10, height: size[1]+10, display: 'flex', marginLeft: 10}}
+            className={'nodrag'}
         >
             <Box key = {barKey} style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
                 {barOpen
@@ -106,5 +125,6 @@ export default memo(({ data,}) => {
                 </Box>
             </Rnd>
         </div>
+        </Box>
     );
 });
