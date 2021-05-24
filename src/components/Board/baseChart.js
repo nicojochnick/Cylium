@@ -371,8 +371,8 @@ function BaseChart(props) {
     return (
 
         <ReactFlowProvider>
-        <Box style = {{zIndex: 0, height: '100vh'}} borderColor = {'#9B9B9B'}>
-            <Box style = {{height: '70vh', width: '100vw', position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+        <Box style = {{zIndex: 0, height: '100vh', overflow:'hidden'}} borderColor = {'#9B9B9B'}>
+            <Box style = {{height: '70vh', width: '67vw', position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
                     display = 'flex' flexDirection ='column' justifyContent = 'center' alignItems = 'center'
                     style = {{

@@ -31,7 +31,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { BiCircle} from "react-icons/bi";
 import ProjectProfile from "../../components/Profile/Project/projectProfile";
 import Avatar from "@material-ui/core/Avatar";
-
+import ChatBase from "../../components/Chat/ChatBase";
 
 
 
@@ -51,12 +51,8 @@ function BaseView(props) {
     const [color, setColor] = React.useState(props.channel.color);
     const [savedColor, setSavedColor] =React.useState(props.channel.color);
     const [colorPickerOpen, setColorPickerOpen] = React.useState(false);
-
     const [openSettings, setSettingsOpen] = React.useState(false);
-
     const openColorPicker = () => {setColorPickerOpen(true)};
-
-
     const handleClickOpenSettings = () => {setSettingsOpen(!colorPickerOpen);};
     const handleCloseSettings = () => {setSettingsOpen(false);};
 
@@ -69,8 +65,6 @@ function BaseView(props) {
     const saveColor = (color) => {
         setSavedColor(color.hex)
     };
-
-
     const openChat = () => {
         if (graphMDandLG === 12){
             setGraphMDandLG(8);
@@ -109,60 +103,17 @@ function BaseView(props) {
     return (
         <div className={classes.root}>
             {/*<CssBaseline />*/}
-
-            {isFollowing()
-                ?
-
                 <div className={classes.root}>
-                    {/*<AppBar*/}
-                    {/*    style={{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, marginTop:0,}}*/}
-                    {/*    position="absolute"*/}
-                    {/*    color = '#F7F7F7'*/}
-                    {/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
-                    {/*>*/}
-                    {/*    <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>*/}
-                    {/*        <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />*/}
-                    {/*    </Toolbar>*/}
-                    {/*    <Divider/>*/}
-                    {/*</AppBar>*/}
                 <Grid className={classes.rootView} container spacing={0}>
-                        <Grid className={classes.root} xs={12} md={12} lg={12} container>
+                        {/*<Grid className={classes.root} xs={3} md={3} lg={3} container>*/}
+
+                        {/*</Grid>*/}
+                        <Box flexDirection={'row'} display = 'flex' className={classes.root} xs={12} md={12} lg={12} container>
+                            <ChatBase channel={props.channel} messages={props.messages} automations={props.automations} user={props.user} />
                             <BaseChart handleClickOpenSettings = { handleClickOpenSettings} channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width} openChat={openChat}/>
-                        </Grid>
-
-                </Grid>
-                </div>
-
-                :
-
-                <div className={classes.root}>
-                    <AppBar
-                        style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
-                        position="absolute"
-                        color = '#F7F7F7'
-                        className={clsx(classes.appBar, open && classes.appBarShift)}
-                    >
-                        <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
-                        </Toolbar>
-                        <Divider/>
-                    </AppBar>
-
-                <Grid container justify = 'center' alignItems = 'center' className = {classes.privateBoard}>
-                    <Box flexDirection = 'column' display = 'flex' justifyContent={'center'} alignItems = 'center'>
-                        <Box  style = {{margin: 5, padding: 3, marginTop: -40}} border = {2} borderColor = {'#D0D1D3'} borderRadius = {50}>
-
-                        <Avatar className = {classes.large} src = {props.channel.img}/>
                         </Box>
-                        <p style = {{fontSize: 26, margin:5, fontWeight: 600}}> {props.channel.name}</p>
-                        <p style = {{fontSize: 16, margin: 5, }}> {props.channel.bio} </p>
-
-                        <Button onClick={handleFollow} variant={'contained'} style = {{backgroundColor: props.channel.color, margin: 10}}> <p style = {{color:'white', margin:0}}> Follow </p> </Button>
-                    </Box>
                 </Grid>
                 </div>
-
-            }
-
             <Dialog
                 open={openSettings}
                 fullWidth={true}
@@ -193,20 +144,10 @@ function BaseView(props) {
                                 :null
                             }
                         </Box>
-
-
                         <Button onClick={changeColor} variant={'contained'} style = {{backgroundColor: savedColor, marginTop: 10, marginBottom: 10, width: 180, borderRadius: 10}}> <p style = {{color:'white', margin: 0}}> Save Color </p></Button>
-
-
-
-
                     </Box>
-
                     <Divider/>
-
-
                 </DialogContent>
-
             </Dialog>
         </div>
     );
@@ -226,6 +167,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         flexGrow: 1,
         overflow:'hidden',
+        display: 'flex',
     },
     box:{
         flexGrow: 1,
@@ -324,5 +266,48 @@ const useStyles = makeStyles((theme) => ({
 {/*    <Rooms channel={props.channel} messages={props.messages}*/}
 {/*                       automations={props.automations} user={props.user}/>*/}
 {/*</Grid>*/}
+
+
+//FOLLOWVIEW
+
+//
+// <div className={classes.root}>
+//     <AppBar
+//         style={{boxShadow: "0px 0px 0px #C8CEEB", marginTop:0,}}
+//         position="absolute"
+//         color = '#F7F7F7'
+//         className={clsx(classes.appBar, open && classes.appBarShift)}
+//     >
+//         <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>
+//         </Toolbar>
+//         <Divider/>
+//     </AppBar>
+//
+//     <Grid container justify = 'center' alignItems = 'center' className = {classes.privateBoard}>
+//         <Box flexDirection = 'column' display = 'flex' justifyContent={'center'} alignItems = 'center'>
+//             <Box  style = {{margin: 5, padding: 3, marginTop: -40}} border = {2} borderColor = {'#D0D1D3'} borderRadius = {50}>
+//
+//                 <Avatar className = {classes.large} src = {props.channel.img}/>
+//             </Box>
+//             <p style = {{fontSize: 26, margin:5, fontWeight: 600}}> {props.channel.name}</p>
+//             <p style = {{fontSize: 16, margin: 5, }}> {props.channel.bio} </p>
+//
+//             <Button onClick={handleFollow} variant={'contained'} style = {{backgroundColor: props.channel.color, margin: 10}}> <p style = {{color:'white', margin:0}}> Follow </p> </Button>
+//         </Box>
+//     </Grid>
+// </div>
+
+
+{/*<AppBar*/}
+{/*    style={{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`, marginTop:0,}}*/}
+{/*    position="absolute"*/}
+{/*    color = '#F7F7F7'*/}
+{/*    className={clsx(classes.appBar, open && classes.appBarShift)}*/}
+{/*>*/}
+{/*    <Toolbar style = {{boxShadow: `5px 1px 10px -5px #838383`}} noWrap className={classes.toolbar}>*/}
+{/*        <ProjectHeader handleClickOpenSettings = { handleClickOpenSettings} user = {props.user} channel = {props.channel} />*/}
+{/*    </Toolbar>*/}
+{/*    <Divider/>*/}
+{/*</AppBar>*/}
 
 export default BaseView;

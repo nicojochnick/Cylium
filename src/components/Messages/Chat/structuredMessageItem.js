@@ -28,7 +28,7 @@ function StructuredMessageItem(props) {
                 <div>
                         <Box style = {{margin: 5}}>
                             <p style={{
-                                color: '#67696F',
+                                color: 'white',
                                 fontWeight: 500,
                                 fontSize: 15,
                                 marginTop: 15,
@@ -37,14 +37,15 @@ function StructuredMessageItem(props) {
                             >
                                 {props.packageItem.label} {' '} {props.packageItem.recurringTime}
                             </p>
-                            <div style = {{borderRadius: 20}}>
+                            <div style = {{borderRadius: 20, color: 'white'}}>
                             <TextField
                                 id="outlined-basic"
                                 fullWidth
                                 multiline
                                 rowsMax={8}
-
                                 variant="outlined"
+                                InputProps={{style: {fontSize: 23, margin: 5, marginBottom:-1, fontWeight: 600, color:props.user.theme === 'dark' ? 'white' : '#363638'}, disableUnderline: true,}}
+
                             />
                             </div>
                         </Box>

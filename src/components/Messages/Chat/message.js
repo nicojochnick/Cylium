@@ -151,9 +151,9 @@ function Message(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow={0}
-                    onMouseEnter={(e)=> setBackGroundColor('#F4F4F4')}
-                    onMouseLeave={(e)=>setBackGroundColor('white')}
-                    style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",backgroundColor:backGroundColor , }}
+                    // onMouseEnter={(e)=> setBackGroundColor('#F4F4F4')}
+                    // onMouseLeave={(e)=>setBackGroundColor('white')}
+                    style={{padding: 10, minHeight: 100,boxShadow: "0px 0px 0px #ECECEC",}}
                 >
                     <Box display = 'flex'  flexDirection = 'row' style={{margin: 0}}>
                         <Box  display = 'flex' justifyContent = 'center' alignItems ='center' style={{margin: 5, width: 45, height: 46,}} border={2} borderColor={'#E7E7E7'} borderRadius={50}>
@@ -168,27 +168,27 @@ function Message(props) {
                                 marginLeft: 5,
                                 marginBottom: 0,
                                 fontSize: 16,
-                                color: '#2F2C37',
+                                color: 'white',
                                 fontWeight: 500,
                             }}>{user.name} </p>
-                            <p style={{color: '#2F2C37', fontSize: 12, margin: 5, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
+                            <p style={{color: 'white', fontSize: 12, margin: 5, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
                             </Grid>
 
                             <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:'25vw', color :'#555555', }}>
                                 {(props.message.structuredMessage)
                                     ? <div> {Object.keys(props.message.messageData).map((item) => <
-                                        StructuredMessageItem packageItem={props.message.messageData[item]}/>)
+                                        StructuredMessageItem user = {props.user} packageItem={props.message.messageData[item]}/>)
                                     }
                                     </div>
                                     : <div>
-                                        <UnstructuredMessageContent content = {props.message.messageContent}/>
+                                        <UnstructuredMessageContent user = {props.user} content = {props.message.messageContent}/>
                                     </div>
                                 }
                             </Box>
                         </Box>
                         <Box display = 'flex' style ={{ zIndex: 20}} >
                             <IconButton style = {{width: 50, height: 50}} onClick={handlePopoverOpen}  aria-label="open">
-                                <FiMoreVertical  size = {17}/>
+                                <FiMoreVertical style ={{color:'white'}} size = {17}/>
                             </IconButton>
                         </Box>
                     </Box>

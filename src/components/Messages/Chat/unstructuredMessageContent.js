@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 
-function UnstructuredMessageContent(props) {
+export default function UnstructuredMessageContent(props) {
 
 
     useEffect(() => {
@@ -10,9 +10,12 @@ function UnstructuredMessageContent(props) {
     }, []);
     return (
 
+        <div style = {{color:'white'}}>
+
             <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(props.content)))} readOnly={true}/>
+
+        </div>
 
     );
 }
 
-export default UnstructuredMessageContent;
