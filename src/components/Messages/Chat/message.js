@@ -158,7 +158,7 @@ function Message(props) {
                         <Box  display = 'flex' justifyContent = 'center' alignItems ='center' style={{margin: 5, width: 45, height: 46,}} border={2} borderColor={'#E7E7E7'} borderRadius={50}>
                                 <Avatar  src={user.img_url_Profile.imgUrl} style ={{margin:2}} className={classes.large}/>
                         </Box>
-                        <Box flexDirection = 'column' style = {{ width:'23vw'}}>
+                        <Box flexDirection = 'column' style = {{ width:'25vw'}}>
                             <Grid container style = {{margin: 0}}>
                             <p style={{
                                 margin: 8,
@@ -172,7 +172,7 @@ function Message(props) {
                             <p style={{color: 'white', fontSize: 12, margin: 5, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
                             </Grid>
 
-                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:'23vw', color :'#555555', }}>
+                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:'20vw', color :'#555555', }}>
                                         <MessageText user = {props.user} content = {props.message.messageContent}/>
                             </Box>
                         </Box>

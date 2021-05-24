@@ -122,15 +122,14 @@ function ProjectHeader(props) {
     }, []);
 
     return (
-        <Box style = {{ width: '100vw' }} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between'>
+        <Box style = {{ width: props.baseWidth, position:'absolute', padding: 10}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between'>
             {redirect
                 ?
                 <Redirect to= {`/feed`} />
                 : null
             }
             <div/>
-        <Box borderRadius = {20} style = {{ height: 75, marginLeft: 30, backgroundColor:props.user.theme === 'light' ? 'white' : '#363638', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
-
+        <Box borderRadius = {20} style = {{ height: 75, zIndex: 100,marginLeft: 30, position:'relative', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
 
             <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
                 <ProjectProfile user = {props.user} channel = {props.channel} />
@@ -190,7 +189,7 @@ function ProjectHeader(props) {
                 </Box>
                 </div>
         </Box>
-            <Box borderRadius = {100} style = {{marginRight: 50, height: 70,width: 70, backgroundColor:props.user.theme === 'light' ? 'white' : '#363638',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
+            <Box borderRadius = {100} style = {{marginRight: 10, position:'relative', zIndex: 100, height: 70,width: 70, backgroundColor:props.user.theme === 'light' ? 'white' : '#363638',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
                 <Box component="span" style = {{padding: 0}} border = {2} borderColor = {'lightgrey'} borderRadius = {50}>
 
                 <Avatar onClick = {handleCloseDiag} src = {props.user.img_url_Profile.imgUrl} className = {classes.large} />

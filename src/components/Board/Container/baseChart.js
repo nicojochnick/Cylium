@@ -388,32 +388,26 @@ function BaseChart(props) {
                 justifyContent = 'center'
                 alignItems = 'center'
                 style={{
-                    width: '100vw',
+                    width: props.baseWidth,
                     height: '100vh',
                     overflow: 'hidden'
                 }}
             >
-                <AppBar
-                    style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}
-                    color = '#F7F7F7'
-                    // position={'static'}
-                >
-
-                    <Box
-                        display = 'flex'
-                        flexDirection ='row'
-                        justifyContent = 'flex-start'
-                        alignItems = 'center'
-                    >
-                    <Toolbar style = {{margin: 15}}>
-                        <ProjectHeader openChat = {props.openChat} isChatOpen = {isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-                    </Toolbar>
-
-                    </Box>
-                </AppBar>
+                {/*<AppBar*/}
+                {/*    style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}*/}
+                {/*    color = '#F7F7F7'*/}
+                {/*    // position={'static'}*/}
+                {/*>*/}
 
 
-                <div style = {{  width: '100vw', height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
+                        <ProjectHeader baseWidth = {props.baseWidth} openChat = {props.openChat} isChatOpen = {props.isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
+
+
+
+                {/*</AppBar>*/}
+
+
+                <div style = {{  width: props.baseWidth, height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
                         key={ refreshKey}
                         nodeTypes={nodeTypes}

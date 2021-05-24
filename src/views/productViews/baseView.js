@@ -71,8 +71,8 @@ function BaseView(props) {
 
         setIsChatOpen(!isChatOpen);
         if (baseWidth === '100vw'){
-            setBaseWidth('67vw')
-            setChatWidth('33vw')
+            setBaseWidth('70vw')
+            setChatWidth('30vw')
         } else {
             setBaseWidth('100vw');
             setChatWidth('0vw')
