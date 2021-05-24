@@ -176,7 +176,7 @@ function Message(props) {
                                         <MessageText user = {props.user} content = {props.message.messageContent}/>
                             </Box>
                         </Box>
-                        <Box display = 'flex' style ={{ zIndex: 20}} >
+                        <Box display = 'flex' style ={{ }} >
                             <IconButton style = {{width: 50, height: 50}} onClick={handlePopoverOpen}  aria-label="open">
                                 <FiMoreVertical style ={{color:'white'}} size = {17}/>
                             </IconButton>

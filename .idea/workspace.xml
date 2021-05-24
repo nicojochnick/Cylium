@@ -7,7 +7,12 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/core/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/core/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Chat/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Chat/message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Container/ChatBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Container/ChatBase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Responder/responder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/productViews/baseView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/productViews/baseView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +70,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -378,7 +391,8 @@
       <workItem from="1621623455716" duration="590000" />
       <workItem from="1621624062292" duration="21000" />
       <workItem from="1621624093255" duration="49415000" />
-      <workItem from="1621822126080" duration="1492000" />
+      <workItem from="1621822126080" duration="1524000" />
+      <workItem from="1621860201366" duration="3383000" />
     </task>
     <servers />
   </component>

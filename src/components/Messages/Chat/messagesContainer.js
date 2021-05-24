@@ -57,7 +57,7 @@ function MessagesContainer(props) {
 
     //TODO: move responder up a level, don't want it grouped with messages
     return (
-            <Grid  container direction ='column'>
+            <Box display = 'flex'  justifyContent={'space-between'} flexDirection ='column'>
                 <Box
                     border = {0}
                     // display = 'flex'
@@ -67,7 +67,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{ marginRight: 0, padding: 10,maxHeight: '75vh',overflowY: 'scroll'}}
+                    style ={{ marginRight: 0, padding: 10,height: '75vh',overflowY: 'scroll'}}
                 >
                         {Object.keys(props.messages)
                         .map((item) =>
@@ -88,11 +88,12 @@ function MessagesContainer(props) {
                     flexDirection = 'column'
                     borderColor = {'grey'}
                     color = {'#A3A0B1'}
+                    border = {1}
                     style = {{zIndex: 0, margin: 0,}}
                 >
                     <Responder scrollToBottom = {scrollToBottom} room = {props.room} channel = {props.channel} user = {props.user}/>
                 </Box>
-            </Grid>
+            </Box>
     );
 };
 
@@ -114,25 +115,6 @@ const useStyles = makeStyles((theme) => ({
         // backgroundColor: 'white',
     },
 
-    inner_box:{
-        flexGrow: 1,
-        padding: 0,
-        display: 'start',
-        overflowY: 'scroll',
-        flexDirection: 'column',
-        backgroundColor: 'white',
-        marginRight: -15
-    },
-
-    boxSticky:{
-        padding: 0,
-        top: "0rem",
-        position: "sticky",
-        display: 'start',
-        overflow: 'auto',
-        flexDirection: 'column',
-        // backgroundColor: 'white',
-    },
     '@global': {
         '*::-webkit-scrollbar': {
             width: '0.4em'

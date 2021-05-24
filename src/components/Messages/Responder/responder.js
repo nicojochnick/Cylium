@@ -18,10 +18,10 @@ function Responder(props) {
     };
 
     //TODO remove async if its not necessary
-    const sendMessage = async() => {
+    const sendMessage = async () => {
         try {
             console.log(contentState);
-            await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState,props.room.id);
+            await sendPublicChannelMessageFS(props.channel.channelID, props.user.email, contentState, props.room.id);
             props.scrollToBottom()
         } catch (error) {
             console.log('sending message failed ', error)
@@ -29,8 +29,8 @@ function Responder(props) {
     };
     const handleKeyCommand = (command, editorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command);
-        console.log(editorState,JSON.parse(contentState));
-        if(command === 'send-message' && JSON.parse(contentState).blocks[0].text !== ''){
+        console.log(editorState, JSON.parse(contentState));
+        if (command === 'send-message' && JSON.parse(contentState).blocks[0].text !== '') {
             sendMessage();
             let contentState = editorState.getCurrentContent();
             const firstBlock = contentState.getFirstBlock();
@@ -59,35 +59,49 @@ function Responder(props) {
     };
 
     const keyBindingFN = (e) => {
-        if (e.key === 'Enter') {return 'send-message'}
+        if (e.key === 'Enter') {
+            return 'send-message'
+        }
         return getDefaultKeyBinding(e)
     };
 
     return (
 
         <Box
-            border = {1}
-            display = 'flex'
-            borderColor = {'#BABCBE'}
-            flexDirection = 'column'
+            border={1}
+            display='flex'
+            borderColor={'#BABCBE'}
+            flexDirection='column'
             borderRadius={10}
-            style = {{minHeight: 0, padding: 15, margin: 20, backgroundColor: '#F3F3F3', color: '#555555'}}>
-                <Editor
-                    placeholder="message..."
-                    handleKeyCommand={handleKeyCommand}
-                    editorState={editorState}
-                    onEditorStateChange={onChange}
-                    keyBindingFn = {keyBindingFN}
-                    toolbarStyle = {{border:1, backgroundColor: 'white', zIndex: 20,  borderRadius: 8, }}
-                    toolbar = {{
-                        options: [ 'link','list', 'emoji',],
-                        inline: { inDropdown: true },
-                        list: { inDropdown: true },
-                        link: { inDropdown: true },
-                    }}
-                    // handleBeforeInput={_handleBeforeInput}
-                    // handlePastedText={=_handlePastedText}
-                />
+            style={{
+                minHeight: 0,
+                padding: 15,
+                margin: 20,
+                backgroundColor: props.user.theme === 'light' ? 'white' : '#363638',
+                color: props.user.theme === 'light' ? 'black' : 'white'
+            }}>
+            <Editor
+                placeholder="message..."
+                handleKeyCommand={handleKeyCommand}
+                editorState={editorState}
+                onEditorStateChange={onChange}
+                keyBindingFn={keyBindingFN}
+                toolbarHidden={true}
+                toolbarStyle={{
+                    border: 1,
+                    backgroundColor: props.user.theme === 'light' ? 'white' : '#363638',
+                    zIndex: 20,
+                    borderRadius: 8,
+                }}
+                toolbar={{
+                    options: [],
+                    inline: {inDropdown: true},
+                    list: {inDropdown: true},
+                    link: {inDropdown: true},
+                }}
+                // handleBeforeInput={_handleBeforeInput}
+                // handlePastedText={=_handlePastedText}
+            />
         </Box>
     );
 }

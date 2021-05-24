@@ -41,9 +41,11 @@ function BaseView(props) {
 
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState(false);
-    const [isChatOpen, setIsChat] = React.useState(false);
+    const [isChatOpen, setIsChatOpen] = React.useState(false);
     const [graphMDandLG, setGraphMDandLG] = React.useState(12)
     const [width, setWidth] = React.useState('100vw');
+    const [baseWidth, setBaseWidth] = React.useState('100vw');
+    const [chatWidth, setChatWidth] = React.useState('0vw');
     const [users, setUsers] = React.useState([]);
     const [stretch, setStretch] = React.useState(7);
     const [open, setOpen] = React.useState(true);
@@ -66,14 +68,15 @@ function BaseView(props) {
         setSavedColor(color.hex)
     };
     const openChat = () => {
-        if (graphMDandLG === 12){
-            setGraphMDandLG(8);
-            setWidth('60vw')
+
+        setIsChatOpen(!isChatOpen);
+        if (baseWidth === '100vw'){
+            setBaseWidth('67vw')
+            setChatWidth('33vw')
         } else {
-            setGraphMDandLG(12);
-            setWidth('90vw')
+            setBaseWidth('100vw');
+            setChatWidth('0vw')
         }
-        setIsChat(!isChatOpen);
 
     };
 
@@ -97,7 +100,7 @@ function BaseView(props) {
         console.log('MESSAGES----->', props.messages);
         console.log(props.channel);
         getUsers();
-        openChat()
+        // openChat()
     }, []);
 
     return (
@@ -109,8 +112,11 @@ function BaseView(props) {
 
                         {/*</Grid>*/}
                         <Box flexDirection={'row'} display = 'flex' className={classes.root} xs={12} md={12} lg={12} container>
-                            <ChatBase channel={props.channel} messages={props.messages} automations={props.automations} user={props.user} />
-                            <BaseChart handleClickOpenSettings = { handleClickOpenSettings} channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width} openChat={openChat}/>
+                            { isChatOpen
+                                ? <ChatBase chatWidth = {chatWidth} channel={props.channel} messages={props.messages} automations={props.automations} user={props.user} />
+                                : null
+                            }
+                            <BaseChart baseWidth = {baseWidth} handleClickOpenSettings = { handleClickOpenSettings} channel={props.channel} messages = {props.messages} user={props.user} isChatOpen={isChatOpen} viewWidth={width} openChat={openChat}/>
                         </Box>
                 </Grid>
                 </div>

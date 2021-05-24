@@ -372,7 +372,7 @@ function BaseChart(props) {
 
         <ReactFlowProvider>
         <Box style = {{zIndex: 0, height: '100vh', overflow:'hidden'}} borderColor = {'#9B9B9B'}>
-            <Box style = {{height: '70vh', width: '67vw', position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+            <Box style = {{height: '70vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
                     display = 'flex' flexDirection ='column' justifyContent = 'center' alignItems = 'center'
                     style = {{
@@ -406,18 +406,12 @@ function BaseChart(props) {
                         alignItems = 'center'
                     >
                     <Toolbar style = {{margin: 15}}>
-                        <ProjectHeader openChat = {openChat} isChatOpen = {isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
+                        <ProjectHeader openChat = {props.openChat} isChatOpen = {isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
                     </Toolbar>
 
                     </Box>
                 </AppBar>
-                {isChatOpen
-                    ?
-                    <Box borderRadius = {10} style = {{marginLeft: 38, marginTop: 100, width: '28vw', minWidth: 300, zIndex: 50, position:'absolute'}}>
-                        <Rooms channel={props.channel} messages={props.messages} automations={props.automations} user={props.user}/>
-                    </Box>
-                    : null
-                }
+
 
                 <div style = {{  width: '100vw', height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
@@ -606,3 +600,12 @@ export default BaseChart;
 {/*    <FeedController buttonStyle = {buttonStyle} openChat = {props.openChat}/>*/}
 
 {/*</Box>*/}
+
+
+// {isChatOpen
+//     ?
+//     <Box borderRadius = {10} style = {{marginLeft: 38, marginTop: 100, width: '28vw', minWidth: 300, zIndex: 50, position:'absolute'}}>
+//         <Rooms channel={props.channel} messages={props.messages} automations={props.automations} user={props.user}/>
+//     </Box>
+//     : null
+// }
