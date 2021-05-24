@@ -14,8 +14,6 @@ import Message from "./message"
 import {db} from "../../../api/firebase";
 import Responder from "../Responder/responder";
 
-
-
 function MessagesContainer(props) {
     const classes = useStyles();
     let backgroundColor = '#6458FB';
@@ -24,9 +22,7 @@ function MessagesContainer(props) {
     const [automations, setAutomations] = React.useState([]);
 
     const messagesEndRef = useRef(null);
-
     //TODO: TRIGGGER SCROLL TO BOTTOM ONCE ALL MESSAGES ARE LOADED, and when new messaged are added, INSTEAD OF AN ARBITRARY TIME
-
     const scrollToBottom = (type) => {
         setTimeout(() => {
             if (type === 'set') {
@@ -41,11 +37,9 @@ function MessagesContainer(props) {
     };
 
     const sortAndSetMessages = (messages ) => {
-
         // let sorted = messages.sort( function(a,b) {return new Date(b.data) - new Date(a.date)});
         // console.log('SORTED MESSAGES,', sorted);
         // setMessages(sorted);
-
     };
 
 
@@ -73,7 +67,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{ marginRight: 0, padding: 0,maxHeight: '75vh',overflowY: 'scroll'}}
+                    style ={{ marginRight: 0, padding: 10,maxHeight: '75vh',overflowY: 'scroll'}}
                 >
                         {Object.keys(props.messages)
                         .map((item) =>

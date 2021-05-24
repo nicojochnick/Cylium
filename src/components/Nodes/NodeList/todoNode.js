@@ -6,7 +6,7 @@ import { Handle } from 'react-flow-renderer';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
-import NodeEditor from "../../Editor/nodeEditor"
+import NodeEditor from "../../Editor/NodeEditor/nodeEditor"
 import Popover from "@material-ui/core/Popover/Popover";
 import Grid from "@material-ui/core/Grid";
 import TimeAgo from 'react-timeago'

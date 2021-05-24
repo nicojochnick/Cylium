@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import AutomationRecurrenceHeaderEditor from "./automationRecurrenceHeaderEditor";
 import AutomationRecurrenceEditor from "./automationRecurrenceEditor";
-import {generateDates} from "../../../../helpers/dateManagement";
+import {generateDates} from "../../../helpers/dateManagement";
 import moment from 'moment'
 import {sendMessageFS} from "../../../../api/firestore";
 

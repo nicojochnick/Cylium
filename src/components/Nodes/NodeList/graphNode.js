@@ -12,7 +12,7 @@ import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import {CirclePicker} from "react-color";
 import {colors} from "../../../styles/colors";
-import IconSelector from "../../Editor/iconSelector";
+import IconSelector from "../../Editor/Menus/IconMenu/iconSelector";
 import Divider from "@material-ui/core/Divider";
 import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
 import {Handle} from "react-flow-renderer";

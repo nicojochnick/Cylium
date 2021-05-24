@@ -12,7 +12,7 @@ import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core/styles";
 import AutomationItem from "../../xdeprecated/Automation/automationItem";
 import AutomationList from "../../xdeprecated/Automation/automationList";
-import BaseChart from "../../components/Board/baseChart";
+import BaseChart from "../../components/Board/Container/baseChart";
 import SearchUsers from "../../components/Utilities/Search/searchUsers";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -31,7 +31,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { BiCircle} from "react-icons/bi";
 import ProjectProfile from "../../components/Profile/Project/projectProfile";
 import Avatar from "@material-ui/core/Avatar";
-import ChatBase from "../../components/Chat/ChatBase";
+import ChatBase from "../../components/Messages/Container/ChatBase";
 
 
 

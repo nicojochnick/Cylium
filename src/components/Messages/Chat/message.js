@@ -8,7 +8,7 @@ import StructuredMessageItem from "./structuredMessageItem";
 import AutomationItem from "../../../xdeprecated/Automation/automationItem";
 import {db} from "../../../api/firebase";
 import Divider from "@material-ui/core/Divider";
-import UnstructuredMessageContent from "./unstructuredMessageContent"
+import MessageText from "./messageText"
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 import IconButton from "@material-ui/core/IconButton";
@@ -22,7 +22,6 @@ import { BiEdit, BiTrash} from "react-icons/bi";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import {deleteMessage} from "../../../api/firestore";
-
 
 
 
@@ -159,8 +158,7 @@ function Message(props) {
                         <Box  display = 'flex' justifyContent = 'center' alignItems ='center' style={{margin: 5, width: 45, height: 46,}} border={2} borderColor={'#E7E7E7'} borderRadius={50}>
                                 <Avatar  src={user.img_url_Profile.imgUrl} style ={{margin:2}} className={classes.large}/>
                         </Box>
-
-                        <Box flexDirection = 'column' style = {{ width:'20vw'}}>
+                        <Box flexDirection = 'column' style = {{ width:'23vw'}}>
                             <Grid container style = {{margin: 0}}>
                             <p style={{
                                 margin: 8,
@@ -174,16 +172,8 @@ function Message(props) {
                             <p style={{color: 'white', fontSize: 12, margin: 5, marginTop: 5, marginLeft: 5}}>{props.message.timeStamp.toDate().toDateString()}</p>
                             </Grid>
 
-                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:'25vw', color :'#555555', }}>
-                                {(props.message.structuredMessage)
-                                    ? <div> {Object.keys(props.message.messageData).map((item) => <
-                                        StructuredMessageItem user = {props.user} packageItem={props.message.messageData[item]}/>)
-                                    }
-                                    </div>
-                                    : <div>
-                                        <UnstructuredMessageContent user = {props.user} content = {props.message.messageContent}/>
-                                    </div>
-                                }
+                            <Box className={classes.root} style = {{margin: 3, marginTop: -10, width:'23vw', color :'#555555', }}>
+                                        <MessageText user = {props.user} content = {props.message.messageContent}/>
                             </Box>
                         </Box>
                         <Box display = 'flex' style ={{ zIndex: 20}} >
@@ -244,3 +234,10 @@ export default Message;
 {/*    </div>*/}
 {/*    : null*/}
 {/*}*/}
+
+
+// {(props.message.structuredMessage)
+//     ? <div> {Object.keys(props.message.messageData).map((item) => <
+//         StructuredMessageItem user = {props.user} packageItem={props.message.messageData[item]}/>)
+//     }
+//     </div>

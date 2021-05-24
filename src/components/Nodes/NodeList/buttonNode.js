@@ -12,8 +12,8 @@ import {colors} from "../../../styles/colors"
 import {makeStyles} from "@material-ui/core";
 import {CirclePicker} from "react-color";
 import IconButton from "@material-ui/core/IconButton";
-import IconSelector from "../../Editor/iconSelector";
-import {getIcon} from "../../Editor/iconSelector";
+import IconSelector from "../../Editor/Menus/IconMenu/iconSelector";
+import {getIcon} from "../../Editor/Menus/IconMenu/iconSelector";
 import Divider from "@material-ui/core/Divider";
 import Switch from "@material-ui/core/Switch";
 

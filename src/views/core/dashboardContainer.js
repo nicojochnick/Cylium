@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {db} from "../../api/firebase";
 import firebase from 'firebase/app';
-import {mergeAutomationSchemaandMessages} from "../../helpers/filters";
+import {mergeAutomationSchemaandMessages} from "../../xdeprecated/helpers/filters";
 import Dashboard from "./dashboard";
 import {fade, makeStyles} from "@material-ui/core";
 

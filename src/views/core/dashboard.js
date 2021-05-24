@@ -21,7 +21,6 @@ import HomeView from "../productViews/homeView";
 import cylogo from "../../assets/images/cylogo.png";
 import Box from "@material-ui/core/Box";
 
-
 export default function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -29,31 +28,27 @@ export default function Dashboard(props) {
     const openAccount = Boolean(anchorEl);
     const [key, setKey] = React.useState(Math.random())
     const id = openAccount ? 'simple-popover' : undefined;
-
     const handleClose = () => {setAnchorEl(null);};
     const handleDrawerOpen = () => {setOpen(true);};
     const handleDrawerClose = () => {setOpen(false);};
+
     const signout = () => {
         firebase.auth().signOut().then(function() {
         }).catch(function(error) {
         });
     };
 
-
     const addChannelDB= () => {
         addChannel(props.user.email, props.user.channelIDs, props.user.projectIDs)
     };
-
 
     const getDirection = (present)=>{
         let str = '/'
         if (typeof present === 'string') {
             str = "/" + present.toLowerCase()
         }
-        console.log(str)
       return str
     };
-
 
     useEffect(() => {
     }, []);
@@ -63,66 +58,8 @@ export default function Dashboard(props) {
         <div className={classes.root}>
             <CssBaseline />
             <Router>
-            {/*<Drawer*/}
-            {/*    variant="permanent"*/}
-            {/*    classes={{*/}
-            {/*        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),*/}
-            {/*    }}*/}
-            {/*    open={open}*/}
-            {/*>*/}
-            {/*    <div className={classes.toolbarIcon}>*/}
-            {/*        /!*<img style = {{height: 35, marginLeft: 10}}/>*!/*/}
-            {/*        /!*<IconButton onClick={handleDrawerClose}>*!/*/}
-            {/*            <img style = {{height: 43, width: 46, marginLeft:-3}} src = {cylogo} />*/}
-
-            {/*            /!*<ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*!/*/}
-            {/*        /!*</IconButton>*!/*/}
-            {/*    </div>*/}
-            {/*    <Divider/>*/}
-            {/*    <Link to="/feed" style={{textDecoration: 'none' }} >*/}
-            {/*    <ListItem >*/}
-            {/*        <ListItemIcon>*/}
-            {/*            <BiWorld size = {25} style = {{color:'#3C3F48'}}  />*/}
-            {/*        </ListItemIcon>*/}
-            {/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />*/}
-            {/*    </ListItem>*/}
-            {/*    </Link>*/}
-            {/*    <Divider/>*/}
-            {/*    <List>*/}
-            {/*        {Object.keys(props.channels).map((item)=>*/}
-            {/*                <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>*/}
-            {/*                    <ListItem button>*/}
-            {/*                        <ListItemIcon>*/}
-            {/*                            <BiCircle size = {25} style = {{color:props.channels[item].color}}  />*/}
-            {/*                        </ListItemIcon>*/}
-            {/*                        <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />*/}
-            {/*                    </ListItem>*/}
-            {/*                </Link>*/}
-            {/*        )}*/}
-            {/*        <Divider/>*/}
-            {/*        <ListItem button onClick = {()=>addChannelDB()} >*/}
-            {/*                <ListItemIcon >*/}
-            {/*                    <BiPlus size = {25} style = {{color:'#3C3F48'}}  />*/}
-            {/*                </ListItemIcon>*/}
-            {/*                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />*/}
-            {/*        </ListItem>*/}
-            {/*        <Divider/>*/}
-            {/*            <Link to="/account"  style={{ color:"white", textDecoration: 'none' }}>*/}
-            {/*                <ListItem button>*/}
-            {/*                    <ListItemIcon>*/}
-            {/*                        <BiUser size = {25} style = {{color:'#3C3F48'}}  />*/}
-            {/*                    </ListItemIcon>*/}
-            {/*                    <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Account" />*/}
-            {/*                </ListItem>*/}
-            {/*            </Link>*/}
-            {/*        <div>*/}
-            {/*        </div>*/}
-            {/*    </List>*/}
-            {/*    <Divider />*/}
-            {/*</Drawer>*/}
                 {(props.user) ?
                     < main className={classes.content}>
-                        {/*<div className={classes.appBarSpacer} />*/}
                         <Switch>
                             {Object.keys(props.allChannels).map((item)=>
                                     <Route key={key} exact path={getDirection(props.allChannels[item].channelID)}>
@@ -134,10 +71,7 @@ export default function Dashboard(props) {
                                             url={props.url}
                                             email={props.email}/>
                                      </Route>
-
-                            )
-                            }
-
+                            )}
                         </Switch>
                     </main>
                     :
@@ -424,3 +358,69 @@ const useStyles = makeStyles((theme) => ({
 {/*<Route exact path="/feed">*/}
 {/*    <HomeView notifications = {props.notifications}  team = {null} email = {props.email} url = {props.url} user = {props.user}/>*/}
 {/*</Route>*/}
+
+
+
+//NAVIGATION, old dash format
+
+{/*<Drawer*/}
+{/*    variant="permanent"*/}
+{/*    classes={{*/}
+{/*        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),*/}
+{/*    }}*/}
+{/*    open={open}*/}
+{/*>*/}
+{/*    <div className={classes.toolbarIcon}>*/}
+{/*        /!*<img style = {{height: 35, marginLeft: 10}}/>*!/*/}
+{/*        /!*<IconButton onClick={handleDrawerClose}>*!/*/}
+{/*            <img style = {{height: 43, width: 46, marginLeft:-3}} src = {cylogo} />*/}
+
+{/*            /!*<ChevronLeftIcon style = {{color:'#3C3F48'}} color = "white"  />*!/*/}
+{/*        /!*</IconButton>*!/*/}
+{/*    </div>*/}
+{/*    <Divider/>*/}
+{/*    <Link to="/feed" style={{textDecoration: 'none' }} >*/}
+{/*    <ListItem >*/}
+{/*        <ListItemIcon>*/}
+{/*            <BiWorld size = {25} style = {{color:'#3C3F48'}}  />*/}
+{/*        </ListItemIcon>*/}
+{/*        <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Home" />*/}
+{/*    </ListItem>*/}
+{/*    </Link>*/}
+{/*    <Divider/>*/}
+{/*    <List>*/}
+{/*        {Object.keys(props.channels).map((item)=>*/}
+{/*                <Link onClick={()=>setKey(Math.random())} to={"/" + props.channels[item].channelID.toLowerCase()}   style={{ color:"white", textDecoration: 'none' }}>*/}
+{/*                    <ListItem button>*/}
+{/*                        <ListItemIcon>*/}
+{/*                            <BiCircle size = {25} style = {{color:props.channels[item].color}}  />*/}
+{/*                        </ListItemIcon>*/}
+{/*                        <ListItemText style = {{color:props.channels[item].color, fontWeight: 600}} primary={props.channels[item].name} />*/}
+{/*                    </ListItem>*/}
+{/*                </Link>*/}
+{/*        )}*/}
+{/*        <Divider/>*/}
+{/*        <ListItem button onClick = {()=>addChannelDB()} >*/}
+{/*                <ListItemIcon >*/}
+{/*                    <BiPlus size = {25} style = {{color:'#3C3F48'}}  />*/}
+{/*                </ListItemIcon>*/}
+{/*                <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Add Channel" />*/}
+{/*        </ListItem>*/}
+{/*        <Divider/>*/}
+{/*            <Link to="/account"  style={{ color:"white", textDecoration: 'none' }}>*/}
+{/*                <ListItem button>*/}
+{/*                    <ListItemIcon>*/}
+{/*                        <BiUser size = {25} style = {{color:'#3C3F48'}}  />*/}
+{/*                    </ListItemIcon>*/}
+{/*                    <ListItemText style = {{color: '#3C3F48', fontWeight: 600}} primary="Account" />*/}
+{/*                </ListItem>*/}
+{/*            </Link>*/}
+{/*        <div>*/}
+{/*        </div>*/}
+{/*    </List>*/}
+{/*    <Divider />*/}
+{/*</Drawer>*/}
+
+
+{/*<div className={classes.appBarSpacer} />*/}
+

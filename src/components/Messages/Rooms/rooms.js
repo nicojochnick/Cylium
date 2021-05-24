@@ -18,7 +18,6 @@ export default function Rooms(props) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     const addRoom = () => {
         let index = props.channel.rooms.length + 1;
         let newRoom = {name: 'untitled', id: Math.random().toString(), index: index};
@@ -26,18 +25,8 @@ export default function Rooms(props) {
         updatedRooms.push(newRoom);
         addRoomDB(props.channel.channelID, updatedRooms)
     };
-
     return (
         <Box borderRadius = {20} style = {{overflow:'hidden'}} className={classes.root}>
-            {/*<Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>*/}
-
-            {/*    <Box borderRadius = {100} style = {{ boxShadow: '0px 1px 4px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: -15, marginTop: 6, position: 'absolute', zIndex: 20}}>*/}
-
-            {/*    <IconButton style = {{margin: 0,padding: 5, }} onClick = {addRoom}>*/}
-            {/*     <BiPlus/>*/}
-            {/*    </IconButton>*/}
-            {/*    </Box>*/}
-            {/*</Box>*/}
             <AppBar style = {{backgroundColor:'white',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.2)`,}} position="static">
                 <Tabs variant={'fullWidth'} textColor={'primary'} indicatorColor={'primary'} value={value} onChange={handleChange}>
                     {props.channel.rooms.map((room)=>{
@@ -46,15 +35,9 @@ export default function Rooms(props) {
                     }
                 </Tabs>
             </AppBar>
-            {/*<Box borderBottom = {1} borderColor = {'lightgrey' } display = 'flex' style = {{height: 50, backgroundColor: 'white'}}>*/}
-
-            {/*</Box>*/}
-
             {props.channel.rooms.map((room)=>{
                     return <TabPanel room = {room}  messages = {props.messages} value = {value} user = {props.user} channel = {props.channel} index = {room.index} />
-            }
-            )
-            }
+            })}
         </Box>
     );
 }
@@ -87,3 +70,17 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0px 3px 5px #D3D3DA',
     },
 }));
+
+
+{/*<Box display = 'flex' justifyContent = 'flex-end' alignItems = 'flex-start' borderRadius = {100} style = {{backgroundColor: 'white',}}>*/}
+{/*    <Box borderRadius = {100} style = {{ boxShadow: '0px 1px 4px 0.1px #616161', backgroundColor: 'white', padding: 0, marginRight: -15, marginTop: 6, position: 'absolute', zIndex: 20}}>*/}
+{/*    <IconButton style = {{margin: 0,padding: 5, }} onClick = {addRoom}>*/}
+{/*     <BiPlus/>*/}
+{/*    </IconButton>*/}
+{/*    </Box>*/}
+{/*</Box>*/}
+
+
+{/*<Box borderBottom = {1} borderColor = {'lightgrey' } display = 'flex' style = {{height: 50, backgroundColor: 'white'}}>*/}
+
+{/*</Box>*/}

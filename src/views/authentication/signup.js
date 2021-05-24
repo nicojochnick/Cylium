@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Signup } from '../../helpers/auth';
-import { Signin, signInWithGoogle } from "../../helpers/auth";
+import { Signup } from '../../api/auth';
+import { Signin, signInWithGoogle } from "../../api/auth";
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';

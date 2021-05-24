@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import {convertFromRaw, convertToRaw} from 'draft-js';
 
-export default function UnstructuredMessageContent(props) {
+export default function MessageText(props) {
 
 
     useEffect(() => {

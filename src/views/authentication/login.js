@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Signin, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import { Signin, signInWithGoogle, signInWithGitHub } from "../../api/auth";
 import logo from "../../assets/images/logo.png";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';

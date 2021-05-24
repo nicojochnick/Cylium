@@ -1,6 +1,6 @@
-import { auth } from "../api/firebase";
-import {db} from "../api/firebase";
-import {storage} from "../api/firebase";
+import { auth } from "./firebase";
+import {db} from "./firebase";
+import {storage} from "./firebase";
 
 export async function Signup(email, password) {
     return auth().createUserWithEmailAndPassword(email, password);

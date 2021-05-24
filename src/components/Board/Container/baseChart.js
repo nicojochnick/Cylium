@@ -3,42 +3,42 @@ import ReactFlow, {addEdge, Background, Controls, MiniMap, ReactFlowProvider, re
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
 import PuffLoader from "react-spinners/PuffLoader";
-import FlowController from "./Controllers/flowController"
-import LabelNode from "../Nodes/NodeList/labelNode";
-import TodoNode from "../Nodes/NodeList/todoNode";
-import {saveFlow, saveViewPort} from "../../api/firestore";
-import FeedController from "./Controllers/feedController";
-import BitCoinGifNode from "../Nodes/ScrapNodeList/bitCoinGifNode"
+import FlowController from "../Controllers/flowController"
+import LabelNode from "../../Nodes/NodeList/labelNode";
+import TodoNode from "../../Nodes/NodeList/todoNode";
+import {saveFlow, saveViewPort} from "../../../api/firestore";
+import FeedController from "../Controllers/feedController";
+import BitCoinGifNode from "../../Nodes/ScrapNodeList/bitCoinGifNode"
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import NoteNode from "../Nodes/NodeList/noteNode";
-import WebPageNode from "../Nodes/ScrapNodeList/webPageNode";
-import CharacterNode from "../Nodes/ScrapNodeList/characterNode";
-import AvatarNode from "../Nodes/NodeList/avatarNode"
-import ButtonNode from "../Nodes/NodeList/buttonNode"
-import DocumentNode from "../Nodes/NodeList/Document/documentNode"
-import CalendarNode from "../Nodes/ScrapNodeList/calendarNode"
+import NoteNode from "../../Nodes/NodeList/noteNode";
+import WebPageNode from "../../Nodes/ScrapNodeList/webPageNode";
+import CharacterNode from "../../Nodes/ScrapNodeList/characterNode";
+import AvatarNode from "../../Nodes/NodeList/avatarNode"
+import ButtonNode from "../../Nodes/NodeList/buttonNode"
+import DocumentNode from "../../Nodes/NodeList/Document/documentNode"
+import CalendarNode from "../../Nodes/ScrapNodeList/calendarNode"
 // import KanBanNode from "../Nodes/NodeList/List/kanbanNode"
-import {selectNode} from "./nodeSelector";
-import GraphNode from "../Nodes/NodeList/graphNode"
-import FolderNode from "../Nodes/NodeList/Folder/folderNode"
-import BoxNode from "../Nodes/NodeList/boxNode"
-import ReportNode from "../Nodes/ScrapNodeList/investorReportNode"
-import MetricNode from "../Nodes/NodeList/metricNode";
-import StandardNode from "../Nodes/NodeContainers/standardContainer";
-import AppNode from "../Nodes/NodeContainers/appContainer";
+import {selectNode} from "../nodeSelector";
+import GraphNode from "../../Nodes/NodeList/graphNode"
+import FolderNode from "../../Nodes/NodeList/Folder/folderNode"
+import BoxNode from "../../Nodes/NodeList/boxNode"
+import ReportNode from "../../Nodes/ScrapNodeList/investorReportNode"
+import MetricNode from "../../Nodes/NodeList/metricNode";
+import StandardNode from "../../Nodes/NodeContainers/standardContainer";
+import AppNode from "../../Nodes/NodeContainers/appContainer";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import DividerNode from "../Nodes/NodeList/dividerNode"
-import ProjectHeader from "../Headers/projectHeader";
+import DividerNode from "../../Nodes/NodeList/dividerNode"
+import ProjectHeader from "../../Headers/projectHeader";
 import clsx from 'clsx';
 
 import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import Rooms from "../Messages/Rooms/rooms";
+import Rooms from "../../Messages/Rooms/rooms";
 
 let timerID = null;
 
