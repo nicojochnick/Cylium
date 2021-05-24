@@ -7,33 +7,7 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chat/ChatBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Container/ChatBase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Editor/iconSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Editor/Menus/IconMenu/iconSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Editor/nodeEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Editor/NodeEditor/nodeEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Groups/projectGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/projectGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menus/BoxMenu/coverMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Editor/Menus/BoxMenu/coverMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menus/BoxMenu/iconMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Editor/Menus/BoxMenu/iconMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Chat/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Chat/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Chat/messagesContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Chat/unstructuredMessageContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Chat/messageText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Rooms/rooms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/buttonNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/labelNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/noteNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/todoNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/dateManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/helpers/dateManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/helpers/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/authentication/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/authentication/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/authentication/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/authentication/signup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/core/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/core/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/core/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/core/dashboardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/productViews/baseView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/productViews/baseView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Automation/AutomationManager/automationRecurrence/automationRecurrenceContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xdeprecated/Old/feedbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/xdeprecated/Old/feedbox.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -404,7 +378,7 @@
       <workItem from="1621623455716" duration="590000" />
       <workItem from="1621624062292" duration="21000" />
       <workItem from="1621624093255" duration="49415000" />
-      <workItem from="1621822126080" duration="743000" />
+      <workItem from="1621822126080" duration="1492000" />
     </task>
     <servers />
   </component>

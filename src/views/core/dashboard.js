@@ -37,7 +37,6 @@ export default function Dashboard(props) {
         }).catch(function(error) {
         });
     };
-
     const addChannelDB= () => {
         addChannel(props.user.email, props.user.channelIDs, props.user.projectIDs)
     };
@@ -75,7 +74,7 @@ export default function Dashboard(props) {
                         </Switch>
                     </main>
                     :
-                    <p> LOADING</p>
+                    <p> pulling data..</p>
                 }
             </Router>
         </div>
