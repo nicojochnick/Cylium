@@ -90,7 +90,7 @@ export default memo(({ data,}) => {
 
         >
                 <Box display = 'flex'
-                    flexDirection='column' style={{marginLeft: -85,  }}>
+                    flexDirection='column' style={{marginLeft: -90,  }}>
                         <Box display = 'flex' flexDirection={'column'} style={{margin: 10, marginRight: 20,}}>
                             {appMenuOpen
                                 ?

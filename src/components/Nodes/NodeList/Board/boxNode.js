@@ -129,30 +129,7 @@ export default function BoxNode(props){
 
     return (
         <>
-        <Box style = {{overflow:'hidden'}} display = 'flex' flexDirection={'row'} justifyContent={'flex-end'}>
-            {props.data.actives
-                ?
-                <AvatarGroup style={{position:'absolute',margin: 15, marginRight: 30}}>
-                {props.data.actives.map((item) =>
-                    <div style = {{borderRadius: 100}}>
-                    <StyledBadge
-                        overlap="circle"
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        variant="dot"
-                    >
-                            <Avatar className={classes.large} alt={item.name} src={item.img_url_Profile.imgUrl}/>
-                    </StyledBadge>
-                    </div>
-                    )
-                }
-                </AvatarGroup>
-
-
-                    : null
-                }
+        <Box style = {{overflow:'hidden', margin:1, width: size[0]}} display = 'flex' flexDirection={'row'} justifyContent={'space-between'}>
 
 
             <Box
@@ -266,9 +243,32 @@ export default function BoxNode(props){
 
 
             </Box>
+            <Box display = 'flex' flexDirection={'row'} justifyContent={'flex-end'} >
+            {props.data.actives
+                ?
+                <AvatarGroup style={{position:'absolute',margin: 15, marginRight: 30}}>
+                    {props.data.actives.map((item) =>
+                        <div style = {{borderRadius: 100}}>
+                            <StyledBadge
+                                overlap="circle"
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                variant="dot"
+                            >
+                                <Avatar className={classes.large} alt={item.name} src={item.img_url_Profile.imgUrl}/>
+                            </StyledBadge>
+                        </div>
+                    )
+                    }
+                </AvatarGroup>
 
 
 
+                : null
+            }
+            </Box>
 
             </Box>
 
