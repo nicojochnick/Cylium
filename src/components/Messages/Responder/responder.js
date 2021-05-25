@@ -77,7 +77,7 @@ function Responder(props) {
                 minHeight: 0,
                 padding: 15,
                 margin: 20,
-                backgroundColor: props.user.theme === 'light' ? 'white' : '#363638',
+                backgroundColor: props.user.theme === 'light' ? 'white' : '#454546',
                 color: props.user.theme === 'light' ? 'black' : 'white'
             }}>
             <Editor

@@ -30,8 +30,6 @@ function MessagesContainer(props) {
 
             } else {
                 messagesEndRef.current?.scrollIntoView({ behavior: 'smooth',block: 'end', inline: 'end'  });
-
-
             }
         }, 500);
     };
@@ -42,22 +40,20 @@ function MessagesContainer(props) {
         // setMessages(sorted);
     };
 
-
     useEffect(() => {
         // sortAndSetMessages(props.messages);
         scrollToBottom('set');
 
     }, []);
 
-
     useEffect(() => {
         scrollToBottom()
     }, [messages]);
 
-
     //TODO: move responder up a level, don't want it grouped with messages
     return (
             <Box display = 'flex'  justifyContent={'space-between'} flexDirection ='column'>
+                <Divider style={{backgroundColor:'black'}}/>
                 <Box
                     border = {0}
                     // display = 'flex'
@@ -67,7 +63,7 @@ function MessagesContainer(props) {
                     color = {'#A3A0B1'}
                     className={classes.box}
                     boxShadow = {0}
-                    style ={{ marginRight: 0, padding: 10,height: '75vh',overflowY: 'scroll'}}
+                    style ={{ marginRight: 0, padding: 10, minWidth: 400,height: '75vh',overflowY: 'scroll'}}
                 >
                         {Object.keys(props.messages)
                         .map((item) =>
@@ -81,14 +77,13 @@ function MessagesContainer(props) {
                     }
                         <div ref={messagesEndRef}></div>
                 </Box>
-
+                <Divider style={{backgroundColor:'black'}}/>
                 <Box
                     display = 'flex'
                     justifyContent = 'flex-end'
                     flexDirection = 'column'
                     borderColor = {'grey'}
                     color = {'#A3A0B1'}
-                    border = {1}
                     style = {{zIndex: 0, margin: 0,}}
                 >
                     <Responder scrollToBottom = {scrollToBottom} room = {props.room} channel = {props.channel} user = {props.user}/>
