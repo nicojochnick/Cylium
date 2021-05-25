@@ -20,20 +20,25 @@ function Channels(props) {
     const classes = useStyles();
     const handleClose = () => {
         setDialogValue({
-            title: '',
-            year: '',
+            name: '',
         });
         toggleOpen(false);
     };
     const [dialogValue, setDialogValue] = React.useState({
-        title: '',
-        year: '',
+        name: '',
     });
+
+
+    const switchChannel = (val) => {
+        console.log(val)
+        props.selectChannel(val)
+
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setValue({
-            title: dialogValue.title,
+            name: dialogValue.name,
         });
 
         handleClose();
@@ -53,16 +58,17 @@ function Channels(props) {
                         setTimeout(() => {
                             toggleOpen(true);
                             setDialogValue({
-                                title: newValue,
+                                name: newValue,
                             });
                         });
                     } else if (newValue && newValue.inputValue) {
                         toggleOpen(true);
                         setDialogValue({
-                            title: newValue.inputValue,
+                            name: newValue.inputValue,
                         });
                     } else {
                         setValue(newValue);
+                        switchChannel(newValue)
                     }
                 }}
                 filterOptions={(options, params) => {
@@ -79,7 +85,6 @@ function Channels(props) {
                 id="free-solo-dialog-demo"
                 options={props.channels}
                 getOptionLabel={(option) => {
-                    console.log(option)
                     // e.g value selected with enter, right from the input
                     // if (typeof option === 'string') {
                     //     return option.name;
