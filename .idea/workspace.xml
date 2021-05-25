@@ -7,8 +7,12 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Messages/Channels/channels.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Channels/channels.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Container/ChatBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Container/ChatBase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/appContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/appContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/standardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/boxNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Board/boxNode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +221,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -229,18 +233,18 @@
       <recent name="$PROJECT_DIR$/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/Board" />
       <recent name="$PROJECT_DIR$/src/components/Editor/Menus/IconMenu" />
       <recent name="$PROJECT_DIR$/src/components/Editor/Menus" />
       <recent name="$PROJECT_DIR$/src/components/Editor/NodeEditor" />
       <recent name="$PROJECT_DIR$/src/components/Editor" />
-      <recent name="$PROJECT_DIR$/src/xdeprecated" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.boxNode.js">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
-    <configuration name="boxNode.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="boxNode.js" working-dir="$PROJECT_DIR$/src/components/Nodes/NodeList">
+    <configuration name="boxNode.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/Nodes/NodeList/Board/boxNode.js" working-dir="$PROJECT_DIR$/src/components/Nodes/NodeList">
       <method v="2" />
     </configuration>
     <configuration name="dashboard.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/views/core/dashboard.js" working-dir="$PROJECT_DIR$/src/apps">
@@ -388,7 +392,7 @@
       <workItem from="1621624062292" duration="21000" />
       <workItem from="1621624093255" duration="49415000" />
       <workItem from="1621822126080" duration="1524000" />
-      <workItem from="1621860201366" duration="17543000" />
+      <workItem from="1621860201366" duration="21155000" />
     </task>
     <servers />
   </component>

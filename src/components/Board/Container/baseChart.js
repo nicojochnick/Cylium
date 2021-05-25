@@ -24,7 +24,7 @@ import CalendarNode from "../../Nodes/ScrapNodeList/calendarNode"
 import {selectNode} from "../nodeSelector";
 import GraphNode from "../../Nodes/NodeList/graphNode"
 import FolderNode from "../../Nodes/NodeList/Folder/folderNode"
-import BoxNode from "../../Nodes/NodeList/boxNode"
+import BoxNode from "../../Nodes/NodeList/Board/boxNode"
 import ReportNode from "../../Nodes/ScrapNodeList/investorReportNode"
 import MetricNode from "../../Nodes/NodeList/metricNode";
 import StandardNode from "../../Nodes/NodeContainers/standardContainer";
@@ -249,15 +249,20 @@ function BaseChart(props) {
     };
 
     const onNodeDoubleClick = (event, node) => {
-        // console.log('node double click', node);
-        let e = elements.slice();
-        for (let i = 0; i < e.length;i++){
-            if (node.id === e[i].id){
-                console.log(e[i]);
-                e[i].data.className = 'nodrag'
+        if(node.data.type === 'box' && node.data.actives){
+
+            for (let i = 0; i < elements.length; i++){
+                if (elements[i].id === node.id){
+                    console.log(node.id)
+                    elements[i].data.actives.push(props.user)
+                }
             }
+           setElements(elements)
         }
-        setElements(e)
+
+
+
+
     };
 
     const onNodeMouseLeave = (event, node) => {
@@ -428,7 +433,6 @@ function BaseChart(props) {
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
                         onlyRenderVisibleElements={false}
-
                         onElementClick={onElementClick}
                         onNodeDoubleClick={onNodeDoubleClick}
                         onNodeMouseLeave = {onNodeMouseLeave}

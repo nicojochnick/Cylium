@@ -54,13 +54,13 @@ export const selectNode = (type, id, user, color, position) => {
                 locked: false,
                 icon: null,
                 cover: null,
+                actives: [],
                 style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 size: [2000,1000]
 
             },
             position: position,
         }
-
     }
 
     if (type === 'folder'){
@@ -74,11 +74,9 @@ export const selectNode = (type, id, user, color, position) => {
                 title: null,
                 locked: false,
                 size: [50, 50]
-
             },
             position: position,
         }
-
     }
 
     if (type === 'document'){

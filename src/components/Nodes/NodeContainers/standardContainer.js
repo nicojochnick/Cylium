@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import Box from "@material-ui/core/Box";
 import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import {Rnd} from "react-rnd";
-import BoxNode from "../NodeList/boxNode"
+import BoxNode from "../NodeList/Board/boxNode"
 import NoteNode from "../NodeList/noteNode"
 import LabelNode from "../NodeList/labelNode"
 import TableNode from "../NodeList/Table/tableNode"

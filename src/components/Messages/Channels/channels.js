@@ -31,7 +31,9 @@ function Channels(props) {
 
     const switchChannel = (val) => {
         console.log(val)
-        props.selectChannel(val)
+        if (val && val.id) {
+            props.selectChannel(val)
+        }
 
     }
 

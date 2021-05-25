@@ -3,12 +3,14 @@ import Box from "@material-ui/core/Box";
 import { Rnd } from "react-rnd";
 import { BiLock,BiLockOpenAlt, BiPaint} from "react-icons/bi";
 import {Handle} from "react-flow-renderer";
-import NodeStylerBar from "../NodeUtils/nodeStylerBar";
+import NodeStylerBar from "../../NodeUtils/nodeStylerBar";
 import Avatar from "@material-ui/core/Avatar";
-import NodeProfile from "../../Profile/Node/nodeProfile";
+import NodeProfile from "../../../Profile/Node/nodeProfile";
 import TextField from "@material-ui/core/TextField/TextField";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
+import {AvatarGroup} from "@material-ui/lab";
+import {makeStyles} from "@material-ui/core";
 
 
 const Color = require('color');
@@ -26,6 +28,9 @@ export default function BoxNode(props){
     const [cover, setCover] = React.useState(props.data.cover);
     const [icon, setIcon] = React.useState(props.data.icon);
     const [iconBackgroundColor, setIconBackgroundColor] = React.useState(null)
+
+    const classes = useStyles();
+
 
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height];
@@ -90,8 +95,25 @@ export default function BoxNode(props){
         props.data.title = text
 
     };
+
     return (
-        <>
+        <Box display = 'flex' flexDirection={'row'} justifyContent={'flex-end'}>
+            {props.data.actives
+                ?
+                <AvatarGroup style={{position:'absolute',margin: 15, marginRight: 30}}>
+                {props.data.actives.map((item) =>
+
+                            <Avatar className={classes.large} alt={item.name} src={item.name}/>
+
+                    )
+                }
+                </AvatarGroup>
+
+
+                    : null
+                }
+
+
             <Box
                 style = {{overflow:'hidden'}}
                 display='flex'
@@ -184,9 +206,26 @@ export default function BoxNode(props){
 
 
 
-            </>
+            </Box>
 
 
     );
 };
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+    small: {
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+    },
+    large: {
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+    },
+}));
 
