@@ -10,7 +10,9 @@ import TextField from "@material-ui/core/TextField/TextField";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import {AvatarGroup} from "@material-ui/lab";
-import {makeStyles} from "@material-ui/core";
+import {makeStyles, withStyles} from "@material-ui/core";
+import Badge from '@material-ui/core/Badge';
+
 
 
 const Color = require('color');
@@ -96,14 +98,54 @@ export default function BoxNode(props){
 
     };
 
+    const StyledBadge = withStyles((theme) => ({
+        badge: {
+            backgroundColor: '#44b700',
+            color: '#44b700',
+            boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+            '&::after': {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                borderRadius: '100%',
+                animation: '$ripple 2.2s infinite ease-in-out',
+                border: '1px solid currentColor',
+                content: '""',
+            },
+        },
+        '@keyframes ripple': {
+            '0%': {
+                transform: 'scale(.8)',
+                opacity: 1,
+            },
+            '100%': {
+                transform: 'scale(2.4)',
+                opacity: 0,
+            },
+        },
+    }))(Badge);
+
     return (
         <Box display = 'flex' flexDirection={'row'} justifyContent={'flex-end'}>
             {props.data.actives
                 ?
                 <AvatarGroup style={{position:'absolute',margin: 15, marginRight: 30}}>
                 {props.data.actives.map((item) =>
+                    <div style = {{borderRadius: 100}}>
+                    <StyledBadge
+                        overlap="circle"
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        variant="dot"
+                    >
 
-                            <Avatar className={classes.large} alt={item.name} src={item.name}/>
+                            <Avatar className={classes.large} alt={item.name} src={item.img_url_Profile.imgUrl}/>
+                    </StyledBadge>
+                    </div>
 
                     )
                 }
@@ -167,7 +209,6 @@ export default function BoxNode(props){
 
                     }
                 </Box>
-
                 <Box display = 'flex' flexDirection = 'row'  >
                     <TextField
                         onChange={(e)=> changeTitle(e.target.value)}
@@ -176,9 +217,7 @@ export default function BoxNode(props){
                         value={title}
                         InputProps={{style: {fontSize: 60, margin: 10,  marginTop: -10,fontWeight: 600, color:backgroundColor.isDark()? 'white' : 'black'}, disableUnderline: true,}}
                     />
-
                 </Box>
-
                 {barOpen
                     ?
                     <div>
@@ -224,8 +263,8 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(3),
     },
     large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
+        width: theme.spacing(8),
+        height: theme.spacing(8),
     },
 }));
 
