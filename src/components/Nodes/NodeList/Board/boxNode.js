@@ -174,7 +174,7 @@ export default function BoxNode(props){
                 }
 
 
-                <Box display='flex' flexDirection='row' onMouseLeave={()=>setButtonsHidden(true)} onMouseEnter={()=>setButtonsHidden(false)} style = {{height: 40}}>
+                <Box display='flex' flexDirection='row'  onMouseEnter={()=>setButtonsHidden(false)} style = {{height: 40}}>
                     {!buttonsHidden
 
                         ? <Box display='flex' flexDirection='row'>

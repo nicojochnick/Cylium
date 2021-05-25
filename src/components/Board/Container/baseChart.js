@@ -250,19 +250,25 @@ function BaseChart(props) {
 
     const onNodeDoubleClick = (event, node) => {
         if(node.data.type === 'box' && node.data.actives){
-
             for (let i = 0; i < elements.length; i++){
                 if (elements[i].id === node.id){
-                    console.log(node.id)
+                    let repeat = false;
+                    // console.log(node,elements[i].data.actives)
+                    for (let j = 0; j < elements[i].data.actives.length; j++){
+                        console.log(elements[i].data.actives[j].email, props.user.email)
+                        if (elements[i].data.actives[j].email === props.user.email){
+                            repeat = true;
+                            console.log('dont repeat')
+                        }
+                    }
+                if (!repeat) {
                     elements[i].data.actives.push(props.user)
+                }
+                break;
                 }
             }
            setElements(elements)
         }
-
-
-
-
     };
 
     const onNodeMouseLeave = (event, node) => {

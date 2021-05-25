@@ -7,7 +7,7 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/appContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeContainers/appContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Board/boxNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Board/boxNode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -388,7 +388,7 @@
       <workItem from="1621624062292" duration="21000" />
       <workItem from="1621624093255" duration="49415000" />
       <workItem from="1621822126080" duration="1524000" />
-      <workItem from="1621860201366" duration="26858000" />
+      <workItem from="1621860201366" duration="29483000" />
     </task>
     <servers />
   </component>
