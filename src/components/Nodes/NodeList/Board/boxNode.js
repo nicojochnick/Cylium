@@ -128,7 +128,8 @@ export default function BoxNode(props){
     }))(Badge);
 
     return (
-        <Box display = 'flex' flexDirection={'row'} justifyContent={'flex-end'}>
+        <>
+        <Box style = {{overflow:'hidden'}} display = 'flex' flexDirection={'row'} justifyContent={'flex-end'}>
             {props.data.actives
                 ?
                 <AvatarGroup style={{position:'absolute',margin: 15, marginRight: 30}}>
@@ -142,11 +143,9 @@ export default function BoxNode(props){
                         }}
                         variant="dot"
                     >
-
                             <Avatar className={classes.large} alt={item.name} src={item.img_url_Profile.imgUrl}/>
                     </StyledBadge>
                     </div>
-
                     )
                 }
                 </AvatarGroup>
@@ -231,21 +230,49 @@ export default function BoxNode(props){
 
                 </Box>
 
-
-
                 <Handle
                     type="source"
-                    id = 'k'
-                    position="bottom"
+                    id = 'a'
+                    position="top"
                     style={{ zIndex: 40, backgroundColor: props.data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
                     // onConnect={(params) => console.log('handle onConnect', params)}
                 />
 
-            </Box>
+                <Handle
+                    type="source"
+                    id = 'b'
+                    position="right"
+                    style={{ zIndex: 40, backgroundColor: props.data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
+                    // onConnect={(params) => console.log('handle onConnect', params)}
+                />
+                <Handle
+                    type="source"
+                    id = 'c'
+                    position="bottom"
+                    style={{ zIndex: 40, backgroundColor: props.data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
+                    // onConnect={(params) => console.log('handle onConnect', params)}
+                />
+                <Handle
+                    type="source"
+                    id = 'd'
+                    position="left"
+                    style={{ zIndex: 40, backgroundColor: props.data.color,boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)` }}
+                    // onConnect={(params) => console.log('handle onConnect', params)}
+                />
+
+
+
 
 
 
             </Box>
+
+
+
+
+            </Box>
+
+            </>
 
 
     );

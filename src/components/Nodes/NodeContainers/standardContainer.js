@@ -10,6 +10,7 @@ import ListNode from "../NodeList/List/listNode"
 
 import DocumentNode from "../NodeList/Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
+import {Handle} from "react-flow-renderer";
 
 export default memo(({ data,}) => {
     const [size, setSize] = React.useState(data.size);
@@ -70,7 +71,7 @@ export default memo(({ data,}) => {
             onMouseEnter = {()=> setOptions(true)}
             onMouseLeave={()=> closeAll()}
             onClick = {()=>nodeSelected()}
-            style = {{ padding: 5, width: size[0]+10, height: size[1]+10,}}
+            style = {{  width: size[0]+10, height: size[1]+10,}}
             className={data.locked ? 'nodrag' : null}
         >
             <Box key = {barKey} style = {{width: size[0]}} display = 'flex' flexDirection = 'row' justifyContent = 'center'>
@@ -111,7 +112,10 @@ export default memo(({ data,}) => {
                 >
                 {renderNode(data.type, size)}
                 </Box>
+
+
             </Rnd>
+
         </div>
     );
 });

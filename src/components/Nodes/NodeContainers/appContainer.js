@@ -87,9 +87,10 @@ export default memo(({ data,}) => {
     return (
         <Box display = 'flex' onMouseEnter = {()=> setTimeAppMenuOpen(true)}
              onMouseLeave={()=> leaveBox()}
+
         >
                 <Box display = 'flex'
-                    flexDirection='column' style={{marginLeft: -75,  }}>
+                    flexDirection='column' style={{marginLeft: -85,  }}>
                         <Box display = 'flex' flexDirection={'column'} style={{margin: 10, marginRight: 20,}}>
                             {appMenuOpen
                                 ?
@@ -137,7 +138,7 @@ export default memo(({ data,}) => {
                 style={{
                     margin: 0,
                     borderRadius: data.style.borderRadius,
-                    overflow: 'hidden',
+                    // overflow: 'hidden',
                     boxShadow: data.style.shadow,
                     backgroundColor: data.style.bgColor,
                 }}
