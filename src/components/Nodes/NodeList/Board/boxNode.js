@@ -129,7 +129,7 @@ export default function BoxNode(props){
 
     return (
         <>
-        <Box style = {{overflow:'hidden', margin:1, width: size[0]}} display = 'flex' flexDirection={'row'} justifyContent={'space-between'}>
+        <Box style = {{overflow:'hidden', width: size[0],borderRadius:`${props.data.style.borderRadius}px ${props.data.style.borderRadius}px`}} display = 'flex' flexDirection={'row'} justifyContent={'space-between'}>
 
 
             <Box
@@ -141,14 +141,10 @@ export default function BoxNode(props){
 
             >
                 {props.data.cover
-
                     ?
                     <div
-                        style = {{width: props.data.size[0], height: 300, backgroundColor:props.data.cover, borderRadius: `${props.data.style.borderRadius}px ${props.data.style.borderRadius}px 0px 0px `, overflow:'hidden'}}>
-
-
+                        style = {{width: props.data.size[0], height: 300, backgroundColor:props.data.cover, borderRadius:`${props.data.style.borderRadius}px ${props.data.style.borderRadius}px 0px 0px`,}}>
                     </div>
-
                     : null
 
 
@@ -174,9 +170,8 @@ export default function BoxNode(props){
                 }
 
 
-                <Box display='flex' flexDirection='row'  onMouseEnter={()=>setButtonsHidden(false)} style = {{height: 40}}>
+                <Box display='flex' flexDirection='row'   onMouseLeave={()=>setButtonsHidden(true)} onMouseEnter={()=>setButtonsHidden(false)} style = {{height: 40}}>
                     {!buttonsHidden
-
                         ? <Box display='flex' flexDirection='row'>
                             <Button style = {{color:backgroundColor.isDark()? 'white' : 'black'}} variant={'outlined'} color = {backgroundColor.isDark()? 'white' : 'black'} onClick={addIcon}>Add Icon</Button>
                             <Button style = {{color:backgroundColor.isDark()? 'white' : 'black'}} variant={'outlined'} onClick={addCover} >Add Cover</Button>

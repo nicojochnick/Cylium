@@ -156,6 +156,7 @@ export default memo(({ data,}) => {
                 >
                     {renderNode(data.type, size)}
                 </Box>
+
             </Rnd>
         </Box>
         </Box>
