@@ -34,7 +34,6 @@ function FlowController(props) {
                         <BiCubeAlt  size = {25}/>
                     </Box>
                     <Divider/>
-
                     <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
                         <BiNote size = {25}/>
                     </Box>

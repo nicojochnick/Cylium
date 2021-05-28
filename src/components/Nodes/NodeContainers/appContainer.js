@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect} from 'react';
 import Box from "@material-ui/core/Box";
 import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import {Rnd} from "react-rnd";
@@ -12,14 +12,21 @@ import DocumentNode from "../NodeList/Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
 import {BiGridVertical, BiCog, BiMessage, BiTrash} from "react-icons/bi";
 
-export default memo(({ data,}) => {
+export default memo(({ data,sourcePosition, targetPosition}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
     const [locked, setLocked] = React.useState(data.locked);
     const [barOpen, setBarOpen] = React.useState(false);
     const [appMenuOpen, setAppMenuOpen] = React.useState(false);
-    const [contextData,setData] = React.useState(data)
+    const [border, setBorder] = React.useState(data.style.border);
+    const [borderColor, setBorderColor] = React.useState('#69696C')
+    const [contextData, setData] = React.useState(data)
+    const [isActive, setIsActive] = React.useState(data)
+
     const [barKey, setBarKey] = React.useState('');
+
+    console.log(data,sourcePosition,targetPosition)
+
     const lock = () => {
         data.locked = !data.locked;
         setLocked(!locked)
@@ -42,7 +49,7 @@ export default memo(({ data,}) => {
     const renderNode = (type, size) => {
         switch (type) {
             case 'box':
-                return <BoxNode size = {size} data = {data}/>;
+                return <BoxNode sourcePostion = {sourcePosition} size = {size} data = {data}/>;
             case 'table':
                 return <TableNode size = {size} data = {contextData}/>;
             case 'list':
@@ -58,9 +65,6 @@ export default memo(({ data,}) => {
         setBarOpen(false);
         setBarKey(Math.random)
     }
-
-    console.log('loading')
-
     const setTimeAppMenuOpen = () => {
         setAppMenuOpen(true)
 
@@ -71,8 +75,6 @@ export default memo(({ data,}) => {
 
 
     }
-
-
     const onResizeStop = (delta) => {
         let newSize = [size[0] + delta.width, size[1] + delta.height]
         setSize(newSize);
@@ -84,13 +86,27 @@ export default memo(({ data,}) => {
         setAppMenuOpen(false);
         setBarOpen(false)
     }
-    return (
-        <Box display = 'flex' onMouseEnter = {()=> setTimeAppMenuOpen(true)}
-             onMouseLeave={()=> leaveBox()}
 
+    useEffect(() => {
+
+        if (data.actives && data.actives.length > 0){
+            for (let i = 0; i < data.actives.length; i++){
+                if (data.actives[i].email === data.user.email){
+                    console.log('bang')
+                    setIsActive(true)
+                    setBorder(3);
+                    setBorderColor('#8E9CFD')
+                }
+            }
+        }
+
+    }, );
+
+
+    return (
+        <Box display = 'flex' onMouseEnter = {()=> setTimeAppMenuOpen(true)} onMouseLeave={()=> leaveBox()}
         >
-                <Box display = 'flex'
-                    flexDirection='column' style={{marginLeft: -90,  }}>
+            <Box display = 'flex' flexDirection='column' style={{marginLeft: -90,  }}>
                         <Box display = 'flex' flexDirection={'column'} style={{margin: 10, marginRight: 20,}}>
                             {appMenuOpen
                                 ?
@@ -145,9 +161,9 @@ export default memo(({ data,}) => {
                 disableDragging={true}
             >
                 <Box
-                    border =  {barOpen ? 2: data.style.border}
+                    border =  {barOpen ? 2: border}
                     borderRadius = {data.style.borderRadius}
-                    borderColor = {barOpen ? '#268CFF': '#6E6E6E'}
+                    borderColor = {barOpen ? '#268CFF': borderColor}
                     style = {{ width: size[0]-10, height: size[1]-10}}
                     display='flex'
                     flexDirection='row'
