@@ -12,6 +12,7 @@ import DocumentNode from "../NodeList/Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
 import {BiGridVertical, BiCog, BiMessage, BiTrash} from "react-icons/bi";
 
+
 export default memo(({ data,sourcePosition, targetPosition}) => {
     const [size, setSize] = React.useState(data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
@@ -21,11 +22,11 @@ export default memo(({ data,sourcePosition, targetPosition}) => {
     const [border, setBorder] = React.useState(data.style.border);
     const [borderColor, setBorderColor] = React.useState('#69696C')
     const [contextData, setData] = React.useState(data)
-    const [isActive, setIsActive] = React.useState(data)
+    const [isActive, setIsActive] = React.useState(data);
 
     const [barKey, setBarKey] = React.useState('');
 
-    console.log(data,sourcePosition,targetPosition)
+    // console.log(data,sourcePosition,targetPosition)
 
     const lock = () => {
         data.locked = !data.locked;
@@ -49,7 +50,7 @@ export default memo(({ data,sourcePosition, targetPosition}) => {
     const renderNode = (type, size) => {
         switch (type) {
             case 'box':
-                return <BoxNode sourcePostion = {sourcePosition} size = {size} data = {data}/>;
+                return <BoxNode setActive = {setActive} sourcePostion = {sourcePosition} size = {size} data = {data}/>;
             case 'table':
                 return <TableNode size = {size} data = {contextData}/>;
             case 'list':
@@ -57,6 +58,14 @@ export default memo(({ data,sourcePosition, targetPosition}) => {
             default:
                 return null;
         }
+
+    };
+
+    const setActive = () => {
+        // const { nodes } = store.getState();
+        // for (let i = 0; i < nodes.length; i++){
+        //
+        // }
 
     };
 
@@ -88,17 +97,23 @@ export default memo(({ data,sourcePosition, targetPosition}) => {
     }
 
     useEffect(() => {
+        let isActive  = false
 
-        if (data.actives && data.actives.length > 0){
-            for (let i = 0; i < data.actives.length; i++){
-                if (data.actives[i].email === data.user.email){
-                    console.log('bang')
-                    setIsActive(true)
-                    setBorder(3);
-                    setBorderColor('#8E9CFD')
-                }
-            }
-        }
+        // if (data.actives && data.actives.length > 0){
+        //     for (let i = 0; i < data.actives.length; i++){
+        //         if (data.actives[i].email === data.user.email){
+        //             console.log('bang')
+        //             setIsActive(true)
+        //             setBorder(3);
+        //             setBorderColor('#8E9CFD')
+        //             isActive = true ;
+        //         }
+        //     }
+        // }
+        // if (!isActive) {
+        //     setBorderColor('#69696C')
+        //     setIsActive(false)
+        // }
 
     }, );
 

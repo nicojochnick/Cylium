@@ -34,11 +34,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ChatBase from "../../components/Messages/Container/ChatBase";
 
 
-
-
-
 function BaseView(props) {
-
     const classes = useStyles();
     const [switchState, setSwitch] = React.useState(false);
     const [isChatOpen, setIsChatOpen] = React.useState(false);

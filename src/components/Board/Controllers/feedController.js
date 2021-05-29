@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import {BiChat} from "react-icons/bi";
 
-
 function FeedController(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);

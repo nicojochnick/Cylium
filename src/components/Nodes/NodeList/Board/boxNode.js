@@ -14,12 +14,7 @@ import {makeStyles, withStyles} from "@material-ui/core";
 import Badge from '@material-ui/core/Badge';
 import { useZoomPanHelper,useStore } from 'react-flow-renderer';
 
-
-
-
 const Color = require('color');
-
-
 export default function BoxNode(props){
     const [size, setSize] = React.useState(props.data.size);
     const [isOptionOpen, setOptions] = React.useState(false);
@@ -103,19 +98,18 @@ export default function BoxNode(props){
     };
 
     const focus = ()=>{
+        props.setActive()
         const { nodes } = store.getState();
         console.log(nodes)
         console.log(props.data.size)
-
         for (let i = 0; i < nodes.length; i++){
             if (nodes[i].id === props.data.id){
                 let position = nodes[i].position;
                 let x = position.x+(props.data.size[0]/2)
                 let y = position.y + (props.data.size[1]/2)
-                setCenter(x,y, 0.5)
+                setCenter(x,y, 0.4)
             }
         }
-
     }
 
     const StyledBadge = withStyles((theme) => ({

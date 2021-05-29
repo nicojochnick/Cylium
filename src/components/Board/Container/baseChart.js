@@ -84,10 +84,8 @@ function BaseChart(props) {
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
     const [isChatOpen,openChat] = React.useState(false);
     const reactFlowWrapper = useRef(null);
-    const [isSnap, setIsSnap] = React.useState(true)
     const [refreshKey, setRefreshKey] = React.useState(' ');
     const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
-    const [snap, setSnap] = React.useState(props.user.projectIDs[props.channel.channelID].viewPort)
     const handleClickOpen = () => {setOpen(true);};
     const handleClose = () => {setOpen(false);};
     const { transform } = useZoomPanHelper();
@@ -186,11 +184,6 @@ function BaseChart(props) {
         }
     };
 
-    const focusNode = () => {
-
-
-    };
-
     const onEdgeUpdate = (oldEdge, newConnection) => {
         setElements((els) => updateEdge(oldEdge, newConnection, els));
         triggerAutoSave()
@@ -255,38 +248,41 @@ function BaseChart(props) {
 
     //TODO make this more efficient.
     const onNodeDoubleClick = (event, node) => {
-        focusNode()
-        if(node.data.type === 'box' && node.data.actives){
-            for (let i = 0; i < elements.length; i++){
-                if (elements[i].id === node.id){
-                    let repeat = false;// console.log(node,elements[i].data.actives)
-                    for (let j = 0; j < elements[i].data.actives.length; j++){
-                        console.log(elements[i].data.actives[j].email, props.user.email)
-                        if (elements[i].data.actives[j].email === props.user.email){
-                            repeat = true;
-                        }
-                    }
-                if (!repeat) {
-                    elements[i].data.actives.push(props.user)
-                    //remove old active
-                    for (let l = 0; l < elements.length; l++){
-                        if (elements[l].data && elements[l].data.actives) {
-                            for (let k = 0; k < elements[l].data.actives.length; k++) {
-                                if (elements[l].data.id !== elements[i].data.id && elements[l].data.actives[k].email === props.user.email) {
-                                    console.log('removing')
-                                    let index = elements[i].data.actives.indexOf(elements[l].data.actives[k])
-                                    elements[l].data.actives.splice(index, 1)
-                                    elements[l].data.style.borderColor = '#8E9CFD'
-                                }
-                            }
-                        }
-                    }
-                }
-                break;
-                }
-            }
-           setElements(elements)
-        }
+        // if(node.data.type === 'box' && node.data.actives){
+        //     for (let i = 0; i < elements.length; i++){
+        //         if (elements[i].id === node.id){
+        //             let repeat = false;// console.log(node,elements[i].data.actives)
+        //             for (let j = 0; j < elements[i].data.actives.length; j++){
+        //                 console.log(elements[i].data.actives[j].email, props.user.email)
+        //                 if (elements[i].data.actives[j].email === props.user.email){
+        //                     repeat = true;
+        //                 }
+        //
+        //             }
+        //         if (!repeat) {
+        //             elements[i].data.actives.push(props.user)
+        //             //remove old active
+        //             for (let l = 0; l < elements.length; l++){
+        //                 if (elements[l].data && elements[l].data.actives) {
+        //                     for (let k = 0; k < elements[l].data.actives.length; k++) {
+        //                         if (elements[l].data.id !== elements[i].data.id && elements[l].data.actives[k].email === props.user.email) {
+        //                             console.log('removing')
+        //                             let index = elements[i].data.actives.indexOf(elements[l].data.actives[k])
+        //                             elements[l].data.actives.splice(index, 1)
+        //                             elements[l].data.style.borderColor = 'grey';
+        //                             console.log(elements[l])
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         break;
+        //         }
+        //     }
+        //     setElements(elements)
+        //     setRefreshKey('_'+ Math.random().toString());
+
+        // }
     };
 
     const onNodeMouseLeave = (event, node) => {
@@ -398,7 +394,6 @@ function BaseChart(props) {
     }, [props.channel]);
 
     return (
-
         <ReactFlowProvider>
         <Box style = {{zIndex: 0, height: '100vh', overflow:'hidden'}} borderColor = {'#9B9B9B'}>
             <Box style = {{height: '70vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
@@ -438,7 +433,7 @@ function BaseChart(props) {
 
                 <div style = {{  width: props.baseWidth, height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
-                        key={ refreshKey}
+                        // key={ refreshKey}
                         nodeTypes={nodeTypes}
                         minZoom={0.05}
                         panOnScroll={true}
@@ -451,8 +446,7 @@ function BaseChart(props) {
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}
                         elementsSelectable={true}
-                        snapToGrid={isSnap}
-                        snapGrid={snap}
+
                         // onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
