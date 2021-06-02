@@ -129,66 +129,66 @@ function ProjectHeader(props) {
                 : null
             }
             <div/>
-        <Box borderRadius = {20} style = {{ height: 75, zIndex: 100,marginLeft: 30, position:'relative', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >
+        {/*<Box borderRadius = {20} style = {{ height: 75, zIndex: 100,marginLeft: 30, position:'relative', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'space-between' alignItems = 'space-between' >*/}
 
-            <Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>
-                <ProjectProfile user = {props.user} channel = {props.channel} />
-            </Box>
-                <div>
-                <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>
-                    <div style ={{margin: 15,}}>
-                    {/*{!isFollowing()*/}
-                    {/*    ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>*/}
-                    {/*    : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>*/}
-                    {/*}*/}
-                    </div>
-                    <ProjectGroup channel = {props.channel} />
+        {/*    /!*<Box display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center'>*!/*/}
+        {/*    /!*    <ProjectProfile user = {props.user} channel = {props.channel} />*!/*/}
+        {/*    /!*</Box>*!/*/}
+        {/*        <div>*/}
+        {/*        <Box display='flex' justifyContent = 'center' alignItems = 'center' flexDirection='row'>*/}
+        {/*            <div style ={{margin: 15,}}>*/}
+        {/*            /!*{!isFollowing()*!/*/}
+        {/*            /!*    ? <Button onClick = {handleFollow} style={{backgroundColor: props.channel.color}} variant={'contained'} > <p style = {{fontSize: 15, margin: 0, color:'white'}}> Follow  </p> </Button>*!/*/}
+        {/*            /!*    : <Button  onClick = {handleUnfollow} variant={'outlined'}> <p style = {{fontSize: 15, margin: 0}} >Unfollow </p> </Button>*!/*/}
+        {/*            /!*}*!/*/}
+        {/*            </div>*/}
+        {/*            /!*<ProjectGroup channel = {props.channel} />*!/*/}
 
-                    <IconButton onClick = {()=>props.openChat(!props.isChatOpen)}>
-                            <BiMessage style = {{color: props.isChatOpen ? props.channel.color : 'grey'}}  />
-                    </IconButton>
-                    <IconButton onClick={props.handleClickOpenSettings}>
-                            <BiCog />
-                    </IconButton>
-                    {/*<IconButton style = {{marginRight: 4}}>*/}
-                    {/*    <BiSearch />*/}
-                    {/*</IconButton>*/}
+        {/*            /!*<IconButton onClick = {()=>props.openChat(!props.isChatOpen)}>*!/*/}
+        {/*            /!*        <BiMessage style = {{color: props.isChatOpen ? props.channel.color : 'grey'}}  />*!/*/}
+        {/*            /!*</IconButton>*!/*/}
+        {/*            /!*<IconButton onClick={props.handleClickOpenSettings}>*!/*/}
+        {/*            /!*        <BiCog />*!/*/}
+        {/*            /!*</IconButton>*!/*/}
+        {/*            /!*<IconButton style = {{marginRight: 4}}>*!/*/}
+        {/*            /!*    <BiSearch />*!/*/}
+        {/*            /!*</IconButton>*!/*/}
 
-                    <Divider style = {{height: 75}} orientation="vertical" flexItem  />
+        {/*            /!*<Divider style = {{height: 75}} orientation="vertical" flexItem  />*!/*/}
 
-                    <IconButton style = {{margin: 10}} onClick={()=>setIsSearchOpen(!isSearchOpen)}>
-                        <RiRocket2Line style = {{color: isSearchOpen ? props.channel.color : 'grey'}} />
-                    </IconButton>
+        {/*            /!*<IconButton style = {{margin: 10}} onClick={()=>setIsSearchOpen(!isSearchOpen)}>*!/*/}
+        {/*            /!*    <RiRocket2Line style = {{color: isSearchOpen ? props.channel.color : 'grey'}} />*!/*/}
+        {/*            /!*</IconButton>*!/*/}
 
-                    { isSearchOpen
-                        ?  <Autocomplete
-                            id="free-solo-demo"
-                            // freeSolo
-                            onChange={(event, newValue) => {
-                                setValue(newValue);
-                            }}
-                            onInputChange={(event, newInputValue) => {
-                                handleInputSelected(newInputValue)
-                            }}
-                            options={getChannels().map((option) => option.name)}
-                            renderInput={(params) => (
-                                <TextField
-                                    {...params}
-                                    defaultValue={''}
+        {/*            /!*{ isSearchOpen*!/*/}
+        {/*            /!*    ?  <Autocomplete*!/*/}
+        {/*            /!*        id="free-solo-demo"*!/*/}
+        {/*            /!*        // freeSolo*!/*/}
+        {/*            /!*        onChange={(event, newValue) => {*!/*/}
+        {/*            /!*            setValue(newValue);*!/*/}
+        {/*            /!*        }}*!/*/}
+        {/*            /!*        onInputChange={(event, newInputValue) => {*!/*/}
+        {/*            /!*            handleInputSelected(newInputValue)*!/*/}
+        {/*            /!*        }}*!/*/}
+        {/*            /!*        options={getChannels().map((option) => option.name)}*!/*/}
+        {/*            /!*        renderInput={(params) => (*!/*/}
+        {/*            /!*            <TextField*!/*/}
+        {/*            /!*                {...params}*!/*/}
+        {/*            /!*                defaultValue={''}*!/*/}
 
-                                    style = {{width: 300,margin: 10, marginRight: 15}}
-                                    label="select destination..."
-                                    margin="normal"
-                                    variant="outlined"
-                                />
-                            )}
-                        />
-                        : null
-                    }
+        {/*            /!*                style = {{width: 300,margin: 10, marginRight: 15}}*!/*/}
+        {/*            /!*                label="select destination..."*!/*/}
+        {/*            /!*                margin="normal"*!/*/}
+        {/*            /!*                variant="outlined"*!/*/}
+        {/*            /!*            />*!/*/}
+        {/*            /!*        )}*!/*/}
+        {/*            /!*    />*!/*/}
+        {/*            /!*    : null*!/*/}
+        {/*            /!*}*!/*/}
 
-                </Box>
-                </div>
-        </Box>
+        {/*        </Box>*/}
+        {/*        </div>*/}
+        {/*</Box>*/}
             <Box borderRadius = {100} style = {{marginRight: 10, position:'relative', zIndex: 100, height: 70,width: 70, backgroundColor:props.user.theme === 'light' ? 'white' : '#363638',boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.10)`,}} display = 'flex' flexDirection = 'row' justifyContent = 'center' alignItems = 'center' >
                 <Box component="span" style = {{padding: 0}} border = {2} borderColor = {'lightgrey'} borderRadius = {50}>
 

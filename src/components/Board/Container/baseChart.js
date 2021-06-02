@@ -423,10 +423,7 @@ function BaseChart(props) {
                 {/*    // position={'static'}*/}
                 {/*>*/}
 
-
-                        <ProjectHeader baseWidth = {props.baseWidth} openChat = {props.openChat} isChatOpen = {props.isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-
-
+                <ProjectHeader baseWidth = {props.baseWidth} openChat = {props.openChat} isChatOpen = {props.isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
 
                 {/*</AppBar>*/}
 
@@ -446,7 +443,6 @@ function BaseChart(props) {
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}
                         elementsSelectable={true}
-
                         // onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
@@ -473,9 +469,9 @@ function BaseChart(props) {
                         {/*/>*/}
                         <Background
                             variant = "dots"
-                            color = {props.user.theme  === 'light' ? "#3B3C50" : 'lightgrey'}
-                            style = {{backgroundColor:props.user.theme === 'light' ? 'white' : '#242426'}}
-                            gap={30}
+                            color = {props.user.theme  === 'light' ? "#4C4C4C" : 'lightgrey'}
+                            style = {{backgroundColor:props.user.theme === 'light' ? '#FBFBFB' : '#69696C'}}
+                            gap={20}
                             // size={1}
                         />
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'flex-end' alignItems = 'space-between'>
