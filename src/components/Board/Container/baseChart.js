@@ -133,7 +133,6 @@ function BaseChart(props) {
 
     //TODO SET NEW ELEMENTS
     const onTextChange = (text, id,) => {
-        // console.log('triggered elements', elements, rfInstance, onSave, '');
         let prevElements = elements.slice();
         for (let node of prevElements ) {
             if (node.id === id) {
@@ -146,11 +145,9 @@ function BaseChart(props) {
         triggerAutoSave()
     };
     const onElementsRemove = (elementsToRemove) => {
-        // console.log(elementsToRemove);
         setElementsToRemove(elementsToRemove);
         handleClickOpen()
     };
-
 
     const confirmElementsRemoveBase = (id, )=>{
         console.log(id, elements);
@@ -161,9 +158,7 @@ function BaseChart(props) {
 
     };
 
-
     const confirmElementsRemove = (id, )=>{
-
         if (id) {
             console.log(id, elements);
             handleClose();
@@ -191,112 +186,17 @@ function BaseChart(props) {
 
     const onNodeDragStop = (event, node) => {
         console.log(elements);
-        if (node.type === 'documentNodes') {
-            for (let i = 0; i < elements.length; i++) {
-                if (elements[i].type === 'kanbanNodes') {
-                    let r1 = {
-                        left: node.position.x,
-                        right: node.position.x + node.data.size[0],
-                        bottom: -node.position.y,
-                        top: -node.position.y + node.data.size[1]
 
-                    };
-                    let node2 = elements[i];
-                    let r2 = {
-                        left: node2.position.x,
-                        right: node2.position.x + node2.data.size[0],
-                        bottom: -node2.position.y,
-                        top: -node2.position.y + node2.data.size[1]
-
-                    };
-                    if ((r1.left > r2.left &&
-                        r1.right < r2.right &&
-                        r1.top < r2.top &&
-                        r1.bottom < r2.bottom)) {
-                        console.log('intersect!')
-                        addDocumentToList(node, elements[i])
-                    }
-                }
-            }
-        }
         triggerAutoSave()
     };
-    const addDocumentToList = (docNode, listNode) => {
-        let e = elements.slice();
-        for (let i = 0; i < e.length;i++){
-            if (listNode.id === e[i].id){
-                console.log('FOUND', e[i]);
-                let list = e[i].data.listData;
-                let newTaskID = `task - `+ Math.random().toString();
-                let newTask = {id: newTaskID, title:docNode.data.title,  content: docNode.data.content};
-                list.columns[list.columnOrder[0]].taskIds.push(newTaskID);
-                list.tasks[newTaskID] = newTask;
-            }
-        }
-        setElements(e);
-        setElementsToRemove(null);
-        setRefreshKey('_'+ Math.random().toString());
-        let rem = [docNode]
-        setElements((els) => removeElements(rem, els));
-        setElementsToRemove(null);
-        triggerAutoSave();
-    };
+
 
     const onElementClick = () => {
         triggerAutoSave()
     };
 
-    //TODO make this more efficient.
-    const onNodeDoubleClick = (event, node) => {
-        // if(node.data.type === 'box' && node.data.actives){
-        //     for (let i = 0; i < elements.length; i++){
-        //         if (elements[i].id === node.id){
-        //             let repeat = false;// console.log(node,elements[i].data.actives)
-        //             for (let j = 0; j < elements[i].data.actives.length; j++){
-        //                 console.log(elements[i].data.actives[j].email, props.user.email)
-        //                 if (elements[i].data.actives[j].email === props.user.email){
-        //                     repeat = true;
-        //                 }
-        //
-        //             }
-        //         if (!repeat) {
-        //             elements[i].data.actives.push(props.user)
-        //             //remove old active
-        //             for (let l = 0; l < elements.length; l++){
-        //                 if (elements[l].data && elements[l].data.actives) {
-        //                     for (let k = 0; k < elements[l].data.actives.length; k++) {
-        //                         if (elements[l].data.id !== elements[i].data.id && elements[l].data.actives[k].email === props.user.email) {
-        //                             console.log('removing')
-        //                             let index = elements[i].data.actives.indexOf(elements[l].data.actives[k])
-        //                             elements[l].data.actives.splice(index, 1)
-        //                             elements[l].data.style.borderColor = 'grey';
-        //                             console.log(elements[l])
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //         break;
-        //         }
-        //     }
-        //     setElements(elements)
-        //     setRefreshKey('_'+ Math.random().toString());
-
-        // }
-    };
-
-    const onNodeMouseLeave = (event, node) => {
-        let e = elements.slice();
-        for (let i = 0; i < e.length;i++){
-            if (node.id === e[i].id){
-                if (e[i].data.className === 'nodrag') {
-                    e[i].data.className = '';
-                    triggerAutoSave()}
-            }
-        }
-        setElements(e)
-
-    };
+    const keyPress = ()=> {
+    }
 
 
     const onConnect = (params) =>  {
@@ -308,7 +208,6 @@ function BaseChart(props) {
 
 
     const triggerAutoSave = async () => {
-        console.log("started saving...");
         setSaving(true);
         if (timerID) {
             clearTimeout(timerID);
@@ -378,6 +277,15 @@ function BaseChart(props) {
         setElements(dbElements)
     }
 
+
+    const onNodeDoubleClick = (event, node) => {
+
+        console.log('doubleclicked')
+
+
+    };
+
+
     useEffect(() => {
         console.log('RESET')
        if(props.channel && props.channel.flow!== ''){
@@ -394,11 +302,11 @@ function BaseChart(props) {
     }, [props.channel]);
 
     return (
-        <ReactFlowProvider>
+        <ReactFlowProvider >
         <Box style = {{zIndex: 0, height: '100vh', overflow:'hidden'}} borderColor = {'#9B9B9B'}>
-            <Box style = {{height: '70vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+            <Box style = {{height: '32vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
-                    display = 'flex' flexDirection ='column' justifyContent = 'center' alignItems = 'center'
+                    display = 'flex' flexDirection ='column' justifyContent = 'flex-start' alignItems = 'center'
                     style = {{
                         zIndex: 10,
                         marginRight: 20,
@@ -417,19 +325,13 @@ function BaseChart(props) {
                     overflow: 'hidden'
                 }}
             >
-                {/*<AppBar*/}
-                {/*    style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}*/}
-                {/*    color = '#F7F7F7'*/}
-                {/*    // position={'static'}*/}
-                {/*>*/}
 
                 <ProjectHeader baseWidth = {props.baseWidth} openChat = {props.openChat} isChatOpen = {props.isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-
-                {/*</AppBar>*/}
 
 
                 <div style = {{  width: props.baseWidth, height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
+                        onKeyPress={keyPress}
                         // key={ refreshKey}
                         nodeTypes={nodeTypes}
                         minZoom={0.05}
@@ -448,25 +350,14 @@ function BaseChart(props) {
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
+                        zoomOnDoubleClick={false}
                         onlyRenderVisibleElements={false}
                         onElementClick={onElementClick}
-                        onNodeDoubleClick={onNodeDoubleClick}
-                        onNodeMouseLeave = {onNodeMouseLeave}
+                        onDoubleClick={onNodeDoubleClick}
                         onDrop={onDrop}
                         onDragOver={onDragOver}
                     >
 
-                    {/*<Controls*/}
-                    {/*    style = {{backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}*/}
-                    {/*    />*/}
-                        {/*<MiniMap*/}
-                        {/*    nodeColor={props.channel.color}*/}
-                        {/*    nodeStrokeColor={'#CDCDCD'}*/}
-                        {/*    nodeStrokeWidth={3}*/}
-                        {/*    nodeBorderRadius={5}*/}
-                        {/*    style = {{margin: 10, marginRight: 20, border:2, borderColor: 'black', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,*/}
-                        {/*    }}*/}
-                        {/*/>*/}
                         <Background
                             variant = "dots"
                             color = {props.user.theme  === 'light' ? "#4C4C4C" : 'lightgrey'}
@@ -595,15 +486,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default BaseChart;
 
-
 {/*<Box border = {1} display = 'flex' style = {{boxShadow: "0px 0px 10px #ECECEC",width: '10vw'}}>*/}
 {/*</Box>*/}
-
 
 {/*<Box display = 'flex' style = {{boxShadow: "0px 0px 10px #ECECEC",height: '10vh'}}>*/}
 {/*</Box>*/}
 {/*<Divider orientation={'vertical'}/>*/}
-
 
 {/*<Box*/}
 {/*    border={1}*/}
@@ -622,4 +510,136 @@ export default BaseChart;
 //         <Rooms channel={props.channel} messages={props.messages} automations={props.automations} user={props.user}/>
 //     </Box>
 //     : null
+// }
+
+
+
+//TODO make this more efficient.
+// const onNodeDoubleClick = (event, node) => {
+    // if(node.data.type === 'box' && node.data.actives){
+    //     for (let i = 0; i < elements.length; i++){
+    //         if (elements[i].id === node.id){
+    //             let repeat = false;// console.log(node,elements[i].data.actives)
+    //             for (let j = 0; j < elements[i].data.actives.length; j++){
+    //                 console.log(elements[i].data.actives[j].email, props.user.email)
+    //                 if (elements[i].data.actives[j].email === props.user.email){
+    //                     repeat = true;
+    //                 }
+    //
+    //             }
+    //         if (!repeat) {
+    //             elements[i].data.actives.push(props.user)
+    //             //remove old active
+    //             for (let l = 0; l < elements.length; l++){
+    //                 if (elements[l].data && elements[l].data.actives) {
+    //                     for (let k = 0; k < elements[l].data.actives.length; k++) {
+    //                         if (elements[l].data.id !== elements[i].data.id && elements[l].data.actives[k].email === props.user.email) {
+    //                             console.log('removing')
+    //                             let index = elements[i].data.actives.indexOf(elements[l].data.actives[k])
+    //                             elements[l].data.actives.splice(index, 1)
+    //                             elements[l].data.style.borderColor = 'grey';
+    //                             console.log(elements[l])
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         break;
+    //         }
+    //     }
+    //     setElements(elements)
+    //     setRefreshKey('_'+ Math.random().toString());
+
+    // }
+// };
+
+
+//
+// const onNodeMouseLeave = (event, node) => {
+//     let e = elements.slice();
+//     for (let i = 0; i < e.length;i++){
+//         if (node.id === e[i].id){
+//             if (e[i].data.className === 'nodrag') {
+//                 e[i].data.className = '';
+//                 triggerAutoSave()}
+//         }
+//     }
+//     setElements(e)
+//
+// };
+
+
+
+// const addDocumentToList = (docNode, listNode) => {
+//     let e = elements.slice();
+//     for (let i = 0; i < e.length;i++){
+//         if (listNode.id === e[i].id){
+//             console.log('FOUND', e[i]);
+//             let list = e[i].data.listData;
+//             let newTaskID = `task - `+ Math.random().toString();
+//             let newTask = {id: newTaskID, title:docNode.data.title,  content: docNode.data.content};
+//             list.columns[list.columnOrder[0]].taskIds.push(newTaskID);
+//             list.tasks[newTaskID] = newTask;
+//         }
+//     }
+//     setElements(e);
+//     setElementsToRemove(null);
+//     setRefreshKey('_'+ Math.random().toString());
+//     let rem = [docNode]
+//     setElements((els) => removeElements(rem, els));
+//     setElementsToRemove(null);
+//     triggerAutoSave();
+// };
+
+
+
+{/*<Controls*/}
+{/*    style = {{backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}*/}
+{/*    />*/}
+{/*<MiniMap*/}
+{/*    nodeColor={props.channel.color}*/}
+{/*    nodeStrokeColor={'#CDCDCD'}*/}
+{/*    nodeStrokeWidth={3}*/}
+{/*    nodeBorderRadius={5}*/}
+{/*    style = {{margin: 10, marginRight: 20, border:2, borderColor: 'black', boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`,*/}
+{/*    }}*/}
+{/*/>*/}
+
+
+{/*<AppBar*/}
+{/*    style={{ background: 'transparent', zIndex: 100, boxShadow: 'none' }}*/}
+{/*    color = '#F7F7F7'*/}
+{/*    // position={'static'}*/}
+{/*>*/}
+
+
+//ONNODEDRAGSTOP
+
+// if (node.type === 'documentNodes') {
+//     for (let i = 0; i < elements.length; i++) {
+//         if (elements[i].type === 'kanbanNodes') {
+//             let r1 = {
+//                 left: node.position.x,
+//                 right: node.position.x + node.data.size[0],
+//                 bottom: -node.position.y,
+//                 top: -node.position.y + node.data.size[1]
+//
+//             };
+//             let node2 = elements[i];
+//             let r2 = {
+//                 left: node2.position.x,
+//                 right: node2.position.x + node2.data.size[0],
+//                 bottom: -node2.position.y,
+//                 top: -node2.position.y + node2.data.size[1]
+//
+//             };
+//             if ((r1.left > r2.left &&
+//                 r1.right < r2.right &&
+//                 r1.top < r2.top &&
+//                 r1.bottom < r2.bottom)) {
+//                 console.log('intersect!')
+//                 addDocumentToList(node, elements[i])
+//             }
+//         }
+//     }
 // }
