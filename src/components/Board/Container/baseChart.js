@@ -84,6 +84,7 @@ function BaseChart(props) {
     const [elementsToRemove, setElementsToRemove] = React.useState(null);
     const [isChatOpen,openChat] = React.useState(false);
     const reactFlowWrapper = useRef(null);
+    const [isAdding,setIsAdding] = React.useState(false)
     const [refreshKey, setRefreshKey] = React.useState(' ');
     const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
     const handleClickOpen = () => {setOpen(true);};
@@ -189,8 +190,6 @@ function BaseChart(props) {
 
         triggerAutoSave()
     };
-
-
     const onElementClick = () => {
         triggerAutoSave()
     };
@@ -198,15 +197,12 @@ function BaseChart(props) {
     const keyPress = ()=> {
     }
 
-
     const onConnect = (params) =>  {
         params.animated = true;
         setElements((els) =>
             addEdge(params, els)
         );
     };
-
-
     const triggerAutoSave = async () => {
         setSaving(true);
         if (timerID) {
@@ -277,14 +273,9 @@ function BaseChart(props) {
         setElements(dbElements)
     }
 
-
     const onNodeDoubleClick = (event, node) => {
-
         console.log('doubleclicked')
-
-
     };
-
 
     useEffect(() => {
         console.log('RESET')
@@ -304,7 +295,7 @@ function BaseChart(props) {
     return (
         <ReactFlowProvider >
         <Box style = {{zIndex: 0, height: '100vh', overflow:'hidden'}} borderColor = {'#9B9B9B'}>
-            <Box style = {{height: '32vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
+            <Box style = {{height: '85vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
                 <Box
                     display = 'flex' flexDirection ='column' justifyContent = 'flex-start' alignItems = 'center'
                     style = {{
@@ -312,7 +303,7 @@ function BaseChart(props) {
                         marginRight: 20,
                     }}
                 >
-                    <FlowController user = {props.user} color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
+                    <FlowController isAdding = {isAdding} user = {props.user} color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
                 </Box>
             </Box>
             <Box
@@ -325,10 +316,7 @@ function BaseChart(props) {
                     overflow: 'hidden'
                 }}
             >
-
                 <ProjectHeader baseWidth = {props.baseWidth} openChat = {props.openChat} isChatOpen = {props.isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-
-
                 <div style = {{  width: props.baseWidth, height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
                         onKeyPress={keyPress}
@@ -358,13 +346,13 @@ function BaseChart(props) {
                         onDragOver={onDragOver}
                     >
 
-                        <Background
+                    <Background
                             variant = "dots"
                             color = {props.user.theme  === 'light' ? "#4C4C4C" : 'lightgrey'}
                             style = {{backgroundColor:props.user.theme === 'light' ? '#FBFBFB' : '#69696C'}}
                             gap={20}
                             // size={1}
-                        />
+                    />
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'flex-end' alignItems = 'space-between'>
                             <Box style = {{marginRight: 150, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
                                 { saving

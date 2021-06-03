@@ -10,6 +10,7 @@ import Popover from "@material-ui/core/Popover/Popover";
 import {BsCardText, BsCardHeading, BsCardList, BsFileSpreadsheet, BsFileText, BsKanban, BsWindow} from "react-icons/bs"
 import {BiLineChart,BiFile, BiData, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiListPlus, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiMenu, BiText, BiUserCircle} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
+import {IoMdHand} from "react-icons/all";
 
 function FlowController(props) {
     const classes = useStyles();
@@ -35,7 +36,11 @@ function FlowController(props) {
                     {/*</Box>*/}
                     {/*<Divider/>*/}
                     <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
-                        <BiNote size = {28}/>
+                        <BiNote style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
+                    </Box>
+
+                    <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
+                        <IoMdHand style = {{color: props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
                     </Box>
                     {/*<Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'label')} draggable   >*/}
                     {/*    <BiText size = {25}/>*/}
