@@ -31,35 +31,13 @@ function FlowController(props) {
     return (
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
                 <Box borderRadius = {100} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`, padding: 10, overflow:'hidden', color: props.user.theme === 'dark' ? 'white' : '#363638', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}>
-                    {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >*/}
-                    {/*    <BsWindow size = {25}/>*/}
-                    {/*</Box>*/}
-                    {/*<Divider/>*/}
-                    <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
-                        <BiNote style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
-                    </Box>
-
                     <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
                         <IoMdHand style = {{color: props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
                     </Box>
-                    {/*<Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'label')} draggable   >*/}
-                    {/*    <BiText size = {25}/>*/}
-                    {/*</Box>*/}
-                    {/*<Divider/>*/}
-                    {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'document')} draggable   >*/}
-                    {/*    <BsFileText  size = {25}/>*/}
-                    {/*</Box>*/}
-                    {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'folder')} draggable   >*/}
-                    {/*    <BiFolder size = {23}/>*/}
-                    {/*</Box>*/}
-                    {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >*/}
-                    {/*    <BsCardList size = {25}/>*/}
-                    {/*</Box>*/}
-                    {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'table')} draggable   >*/}
-                    {/*    <BiData  size = {23}/>*/}
-                    {/*</Box>*/}
+                    <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
+                        <BiNote style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
+                    </Box>
                 </Box>
-
         </Grid>
     );
 }
@@ -74,8 +52,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default FlowController;
-
-
 {/*<Popover*/}
 {/*    id={id}*/}
 {/*    style ={{marginTop: 80, marginRight: 15}}*/}
@@ -131,4 +107,30 @@ export default FlowController;
 
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'graph')} draggable   >*/}
 {/*    <BiLineChart   size = {25}/>*/}
+{/*</Box>*/}
+
+
+
+{/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >*/}
+{/*    <BsWindow size = {25}/>*/}
+{/*</Box>*/}
+{/*<Divider/>*/}
+
+
+
+{/*<Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'label')} draggable   >*/}
+{/*    <BiText size = {25}/>*/}
+{/*</Box>*/}
+{/*<Divider/>*/}
+{/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'document')} draggable   >*/}
+{/*    <BsFileText  size = {25}/>*/}
+{/*</Box>*/}
+{/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'folder')} draggable   >*/}
+{/*    <BiFolder size = {23}/>*/}
+{/*</Box>*/}
+{/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'kanban')} draggable   >*/}
+{/*    <BsCardList size = {25}/>*/}
+{/*</Box>*/}
+{/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'table')} draggable   >*/}
+{/*    <BiData  size = {23}/>*/}
 {/*</Box>*/}
