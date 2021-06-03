@@ -11,7 +11,6 @@ import {BsCardText, BsCardHeading, BsCardList, BsFileSpreadsheet, BsFileText, Bs
 import {BiLineChart,BiFile, BiData, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiListPlus, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiMenu, BiText, BiUserCircle} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import {IoMdHand} from "react-icons/all";
-
 function FlowController(props) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,14 +26,13 @@ function FlowController(props) {
         event.dataTransfer.setData('application/reactflow', nodeType);
         event.dataTransfer.effectAllowed = 'move';
     };
-
     return (
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
                 <Box borderRadius = {100} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`, padding: 10, overflow:'hidden', color: props.user.theme === 'dark' ? 'white' : '#363638', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}>
                     <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
-                        <IoMdHand style = {{color: props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
+                        <IoMdHand onClick={()=> props.setIsAdding(false)}  style = {{color: props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
                     </Box>
-                    <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
+                    <Box onClick={()=>props.setIsAdding(true)} display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable   >
                         <BiNote style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
                     </Box>
                 </Box>
@@ -52,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default FlowController;
+
 {/*<Popover*/}
 {/*    id={id}*/}
 {/*    style ={{marginTop: 80, marginRight: 15}}*/}
@@ -78,7 +77,6 @@ export default FlowController;
 //     {/*<Button>Three</Button>*/}
 // </ButtonGroup>
 
-
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'boxfront')} draggable   >*/}
 {/*    <BiRectangle style = {{backgroundColor:'black', borderRadius: 5}} size = {22}/>*/}
 {/*</Box>*/}
@@ -87,36 +85,26 @@ export default FlowController;
 {/*    <BiRuler size = {25}/>*/}
 {/*</Box>*/}
 
-
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'divider')} draggable   >*/}
 {/*    <BiMinus   size = {25}/>*/}
 {/*</Box>*/}
-
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'button')} draggable   >*/}
 {/*    <BiLink size = {25}/>*/}
 {/*</Box>*/}
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'avatar')} draggable   >*/}
 {/*<BiUserCircle   size = {25}/>*/}
 {/*</Box>*/}
-
-
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'todo')} draggable   >*/}
 {/*    <BiCheckboxChecked size = {27}/>*/}
 {/*</Box>*/}
-
-
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'graph')} draggable   >*/}
 {/*    <BiLineChart   size = {25}/>*/}
 {/*</Box>*/}
-
-
 
 {/*<Box display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'box')} draggable   >*/}
 {/*    <BsWindow size = {25}/>*/}
 {/*</Box>*/}
 {/*<Divider/>*/}
-
-
 
 {/*<Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 8,}} onDragStart={(event) => onDragStart(event, 'label')} draggable   >*/}
 {/*    <BiText size = {25}/>*/}

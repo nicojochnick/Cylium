@@ -38,12 +38,9 @@ import Divider from "@material-ui/core/Divider";
 import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Rooms from "../../Messages/Rooms/rooms";
-
 import Zoom from './zoom';
 
-
 let timerID = null;
-
 const reset = [
     { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
     // you can also pass a React component as a label
@@ -91,7 +88,6 @@ function BaseChart(props) {
     const handleClose = () => {setOpen(false);};
     const { transform } = useZoomPanHelper();
     const classes = useStyles();
-
     const store = useStore();
     const { zoomIn, zoomOut, setCenter } = useZoomPanHelper();
 
@@ -107,7 +103,6 @@ function BaseChart(props) {
             saveViewPort(updatedProjectIDs, props.user.email)
         }
     };
-
     const onRestore = useCallback((flow) => {
         const restoreFlow = async () => {
             if (flow) {
@@ -122,10 +117,8 @@ function BaseChart(props) {
     const addNode = (type, position) => {
         let currentElements = elements.slice();
         let id = getNodeId();
-
         let node = selectNode(type,id,props.user,props.channel.color,position);
         let nID = id + 1;
-
         setID(nID);
         currentElements.push(node);
         setElements(currentElements);
@@ -149,7 +142,6 @@ function BaseChart(props) {
         setElementsToRemove(elementsToRemove);
         handleClickOpen()
     };
-
     const confirmElementsRemoveBase = (id, )=>{
         console.log(id, elements);
         handleClose();
@@ -296,28 +288,16 @@ function BaseChart(props) {
         <ReactFlowProvider >
         <Box style = {{zIndex: 0, height: '100vh', overflow:'hidden'}} borderColor = {'#9B9B9B'}>
             <Box style = {{height: '85vh', width: props.baseWidth, position:'absolute',}} display = 'flex' flexDirection = 'row' justifyContent = 'flex-end' alignItems='center'>
-                <Box
-                    display = 'flex' flexDirection ='column' justifyContent = 'flex-start' alignItems = 'center'
-                    style = {{
-                        zIndex: 10,
-                        marginRight: 20,
-                    }}
-                >
-                    <FlowController isAdding = {isAdding} user = {props.user} color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
+                <Box display = 'flex' flexDirection ='column' justifyContent = 'flex-start' alignItems = 'center' style = {{zIndex: 10, marginRight: 20,}}>
+                    <FlowController setIsAdding = {setIsAdding} isAdding = {isAdding} user = {props.user} color = {props.channel.color} buttonStyle = {buttonStyle} addNode = {addNode} />
                 </Box>
             </Box>
             <Box
-                flexDirection ='row'
-                justifyContent = 'center'
-                alignItems = 'center'
-                style={{
-                    width: props.baseWidth,
-                    height: '100vh',
-                    overflow: 'hidden'
-                }}
+                flexDirection ='row' justifyContent = 'center' alignItems = 'center'
+                style={{width: props.baseWidth, height: '100vh', overflow: 'hidden'}}
             >
                 <ProjectHeader baseWidth = {props.baseWidth} openChat = {props.openChat} isChatOpen = {props.isChatOpen} handleClickOpenSettings = {props.handleClickOpenSettings} user = {props.user} channel = {props.channel} />
-                <div style = {{  width: props.baseWidth, height: '100vh',translate: 'none', }} className="reactflow-wrapper" ref={reactFlowWrapper}>
+                <div style = {{ width: props.baseWidth, height: '100vh',translate: 'none'}} className="reactflow-wrapper" ref={reactFlowWrapper}>
                 <ReactFlow
                         onKeyPress={keyPress}
                         // key={ refreshKey}
@@ -333,36 +313,35 @@ function BaseChart(props) {
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}
                         elementsSelectable={true}
-                        // onNodeDrag = {(e,n)=> {console.log(e, n)}}
+                        //onNodeDrag = {(e,n)=> {console.log(e, n)}}
                         onElementsRemove={onElementsRemove}
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
-                        zoomOnDoubleClick={false}
+                        zooOnDoubleClick={false}
                         onlyRenderVisibleElements={false}
                         onElementClick={onElementClick}
                         onDoubleClick={onNodeDoubleClick}
                         onDrop={onDrop}
                         onDragOver={onDragOver}
                     >
-
                     <Background
-                            variant = "dots"
-                            color = {props.user.theme  === 'light' ? "#4C4C4C" : 'lightgrey'}
-                            style = {{backgroundColor:props.user.theme === 'light' ? '#FBFBFB' : '#69696C'}}
-                            gap={20}
-                            // size={1}
+                        variant = "dots"
+                        color = {props.user.theme  === 'light' ? "#4C4C4C" : 'lightgrey'}
+                        style = {{backgroundColor:props.user.theme === 'light' ? '#FBFBFB' : '#69696C'}}
+                        gap={20}
+                        // size={1}
                     />
                         <Box display ='flex' flexDirection ='row' container justifyContent = 'flex-end' alignItems = 'space-between'>
                             <Box style = {{marginRight: 150, marginLeft: 20, zIndex: 10, marginTop: 10,}}>
-                                { saving
+                                {saving
                                     ?
                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
                                         <p style = {{color: props.user.theme === 'dark' ? 'white ' : 'black'}}> Saving </p>
                                         <PuffLoader color={props.user.theme === 'dark' ? 'white ' : 'black'} loading={true} size={25} />
                                     </Box>
                                     :
-                                     <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
+                                    <Box display ='flex' alignItems = 'center'  justifyContent = 'center' flexDirection = {'row'}>
                                          {/*<p> Saved </p>*/}
                                          {/*<BiCheck size ={15} />*/}
                                      </Box>
@@ -381,7 +360,7 @@ function BaseChart(props) {
                 >
                     <DialogContent>
                         <DialogContentText style = {{fontSize: 14}} id="alert-dialog-description">
-                            Are you sure you want to delete this edge or node?
+                            Are you sure you want to delete this node or connection?
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -397,17 +376,15 @@ function BaseChart(props) {
         </Box>
         </ReactFlowProvider>
     );
-}
+};
+
 
 const drawerWidth = 72;
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor:'white',
         display: 'flex',
-
     },
     rootView: {
         height: '100vh',
@@ -428,18 +405,13 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         overflow: 'auto',
     },
-
     privateBoard: {
         height: '90vh',
-
     },
-
     container: {
         flexGrow: 1,
-
     },
     appBarSpacer: theme.mixins.toolbar,
-
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
         backgroundColor: '#F8F8F8',
@@ -467,9 +439,6 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(10),
 
     },
-
-
-
 }));
 
 export default BaseChart;

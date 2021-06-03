@@ -18,7 +18,6 @@ export const selectNode = (type, id, user, color, position) => {
             // noWheel: true,
         }
     }
-
     if (type === 'button'){
         node = {
             id: id,
@@ -108,7 +107,7 @@ export const selectNode = (type, id, user, color, position) => {
 
     }
 
-    if (type == 'character') {
+    if (type === 'character') {
         node = {
             id: id,
             draggable: true,
@@ -119,7 +118,7 @@ export const selectNode = (type, id, user, color, position) => {
 
     }
 
-    if (type =='kanban') {
+    if (type ==='kanban') {
 
         node = {
             type: 'appNodes',
