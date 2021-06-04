@@ -1,4 +1,3 @@
-
 export const selectNode = (type, id, user, color, position) => {
     let node = null;
 
