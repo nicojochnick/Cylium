@@ -22,6 +22,8 @@ export default memo(({data}) => {
 
     const handleClose = () => {
         setAnchorEl(null);
+        setIsOpen(false)
+        data.isOpen = false;
     };
 
 
@@ -30,16 +32,18 @@ export default memo(({data}) => {
 
     return (
         <Box borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, padding: 10, width: 350, boxShadow:data.style.shadow}}>
-
-            <Editor editorState={editorState} onChange={setEditorState} />
+            {!isOpen
+                ? <Editor editorState={editorState} onChange={setEditorState} />
+                : null
+            }
             <Dialog
-                id={id}
-                open={open}
-                className = {'nodrag'}
-                fullWidth={true}
+                // id={id}
+                open={isOpen}
+                // className = {'nodrag'}
+                // fullWidth={true}
                 maxWidth={'lg'}
                 classes  = {{
-                    paper: classes.pop
+                    // paper: classes.pop
                 }}
                 anchorEl={anchorEl}
                 onClose={handleClose}
@@ -53,11 +57,12 @@ export default memo(({data}) => {
                 }}
             >
 
-                    <DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' }}>
-                        <Box borderRadius = {20} style = {{ backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' , height: '80vh'}}>
-                            <p> hey world </p>
+                    {/*<DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white', }}>*/}
+                        <Box borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, padding: 10, width: 350, boxShadow:data.style.shadow}}>
+                            <Editor editorState={editorState} onChange={setEditorState} />
+
                         </Box>
-                    </DialogContent>
+                    {/*</DialogContent>*/}
             </Dialog>
 
 

@@ -84,6 +84,7 @@ function BaseChart(props) {
     const [isChatOpen,openChat] = React.useState(false);
     const reactFlowWrapper = useRef(null);
     const [isAdding,setIsAdding] = React.useState(false)
+    const [isWorking,setIsWorking] = React.useState(false)
     const [refreshKey, setRefreshKey] = React.useState(' ');
     const [reactFlowInstance, setReactFlowInstance] = React.useState(null);
     const handleClickOpen = () => {setOpen(true);};
@@ -103,6 +104,7 @@ function BaseChart(props) {
             updatedProjectIDs[props.channel.channelID].viewPort = position;
              updatedProjectIDs[props.channel.channelID].zoom = zoom;
             saveViewPort(updatedProjectIDs, props.user.email)
+            setIsWorking(false)
         }
     };
     const onRestore = useCallback((flow) => {
@@ -268,19 +270,22 @@ function BaseChart(props) {
     }
 
     const onNodeDoubleClick = async(event, node) => {
-        event.preventDefault();
-        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-        // const type = event.dataTransfer.getData('application/reactflow');
-        const position = rfInstance.project({
-            x: event.clientX - reactFlowBounds.left,
-            y: event.clientY - reactFlowBounds.top,
-        });
-        console.log(position)
-        let id = getNodeId();
-        const newNode = await selectNode('thought',id,props.user,props.channel.color,position);
-        newNode.data.delete = confirmElementsRemove;
-        newNode.data.user = props.user;
-        setElements((es) => es.concat(newNode));
+        if (!isWorking) {
+            event.preventDefault();
+            const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+            // const type = event.dataTransfer.getData('application/reactflow');
+            const position = rfInstance.project({
+                x: event.clientX - reactFlowBounds.left,
+                y: event.clientY - reactFlowBounds.top,
+            });
+            console.log(position)
+            let id = getNodeId();
+            const newNode = await selectNode('thought', id, props.user, props.channel.color, position);
+            newNode.data.delete = confirmElementsRemove;
+            newNode.data.user = props.user;
+            setElements((es) => es.concat(newNode));
+            setIsWorking(true)
+        }
 
     };
 
