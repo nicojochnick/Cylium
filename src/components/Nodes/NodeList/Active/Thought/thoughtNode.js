@@ -1,10 +1,10 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import {makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Box from "@material-ui/core/Box";
 import DocumentApp from "../../NonActive/Document/documentApp";
-import {Editor, EditorState} from 'draft-js';
+import {Editor, EditorState, getDefaultKeyBinding} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
 
@@ -16,6 +16,7 @@ export default memo(({data}) => {
         () => EditorState.createEmpty(),
     );
 
+    const editor = useRef(null);
 
 
     const classes = useStyles();
@@ -30,10 +31,42 @@ export default memo(({data}) => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    const focusEditor = () => {
+        editor.current.focus()
+    }
+
+    const handleKeyCommand = (command, editorState) => {
+        if (command === 'send-message') {
+            console.log('return')
+        }
+    }
+
+    const keyBindingFN = (e) => {
+        if (e.key === 'Enter') {
+            return 'send-message'
+
+        }
+        return getDefaultKeyBinding(e)
+    };
+
+
+    useEffect(() => {
+
+    }, []);
+
+    // if (isOpen){
+    //     focusEditor()
+    // }
+
     return (
-        <Box borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, padding: 10, width: 350, boxShadow:data.style.shadow}}>
+        <>
             {!isOpen
-                ? <Editor editorState={editorState} onChange={setEditorState} />
+                ?
+        <Box borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, padding: 10, width: 350, boxShadow:data.style.shadow}}>
+
+        <Editor editorState={editorState} onChange={setEditorState} />
+
+        </Box>
                 : null
             }
             <Dialog
@@ -59,14 +92,14 @@ export default memo(({data}) => {
 
                     {/*<DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white', }}>*/}
                         <Box borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, padding: 10, width: 350, boxShadow:data.style.shadow}}>
-                            <Editor editorState={editorState} onChange={setEditorState} />
-
+                            <Editor                 keyBindingFn={keyBindingFN}
+                                                    handleKeyCommand={handleKeyCommand} ref={editor}  editorState={editorState} onChange={setEditorState} />
                         </Box>
                     {/*</DialogContent>*/}
             </Dialog>
 
 
-        </Box>
+        </>
     );
 })
 
