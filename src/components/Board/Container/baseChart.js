@@ -25,6 +25,7 @@ import {selectNode} from "../../Nodes/NodeSelector/nodeSelector";
 import GraphNode from "../../Nodes/NodeList/NonActive/Graphs/graphNode"
 import FolderNode from "../../Nodes/NodeList/NonActive/Folder/folderNode"
 import BoxNode from "../../Nodes/NodeList/NonActive/Board/boxNode"
+import ThoughtNode from "../../Nodes/NodeList/Active/Thought/thoughtNode"
 import ReportNode from "../../Nodes/NodeList/NonActive/xDeprecated/ScrapNodeList/investorReportNode"
 import MetricNode from "../../Nodes/NodeList/NonActive/Number/metricNode";
 import StandardNode from "../../Nodes/NodeContainers/standardContainer";
@@ -49,6 +50,7 @@ const reset = [
 ];
 
 const nodeTypes = {
+    thoughtNodes: ThoughtNode,
     webPageNodes: WebPageNode,
     labelNodes: LabelNode,
     noteNodes: NoteNode,
@@ -275,10 +277,10 @@ function BaseChart(props) {
         });
         console.log(position)
         let id = getNodeId();
-        // const newNode = await selectNode('thought',id,props.user,props.channel.color,position);
-        // newNode.data.delete = confirmElementsRemove;
-        // newNode.data.user = props.user;
-        // setElements((es) => es.concat(newNode));
+        const newNode = await selectNode('thought',id,props.user,props.channel.color,position);
+        newNode.data.delete = confirmElementsRemove;
+        newNode.data.user = props.user;
+        setElements((es) => es.concat(newNode));
 
     };
 

@@ -6,14 +6,14 @@ export const selectNode = (type, id, user, color, position) => {
         node = {
             id: id,
             draggable: true,
-            type: 'thoughtNode',
+            type: 'thoughtNodes',
             data: {
                 text: null,
                 isOpen: true,
                 style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderColor: '#8E9CFD', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
                 title: null,
                 id: id,
-                type: 'thoughtNode',
+                type: 'thoughtNodes',
             },
             position: position,
         }
