@@ -38,6 +38,7 @@ export default memo(({data}) => {
     const handleKeyCommand = (command, editorState) => {
         if (command === 'send-message') {
             console.log('return')
+            handleClose()
         }
     }
 

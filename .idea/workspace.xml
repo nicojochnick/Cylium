@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -394,7 +392,7 @@
       <workItem from="1622747751371" duration="3288000" />
       <workItem from="1622756207905" duration="3392000" />
       <workItem from="1622811221437" duration="6083000" />
-      <workItem from="1622821259452" duration="7490000" />
+      <workItem from="1622821259452" duration="7611000" />
     </task>
     <servers />
   </component>
