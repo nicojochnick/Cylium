@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Popover from "@material-ui/core/Popover/Popover";
 import {makeStyles} from "@material-ui/core";
 import {db} from "../../api/firebase";
-import UserProfile from "../Profile/User/userProfile";
+import UserProfile from "../../components/Profile/User/userProfile";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";

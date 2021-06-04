@@ -11,7 +11,7 @@ import {editProjectName, followProject, switchUserTheme, unfollowProject} from "
 import ProjectProfile from "../Profile/Project/projectProfile";
 import { BiBell, BiSearch, BiWorld, BiStar,BiMoon, BiMessage, BiCog, BiUserPlus, BiLink } from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
-import ProjectGroup from "../Teams/projectGroup";
+import ProjectGroup from "../../xdeprecated/Teams/projectGroup";
 import {Redirect} from "react-router";
 import Autocomplete from "@material-ui/lab/Autocomplete/Autocomplete";
 import {db} from "../../api/firebase";

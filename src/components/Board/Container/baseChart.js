@@ -21,7 +21,7 @@ import ButtonNode from "../../Nodes/NodeList/Button/buttonNode"
 import DocumentNode from "../../Nodes/NodeList/Document/documentNode"
 import CalendarNode from "../../Nodes/NodeList/xDeprecated/ScrapNodeList/calendarNode"
 // import KanBanNode from "../Nodes/NodeList/List/kanbanNode"
-import {selectNode} from "../nodeSelector";
+import {selectNode} from "../../Nodes/NodeSelector/nodeSelector";
 import GraphNode from "../../Nodes/NodeList/Graphs/graphNode"
 import FolderNode from "../../Nodes/NodeList/Folder/folderNode"
 import BoxNode from "../../Nodes/NodeList/Board/boxNode"

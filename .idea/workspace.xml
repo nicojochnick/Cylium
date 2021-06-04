@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/avatarNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Avatars/avatarNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/graphNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Graphs/graphNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Board/nodeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/nodeSelector.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,11 +229,11 @@
       <recent name="$PROJECT_DIR$/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/Board" />
-      <recent name="$PROJECT_DIR$/src/components/Editor/Menus/IconMenu" />
-      <recent name="$PROJECT_DIR$/src/components/Editor/Menus" />
-      <recent name="$PROJECT_DIR$/src/components/Editor/NodeEditor" />
-      <recent name="$PROJECT_DIR$/src/components/Editor" />
+      <recent name="$PROJECT_DIR$/src/components/Nodes" />
+      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/xDeprecated" />
+      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/Label" />
+      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/Button" />
+      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/Todo" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.boxNode.js">
@@ -396,7 +393,7 @@
       <workItem from="1622735923103" duration="2396000" />
       <workItem from="1622747751371" duration="3288000" />
       <workItem from="1622756207905" duration="3392000" />
-      <workItem from="1622811221437" duration="2332000" />
+      <workItem from="1622811221437" duration="3038000" />
     </task>
     <servers />
   </component>
