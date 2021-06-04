@@ -323,7 +323,7 @@ function BaseChart(props) {
                         style = {{ overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
                         elements={elements}
                         onLoad={onLoad}
-                        selectNodesOnDrag = {false}
+                        selectNodesOnDrag = {true}
                         defaultPosition={props.user.projectIDs[props.channel.channelID].viewPort}
                         defaultZoom={props.user.projectIDs[props.channel.channelID].zoom}
                         onNodeDragStop = {(e,n) => onNodeDragStop(e,n)}

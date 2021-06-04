@@ -22,7 +22,7 @@ export default memo(({data}) => {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Box style = {{width: 100, height: 100, backgroundColor:data.bgColor}}>
+        <Box borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, padding: 20, boxShadow:data.style.shadow}}>
             <p> hey world </p>
             <Dialog
                 id={id}

@@ -10,7 +10,7 @@ export const selectNode = (type, id, user, color, position) => {
             data: {
                 text: null,
                 isOpen: true,
-                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderColor: '#8E9CFD', borderRadius: 20, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`},
+                style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderColor: '#8E9CFD', borderRadius: 10, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.08)`},
                 title: null,
                 id: id,
                 type: 'thoughtNodes',
