@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import {Editor} from "react-draft-wysiwyg";
 import IconButton from "@material-ui/core/IconButton";
 import {makeStyles} from "@material-ui/core";
-import TitleAndOptions from "../../../NodeUtils/NodeHeaders/titleAndOptions";
+import TitleAndOptions from "../../../../NodeUtils/NodeHeaders/titleAndOptions";
 import { BiEdit,BiRctangle, BiPlus, BiLink, BiMove,BiChevronUp, BiChevronDown, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";

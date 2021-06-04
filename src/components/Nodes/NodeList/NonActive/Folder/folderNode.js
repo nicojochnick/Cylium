@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import {Handle} from "react-flow-renderer";
 
 import {makeStyles} from "@material-ui/core";
-import folder from "../../../../assets/images/folder.png"
+import folder from "../../../../../assets/images/folder.png"
 
 
 

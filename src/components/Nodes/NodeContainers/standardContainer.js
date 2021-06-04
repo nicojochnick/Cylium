@@ -2,13 +2,13 @@ import React, {memo} from 'react';
 import Box from "@material-ui/core/Box";
 import NodeStylerBar from "../NodeUtils/nodeStylerBar";
 import {Rnd} from "react-rnd";
-import BoxNode from "../NodeList/Board/boxNode"
-import NoteNode from "../NodeList/Note/noteNode"
-import LabelNode from "../NodeList/Label/labelNode"
-import TableNode from "../NodeList/Table/tableNode"
-import ListNode from "../NodeList/List/listNode"
+import BoxNode from "../NodeList/NonActive/Board/boxNode"
+import NoteNode from "../NodeList/NonActive/Note/noteNode"
+import LabelNode from "../NodeList/NonActive/Label/labelNode"
+import TableNode from "../NodeList/NonActive/Table/tableNode"
+import ListNode from "../NodeList/NonActive/List/listNode"
 
-import DocumentNode from "../NodeList/Document/documentNode"
+import DocumentNode from "../NodeList/NonActive/Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
 import {Handle} from "react-flow-renderer";
 

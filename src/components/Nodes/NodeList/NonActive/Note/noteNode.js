@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import {Handle} from "react-flow-renderer";
 import TextField from "@material-ui/core/TextField/TextField";
 import Checkbox from "@material-ui/core/Checkbox/Checkbox";
-import NodeEditor from "../../../Editor/NodeEditor/nodeEditor";
+import NodeEditor from "../../../../Editor/NodeEditor/nodeEditor";
 import {makeStyles} from "@material-ui/core";
 import {convertFromRaw, convertToRaw, EditorState} from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
@@ -12,7 +12,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import { Rnd } from "react-rnd";
 import { BiEdit,BiRctangle, BiMove,BiChevronUp, BiChevronDown, BiText,BiChevronLeft,BiCheckboxChecked,BiListUl,BiUserCircle,BiMessageAltDetail} from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
-import TitleAndOptions from "../../NodeUtils/NodeHeaders/titleAndOptions";
+import TitleAndOptions from "../../../NodeUtils/NodeHeaders/titleAndOptions";
 let tinycolor = require("tinycolor2");
 
 
