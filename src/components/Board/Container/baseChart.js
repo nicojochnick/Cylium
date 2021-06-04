@@ -265,8 +265,21 @@ function BaseChart(props) {
         setElements(dbElements)
     }
 
-    const onNodeDoubleClick = (event, node) => {
-        console.log('doubleclicked')
+    const onNodeDoubleClick = async(event, node) => {
+        event.preventDefault();
+        const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+        // const type = event.dataTransfer.getData('application/reactflow');
+        const position = rfInstance.project({
+            x: event.clientX - reactFlowBounds.left,
+            y: event.clientY - reactFlowBounds.top,
+        });
+        console.log(position)
+        let id = getNodeId();
+        // const newNode = await selectNode('thought',id,props.user,props.channel.color,position);
+        // newNode.data.delete = confirmElementsRemove;
+        // newNode.data.user = props.user;
+        // setElements((es) => es.concat(newNode));
+
     };
 
     useEffect(() => {
@@ -318,10 +331,10 @@ function BaseChart(props) {
                         onConnect={onConnect}
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
-                        zooOnDoubleClick={false}
+                        zoomOnDoubleClick={false}
+                        onDoubleClick={(event)=> onNodeDoubleClick(event)}
                         onlyRenderVisibleElements={false}
                         onElementClick={onElementClick}
-                        onDoubleClick={onNodeDoubleClick}
                         onDrop={onDrop}
                         onDragOver={onDragOver}
                     >

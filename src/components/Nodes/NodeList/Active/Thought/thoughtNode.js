@@ -22,9 +22,8 @@ export default memo(({data}) => {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Box>
-
-
+        <Box style = {{width: 100, height: 100, backgroundColor:data.bgColor}}>
+            <p> hey world </p>
             <Dialog
                 id={id}
                 open={open}
@@ -46,9 +45,9 @@ export default memo(({data}) => {
                 }}
             >
 
-
                     <DialogContent style = {{backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' }}>
                         <Box borderRadius = {20} style = {{ backgroundColor: data.user.theme === 'dark' ? '#363638' : 'white' , height: '80vh'}}>
+                            <p> hey world </p>
                         </Box>
                     </DialogContent>
             </Dialog>
