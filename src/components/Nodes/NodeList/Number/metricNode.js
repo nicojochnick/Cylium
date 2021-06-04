@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
-import TitleAndOptions from "../NodeUtils/NodeHeaders/titleAndOptions";
+import TitleAndOptions from "../../NodeUtils/NodeHeaders/titleAndOptions";
 import {Handle} from "react-flow-renderer";
 import Grid from "@material-ui/core/Grid";
 

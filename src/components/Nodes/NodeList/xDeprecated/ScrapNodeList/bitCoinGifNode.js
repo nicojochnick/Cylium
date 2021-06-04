@@ -1,6 +1,6 @@
 import React, {memo, useEffect} from 'react';
 import {convertFromRaw, EditorState} from "draft-js";
-import {functions} from "../../../api/firebase"
+import {functions} from "../../../../../api/firebase"
 
 export default memo(({ data,}) => {
 
