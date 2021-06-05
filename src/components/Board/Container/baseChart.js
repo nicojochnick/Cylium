@@ -270,7 +270,8 @@ function BaseChart(props) {
     }
 
     const onNodeDoubleClick = async(event, node) => {
-        if (!isWorking) {
+        //TODO UNBLOCK
+        if (!isWorking && false) {
             event.preventDefault();
             const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
             // const type = event.dataTransfer.getData('application/reactflow');
@@ -324,7 +325,7 @@ function BaseChart(props) {
                         nodeTypes={nodeTypes}
                         minZoom={0.05}
                         panOnScroll={true}
-                        maxZoom={1}
+                        maxZoom={1.5}
                         style = {{ overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
                         elements={elements}
                         onLoad={onLoad}

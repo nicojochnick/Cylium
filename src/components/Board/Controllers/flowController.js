@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from "@material-ui/core/Box";
 import Popover from "@material-ui/core/Popover/Popover";
 import {BsCardText, BsCardHeading, BsCardList, BsFileSpreadsheet, BsFileText, BsKanban, BsWindow} from "react-icons/bs"
-import {BiLineChart,BiFile, BiData, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiPencil, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiMenu, BiText, BiUserCircle} from "react-icons/bi";
+import {BiLineChart, BiBrain, BiFile, BiData, BiFolder,BiSpreadsheet,BiNote, BiCubeAlt, BiTable, BiDetail, BiPencil, BiRuler, BiMessageAlt, BiLink, BiCheckboxChecked, BiEdit, BiMenu, BiText, BiUserCircle} from "react-icons/bi";
 import Divider from "@material-ui/core/Divider";
 import {IoMdHand} from "react-icons/all";
 
@@ -34,11 +34,11 @@ function FlowController(props) {
     return (
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
             <Box borderRadius = {100} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`, padding: 10, overflow:'hidden', color: props.user.theme === 'dark' ? 'white' : '#363638', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}>
-                <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable>
+                <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} >
                     <IoMdHand onClick={()=> props.setIsAdding(false)}  style = {{color: props.isAdding ? 'black' :  '#5967FF'}} size = {28}/>
                 </Box>
-                <Box onClick={()=>props.setIsAdding(true)} display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'note')} draggable>
-                    <BiPencil style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
+                <Box onClick={()=>props.setIsAdding(true)} display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'thought')} draggable>
+                    <BiBrain style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
                 </Box>
             </Box>
         </Grid>

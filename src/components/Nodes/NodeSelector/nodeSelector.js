@@ -11,6 +11,7 @@ export const selectNode = (type, id, user, color, position) => {
                 isOpen: true,
                 style: {bgColor: user.theme === 'dark' ? '#363638' : 'white', borderColor: '#8E9CFD', borderRadius: 10, border: 0, shadow: `0px 3px 10px rgba(0, 0, 0, 0.08)`},
                 title: null,
+                isConnectable:false,
                 id: id,
                 type: 'thoughtNodes',
             },
