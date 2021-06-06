@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useRef} from 'react';
-import {makeStyles} from "@material-ui/core";
+import {ListItemIcon, ListItemText, makeStyles} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Box from "@material-ui/core/Box";
@@ -7,8 +7,10 @@ import DocumentApp from "../../NonActive/Document/documentApp";
 import {convertFromRaw, convertToRaw, Editor, EditorState, getDefaultKeyBinding} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import {Handle} from "react-flow-renderer";
-import {BiDotsVertical, BiDotsVerticalRounded, BiExpand, BiText} from "react-icons/bi";
+import {BiDotsVertical, BiDotsVerticalRounded, BiExpand, BiMapPin, BiText, BiX} from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 
 export default memo(({data}) => {
@@ -133,6 +135,40 @@ export default memo(({data}) => {
 
                 : null
             }
+
+                <Menu
+                    id="simple-menu"
+                    anchorEl={anchorElMenu}
+                    keepMounted
+                    open={Boolean(anchorElMenu)}
+                    onClose={closeMenu}
+                >
+
+
+
+
+                    <MenuItem>
+                    <ListItemIcon>
+                        <BiExpand />
+                    </ListItemIcon>
+                    <ListItemText primary="Expand" />
+                    </MenuItem>
+
+                    <MenuItem>
+                        <ListItemIcon>
+                            <BiMapPin/>
+                        </ListItemIcon>
+                        <ListItemText primary="Add Title" />
+                    </MenuItem>
+
+                    <MenuItem onClick={()=>data.delete(data.id)}>
+                        <ListItemIcon>
+                            <BiX />
+                        </ListItemIcon>
+                        <ListItemText primary="Delete" />
+
+                    </MenuItem>
+                </Menu>
 
                 </Box>
 
