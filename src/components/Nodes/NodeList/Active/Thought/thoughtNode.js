@@ -11,6 +11,7 @@ import {BiDotsVertical, BiDotsVerticalRounded, BiExpand, BiMapPin, BiText, BiX} 
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import ThoughtMenu from "./thoughtMenu";
 
 
 export default memo(({data}) => {
@@ -119,75 +120,31 @@ export default memo(({data}) => {
             }}>
 
             <Box
-                style = {{height: 58, marginTop: -10, marginBottom: -49, marginRight: -20, zIndex: 5}}
+                style = {{height: 58, marginTop: -20, marginBottom: -47, marginRight: -22, }}
 
                 display={'flex'}
                 flexDirection='row'
-                justifyContent={'flex-end'}
+                justifyContent={'space-between'}
             >
 
-            {isHovering
-                ?
+                <div>
 
-                        <IconButton style={{margin:5, }} onClick={openMenu}>
-                            <BiDotsVerticalRounded size={25}  />
-                        </IconButton>
+                </div>
 
-                : null
-            }
-
-                <Menu
-                    id="simple-menu"
-                    anchorEl={anchorElMenu}
-                    keepMounted
-                    open={Boolean(anchorElMenu)}
-                    onClose={closeMenu}
-                >
+                <ThoughtMenu data = {data} isHovering = {isHovering} />
 
 
 
-
-                    <MenuItem>
-                    <ListItemIcon>
-                        <BiExpand />
-                    </ListItemIcon>
-                    <ListItemText primary="Expand" />
-                    </MenuItem>
-
-                    <MenuItem>
-                        <ListItemIcon>
-                            <BiMapPin/>
-                        </ListItemIcon>
-                        <ListItemText primary="Add Title" />
-                    </MenuItem>
-
-                    <MenuItem onClick={()=>data.delete(data.id)}>
-                        <ListItemIcon>
-                            <BiX />
-                        </ListItemIcon>
-                        <ListItemText primary="Delete" />
-
-                    </MenuItem>
-                </Menu>
 
                 </Box>
 
 
-            {/*<Box*/}
-            {/*    display={'flex'}*/}
-            {/*    flexDirection = 'row'*/}
-            {/*    style = {{color:'black'}}*/}
-            {/*>*/}
-
                 <Editor
+                    style = {{zIndex:6, }}
                     onEditorStateChange={handleSetEditorState}
                     editorState={editorState}
                     onChange={handleSetEditorState}
                 />
-
-            {/*</Box>*/}
-
-
 
 
         </Box>
