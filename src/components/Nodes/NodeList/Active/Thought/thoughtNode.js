@@ -7,7 +7,8 @@ import DocumentApp from "../../NonActive/Document/documentApp";
 import {convertFromRaw, convertToRaw, Editor, EditorState, getDefaultKeyBinding} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import {Handle} from "react-flow-renderer";
-import {BiExpand} from "react-icons/bi";
+import {BiDotsVertical, BiDotsVerticalRounded, BiExpand, BiText} from "react-icons/bi";
+import IconButton from "@material-ui/core/IconButton";
 
 
 export default memo(({data}) => {
@@ -16,7 +17,10 @@ export default memo(({data}) => {
     const [isHovering, setIsHovering] = React.useState(false)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [noDrag, setNoDrag] = React.useState(false)
-    const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
+    const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),)
+    const [anchorElMenu, setAnchorElMenu] = React.useState(null);
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
 
 
     const editor = useRef(null);
@@ -66,6 +70,18 @@ export default memo(({data}) => {
     }
 
 
+    const openMenu = (event) => {
+        setIsMenuOpen(true)
+        setAnchorElMenu(event.currentTarget);
+
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+        setAnchorElMenu(null);
+    };
+
+
     useEffect(() => {
 
         if (data.text) {
@@ -96,12 +112,12 @@ export default memo(({data}) => {
                 width: 400,
                 fontSize: 18,
                 fontWeight:500,
-                color: '#28292C'
-                ,boxShadow:data.style.shadow
+                color: '#28292C',
+                boxShadow: isHovering ? `0px 3px 10px rgba(0, 5, 0.9, 0.15)`:  data.style.shadow
             }}>
 
             <Box
-                style = {{height: 20, marginBottom: -20}}
+                style = {{height: 58, marginTop: -10, marginBottom: -49, marginRight: -20, zIndex: 5}}
 
                 display={'flex'}
                 flexDirection='row'
@@ -110,13 +126,10 @@ export default memo(({data}) => {
 
             {isHovering
                 ?
-                <>
 
-                    <BiExpand/>
-
-
-                    </>
-
+                        <IconButton style={{margin:5, }} onClick={openMenu}>
+                            <BiDotsVerticalRounded size={25}  />
+                        </IconButton>
 
                 : null
             }
@@ -124,10 +137,11 @@ export default memo(({data}) => {
                 </Box>
 
 
-            <Box
-                display={'flex'}
-                flexDirection = 'row'
-            >
+            {/*<Box*/}
+            {/*    display={'flex'}*/}
+            {/*    flexDirection = 'row'*/}
+            {/*    style = {{color:'black'}}*/}
+            {/*>*/}
 
                 <Editor
                     onEditorStateChange={handleSetEditorState}
@@ -135,7 +149,7 @@ export default memo(({data}) => {
                     onChange={handleSetEditorState}
                 />
 
-            </Box>
+            {/*</Box>*/}
 
 
 
