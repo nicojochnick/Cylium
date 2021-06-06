@@ -28,8 +28,8 @@ import BoxNode from "../../Nodes/NodeList/NonActive/Board/boxNode"
 import ThoughtNode from "../../Nodes/NodeList/Active/Thought/thoughtNode"
 import ReportNode from "../../Nodes/NodeList/NonActive/xDeprecated/ScrapNodeList/investorReportNode"
 import MetricNode from "../../Nodes/NodeList/NonActive/Number/metricNode";
-import StandardNode from "../../Nodes/NodeContainers/standardContainer";
-import AppNode from "../../Nodes/NodeContainers/appContainer";
+import StandardNode from "../../Nodes/NodeList/NonActive/NodeContainers/standardContainer";
+import AppNode from "../../Nodes/NodeList/NonActive/NodeContainers/appContainer";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import DividerNode from "../../Nodes/NodeList/NonActive/xDeprecated/dividerNode"

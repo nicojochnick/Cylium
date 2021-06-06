@@ -1,14 +1,14 @@
 import React, {memo, useEffect} from 'react';
 import Box from "@material-ui/core/Box";
-import NodeStylerBar from "../NodeUtils/nodeStylerBar";
+import NodeStylerBar from "../../../NodeUtils/nodeStylerBar";
 import {Rnd} from "react-rnd";
-import BoxNode from "../NodeList/NonActive/Board/boxNode"
-import NoteNode from "../NodeList/NonActive/Note/noteNode"
-import LabelNode from "../NodeList/NonActive/Label/labelNode"
-import TableNode from "../NodeList/NonActive/Table/tableNode"
-import ListNode from "../NodeList/NonActive/List/listNode"
+import BoxNode from "../Board/boxNode"
+import NoteNode from "../Note/noteNode"
+import LabelNode from "../Label/labelNode"
+import TableNode from "../Table/tableNode"
+import ListNode from "../List/listNode"
 import {IconButton} from "@material-ui/core";
-import DocumentNode from "../NodeList/NonActive/Document/documentNode"
+import DocumentNode from "../Document/documentNode"
 import {getBarPosition} from "recharts/lib/util/ChartUtils";
 import {BiGridVertical, BiCog, BiMessage, BiTrash} from "react-icons/bi";
 

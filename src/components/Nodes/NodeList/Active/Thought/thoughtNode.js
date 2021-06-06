@@ -7,18 +7,22 @@ import DocumentApp from "../../NonActive/Document/documentApp";
 import {convertFromRaw, convertToRaw, Editor, EditorState, getDefaultKeyBinding} from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import {Handle} from "react-flow-renderer";
+import {BiExpand} from "react-icons/bi";
 
 
 export default memo(({data}) => {
     const [text, setText] = React.useState(data.text)
-    const [isOpen,setIsOpen] = React.useState(data.isOpen)
+    const [isOpen,setIsOpen] = React.useState(data.isOpen);
+    const [isHovering, setIsHovering] = React.useState(false)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [noDrag, setNoDrag] = React.useState(false)
-    const [editorState, setEditorState] = React.useState(
-        () => EditorState.createEmpty(),
-    );
+    const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),);
+
+
     const editor = useRef(null);
     const classes = useStyles();
+
+
     const handleClose = () => {
         setAnchorEl(null);
         setIsOpen(false)
@@ -52,11 +56,13 @@ export default memo(({data}) => {
     };
 
     const onMouseEnter = () => {
+        setIsHovering(true)
 
     }
 
     const onMouseLeave = () => {
         setNoDrag(false)
+        setIsHovering(false)
     }
 
 
@@ -75,9 +81,64 @@ export default memo(({data}) => {
 
     return (
         <>
-        <Box onMouseEnter = {onMouseEnter} onMouseLeave={onMouseLeave} onDoubleClick={()=>setNoDrag(true)} className={noDrag ? 'nodrag' : null} borderRadius={data.style.borderRadius} style = {{backgroundColor:data.style.bgColor, paddingTop: 15,padding: 20, width: 400, fontSize: 18, fontWeight:500, color: '#28292C',boxShadow:data.style.shadow}}>
+        <Box
+            onMouseEnter = {onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            display={'flex'}
+            flexDirection = 'column'
+            onDoubleClick={()=>setNoDrag(true)}
+            className={noDrag ? 'nodrag' : null}
+            borderRadius={data.style.borderRadius}
+            style = {{
+                backgroundColor:data.style.bgColor,
+                paddingTop: 15,
+                padding: 20,
+                width: 400,
+                fontSize: 18,
+                fontWeight:500,
+                color: '#28292C'
+                ,boxShadow:data.style.shadow
+            }}>
 
-        <Editor  onEditorStateChange={handleSetEditorState} editorState={editorState} onChange={handleSetEditorState} />
+            <Box
+                style = {{height: 20, marginBottom: -20}}
+
+                display={'flex'}
+                flexDirection='row'
+                justifyContent={'flex-end'}
+            >
+
+            {isHovering
+                ?
+                <>
+
+                    <BiExpand/>
+
+
+                    </>
+
+
+                : null
+            }
+
+                </Box>
+
+
+            <Box
+                display={'flex'}
+                flexDirection = 'row'
+            >
+
+                <Editor
+                    onEditorStateChange={handleSetEditorState}
+                    editorState={editorState}
+                    onChange={handleSetEditorState}
+                />
+
+            </Box>
+
+
+
 
         </Box>
 
@@ -110,8 +171,6 @@ export default memo(({data}) => {
             {/*        /!*</DialogContent>*!/*/}
             {/*</Dialog>*/}
 
-
-
                 {/*<Handle*/}
                 {/*    type="source"*/}
                 {/*    id='k'*/}
@@ -120,7 +179,6 @@ export default memo(({data}) => {
                 {/*    // onConnect={(params) => console.log('handle onConnect', params)}*/}
                 {/*/>*/}
 
-
                 {/*<Handle*/}
                 {/*type="source"*/}
                 {/*id = 'j'*/}
@@ -128,10 +186,6 @@ export default memo(({data}) => {
                 {/*style={{zIndex: 12, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}*/}
                 {/*// onConnect={(params) => console.log('handle onConnect', params)}*/}
                 {/*/>*/}
-
-
-
-
         </>
     );
 })
@@ -145,10 +199,6 @@ const useStyles = makeStyles((theme) => ({
     },
     pop: {
         boxShadow:`0px 3px 10px rgba(0, 0, 0, 0.15)`,
-        // width: '80vw',
-        // height: '80vh',
-        // marginTop: -30,
-
     },
 }));
 
