@@ -80,11 +80,16 @@ export default memo(({data}) => {
         setIsHovering(false)
     }
 
-    const setWithTitle = () => {
-        data.hasTitle = true;
-        setHasTitle(true)
-        addIcon()
-        console.log('here')
+    const setWithTitle = (type) => {
+        if (type === 'remove') {
+            data.hasTitle = false
+            setHasTitle(false)
+
+        } else {
+            data.hasTitle = true;
+            setHasTitle(true)
+            addIcon()
+        }
     }
 
     function getRandomInt(min, max) {
@@ -145,7 +150,7 @@ export default memo(({data}) => {
                 <div>
                 {hasTitle
                    ?  <Box display = 'flex' flexDirection={'row'}>
-                        <p style = {{fontSize: 25, margin: 5, color:'black'}}> {icon} </p>
+                        <p style = {{fontSize: 27, marginB0ttom: 3, marginTop: 3, marginRight: 5, color:'black'}}> {icon} </p>
 
                         <TextField
                             onChange={(e) => changeTitle(e.target.value)}
@@ -153,7 +158,7 @@ export default memo(({data}) => {
                             placeholder="Untitled"
                             value={title}
                             fullWidth={true}
-                            InputProps={{style: {fontSize: 18, margin:5, fontWeight: 600, zIndex: 5,color: 'black', width: 280}, disableUnderline: true,}}
+                            InputProps={{style: {fontSize: 18, margin:5, marginRight: 0, fontWeight: 600, zIndex: 5,color: 'black', width: 285}, disableUnderline: true,}}
                         />
 
                     </Box>
@@ -162,7 +167,7 @@ export default memo(({data}) => {
                 }
                 </div>
 
-                <ThoughtMenu setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
+                <ThoughtMenu hasTitle = {hasTitle} setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
 
 
 

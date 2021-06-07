@@ -45,13 +45,23 @@ function ThoughtMenu(props) {
                     </ListItemIcon>
                     <ListItemText primary="Expand" />
                 </MenuItem>
+                {props.hasTitle
 
-                <MenuItem onClick={()=>props.setWithTitle()} >
-                    <ListItemIcon>
-                        <BiMapPin />
-                    </ListItemIcon>
-                    <ListItemText primary="Add Title" />
-                </MenuItem>
+                    ?  <MenuItem onClick={()=>props.setWithTitle('remove')} >
+                        <ListItemIcon>
+                            <BiMapPin />
+                        </ListItemIcon>
+                        <ListItemText primary="Remove Title" />
+                    </MenuItem>
+
+                    :  <MenuItem onClick={()=>props.setWithTitle('add')} >
+                        <ListItemIcon>
+                            <BiMapPin />
+                        </ListItemIcon>
+                        <ListItemText primary="Add Title" />
+                    </MenuItem>
+
+                }
 
                 <MenuItem onClick={()=>props.data.delete(props.data.id)}>
                     <ListItemIcon>
