@@ -46,9 +46,9 @@ function ThoughtMenu(props) {
                     <ListItemText primary="Expand" />
                 </MenuItem>
 
-                <MenuItem>
+                <MenuItem onClick={()=>props.setWithTitle()} >
                     <ListItemIcon>
-                        <BiMapPin/>
+                        <BiMapPin />
                     </ListItemIcon>
                     <ListItemText primary="Add Title" />
                 </MenuItem>

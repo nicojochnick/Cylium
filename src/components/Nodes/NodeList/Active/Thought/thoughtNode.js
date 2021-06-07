@@ -1,5 +1,5 @@
 import React, {memo, useEffect, useRef} from 'react';
-import {ListItemIcon, ListItemText, makeStyles} from "@material-ui/core";
+import {ListItemIcon, ListItemText, makeStyles, TextField} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import Box from "@material-ui/core/Box";
@@ -23,8 +23,8 @@ export default memo(({data}) => {
     const [editorState, setEditorState] = React.useState(() => EditorState.createEmpty(),)
     const [anchorElMenu, setAnchorElMenu] = React.useState(null);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-
+    const [title,setTitle] = React.useState(data.title);
+    const [hasTitle, setHasTitle] = React.useState(data.hasTitle)
 
     const editor = useRef(null);
     const classes = useStyles();
@@ -54,6 +54,12 @@ export default memo(({data}) => {
         return getDefaultKeyBinding(e)
     };
 
+    const changeTitle = (text) => {
+        setTitle(text);
+        data.title = text
+    };
+
+
     const handleSetEditorState = (editorState) => {
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
@@ -72,17 +78,11 @@ export default memo(({data}) => {
         setIsHovering(false)
     }
 
-
-    const openMenu = (event) => {
-        setIsMenuOpen(true)
-        setAnchorElMenu(event.currentTarget);
-
-    };
-
-    const closeMenu = () => {
-        setIsMenuOpen(false);
-        setAnchorElMenu(null);
-    };
+    const setWithTitle = () => {
+        data.hasTitle = true;
+        setHasTitle(true)
+        console.log('here')
+    }
 
 
     useEffect(() => {
@@ -120,18 +120,29 @@ export default memo(({data}) => {
             }}>
 
             <Box
-                style = {{height: 58, marginTop: -20, marginBottom: -47, marginRight: -22, }}
-
+                style = {{height: 30, marginBottom: hasTitle ? 0 : -30, marginTop: hasTitle ? -10 : -15, marginRight: -20,}}
                 display={'flex'}
                 flexDirection='row'
                 justifyContent={'space-between'}
             >
-
                 <div>
+                {hasTitle
+                   ?  <div>
+                        <TextField
+                            onChange={(e) => changeTitle(e.target.value)}
+                            id="standard-basic"
+                            placeholder="Untitled"
+                            value={title}
+                            InputProps={{style: {fontSize: 18, fontWeight: 600, color: 'black'}, disableUnderline: true,}}
+                        />
 
+                    </div>
+
+                    : null
+                }
                 </div>
 
-                <ThoughtMenu data = {data} isHovering = {isHovering} />
+                <ThoughtMenu setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
 
 
 
