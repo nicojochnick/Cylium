@@ -25,6 +25,8 @@ export default memo(({data}) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [title,setTitle] = React.useState(data.title);
     const [hasTitle, setHasTitle] = React.useState(data.hasTitle)
+    const [hasConnections, setHasConnections] = React.useState(data.hasConnections)
+
     const [icon, setIcon] = React.useState(data.icon);
 
 
@@ -91,6 +93,18 @@ export default memo(({data}) => {
             addIcon()
         }
     }
+
+    const setWithConnections = (type) => {
+        if (type === 'remove') {
+            data.hasConnections = false
+            setHasConnections(false)
+
+        } else {
+            data.hasConnections = true;
+            setHasConnections(true)
+        }
+    }
+
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -167,7 +181,7 @@ export default memo(({data}) => {
                 }
                 </div>
 
-                <ThoughtMenu hasTitle = {hasTitle} setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
+                <ThoughtMenu setWithConnections = {setWithConnections} hasConnections = {hasConnections} hasTitle = {hasTitle} setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
 
 
 
@@ -214,21 +228,29 @@ export default memo(({data}) => {
             {/*        /!*</DialogContent>*!/*/}
             {/*</Dialog>*/}
 
-                {/*<Handle*/}
-                {/*    type="source"*/}
-                {/*    id='k'*/}
-                {/*    position="left"*/}
-                {/*    style={{zIndex: 12, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}*/}
-                {/*    // onConnect={(params) => console.log('handle onConnect', params)}*/}
-                {/*/>*/}
+            {hasConnections
 
-                {/*<Handle*/}
-                {/*type="source"*/}
-                {/*id = 'j'*/}
-                {/*position="right"*/}
-                {/*style={{zIndex: 12, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}*/}
-                {/*// onConnect={(params) => console.log('handle onConnect', params)}*/}
-                {/*/>*/}
+                ?
+                <>
+
+                        <Handle
+                            type="source"
+                            id='k'
+                            position="left"
+                            style={{zIndex: 12, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}
+                            // onConnect={(params) => console.log('handle onConnect', params)}
+                        />
+
+                        <Handle
+                        type="source"
+                        id = 'j'
+                        position="right"
+                        style={{zIndex: 12, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}
+                        // onConnect={(params) => console.log('handle onConnect', params)}
+                        />
+                    </>
+                : null
+            }
         </>
     );
 })

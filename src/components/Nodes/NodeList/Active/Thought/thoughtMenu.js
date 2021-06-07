@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import {ListItemIcon, ListItemText} from "@material-ui/core";
-import {BiDotsVerticalRounded, BiExpand, BiMapPin, BiX} from "react-icons/bi";
+import {BiDotsVerticalRounded, BiExpand, BiMapPin, BiShapeSquare, BiX} from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
 
 function ThoughtMenu(props) {
@@ -62,6 +62,26 @@ function ThoughtMenu(props) {
                     </MenuItem>
 
                 }
+
+                {props.hasConnections
+
+                    ?  <MenuItem onClick={()=>props.setWithConnections('remove')} >
+                        <ListItemIcon>
+                            <BiShapeSquare />
+                        </ListItemIcon>
+                        <ListItemText primary="Remove Connections" />
+                    </MenuItem>
+
+                    :  <MenuItem onClick={()=>props.setWithConnections('add')} >
+                        <ListItemIcon>
+                            <BiShapeSquare />
+                        </ListItemIcon>
+                        <ListItemText primary="Add Connections" />
+                    </MenuItem>
+
+                }
+
+
 
                 <MenuItem onClick={()=>props.data.delete(props.data.id)}>
                     <ListItemIcon>
