@@ -156,7 +156,7 @@ export default memo(({data}) => {
             className={noDrag ? 'nodrag' : null}
             borderRadius={data.style.borderRadius}
             style = {{
-                backgroundColor:data.style.bgColor,
+                backgroundColor:data.user.theme === 'dark' ? '#424549': 'white',
                 padding: 20,
                 width: 400,
                 fontSize: 18,
@@ -167,7 +167,7 @@ export default memo(({data}) => {
             }}>
 
             <Box
-                style = {{height: 30, marginBottom: hasTitle ? 0 : -30, marginTop: hasTitle ? -5 : 5, marginRight: -20,}}
+                style = {{height: 30, marginBottom: hasTitle ? 0 : -35, marginTop: hasTitle ? -5 : 5, marginRight: -20,}}
                 display={'flex'}
                 flexDirection='row'
                 justifyContent={'space-between'}
@@ -183,7 +183,7 @@ export default memo(({data}) => {
                             placeholder="Untitled"
                             value={title}
                             fullWidth={true}
-                            InputProps={{style: {fontSize: 18, margin:5, marginRight: 0, fontWeight: 600, zIndex: 5,color: 'black', width: 275}, disableUnderline: true,}}
+                            InputProps={{style: {fontSize: 18, margin:5, marginRight: 0, fontWeight: 600, zIndex: 5,color: data.user.theme === 'dark' ? 'white': 'black', width: 275}, disableUnderline: true,}}
                         />
                     </Box>
                     : null
@@ -192,7 +192,7 @@ export default memo(({data}) => {
                 <ThoughtMenu setWithConnections = {setWithConnections} hasConnections = {hasConnections} hasTitle = {hasTitle} setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
                 </Box>
 
-            <div onDoubleClick={()=>setNoDrag(true)} style={{ cursor: noDrag ? 'text' : null, }}>
+            <div onDoubleClick={()=>setNoDrag(true)} style={{ cursor: noDrag ? 'text' : null,color: data.user.theme === 'dark' ? 'white': 'black' }}>
                 <Editor
                     style = {{zIndex:10, }}
                     onEditorStateChange={handleSetEditorState}

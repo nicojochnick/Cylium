@@ -370,7 +370,7 @@ function BaseChart(props) {
                     <Background
                         variant = "dots"
                         color = {props.user.theme  === 'light' ? "#4C4C4C" : 'lightgrey'}
-                        style = {{backgroundColor:props.user.theme === 'light' ? '#FBFBFB' : '#69696C'}}
+                        style = {{backgroundColor:props.user.theme === 'light' ? '#FBFBFB' : '#282A2C'}}
                         gap={20}
                         // size={1}
                     />
@@ -402,7 +402,7 @@ function BaseChart(props) {
                 >
                     <DialogContent>
                         <DialogContentText style = {{fontSize: 14}} id="alert-dialog-description">
-                            Are you sure you want to delete this node or connection?
+                            Are you sure you want to delete?
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

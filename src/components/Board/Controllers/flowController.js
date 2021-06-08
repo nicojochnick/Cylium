@@ -35,10 +35,10 @@ function FlowController(props) {
         <Grid style = {{height: 180}} container justify ='center' alignItems = 'center' >
             <Box borderRadius = {100} display = 'flex' flexDirection ='column' style = {{boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.20)`, padding: 10, overflow:'hidden', color: props.user.theme === 'dark' ? 'white' : '#363638', backgroundColor:props.user.theme === 'light' ? 'white' : '#363638'}}>
                 <Box  display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} >
-                    <IoMdHand onClick={()=> props.setIsAdding(false)}  style = {{color: props.isAdding ? 'black' :  '#5967FF'}} size = {28}/>
+                    <IoMdHand onClick={()=> props.setIsAdding(false)}  style = {{color: props.isAdding ? props.user.theme === 'dark' ? 'white': 'black' :  '#5967FF'}} size = {28}/>
                 </Box>
                 <Box onClick={()=>props.setIsAdding(true)} display = 'flex' alignItems = 'center' justifyContent = 'center' style = {{margin: 10,}} onDragStart={(event) => onDragStart(event, 'thought')} draggable>
-                    <BiBrain style = {{color: !props.isAdding ? 'black' :  '#5967FF', }} size = {28}/>
+                    <BiBrain style = {{color: !props.isAdding ? props.user.theme === 'dark' ? 'white': 'black' :  '#5967FF', }} size = {28}/>
                 </Box>
             </Box>
         </Grid>

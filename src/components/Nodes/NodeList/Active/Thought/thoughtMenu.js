@@ -22,10 +22,10 @@ function ThoughtMenu(props) {
     return (
 
 
-        <divv style = {{marginTop:props.hasTitle ? null : -30}}>
+        <divv style = {{marginTop:props.hasTitle ? -10 : -30, marginRight: -10}}>
             {props.isHovering
                 ?
-                <IconButton style={{margin:5,zIndex: 4 }} onClick={openMenu}>
+                <IconButton style={{margin:5,zIndex: 4, color: props.data.user.theme === 'dark' ? 'white': 'black'}} onClick={openMenu}>
                     <BiDotsVerticalRounded size={25}  />
                 </IconButton>
                 : null
@@ -39,12 +39,12 @@ function ThoughtMenu(props) {
                 onClose={closeMenu}
             >
 
-                <MenuItem>
-                    <ListItemIcon>
-                        <BiExpand />
-                    </ListItemIcon>
-                    <ListItemText primary="Expand" />
-                </MenuItem>
+                {/*<MenuItem>*/}
+                {/*    <ListItemIcon>*/}
+                {/*        <BiExpand />*/}
+                {/*    </ListItemIcon>*/}
+                {/*    <ListItemText primary="Expand" />*/}
+                {/*</MenuItem>*/}
                 {props.hasTitle
 
                     ?  <MenuItem onClick={()=>props.setWithTitle('remove')} >
@@ -63,23 +63,23 @@ function ThoughtMenu(props) {
 
                 }
 
-                {props.hasConnections
+                {/*{props.hasConnections*/}
 
-                    ?  <MenuItem onClick={()=>props.setWithConnections('remove')} >
-                        <ListItemIcon>
-                            <BiShapeSquare />
-                        </ListItemIcon>
-                        <ListItemText primary="Remove Connections" />
-                    </MenuItem>
+                {/*    ?  <MenuItem onClick={()=>props.setWithConnections('remove')} >*/}
+                {/*        <ListItemIcon>*/}
+                {/*            <BiShapeSquare />*/}
+                {/*        </ListItemIcon>*/}
+                {/*        <ListItemText primary="Remove Connections" />*/}
+                {/*    </MenuItem>*/}
 
-                    :  <MenuItem onClick={()=>props.setWithConnections('add')} >
-                        <ListItemIcon>
-                            <BiShapeSquare />
-                        </ListItemIcon>
-                        <ListItemText primary="Add Connections" />
-                    </MenuItem>
+                {/*    :  <MenuItem onClick={()=>props.setWithConnections('add')} >*/}
+                {/*        <ListItemIcon>*/}
+                {/*            <BiShapeSquare />*/}
+                {/*        </ListItemIcon>*/}
+                {/*        <ListItemText primary="Add Connections" />*/}
+                {/*    </MenuItem>*/}
 
-                }
+                {/*}*/}
 
 
 
