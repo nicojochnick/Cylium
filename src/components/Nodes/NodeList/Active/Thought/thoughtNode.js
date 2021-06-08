@@ -46,8 +46,8 @@ export default memo(({data}) => {
             if (nodes[i].id === data.id){
                 let position = nodes[i].position;
                 let x = position.x+(200)
-                let y = position.y + (height/2)
-                setCenter(x,y, 1.75)
+                let y = position.y + (height/1.5)
+                setCenter(x,y, 1.25)
             }
         }
     }
@@ -81,26 +81,19 @@ export default memo(({data}) => {
         setTitle(text);
         data.title = text
     };
-
-
     const handleSetEditorState = (editorState) => {
         const contentState = editorState.getCurrentContent();
         let save = JSON.stringify(convertToRaw(contentState));
         setEditorState(editorState)
         data.text = save;
-        // data.save();
     };
-
     const onMouseEnter = () => {
         setIsHovering(true)
-
     }
-
     const onMouseLeave = () => {
         setNoDrag(false)
         setIsHovering(false)
     }
-
     const setWithTitle = (type) => {
         if (type === 'remove') {
             data.hasTitle = false
@@ -112,7 +105,6 @@ export default memo(({data}) => {
             addIcon()
         }
     }
-
     const setWithConnections = (type) => {
         if (type === 'remove') {
             data.hasConnections = false
@@ -123,7 +115,6 @@ export default memo(({data}) => {
             setHasConnections(true)
         }
     }
-
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -145,22 +136,13 @@ export default memo(({data}) => {
 
     }
 
-
     useEffect(() => {
-
         if (data.text) {
             let parsed = EditorState.createWithContent(convertFromRaw(JSON.parse(data.text)))
             setEditorState(parsed);
         }
-
         setHeight(ref.current.clientHeight)
-
-
     }, []);
-
-    // if (isOpen){
-    //     focusEditor()
-    // }
 
     return (
         <>
@@ -201,35 +183,23 @@ export default memo(({data}) => {
                             placeholder="Untitled"
                             value={title}
                             fullWidth={true}
-                            InputProps={{style: {fontSize: 18, margin:5, marginRight: 0, fontWeight: 600, zIndex: 5,color: 'black', width: 285}, disableUnderline: true,}}
+                            InputProps={{style: {fontSize: 18, margin:5, marginRight: 0, fontWeight: 600, zIndex: 5,color: 'black', width: 275}, disableUnderline: true,}}
                         />
-
                     </Box>
-
                     : null
                 }
                 </div>
-
                 <ThoughtMenu setWithConnections = {setWithConnections} hasConnections = {hasConnections} hasTitle = {hasTitle} setWithTitle = {setWithTitle} data = {data} isHovering = {isHovering} />
-
-
-
-
                 </Box>
 
-            <div style={{ cursor: noDrag ? 'text' : null,}}>
-
-
+            <div onDoubleClick={()=>setNoDrag(true)} style={{ cursor: noDrag ? 'text' : null, }}>
                 <Editor
                     style = {{zIndex:10, }}
                     onEditorStateChange={handleSetEditorState}
                     editorState={editorState}
                     onChange={handleSetEditorState}
                 />
-
             </div>
-
-
         </Box>
 
             {/*<Dialog*/}
@@ -273,7 +243,6 @@ export default memo(({data}) => {
                             style={{zIndex: 12, boxShadow: `0px 3px 10px rgba(0, 0, 0, 0.15)`}}
                             // onConnect={(params) => console.log('handle onConnect', params)}
                         />
-
                         <Handle
                         type="source"
                         id = 'j'

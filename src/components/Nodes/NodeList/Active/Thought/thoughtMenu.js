@@ -22,7 +22,7 @@ function ThoughtMenu(props) {
     return (
 
 
-        <div>
+        <divv style = {{marginTop:props.hasTitle ? null : -30}}>
             {props.isHovering
                 ?
                 <IconButton style={{margin:5,zIndex: 4 }} onClick={openMenu}>
@@ -94,7 +94,7 @@ function ThoughtMenu(props) {
 
 
 
-        </div>
+        </divv>
 
     );
 }

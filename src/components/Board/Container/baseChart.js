@@ -290,6 +290,26 @@ function BaseChart(props) {
 
     };
 
+    const onBaseClick = async(event) => {
+        if (isAdding){
+            setIsAdding(false)
+            event.preventDefault();
+            const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+            // const type = event.dataTransfer.getData('application/reactflow');
+            const position = rfInstance.project({
+                x: event.clientX - reactFlowBounds.left,
+                y: event.clientY - reactFlowBounds.top,
+            });
+            console.log(position)
+            let id = getNodeId();
+            const newNode = await selectNode('thought', id, props.user, props.channel.color, position);
+            newNode.data.delete = confirmElementsRemove;
+            newNode.data.user = props.user;
+            setElements((es) => es.concat(newNode));
+            setIsWorking(false)
+        }
+    }
+
     useEffect(() => {
         console.log('RESET')
        if(props.channel && props.channel.flow!== ''){
@@ -326,7 +346,7 @@ function BaseChart(props) {
                         minZoom={0.05}
                         panOnScroll={true}
                         maxZoom={1.5}
-                        style = {{ overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
+                        style = {{ cursor: isAdding? 'crosshair' : null, overflow: 'hidden', translate: 'none', transform:'none', background: '#FAFAFA'}}
                         elements={elements}
                         onLoad={onLoad}
                         selectNodesOnDrag = {true}
@@ -340,6 +360,7 @@ function BaseChart(props) {
                         onEdgeUpdate={onEdgeUpdate}
                         connectionMode={'loose'}
                         zoomOnDoubleClick={false}
+                        onClick={(e)=>onBaseClick(e)}
                         onDoubleClick={(event)=> onNodeDoubleClick(event)}
                         onlyRenderVisibleElements={false}
                         onElementClick={onElementClick}
