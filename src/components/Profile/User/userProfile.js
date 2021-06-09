@@ -119,9 +119,8 @@ function UserProfile(props) {
                 <TextField
                     onChange={e => handleNameChange(e.target.value)}
                     id="filled-basic"
-                    label="Name"
-
-                    placeholder='John Doe'
+                    InputProps={{style: {zIndex: 5,color: props.user.theme === 'dark' ? 'white': 'black',}, }}
+                    placeholder='Add a Name'
                     value = {name}
                 />
                 </div>

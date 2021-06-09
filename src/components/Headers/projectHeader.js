@@ -202,7 +202,7 @@ function ProjectHeader(props) {
                 PaperProps={{
 
                     style: {
-                        backgroundColor: props.user.theme === 'light' ? 'white' : 'black',
+                        backgroundColor: props.user.theme === 'light' ? 'white' : '#2B2D30',
                     },
 
 

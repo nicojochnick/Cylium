@@ -5,6 +5,7 @@ import Dashboard from './views/core/dashboard'
 import signup from './views/authentication/signup';
 import Feedbox from './xdeprecated/Old/feedbox'
 import login from './views/authentication/login';
+import lander from './views/landerViews/lander'
 import {auth} from './api/firebase';
 import './styles.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -65,7 +66,10 @@ export default class App extends Component {
 
           <Router>
             <Switch>
-              <Route exact path="/" component={home} />
+              <Route
+                  exact path="/"
+                  component={lander}
+              />
                 <PublicRoute
                     path="/signup"
                     root = {this.state.root}
@@ -90,7 +94,6 @@ export default class App extends Component {
                   authenticated={this.state.authenticated}
                   component={DashboardContainer}
               />
-
 
 
 

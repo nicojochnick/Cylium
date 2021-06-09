@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/gifs/ezgif.com-gif-maker (1).gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/gifs/ezgif.com-gif-maker.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Container/baseChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/User/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/User/userProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/landerViews/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/landerViews/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/landerViews/lander.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/landerViews/lander.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +80,17 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/Profile/User/userProfile.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/views/core/dashboard.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/App.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/views/landerViews/home.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Board/Controllers/flowController.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/views/landerViews/lander.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Headers/projectHeader.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Board/Controllers/feedController.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -232,11 +246,11 @@
       <recent name="$PROJECT_DIR$/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/gifs" />
       <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/NonActive" />
       <recent name="$PROJECT_DIR$/src/xdeprecated" />
       <recent name="$PROJECT_DIR$/src/components/Nodes/NodeSelector" />
       <recent name="$PROJECT_DIR$/src/components/Nodes" />
-      <recent name="$PROJECT_DIR$/src/components/Nodes/NodeList/xDeprecated" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.boxNode.js">
@@ -397,7 +411,7 @@
       <workItem from="1622747751371" duration="3288000" />
       <workItem from="1622756207905" duration="3392000" />
       <workItem from="1622811221437" duration="6083000" />
-      <workItem from="1622821259452" duration="42679000" />
+      <workItem from="1622821259452" duration="51201000" />
     </task>
     <servers />
   </component>

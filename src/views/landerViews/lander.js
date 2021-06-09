@@ -18,6 +18,7 @@ import { BsCheck } from "react-icons/bs";
 import 'draft-js/dist/Draft.css';
 import pulse from "../../assets/images/pulse.gif"
 import profileIllustration from "../../assets/images/profileIllustration.png"
+import demo from "../../assets/gifs/ezgif.com-gif-maker (1).gif"
 import Popover from "@material-ui/core/Popover/Popover";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Container from "@material-ui/core/Container";
@@ -115,7 +116,6 @@ function Lander(props) {
             return 'handled';
         }
     };
-
     const _handlePastedText = (pastedText) => {
         const currentContent = editorState.getCurrentContent();
         const currentContentLength = currentContent.getPlainText('').length;
@@ -136,25 +136,27 @@ function Lander(props) {
                   item xs={12} sm={6}>
                 <Box style = {{padding: 20, paddingLeft: 50}}>
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
-                    <p style = {{fontSize: 60, fontWeight: 600, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Get feedback from your email signature</p>
-                    <p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> Source and reward feedback from customers, clients and colleagues using a link in your email signature</p>
+                    <p style = {{fontSize: 25, fontWeight: 800, margin: 10, color:"#10102F"}}>  🧠 Cylium </p>
+
+                    <p style = {{fontSize: 50, fontWeight: 600, marginRight: 100, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Organize your thoughts in one space</p>
+                    {/*<p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> The easiest and fastest way to </p>*/}
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
                         }}>
-                            <p style = {{color: 'white', fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
-                                Get Started
+                            <p style = {{color: 'white', textTransform:'lowercase',fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
+                                Start Thinking
                             </p>
                         </Button>
                     </Link>
-                    <Grid justify = "flex-start" alignItems='center' direction = "row" container>
-                    <BsCheck size = {18} />
-                    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Takes a minute</p>
-                </Grid>
-                    <Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>
-                        <BsCheck size = {18} />
-                        <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>No credit card required</p>
-                    </Grid>
+                    {/*<Grid justify = "flex-start" alignItems='center' direction = "row" container>*/}
+                    {/*<BsCheck size = {18} />*/}
+                    {/*<p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Takes a minute</p>*/}
+                    {/*</Grid>*/}
+                    {/*<Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>*/}
+                    {/*    <BsCheck size = {18} />*/}
+                    {/*    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>No credit card required</p>*/}
+                    {/*</Grid>*/}
                 </Box>
             </Grid>
             <Grid
@@ -163,154 +165,8 @@ function Lander(props) {
                 alignItems="center"
                 container xs={12} sm={6}
             >
-                <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {10} style = {{ boxShadow: "0px 5px 15px #D7D7DA", margin: 35, maxWidth:500}}>
-                    <Grid spacing = {0} container style = {{margin: 20, marginTop: 10}} direction = "column" >
-                        <Grid container justify='flex-start' alignItems='center' direction = "row">
-                        <p style = {{fontSize: 23, fontWeight: 600, marginBottom: 15, color:"#10102F"}} >Step 1. Source</p>
-                            <HiOutlineMail style = {{marginLeft: 5, marginTop: 7, }} size = {28}  />
-                        </Grid>
-                        <p style ={{color: '#8B8FA0', margin: 0, fontSize: 17}}> ....</p>
-                        <p style ={{color: '#8B8FA0',margin: 0,  fontSize: 17 }}> Mark Anderson </p>
-                        <p style ={{color: '#8B8FA0',margin: 0, fontSize: 17}}> Product Manager </p>
-                        <Grid direction='row' container>
-                            <p style ={{color: '#8B8FA0',margin: 0, fontSize: 17, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 17, marginLeft: 3, }}>here</p>
-                        </Grid>
-                    </Grid>
-                    <Divider/>
-
-                    <div style = {{ margin: 20, marginTop: 10}}>
-                        <Grid
-                            wrap="nowrap"
-                            spacing={2}
-                            justify="center"
-                            alignItems="center"
-                        >
-                            <Grid container justify='flex-start' alignItems='center' direction = "row">
-                                {/*<img  style = {{height: 50,}} src = {boxx} />*/}
-                                <p style = {{fontSize: 23, fontWeight: 600, marginBottom: 20, color:"#10102F"}} >Step 2. Reward</p>
-                                <HiOutlineTrendingUp style = {{marginLeft: 5}} size = {25} />
-
-                            </Grid>
-
-                            <Grid justify='flex-start' alignItems='center' direction = "row" container style = {{marginLeft: 0,}}>
-                                <Box border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
-                                    <Avatar  src = {mscott} className={classes.large}/>
-                                </Box>
-                                <p style = {{margin: 15, fontSize: 17, color: '#8B8FA0', fontWeight: 500,}}>{user.name} </p>
-                            </Grid>
-                            <p style={{color: '#8B8FA0', fontSize: 17, marginTop: 15}}> {user.welcome} </p>
-                            </Grid>
-                        <div>
-                            <Button onClick={handleClickReward} variant="contained" noWrap style={{
-                                borderRadius: 5,
-                                margin: 0,
-                                marginRight: 0,
-                                backgroundColor: '#4D6DF1',
-
-                            }}>
-                                                <p style={{color: 'white', margin: 3, fontWeight: 600}}>
-                                                    Send Thank You
-                                                </p>
-                                            </Button>
-                                            <Popover
-                                                style={{}}
-                                                id={idReward}
-                                                open={openReward}
-                                                anchorEl={anchorElReward}
-                                                onClose={handleCloseReward}
-                                                anchorOrigin={{
-                                                    vertical: 'center',
-                                                    horizontal: 'center',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'center',
-                                                    horizontal: 'left',
-                                                }}
-                                            >
-                                                <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {5} >
-                                                    <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20,}}>
-                                                        {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
-                                                        {/*<Divider style={{marginBottom:10}}/>*/}
-                                                        {(true)
-                                                            ?
-                                                            <div>
-                                                                <Grid container direction='row'>
-                                                                    <Box display="flex" flexDirection = "column"  justifyContent="flex-start">
-                                                                        <TextField
-                                                                            placeholder="start typing..."
-                                                                            multiline
-                                                                            rows={12}
-                                                                            style = {{marginRight: 10, marginBottom: 10, minWidth: 220}}
-                                                                            onChange={e => console.log(e.target.value)}
-                                                                            label="thank you message"
-                                                                            variant="outlined"
-                                                                            rowsMax={12}
-                                                                        />
-                                                                        {(amount)
-                                                                            ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}}> + {amount} points attached </p>
-                                                                            : null
-
-                                                                        }
-                                                                        {(giftCard)
-                                                                            ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}} > + {giftCard} </p>
-                                                                            : null
-
-                                                                        }
-                                                                    </Box>
-
-                                                                    <Box  display="flex"  flexDirection = "column" justifyContent="center"  >
-                                                                        {/*<p style = {{textAlign: 'center'}}> Add a Reward (optional) </p>*/}
-                                                                        <Button variant="contained"
-                                                                                onClick={() => setGiftCard('Gift Card - Starbucks $5')}
-                                                                                style={{backgroundColor: "#0DB478",marginBottom: 5, color: "white"}}> $5 Starbucks Gift Card</Button>
-                                                                        <Button variant="contained"
-                                                                                onClick={() => setGiftCard( 'Gift Card - Chipotle $10')}
-                                                                                style={{backgroundColor: "#DA2E00",marginBottom: 5, color: "white"}}> $10 Chipotle Gift Card</Button>
-
-                                                                        <Button variant="contained"
-                                                                                onClick={() => setGiftCard( 'Gift Card - Amazon $15')}
-                                                                                style={{backgroundColor: "#F29736" ,marginBottom: 20, color: "white"}}> $15 Amazon Gift Card</Button>
-
-
-                                                                        <ButtonGroup
-                                                                            orientation="vertical"
-                                                                            color="primary"
-                                                                            aria-label="vertical contained primary button group"
-                                                                            variant="contained"
-                                                                        >
-                                                                            <Button onClick={() => setAmount(5)}
-                                                                                    style={{backgroundColor: "#AEAEF7"}}> Add 5 Points ($0.5)</Button>
-                                                                            <Button onClick={() => setAmount(10)}
-                                                                                    style={{backgroundColor: "#A3A3EA"}}> Add 10 Points ($1)</Button>
-                                                                            <Button onClick={() => setAmount(25)}
-                                                                                    style={{backgroundColor: "#9393E5"}}> Add 25 Points ($2.5)</Button>
-                                                                            <Button onClick={() => setAmount(50)}
-                                                                                    style={{backgroundColor: "#7676E1"}}> Add 50 Points ($5)</Button>
-                                                                            <Button onClick={() => setAmount(100)}
-                                                                                    style={{backgroundColor: "#5B5BDD"}}> Add 100 Points ($10)</Button>
-                                                                            {/*<Button onClick={() => handleSendReward(props.item.email, 200)}*/}
-                                                                            {/*        style={{backgroundColor: "#4545DF"}}> Add 200 Points ($20)</Button>*/}
-                                                                        </ButtonGroup>
-                                                                    </Box>
-                                                                </Grid>
-
-                                                                <Button
-                                                                    fullWidth
-                                                                    onClick={() => handleCloseReward()}
-                                                                    style={{backgroundColor: "#10102F", marginTop: 10}}> <p style={{color:"white", margin:2}}> Send </p>
-                                                                </Button>
-                                                            </div>
-                                                            :   null
-                                                        }
-
-                                                    </Container>
-                                                </Box>
-
-                                            </Popover>
-                                        </div>
-                    </div>
-
-
+                <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {10} style = {{ boxShadow: "0px 5px 15px #D7D7DA",  overflow:'hidden', padding: 5,}}>
+                    <img src = {demo} style = {{width: 600, margin: -8}}/>
                 </Box>
             </Grid>
         </Grid>
@@ -508,3 +364,152 @@ export default Lander;
 
 {/*    </Grid>*/}
 {/*</Grid>*/}
+
+
+
+// <Grid spacing = {0} container style = {{margin: 20, marginTop: 10}} direction = "column" >
+//     <Grid container justify='flex-start' alignItems='center' direction = "row">
+//         <p style = {{fontSize: 23, fontWeight: 600, marginBottom: 15, color:"#10102F"}} >Step 1. Source</p>
+//         <HiOutlineMail style = {{marginLeft: 5, marginTop: 7, }} size = {28}  />
+//     </Grid>
+//     <p style ={{color: '#8B8FA0', margin: 0, fontSize: 17}}> ....</p>
+//     <p style ={{color: '#8B8FA0',margin: 0,  fontSize: 17 }}> Mark Anderson </p>
+//     <p style ={{color: '#8B8FA0',margin: 0, fontSize: 17}}> Product Manager </p>
+//     <Grid direction='row' container>
+//         <p style ={{color: '#8B8FA0',margin: 0, fontSize: 17, marginRight: 1}}> {'Feedback? Share it '} </p>  <p style = {{color:"#4D6DF1",margin: 0, fontSize: 17, marginLeft: 3, }}>here</p>
+//     </Grid>
+// </Grid>
+// <Divider/>
+//
+// <div style = {{ margin: 20, marginTop: 10}}>
+//     <Grid
+//         wrap="nowrap"
+//         spacing={2}
+//         justify="center"
+//         alignItems="center"
+//     >
+//         <Grid container justify='flex-start' alignItems='center' direction = "row">
+//             {/*<img  style = {{height: 50,}} src = {boxx} />*/}
+//             <p style = {{fontSize: 23, fontWeight: 600, marginBottom: 20, color:"#10102F"}} >Step 2. Reward</p>
+//             <HiOutlineTrendingUp style = {{marginLeft: 5}} size = {25} />
+//
+//         </Grid>
+//
+//         <Grid justify='flex-start' alignItems='center' direction = "row" container style = {{marginLeft: 0,}}>
+//             <Box border = {2} borderColor = {'#4D6DF1'} borderRadius = {50}>
+//                 <Avatar  src = {mscott} className={classes.large}/>
+//             </Box>
+//             <p style = {{margin: 15, fontSize: 17, color: '#8B8FA0', fontWeight: 500,}}>{user.name} </p>
+//         </Grid>
+//         <p style={{color: '#8B8FA0', fontSize: 17, marginTop: 15}}> {user.welcome} </p>
+//     </Grid>
+//     <div>
+//         <Button onClick={handleClickReward} variant="contained" noWrap style={{
+//             borderRadius: 5,
+//             margin: 0,
+//             marginRight: 0,
+//             backgroundColor: '#4D6DF1',
+//
+//         }}>
+//             <p style={{color: 'white', margin: 3, fontWeight: 600}}>
+//                 Send Thank You
+//             </p>
+//         </Button>
+//         <Popover
+//             style={{}}
+//             id={idReward}
+//             open={openReward}
+//             anchorEl={anchorElReward}
+//             onClose={handleCloseReward}
+//             anchorOrigin={{
+//                 vertical: 'center',
+//                 horizontal: 'center',
+//             }}
+//             transformOrigin={{
+//                 vertical: 'center',
+//                 horizontal: 'left',
+//             }}
+//         >
+//             <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {5} >
+//                 <Container style = {{padding: 20, backgroundColor: "white",borderRadius: 20,}}>
+//                     {/*<p style = {{fontWeight: 700, fontSize: 15}}>Thank You Message</p>*/}
+//                     {/*<Divider style={{marginBottom:10}}/>*/}
+//                     {(true)
+//                         ?
+//                         <div>
+//                             <Grid container direction='row'>
+//                                 <Box display="flex" flexDirection = "column"  justifyContent="flex-start">
+//                                     <TextField
+//                                         placeholder="start typing..."
+//                                         multiline
+//                                         rows={12}
+//                                         style = {{marginRight: 10, marginBottom: 10, minWidth: 220}}
+//                                         onChange={e => console.log(e.target.value)}
+//                                         label="thank you message"
+//                                         variant="outlined"
+//                                         rowsMax={12}
+//                                     />
+//                                     {(amount)
+//                                         ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}}> + {amount} points attached </p>
+//                                         : null
+//
+//                                     }
+//                                     {(giftCard)
+//                                         ? <p style = {{margin: 4, fontWeight: 500, color: '#5B5BDD'}} > + {giftCard} </p>
+//                                         : null
+//
+//                                     }
+//                                 </Box>
+//
+//                                 <Box  display="flex"  flexDirection = "column" justifyContent="center"  >
+//                                     {/*<p style = {{textAlign: 'center'}}> Add a Reward (optional) </p>*/}
+//                                     <Button variant="contained"
+//                                             onClick={() => setGiftCard('Gift Card - Starbucks $5')}
+//                                             style={{backgroundColor: "#0DB478",marginBottom: 5, color: "white"}}> $5 Starbucks Gift Card</Button>
+//                                     <Button variant="contained"
+//                                             onClick={() => setGiftCard( 'Gift Card - Chipotle $10')}
+//                                             style={{backgroundColor: "#DA2E00",marginBottom: 5, color: "white"}}> $10 Chipotle Gift Card</Button>
+//
+//                                     <Button variant="contained"
+//                                             onClick={() => setGiftCard( 'Gift Card - Amazon $15')}
+//                                             style={{backgroundColor: "#F29736" ,marginBottom: 20, color: "white"}}> $15 Amazon Gift Card</Button>
+//
+//
+//                                     <ButtonGroup
+//                                         orientation="vertical"
+//                                         color="primary"
+//                                         aria-label="vertical contained primary button group"
+//                                         variant="contained"
+//                                     >
+//                                         <Button onClick={() => setAmount(5)}
+//                                                 style={{backgroundColor: "#AEAEF7"}}> Add 5 Points ($0.5)</Button>
+//                                         <Button onClick={() => setAmount(10)}
+//                                                 style={{backgroundColor: "#A3A3EA"}}> Add 10 Points ($1)</Button>
+//                                         <Button onClick={() => setAmount(25)}
+//                                                 style={{backgroundColor: "#9393E5"}}> Add 25 Points ($2.5)</Button>
+//                                         <Button onClick={() => setAmount(50)}
+//                                                 style={{backgroundColor: "#7676E1"}}> Add 50 Points ($5)</Button>
+//                                         <Button onClick={() => setAmount(100)}
+//                                                 style={{backgroundColor: "#5B5BDD"}}> Add 100 Points ($10)</Button>
+//                                         {/*<Button onClick={() => handleSendReward(props.item.email, 200)}*/}
+//                                         {/*        style={{backgroundColor: "#4545DF"}}> Add 200 Points ($20)</Button>*/}
+//                                     </ButtonGroup>
+//                                 </Box>
+//                             </Grid>
+//
+//                             <Button
+//                                 fullWidth
+//                                 onClick={() => handleCloseReward()}
+//                                 style={{backgroundColor: "#10102F", marginTop: 10}}> <p style={{color:"white", margin:2}}> Send </p>
+//                             </Button>
+//                         </div>
+//                         :   null
+//                     }
+//
+//                 </Container>
+//             </Box>
+//
+//         </Popover>
+//     </div>
+// </div>
+//
