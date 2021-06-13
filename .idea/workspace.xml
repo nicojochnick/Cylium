@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/gifs/ezgif.com-gif-maker (1).gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/gifs/ezgif.com-gif-maker.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/projectHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/User/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/User/userProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/landerViews/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/landerViews/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/landerViews/lander.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/landerViews/lander.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -411,7 +405,8 @@
       <workItem from="1622747751371" duration="3288000" />
       <workItem from="1622756207905" duration="3392000" />
       <workItem from="1622811221437" duration="6083000" />
-      <workItem from="1622821259452" duration="51201000" />
+      <workItem from="1622821259452" duration="51874000" />
+      <workItem from="1623604849383" duration="996000" />
     </task>
     <servers />
   </component>

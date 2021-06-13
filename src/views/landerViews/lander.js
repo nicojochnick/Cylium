@@ -138,25 +138,29 @@ function Lander(props) {
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
                     <p style = {{fontSize: 25, fontWeight: 800, margin: 10, color:"#10102F"}}>  🧠 Cylium </p>
 
-                    <p style = {{fontSize: 50, fontWeight: 600, marginRight: 100, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Organize your thoughts in one space</p>
+                    <p style = {{fontSize: 50, fontWeight: 600, marginRight: 100, marginTop: 0, marginBottom: 20, color:"#10102F"}}> A Virtual Whiteboard for Thinking </p>
                     {/*<p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> The easiest and fastest way to </p>*/}
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 10, backgroundColor: '#4D6DF1',
                         }}>
-                            <p style = {{color: 'white', textTransform:'lowercase',fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
-                                Start Thinking
+                            <p style = {{color: 'white', textTransform:'none',fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
+                                CREATE BOARD
                             </p>
                         </Button>
                     </Link>
-                    {/*<Grid justify = "flex-start" alignItems='center' direction = "row" container>*/}
-                    {/*<BsCheck size = {18} />*/}
-                    {/*<p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Takes a minute</p>*/}
-                    {/*</Grid>*/}
-                    {/*<Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>*/}
-                    {/*    <BsCheck size = {18} />*/}
-                    {/*    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>No credit card required</p>*/}
-                    {/*</Grid>*/}
+                    <Grid justify = "flex-start" alignItems='center' direction = "row" container>
+                    <BsCheck size = {18} />
+                    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Organize your thoughts in one space</p>
+                    </Grid>
+                    <Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>
+                        <BsCheck size = {18} />
+                        <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>No sorting through files</p>
+                    </Grid>
+                    <Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>
+                        <BsCheck size = {18} />
+                        <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Optimized for personal use</p>
+                    </Grid>
                 </Box>
             </Grid>
             <Grid
