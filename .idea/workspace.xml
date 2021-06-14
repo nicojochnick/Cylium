@@ -7,9 +7,9 @@
     <list default="true" id="18fd189c-df0d-4972-b4e2-c7598a1d9156" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nodes/NodeList/Active/Thought/thoughtNode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/landerViews/lander.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/landerViews/lander.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -408,7 +408,7 @@
       <workItem from="1622756207905" duration="3392000" />
       <workItem from="1622811221437" duration="6083000" />
       <workItem from="1622821259452" duration="51874000" />
-      <workItem from="1623604849383" duration="3300000" />
+      <workItem from="1623604849383" duration="4290000" />
     </task>
     <servers />
   </component>

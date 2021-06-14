@@ -14,6 +14,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Popover from '@material-ui/core/Popover';
 import ThoughtMenu from "./thoughtMenu";
 import { useZoomPanHelper,useStore } from 'react-flow-renderer';
+import Picker from 'emoji-picker-react';
+
 
 
 export default memo(({data}) => {
@@ -31,6 +33,16 @@ export default memo(({data}) => {
     const [isActive, setIsActive] = React.useState(false);
     const [height, setHeight] = useState(0)
     const [width, setWidth] = useState(0)
+    const [chosenEmoji, setChosenEmoji] = useState(null);
+
+    const onEmojiClick = (event, emojiObject) => {
+        setChosenEmoji(emojiObject);
+        console.log(emojiObject)
+        setIcon(emojiObject.emoji)
+        data.icon = emojiObject.emoji
+
+        handleClose()
+    }
 
 
     const ref = useRef(null)
@@ -186,8 +198,8 @@ export default memo(({data}) => {
                 <div>
                 {hasTitle
                    ?  <Box display = 'flex' flexDirection={'row'}>
-                        <Box onClick =  {(event)=> openIconMenu(event)} style = {{cursor:'pointer', }}>
-                        <p style = {{fontSize: 27, marginBottom: 3, marginTop: 3, marginRight: 5, color:'black'}}> {icon} </p>
+                        <Box onClick =  {(event)=> openIconMenu(event)} style = {{cursor:'pointer', paddingTop: 5, paddingRight: 5}}>
+                        <p style = {{fontSize: 27,  color:'black'}}> {icon} </p>
                         </Box>
 
 
@@ -206,7 +218,8 @@ export default memo(({data}) => {
                             }}
                         >
                             <Box style ={{margin: 10}}>
-                            <p> icon menu </p>
+                                <Picker onEmojiClick={onEmojiClick} />
+
                             </Box>
                         </Popover>
 
