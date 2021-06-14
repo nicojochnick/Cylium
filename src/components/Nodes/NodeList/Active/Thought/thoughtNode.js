@@ -11,6 +11,7 @@ import {BiDotsVertical, BiDotsVerticalRounded, BiExpand, BiMapPin, BiText, BiX} 
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Popover from '@material-ui/core/Popover';
 import ThoughtMenu from "./thoughtMenu";
 import { useZoomPanHelper,useStore } from 'react-flow-renderer';
 
@@ -30,6 +31,7 @@ export default memo(({data}) => {
     const [isActive, setIsActive] = React.useState(false);
     const [height, setHeight] = useState(0)
     const [width, setWidth] = useState(0)
+
 
     const ref = useRef(null)
     const [icon, setIcon] = React.useState(data.icon);
@@ -129,10 +131,19 @@ export default memo(({data}) => {
         setIcon(randomEmoji);
         data.icon = randomEmoji;
     };
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
 
     const onDoubleClick = () => {
         setNoDrag(true);
         focus()
+
+    }
+
+    const openIconMenu = (event) => {
+        handleClick(event)
 
     }
 
@@ -175,7 +186,29 @@ export default memo(({data}) => {
                 <div>
                 {hasTitle
                    ?  <Box display = 'flex' flexDirection={'row'}>
+                        <Box onClick =  {(event)=> openIconMenu(event)} style = {{cursor:'pointer', }}>
                         <p style = {{fontSize: 27, marginBottom: 3, marginTop: 3, marginRight: 5, color:'black'}}> {icon} </p>
+                        </Box>
+
+
+                        <Popover
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                        >
+                            <Box style ={{margin: 10}}>
+                            <p> icon menu </p>
+                            </Box>
+                        </Popover>
 
                         <TextField
                             onChange={(e) => changeTitle(e.target.value)}

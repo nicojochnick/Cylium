@@ -138,7 +138,7 @@ function Lander(props) {
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
                     <p style = {{fontSize: 25, fontWeight: 800, margin: 10, color:"#10102F"}}>  🧠 Cylium </p>
 
-                    <p style = {{fontSize: 50, fontWeight: 600, marginRight: 100, marginTop: 0, marginBottom: 20, color:"#10102F"}}> A Virtual Whiteboard for Thinking </p>
+                    <p style = {{fontSize: 50, fontWeight: 600, marginRight: 100, marginTop: 0, marginBottom: 20, color:"#10102F"}}> One Space to Organize All Your Thoughts. </p>
                     {/*<p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> The easiest and fastest way to </p>*/}
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
@@ -151,7 +151,7 @@ function Lander(props) {
                     </Link>
                     <Grid justify = "flex-start" alignItems='center' direction = "row" container>
                     <BsCheck size = {18} />
-                    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Organize your thoughts in one space</p>
+                    <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>Whiteboard design</p>
                     </Grid>
                     <Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>
                         <BsCheck size = {18} />

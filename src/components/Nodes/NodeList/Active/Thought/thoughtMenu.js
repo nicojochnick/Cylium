@@ -4,6 +4,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import {ListItemIcon, ListItemText} from "@material-ui/core";
 import {BiDotsVerticalRounded, BiExpand, BiMapPin, BiShapeSquare, BiX} from "react-icons/bi";
 import IconButton from "@material-ui/core/IconButton";
+import Popover from '@material-ui/core/Popover';
+
 
 function ThoughtMenu(props) {
 
