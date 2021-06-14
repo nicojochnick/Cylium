@@ -80,9 +80,9 @@ class signup extends Component {
                 <CssBaseline>
 
                     <div className={classes.paper}>
-                        <img style ={{height: 80}} src = {mmlogo} />
+                        <p style = {{fontSize: 35, fontWeight: 800, margin: 30, color:"#10102F"}}>🧠 Cylium </p>
 
-                        <p style = {{fontSize: 30, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Sign Up</p>
+                        <p style = {{fontSize: 25, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Sign Up</p>
 
                         {/*<p>Fill in the form below to create an account.</p>*/}
                         <form className={classes.form} onSubmit={this.handleSubmit} noValidate>

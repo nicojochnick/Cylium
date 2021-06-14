@@ -52,9 +52,9 @@ class login extends Component {
             <Container component="main" maxWidth="xs">
                 <CssBaseline>
                     <div className={classes.paper}>
-                        <img style ={{height: 80}}src = {mmlogo} />
+                        <p style = {{fontSize: 35, fontWeight: 800, margin: 30, color:"#10102F"}}>🧠 Cylium </p>
 
-                        <p style = {{fontSize: 30, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Login</p>
+                        <p style = {{fontSize: 25, fontWeight: 600, marginTop: 0, marginBottom: 10, color:"#10102F"}}> Login</p>
 
                         {/*<p>Fill in the form below to create an account.</p>*/}
 
