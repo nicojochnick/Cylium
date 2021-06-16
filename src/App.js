@@ -83,7 +83,7 @@ export default class App extends Component {
                     component={login}
                 />
                 <PrivateRoute
-                    path="/:id"
+                    path="/board"
                     authenticated={this.state.authenticated}
                     render={(props) => <DashboardContainer {...props} />}
                     component={DashboardContainer}
@@ -125,7 +125,7 @@ function PublicRoute({ component: Component,authenticated, ...rest }) {
                 authenticated === false ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to= {`/dHoxRObIGeKrbQSLbcnj`} />
+                    <Redirect to= {`/board`} />
                 )
             }
         />

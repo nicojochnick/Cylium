@@ -53,25 +53,34 @@ export default function Dashboard(props) {
     }, []);
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    console.log(props.allChannels)
     return (
         <div className={classes.root}>
             <CssBaseline />
             <Router>
-                {(props.user) ?
+                {(props.user && props.channels[0]) ?
                     < main className={classes.content}>
-                        <Switch>
-                            {Object.keys(props.allChannels).map((item)=>
-                                    <Route key={key} exact path={getDirection(props.allChannels[item].channelID)}>
-                                        <BaseView
-                                            messages={props.messages.filter(i => i.channelID === props.allChannels[item].channelID)}
-                                            channel={props.allChannels[item]}
-                                            automations={props.automations}
-                                            user={props.user}
-                                            url={props.url}
-                                            email={props.email}/>
-                                     </Route>
-                            )}
-                        </Switch>
+                        <BaseView
+                            messages={props.messages.filter(i => i.channelID === props.channels[0].channelID)}
+                            channel={props.channels[0]}
+                            automations={props.automations}
+                            user={props.user}
+                            url={props.url}
+                            email={props.email}/>
+                        {/*<Switch>*/}
+                        {/*    {Object.keys(props.allChannels).map((item)=>*/}
+                        {/*            <Route key={key} exact path={getDirection(props.allChannels[item].channelID)}>*/}
+                        {/*                <BaseView*/}
+                        {/*                    messages={props.messages.filter(i => i.channelID === props.allChannels[item].channelID)}*/}
+                        {/*                    channel={props.allChannels[item]}*/}
+                        {/*                    automations={props.automations}*/}
+                        {/*                    user={props.user}*/}
+                        {/*                    url={props.url}*/}
+                        {/*                    email={props.email}/>*/}
+                        {/*             </Route>*/}
+                        {/*    )}*/}
+                        {/*</Switch>*/}
                     </main>
                     :
                     <p> pulling data..</p>

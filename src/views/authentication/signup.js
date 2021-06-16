@@ -46,20 +46,37 @@ class signup extends Component {
         this.setState({ error: '' });
         try {
             let url = Date.now();
-            await Signup(this.state.email, this.state.password);
+            let channelID = Date.now().toString() + Math.random().toString()
+            await db.collection('channels').doc(channelID).set({
+                bio:'null',
+                channelID:channelID,
+                color: '#886cfa',
+                flow: '{"elements":[],"position":[-293.3515937984753,419.69719345929985],"zoom":0.17436276445065862}'
+
+
+            })
+
+            let projectIDs = {}
+            projectIDs[channelID] = {viewPort: [0,0], zoom: 1}
+            console.log(projectIDs)
+
             await db.collection("users").doc(this.state.email).set({
                 email: this.state.email,
                 img_url_Profile: {imgUrl: null},
                 name: null,
-                channelIDs: [],
-                projects: [],
-                projectIDs: {}
+                channelIDs: [channelID],
+                projects: [channelID],
+                projectIDs: projectIDs,
+                theme:'dark',
 
             }).then(function() {
                 console.log("DocumentApp successfully written!");
             }).catch(function(error) {
                 console.error("Error writing document: ", error);
             });
+
+            await Signup(this.state.email, this.state.password);
+
 
 
 

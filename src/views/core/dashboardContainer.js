@@ -42,7 +42,6 @@ function DashboardContainer(props) {
     useEffect(() => {
         let currentUser = firebase.auth().currentUser;
         let user = null;
-        console.log(user)
         const email = currentUser.email;
         setEmail(email);
         function getUser(doc) {
@@ -104,7 +103,7 @@ function DashboardContainer(props) {
                 unsubscribeChannels()
             }
         }
-    }, []);
+    }, [user]);
 
     useEffect(() => {
         //TODO: we want to pull only messages that are relevant. The most recent 10 from any tracker in the userTrackerList.
