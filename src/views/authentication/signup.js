@@ -67,7 +67,7 @@ class signup extends Component {
                 channelIDs: [channelID],
                 projects: [channelID],
                 projectIDs: projectIDs,
-                theme:'dark',
+                theme:'light',
 
             }).then(function() {
                 console.log("DocumentApp successfully written!");
