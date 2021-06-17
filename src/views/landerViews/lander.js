@@ -138,20 +138,20 @@ function Lander(props) {
                     {/*<img style = {{height: 100, margin: 0, marginLeft: 0}} src = {pulse} />*/}
                     <p style = {{fontSize: 25, fontWeight: 800, margin: 10, color:"#10102F"}}>🧠 Cylium </p>
 
-                    <p style = {{fontSize: 45, fontWeight: 600, marginRight: 50, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Clarify Your Thinking Process. </p>
+                    <p style = {{fontSize: 50, fontWeight: 600, marginRight: 50, maxWidth: 350, marginTop: 0, marginBottom: 20, color:"#10102F"}}> Your Single Thinking Space. </p>
                     {/*<p style = {{fontSize: 20, fontWeight: 400, margin: 10, color:"#10102F"}}> The easiest and fastest way to </p>*/}
                     <Link to={`/signup`} style={{ textDecoration: 'none' }}>
                         <Button  variant="contained" noWrap style={{
                             borderRadius: 5, margin: 0, marginTop: 20, marginRight: 20, marginBottom: 15, backgroundColor: '#4D6DF1',
                         }}>
                             <p style = {{color: 'white', textTransform:'none',fontSize: 17, margin: 2, marginRight: 25, marginLeft: 25,fontWeight: 800}}>
-                                Start Thinking
+                                Create Space
                             </p>
                         </Button>
                     </Link>
                     <Grid justify = "flex-start" alignItems='center' direction = "row" container>
                         <BsCheck size = {18} />
-                        <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>One space for all your thoughts</p>
+                        <p style = {{fontSize: 16, fontWeight: 400, margin: 10, color:"#10102F"}}>One space for all your notes</p>
 
                     </Grid>
                     <Grid style = {{marginTop: -10,}}justify = "flex-start" alignItems='center' direction = "row" container>
@@ -168,9 +168,9 @@ function Lander(props) {
                 direction="column"
                 justify="center"
                 alignItems="center"
-                container xs={12} sm={6}
+                container xs={12} sm={5}
             >
-                <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {10} style = {{ boxShadow: "0px 5px 15px #D7D7DA",  overflow:'hidden', padding: 5,}}>
+                <Box border = {2} borderColor = {"#4D6DF1"}  borderRadius = {10} style = {{ boxShadow: "0px 5px 30px #D7D7DA",  overflow:'hidden', padding: 5,}}>
                     <img src = {demo} style = {{width: 600, margin: -8}}/>
                 </Box>
             </Grid>
